@@ -69,13 +69,52 @@ async function loadPrices() {
     byKey.set(key, normalized);
   }
 
-  const rows = [...byKey.values()].sort((a, b) =>
+  const rows = expandSeedTemplateRows([...byKey.values()]).sort((a, b) =>
     `${a.category}|${a.market_type}|${a.spec}|${a.date}`.localeCompare(
       `${b.category}|${b.market_type}|${b.spec}|${b.date}`,
     ),
   );
   if (!rows.length) throw new Error("没有可用价格数据，请补充 data/raw/prices/*.csv。");
   return rows;
+}
+
+function expandSeedTemplateRows(rows) {
+  const realRows = rows.filter((row) => !String(row.source).toLowerCase().includes("seed template"));
+  if (realRows.length) return rows;
+
+  const start = new Date("2023-01-01T00:00:00Z");
+  const now = new Date();
+  const end = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+  const bySeries = new Map();
+  for (const row of rows) {
+    const key = [row.category, row.market_type, row.spec].join("|");
+    const existing = bySeries.get(key);
+    if (!existing || row.date > existing.date) bySeries.set(key, row);
+  }
+
+  const generated = [];
+  for (const baseRow of bySeries.values()) {
+    let index = 0;
+    for (let date = new Date(start); date <= end; date.setUTCMonth(date.getUTCMonth() + 1)) {
+      const marketDrift = baseRow.market_type === "spot" ? 0.011 : 0.008;
+      const categoryDrift = baseRow.category === "DRAM" ? 1 : 0.82;
+      const cycle = Math.sin(index / 4) * 0.035 + Math.cos(index / 7) * 0.018;
+      const backcast = 1 - marketDrift * categoryDrift * (monthDiff(date, end) / 2);
+      generated.push({
+        ...baseRow,
+        date: date.toISOString().slice(0, 10),
+        price: round(Math.max(baseRow.price * (backcast + cycle), baseRow.price * 0.45), 4),
+        source: "Seed template (2023-now placeholder)",
+        note: "占位模板数据，仅用于验证 2023 年至今图表范围；正式发布请替换为授权价格源。",
+      });
+      index += 1;
+    }
+  }
+  return generated;
+}
+
+function monthDiff(start, end) {
+  return (end.getUTCFullYear() - start.getUTCFullYear()) * 12 + (end.getUTCMonth() - start.getUTCMonth());
 }
 
 async function loadCsvPrices() {

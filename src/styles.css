@@ -94,7 +94,8 @@ textarea {
 .chart-grid,
 .detail-grid,
 .report-grid,
-.stock-strip {
+.stock-strip,
+.section-heading {
   display: grid;
   gap: 16px;
 }
@@ -164,8 +165,23 @@ textarea {
   margin-bottom: 16px;
 }
 
+.section-heading {
+  margin: 4px 0 12px;
+}
+
+.section-heading h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.section-heading p {
+  margin: 0;
+  color: #607086;
+  line-height: 1.5;
+}
+
 .stock-card {
-  min-height: 92px;
+  min-height: 118px;
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -176,6 +192,11 @@ textarea {
 .stock-card div:first-child {
   display: grid;
   gap: 6px;
+}
+
+.stock-card small {
+  color: #758398;
+  line-height: 1.4;
 }
 
 .stock-price {

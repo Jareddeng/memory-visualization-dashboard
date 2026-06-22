@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { Activity, AlertTriangle, CalendarClock, Database, FileText, RefreshCw, TrendingUp } from "lucide-react";
+import { AlertTriangle, CalendarClock, Database, FileText, RefreshCw, TrendingUp } from "lucide-react";
 import * as echarts from "echarts/core";
 import { GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { LineChart } from "echarts/charts";
@@ -198,41 +198,6 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
   };
 }
 
-function makeStockOption(stocks: StockPayload): echarts.EChartsCoreOption {
-  const names = [...new Set(stocks.history.map((row) => row.name))];
-  return {
-    color: ["#0f766e", "#2563eb", "#9333ea"],
-    title: { text: "三大存储厂商股价走势", left: 8, top: 0, textStyle: { fontSize: 15, fontWeight: 700, color: "#172033" } },
-    tooltip: {
-      trigger: "axis",
-      confine: true,
-      formatter(params: unknown) {
-        const rows = Array.isArray(params) ? params : [params];
-        return rows
-          .map((row: any, index) => {
-            const point = row.data;
-            const head = index === 0 ? `<strong>${point.date}</strong><br/>` : "";
-            return `${head}${row.marker}${row.seriesName}: ${point.close} ${point.currency}<br/>涨跌幅：${point.change_pct}%`;
-          })
-          .join("<br/>");
-      },
-    },
-    legend: { top: 28, textStyle: { color: "#526071" } },
-    grid: { left: 56, right: 22, top: 72, bottom: 42 },
-    xAxis: { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
-    yAxis: { type: "value", scale: true, axisLabel: { color: "#607086" }, splitLine: { lineStyle: { color: "#edf1f6" } } },
-    series: names.map((name) => ({
-      name,
-      type: "line",
-      smooth: true,
-      symbolSize: 4,
-      data: stocks.history
-        .filter((row) => row.name === name)
-        .map((row) => ({ ...row, value: [row.date, row.close] })),
-    })),
-  };
-}
-
 function App() {
   const { data, loading, error } = useDashboardData();
 
@@ -273,12 +238,20 @@ function App() {
 
       {data.stocks.warning ? <div className="warning"><AlertTriangle size={16} />{data.stocks.warning}</div> : null}
 
+      <section className="section-heading">
+        <div>
+          <h2>三大存储厂商最新收盘价</h2>
+          <p>展示最近交易日收盘价、当日涨跌幅和行情更新时间；不再展示股价趋势图。</p>
+        </div>
+      </section>
+
       <section className="stock-strip">
         {data.stocks.latest.map((stock) => (
           <article className="stock-card" key={stock.ticker}>
             <div>
               <strong>{stock.name}</strong>
               <span>{stock.ticker} · {stock.exchange}</span>
+              <small>截至 {stock.date} 收盘 · 更新于 {formatDateTime(data.stocks.generated_at ?? data.metadata.generated_at)}</small>
             </div>
             <div className="stock-price">
               {stock.close.toLocaleString()} {stock.currency}
@@ -294,10 +267,6 @@ function App() {
         <Panel><Chart option={makePriceOption("NAND Flash 现货价格走势", data.prices.NAND.spot)} /></Panel>
         <Panel><Chart option={makePriceOption("NAND 合约平均价走势", data.prices.NAND.contract_avg)} /></Panel>
       </section>
-
-      <Panel>
-        <Chart option={makeStockOption(data.stocks)} />
-      </Panel>
 
       <section className="detail-grid">
         <Timeline items={data.trackers.hbm4_negotiations ?? []} />
