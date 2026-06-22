@@ -185,8 +185,14 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
           .join("<br/>");
       },
     },
-    legend: { top: 28, type: "scroll", textStyle: { color: "#526071" } },
-    grid: { left: 52, right: 22, top: 72, bottom: 42 },
+    legend: {
+      top: 28,
+      left: 8,
+      right: 8,
+      itemGap: 14,
+      textStyle: { color: "#526071" },
+    },
+    grid: { left: 52, right: 22, top: 96, bottom: 42 },
     xAxis: { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
     yAxis: {
       type: "value",

@@ -14,4 +14,3 @@ date,category,market_type,spec,price,unit,source,note
 2026-06-01,NAND,spot,128GB (16GB x8),4.62,USD/chip,Seed template,Replace with licensed source
 2026-06-01,NAND,contract_avg,32GB (4GB x8),1.16,USD/chip,Seed template,Replace with licensed source
 2026-06-01,NAND,contract_avg,64GB (8GB x8),2.21,USD/chip,Seed template,Replace with licensed source
-2026-06-01,NAND,contract_avg,128GB (16GB x8),4.38,USD/chip,Seed template,Replace with licensed source

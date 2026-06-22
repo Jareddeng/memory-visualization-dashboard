@@ -195,18 +195,6 @@
               "note": "Replace with licensed source"
             }
           ]
-        },
-        {
-          "spec": "128GB (16GB x8)",
-          "unit": "USD/chip",
-          "points": [
-            {
-              "date": "2026-06-01",
-              "price": 4.38,
-              "source": "Seed template",
-              "note": "Replace with licensed source"
-            }
-          ]
         }
       ]
     }
