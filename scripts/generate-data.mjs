@@ -14,6 +14,7 @@ const trackersDir = path.join(root, "content", "trackers");
 
 const allowedCategories = new Set(["DRAM", "NAND"]);
 const allowedMarkets = new Set(["spot", "contract_avg"]);
+const priceStartDate = process.env.PRICE_START_DATE || "2023-01-01";
 const stockSymbols = [
   { ticker: "000660.KS", name: "SK海力士", exchange: "KRX", currency: "KRW" },
   { ticker: "005930.KS", name: "三星电子", exchange: "KRX", currency: "KRW" },
@@ -57,26 +58,39 @@ async function loadPrices() {
   const byKey = new Map();
   for (const row of records) {
     const normalized = normalizePriceRow(row);
-    const key = [
-      normalized.date,
-      normalized.category,
-      normalized.market_type,
-      normalized.spec,
-      normalized.source,
-    ].join("|");
+    const key = [normalized.date, normalized.category, normalized.market_type, normalized.spec].join("|");
     if (byKey.has(key)) {
-      throw new Error(`价格数据重复: ${key}`);
+      const existing = byKey.get(key);
+      const existingIsSeed = isSeedSource(existing.source);
+      const nextIsSeed = isSeedSource(normalized.source);
+      if (existingIsSeed && !nextIsSeed) {
+        byKey.set(key, normalized);
+      } else if (!existingIsSeed && nextIsSeed) {
+        continue;
+      } else {
+        throw new Error(`价格数据重复: ${key}`);
+      }
+    } else {
+      byKey.set(key, normalized);
     }
-    byKey.set(key, normalized);
   }
 
-  const rows = [...byKey.values()].sort((a, b) =>
+  const normalizedRows = [...byKey.values()];
+  const hasNonSeedRows = normalizedRows.some((row) => !isSeedSource(row.source));
+  const rows = normalizedRows
+    .filter((row) => (hasNonSeedRows ? !isSeedSource(row.source) : true))
+    .filter((row) => row.date >= priceStartDate)
+    .sort((a, b) =>
     `${a.category}|${a.market_type}|${a.spec}|${a.date}`.localeCompare(
       `${b.category}|${b.market_type}|${b.spec}|${b.date}`,
     ),
   );
   if (!rows.length) throw new Error("没有可用价格数据，请补充 data/raw/prices/*.csv。");
   return rows;
+}
+
+function isSeedSource(source) {
+  return String(source || "").toLowerCase().includes("seed template");
 }
 
 async function loadRemotePriceSources() {
@@ -149,12 +163,12 @@ function inferWorkbookRows(file, sheetName, matrix) {
   if (headerIndex < 0) return [];
 
   const headers = matrix[headerIndex].map((cell) => String(cell).trim());
-  const dateIndex = headers.findIndex((h) => /date|日期|时间/.test(h));
+  const dateIndex = headers.findIndex((h) => /date|日期|时间|指标名称/i.test(h));
   if (dateIndex < 0) return [];
 
   const category = /nand/i.test(`${file} ${sheetName}`) ? "NAND" : "DRAM";
   const market_type = /合约/.test(`${file} ${sheetName}`) ? "contract_avg" : "spot";
-  const source = `本地Excel:${file}`;
+  const source = `Local Excel: ${file}`;
   const unit = "USD";
   const output = [];
 
@@ -166,19 +180,44 @@ function inferWorkbookRows(file, sheetName, matrix) {
       if (columnIndex === dateIndex) return;
       const value = parseNumber(row[columnIndex]);
       if (!Number.isFinite(value)) return;
+      const spec = normalizeWorkbookSpec(header, category, market_type);
+      if (!spec) return;
       output.push({
         date,
         category,
         market_type,
-        spec: header || sheetName,
+        spec,
         price: value,
         unit,
         source,
-        note: "由本地Excel自动识别生成，请按实际单位校正 unit 字段。",
+        note: "Imported from local workbook. Confirm unit/source before production use.",
       });
     });
   }
   return output;
+}
+
+function normalizeWorkbookSpec(header, category, marketType) {
+  const text = String(header || "").trim();
+  if (!text) return "";
+  if (category === "DRAM") {
+    const family = /DDR5/i.test(text) ? "DDR5" : /DDR4/i.test(text) ? "DDR4" : "";
+    const density = text.match(/(8|16)Gb/i)?.[1];
+    if (!family || !density) return "";
+    if (/2Gx8|2G\*8/i.test(text)) return `${family} 8Gb x2 (2Gx8)`;
+    if (/1Gx16/i.test(text)) return `${family} 16Gb (1Gx16)`;
+    if (/1Gx8/i.test(text)) return `${family} 8Gb (1Gx8)`;
+    if (/512Mx16/i.test(text)) return `${family} 8Gb (512Mx16)`;
+    if (/SO-DIMM/i.test(text)) return `${family} ${density}Gb`;
+    return `${family} ${density}Gb`;
+  }
+  if (category === "NAND") {
+    if (/32Gb|4Gx8/i.test(text)) return "32GB (4GB x8)";
+    if (/64Gb|8Gx8/i.test(text)) return "64GB (8GB x8)";
+    if (marketType === "spot" && /128Gb|16Gx8/i.test(text)) return "128GB (16GB x8)";
+    return "";
+  }
+  return text;
 }
 
 function normalizePriceRow(row) {
