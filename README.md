@@ -22,6 +22,9 @@ npm run preview:static
 ## 数据更新
 
 - 价格数据放在 `data/raw/prices/*.csv`，字段为 `date,category,market_type,spec,price,unit,source,note`。
+- 自动价格抓取通过 GitHub Actions 环境变量 `PRICE_SOURCE_URLS` 配置，支持一个或多个远程 CSV/JSON URL，多个地址用逗号或换行分隔。
+- 远程 CSV/JSON 使用同一字段：`date,category,market_type,spec,price,unit,source,note`。如果远程数据没有 `source` 字段，脚本会用 URL 作为来源。
+- 推荐把 TrendForce/DRAMeXchange、供应商导出、Google Sheet 发布 CSV、私有 API 代理等授权来源配置成 `PRICE_SOURCE_URLS`，不要依赖不可控网页爬取。
 - 当前仓库里的 Excel 文件会被脚本尝试读取；若表内没有可识别日期/价格列，则跳过。
 - 深度报告放在 `content/reports/YYYY-MM-DD.md`，clawbot 可通过 PR 新增报告。
 - HBM4 和扩产计划放在 `content/trackers/*.json`。

@@ -50,6 +50,7 @@ console.log(JSON.stringify(metadata, null, 2));
 
 async function loadPrices() {
   const records = [];
+  records.push(...(await loadRemotePriceSources()));
   records.push(...(await loadCsvPrices()));
   records.push(...(await loadWorkbookPrices()));
 
@@ -69,7 +70,7 @@ async function loadPrices() {
     byKey.set(key, normalized);
   }
 
-  const rows = expandSeedTemplateRows([...byKey.values()]).sort((a, b) =>
+  const rows = [...byKey.values()].sort((a, b) =>
     `${a.category}|${a.market_type}|${a.spec}|${a.date}`.localeCompare(
       `${b.category}|${b.market_type}|${b.spec}|${b.date}`,
     ),
@@ -78,43 +79,35 @@ async function loadPrices() {
   return rows;
 }
 
-function expandSeedTemplateRows(rows) {
-  const realRows = rows.filter((row) => !String(row.source).toLowerCase().includes("seed template"));
-  if (realRows.length) return rows;
-
-  const start = new Date("2023-01-01T00:00:00Z");
-  const now = new Date();
-  const end = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
-  const bySeries = new Map();
-  for (const row of rows) {
-    const key = [row.category, row.market_type, row.spec].join("|");
-    const existing = bySeries.get(key);
-    if (!existing || row.date > existing.date) bySeries.set(key, row);
-  }
-
-  const generated = [];
-  for (const baseRow of bySeries.values()) {
-    let index = 0;
-    for (let date = new Date(start); date <= end; date.setUTCMonth(date.getUTCMonth() + 1)) {
-      const marketDrift = baseRow.market_type === "spot" ? 0.011 : 0.008;
-      const categoryDrift = baseRow.category === "DRAM" ? 1 : 0.82;
-      const cycle = Math.sin(index / 4) * 0.035 + Math.cos(index / 7) * 0.018;
-      const backcast = 1 - marketDrift * categoryDrift * (monthDiff(date, end) / 2);
-      generated.push({
-        ...baseRow,
-        date: date.toISOString().slice(0, 10),
-        price: round(Math.max(baseRow.price * (backcast + cycle), baseRow.price * 0.45), 4),
-        source: "Seed template (2023-now placeholder)",
-        note: "占位模板数据，仅用于验证 2023 年至今图表范围；正式发布请替换为授权价格源。",
-      });
-      index += 1;
+async function loadRemotePriceSources() {
+  const urls = parseRemotePriceUrls();
+  const rows = [];
+  for (const url of urls) {
+    const text = await getText(url);
+    const contentType = inferRemoteContentType(url, text);
+    if (contentType === "json") {
+      const parsed = JSON.parse(text);
+      const records = Array.isArray(parsed) ? parsed : parsed.records || parsed.prices || [];
+      if (!Array.isArray(records)) throw new Error(`Remote price JSON must be an array or contain records/prices: ${url}`);
+      rows.push(...records.map((row) => ({ ...row, source: row.source || url })));
+    } else {
+      rows.push(...parseCsv(text).map((row) => ({ ...row, source: row.source || url })));
     }
   }
-  return generated;
+  return rows;
 }
 
-function monthDiff(start, end) {
-  return (end.getUTCFullYear() - start.getUTCFullYear()) * 12 + (end.getUTCMonth() - start.getUTCMonth());
+function parseRemotePriceUrls() {
+  return String(process.env.PRICE_SOURCE_URLS || "")
+    .split(/[\n,]+/)
+    .map((url) => url.trim())
+    .filter(Boolean);
+}
+
+function inferRemoteContentType(url, text) {
+  if (/\.json($|\?)/i.test(url)) return "json";
+  if (/^\s*[\[{]/.test(text)) return "json";
+  return "csv";
 }
 
 async function loadCsvPrices() {
@@ -211,12 +204,14 @@ function normalizePriceRow(row) {
 
 function groupPrices(rows) {
   const groups = {};
+  const specSorter = new Intl.Collator("en", { numeric: true, sensitivity: "base" });
   for (const category of ["DRAM", "NAND"]) {
     groups[category] = {};
     for (const market of ["spot", "contract_avg"]) {
       const filtered = rows.filter((row) => row.category === category && row.market_type === market);
+      const specs = [...new Set(filtered.map((row) => row.spec))].sort(specSorter.compare);
       groups[category][market] = {
-        series: [...new Set(filtered.map((row) => row.spec))].map((spec) => ({
+        series: specs.map((spec) => ({
           spec,
           unit: filtered.find((row) => row.spec === spec)?.unit ?? "",
           points: filtered
@@ -403,6 +398,11 @@ function round(value, digits) {
 }
 
 async function getJson(url) {
+  const text = await getText(url);
+  return JSON.parse(text);
+}
+
+async function getText(url) {
   return new Promise((resolve, reject) => {
     https
       .get(url, { headers: { "User-Agent": "storage-dashboard/0.1" } }, (response) => {
@@ -415,11 +415,7 @@ async function getJson(url) {
             reject(new Error(`HTTP ${response.statusCode}`));
             return;
           }
-          try {
-            resolve(JSON.parse(data));
-          } catch (error) {
-            reject(error);
-          }
+          resolve(data);
         });
       })
       .on("error", reject);
