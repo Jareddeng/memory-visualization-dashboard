@@ -154,7 +154,8 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
     name: item.spec,
     type: "line",
     smooth: true,
-    symbolSize: 5,
+    showSymbol: item.points.length <= 120,
+    symbolSize: item.points.length <= 120 ? 5 : 0,
     emphasis: { focus: "series" },
     data: item.points.map((point) => ({
       value: [point.date, point.price],
