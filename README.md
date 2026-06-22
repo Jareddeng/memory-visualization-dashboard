@@ -10,6 +10,15 @@ npm run generate:data
 npm run dev
 ```
 
+如果只是预览已经构建好的静态站点，请在一个单独的 PowerShell/终端窗口里前台运行：
+
+```powershell
+npm run build
+npm run preview:static
+```
+
+然后打开 `http://localhost:5173/`。预览期间不要关闭这个终端窗口；关闭后本地 HTTP 服务会停止。
+
 ## 数据更新
 
 - 价格数据放在 `data/raw/prices/*.csv`，字段为 `date,category,market_type,spec,price,unit,source,note`。

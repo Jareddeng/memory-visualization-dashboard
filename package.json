@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
+    "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
-    "preview": "vite preview --host 127.0.0.1",
+    "preview": "vite preview --host 0.0.0.0",
     "preview:static": "node scripts/serve-dist.mjs 5173",
     "generate:data": "node scripts/generate-data.mjs",
     "validate:data": "node scripts/generate-data.mjs --validate-only"
