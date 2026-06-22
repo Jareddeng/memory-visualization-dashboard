@@ -1,0 +1,44 @@
+{
+  "expansion_plans": [
+    {
+      "company": "SK海力士",
+      "region": "韩国 / 美国",
+      "plan": "HBM 与先进 DRAM 产能跟踪",
+      "timeline": "2026-2028",
+      "status": "待人工更新",
+      "source": "manual tracker"
+    },
+    {
+      "company": "三星电子",
+      "region": "韩国 / 美国",
+      "plan": "先进 DRAM、NAND 与封装能力跟踪",
+      "timeline": "2026-2028",
+      "status": "待人工更新",
+      "source": "manual tracker"
+    },
+    {
+      "company": "美光科技",
+      "region": "美国 / 日本 / 台湾",
+      "plan": "DRAM、HBM、NAND 资本开支和节点迁移跟踪",
+      "timeline": "2026-2028",
+      "status": "待人工更新",
+      "source": "manual tracker"
+    }
+  ],
+  "hbm4_negotiations": [
+    {
+      "date": "2026-06-22",
+      "title": "HBM4 长协谈判跟踪槽位",
+      "status": "待更新",
+      "detail": "用于记录云厂商、GPU 厂商与存储原厂围绕 HBM4 供货、价格和产能锁定的关键时间点。",
+      "source": "manual tracker"
+    },
+    {
+      "date": "2026-07-01",
+      "title": "季度谈判窗口",
+      "status": "计划跟踪",
+      "detail": "后续可按季度维护谈判进展、预计签约窗口、供应风险和价格影响。",
+      "source": "manual tracker"
+    }
+  ]
+}

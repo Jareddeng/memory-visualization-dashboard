@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2026-06-22",
+    "title": "HBM4 长协谈判跟踪槽位",
+    "status": "待更新",
+    "detail": "用于记录云厂商、GPU 厂商与存储原厂围绕 HBM4 供货、价格和产能锁定的关键时间点。",
+    "source": "manual tracker"
+  },
+  {
+    "date": "2026-07-01",
+    "title": "季度谈判窗口",
+    "status": "计划跟踪",
+    "detail": "后续可按季度维护谈判进展、预计签约窗口、供应风险和价格影响。",
+    "source": "manual tracker"
+  }
+]

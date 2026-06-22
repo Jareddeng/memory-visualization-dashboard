@@ -1,0 +1,238 @@
+{
+  "DRAM": {
+    "spot": {
+      "series": [
+        {
+          "spec": "DDR4 16Gb 3200",
+          "unit": "USD/chip",
+          "points": [
+            {
+              "date": "2026-06-01",
+              "price": 5.92,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-08",
+              "price": 6.18,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-15",
+              "price": 6.35,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-22",
+              "price": 6.51,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            }
+          ]
+        },
+        {
+          "spec": "DDR5 16Gb 5600",
+          "unit": "USD/chip",
+          "points": [
+            {
+              "date": "2026-06-01",
+              "price": 7.18,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-08",
+              "price": 7.42,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-15",
+              "price": 7.66,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-22",
+              "price": 7.81,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            }
+          ]
+        }
+      ]
+    },
+    "contract_avg": {
+      "series": [
+        {
+          "spec": "DDR5 16Gb",
+          "unit": "USD/chip",
+          "points": [
+            {
+              "date": "2026-04-01",
+              "price": 6.85,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-05-01",
+              "price": 7.12,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-01",
+              "price": 7.44,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            }
+          ]
+        },
+        {
+          "spec": "LPDDR5X 16Gb",
+          "unit": "USD/chip",
+          "points": [
+            {
+              "date": "2026-04-01",
+              "price": 5.71,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-05-01",
+              "price": 5.94,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-01",
+              "price": 6.22,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "NAND": {
+    "spot": {
+      "series": [
+        {
+          "spec": "3D QLC 1Tb",
+          "unit": "USD/chip",
+          "points": [
+            {
+              "date": "2026-06-01",
+              "price": 4.82,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-08",
+              "price": 4.88,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-15",
+              "price": 4.96,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-22",
+              "price": 5.04,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            }
+          ]
+        },
+        {
+          "spec": "3D TLC 512Gb",
+          "unit": "USD/chip",
+          "points": [
+            {
+              "date": "2026-06-01",
+              "price": 3.18,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-08",
+              "price": 3.26,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-15",
+              "price": 3.31,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-22",
+              "price": 3.38,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            }
+          ]
+        }
+      ]
+    },
+    "contract_avg": {
+      "series": [
+        {
+          "spec": "3D TLC 512Gb",
+          "unit": "USD/chip",
+          "points": [
+            {
+              "date": "2026-04-01",
+              "price": 3.02,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-05-01",
+              "price": 3.14,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-01",
+              "price": 3.24,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            }
+          ]
+        },
+        {
+          "spec": "Enterprise SSD TLC",
+          "unit": "USD/GB",
+          "points": [
+            {
+              "date": "2026-04-01",
+              "price": 0.089,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-05-01",
+              "price": 0.094,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            },
+            {
+              "date": "2026-06-01",
+              "price": 0.101,
+              "source": "Seed template",
+              "note": "请替换为授权价格源"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

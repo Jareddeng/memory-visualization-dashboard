@@ -1,0 +1,29 @@
+date,category,market_type,spec,price,unit,source,note
+2026-06-01,DRAM,spot,DDR5 16Gb 5600,7.18,USD/chip,Seed template,请替换为授权价格源
+2026-06-08,DRAM,spot,DDR5 16Gb 5600,7.42,USD/chip,Seed template,请替换为授权价格源
+2026-06-15,DRAM,spot,DDR5 16Gb 5600,7.66,USD/chip,Seed template,请替换为授权价格源
+2026-06-22,DRAM,spot,DDR5 16Gb 5600,7.81,USD/chip,Seed template,请替换为授权价格源
+2026-06-01,DRAM,spot,DDR4 16Gb 3200,5.92,USD/chip,Seed template,请替换为授权价格源
+2026-06-08,DRAM,spot,DDR4 16Gb 3200,6.18,USD/chip,Seed template,请替换为授权价格源
+2026-06-15,DRAM,spot,DDR4 16Gb 3200,6.35,USD/chip,Seed template,请替换为授权价格源
+2026-06-22,DRAM,spot,DDR4 16Gb 3200,6.51,USD/chip,Seed template,请替换为授权价格源
+2026-04-01,DRAM,contract_avg,DDR5 16Gb,6.85,USD/chip,Seed template,请替换为授权价格源
+2026-05-01,DRAM,contract_avg,DDR5 16Gb,7.12,USD/chip,Seed template,请替换为授权价格源
+2026-06-01,DRAM,contract_avg,DDR5 16Gb,7.44,USD/chip,Seed template,请替换为授权价格源
+2026-04-01,DRAM,contract_avg,LPDDR5X 16Gb,5.71,USD/chip,Seed template,请替换为授权价格源
+2026-05-01,DRAM,contract_avg,LPDDR5X 16Gb,5.94,USD/chip,Seed template,请替换为授权价格源
+2026-06-01,DRAM,contract_avg,LPDDR5X 16Gb,6.22,USD/chip,Seed template,请替换为授权价格源
+2026-06-01,NAND,spot,3D TLC 512Gb,3.18,USD/chip,Seed template,请替换为授权价格源
+2026-06-08,NAND,spot,3D TLC 512Gb,3.26,USD/chip,Seed template,请替换为授权价格源
+2026-06-15,NAND,spot,3D TLC 512Gb,3.31,USD/chip,Seed template,请替换为授权价格源
+2026-06-22,NAND,spot,3D TLC 512Gb,3.38,USD/chip,Seed template,请替换为授权价格源
+2026-06-01,NAND,spot,3D QLC 1Tb,4.82,USD/chip,Seed template,请替换为授权价格源
+2026-06-08,NAND,spot,3D QLC 1Tb,4.88,USD/chip,Seed template,请替换为授权价格源
+2026-06-15,NAND,spot,3D QLC 1Tb,4.96,USD/chip,Seed template,请替换为授权价格源
+2026-06-22,NAND,spot,3D QLC 1Tb,5.04,USD/chip,Seed template,请替换为授权价格源
+2026-04-01,NAND,contract_avg,3D TLC 512Gb,3.02,USD/chip,Seed template,请替换为授权价格源
+2026-05-01,NAND,contract_avg,3D TLC 512Gb,3.14,USD/chip,Seed template,请替换为授权价格源
+2026-06-01,NAND,contract_avg,3D TLC 512Gb,3.24,USD/chip,Seed template,请替换为授权价格源
+2026-04-01,NAND,contract_avg,Enterprise SSD TLC,0.089,USD/GB,Seed template,请替换为授权价格源
+2026-05-01,NAND,contract_avg,Enterprise SSD TLC,0.094,USD/GB,Seed template,请替换为授权价格源
+2026-06-01,NAND,contract_avg,Enterprise SSD TLC,0.101,USD/GB,Seed template,请替换为授权价格源

@@ -1,0 +1,440 @@
+:root {
+  color: #172033;
+  background: #f6f8fb;
+  font-family:
+    Inter, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(180deg, #eef5ff 0%, rgba(246, 248, 251, 0) 360px),
+    #f6f8fb;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.shell {
+  width: min(1440px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 36px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 24px;
+  align-items: end;
+  padding: 10px 0 22px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.hero p {
+  max-width: 780px;
+  margin: 14px 0 0;
+  color: #526071;
+  line-height: 1.7;
+}
+
+.freshness {
+  min-height: 118px;
+  border: 1px solid #dce5f0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 18px;
+  display: grid;
+  align-content: center;
+  gap: 7px;
+  box-shadow: 0 12px 30px rgba(39, 56, 85, 0.08);
+}
+
+.freshness span,
+.freshness small,
+.kpi-card span,
+.kpi-card p,
+.stock-card span,
+.timeline small,
+.archive-list span,
+.report-head span {
+  color: #607086;
+}
+
+.freshness strong {
+  font-size: 18px;
+}
+
+.kpi-grid,
+.chart-grid,
+.detail-grid,
+.report-grid,
+.stock-strip {
+  display: grid;
+  gap: 16px;
+}
+
+.kpi-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.kpi-card,
+.panel,
+.stock-card,
+.warning,
+.state-panel {
+  border: 1px solid #dfe7f1;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(39, 56, 85, 0.06);
+}
+
+.kpi-card {
+  min-height: 154px;
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.icon-box {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #e9f2ff;
+  color: #2563eb;
+}
+
+.icon-box svg {
+  width: 20px;
+  height: 20px;
+}
+
+.kpi-card strong {
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.kpi-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.warning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  color: #92400e;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.stock-strip {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.stock-card {
+  min-height: 92px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.stock-card div:first-child {
+  display: grid;
+  gap: 6px;
+}
+
+.stock-price {
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+  font-weight: 800;
+}
+
+.up {
+  color: #047857;
+}
+
+.down {
+  color: #dc2626;
+}
+
+.chart-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.panel {
+  min-width: 0;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.chart {
+  width: 100%;
+  height: 366px;
+}
+
+.detail-grid {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+}
+
+.report-grid {
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr);
+}
+
+.text-panel h2 {
+  margin: 0 0 16px;
+  font-size: 18px;
+}
+
+.timeline {
+  display: grid;
+  gap: 14px;
+}
+
+.timeline article {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.timeline time,
+.archive-list time {
+  color: #2563eb;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.timeline div {
+  border-left: 2px solid #dbeafe;
+  padding-left: 14px;
+  display: grid;
+  gap: 5px;
+}
+
+.timeline span {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #ecfdf5;
+  color: #047857;
+  font-size: 12px;
+}
+
+.timeline p,
+.text-panel p,
+.markdown-body p {
+  margin: 0;
+  color: #526071;
+  line-height: 1.65;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+
+th,
+td {
+  padding: 11px 10px;
+  text-align: left;
+  border-bottom: 1px solid #edf1f6;
+  vertical-align: top;
+}
+
+th {
+  color: #526071;
+  font-size: 13px;
+  background: #f8fafc;
+}
+
+.report-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.report-head div:first-child {
+  display: grid;
+  gap: 6px;
+}
+
+.report-head strong {
+  font-size: 20px;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badges b {
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+}
+
+.markdown-body {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.markdown-body h3 {
+  margin: 8px 0 0;
+  font-size: 16px;
+}
+
+.markdown-body ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #526071;
+  line-height: 1.65;
+}
+
+.archive-list {
+  display: grid;
+  gap: 12px;
+}
+
+.archive-list article {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #edf1f6;
+}
+
+.disclaimer {
+  margin: 12px 0 0;
+  padding: 14px 0 0;
+  color: #607086;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.state-panel {
+  min-height: 280px;
+  margin-top: 10vh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 24px;
+}
+
+.state-panel svg {
+  color: #2563eb;
+}
+
+.spin {
+  animation: spin 1.1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .kpi-grid,
+  .chart-grid,
+  .detail-grid,
+  .report-grid,
+  .stock-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .freshness {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    width: min(100% - 20px, 1440px);
+    padding-top: 16px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .panel,
+  .kpi-card,
+  .stock-card {
+    padding: 13px;
+  }
+
+  .chart {
+    height: 320px;
+  }
+
+  .stock-card,
+  .report-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .stock-price {
+    justify-items: start;
+  }
+
+  .timeline article {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline div {
+    border-left: 0;
+    border-top: 2px solid #dbeafe;
+    padding: 10px 0 0;
+  }
+}
