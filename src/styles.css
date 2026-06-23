@@ -348,6 +348,101 @@ textarea {
   overflow-x: auto;
 }
 
+.industry-map {
+  margin-top: 0;
+}
+
+.industry-map-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.industry-map-head h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.industry-map-head p {
+  margin: 0;
+  color: #607086;
+  line-height: 1.5;
+}
+
+.industry-map-head small,
+.industry-map > small {
+  color: #607086;
+}
+
+.industry-map-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.industry-layer {
+  display: grid;
+  gap: 12px;
+  min-height: 180px;
+  padding: 14px;
+  border: 1px solid #e5edf7;
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+.industry-layer strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.industry-layer p {
+  margin: 0;
+  color: #607086;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.industry-node-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+}
+
+.industry-node-list span {
+  display: grid;
+  gap: 2px;
+  min-width: 118px;
+  padding: 8px 10px;
+  border: 1px solid #dbeafe;
+  border-radius: 6px;
+  background: #eff6ff;
+}
+
+.industry-node-list b {
+  color: #172033;
+  font-size: 13px;
+}
+
+.industry-node-list em,
+.industry-node-list small {
+  color: #607086;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.empty-map {
+  padding: 18px;
+  border: 1px dashed #bfdbfe;
+  border-radius: 8px;
+  background: #f8fbff;
+  color: #607086;
+  line-height: 1.6;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -507,6 +602,7 @@ th {
   .page-nav,
   .chart-grid,
   .stock-trend-grid,
+  .industry-map-grid,
   .detail-grid,
   .report-grid,
   .stock-strip {

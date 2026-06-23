@@ -72,6 +72,20 @@ type TrackerPayload = {
     status: string;
     source: string;
   }>;
+  industry_map?: {
+    updated_at?: string | null;
+    source?: string;
+    layers?: Array<{
+      name: string;
+      description?: string;
+      nodes: Array<{
+        name: string;
+        region?: string;
+        role?: string;
+        note?: string;
+      }>;
+    }>;
+  };
 };
 
 type Metadata = {
@@ -445,6 +459,7 @@ function IndustryPage({ data }: { data: AppData }) {
         <Timeline items={data.trackers.hbm4_negotiations ?? []} />
         <ExpansionTable rows={data.trackers.expansion_plans ?? []} />
       </section>
+      <IndustryMap map={data.trackers.industry_map} />
     </>
   );
 }
@@ -557,6 +572,48 @@ function ExpansionTable({ rows }: { rows: NonNullable<TrackerPayload["expansion_
           </tbody>
         </table>
       </div>
+    </section>
+  );
+}
+
+function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
+  const layers = map?.layers ?? [];
+  return (
+    <section className="panel text-panel industry-map">
+      <div className="industry-map-head">
+        <div>
+          <h2>产业链图谱</h2>
+          <p>预留给 clawbot 更新存储产业链环节、公司角色和上下游变化。</p>
+        </div>
+        <small>{map?.updated_at ? `更新：${map.updated_at}` : "等待 clawbot 更新"}</small>
+      </div>
+      {layers.length ? (
+        <div className="industry-map-grid">
+          {layers.map((layer) => (
+            <article className="industry-layer" key={layer.name}>
+              <div>
+                <strong>{layer.name}</strong>
+                {layer.description ? <p>{layer.description}</p> : null}
+              </div>
+              <div className="industry-node-list">
+                {layer.nodes.map((node) => (
+                  <span key={`${layer.name}-${node.name}`}>
+                    <b>{node.name}</b>
+                    {node.role ? <em>{node.role}</em> : null}
+                    {node.region ? <small>{node.region}</small> : null}
+                    {node.note ? <small>{node.note}</small> : null}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="empty-map">
+          clawbot 后续可通过 PR 更新 `content/trackers/industry_map.json`，合并后这里会显示产业链图谱。
+        </div>
+      )}
+      {map?.source ? <small>来源：{map.source}</small> : null}
     </section>
   );
 }

@@ -102,9 +102,41 @@ Current trackers:
 ```text
 content/trackers/hbm4_negotiations.json
 content/trackers/expansion_plans.json
+content/trackers/industry_map.json
 ```
 
 Keep JSON valid and include `source` for each event or row.
+
+### Industry Map Schema
+
+Use `content/trackers/industry_map.json` for the storage industry chain map.
+
+```json
+{
+  "updated_at": "2026-06-23",
+  "source": "clawbot research; sources listed in report PR",
+  "layers": [
+    {
+      "name": "上游材料与设备",
+      "description": "前驱体、气体、CMP、刻蚀/沉积等环节。",
+      "nodes": [
+        {
+          "name": "雅克科技",
+          "region": "中国",
+          "role": "前驱体",
+          "note": "长鑫/长存产业链跟踪"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Recommended layers:
+
+```text
+上游材料与设备 / DRAM 原厂 / NAND 原厂 / HBM 与先进封装 / 模组与控制器 / 下游应用
+```
 
 ## Local Validation Before PR
 
