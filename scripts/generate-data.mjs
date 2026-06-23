@@ -20,6 +20,7 @@ const stockSymbols = [
   { ticker: "000660.KS", name: "SK海力士", exchange: "KRX", currency: "KRW" },
   { ticker: "005930.KS", name: "三星电子", exchange: "KRX", currency: "KRW" },
   { ticker: "MU", name: "美光科技", exchange: "NASDAQ", currency: "USD" },
+  { ticker: "DRAM", name: "Roundhill Memory ETF", exchange: "NYSE Arca", currency: "USD" },
 ];
 
 await fs.mkdir(processedDir, { recursive: true });
