@@ -374,6 +374,9 @@ function App() {
   const latestReport = data.reports[0];
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
   const searchResults = query.trim() ? searchDashboard(data, intelRecords, query) : [];
+  const nandSpotIndex = calculatePriceIndex(data.prices.NAND.spot);
+  const dramContractIndex = calculatePriceIndex(data.prices.DRAM.contract_avg);
+  const hbmPressure = getHbmPressure(data);
 
   return (
     <div className="app-shell">
@@ -418,10 +421,12 @@ function App() {
         <Hero data={data} latestReport={latestReport} />
 
         <section className="kpi-grid">
-          <KpiCard icon={<Database />} label="价格数据点" value={String(data.metadata.price_points)} hint="DRAM / NAND 历史价格" />
-          <KpiCard icon={<TrendingUp />} label="股票数据点" value={String(data.metadata.stock_points)} hint={data.stocks.source} />
+          <KpiCard icon={<TrendingUp />} label="NAND 现货指数" value={formatIndexValue(nandSpotIndex)} hint={formatIndexHint(nandSpotIndex, "基期为当前样本首日均值")} />
+          <KpiCard icon={<TrendingUp />} label="DRAM 合约指数" value={formatIndexValue(dramContractIndex)} hint={formatIndexHint(dramContractIndex, "基期为当前样本首日均值")} />
+          <KpiCard icon={<Database />} label="HBM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
+          <KpiCard icon={<Database />} label="晶圆可用产能" value="待接入" hint="等待 EDB 或 clawbot 产能数据源" />
           <KpiCard icon={<FileText />} label="最新报告" value={latestReport?.date ?? "暂无"} hint={latestReport?.rating ?? "等待 clawbot 提交"} />
-          <KpiCard icon={<CalendarClock />} label="更新频率" value="每日两次" hint="北京时间 08:30 / 18:30" />
+          <KpiCard icon={<CalendarClock />} label="本地情报记录" value={String(intelRecords.length)} hint="保存在当前浏览器，可导出 CSV" />
         </section>
 
         {activePage === "overview" ? <OverviewPage data={data} latestReport={latestReport} intelRecords={intelRecords} /> : null}
@@ -1048,6 +1053,42 @@ function formatDateTime(value: string) {
 
 function dataSourceLabel(exchange: string) {
   return exchange === "KRX" || exchange === "NASDAQ" ? "Yahoo Finance" : "公开行情源";
+}
+
+function calculatePriceIndex(payload: { series: PriceSeries[] }) {
+  const values = payload.series
+    .map((series) => {
+      const points = [...series.points].sort((a, b) => a.date.localeCompare(b.date));
+      const first = points[0]?.price;
+      const latest = points[points.length - 1]?.price;
+      if (!first || !latest) return null;
+      return (latest / first) * 100;
+    })
+    .filter((value): value is number => Number.isFinite(value));
+  if (!values.length) return null;
+  const average = values.reduce((sum, value) => sum + value, 0) / values.length;
+  return Math.round(average * 10) / 10;
+}
+
+function formatIndexValue(value: number | null) {
+  return value === null ? "暂无" : value.toFixed(1);
+}
+
+function formatIndexHint(value: number | null, suffix: string) {
+  if (value === null) return "等待价格数据更新";
+  const direction = value >= 100 ? "高于" : "低于";
+  return `${direction}基期 ${Math.abs(value - 100).toFixed(1)} 点 · ${suffix}`;
+}
+
+function getHbmPressure(data: AppData) {
+  const hbmItems = data.reports
+    .flatMap((report) => [report.title, report.summary, report.body])
+    .join(" ");
+  const trackerCount = data.trackers.hbm4_negotiations?.length ?? 0;
+  if (/供需紧张|紧缺|长协|HBM|高景气/.test(hbmItems) || trackerCount > 0) {
+    return { value: "高", hint: `跟踪 ${trackerCount} 条 HBM4/长协事件` };
+  }
+  return { value: "观察", hint: "等待 clawbot 更新 HBM 供给事件" };
 }
 
 function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAction<IntelRecord[]>>] {
