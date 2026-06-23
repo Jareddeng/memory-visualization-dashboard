@@ -139,6 +139,10 @@ type SearchItem = {
   detail: string;
   date?: string;
   haystack: string;
+  target: {
+    page: PageKey;
+    reportSlug?: string;
+  };
 };
 
 const INTEL_STORAGE_KEY = "storage-dashboard-intel-records-v1";
@@ -390,6 +394,12 @@ function App() {
   const allIntelRecords = [...data.intel, ...intelRecords];
   const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
   const hbmPressure = getHbmPressure(data);
+  const openSearchResult = (item: SearchItem) => {
+    if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
+    setActivePage(item.target.page);
+    setQuery("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="app-shell">
@@ -437,7 +447,7 @@ function App() {
           </div>
         </header>
 
-        {query.trim() ? <SearchResults results={searchResults} timeRange={timeRange} onClear={() => setQuery("")} /> : null}
+        {query.trim() ? <SearchResults results={searchResults} timeRange={timeRange} onOpen={openSearchResult} onClear={() => setQuery("")} /> : null}
 
         <Hero data={data} latestReport={latestReport} />
 
@@ -981,7 +991,17 @@ function MarkdownBody({ body }: { body: string }) {
   );
 }
 
-function SearchResults({ results, timeRange, onClear }: { results: SearchItem[]; timeRange: TimeRange; onClear: () => void }) {
+function SearchResults({
+  results,
+  timeRange,
+  onOpen,
+  onClear,
+}: {
+  results: SearchItem[];
+  timeRange: TimeRange;
+  onOpen: (item: SearchItem) => void;
+  onClear: () => void;
+}) {
   return (
     <section className="panel search-results">
       <div className="panel-header compact">
@@ -995,11 +1015,11 @@ function SearchResults({ results, timeRange, onClear }: { results: SearchItem[];
       {results.length ? (
         <div className="feed-grid">
           {results.slice(0, 12).map((item, index) => (
-            <article className="feed-item" key={`${item.type}-${item.title}-${index}`}>
+            <button className="feed-item search-hit" key={`${item.type}-${item.title}-${index}`} onClick={() => onOpen(item)} type="button">
               <strong>{item.title}</strong>
               <p>{item.detail}</p>
               <div className="meta-row"><span className="pill neutral">{item.type}</span></div>
-            </article>
+            </button>
           ))}
         </div>
       ) : (
@@ -1329,11 +1349,11 @@ function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAc
 function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
   const items: SearchItem[] = [];
-  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}` }));
-  data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}` }));
-  (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}` }));
-  (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}` }));
-  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.summary}` }));
+  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug } }));
+  data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets" } }));
+  (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry" } }));
+  (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry" } }));
+  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.summary}`, target: { page: "intel" } }));
   return items
     .filter((item) => isWithinTimeRange(item.date, timeRange, data.metadata.generated_at))
     .filter((item) => item.haystack.toLowerCase().includes(needle));

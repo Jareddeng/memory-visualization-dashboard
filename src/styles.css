@@ -749,6 +749,21 @@ h2 {
   padding: 12px;
 }
 
+.search-hit {
+  width: 100%;
+  display: block;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-hit:hover,
+.search-hit:focus-visible {
+  border-color: var(--teal);
+  background: #ffffff;
+  outline: none;
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.08);
+}
+
 .signal-item strong,
 .analysis-item strong,
 .feed-item strong {
