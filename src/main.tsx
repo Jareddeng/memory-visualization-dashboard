@@ -26,6 +26,7 @@ type PricePayload = Record<"DRAM" | "NAND", Record<"spot" | "contract_avg", { se
 
 type StockPoint = {
   date: string;
+  previous_date?: string | null;
   ticker: string;
   name: string;
   exchange: string;
@@ -228,6 +229,74 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
   };
 }
 
+function makeStockTrendOption(stock: StockPoint, history: StockPoint[]): echarts.EChartsCoreOption {
+  const points = history.filter((point) => point.ticker === stock.ticker);
+  return {
+    color: ["#2563eb"],
+    title: {
+      text: `${stock.name} 近一年日收盘价`,
+      left: 8,
+      top: 0,
+      textStyle: { fontSize: 15, fontWeight: 700, color: "#172033" },
+    },
+    tooltip: {
+      trigger: "axis",
+      confine: true,
+      formatter(params: unknown) {
+        const row = Array.isArray(params) ? (params[0] as any) : (params as any);
+        const date = row.value?.[0] ?? "";
+        const close = row.value?.[1] ?? "";
+        const previousDate = row.data?.previous_date ?? "上一交易日";
+        const change = row.data?.change ?? 0;
+        const changePct = row.data?.change_pct ?? 0;
+        const sign = changePct >= 0 ? "+" : "";
+        return `<strong>${date}</strong><br/>${row.marker}${stock.name}: ${close} ${stock.currency}<br/>涨跌幅：${sign}${changePct}% (${sign}${change} ${stock.currency})<br/>对比：${previousDate} 收盘<br/>来源：${dataSourceLabel(stock.exchange)}`;
+      },
+    },
+    grid: { left: 54, right: 22, top: 52, bottom: 68 },
+    xAxis: { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
+    yAxis: {
+      type: "value",
+      scale: true,
+      axisLabel: { color: "#607086" },
+      splitLine: { lineStyle: { color: "#edf1f6" } },
+    },
+    dataZoom: [
+      {
+        type: "slider",
+        xAxisIndex: 0,
+        height: 24,
+        bottom: 16,
+        borderColor: "#d8e0ea",
+        fillerColor: "rgba(37, 99, 235, 0.12)",
+        handleStyle: { color: "#2563eb", borderColor: "#1d4ed8" },
+        moveHandleStyle: { color: "#93c5fd" },
+        selectedDataBackground: {
+          lineStyle: { color: "#2563eb" },
+          areaStyle: { color: "rgba(37, 99, 235, 0.14)" },
+        },
+        textStyle: { color: "#607086" },
+      },
+      { type: "inside", xAxisIndex: 0, filterMode: "none" },
+    ],
+    series: [
+      {
+        name: stock.name,
+        type: "line",
+        smooth: true,
+        showSymbol: false,
+        emphasis: { focus: "series" },
+        data: points.map((point) => ({
+          value: [point.date, point.close],
+          previous_date: point.previous_date,
+          change: point.change,
+          change_pct: point.change_pct,
+        })),
+      },
+    ],
+  };
+}
+
 function App() {
   const { data, loading, error } = useDashboardData();
 
@@ -270,8 +339,8 @@ function App() {
 
       <section className="section-heading">
         <div>
-          <h2>三大存储厂商最新收盘价</h2>
-          <p>展示最近交易日收盘价、当日涨跌幅和行情更新时间；不再展示股价趋势图。</p>
+          <h2>三大存储厂商日收盘价</h2>
+          <p>价格为各市场对应交易日收盘价；涨跌幅相对上一交易日收盘价计算。</p>
         </div>
       </section>
 
@@ -282,7 +351,7 @@ function App() {
               <strong>{stock.name}</strong>
               <span>{stock.ticker} · {stock.exchange}</span>
               <small>
-                最近交易日收盘：{stock.date} · 数据抓取 {formatDateTime(data.stocks.generated_at ?? data.metadata.generated_at)}
+                价格日期：{stock.date} · 涨跌幅对比：{stock.previous_date ?? "上一交易日"} 收盘 · 数据抓取 {formatDateTime(data.stocks.generated_at ?? data.metadata.generated_at)}
               </small>
             </div>
             <div className="stock-price">
@@ -290,6 +359,14 @@ function App() {
               <b className={stock.change_pct >= 0 ? "up" : "down"}>{stock.change_pct >= 0 ? "+" : ""}{stock.change_pct}%</b>
             </div>
           </article>
+        ))}
+      </section>
+
+      <section className="stock-trend-grid">
+        {data.stocks.latest.map((stock) => (
+          <Panel key={`${stock.ticker}-trend`}>
+            <Chart option={makeStockTrendOption(stock, data.stocks.history)} />
+          </Panel>
         ))}
       </section>
 
@@ -474,6 +551,10 @@ function formatDateTime(value: string) {
     timeStyle: "short",
     hour12: false,
   }).format(new Date(value));
+}
+
+function dataSourceLabel(exchange: string) {
+  return exchange === "KRX" || exchange === "NASDAQ" ? "Yahoo Finance" : "公开行情源";
 }
 
 createRoot(document.getElementById("root")!).render(<App />);

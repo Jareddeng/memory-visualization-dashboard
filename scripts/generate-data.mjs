@@ -289,7 +289,7 @@ async function loadStocks() {
 
 async function fetchStockHistory(stock) {
   const period2 = Math.floor(Date.now() / 1000);
-  const period1 = period2 - 180 * 24 * 60 * 60;
+  const period1 = period2 - 400 * 24 * 60 * 60;
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(stock.ticker)}?period1=${period1}&period2=${period2}&interval=1d`;
   const json = await getJson(url);
   const result = json.chart?.result?.[0];
@@ -301,10 +301,12 @@ async function fetchStockHistory(stock) {
   for (let index = 0; index < timestamps.length; index += 1) {
     const close = closes[index];
     if (!Number.isFinite(close)) continue;
-    const previous = rows[rows.length - 1]?.close ?? close;
+    const previousRow = rows[rows.length - 1];
+    const previous = previousRow?.close ?? close;
     const change = close - previous;
     rows.push({
       date: new Date(timestamps[index] * 1000).toISOString().slice(0, 10),
+      previous_date: previousRow?.date ?? null,
       ticker: stock.ticker,
       name: stock.name,
       exchange: stock.exchange,
