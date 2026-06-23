@@ -2,29 +2,26 @@
   "latest": [
     {
       "date": "2026-06-23",
-      "timestamp": "2026-06-23T02:25:00.000Z",
       "ticker": "000660.KS",
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 2761000,
-      "change": -158000,
-      "change_pct": -5.41
+      "close": 2763000,
+      "change": -156000,
+      "change_pct": -5.34
     },
     {
       "date": "2026-06-23",
-      "timestamp": "2026-06-23T02:25:00.000Z",
       "ticker": "005930.KS",
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 337000,
-      "change": -16500,
-      "change_pct": -4.67
+      "close": 339500,
+      "change": -14000,
+      "change_pct": -3.96
     },
     {
       "date": "2026-06-22",
-      "timestamp": "2026-06-22T20:00:00.000Z",
       "ticker": "MU",
       "name": "美光科技",
       "exchange": "NASDAQ",
@@ -1211,9 +1208,9 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 2761000,
-      "change": -158000,
-      "change_pct": -5.41
+      "close": 2763000,
+      "change": -156000,
+      "change_pct": -5.34
     },
     {
       "date": "2025-12-26",
@@ -2391,9 +2388,9 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 337000,
-      "change": -16500,
-      "change_pct": -4.67
+      "close": 339500,
+      "change": -14000,
+      "change_pct": -3.96
     },
     {
       "date": "2025-12-26",
@@ -3606,6 +3603,6 @@
       "change_pct": 6.82
     }
   ],
-  "source": "Yahoo Finance chart API (delayed quote)",
-  "generated_at": "2026-06-23T02:45:01.398Z"
+  "source": "Yahoo Finance chart API (daily close)",
+  "generated_at": "2026-06-23T02:47:44.657Z"
 }
