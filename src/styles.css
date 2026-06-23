@@ -550,6 +550,12 @@ h2 {
   margin-bottom: 12px;
 }
 
+.section-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .signal-list,
 .feed-grid {
   display: grid;
@@ -641,6 +647,80 @@ h2 {
   background: var(--panel-soft);
   font-size: 13px;
   text-align: center;
+}
+
+.handoff-box {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.handoff-box strong {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  color: var(--teal);
+  font-size: 13px;
+}
+
+.handoff-box p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.handoff-box small,
+td small {
+  color: var(--subtle);
+}
+
+.intel-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.intel-stats div {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.intel-stats strong {
+  display: block;
+  font-size: 24px;
+}
+
+.intel-stats span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.icon-button {
+  width: 32px;
+  height: 32px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+.icon-button.danger:hover,
+.icon-button.danger:focus-visible {
+  color: var(--red);
+  border-color: var(--red);
+  background: var(--red-soft);
 }
 
 .search-results {

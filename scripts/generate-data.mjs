@@ -11,6 +11,7 @@ const processedDir = path.join(root, "data", "processed");
 const publicProcessedDir = path.join(root, "public", "data", "processed");
 const reportsDir = path.join(root, "content", "reports");
 const trackersDir = path.join(root, "content", "trackers");
+const intelDir = path.join(root, "content", "intel");
 
 const allowedCategories = new Set(["DRAM", "NAND"]);
 const allowedMarkets = new Set(["spot", "contract_avg"]);
@@ -27,6 +28,7 @@ await fs.mkdir(publicProcessedDir, { recursive: true });
 const prices = await loadPrices();
 const reports = await loadReports();
 const trackers = await loadTrackers();
+const intel = await loadIntel();
 const stocks = await loadStocks();
 const metadata = {
   generated_at: new Date().toISOString(),
@@ -44,6 +46,7 @@ if (!validateOnly) {
   await writeJson("stocks.json", stocks);
   await writeJson("reports.json", { reports });
   await writeJson("trackers.json", trackers);
+  await writeJson("intel.json", { records: intel });
   await writeJson("metadata.json", metadata);
 }
 
@@ -478,6 +481,45 @@ async function loadTrackers() {
     result[file.replace(/\.json$/, "")] = JSON.parse(await fs.readFile(path.join(trackersDir, file), "utf8"));
   }
   return result;
+}
+
+async function loadIntel() {
+  let files = [];
+  try {
+    files = await fs.readdir(intelDir);
+  } catch {
+    return [];
+  }
+  const rows = [];
+  for (const file of files.filter((name) => name.endsWith(".json"))) {
+    const raw = JSON.parse(await fs.readFile(path.join(intelDir, file), "utf8"));
+    const records = Array.isArray(raw) ? raw : raw.records || [];
+    if (!Array.isArray(records)) throw new Error(`情报 JSON 必须是数组或包含 records 数组: ${file}`);
+    records.forEach((record, index) => rows.push(normalizeIntelRecord(record, file, index)));
+  }
+  return rows.sort((a, b) => b.date.localeCompare(a.date));
+}
+
+function normalizeIntelRecord(record, file, index) {
+  const date = normalizeDate(record.date);
+  if (!date) throw new Error(`情报缺少有效日期: ${file} #${index + 1}`);
+  const title = String(record.title || "").trim();
+  const summary = String(record.summary || "").trim();
+  if (!title || !summary) throw new Error(`情报缺少标题或摘要: ${file} #${index + 1}`);
+  const impact = String(record.impact || "neutral").trim();
+  if (!["bullish", "bearish", "neutral"].includes(impact)) {
+    throw new Error(`情报 impact 只能是 bullish/bearish/neutral: ${file} #${index + 1}`);
+  }
+  return {
+    id: String(record.id || `${file.replace(/\.json$/, "")}-${date}-${index + 1}`),
+    type: String(record.type || "行业分析").trim(),
+    impact,
+    date,
+    title,
+    product: String(record.product || "").trim(),
+    source: String(record.source || "clawbot").trim(),
+    summary,
+  };
 }
 
 function parseMarkdownReport(raw) {

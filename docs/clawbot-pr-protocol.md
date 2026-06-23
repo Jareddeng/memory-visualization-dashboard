@@ -162,6 +162,41 @@ Recommended layers:
 上游材料与设备 / DRAM 原厂 / NAND 原厂 / HBM 与先进封装 / 模组与控制器 / 下游应用
 ```
 
+## Intel Library PR
+
+Use this file for structured intelligence items that should appear on the dashboard `情报库` tab:
+
+```text
+content/intel/clawbot_intel.json
+```
+
+Schema:
+
+```json
+{
+  "records": [
+    {
+      "id": "2026-06-23-hbm-supply-1",
+      "date": "2026-06-23",
+      "type": "行业分析",
+      "impact": "bullish",
+      "title": "HBM 供给仍偏紧",
+      "product": "HBM",
+      "source": "clawbot research; sources listed in report PR",
+      "summary": "一句话说明事实、影响方向和需要继续跟踪的变量。"
+    }
+  ]
+}
+```
+
+Rules:
+
+- `impact` must be `bullish`, `bearish`, or `neutral`.
+- Keep `id` stable after publishing. Use a date plus short topic slug.
+- Append new records at the top or bottom; the build script sorts by `date`.
+- Include source notes. If the item depends on a report, mention the report PR or source list.
+- The dashboard updates after the PR is merged and GitHub Actions runs. Browser refresh alone will not fetch unpublished PR content.
+
 ## Local Validation Before PR
 
 Run these commands before opening a PR:

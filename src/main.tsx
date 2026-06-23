@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { AlertTriangle, CalendarClock, Database, FileText, RefreshCw, TrendingUp } from "lucide-react";
+import { AlertTriangle, CalendarClock, Database, FileText, RefreshCw, Trash2, TrendingUp } from "lucide-react";
 import * as echarts from "echarts/core";
 import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { LineChart } from "echarts/charts";
@@ -114,10 +114,11 @@ type AppData = {
   stocks: StockPayload;
   reports: Report[];
   trackers: TrackerPayload;
+  intel: IntelRecord[];
   metadata: Metadata;
 };
 
-type PageKey = "overview" | "markets" | "industry" | "reports";
+type PageKey = "overview" | "markets" | "industry" | "reports" | "intel";
 
 type IntelRecord = {
   id: string;
@@ -155,19 +156,21 @@ function useDashboardData() {
   const stocks = useJson<StockPayload>("./data/processed/stocks.json");
   const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json");
   const trackers = useJson<TrackerPayload>("./data/processed/trackers.json");
+  const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json");
   const metadata = useJson<Metadata>("./data/processed/metadata.json");
 
-  const error = prices.error || stocks.error || reports.error || trackers.error || metadata.error;
-  const loading = !prices.data || !stocks.data || !reports.data || !trackers.data || !metadata.data;
+  const error = prices.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
+  const loading = !prices.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
 
   return {
     data:
-      prices.data && stocks.data && reports.data && trackers.data && metadata.data
+      prices.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
         ? {
             prices: prices.data,
             stocks: stocks.data,
             reports: reports.data.reports,
             trackers: trackers.data,
+            intel: intel.data.records,
             metadata: metadata.data,
           }
         : null,
@@ -373,7 +376,8 @@ function App() {
 
   const latestReport = data.reports[0];
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
-  const searchResults = query.trim() ? searchDashboard(data, intelRecords, query) : [];
+  const allIntelRecords = [...data.intel, ...intelRecords];
+  const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query) : [];
   const nandSpotIndex = calculatePriceIndex(data.prices.NAND.spot);
   const dramContractIndex = calculatePriceIndex(data.prices.DRAM.contract_avg);
   const hbmPressure = getHbmPressure(data);
@@ -410,9 +414,9 @@ function App() {
             />
           </label>
           <div className="topbar-actions">
-            <button className="ghost-button" type="button" onClick={() => exportIntelligence(data, intelRecords)}>导出情报</button>
+            <button className="ghost-button" type="button" onClick={() => exportIntelligence(data, allIntelRecords)}>导出情报</button>
             <button className="primary-button" type="button" onClick={() => setCaptureOpen(true)}>新增情报</button>
-            <button className="primary-button" type="button" onClick={() => setActivePage("markets")}>市场图表</button>
+            <button className="primary-button" type="button" onClick={() => setActivePage("intel")}>情报库</button>
           </div>
         </header>
 
@@ -426,7 +430,7 @@ function App() {
           <KpiCard icon={<Database />} label="HBM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
           <KpiCard icon={<Database />} label="晶圆可用产能" value="待接入" hint="等待 EDB 或 clawbot 产能数据源" />
           <KpiCard icon={<FileText />} label="最新报告" value={latestReport?.date ?? "暂无"} hint={latestReport?.rating ?? "等待 clawbot 提交"} />
-          <KpiCard icon={<CalendarClock />} label="本地情报记录" value={String(intelRecords.length)} hint="保存在当前浏览器，可导出 CSV" />
+          <KpiCard icon={<CalendarClock />} label="本地情报记录" value={String(intelRecords.length)} hint={`龙虾推送 ${data.intel.length} 条，另有浏览器本地记录`} />
         </section>
 
         {activePage === "overview" ? <OverviewPage data={data} latestReport={latestReport} intelRecords={intelRecords} /> : null}
@@ -438,6 +442,15 @@ function App() {
             reports={data.reports}
             selectedReport={selectedReport}
             onSelectReport={setSelectedReportSlug}
+          />
+        ) : null}
+        {activePage === "intel" ? (
+          <IntelPage
+            remoteRecords={data.intel}
+            localRecords={intelRecords}
+            onAdd={() => setCaptureOpen(true)}
+            onDelete={(id) => setIntelRecords(intelRecords.filter((record) => record.id !== id))}
+            onExport={() => exportIntelligence(data, allIntelRecords)}
           />
         ) : null}
 
@@ -464,6 +477,7 @@ function PageNav({ activePage, onChange }: { activePage: PageKey; onChange: (pag
     { key: "markets", label: "市场图表", detail: "价格与股价" },
     { key: "industry", label: "产业跟踪", detail: "长协 / 扩产 / 图谱" },
     { key: "reports", label: "报告库", detail: "日报 / 归档 / 导图" },
+    { key: "intel", label: "情报库", detail: "新增 / 删除 / 推送" },
   ];
   return (
     <nav className="nav-list" aria-label="看板分区导航">
@@ -994,6 +1008,133 @@ function IntelFeed({ records }: { records: IntelRecord[] }) {
           </div>
         </article>
       ))}
+    </div>
+  );
+}
+
+function IntelPage({
+  remoteRecords,
+  localRecords,
+  onAdd,
+  onDelete,
+  onExport,
+}: {
+  remoteRecords: IntelRecord[];
+  localRecords: IntelRecord[];
+  onAdd: () => void;
+  onDelete: (id: string) => void;
+  onExport: () => void;
+}) {
+  return (
+    <>
+      <section className="section-heading">
+        <div>
+          <h2>情报库管理</h2>
+          <p>本页用于管理你在浏览器里临时记录的情报，也预留给龙虾通过 PR 推送结构化情报。</p>
+        </div>
+        <div className="section-actions">
+          <button className="primary-button" type="button" onClick={onAdd}>新增情报</button>
+          <button className="ghost-button" type="button" onClick={onExport}>导出情报</button>
+        </div>
+      </section>
+
+      <section className="dashboard-grid">
+        <section className="panel text-panel">
+          <div className="panel-header compact">
+            <div>
+              <p className="section-kicker">Clawbot Slot</p>
+              <h2>龙虾推送位置</h2>
+            </div>
+          </div>
+          <div className="handoff-box">
+            <strong>content/intel/clawbot_intel.json</strong>
+            <p>龙虾后续可以通过 PR 更新这个文件。合并后 GitHub Actions 会在下一次构建时生成网站可读的情报数据。</p>
+            <small>字段：date、type、impact、title、product、source、summary。impact 可填 bullish / bearish / neutral。</small>
+          </div>
+        </section>
+
+        <section className="panel text-panel">
+          <div className="panel-header compact">
+            <div>
+              <p className="section-kicker">Stats</p>
+              <h2>当前情报数量</h2>
+            </div>
+          </div>
+          <div className="intel-stats">
+            <div><strong>{remoteRecords.length}</strong><span>龙虾推送</span></div>
+            <div><strong>{localRecords.length}</strong><span>本地记录</span></div>
+            <div><strong>{remoteRecords.length + localRecords.length}</strong><span>合计可导出</span></div>
+          </div>
+        </section>
+      </section>
+
+      <section className="panel text-panel">
+        <div className="panel-header compact">
+          <div>
+            <p className="section-kicker">Clawbot Intel</p>
+            <h2>龙虾推送情报</h2>
+          </div>
+        </div>
+        <IntelTable records={remoteRecords} sourceLabel="PR 文件" />
+      </section>
+
+      <section className="panel text-panel">
+        <div className="panel-header compact">
+          <div>
+            <p className="section-kicker">Local Intel</p>
+            <h2>本地情报记录</h2>
+          </div>
+        </div>
+        <IntelTable records={localRecords} sourceLabel="浏览器本地" onDelete={onDelete} />
+      </section>
+    </>
+  );
+}
+
+function IntelTable({
+  records,
+  sourceLabel,
+  onDelete,
+}: {
+  records: IntelRecord[];
+  sourceLabel: string;
+  onDelete?: (id: string) => void;
+}) {
+  if (!records.length) return <div className="empty-state">暂无{sourceLabel}情报。</div>;
+  return (
+    <div className="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>标题</th>
+            <th>类型</th>
+            <th>影响</th>
+            <th>来源</th>
+            <th>摘要</th>
+            {onDelete ? <th>操作</th> : null}
+          </tr>
+        </thead>
+        <tbody>
+          {records.map((record) => (
+            <tr key={record.id}>
+              <td>{record.date}</td>
+              <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
+              <td>{record.type}</td>
+              <td><span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span></td>
+              <td>{record.source}</td>
+              <td>{record.summary}</td>
+              {onDelete ? (
+                <td>
+                  <button className="icon-button danger" type="button" aria-label={`删除 ${record.title}`} onClick={() => onDelete(record.id)}>
+                    <Trash2 size={15} />
+                  </button>
+                </td>
+              ) : null}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
