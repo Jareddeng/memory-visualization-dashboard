@@ -679,27 +679,9 @@ function MarketsPage({ data }: { data: AppData }) {
 
       <section className="section-heading">
         <div>
-          <h2>三大存储厂商日收盘价</h2>
-          <p>价格为各市场已完成交易日收盘价；若当天尚未收盘，则沿用上一交易日收盘价，涨跌幅相对再上一交易日收盘价计算。</p>
+          <h2>股票与 ETF 趋势图</h2>
+          <p>展示各市场已完成交易日收盘价走势；若当天尚未收盘，则沿用上一交易日收盘价，涨跌幅相对再上一交易日收盘价计算。</p>
         </div>
-      </section>
-
-      <section className="stock-strip">
-        {data.stocks.latest.map((stock) => (
-          <article className="stock-card" key={stock.ticker}>
-            <div>
-              <strong>{stock.name}</strong>
-              <span>{stock.ticker} · {stock.exchange}</span>
-              <small>
-                价格日期：{stock.date} · 涨跌幅对比：{stock.previous_date ?? "上一交易日"} 收盘 · Action生成 {formatDateTime(data.stocks.generated_at ?? data.metadata.generated_at)}
-              </small>
-            </div>
-            <div className="stock-price">
-              {stock.close.toLocaleString()} {stock.currency}
-              <b className={stock.change_pct >= 0 ? "up" : "down"}>{stock.change_pct >= 0 ? "+" : ""}{stock.change_pct}%</b>
-            </div>
-          </article>
-        ))}
       </section>
 
       <section className="stock-trend-grid">
