@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-23T03:29:29.555Z",
+  "generated_at": "2026-06-23T05:16:35.747Z",
   "price_points": 5462,
-  "stock_points": 808,
+  "stock_points": 806,
   "latest_report_date": "2026-06-22",
   "notes": [
     "价格数据由 data/raw/prices CSV 或可识别的本地 XLSX 文件生成。",

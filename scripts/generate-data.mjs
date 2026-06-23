@@ -297,26 +297,49 @@ async function fetchStockHistory(stock) {
   const timestamps = result.timestamp ?? [];
   const quote = result.indicators?.quote?.[0] ?? {};
   const closes = quote.close ?? [];
+  const timezone = result.meta?.exchangeTimezoneName || "UTC";
+  const regularClose = result.meta?.currentTradingPeriod?.regular?.end;
+  const now = new Date();
   const rows = [];
   for (let index = 0; index < timestamps.length; index += 1) {
     const close = closes[index];
     if (!Number.isFinite(close)) continue;
+    const date = formatInTimeZone(new Date(timestamps[index] * 1000), timezone);
+    if (isIncompleteTradingDay(date, timezone, regularClose, now)) continue;
     const previousRow = rows[rows.length - 1];
     const previous = previousRow?.close ?? close;
     const change = close - previous;
     rows.push({
-      date: new Date(timestamps[index] * 1000).toISOString().slice(0, 10),
+      date,
       previous_date: previousRow?.date ?? null,
       ticker: stock.ticker,
       name: stock.name,
       exchange: stock.exchange,
       currency: stock.currency,
+      price_basis: "completed_daily_close",
       close: round(close, 2),
       change: round(change, 2),
       change_pct: previous ? round((change / previous) * 100, 2) : 0,
     });
   }
   return rows;
+}
+
+function isIncompleteTradingDay(rowDate, timezone, regularClose, now) {
+  if (!regularClose) return false;
+  const today = formatInTimeZone(now, timezone);
+  return rowDate === today && Math.floor(now.getTime() / 1000) < regularClose;
+}
+
+function formatInTimeZone(date, timezone) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: timezone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
 }
 
 async function loadReports() {

@@ -1,26 +1,28 @@
 {
   "latest": [
     {
-      "date": "2026-06-23",
-      "previous_date": "2026-06-22",
+      "date": "2026-06-22",
+      "previous_date": "2026-06-19",
       "ticker": "000660.KS",
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 2736000,
-      "change": -183000,
-      "change_pct": -6.27
+      "price_basis": "completed_daily_close",
+      "close": 2919000,
+      "change": 155000,
+      "change_pct": 5.61
     },
     {
-      "date": "2026-06-23",
-      "previous_date": "2026-06-22",
+      "date": "2026-06-22",
+      "previous_date": "2026-06-19",
       "ticker": "005930.KS",
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 335000,
-      "change": -18500,
-      "change_pct": -5.23
+      "price_basis": "completed_daily_close",
+      "close": 353500,
+      "change": -500,
+      "change_pct": -0.14
     },
     {
       "date": "2026-06-22",
@@ -29,6 +31,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1211.38,
       "change": 77.39,
       "change_pct": 6.82
@@ -42,6 +45,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 199400,
       "change": 0,
       "change_pct": 0
@@ -53,6 +57,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 202000,
       "change": 2600,
       "change_pct": 1.3
@@ -64,6 +69,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 200500,
       "change": -1500,
       "change_pct": -0.74
@@ -75,6 +81,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 196900,
       "change": -3600,
       "change_pct": -1.8
@@ -86,6 +93,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 200000,
       "change": 3100,
       "change_pct": 1.57
@@ -97,6 +105,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 203000,
       "change": 3000,
       "change_pct": 1.5
@@ -108,6 +117,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 202500,
       "change": -500,
       "change_pct": -0.25
@@ -119,6 +129,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 208000,
       "change": 5500,
       "change_pct": 2.72
@@ -130,6 +141,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 212000,
       "change": 4000,
       "change_pct": 1.92
@@ -141,6 +153,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 204500,
       "change": -7500,
       "change_pct": -3.54
@@ -152,6 +165,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 207500,
       "change": 3000,
       "change_pct": 1.47
@@ -163,6 +177,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 217500,
       "change": 10000,
       "change_pct": 4.82
@@ -174,6 +189,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 224500,
       "change": 7000,
       "change_pct": 3.22
@@ -185,6 +201,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 229000,
       "change": 4500,
       "change_pct": 2
@@ -196,6 +213,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 230500,
       "change": 1500,
       "change_pct": 0.66
@@ -207,6 +225,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 240000,
       "change": 9500,
       "change_pct": 4.12
@@ -218,6 +237,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 235500,
       "change": -4500,
       "change_pct": -1.87
@@ -229,6 +249,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 235500,
       "change": 0,
       "change_pct": 0
@@ -240,6 +261,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 248000,
       "change": 12500,
       "change_pct": 5.31
@@ -251,6 +273,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 249000,
       "change": 1000,
       "change_pct": 0.4
@@ -262,6 +285,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 246500,
       "change": -2500,
       "change_pct": -1
@@ -273,6 +297,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 246000,
       "change": -500,
       "change_pct": -0.2
@@ -284,6 +309,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 257000,
       "change": 11000,
       "change_pct": 4.47
@@ -295,6 +321,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 259500,
       "change": 2500,
       "change_pct": 0.97
@@ -306,6 +333,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 278500,
       "change": 19000,
       "change_pct": 7.32
@@ -317,6 +345,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 286000,
       "change": 7500,
       "change_pct": 2.69
@@ -328,6 +357,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 293000,
       "change": 7000,
       "change_pct": 2.45
@@ -339,6 +369,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 284000,
       "change": -9000,
       "change_pct": -3.07
@@ -350,6 +381,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 292000,
       "change": 8000,
       "change_pct": 2.82
@@ -361,6 +393,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 285500,
       "change": -6500,
       "change_pct": -2.23
@@ -372,6 +405,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 279000,
       "change": -6500,
       "change_pct": -2.28
@@ -383,6 +417,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 278500,
       "change": -500,
       "change_pct": -0.18
@@ -394,6 +429,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 270500,
       "change": -8000,
       "change_pct": -2.87
@@ -405,6 +441,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 271000,
       "change": 500,
       "change_pct": 0.18
@@ -416,6 +453,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 282000,
       "change": 11000,
       "change_pct": 4.06
@@ -427,6 +465,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 281000,
       "change": -1000,
       "change_pct": -0.35
@@ -438,6 +477,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 297000,
       "change": 16000,
       "change_pct": 5.69
@@ -449,6 +489,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 294500,
       "change": -2500,
       "change_pct": -0.84
@@ -460,6 +501,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 300000,
       "change": 5500,
       "change_pct": 1.87
@@ -471,6 +513,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 298500,
       "change": -1500,
       "change_pct": -0.5
@@ -482,6 +525,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 296000,
       "change": -2500,
       "change_pct": -0.84
@@ -493,6 +537,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 269500,
       "change": -26500,
       "change_pct": -8.95
@@ -504,6 +549,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 269000,
       "change": -500,
       "change_pct": -0.19
@@ -515,6 +561,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 272500,
       "change": 3500,
       "change_pct": 1.3
@@ -526,6 +573,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 268500,
       "change": -4000,
       "change_pct": -1.47
@@ -537,6 +585,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 269000,
       "change": 500,
       "change_pct": 0.19
@@ -548,6 +597,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 269500,
       "change": 500,
       "change_pct": 0.19
@@ -559,6 +609,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 266000,
       "change": -3500,
       "change_pct": -1.3
@@ -570,6 +621,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 262000,
       "change": -4000,
       "change_pct": -1.5
@@ -581,6 +633,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 262500,
       "change": 500,
       "change_pct": 0.19
@@ -592,6 +645,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 263500,
       "change": 1000,
       "change_pct": 0.38
@@ -603,6 +657,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 273500,
       "change": 10000,
       "change_pct": 3.8
@@ -614,6 +669,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 258000,
       "change": -15500,
       "change_pct": -5.67
@@ -625,6 +681,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 258000,
       "change": 0,
       "change_pct": 0
@@ -636,6 +693,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 263500,
       "change": 5500,
       "change_pct": 2.13
@@ -647,6 +705,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 258500,
       "change": -5000,
       "change_pct": -1.9
@@ -658,6 +717,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 262000,
       "change": 3500,
       "change_pct": 1.35
@@ -669,6 +729,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 256500,
       "change": -5500,
       "change_pct": -2.1
@@ -680,6 +741,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 267000,
       "change": 10500,
       "change_pct": 4.09
@@ -691,6 +753,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 269000,
       "change": 2000,
       "change_pct": 0.75
@@ -702,6 +765,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 278000,
       "change": 9000,
       "change_pct": 3.35
@@ -713,6 +777,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 276500,
       "change": -1500,
       "change_pct": -0.54
@@ -724,6 +789,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 267500,
       "change": -9000,
       "change_pct": -3.25
@@ -735,6 +801,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 263000,
       "change": -4500,
       "change_pct": -1.68
@@ -746,6 +813,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 255500,
       "change": -7500,
       "change_pct": -2.85
@@ -757,6 +825,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 245000,
       "change": -10500,
       "change_pct": -4.11
@@ -768,6 +837,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 251000,
       "change": 6000,
       "change_pct": 2.45
@@ -779,6 +849,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 259500,
       "change": 8500,
       "change_pct": 3.39
@@ -790,6 +861,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 261500,
       "change": 2000,
       "change_pct": 0.77
@@ -801,6 +873,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 260000,
       "change": -1500,
       "change_pct": -0.57
@@ -812,6 +885,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 268500,
       "change": 8500,
       "change_pct": 3.27
@@ -823,6 +897,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 269000,
       "change": 500,
       "change_pct": 0.19
@@ -834,6 +909,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 256000,
       "change": -13000,
       "change_pct": -4.83
@@ -845,6 +921,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 260500,
       "change": 4500,
       "change_pct": 1.76
@@ -856,6 +933,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 262500,
       "change": 2000,
       "change_pct": 0.77
@@ -867,6 +945,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 265500,
       "change": 3000,
       "change_pct": 1.14
@@ -878,6 +957,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 273500,
       "change": 8000,
       "change_pct": 3.01
@@ -889,6 +969,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 277000,
       "change": 3500,
       "change_pct": 1.28
@@ -900,6 +981,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 288000,
       "change": 11000,
       "change_pct": 3.97
@@ -911,6 +993,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 304000,
       "change": 16000,
       "change_pct": 5.56
@@ -922,6 +1005,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 307000,
       "change": 3000,
       "change_pct": 0.99
@@ -933,6 +1017,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 328500,
       "change": 21500,
       "change_pct": 7
@@ -944,6 +1029,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 331000,
       "change": 2500,
       "change_pct": 0.76
@@ -955,6 +1041,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 348000,
       "change": 17000,
       "change_pct": 5.14
@@ -966,6 +1053,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 333500,
       "change": -14500,
       "change_pct": -4.17
@@ -977,6 +1065,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 355500,
       "change": 22000,
       "change_pct": 6.6
@@ -988,6 +1077,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 351000,
       "change": -4500,
       "change_pct": -1.27
@@ -999,6 +1089,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 361000,
       "change": 10000,
       "change_pct": 2.85
@@ -1010,6 +1101,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 357500,
       "change": -3500,
       "change_pct": -0.97
@@ -1021,6 +1113,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 356500,
       "change": -1000,
       "change_pct": -0.28
@@ -1032,6 +1125,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 336500,
       "change": -20000,
       "change_pct": -5.61
@@ -1043,6 +1137,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 349000,
       "change": 12500,
       "change_pct": 3.71
@@ -1054,6 +1149,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 347500,
       "change": -1500,
       "change_pct": -0.43
@@ -1065,6 +1161,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 360000,
       "change": 12500,
       "change_pct": 3.6
@@ -1076,6 +1173,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 395500,
       "change": 35500,
       "change_pct": 9.86
@@ -1087,6 +1185,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 428000,
       "change": 32500,
       "change_pct": 8.22
@@ -1098,6 +1197,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 415000,
       "change": -13000,
       "change_pct": -3.04
@@ -1109,6 +1209,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 411500,
       "change": -3500,
       "change_pct": -0.84
@@ -1120,6 +1221,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 422500,
       "change": 11000,
       "change_pct": 2.67
@@ -1131,6 +1233,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 452500,
       "change": 30000,
       "change_pct": 7.1
@@ -1142,6 +1245,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 465500,
       "change": 13000,
       "change_pct": 2.87
@@ -1153,6 +1257,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 485500,
       "change": 20000,
       "change_pct": 4.3
@@ -1164,6 +1269,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 479000,
       "change": -6500,
       "change_pct": -1.34
@@ -1175,6 +1281,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 481500,
       "change": 2500,
       "change_pct": 0.52
@@ -1186,6 +1293,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 478500,
       "change": -3000,
       "change_pct": -0.62
@@ -1197,6 +1305,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 510000,
       "change": 31500,
       "change_pct": 6.58
@@ -1208,6 +1317,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 535000,
       "change": 25000,
       "change_pct": 4.9
@@ -1219,6 +1329,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 521000,
       "change": -14000,
       "change_pct": -2.62
@@ -1230,6 +1341,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 558000,
       "change": 37000,
       "change_pct": 7.1
@@ -1241,6 +1353,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 568000,
       "change": 10000,
       "change_pct": 1.79
@@ -1252,6 +1365,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 559000,
       "change": -9000,
       "change_pct": -1.58
@@ -1263,6 +1377,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 620000,
       "change": 61000,
       "change_pct": 10.91
@@ -1274,6 +1389,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 586000,
       "change": -34000,
       "change_pct": -5.48
@@ -1285,6 +1401,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 579000,
       "change": -7000,
       "change_pct": -1.19
@@ -1296,6 +1413,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 593000,
       "change": 14000,
       "change_pct": 2.42
@@ -1307,6 +1425,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 580000,
       "change": -13000,
       "change_pct": -2.19
@@ -1318,6 +1437,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 606000,
       "change": 26000,
       "change_pct": 4.48
@@ -1329,6 +1449,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 619000,
       "change": 13000,
       "change_pct": 2.15
@@ -1340,6 +1461,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 617000,
       "change": -2000,
       "change_pct": -0.32
@@ -1351,6 +1473,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 612000,
       "change": -5000,
       "change_pct": -0.81
@@ -1362,6 +1485,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 560000,
       "change": -52000,
       "change_pct": -8.5
@@ -1373,6 +1497,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 606000,
       "change": 46000,
       "change_pct": 8.21
@@ -1384,6 +1509,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 570000,
       "change": -36000,
       "change_pct": -5.94
@@ -1395,6 +1521,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 562000,
       "change": -8000,
       "change_pct": -1.4
@@ -1406,6 +1533,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 571000,
       "change": 9000,
       "change_pct": 1.6
@@ -1417,6 +1545,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 521000,
       "change": -50000,
       "change_pct": -8.76
@@ -1428,6 +1557,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 520000,
       "change": -1000,
       "change_pct": -0.19
@@ -1439,6 +1569,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 519000,
       "change": -1000,
       "change_pct": -0.19
@@ -1450,6 +1581,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 524000,
       "change": 5000,
       "change_pct": 0.96
@@ -1461,6 +1593,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 544000,
       "change": 20000,
       "change_pct": 3.82
@@ -1472,6 +1605,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 530000,
       "change": -14000,
       "change_pct": -2.57
@@ -1483,6 +1617,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 538000,
       "change": 8000,
       "change_pct": 1.51
@@ -1494,6 +1629,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 558000,
       "change": 20000,
       "change_pct": 3.72
@@ -1505,6 +1641,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 552000,
       "change": -6000,
       "change_pct": -1.08
@@ -1516,6 +1653,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 542000,
       "change": -10000,
       "change_pct": -1.81
@@ -1527,6 +1665,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 544000,
       "change": 2000,
       "change_pct": 0.37
@@ -1538,6 +1677,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 577000,
       "change": 33000,
       "change_pct": 6.07
@@ -1549,6 +1689,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 566000,
       "change": -11000,
       "change_pct": -1.91
@@ -1560,6 +1701,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 587000,
       "change": 21000,
       "change_pct": 3.71
@@ -1571,6 +1713,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 565000,
       "change": -22000,
       "change_pct": -3.75
@@ -1582,6 +1725,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 571000,
       "change": 6000,
       "change_pct": 1.06
@@ -1593,6 +1737,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 554000,
       "change": -17000,
       "change_pct": -2.98
@@ -1604,6 +1749,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 530000,
       "change": -24000,
       "change_pct": -4.33
@@ -1615,6 +1761,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 551000,
       "change": 21000,
       "change_pct": 3.96
@@ -1626,6 +1773,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 552000,
       "change": 1000,
       "change_pct": 0.18
@@ -1637,6 +1785,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 547000,
       "change": -5000,
       "change_pct": -0.91
@@ -1648,6 +1797,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 580000,
       "change": 33000,
       "change_pct": 6.03
@@ -1659,6 +1809,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 584000,
       "change": 4000,
       "change_pct": 0.69
@@ -1670,6 +1821,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 588000,
       "change": 4000,
       "change_pct": 0.68
@@ -1681,6 +1833,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 599000,
       "change": 11000,
       "change_pct": 1.87
@@ -1692,6 +1845,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 640000,
       "change": 41000,
       "change_pct": 6.84
@@ -1703,6 +1857,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 651000,
       "change": 11000,
       "change_pct": 1.72
@@ -1714,6 +1869,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 677000,
       "change": 26000,
       "change_pct": 3.99
@@ -1725,6 +1881,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 696000,
       "change": 19000,
       "change_pct": 2.81
@@ -1736,6 +1893,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 726000,
       "change": 30000,
       "change_pct": 4.31
@@ -1747,6 +1905,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 742000,
       "change": 16000,
       "change_pct": 2.2
@@ -1758,6 +1917,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 756000,
       "change": 14000,
       "change_pct": 1.89
@@ -1769,6 +1929,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 744000,
       "change": -12000,
       "change_pct": -1.59
@@ -1780,6 +1941,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 749000,
       "change": 5000,
       "change_pct": 0.67
@@ -1791,6 +1953,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 738000,
       "change": -11000,
       "change_pct": -1.47
@@ -1802,6 +1965,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 742000,
       "change": 4000,
       "change_pct": 0.54
@@ -1813,6 +1977,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 749000,
       "change": 7000,
       "change_pct": 0.94
@@ -1824,6 +1989,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 756000,
       "change": 7000,
       "change_pct": 0.93
@@ -1835,6 +2001,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 764000,
       "change": 8000,
       "change_pct": 1.06
@@ -1846,6 +2013,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 743000,
       "change": -21000,
       "change_pct": -2.75
@@ -1857,6 +2025,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 740000,
       "change": -3000,
       "change_pct": -0.4
@@ -1868,6 +2037,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 755000,
       "change": 15000,
       "change_pct": 2.03
@@ -1879,6 +2049,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 767000,
       "change": 12000,
       "change_pct": 1.59
@@ -1890,6 +2061,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 736000,
       "change": -31000,
       "change_pct": -4.04
@@ -1901,6 +2073,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 800000,
       "change": 64000,
       "change_pct": 8.7
@@ -1912,6 +2085,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 841000,
       "change": 41000,
       "change_pct": 5.13
@@ -1923,6 +2097,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 861000,
       "change": 20000,
       "change_pct": 2.38
@@ -1934,6 +2109,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 909000,
       "change": 48000,
       "change_pct": 5.57
@@ -1945,6 +2121,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 830000,
       "change": -79000,
       "change_pct": -8.69
@@ -1956,6 +2133,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 907000,
       "change": 77000,
       "change_pct": 9.28
@@ -1967,6 +2145,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 900000,
       "change": -7000,
       "change_pct": -0.77
@@ -1978,6 +2157,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 842000,
       "change": -58000,
       "change_pct": -6.44
@@ -1989,6 +2169,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 839000,
       "change": -3000,
       "change_pct": -0.36
@@ -2000,6 +2181,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 887000,
       "change": 48000,
       "change_pct": 5.72
@@ -2011,6 +2193,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 876000,
       "change": -11000,
       "change_pct": -1.24
@@ -2022,6 +2205,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 860000,
       "change": -16000,
       "change_pct": -1.83
@@ -2033,6 +2217,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 888000,
       "change": 28000,
       "change_pct": 3.26
@@ -2044,6 +2229,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 880000,
       "change": -8000,
       "change_pct": -0.9
@@ -2055,6 +2241,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 894000,
       "change": 14000,
       "change_pct": 1.59
@@ -2066,6 +2253,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 949000,
       "change": 55000,
       "change_pct": 6.15
@@ -2077,6 +2265,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 951000,
       "change": 2000,
       "change_pct": 0.21
@@ -2088,6 +2277,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1005000,
       "change": 54000,
       "change_pct": 5.68
@@ -2099,6 +2289,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1018000,
       "change": 13000,
       "change_pct": 1.29
@@ -2110,6 +2301,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1099000,
       "change": 81000,
       "change_pct": 7.96
@@ -2121,6 +2313,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1061000,
       "change": -38000,
       "change_pct": -3.46
@@ -2132,6 +2325,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 939000,
       "change": -122000,
       "change_pct": -11.5
@@ -2143,6 +2337,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 849000,
       "change": -90000,
       "change_pct": -9.58
@@ -2154,6 +2349,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 941000,
       "change": 92000,
       "change_pct": 10.84
@@ -2165,6 +2361,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 924000,
       "change": -17000,
       "change_pct": -1.81
@@ -2176,6 +2373,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 836000,
       "change": -88000,
       "change_pct": -9.52
@@ -2187,6 +2385,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 938000,
       "change": 102000,
       "change_pct": 12.2
@@ -2198,6 +2397,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 955000,
       "change": 17000,
       "change_pct": 1.81
@@ -2209,6 +2409,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 930000,
       "change": -25000,
       "change_pct": -2.62
@@ -2220,6 +2421,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 910000,
       "change": -20000,
       "change_pct": -2.15
@@ -2231,6 +2433,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 974000,
       "change": 64000,
       "change_pct": 7.03
@@ -2242,6 +2445,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 970000,
       "change": -4000,
       "change_pct": -0.41
@@ -2253,6 +2457,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1056000,
       "change": 86000,
       "change_pct": 8.87
@@ -2264,6 +2469,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1013000,
       "change": -43000,
       "change_pct": -4.07
@@ -2275,6 +2481,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1007000,
       "change": -6000,
       "change_pct": -0.59
@@ -2286,6 +2493,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 933000,
       "change": -74000,
       "change_pct": -7.35
@@ -2297,6 +2505,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 986000,
       "change": 53000,
       "change_pct": 5.68
@@ -2308,6 +2517,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 995000,
       "change": 9000,
       "change_pct": 0.91
@@ -2319,6 +2529,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 933000,
       "change": -62000,
       "change_pct": -6.23
@@ -2330,6 +2541,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 933000,
       "change": 0,
       "change_pct": 0
@@ -2341,6 +2553,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 873000,
       "change": -60000,
       "change_pct": -6.43
@@ -2352,6 +2565,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 807000,
       "change": -66000,
       "change_pct": -7.56
@@ -2363,6 +2577,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 897000,
       "change": 90000,
       "change_pct": 11.15
@@ -2374,6 +2589,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 830000,
       "change": -67000,
       "change_pct": -7.47
@@ -2385,6 +2601,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 876000,
       "change": 46000,
       "change_pct": 5.54
@@ -2396,6 +2613,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 886000,
       "change": 10000,
       "change_pct": 1.14
@@ -2407,6 +2625,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 916000,
       "change": 30000,
       "change_pct": 3.39
@@ -2418,6 +2637,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1033000,
       "change": 117000,
       "change_pct": 12.77
@@ -2429,6 +2649,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 998000,
       "change": -35000,
       "change_pct": -3.39
@@ -2440,6 +2661,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1027000,
       "change": 29000,
       "change_pct": 2.91
@@ -2451,6 +2673,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1040000,
       "change": 13000,
       "change_pct": 1.27
@@ -2462,6 +2685,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1103000,
       "change": 63000,
       "change_pct": 6.06
@@ -2473,6 +2697,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1136000,
       "change": 33000,
       "change_pct": 2.99
@@ -2484,6 +2709,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1155000,
       "change": 19000,
       "change_pct": 1.67
@@ -2495,6 +2721,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1128000,
       "change": -27000,
       "change_pct": -2.34
@@ -2506,6 +2733,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1166000,
       "change": 38000,
       "change_pct": 3.37
@@ -2517,6 +2745,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1224000,
       "change": 58000,
       "change_pct": 4.97
@@ -2528,6 +2757,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1223000,
       "change": -1000,
       "change_pct": -0.08
@@ -2539,6 +2769,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1225000,
       "change": 2000,
       "change_pct": 0.16
@@ -2550,6 +2781,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1222000,
       "change": -3000,
       "change_pct": -0.24
@@ -2561,6 +2793,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1292000,
       "change": 70000,
       "change_pct": 5.73
@@ -2572,6 +2805,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1300000,
       "change": 8000,
       "change_pct": 0.62
@@ -2583,6 +2817,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1293000,
       "change": -7000,
       "change_pct": -0.54
@@ -2594,6 +2829,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1286000,
       "change": -7000,
       "change_pct": -0.54
@@ -2605,6 +2841,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1447000,
       "change": 161000,
       "change_pct": 12.52
@@ -2616,6 +2853,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1601000,
       "change": 154000,
       "change_pct": 10.64
@@ -2627,6 +2865,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1654000,
       "change": 53000,
       "change_pct": 3.31
@@ -2638,6 +2877,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1686000,
       "change": 32000,
       "change_pct": 1.93
@@ -2649,6 +2889,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1880000,
       "change": 194000,
       "change_pct": 11.51
@@ -2660,6 +2901,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1835000,
       "change": -45000,
       "change_pct": -2.39
@@ -2671,6 +2913,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1976000,
       "change": 141000,
       "change_pct": 7.68
@@ -2682,6 +2925,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1970000,
       "change": -6000,
       "change_pct": -0.3
@@ -2693,6 +2937,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1819000,
       "change": -151000,
       "change_pct": -7.66
@@ -2704,6 +2949,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1840000,
       "change": 21000,
       "change_pct": 1.15
@@ -2715,6 +2961,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1745000,
       "change": -95000,
       "change_pct": -5.16
@@ -2726,6 +2973,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1745000,
       "change": 0,
       "change_pct": 0
@@ -2737,6 +2985,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1940000,
       "change": 195000,
       "change_pct": 11.17
@@ -2748,6 +2997,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1941000,
       "change": 1000,
       "change_pct": 0.05
@@ -2759,6 +3009,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2052000,
       "change": 111000,
       "change_pct": 5.72
@@ -2770,6 +3021,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2243000,
       "change": 191000,
       "change_pct": 9.31
@@ -2781,6 +3033,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2289000,
       "change": 46000,
       "change_pct": 2.05
@@ -2792,6 +3045,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2333000,
       "change": 44000,
       "change_pct": 1.92
@@ -2803,6 +3057,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2363000,
       "change": 30000,
       "change_pct": 1.29
@@ -2814,6 +3069,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2360000,
       "change": -3000,
       "change_pct": -0.13
@@ -2825,6 +3081,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2298000,
       "change": -62000,
       "change_pct": -2.63
@@ -2836,6 +3093,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2070000,
       "change": -228000,
       "change_pct": -9.92
@@ -2847,6 +3105,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 1911000,
       "change": -159000,
       "change_pct": -7.68
@@ -2858,6 +3117,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2215000,
       "change": 304000,
       "change_pct": 15.91
@@ -2869,6 +3129,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2048000,
       "change": -167000,
       "change_pct": -7.54
@@ -2880,6 +3141,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2101000,
       "change": 53000,
       "change_pct": 2.59
@@ -2891,6 +3153,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2150000,
       "change": 49000,
       "change_pct": 2.33
@@ -2902,6 +3165,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2288000,
       "change": 138000,
       "change_pct": 6.42
@@ -2913,6 +3177,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2382000,
       "change": 94000,
       "change_pct": 4.11
@@ -2924,6 +3189,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2521000,
       "change": 139000,
       "change_pct": 5.84
@@ -2935,6 +3201,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2685000,
       "change": 164000,
       "change_pct": 6.51
@@ -2946,6 +3213,7 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2764000,
       "change": 79000,
       "change_pct": 2.94
@@ -2957,20 +3225,10 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 2919000,
       "change": 155000,
       "change_pct": 5.61
-    },
-    {
-      "date": "2026-06-23",
-      "previous_date": "2026-06-22",
-      "ticker": "000660.KS",
-      "name": "SK海力士",
-      "exchange": "KRX",
-      "currency": "KRW",
-      "close": 2736000,
-      "change": -183000,
-      "change_pct": -6.27
     },
     {
       "date": "2025-05-19",
@@ -2979,6 +3237,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 55800,
       "change": 0,
       "change_pct": 0
@@ -2990,6 +3249,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 55900,
       "change": 100,
       "change_pct": 0.18
@@ -3001,6 +3261,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 55700,
       "change": -200,
       "change_pct": -0.36
@@ -3012,6 +3273,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 54700,
       "change": -1000,
       "change_pct": -1.8
@@ -3023,6 +3285,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 54200,
       "change": -500,
       "change_pct": -0.91
@@ -3034,6 +3297,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 54700,
       "change": 500,
       "change_pct": 0.92
@@ -3045,6 +3309,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 53900,
       "change": -800,
       "change_pct": -1.46
@@ -3056,6 +3321,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 55900,
       "change": 2000,
       "change_pct": 3.71
@@ -3067,6 +3333,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 56100,
       "change": 200,
       "change_pct": 0.36
@@ -3078,6 +3345,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 56200,
       "change": 100,
       "change_pct": 0.18
@@ -3089,6 +3357,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 56800,
       "change": 600,
       "change_pct": 1.07
@@ -3100,6 +3369,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 57800,
       "change": 1000,
       "change_pct": 1.76
@@ -3111,6 +3381,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59100,
       "change": 1300,
       "change_pct": 2.25
@@ -3122,6 +3393,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59800,
       "change": 700,
       "change_pct": 1.18
@@ -3133,6 +3405,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59200,
       "change": -600,
       "change_pct": -1
@@ -3144,6 +3417,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59900,
       "change": 700,
       "change_pct": 1.18
@@ -3155,6 +3429,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59500,
       "change": -400,
       "change_pct": -0.67
@@ -3166,6 +3441,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 58300,
       "change": -1200,
       "change_pct": -2.02
@@ -3177,6 +3453,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 57200,
       "change": -1100,
       "change_pct": -1.89
@@ -3188,6 +3465,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 58100,
       "change": 900,
       "change_pct": 1.57
@@ -3199,6 +3477,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59800,
       "change": 1700,
       "change_pct": 2.93
@@ -3210,6 +3489,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59200,
       "change": -600,
       "change_pct": -1
@@ -3221,6 +3501,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59500,
       "change": 300,
       "change_pct": 0.51
@@ -3232,6 +3513,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 58000,
       "change": -1500,
       "change_pct": -2.52
@@ -3243,6 +3525,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 60500,
       "change": 2500,
       "change_pct": 4.31
@@ -3254,6 +3537,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 61300,
       "change": 800,
       "change_pct": 1.32
@@ -3265,6 +3549,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 60200,
       "change": -1100,
       "change_pct": -1.79
@@ -3276,6 +3561,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 60800,
       "change": 600,
       "change_pct": 1
@@ -3287,6 +3573,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 59800,
       "change": -1000,
       "change_pct": -1.64
@@ -3298,6 +3585,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 60200,
       "change": 400,
       "change_pct": 0.67
@@ -3309,6 +3597,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 60800,
       "change": 600,
       "change_pct": 1
@@ -3320,6 +3609,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 63800,
       "change": 3000,
       "change_pct": 4.93
@@ -3331,6 +3621,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 63300,
       "change": -500,
       "change_pct": -0.78
@@ -3342,6 +3633,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 61700,
       "change": -1600,
       "change_pct": -2.53
@@ -3353,6 +3645,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 61400,
       "change": -300,
       "change_pct": -0.49
@@ -3364,6 +3657,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 60400,
       "change": -1000,
       "change_pct": -1.63
@@ -3375,6 +3669,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 61000,
       "change": 600,
       "change_pct": 0.99
@@ -3386,6 +3681,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 62600,
       "change": 1600,
       "change_pct": 2.62
@@ -3397,6 +3693,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 62500,
       "change": -100,
       "change_pct": -0.16
@@ -3408,6 +3705,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 63700,
       "change": 1200,
       "change_pct": 1.92
@@ -3419,6 +3717,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 64700,
       "change": 1000,
       "change_pct": 1.57
@@ -3430,6 +3729,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 66700,
       "change": 2000,
       "change_pct": 3.09
@@ -3441,6 +3741,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 67100,
       "change": 400,
       "change_pct": 0.6
@@ -3452,6 +3753,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 67800,
       "change": 700,
       "change_pct": 1.04
@@ -3463,6 +3765,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 66000,
       "change": -1800,
       "change_pct": -2.65
@@ -3474,6 +3777,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 66400,
       "change": 400,
       "change_pct": 0.61
@@ -3485,6 +3789,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 66000,
       "change": -400,
       "change_pct": -0.6
@@ -3496,6 +3801,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 65900,
       "change": -100,
       "change_pct": -0.15
@@ -3507,6 +3813,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70400,
       "change": 4500,
       "change_pct": 6.83
@@ -3518,6 +3825,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70600,
       "change": 200,
       "change_pct": 0.28
@@ -3529,6 +3837,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 72600,
       "change": 2000,
       "change_pct": 2.83
@@ -3540,6 +3849,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71400,
       "change": -1200,
       "change_pct": -1.65
@@ -3551,6 +3861,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 68900,
       "change": -2500,
       "change_pct": -3.5
@@ -3562,6 +3873,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 69700,
       "change": 800,
       "change_pct": 1.16
@@ -3573,6 +3885,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 69900,
       "change": 200,
       "change_pct": 0.29
@@ -3584,6 +3897,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 68800,
       "change": -1100,
       "change_pct": -1.57
@@ -3595,6 +3909,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70500,
       "change": 1700,
       "change_pct": 2.47
@@ -3606,6 +3921,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71800,
       "change": 1300,
       "change_pct": 1.84
@@ -3617,6 +3933,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71000,
       "change": -800,
       "change_pct": -1.11
@@ -3628,6 +3945,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71100,
       "change": 100,
       "change_pct": 0.14
@@ -3639,6 +3957,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71900,
       "change": 800,
       "change_pct": 1.13
@@ -3650,6 +3969,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71600,
       "change": -300,
       "change_pct": -0.42
@@ -3661,6 +3981,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70000,
       "change": -1600,
       "change_pct": -2.23
@@ -3672,6 +3993,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70000,
       "change": 0,
       "change_pct": 0
@@ -3683,6 +4005,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70500,
       "change": 500,
       "change_pct": 0.71
@@ -3694,6 +4017,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70600,
       "change": 100,
       "change_pct": 0.14
@@ -3705,6 +4029,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71400,
       "change": 800,
       "change_pct": 1.13
@@ -3716,6 +4041,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71500,
       "change": 100,
       "change_pct": 0.14
@@ -3727,6 +4053,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70300,
       "change": -1200,
       "change_pct": -1.68
@@ -3738,6 +4065,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70600,
       "change": 300,
       "change_pct": 0.43
@@ -3749,6 +4077,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 69600,
       "change": -1000,
       "change_pct": -1.42
@@ -3760,6 +4089,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 69700,
       "change": 100,
       "change_pct": 0.14
@@ -3771,6 +4101,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 67600,
       "change": -2100,
       "change_pct": -3.01
@@ -3782,6 +4113,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 69100,
       "change": 1500,
       "change_pct": 2.22
@@ -3793,6 +4125,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 69800,
       "change": 700,
       "change_pct": 1.01
@@ -3804,6 +4137,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70100,
       "change": 300,
       "change_pct": 0.43
@@ -3815,6 +4149,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 69500,
       "change": -600,
       "change_pct": -0.86
@@ -3826,6 +4161,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 70100,
       "change": 600,
       "change_pct": 0.86
@@ -3837,6 +4173,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 71500,
       "change": 1400,
       "change_pct": 2
@@ -3848,6 +4185,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 72600,
       "change": 1100,
       "change_pct": 1.54
@@ -3859,6 +4197,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 73400,
       "change": 800,
       "change_pct": 1.1
@@ -3870,6 +4209,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 75400,
       "change": 2000,
       "change_pct": 2.72
@@ -3881,6 +4221,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 76500,
       "change": 1100,
       "change_pct": 1.46
@@ -3892,6 +4233,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 79400,
       "change": 2900,
       "change_pct": 3.79
@@ -3903,6 +4245,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 78200,
       "change": -1200,
       "change_pct": -1.51
@@ -3914,6 +4257,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 80300,
       "change": 2100,
       "change_pct": 2.69
@@ -3925,6 +4269,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 83500,
       "change": 3200,
       "change_pct": 3.99
@@ -3936,6 +4281,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 84700,
       "change": 1200,
       "change_pct": 1.44
@@ -3947,6 +4293,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 85400,
       "change": 700,
       "change_pct": 0.83
@@ -3958,6 +4305,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 86100,
       "change": 700,
       "change_pct": 0.82
@@ -3969,6 +4317,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 83300,
       "change": -2800,
       "change_pct": -3.25
@@ -3980,6 +4329,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 84200,
       "change": 900,
       "change_pct": 1.08
@@ -3991,6 +4341,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 83900,
       "change": -300,
       "change_pct": -0.36
@@ -4002,6 +4353,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 86000,
       "change": 2100,
       "change_pct": 2.5
@@ -4013,6 +4365,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 89750,
       "change": 3750,
       "change_pct": 4.36
@@ -4024,6 +4377,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 94400,
       "change": 4650,
       "change_pct": 5.18
@@ -4035,6 +4389,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 93300,
       "change": -1100,
       "change_pct": -1.17
@@ -4046,6 +4401,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 91600,
       "change": -1700,
       "change_pct": -1.82
@@ -4057,6 +4413,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 95000,
       "change": 3400,
       "change_pct": 3.71
@@ -4068,6 +4425,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 97700,
       "change": 2700,
       "change_pct": 2.84
@@ -4079,6 +4437,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 97900,
       "change": 200,
       "change_pct": 0.2
@@ -4090,6 +4449,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 98100,
       "change": 200,
       "change_pct": 0.2
@@ -4101,6 +4461,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 97500,
       "change": -600,
       "change_pct": -0.61
@@ -4112,6 +4473,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 98600,
       "change": 1100,
       "change_pct": 1.13
@@ -4123,6 +4485,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 96500,
       "change": -2100,
       "change_pct": -2.13
@@ -4134,6 +4497,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 98800,
       "change": 2300,
       "change_pct": 2.38
@@ -4145,6 +4509,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 102000,
       "change": 3200,
       "change_pct": 3.24
@@ -4156,6 +4521,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 99500,
       "change": -2500,
       "change_pct": -2.45
@@ -4167,6 +4533,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 100500,
       "change": 1000,
       "change_pct": 1.01
@@ -4178,6 +4545,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 104100,
       "change": 3600,
       "change_pct": 3.58
@@ -4189,6 +4557,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 107500,
       "change": 3400,
       "change_pct": 3.27
@@ -4200,6 +4569,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 111100,
       "change": 3600,
       "change_pct": 3.35
@@ -4211,6 +4581,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 104900,
       "change": -6200,
       "change_pct": -5.58
@@ -4222,6 +4593,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 100600,
       "change": -4300,
       "change_pct": -4.1
@@ -4233,6 +4605,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 99200,
       "change": -1400,
       "change_pct": -1.39
@@ -4244,6 +4617,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 97900,
       "change": -1300,
       "change_pct": -1.31
@@ -4255,6 +4629,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 100600,
       "change": 2700,
       "change_pct": 2.76
@@ -4266,6 +4641,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 103500,
       "change": 2900,
       "change_pct": 2.88
@@ -4277,6 +4653,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 103100,
       "change": -400,
       "change_pct": -0.39
@@ -4288,6 +4665,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 102800,
       "change": -300,
       "change_pct": -0.29
@@ -4299,6 +4677,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 97200,
       "change": -5600,
       "change_pct": -5.45
@@ -4310,6 +4689,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 100600,
       "change": 3400,
       "change_pct": 3.5
@@ -4321,6 +4701,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 97800,
       "change": -2800,
       "change_pct": -2.78
@@ -4332,6 +4713,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 96500,
       "change": -1300,
       "change_pct": -1.33
@@ -4343,6 +4725,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 100600,
       "change": 4100,
       "change_pct": 4.25
@@ -4354,6 +4737,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 94800,
       "change": -5800,
       "change_pct": -5.77
@@ -4365,6 +4749,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 96700,
       "change": 1900,
       "change_pct": 2
@@ -4376,6 +4761,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 99300,
       "change": 2600,
       "change_pct": 2.69
@@ -4387,6 +4773,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 102800,
       "change": 3500,
       "change_pct": 3.52
@@ -4398,6 +4785,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 103500,
       "change": 700,
       "change_pct": 0.68
@@ -4409,6 +4797,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 100500,
       "change": -3000,
       "change_pct": -2.9
@@ -4420,6 +4809,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 100800,
       "change": 300,
       "change_pct": 0.3
@@ -4431,6 +4821,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 103400,
       "change": 2600,
       "change_pct": 2.58
@@ -4442,6 +4833,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 104500,
       "change": 1100,
       "change_pct": 1.06
@@ -4453,6 +4845,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 105100,
       "change": 600,
       "change_pct": 0.57
@@ -4464,6 +4857,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 108400,
       "change": 3300,
       "change_pct": 3.14
@@ -4475,6 +4869,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 109500,
       "change": 1100,
       "change_pct": 1.01
@@ -4486,6 +4881,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 108400,
       "change": -1100,
       "change_pct": -1
@@ -4497,6 +4893,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 108000,
       "change": -400,
       "change_pct": -0.37
@@ -4508,6 +4905,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 107300,
       "change": -700,
       "change_pct": -0.65
@@ -4519,6 +4917,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 108900,
       "change": 1600,
       "change_pct": 1.49
@@ -4530,6 +4929,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 104800,
       "change": -4100,
       "change_pct": -3.76
@@ -4541,6 +4941,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 102800,
       "change": -2000,
       "change_pct": -1.91
@@ -4552,6 +4953,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 107900,
       "change": 5100,
       "change_pct": 4.96
@@ -4563,6 +4965,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 107600,
       "change": -300,
       "change_pct": -0.28
@@ -4574,6 +4977,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 106300,
       "change": -1300,
       "change_pct": -1.21
@@ -4585,6 +4989,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 110500,
       "change": 4200,
       "change_pct": 3.95
@@ -4596,6 +5001,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 111500,
       "change": 1000,
       "change_pct": 0.9
@@ -4607,6 +5013,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 111100,
       "change": -400,
       "change_pct": -0.36
@@ -4618,6 +5025,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 117000,
       "change": 5900,
       "change_pct": 5.31
@@ -4629,6 +5037,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 119500,
       "change": 2500,
       "change_pct": 2.14
@@ -4640,6 +5049,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 119900,
       "change": 400,
       "change_pct": 0.33
@@ -4651,6 +5061,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 128500,
       "change": 8600,
       "change_pct": 7.17
@@ -4662,6 +5073,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 138100,
       "change": 9600,
       "change_pct": 7.47
@@ -4673,6 +5085,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 138900,
       "change": 800,
       "change_pct": 0.58
@@ -4684,6 +5097,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 141000,
       "change": 2100,
       "change_pct": 1.51
@@ -4695,6 +5109,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 138800,
       "change": -2200,
       "change_pct": -1.56
@@ -4706,6 +5121,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 139000,
       "change": 200,
       "change_pct": 0.14
@@ -4717,6 +5133,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 138800,
       "change": -200,
       "change_pct": -0.14
@@ -4728,6 +5145,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 137600,
       "change": -1200,
       "change_pct": -0.86
@@ -4739,6 +5157,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 140300,
       "change": 2700,
       "change_pct": 1.96
@@ -4750,6 +5169,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 143900,
       "change": 3600,
       "change_pct": 2.57
@@ -4761,6 +5181,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 148900,
       "change": 5000,
       "change_pct": 3.47
@@ -4772,6 +5193,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 149300,
       "change": 400,
       "change_pct": 0.27
@@ -4783,6 +5205,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 145200,
       "change": -4100,
       "change_pct": -2.75
@@ -4794,6 +5217,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 149500,
       "change": 4300,
       "change_pct": 2.96
@@ -4805,6 +5229,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 152300,
       "change": 2800,
       "change_pct": 1.87
@@ -4816,6 +5241,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 152100,
       "change": -200,
       "change_pct": -0.13
@@ -4827,6 +5253,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 152100,
       "change": 0,
       "change_pct": 0
@@ -4838,6 +5265,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 159500,
       "change": 7400,
       "change_pct": 4.87
@@ -4849,6 +5277,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 162400,
       "change": 2900,
       "change_pct": 1.82
@@ -4860,6 +5289,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 160700,
       "change": -1700,
       "change_pct": -1.05
@@ -4871,6 +5301,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 160500,
       "change": -200,
       "change_pct": -0.12
@@ -4882,6 +5313,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 150400,
       "change": -10100,
       "change_pct": -6.29
@@ -4893,6 +5325,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 167500,
       "change": 17100,
       "change_pct": 11.37
@@ -4904,6 +5337,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 169100,
       "change": 1600,
       "change_pct": 0.96
@@ -4915,6 +5349,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 159300,
       "change": -9800,
       "change_pct": -5.8
@@ -4926,6 +5361,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 158600,
       "change": -700,
       "change_pct": -0.44
@@ -4937,6 +5373,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 166400,
       "change": 7800,
       "change_pct": 4.92
@@ -4948,6 +5385,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 165800,
       "change": -600,
       "change_pct": -0.36
@@ -4959,6 +5397,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 167800,
       "change": 2000,
       "change_pct": 1.21
@@ -4970,6 +5409,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 178600,
       "change": 10800,
       "change_pct": 6.44
@@ -4981,6 +5421,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 181200,
       "change": 2600,
       "change_pct": 1.46
@@ -4992,6 +5433,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 190000,
       "change": 8800,
       "change_pct": 4.86
@@ -5003,6 +5445,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 190100,
       "change": 100,
       "change_pct": 0.05
@@ -5014,6 +5457,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 193000,
       "change": 2900,
       "change_pct": 1.53
@@ -5025,6 +5469,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 200000,
       "change": 7000,
       "change_pct": 3.63
@@ -5036,6 +5481,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 203500,
       "change": 3500,
       "change_pct": 1.75
@@ -5047,6 +5493,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 218000,
       "change": 14500,
       "change_pct": 7.13
@@ -5058,6 +5505,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 216500,
       "change": -1500,
       "change_pct": -0.69
@@ -5069,6 +5517,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 195100,
       "change": -21400,
       "change_pct": -9.88
@@ -5080,6 +5529,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 172200,
       "change": -22900,
       "change_pct": -11.74
@@ -5091,6 +5541,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 191600,
       "change": 19400,
       "change_pct": 11.27
@@ -5102,6 +5553,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 188200,
       "change": -3400,
       "change_pct": -1.77
@@ -5113,6 +5565,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 173500,
       "change": -14700,
       "change_pct": -7.81
@@ -5124,6 +5577,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 187900,
       "change": 14400,
       "change_pct": 8.3
@@ -5135,6 +5589,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 190000,
       "change": 2100,
       "change_pct": 1.12
@@ -5146,6 +5601,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 187900,
       "change": -2100,
       "change_pct": -1.11
@@ -5157,6 +5613,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 183500,
       "change": -4400,
       "change_pct": -2.34
@@ -5168,6 +5625,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 188700,
       "change": 5200,
       "change_pct": 2.83
@@ -5179,6 +5637,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 193900,
       "change": 5200,
       "change_pct": 2.76
@@ -5190,6 +5649,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 208500,
       "change": 14600,
       "change_pct": 7.53
@@ -5201,6 +5661,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 200500,
       "change": -8000,
       "change_pct": -3.84
@@ -5212,6 +5673,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 199400,
       "change": -1100,
       "change_pct": -0.55
@@ -5223,6 +5685,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 186300,
       "change": -13100,
       "change_pct": -6.57
@@ -5234,6 +5697,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 189700,
       "change": 3400,
       "change_pct": 1.83
@@ -5245,6 +5709,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 189000,
       "change": -700,
       "change_pct": -0.37
@@ -5256,6 +5721,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 180100,
       "change": -8900,
       "change_pct": -4.71
@@ -5267,6 +5733,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 180100,
       "change": 0,
       "change_pct": 0
@@ -5278,6 +5745,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 176300,
       "change": -3800,
       "change_pct": -2.11
@@ -5289,6 +5757,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 167200,
       "change": -9100,
       "change_pct": -5.16
@@ -5300,6 +5769,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 189650,
       "change": 22450,
       "change_pct": 13.43
@@ -5311,6 +5781,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 178400,
       "change": -11250,
       "change_pct": -5.93
@@ -5322,6 +5793,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 186200,
       "change": 7800,
       "change_pct": 4.37
@@ -5333,6 +5805,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 193100,
       "change": 6900,
       "change_pct": 3.71
@@ -5344,6 +5817,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 196500,
       "change": 3400,
       "change_pct": 1.76
@@ -5355,6 +5829,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 210500,
       "change": 14000,
       "change_pct": 7.12
@@ -5366,6 +5841,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 204000,
       "change": -6500,
       "change_pct": -3.09
@@ -5377,6 +5853,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 206000,
       "change": 2000,
       "change_pct": 0.98
@@ -5388,6 +5865,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 201000,
       "change": -5000,
       "change_pct": -2.43
@@ -5399,6 +5877,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 206500,
       "change": 5500,
       "change_pct": 2.74
@@ -5410,6 +5889,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 211000,
       "change": 4500,
       "change_pct": 2.18
@@ -5421,6 +5901,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 217500,
       "change": 6500,
       "change_pct": 3.08
@@ -5432,6 +5913,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 216000,
       "change": -1500,
       "change_pct": -0.69
@@ -5443,6 +5925,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 214500,
       "change": -1500,
       "change_pct": -0.69
@@ -5454,6 +5937,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 219000,
       "change": 4500,
       "change_pct": 2.1
@@ -5465,6 +5949,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 217500,
       "change": -1500,
       "change_pct": -0.68
@@ -5476,6 +5961,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 224500,
       "change": 7000,
       "change_pct": 3.22
@@ -5487,6 +5973,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 219500,
       "change": -5000,
       "change_pct": -2.23
@@ -5498,6 +5985,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 224500,
       "change": 5000,
       "change_pct": 2.28
@@ -5509,6 +5997,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 222000,
       "change": -2500,
       "change_pct": -1.11
@@ -5520,6 +6009,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 226000,
       "change": 4000,
       "change_pct": 1.8
@@ -5531,6 +6021,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 220500,
       "change": -5500,
       "change_pct": -2.43
@@ -5542,6 +6033,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 232500,
       "change": 12000,
       "change_pct": 5.44
@@ -5553,6 +6045,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 266000,
       "change": 33500,
       "change_pct": 14.41
@@ -5564,6 +6057,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 271500,
       "change": 5500,
       "change_pct": 2.07
@@ -5575,6 +6069,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 268500,
       "change": -3000,
       "change_pct": -1.1
@@ -5586,6 +6081,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 285500,
       "change": 17000,
       "change_pct": 6.33
@@ -5597,6 +6093,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 279000,
       "change": -6500,
       "change_pct": -2.28
@@ -5608,6 +6105,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 284000,
       "change": 5000,
       "change_pct": 1.79
@@ -5619,6 +6117,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 296000,
       "change": 12000,
       "change_pct": 4.23
@@ -5630,6 +6129,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 270500,
       "change": -25500,
       "change_pct": -8.61
@@ -5641,6 +6141,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 281000,
       "change": 10500,
       "change_pct": 3.88
@@ -5652,6 +6153,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 275500,
       "change": -5500,
       "change_pct": -1.96
@@ -5663,6 +6165,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 276000,
       "change": 500,
       "change_pct": 0.18
@@ -5674,6 +6177,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 299500,
       "change": 23500,
       "change_pct": 8.51
@@ -5685,6 +6189,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 292500,
       "change": -7000,
       "change_pct": -2.34
@@ -5696,6 +6201,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 299000,
       "change": 6500,
       "change_pct": 2.22
@@ -5707,6 +6213,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 307000,
       "change": 8000,
       "change_pct": 2.68
@@ -5718,6 +6225,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 299500,
       "change": -7500,
       "change_pct": -2.44
@@ -5729,6 +6237,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 317000,
       "change": 17500,
       "change_pct": 5.84
@@ -5740,6 +6249,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 349000,
       "change": 32000,
       "change_pct": 10.09
@@ -5751,6 +6261,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 360500,
       "change": 11500,
       "change_pct": 3.3
@@ -5762,6 +6273,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 351500,
       "change": -9000,
       "change_pct": -2.5
@@ -5773,6 +6285,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 329000,
       "change": -22500,
       "change_pct": -6.4
@@ -5784,6 +6297,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 295500,
       "change": -33500,
       "change_pct": -10.18
@@ -5795,6 +6309,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 322000,
       "change": 26500,
       "change_pct": 8.97
@@ -5806,6 +6321,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 302500,
       "change": -19500,
       "change_pct": -6.06
@@ -5817,6 +6333,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 299000,
       "change": -3500,
       "change_pct": -1.16
@@ -5828,6 +6345,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 322500,
       "change": 23500,
       "change_pct": 7.86
@@ -5839,6 +6357,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 337000,
       "change": 14500,
       "change_pct": 4.5
@@ -5850,6 +6369,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 343000,
       "change": 6000,
       "change_pct": 1.78
@@ -5861,6 +6381,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 346500,
       "change": 3500,
       "change_pct": 1.02
@@ -5872,6 +6393,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 362500,
       "change": 16000,
       "change_pct": 4.62
@@ -5883,6 +6405,7 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 354000,
       "change": -8500,
       "change_pct": -2.34
@@ -5894,20 +6417,10 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
+      "price_basis": "completed_daily_close",
       "close": 353500,
       "change": -500,
       "change_pct": -0.14
-    },
-    {
-      "date": "2026-06-23",
-      "previous_date": "2026-06-22",
-      "ticker": "005930.KS",
-      "name": "三星电子",
-      "exchange": "KRX",
-      "currency": "KRW",
-      "close": 335000,
-      "change": -18500,
-      "change_pct": -5.23
     },
     {
       "date": "2025-05-19",
@@ -5916,6 +6429,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 98.65,
       "change": 0,
       "change_pct": 0
@@ -5927,6 +6441,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 98.1,
       "change": -0.55,
       "change_pct": -0.56
@@ -5938,6 +6453,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 95.84,
       "change": -2.26,
       "change_pct": -2.3
@@ -5949,6 +6465,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 94.83,
       "change": -1.01,
       "change_pct": -1.05
@@ -5960,6 +6477,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 93.37,
       "change": -1.46,
       "change_pct": -1.54
@@ -5971,6 +6489,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 96.38,
       "change": 3.01,
       "change_pct": 3.22
@@ -5982,6 +6501,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 96.18,
       "change": -0.2,
       "change_pct": -0.21
@@ -5993,6 +6513,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 96.8,
       "change": 0.62,
       "change_pct": 0.64
@@ -6004,6 +6525,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 94.46,
       "change": -2.34,
       "change_pct": -2.42
@@ -6015,6 +6537,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 98.18,
       "change": 3.72,
       "change_pct": 3.94
@@ -6026,6 +6549,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 102.25,
       "change": 4.07,
       "change_pct": 4.15
@@ -6037,6 +6561,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 103.25,
       "change": 1,
       "change_pct": 0.98
@@ -6048,6 +6573,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 106.29,
       "change": 3.04,
       "change_pct": 2.94
@@ -6059,6 +6585,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 108.56,
       "change": 2.27,
       "change_pct": 2.14
@@ -6070,6 +6597,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 110.95,
       "change": 2.39,
       "change_pct": 2.2
@@ -6081,6 +6609,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 114.14,
       "change": 3.19,
       "change_pct": 2.88
@@ -6092,6 +6621,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 116.03,
       "change": 1.89,
       "change_pct": 1.66
@@ -6103,6 +6633,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 116.18,
       "change": 0.15,
       "change_pct": 0.13
@@ -6114,6 +6645,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 115.6,
       "change": -0.58,
       "change_pct": -0.5
@@ -6125,6 +6657,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 119.84,
       "change": 4.24,
       "change_pct": 3.67
@@ -6136,6 +6669,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 120.34,
       "change": 0.5,
       "change_pct": 0.42
@@ -6147,6 +6681,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 121.82,
       "change": 1.48,
       "change_pct": 1.23
@@ -6158,6 +6693,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 123.6,
       "change": 1.78,
       "change_pct": 1.46
@@ -6169,6 +6705,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 122.08,
       "change": -1.52,
       "change_pct": -1.23
@@ -6180,6 +6717,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 127.91,
       "change": 5.83,
       "change_pct": 4.78
@@ -6191,6 +6729,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 127.25,
       "change": -0.66,
       "change_pct": -0.52
@@ -6202,6 +6741,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 126,
       "change": -1.25,
       "change_pct": -0.98
@@ -6213,6 +6753,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 124.76,
       "change": -1.24,
       "change_pct": -0.98
@@ -6224,6 +6765,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 123.25,
       "change": -1.51,
       "change_pct": -1.21
@@ -6235,6 +6777,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 120.89,
       "change": -2.36,
       "change_pct": -1.91
@@ -6246,6 +6789,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 121.74,
       "change": 0.85,
       "change_pct": 0.7
@@ -6257,6 +6801,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 122.29,
       "change": 0.55,
       "change_pct": 0.45
@@ -6268,6 +6813,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 119.92,
       "change": -2.37,
       "change_pct": -1.94
@@ -6279,6 +6825,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 124.42,
       "change": 4.5,
       "change_pct": 3.75
@@ -6290,6 +6837,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 122.24,
       "change": -2.18,
       "change_pct": -1.75
@@ -6301,6 +6849,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 123.11,
       "change": 0.87,
       "change_pct": 0.71
@@ -6312,6 +6861,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 124.53,
       "change": 1.42,
       "change_pct": 1.15
@@ -6323,6 +6873,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 118.61,
       "change": -5.92,
       "change_pct": -4.75
@@ -6334,6 +6885,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 120.11,
       "change": 1.5,
       "change_pct": 1.26
@@ -6345,6 +6897,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 116.43,
       "change": -3.68,
       "change_pct": -3.06
@@ -6356,6 +6909,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 113.26,
       "change": -3.17,
       "change_pct": -2.72
@@ -6367,6 +6921,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 114.39,
       "change": 1.13,
       "change_pct": 1
@@ -6378,6 +6933,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 113.23,
       "change": -1.16,
       "change_pct": -1.01
@@ -6389,6 +6945,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 109.22,
       "change": -4.01,
       "change_pct": -3.54
@@ -6400,6 +6957,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 109.83,
       "change": 0.61,
       "change_pct": 0.56
@@ -6411,6 +6969,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 111.73,
       "change": 1.9,
       "change_pct": 1.73
@@ -6422,6 +6981,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 111.26,
       "change": -0.47,
       "change_pct": -0.42
@@ -6433,6 +6993,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 111.25,
       "change": -0.01,
       "change_pct": -0.01
@@ -6444,6 +7005,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 111.96,
       "change": 0.71,
       "change_pct": 0.64
@@ -6455,6 +7017,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 114.74,
       "change": 2.78,
       "change_pct": 2.48
@@ -6466,6 +7029,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 109.14,
       "change": -5.6,
       "change_pct": -4.88
@@ -6477,6 +7041,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 104.88,
       "change": -4.26,
       "change_pct": -3.9
@@ -6488,6 +7053,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 107.77,
       "change": 2.89,
       "change_pct": 2.76
@@ -6499,6 +7065,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 109.06,
       "change": 1.29,
       "change_pct": 1.2
@@ -6510,6 +7077,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 108.78,
       "change": -0.28,
       "change_pct": -0.26
@@ -6521,6 +7089,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 111.87,
       "change": 3.09,
       "change_pct": 2.84
@@ -6532,6 +7101,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 118.89,
       "change": 7.02,
       "change_pct": 6.28
@@ -6543,6 +7113,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 123.72,
       "change": 4.83,
       "change_pct": 4.06
@@ -6554,6 +7125,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 127.75,
       "change": 4.03,
       "change_pct": 3.26
@@ -6565,6 +7137,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 124.27,
       "change": -3.48,
       "change_pct": -2.72
@@ -6576,6 +7149,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 125.29,
       "change": 1.02,
       "change_pct": 0.82
@@ -6587,6 +7161,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 120.87,
       "change": -4.42,
       "change_pct": -3.53
@@ -6598,6 +7173,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 123.55,
       "change": 2.68,
       "change_pct": 2.22
@@ -6609,6 +7185,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 122.05,
       "change": -1.5,
       "change_pct": -1.21
@@ -6620,6 +7197,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 117.21,
       "change": -4.84,
       "change_pct": -3.97
@@ -6631,6 +7209,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 115.79,
       "change": -1.42,
       "change_pct": -1.21
@@ -6642,6 +7221,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 117.68,
       "change": 1.89,
       "change_pct": 1.63
@@ -6653,6 +7233,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 116.42,
       "change": -1.26,
       "change_pct": -1.07
@@ -6664,6 +7245,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 116.5,
       "change": 0.08,
       "change_pct": 0.07
@@ -6675,6 +7257,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 117.75,
       "change": 1.25,
       "change_pct": 1.07
@@ -6686,6 +7269,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 122,
       "change": 4.25,
       "change_pct": 3.61
@@ -6697,6 +7281,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 119.01,
       "change": -2.99,
       "change_pct": -2.45
@@ -6708,6 +7293,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 118.48,
       "change": -0.53,
       "change_pct": -0.45
@@ -6719,6 +7305,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 118.72,
       "change": 0.24,
       "change_pct": 0.2
@@ -6730,6 +7317,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 124.21,
       "change": 5.49,
       "change_pct": 4.62
@@ -6741,6 +7329,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 131.37,
       "change": 7.16,
       "change_pct": 5.76
@@ -6752,6 +7341,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 131.46,
       "change": 0.09,
       "change_pct": 0.07
@@ -6763,6 +7353,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 135.24,
       "change": 3.78,
       "change_pct": 2.88
@@ -6774,6 +7365,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 140,
       "change": 4.76,
       "change_pct": 3.52
@@ -6785,6 +7377,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 150.57,
       "change": 10.57,
       "change_pct": 7.55
@@ -6796,6 +7389,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 157.23,
       "change": 6.66,
       "change_pct": 4.42
@@ -6807,6 +7401,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 157.77,
       "change": 0.54,
       "change_pct": 0.34
@@ -6818,6 +7413,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 158.82,
       "change": 1.05,
       "change_pct": 0.67
@@ -6829,6 +7425,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 159.99,
       "change": 1.17,
       "change_pct": 0.74
@@ -6840,6 +7437,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 168.89,
       "change": 8.9,
       "change_pct": 5.56
@@ -6851,6 +7449,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 162.73,
       "change": -6.16,
       "change_pct": -3.65
@@ -6862,6 +7461,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 164.62,
       "change": 1.89,
       "change_pct": 1.16
@@ -6873,6 +7473,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 166.41,
       "change": 1.79,
       "change_pct": 1.09
@@ -6884,6 +7485,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 161.71,
       "change": -4.7,
       "change_pct": -2.82
@@ -6895,6 +7497,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 156.83,
       "change": -4.88,
       "change_pct": -3.02
@@ -6906,6 +7509,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 157.27,
       "change": 0.44,
       "change_pct": 0.28
@@ -6917,6 +7521,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 163.9,
       "change": 6.63,
       "change_pct": 4.22
@@ -6928,6 +7533,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 167.32,
       "change": 3.42,
       "change_pct": 2.09
@@ -6939,6 +7545,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 182.15,
       "change": 14.83,
       "change_pct": 8.86
@@ -6950,6 +7557,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 183.75,
       "change": 1.6,
       "change_pct": 0.88
@@ -6961,6 +7569,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 187.83,
       "change": 4.08,
       "change_pct": 2.22
@@ -6972,6 +7581,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 190.96,
       "change": 3.13,
       "change_pct": 1.67
@@ -6983,6 +7593,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 185.69,
       "change": -5.27,
       "change_pct": -2.76
@@ -6994,6 +7605,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 196.54,
       "change": 10.85,
       "change_pct": 5.84
@@ -7005,6 +7617,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 192.33,
       "change": -4.21,
       "change_pct": -2.14
@@ -7016,6 +7629,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 181.6,
       "change": -10.73,
       "change_pct": -5.58
@@ -7027,6 +7641,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 192.77,
       "change": 11.17,
       "change_pct": 6.15
@@ -7038,6 +7653,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 187.06,
       "change": -5.71,
       "change_pct": -2.96
@@ -7049,6 +7665,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 191.94,
       "change": 4.88,
       "change_pct": 2.61
@@ -7060,6 +7677,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 202.53,
       "change": 10.59,
       "change_pct": 5.52
@@ -7071,6 +7689,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 202.38,
       "change": -0.15,
       "change_pct": -0.07
@@ -7082,6 +7701,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 206.77,
       "change": 4.39,
       "change_pct": 2.17
@@ -7093,6 +7713,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 202.29,
       "change": -4.48,
       "change_pct": -2.17
@@ -7104,6 +7725,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 198.47,
       "change": -3.82,
       "change_pct": -1.89
@@ -7115,6 +7737,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 206.71,
       "change": 8.24,
       "change_pct": 4.15
@@ -7126,6 +7749,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 219.02,
       "change": 12.31,
       "change_pct": 5.96
@@ -7137,6 +7761,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 220.1,
       "change": 1.08,
       "change_pct": 0.49
@@ -7148,6 +7773,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 221.91,
       "change": 1.81,
       "change_pct": 0.82
@@ -7159,6 +7785,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 226.63,
       "change": 4.72,
       "change_pct": 2.13
@@ -7170,6 +7797,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 224.01,
       "change": -2.62,
       "change_pct": -1.16
@@ -7181,6 +7809,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 223.77,
       "change": -0.24,
       "change_pct": -0.11
@@ -7192,6 +7821,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 234.7,
       "change": 10.93,
       "change_pct": 4.88
@@ -7203,6 +7833,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 218.03,
       "change": -16.67,
       "change_pct": -7.1
@@ -7214,6 +7845,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 237.5,
       "change": 19.47,
       "change_pct": 8.93
@@ -7225,6 +7857,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 238.33,
       "change": 0.83,
       "change_pct": 0.35
@@ -7236,6 +7869,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 237.92,
       "change": -0.41,
       "change_pct": -0.17
@@ -7247,6 +7881,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 253.3,
       "change": 15.38,
       "change_pct": 6.46
@@ -7258,6 +7893,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 241.11,
       "change": -12.19,
       "change_pct": -4.81
@@ -7269,6 +7905,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 244.9,
       "change": 3.79,
       "change_pct": 1.57
@@ -7280,6 +7917,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 236.95,
       "change": -7.95,
       "change_pct": -3.25
@@ -7291,6 +7929,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 246.83,
       "change": 9.88,
       "change_pct": 4.17
@@ -7302,6 +7941,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 241.95,
       "change": -4.88,
       "change_pct": -1.98
@@ -7313,6 +7953,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 228.5,
       "change": -13.45,
       "change_pct": -5.56
@@ -7324,6 +7965,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 225.92,
       "change": -2.58,
       "change_pct": -1.13
@@ -7335,6 +7977,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 201.37,
       "change": -24.55,
       "change_pct": -10.87
@@ -7346,6 +7989,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 207.37,
       "change": 6,
       "change_pct": 2.98
@@ -7357,6 +8001,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 223.93,
       "change": 16.56,
       "change_pct": 7.99
@@ -7368,6 +8013,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 224.53,
       "change": 0.6,
       "change_pct": 0.27
@@ -7379,6 +8025,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 230.26,
       "change": 5.73,
       "change_pct": 2.55
@@ -7390,6 +8037,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 236.48,
       "change": 6.22,
       "change_pct": 2.7
@@ -7401,6 +8049,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 240.46,
       "change": 3.98,
       "change_pct": 1.68
@@ -7412,6 +8061,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 239.49,
       "change": -0.97,
       "change_pct": -0.4
@@ -7423,6 +8073,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 234.16,
       "change": -5.33,
       "change_pct": -2.23
@@ -7434,6 +8085,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 226.65,
       "change": -7.51,
       "change_pct": -3.21
@@ -7445,6 +8097,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 237.22,
       "change": 10.57,
       "change_pct": 4.66
@@ -7456,6 +8109,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 246.92,
       "change": 9.7,
       "change_pct": 4.09
@@ -7467,6 +8121,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 252.42,
       "change": 5.5,
       "change_pct": 2.23
@@ -7478,6 +8133,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 263.71,
       "change": 11.29,
       "change_pct": 4.47
@@ -7489,6 +8145,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 258.46,
       "change": -5.25,
       "change_pct": -1.99
@@ -7500,6 +8157,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 241.14,
       "change": -17.32,
       "change_pct": -6.7
@@ -7511,6 +8169,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 237.5,
       "change": -3.64,
       "change_pct": -1.51
@@ -7522,6 +8181,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 232.51,
       "change": -4.99,
       "change_pct": -2.1
@@ -7533,6 +8193,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 225.52,
       "change": -6.99,
       "change_pct": -3.01
@@ -7544,6 +8205,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 248.55,
       "change": 23.03,
       "change_pct": 10.21
@@ -7555,6 +8217,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 265.92,
       "change": 17.37,
       "change_pct": 6.99
@@ -7566,6 +8229,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 276.59,
       "change": 10.67,
       "change_pct": 4.01
@@ -7577,6 +8241,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 276.27,
       "change": -0.32,
       "change_pct": -0.12
@@ -7588,6 +8253,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 286.68,
       "change": 10.41,
       "change_pct": 3.77
@@ -7599,6 +8265,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 284.79,
       "change": -1.89,
       "change_pct": -0.66
@@ -7610,6 +8277,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 294.37,
       "change": 9.58,
       "change_pct": 3.36
@@ -7621,6 +8289,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 292.63,
       "change": -1.74,
       "change_pct": -0.59
@@ -7632,6 +8301,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 285.41,
       "change": -7.22,
       "change_pct": -2.47
@@ -7643,6 +8313,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 315.42,
       "change": 30.01,
       "change_pct": 10.51
@@ -7654,6 +8325,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 312.15,
       "change": -3.27,
       "change_pct": -1.04
@@ -7665,6 +8337,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 343.43,
       "change": 31.28,
       "change_pct": 10.02
@@ -7676,6 +8349,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 339.55,
       "change": -3.88,
       "change_pct": -1.13
@@ -7687,6 +8361,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 327.02,
       "change": -12.53,
       "change_pct": -3.69
@@ -7698,6 +8373,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 345.09,
       "change": 18.07,
       "change_pct": 5.53
@@ -7709,6 +8385,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 345.87,
       "change": 0.78,
       "change_pct": 0.23
@@ -7720,6 +8397,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 338.13,
       "change": -7.74,
       "change_pct": -2.24
@@ -7731,6 +8409,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 333.35,
       "change": -4.78,
       "change_pct": -1.41
@@ -7742,6 +8421,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 336.63,
       "change": 3.28,
       "change_pct": 0.98
@@ -7753,6 +8433,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 362.75,
       "change": 26.12,
       "change_pct": 7.76
@@ -7764,6 +8445,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 365,
       "change": 2.25,
       "change_pct": 0.62
@@ -7775,6 +8457,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 389.11,
       "change": 24.11,
       "change_pct": 6.61
@@ -7786,6 +8469,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 397.58,
       "change": 8.47,
       "change_pct": 2.18
@@ -7797,6 +8481,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 399.65,
       "change": 2.07,
       "change_pct": 0.52
@@ -7808,6 +8493,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 389.09,
       "change": -10.56,
       "change_pct": -2.64
@@ -7819,6 +8505,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 410.24,
       "change": 21.15,
       "change_pct": 5.44
@@ -7830,6 +8517,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 435.28,
       "change": 25.04,
       "change_pct": 6.1
@@ -7841,6 +8529,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 435.79,
       "change": 0.51,
       "change_pct": 0.12
@@ -7852,6 +8541,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 414.88,
       "change": -20.91,
       "change_pct": -4.8
@@ -7863,6 +8553,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 437.8,
       "change": 22.92,
       "change_pct": 5.52
@@ -7874,6 +8565,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 419.44,
       "change": -18.36,
       "change_pct": -4.19
@@ -7885,6 +8577,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 379.4,
       "change": -40.04,
       "change_pct": -9.55
@@ -7896,6 +8589,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 382.89,
       "change": 3.49,
       "change_pct": 0.92
@@ -7907,6 +8601,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 394.69,
       "change": 11.8,
       "change_pct": 3.08
@@ -7918,6 +8613,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 383.5,
       "change": -11.19,
       "change_pct": -2.84
@@ -7929,6 +8625,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 373.25,
       "change": -10.25,
       "change_pct": -2.67
@@ -7940,6 +8637,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 410.34,
       "change": 37.09,
       "change_pct": 9.94
@@ -7951,6 +8649,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 413.97,
       "change": 3.63,
       "change_pct": 0.88
@@ -7962,6 +8661,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 411.66,
       "change": -2.31,
       "change_pct": -0.56
@@ -7973,6 +8673,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 399.78,
       "change": -11.88,
       "change_pct": -2.89
@@ -7984,6 +8685,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 420.95,
       "change": 21.17,
       "change_pct": 5.3
@@ -7995,6 +8697,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 417.35,
       "change": -3.6,
       "change_pct": -0.86
@@ -8006,6 +8709,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 428.17,
       "change": 10.82,
       "change_pct": 2.59
@@ -8017,6 +8721,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 420.97,
       "change": -7.2,
       "change_pct": -1.68
@@ -8028,6 +8733,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 418.01,
       "change": -2.96,
       "change_pct": -0.7
@@ -8039,6 +8745,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 429,
       "change": 10.99,
       "change_pct": 2.63
@@ -8050,6 +8757,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 415.56,
       "change": -13.44,
       "change_pct": -3.13
@@ -8061,6 +8769,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 412.37,
       "change": -3.19,
       "change_pct": -0.77
@@ -8072,6 +8781,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 412.67,
       "change": 0.3,
       "change_pct": 0.07
@@ -8083,6 +8793,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 379.68,
       "change": -32.99,
       "change_pct": -7.99
@@ -8094,6 +8805,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 400.77,
       "change": 21.09,
       "change_pct": 5.55
@@ -8105,6 +8817,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 397.05,
       "change": -3.72,
       "change_pct": -0.93
@@ -8116,6 +8829,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 370.3,
       "change": -26.75,
       "change_pct": -6.74
@@ -8127,6 +8841,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 389.32,
       "change": 19.02,
       "change_pct": 5.14
@@ -8138,6 +8853,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 403.11,
       "change": 13.79,
       "change_pct": 3.54
@@ -8149,6 +8865,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 418.69,
       "change": 15.58,
       "change_pct": 3.86
@@ -8160,6 +8877,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 405.35,
       "change": -13.34,
       "change_pct": -3.19
@@ -8171,6 +8889,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 426.13,
       "change": 20.78,
       "change_pct": 5.13
@@ -8182,6 +8901,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 441.8,
       "change": 15.67,
       "change_pct": 3.68
@@ -8193,6 +8913,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 461.69,
       "change": 19.89,
       "change_pct": 4.5
@@ -8204,6 +8925,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 461.73,
       "change": 0.04,
       "change_pct": 0.01
@@ -8215,6 +8937,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 444.27,
       "change": -17.46,
       "change_pct": -3.78
@@ -8226,6 +8949,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 422.9,
       "change": -21.37,
       "change_pct": -4.81
@@ -8237,6 +8961,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 404.35,
       "change": -18.55,
       "change_pct": -4.39
@@ -8248,6 +8973,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 395.53,
       "change": -8.82,
       "change_pct": -2.18
@@ -8259,6 +8985,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 382.09,
       "change": -13.44,
       "change_pct": -3.4
@@ -8270,6 +8997,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 355.46,
       "change": -26.63,
       "change_pct": -6.97
@@ -8281,6 +9009,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 357.22,
       "change": 1.76,
       "change_pct": 0.5
@@ -8292,6 +9021,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 321.8,
       "change": -35.42,
       "change_pct": -9.92
@@ -8303,6 +9033,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 337.84,
       "change": 16.04,
       "change_pct": 4.98
@@ -8314,6 +9045,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 367.85,
       "change": 30.01,
       "change_pct": 8.88
@@ -8325,6 +9057,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 366.24,
       "change": -1.61,
       "change_pct": -0.44
@@ -8336,6 +9069,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 377.76,
       "change": 11.52,
       "change_pct": 3.15
@@ -8347,6 +9081,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 377.58,
       "change": -0.18,
       "change_pct": -0.05
@@ -8358,6 +9093,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 406.73,
       "change": 29.15,
       "change_pct": 7.72
@@ -8369,6 +9105,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 421.51,
       "change": 14.78,
       "change_pct": 3.63
@@ -8380,6 +9117,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 420.59,
       "change": -0.92,
       "change_pct": -0.22
@@ -8391,6 +9129,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 426.56,
       "change": 5.97,
       "change_pct": 1.42
@@ -8402,6 +9141,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 465.66,
       "change": 39.1,
       "change_pct": 9.17
@@ -8413,6 +9153,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 456.23,
       "change": -9.43,
       "change_pct": -2.03
@@ -8424,6 +9165,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 457.23,
       "change": 1,
       "change_pct": 0.22
@@ -8435,6 +9177,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 455.07,
       "change": -2.16,
       "change_pct": -0.47
@@ -8446,6 +9189,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 448.42,
       "change": -6.65,
       "change_pct": -1.46
@@ -8457,6 +9201,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 449.38,
       "change": 0.96,
       "change_pct": 0.21
@@ -8468,6 +9213,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 487.48,
       "change": 38.1,
       "change_pct": 8.48
@@ -8479,6 +9225,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 481.72,
       "change": -5.76,
       "change_pct": -1.18
@@ -8490,6 +9237,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 496.72,
       "change": 15,
       "change_pct": 3.11
@@ -8501,6 +9249,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 524.56,
       "change": 27.84,
       "change_pct": 5.6
@@ -8512,6 +9261,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 504.29,
       "change": -20.27,
       "change_pct": -3.86
@@ -8523,6 +9273,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 518.46,
       "change": 14.17,
       "change_pct": 2.81
@@ -8534,6 +9285,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 517.16,
       "change": -1.3,
       "change_pct": -0.25
@@ -8545,6 +9297,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 542.21,
       "change": 25.05,
       "change_pct": 4.84
@@ -8556,6 +9309,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 576.45,
       "change": 34.24,
       "change_pct": 6.31
@@ -8567,6 +9321,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 640.2,
       "change": 63.75,
       "change_pct": 11.06
@@ -8578,6 +9333,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 666.59,
       "change": 26.39,
       "change_pct": 4.12
@@ -8589,6 +9345,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 646.63,
       "change": -19.96,
       "change_pct": -2.99
@@ -8600,6 +9357,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 746.81,
       "change": 100.18,
       "change_pct": 15.49
@@ -8611,6 +9369,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 795.33,
       "change": 48.52,
       "change_pct": 6.5
@@ -8622,6 +9381,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 766.58,
       "change": -28.75,
       "change_pct": -3.61
@@ -8633,6 +9393,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 803.63,
       "change": 37.05,
       "change_pct": 4.83
@@ -8644,6 +9405,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 776.01,
       "change": -27.62,
       "change_pct": -3.44
@@ -8655,6 +9417,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 724.66,
       "change": -51.35,
       "change_pct": -6.62
@@ -8666,6 +9429,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 681.54,
       "change": -43.12,
       "change_pct": -5.95
@@ -8677,6 +9441,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 698.74,
       "change": 17.2,
       "change_pct": 2.52
@@ -8688,6 +9453,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 731.99,
       "change": 33.25,
       "change_pct": 4.76
@@ -8699,6 +9465,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 762.1,
       "change": 30.11,
       "change_pct": 4.11
@@ -8710,6 +9477,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 751,
       "change": -11.1,
       "change_pct": -1.46
@@ -8721,6 +9489,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 895.88,
       "change": 144.88,
       "change_pct": 19.29
@@ -8732,6 +9501,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 928.41,
       "change": 32.53,
       "change_pct": 3.63
@@ -8743,6 +9513,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 923.52,
       "change": -4.89,
       "change_pct": -0.53
@@ -8754,6 +9525,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 971,
       "change": 47.48,
       "change_pct": 5.14
@@ -8765,6 +9537,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1035.5,
       "change": 64.5,
       "change_pct": 6.64
@@ -8776,6 +9549,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1064.1,
       "change": 28.6,
       "change_pct": 2.76
@@ -8787,6 +9561,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1079.57,
       "change": 15.47,
       "change_pct": 1.45
@@ -8798,6 +9573,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 996,
       "change": -83.57,
       "change_pct": -7.74
@@ -8809,6 +9585,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 864.01,
       "change": -131.99,
       "change_pct": -13.25
@@ -8820,6 +9597,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 949.28,
       "change": 85.27,
       "change_pct": 9.87
@@ -8831,6 +9609,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 935.89,
       "change": -13.39,
       "change_pct": -1.41
@@ -8842,6 +9621,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 891.88,
       "change": -44.01,
       "change_pct": -4.7
@@ -8853,6 +9633,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 995.87,
       "change": 103.99,
       "change_pct": 11.66
@@ -8864,6 +9645,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 981.61,
       "change": -14.26,
       "change_pct": -1.43
@@ -8875,6 +9657,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1087.99,
       "change": 106.38,
       "change_pct": 10.84
@@ -8886,6 +9669,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1020.76,
       "change": -67.23,
       "change_pct": -6.18
@@ -8897,6 +9681,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1043.19,
       "change": 22.43,
       "change_pct": 2.2
@@ -8908,6 +9693,7 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1133.99,
       "change": 90.8,
       "change_pct": 8.7
@@ -8919,11 +9705,12 @@
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
+      "price_basis": "completed_daily_close",
       "close": 1211.38,
       "change": 77.39,
       "change_pct": 6.82
     }
   ],
   "source": "Yahoo Finance chart API (daily close)",
-  "generated_at": "2026-06-23T03:29:29.555Z"
+  "generated_at": "2026-06-23T05:16:35.747Z"
 }

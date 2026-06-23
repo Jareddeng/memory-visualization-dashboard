@@ -31,6 +31,7 @@ type StockPoint = {
   name: string;
   exchange: string;
   currency: string;
+  price_basis?: string;
   close: number;
   change: number;
   change_pct: number;
@@ -250,7 +251,7 @@ function makeStockTrendOption(stock: StockPoint, history: StockPoint[]): echarts
         const change = row.data?.change ?? 0;
         const changePct = row.data?.change_pct ?? 0;
         const sign = changePct >= 0 ? "+" : "";
-        return `<strong>${date}</strong><br/>${row.marker}${stock.name}: ${close} ${stock.currency}<br/>涨跌幅：${sign}${changePct}% (${sign}${change} ${stock.currency})<br/>对比：${previousDate} 收盘<br/>来源：${dataSourceLabel(stock.exchange)}`;
+        return `<strong>${date}</strong><br/>${row.marker}${stock.name}: ${close} ${stock.currency}<br/>口径：已完成交易日收盘价<br/>涨跌幅：${sign}${changePct}% (${sign}${change} ${stock.currency})<br/>对比：${previousDate} 收盘<br/>来源：${dataSourceLabel(stock.exchange)}`;
       },
     },
     grid: { left: 54, right: 22, top: 52, bottom: 68 },
@@ -340,7 +341,7 @@ function App() {
       <section className="section-heading">
         <div>
           <h2>三大存储厂商日收盘价</h2>
-          <p>价格为各市场对应交易日收盘价；涨跌幅相对上一交易日收盘价计算。</p>
+          <p>价格为各市场已完成交易日收盘价；若当天尚未收盘，则沿用上一交易日收盘价，涨跌幅相对再上一交易日收盘价计算。</p>
         </div>
       </section>
 
@@ -351,7 +352,7 @@ function App() {
               <strong>{stock.name}</strong>
               <span>{stock.ticker} · {stock.exchange}</span>
               <small>
-                价格日期：{stock.date} · 涨跌幅对比：{stock.previous_date ?? "上一交易日"} 收盘 · 数据抓取 {formatDateTime(data.stocks.generated_at ?? data.metadata.generated_at)}
+                价格日期：{stock.date} · 涨跌幅对比：{stock.previous_date ?? "上一交易日"} 收盘 · Action生成 {formatDateTime(data.stocks.generated_at ?? data.metadata.generated_at)}
               </small>
             </div>
             <div className="stock-price">
@@ -403,7 +404,7 @@ function Header({ data }: { data: AppData }) {
         <p>跟踪 DRAM、NAND、HBM4 谈判、扩产计划和每日深度报告，保持数据、图表、观点在同一个工作流里更新。</p>
       </div>
       <div className="freshness">
-        <span>最近生成</span>
+        <span>Action生成</span>
         <strong>{formatDateTime(data.metadata.generated_at)}</strong>
         <small>GitHub Actions 定时更新</small>
       </div>
