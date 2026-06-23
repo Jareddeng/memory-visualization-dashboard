@@ -2,12 +2,12 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { AlertTriangle, CalendarClock, Database, FileText, RefreshCw, TrendingUp } from "lucide-react";
 import * as echarts from "echarts/core";
-import { GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
+import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { LineChart } from "echarts/charts";
 import { CanvasRenderer } from "echarts/renderers";
 import "./styles.css";
 
-echarts.use([GridComponent, LegendComponent, TitleComponent, TooltipComponent, LineChart, CanvasRenderer]);
+echarts.use([DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent, LineChart, CanvasRenderer]);
 
 type PricePoint = {
   date: string;
@@ -193,7 +193,7 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
       itemGap: 14,
       textStyle: { color: "#526071" },
     },
-    grid: { left: 52, right: 22, top: 96, bottom: 42 },
+    grid: { left: 52, right: 22, top: 96, bottom: 78 },
     xAxis: { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
     yAxis: {
       type: "value",
@@ -201,6 +201,28 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
       axisLabel: { color: "#607086" },
       splitLine: { lineStyle: { color: "#edf1f6" } },
     },
+    dataZoom: [
+      {
+        type: "slider",
+        xAxisIndex: 0,
+        height: 26,
+        bottom: 18,
+        borderColor: "#d8e0ea",
+        fillerColor: "rgba(37, 99, 235, 0.12)",
+        handleStyle: { color: "#2563eb", borderColor: "#1d4ed8" },
+        moveHandleStyle: { color: "#93c5fd" },
+        selectedDataBackground: {
+          lineStyle: { color: "#2563eb" },
+          areaStyle: { color: "rgba(37, 99, 235, 0.14)" },
+        },
+        textStyle: { color: "#607086" },
+      },
+      {
+        type: "inside",
+        xAxisIndex: 0,
+        filterMode: "none",
+      },
+    ],
     series,
   };
 }
