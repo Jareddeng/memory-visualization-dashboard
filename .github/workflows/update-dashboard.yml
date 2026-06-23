@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Import reports
+        run: npm run import:reports
+
       - name: updateData
         run: npm run generate:data
 
