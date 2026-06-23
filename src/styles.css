@@ -575,6 +575,69 @@ h2 {
   gap: 12px;
 }
 
+.radar-distribution {
+  display: grid;
+  gap: 12px;
+}
+
+.distribution-row {
+  position: relative;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  overflow: hidden;
+  border-radius: 8px;
+  padding: 0 14px;
+  isolation: isolate;
+}
+
+.distribution-row span,
+.distribution-row strong {
+  position: relative;
+  z-index: 1;
+  font-weight: 800;
+}
+
+.distribution-row strong {
+  font-size: 15px;
+}
+
+.distribution-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 0;
+  min-width: 0;
+}
+
+.distribution-row.bullish {
+  background: #e3f1ea;
+  color: #1f7a52;
+}
+
+.distribution-row.bullish .distribution-fill {
+  background: #b9dbc8;
+}
+
+.distribution-row.bearish {
+  background: #f6dddd;
+  color: #bd3f3f;
+}
+
+.distribution-row.bearish .distribution-fill {
+  background: #e9b9b9;
+}
+
+.distribution-row.neutral {
+  background: #deebf5;
+  color: #2f6b9b;
+}
+
+.distribution-row.neutral .distribution-fill {
+  background: #b9cfe1;
+}
+
 .segmented-control {
   display: inline-flex;
   width: fit-content;

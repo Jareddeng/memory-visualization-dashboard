@@ -1019,9 +1019,28 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
     { key: "neutral", label: "中性" },
   ];
   const filtered = filter === "all" ? records : records.filter((record) => record.impact === filter);
+  const total = records.length || 1;
+  const distribution: Array<{ key: IntelRecord["impact"]; label: string }> = [
+    { key: "bullish", label: "利好" },
+    { key: "bearish", label: "利空" },
+    { key: "neutral", label: "中性" },
+  ];
 
   return (
     <div className="message-radar">
+      <div className="radar-distribution" aria-label="利好利空分布">
+        {distribution.map((item) => {
+          const count = records.filter((record) => record.impact === item.key).length;
+          const percent = records.length ? Math.round((count / total) * 100) : 0;
+          return (
+            <div className={`distribution-row ${item.key}`} key={item.key}>
+              <div className="distribution-fill" style={{ width: `${percent}%` }} />
+              <span>{item.label}</span>
+              <strong>{count} / {percent}%</strong>
+            </div>
+          );
+        })}
+      </div>
       <div className="segmented-control" aria-label="消息影响筛选">
         {filters.map((item) => (
           <button
