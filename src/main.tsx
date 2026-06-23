@@ -26,6 +26,7 @@ type PricePayload = Record<"DRAM" | "NAND", Record<"spot" | "contract_avg", { se
 
 type StockPoint = {
   date: string;
+  timestamp?: string | null;
   ticker: string;
   name: string;
   exchange: string;
@@ -280,7 +281,9 @@ function App() {
             <div>
               <strong>{stock.name}</strong>
               <span>{stock.ticker} · {stock.exchange}</span>
-              <small>截至 {stock.date} 收盘 · 更新于 {formatDateTime(data.stocks.generated_at ?? data.metadata.generated_at)}</small>
+              <small>
+                最新报价 {formatStockTime(stock)} · 数据抓取 {formatDateTime(data.stocks.generated_at ?? data.metadata.generated_at)}
+              </small>
             </div>
             <div className="stock-price">
               {stock.close.toLocaleString()} {stock.currency}
@@ -471,6 +474,11 @@ function formatDateTime(value: string) {
     timeStyle: "short",
     hour12: false,
   }).format(new Date(value));
+}
+
+function formatStockTime(stock: StockPoint) {
+  if (stock.timestamp) return formatDateTime(stock.timestamp);
+  return `${stock.date} 收盘`;
 }
 
 createRoot(document.getElementById("root")!).render(<App />);

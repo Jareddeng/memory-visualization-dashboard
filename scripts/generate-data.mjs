@@ -266,20 +266,19 @@ function groupPrices(rows) {
 async function loadStocks() {
   const fallback = await readExistingJson("stocks.json");
   try {
-    const histories = await Promise.all(stockSymbols.map(fetchStockHistory));
-    const history = histories.flat().sort((a, b) => `${a.ticker}|${a.date}`.localeCompare(`${b.ticker}|${b.date}`));
-    const latest = stockSymbols.map((stock) => {
-      const rows = history.filter((row) => row.ticker === stock.ticker);
-      return rows[rows.length - 1];
-    }).filter(Boolean);
-    return { latest, history, source: "Yahoo Finance chart API", generated_at: new Date().toISOString() };
+    const stockResults = await Promise.all(stockSymbols.map(fetchStockData));
+    const history = stockResults
+      .flatMap((result) => result.history)
+      .sort((a, b) => `${a.ticker}|${a.date}`.localeCompare(`${b.ticker}|${b.date}`));
+    const latest = stockResults.map((result) => result.latest).filter(Boolean);
+    return { latest, history, source: "Yahoo Finance chart API (delayed quote)", generated_at: new Date().toISOString() };
   } catch (error) {
     if (fallback) return { ...fallback, warning: `股票在线更新失败，使用既有数据: ${error.message}` };
     return { latest: [], history: [], source: "unavailable", warning: `股票在线更新失败: ${error.message}` };
   }
 }
 
-async function fetchStockHistory(stock) {
+async function fetchStockData(stock) {
   const period2 = Math.floor(Date.now() / 1000);
   const period1 = period2 - 180 * 24 * 60 * 60;
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(stock.ticker)}?period1=${period1}&period2=${period2}&interval=1d`;
@@ -306,7 +305,31 @@ async function fetchStockHistory(stock) {
       change_pct: previous ? round((change / previous) * 100, 2) : 0,
     });
   }
-  return rows;
+  return { latest: buildLatestStockPoint(stock, result.meta, rows), history: rows };
+}
+
+function buildLatestStockPoint(stock, meta, rows) {
+  const latestHistory = rows[rows.length - 1];
+  const price = Number.isFinite(meta?.regularMarketPrice) ? meta.regularMarketPrice : latestHistory?.close;
+  const previousClose = Number.isFinite(meta?.chartPreviousClose) ? meta.chartPreviousClose : rows[rows.length - 2]?.close;
+  const marketTime = Number.isFinite(meta?.regularMarketTime) ? new Date(meta.regularMarketTime * 1000) : null;
+  const date = marketTime ? marketTime.toISOString().slice(0, 10) : latestHistory?.date;
+  const sameDateHistory = rows.find((row) => row.date === date);
+  const currency = meta?.currency || stock.currency;
+  const change = sameDateHistory?.change ?? (Number.isFinite(price) && Number.isFinite(previousClose) ? price - previousClose : latestHistory?.change ?? 0);
+  const changePct = sameDateHistory?.change_pct ?? (Number.isFinite(previousClose) && previousClose !== 0 ? (change / previousClose) * 100 : latestHistory?.change_pct ?? 0);
+
+  return {
+    date,
+    timestamp: marketTime ? marketTime.toISOString() : null,
+    ticker: stock.ticker,
+    name: stock.name,
+    exchange: stock.exchange,
+    currency,
+    close: round(price, 2),
+    change: round(change, 2),
+    change_pct: round(changePct, 2),
+  };
 }
 
 async function loadReports() {

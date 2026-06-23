@@ -1,47 +1,40 @@
 {
   "latest": [
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
+      "timestamp": "2026-06-23T02:25:00.000Z",
       "ticker": "000660.KS",
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 2919000,
-      "change": 155000,
-      "change_pct": 5.61
+      "close": 2761000,
+      "change": -158000,
+      "change_pct": -5.41
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
+      "timestamp": "2026-06-23T02:25:00.000Z",
       "ticker": "005930.KS",
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 353500,
-      "change": -500,
-      "change_pct": -0.14
+      "close": 337000,
+      "change": -16500,
+      "change_pct": -4.67
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-22",
+      "timestamp": "2026-06-22T20:00:00.000Z",
       "ticker": "MU",
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
-      "close": 1133.99,
-      "change": 90.8,
-      "change_pct": 8.7
+      "close": 1211.38,
+      "change": 77.39,
+      "change_pct": 6.82
     }
   ],
   "history": [
-    {
-      "date": "2025-12-24",
-      "ticker": "000660.KS",
-      "name": "SK海力士",
-      "exchange": "KRX",
-      "currency": "KRW",
-      "close": 588000,
-      "change": 0,
-      "change_pct": 0
-    },
     {
       "date": "2025-12-26",
       "ticker": "000660.KS",
@@ -49,8 +42,8 @@
       "exchange": "KRX",
       "currency": "KRW",
       "close": 599000,
-      "change": 11000,
-      "change_pct": 1.87
+      "change": 0,
+      "change_pct": 0
     },
     {
       "date": "2025-12-29",
@@ -1213,14 +1206,14 @@
       "change_pct": 5.61
     },
     {
-      "date": "2025-12-24",
-      "ticker": "005930.KS",
-      "name": "三星电子",
+      "date": "2026-06-23",
+      "ticker": "000660.KS",
+      "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 111100,
-      "change": 0,
-      "change_pct": 0
+      "close": 2761000,
+      "change": -158000,
+      "change_pct": -5.41
     },
     {
       "date": "2025-12-26",
@@ -1229,8 +1222,8 @@
       "exchange": "KRX",
       "currency": "KRW",
       "close": 117000,
-      "change": 5900,
-      "change_pct": 5.31
+      "change": 0,
+      "change_pct": 0
     },
     {
       "date": "2025-12-29",
@@ -2393,14 +2386,14 @@
       "change_pct": -0.14
     },
     {
-      "date": "2025-12-24",
-      "ticker": "MU",
-      "name": "美光科技",
-      "exchange": "NASDAQ",
-      "currency": "USD",
-      "close": 286.68,
-      "change": 0,
-      "change_pct": 0
+      "date": "2026-06-23",
+      "ticker": "005930.KS",
+      "name": "三星电子",
+      "exchange": "KRX",
+      "currency": "KRW",
+      "close": 337000,
+      "change": -16500,
+      "change_pct": -4.67
     },
     {
       "date": "2025-12-26",
@@ -2409,8 +2402,8 @@
       "exchange": "NASDAQ",
       "currency": "USD",
       "close": 284.79,
-      "change": -1.89,
-      "change_pct": -0.66
+      "change": 0,
+      "change_pct": 0
     },
     {
       "date": "2025-12-29",
@@ -3601,8 +3594,18 @@
       "close": 1133.99,
       "change": 90.8,
       "change_pct": 8.7
+    },
+    {
+      "date": "2026-06-22",
+      "ticker": "MU",
+      "name": "美光科技",
+      "exchange": "NASDAQ",
+      "currency": "USD",
+      "close": 1211.38,
+      "change": 77.39,
+      "change_pct": 6.82
     }
   ],
-  "source": "Yahoo Finance chart API",
-  "generated_at": "2026-06-22T09:13:04.337Z"
+  "source": "Yahoo Finance chart API (delayed quote)",
+  "generated_at": "2026-06-23T02:45:01.398Z"
 }
