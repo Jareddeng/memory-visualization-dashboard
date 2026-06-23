@@ -93,7 +93,8 @@ function useJson<T>(url: string) {
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    fetch(url)
+    const separator = url.includes("?") ? "&" : "?";
+    fetch(`${url}${separator}v=${Date.now()}`, { cache: "no-store" })
       .then((response) => {
         if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
         return response.json() as Promise<T>;
