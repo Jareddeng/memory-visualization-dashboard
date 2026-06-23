@@ -67,6 +67,10 @@ async function loadPrices() {
         byKey.set(key, normalized);
       } else if (!existingIsSeed && nextIsSeed) {
         continue;
+      } else if ((normalized.source_rank ?? 0) > (existing.source_rank ?? 0)) {
+        byKey.set(key, normalized);
+      } else if ((normalized.source_rank ?? 0) < (existing.source_rank ?? 0)) {
+        continue;
       } else {
         throw new Error(`价格数据重复: ${key}`);
       }
@@ -150,20 +154,44 @@ async function loadCsvPrices() {
 
 async function loadWorkbookPrices() {
   const rows = [];
-  const files = (await fs.readdir(root)).filter((file) => file.toLowerCase().endsWith(".xlsx"));
-  for (const file of files) {
-    const workbook = XLSX.readFile(path.join(root, file), { cellDates: true });
+  const workbookFiles = await findWorkbookFiles();
+  for (const workbookFile of workbookFiles) {
+    const workbook = XLSX.readFile(workbookFile.path, { cellDates: true });
     for (const sheetName of workbook.SheetNames) {
       const sheet = workbook.Sheets[sheetName];
       const matrix = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: "" });
-      const inferred = inferWorkbookRows(file, sheetName, matrix);
+      const inferred = inferWorkbookRows(workbookFile, sheetName, matrix);
       rows.push(...inferred);
     }
   }
   return rows;
 }
 
-function inferWorkbookRows(file, sheetName, matrix) {
+async function findWorkbookFiles() {
+  const locations = [
+    { dir: root, rank: 1 },
+    { dir: path.join(root, "edb_data"), rank: 2 },
+  ];
+  const files = [];
+  for (const location of locations) {
+    let names = [];
+    try {
+      names = await fs.readdir(location.dir);
+    } catch {
+      continue;
+    }
+    for (const name of names.filter((file) => file.toLowerCase().endsWith(".xlsx") && !file.startsWith("~$"))) {
+      files.push({
+        name,
+        path: path.join(location.dir, name),
+        rank: location.rank,
+      });
+    }
+  }
+  return files;
+}
+
+function inferWorkbookRows(workbookFile, sheetName, matrix) {
   if (!matrix.length || matrix.length < 2) return [];
   const headerIndex = matrix.findIndex((row) =>
     row.some((cell) => /date|日期|时间|指标/.test(String(cell).trim())),
@@ -174,8 +202,8 @@ function inferWorkbookRows(file, sheetName, matrix) {
   const dateIndex = headers.findIndex((h) => /date|日期|时间|指标名称/i.test(h));
   if (dateIndex < 0) return [];
 
-  const category = /nand/i.test(`${file} ${sheetName}`) ? "NAND" : "DRAM";
-  const market_type = /合约/.test(`${file} ${sheetName}`) ? "contract_avg" : "spot";
+  const category = /nand/i.test(`${workbookFile.name} ${sheetName}`) ? "NAND" : "DRAM";
+  const market_type = /合约/.test(`${workbookFile.name} ${sheetName}`) ? "contract_avg" : "spot";
   const source = "WIND";
   const unit = "USD";
   const output = [];
@@ -198,6 +226,7 @@ function inferWorkbookRows(file, sheetName, matrix) {
         price: value,
         unit,
         source,
+        source_rank: workbookFile.rank,
         note: "Imported from local workbook. Confirm unit/source before production use.",
       });
     });
@@ -237,6 +266,7 @@ function normalizePriceRow(row) {
     price: parseNumber(row.price),
     unit: String(row.unit ?? "").trim(),
     source: String(row.source ?? "").trim(),
+    source_rank: Number(row.source_rank ?? 0),
     note: String(row.note ?? "").trim(),
   };
   if (!normalized.date) throw new Error(`价格日期无效: ${JSON.stringify(row)}`);

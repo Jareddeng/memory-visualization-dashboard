@@ -2,6 +2,12 @@
 
 一个由静态数据驱动的存储行业看板，覆盖 DRAM/NAND 价格、三大存储厂商股价、HBM4 长协谈判、扩产计划和每日深度报告。
 
+## Clawbot PR 协议
+
+报告、EDB Excel、追踪事件都通过 PR 进入仓库。给 clawbot 的提交规则见：
+
+`docs/clawbot-pr-protocol.md`
+
 ## 本地运行
 
 ```powershell
