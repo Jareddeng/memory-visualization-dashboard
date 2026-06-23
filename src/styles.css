@@ -570,6 +570,80 @@ h2 {
   grid-template-columns: 1fr;
 }
 
+.message-radar {
+  display: grid;
+  gap: 12px;
+}
+
+.segmented-control {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+  overflow-x: auto;
+}
+
+.segmented-control button {
+  min-width: 48px;
+  border: 0;
+  border-radius: 6px;
+  padding: 7px 10px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.segmented-control button:hover,
+.segmented-control button:focus-visible,
+.segmented-control button.active {
+  background: #fff;
+  color: var(--teal);
+  box-shadow: 0 1px 4px rgba(17, 24, 39, 0.08);
+}
+
+.radar-list {
+  display: grid;
+  gap: 10px;
+}
+
+.radar-item {
+  display: grid;
+  gap: 7px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.radar-item div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radar-item time,
+.radar-item small {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.radar-item strong {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.radar-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 .signal-item,
 .analysis-item,
 .feed-item,

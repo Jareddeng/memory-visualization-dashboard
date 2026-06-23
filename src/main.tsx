@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { AlertTriangle, CalendarClock, Database, FileText, RefreshCw, Trash2, TrendingUp } from "lucide-react";
+import { AlertTriangle, CalendarClock, Database, FileText, RefreshCw, Trash2 } from "lucide-react";
 import * as echarts from "echarts/core";
 import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { LineChart } from "echarts/charts";
@@ -130,6 +130,8 @@ type IntelRecord = {
   source: string;
   summary: string;
 };
+
+type ImpactFilter = "all" | IntelRecord["impact"];
 
 const INTEL_STORAGE_KEY = "storage-dashboard-intel-records-v1";
 
@@ -378,8 +380,6 @@ function App() {
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
   const allIntelRecords = [...data.intel, ...intelRecords];
   const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query) : [];
-  const nandSpotIndex = calculatePriceIndex(data.prices.NAND.spot);
-  const dramContractIndex = calculatePriceIndex(data.prices.DRAM.contract_avg);
   const hbmPressure = getHbmPressure(data);
 
   return (
@@ -425,15 +425,13 @@ function App() {
         <Hero data={data} latestReport={latestReport} />
 
         <section className="kpi-grid">
-          <KpiCard icon={<TrendingUp />} label="NAND 现货指数" value={formatIndexValue(nandSpotIndex)} hint={formatIndexHint(nandSpotIndex, "基期为当前样本首日均值")} />
-          <KpiCard icon={<TrendingUp />} label="DRAM 合约指数" value={formatIndexValue(dramContractIndex)} hint={formatIndexHint(dramContractIndex, "基期为当前样本首日均值")} />
           <KpiCard icon={<Database />} label="HBM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
           <KpiCard icon={<Database />} label="晶圆可用产能" value="待接入" hint="等待 EDB 或 clawbot 产能数据源" />
           <KpiCard icon={<FileText />} label="最新报告" value={latestReport?.date ?? "暂无"} hint={latestReport?.rating ?? "等待 clawbot 提交"} />
           <KpiCard icon={<CalendarClock />} label="本地情报记录" value={String(intelRecords.length)} hint={`龙虾推送 ${data.intel.length} 条，另有浏览器本地记录`} />
         </section>
 
-        {activePage === "overview" ? <OverviewPage data={data} latestReport={latestReport} intelRecords={intelRecords} /> : null}
+        {activePage === "overview" ? <OverviewPage data={data} latestReport={latestReport} intelRecords={allIntelRecords} /> : null}
         {activePage === "markets" ? <MarketsPage data={data} /> : null}
         {activePage === "industry" ? <IndustryPage data={data} /> : null}
         {activePage === "reports" ? (
@@ -594,11 +592,11 @@ function OverviewPage({
         <section className="panel text-panel">
           <div className="panel-header compact">
             <div>
-              <p className="section-kicker">Local Intel</p>
-              <h2>本地新增情报</h2>
+              <p className="section-kicker">Message Radar</p>
+              <h2>消息雷达</h2>
             </div>
           </div>
-          <IntelFeed records={intelRecords} />
+          <MessageRadar records={intelRecords} />
         </section>
       </section>
     </>
@@ -1008,6 +1006,51 @@ function IntelFeed({ records }: { records: IntelRecord[] }) {
           </div>
         </article>
       ))}
+    </div>
+  );
+}
+
+function MessageRadar({ records }: { records: IntelRecord[] }) {
+  const [filter, setFilter] = React.useState<ImpactFilter>("all");
+  const filters: Array<{ key: ImpactFilter; label: string }> = [
+    { key: "all", label: "全部" },
+    { key: "bullish", label: "利好" },
+    { key: "bearish", label: "利空" },
+    { key: "neutral", label: "中性" },
+  ];
+  const filtered = filter === "all" ? records : records.filter((record) => record.impact === filter);
+
+  return (
+    <div className="message-radar">
+      <div className="segmented-control" aria-label="消息影响筛选">
+        {filters.map((item) => (
+          <button
+            className={filter === item.key ? "active" : ""}
+            key={item.key}
+            onClick={() => setFilter(item.key)}
+            type="button"
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+      {filtered.length ? (
+        <div className="radar-list">
+          {filtered.slice(0, 8).map((record) => (
+            <article className="radar-item" key={record.id}>
+              <div>
+                <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>
+                <time>{record.date}</time>
+              </div>
+              <strong>{record.title}</strong>
+              <p>{record.summary}</p>
+              <small>{record.product || record.type} · {record.source}</small>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state">当前筛选下暂无消息。</div>
+      )}
     </div>
   );
 }
