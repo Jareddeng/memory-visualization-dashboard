@@ -90,6 +90,8 @@ type AppData = {
   metadata: Metadata;
 };
 
+type PageKey = "markets" | "industry" | "reports";
+
 function useJson<T>(url: string) {
   const [data, setData] = React.useState<T | null>(null);
   const [error, setError] = React.useState<string | null>(null);
@@ -300,6 +302,7 @@ function makeStockTrendOption(stock: StockPoint, history: StockPoint[]): echarts
 
 function App() {
   const { data, loading, error } = useDashboardData();
+  const [activePage, setActivePage] = React.useState<PageKey>("markets");
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
 
   if (error) {
@@ -338,6 +341,52 @@ function App() {
         <KpiCard icon={<CalendarClock />} label="更新频率" value="每日两次" hint="北京时间 08:30 / 18:30" />
       </section>
 
+      <PageNav activePage={activePage} onChange={setActivePage} />
+
+      {activePage === "markets" ? <MarketsPage data={data} /> : null}
+      {activePage === "industry" ? <IndustryPage data={data} /> : null}
+      {activePage === "reports" ? (
+        <ReportsPage
+          latestReport={latestReport}
+          reports={data.reports}
+          selectedReport={selectedReport}
+          onSelectReport={setSelectedReportSlug}
+        />
+      ) : null}
+
+      <footer className="disclaimer">
+        交易评价与风险提示仅用于行业跟踪和研究记录，不构成投资建议。请结合授权行情、公司公告和自身风险承受能力独立判断。
+      </footer>
+    </main>
+  );
+}
+
+function PageNav({ activePage, onChange }: { activePage: PageKey; onChange: (page: PageKey) => void }) {
+  const pages: Array<{ key: PageKey; label: string; detail: string }> = [
+    { key: "markets", label: "市场图表", detail: "价格与股价" },
+    { key: "industry", label: "产业跟踪", detail: "长协与扩产" },
+    { key: "reports", label: "报告库", detail: "日报与归档" },
+  ];
+  return (
+    <nav className="page-nav" aria-label="看板分区导航">
+      {pages.map((page) => (
+        <button
+          className={activePage === page.key ? "page-nav-item active" : "page-nav-item"}
+          key={page.key}
+          onClick={() => onChange(page.key)}
+          type="button"
+        >
+          <strong>{page.label}</strong>
+          <span>{page.detail}</span>
+        </button>
+      ))}
+    </nav>
+  );
+}
+
+function MarketsPage({ data }: { data: AppData }) {
+  return (
+    <>
       {data.stocks.warning ? <div className="warning"><AlertTriangle size={16} />{data.stocks.warning}</div> : null}
 
       <section className="section-heading">
@@ -379,21 +428,51 @@ function App() {
         <Panel><Chart option={makePriceOption("NAND Flash 现货价格走势", data.prices.NAND.spot)} /></Panel>
         <Panel><Chart option={makePriceOption("NAND 合约平均价走势", data.prices.NAND.contract_avg)} /></Panel>
       </section>
+    </>
+  );
+}
 
+function IndustryPage({ data }: { data: AppData }) {
+  return (
+    <>
+      <section className="section-heading">
+        <div>
+          <h2>产业内容跟踪</h2>
+          <p>集中查看 HBM4 长协谈判进度、三大厂商扩产计划和后续可扩展的产业事件。</p>
+        </div>
+      </section>
       <section className="detail-grid">
         <Timeline items={data.trackers.hbm4_negotiations ?? []} />
         <ExpansionTable rows={data.trackers.expansion_plans ?? []} />
       </section>
+    </>
+  );
+}
 
+function ReportsPage({
+  latestReport,
+  reports,
+  selectedReport,
+  onSelectReport,
+}: {
+  latestReport?: Report;
+  reports: Report[];
+  selectedReport?: Report;
+  onSelectReport: (slug: string) => void;
+}) {
+  return (
+    <>
+      <section className="section-heading">
+        <div>
+          <h2>深度报告跟踪</h2>
+          <p>报告由 clawbot 或人工通过 PR 进入仓库，合并后由 GitHub Actions 生成归档。</p>
+        </div>
+      </section>
       <section className="report-grid">
         <LatestReport report={selectedReport} isLatest={selectedReport?.slug === latestReport?.slug} />
-        <ReportArchive reports={data.reports} selectedSlug={selectedReport?.slug} onSelect={setSelectedReportSlug} />
+        <ReportArchive reports={reports} selectedSlug={selectedReport?.slug} onSelect={onSelectReport} />
       </section>
-
-      <footer className="disclaimer">
-        交易评价与风险提示仅用于行业跟踪和研究记录，不构成投资建议。请结合授权行情、公司公告和自身风险承受能力独立判断。
-      </footer>
-    </main>
+    </>
   );
 }
 
