@@ -550,30 +550,26 @@ function OverviewPage({
   latestReport?: Report;
   intelRecords: IntelRecord[];
 }) {
-  const latestStocks = data.stocks.latest.slice(0, 3);
+  const latestStocks = data.stocks.latest.slice(0, 4);
   const hbmEvents = data.trackers.hbm4_negotiations ?? [];
   return (
     <>
-      <section className="dashboard-grid">
-        <section className="panel text-panel">
+      <section className="overview-market-grid">
+        {latestStocks.map((stock) => (
+          <OverviewStockCard stock={stock} key={stock.ticker} />
+        ))}
+        <section className="panel text-panel overview-radar-panel">
           <div className="panel-header compact">
             <div>
-              <p className="section-kicker">Overview</p>
-              <h2>今日核心信号</h2>
+              <p className="section-kicker">Message Radar</p>
+              <h2>消息雷达</h2>
             </div>
           </div>
-          <div className="signal-list">
-            {latestStocks.map((stock) => (
-              <article className="signal-item" key={stock.ticker}>
-                <strong>{stock.name}</strong>
-                <p>
-                  {stock.date} 收盘 {stock.close.toLocaleString()} {stock.currency}，
-                  较 {stock.previous_date ?? "上一交易日"} {stock.change_pct >= 0 ? "上涨" : "下跌"} {Math.abs(stock.change_pct)}%。
-                </p>
-              </article>
-            ))}
-          </div>
+          <MessageRadar records={intelRecords} />
         </section>
+      </section>
+
+      <section className="dashboard-grid">
         <section className="panel text-panel">
           <div className="panel-header compact">
             <div>
@@ -595,14 +591,11 @@ function OverviewPage({
             <div className="empty-state">暂无报告</div>
           )}
         </section>
-      </section>
-
-      <section className="two-column">
         <section className="panel text-panel">
           <div className="panel-header compact">
             <div>
-              <p className="section-kicker">Industry Watch</p>
-              <h2>产业事件速览</h2>
+              <p className="section-kicker">Signals / Industry Watch</p>
+              <h2>核心信号与产业事件</h2>
             </div>
           </div>
           <div className="timeline">
@@ -616,17 +609,24 @@ function OverviewPage({
             {!hbmEvents.length ? <div className="empty-state">等待产业事件更新</div> : null}
           </div>
         </section>
-        <section className="panel text-panel">
-          <div className="panel-header compact">
-            <div>
-              <p className="section-kicker">Message Radar</p>
-              <h2>消息雷达</h2>
-            </div>
-          </div>
-          <MessageRadar records={intelRecords} />
-        </section>
       </section>
     </>
+  );
+}
+
+function OverviewStockCard({ stock }: { stock: StockPoint }) {
+  return (
+    <article className="panel overview-stock-card">
+      <div>
+        <strong>{stock.name}</strong>
+        <span>{stock.ticker} · {stock.exchange}</span>
+        <small>价格日期：{stock.date} · 对比：{stock.previous_date ?? "上一交易日"} 收盘</small>
+      </div>
+      <div className="overview-stock-price">
+        {stock.close.toLocaleString()} {stock.currency}
+        <b className={stock.change_pct >= 0 ? "up" : "down"}>{stock.change_pct >= 0 ? "+" : ""}{stock.change_pct}%</b>
+      </div>
+    </article>
   );
 }
 

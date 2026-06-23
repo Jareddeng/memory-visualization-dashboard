@@ -416,6 +416,19 @@ h2 {
   align-items: start;
 }
 
+.overview-market-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(360px, 1.05fr);
+  grid-template-rows: repeat(2, minmax(148px, auto));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.overview-radar-panel {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
 .kpi-card,
 .panel,
 .stock-card,
@@ -513,6 +526,41 @@ h2 {
 .stock-card small {
   color: var(--subtle);
   line-height: 1.4;
+}
+
+.overview-stock-card {
+  min-height: 148px;
+  display: grid;
+  gap: 14px;
+  align-content: space-between;
+}
+
+.overview-stock-card div:first-child {
+  display: grid;
+  gap: 6px;
+}
+
+.overview-stock-card strong {
+  font-size: 17px;
+}
+
+.overview-stock-card span,
+.overview-stock-card small {
+  color: var(--subtle);
+  line-height: 1.4;
+}
+
+.overview-stock-price {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: end;
+  font-size: 24px;
+  font-weight: 850;
+}
+
+.overview-stock-price b {
+  font-size: 14px;
 }
 
 .stock-price {
@@ -1379,12 +1427,18 @@ th {
   }
 
   .stock-trend-grid,
+  .overview-market-grid,
   .dashboard-grid,
   .two-column,
   .detail-grid,
   .report-grid,
   .industry-map-grid {
     grid-template-columns: 1fr;
+  }
+
+  .overview-radar-panel {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .feed-grid {
