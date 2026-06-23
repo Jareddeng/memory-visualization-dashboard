@@ -300,6 +300,7 @@ function makeStockTrendOption(stock: StockPoint, history: StockPoint[]): echarts
 
 function App() {
   const { data, loading, error } = useDashboardData();
+  const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
 
   if (error) {
     return (
@@ -325,6 +326,7 @@ function App() {
   }
 
   const latestReport = data.reports[0];
+  const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
 
   return (
     <main className="shell">
@@ -384,8 +386,8 @@ function App() {
       </section>
 
       <section className="report-grid">
-        <LatestReport report={latestReport} />
-        <ReportArchive reports={data.reports.slice(1, 7)} />
+        <LatestReport report={selectedReport} isLatest={selectedReport?.slug === latestReport?.slug} />
+        <ReportArchive reports={data.reports} selectedSlug={selectedReport?.slug} onSelect={setSelectedReportSlug} />
       </section>
 
       <footer className="disclaimer">
@@ -480,10 +482,10 @@ function ExpansionTable({ rows }: { rows: NonNullable<TrackerPayload["expansion_
   );
 }
 
-function LatestReport({ report }: { report?: Report }) {
+function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean }) {
   return (
     <section className="panel text-panel report-main">
-      <h2>最新深度报告</h2>
+      <h2>{isLatest ? "最新深度报告" : "历史深度报告"}</h2>
       {report ? (
         <>
           <div className="report-head">
@@ -507,17 +509,30 @@ function LatestReport({ report }: { report?: Report }) {
   );
 }
 
-function ReportArchive({ reports }: { reports: Report[] }) {
+function ReportArchive({
+  reports,
+  selectedSlug,
+  onSelect,
+}: {
+  reports: Report[];
+  selectedSlug?: string;
+  onSelect: (slug: string) => void;
+}) {
   return (
     <section className="panel text-panel">
       <h2>报告归档</h2>
       <div className="archive-list">
         {reports.length ? reports.map((report) => (
-          <article key={report.slug}>
+          <button
+            className={report.slug === selectedSlug ? "archive-item active" : "archive-item"}
+            key={report.slug}
+            onClick={() => onSelect(report.slug)}
+            type="button"
+          >
             <time>{report.date}</time>
             <strong>{report.title}</strong>
             <span>{report.rating} · {report.risk_level}风险</span>
-          </article>
+          </button>
         )) : <p>更多历史报告会在每日提交后自动归档。</p>}
       </div>
     </section>
@@ -533,6 +548,8 @@ function MarkdownBody({ body }: { body: string }) {
         .filter(Boolean)
         .map((block) => {
           if (block.startsWith("## ")) return <h3 key={block}>{block.replace(/^##\s+/, "")}</h3>;
+          if (block.startsWith("### ")) return <h4 key={block}>{block.replace(/^###\s+/, "")}</h4>;
+          if (block.startsWith("> ")) return <blockquote key={block}>{block.replace(/^>\s+/, "")}</blockquote>;
           if (block.startsWith("- ")) {
             return (
               <ul key={block}>

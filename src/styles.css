@@ -362,6 +362,21 @@ th {
   font-size: 16px;
 }
 
+.markdown-body h4 {
+  margin: 4px 0 0;
+  color: #172033;
+  font-size: 14px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+  padding: 8px 10px;
+  border-left: 3px solid #bfdbfe;
+  background: #f8fafc;
+  color: #526071;
+  line-height: 1.6;
+}
+
 .markdown-body ul {
   margin: 0;
   padding-left: 20px;
@@ -374,11 +389,34 @@ th {
   gap: 12px;
 }
 
-.archive-list article {
+.archive-item {
   display: grid;
   gap: 4px;
-  padding-bottom: 12px;
+  width: 100%;
+  padding: 0 0 12px;
   border-bottom: 1px solid #edf1f6;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.archive-item:hover strong,
+.archive-item.active strong {
+  color: #1d4ed8;
+}
+
+.archive-item.active {
+  border-bottom-color: #bfdbfe;
+}
+
+.archive-item:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 .disclaimer {
