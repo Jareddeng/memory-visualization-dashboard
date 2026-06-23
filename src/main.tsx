@@ -357,6 +357,43 @@ function makeStockTrendOption(stock: StockPoint, history: StockPoint[]): echarts
   };
 }
 
+function makeOverviewStockOption(stock: StockPoint, history: StockPoint[]): echarts.EChartsCoreOption {
+  const points = history.filter((point) => point.ticker === stock.ticker);
+  return {
+    color: [stock.change_pct >= 0 ? "#16805a" : "#c53d3d"],
+    tooltip: {
+      trigger: "axis",
+      confine: true,
+      formatter(params: unknown) {
+        const row = Array.isArray(params) ? (params[0] as any) : (params as any);
+        const date = row.value?.[0] ?? "";
+        const close = row.value?.[1] ?? "";
+        const changePct = row.data?.change_pct ?? 0;
+        const sign = changePct >= 0 ? "+" : "";
+        return `<strong>${date}</strong><br/>${stock.name}: ${close} ${stock.currency}<br/>涨跌幅：${sign}${changePct}%`;
+      },
+    },
+    grid: { left: 8, right: 8, top: 8, bottom: 22 },
+    xAxis: { type: "time", axisLabel: { show: false }, axisTick: { show: false }, axisLine: { show: false } },
+    yAxis: { type: "value", scale: true, axisLabel: { show: false }, axisTick: { show: false }, axisLine: { show: false }, splitLine: { show: false } },
+    series: [
+      {
+        name: stock.name,
+        type: "line",
+        smooth: true,
+        showSymbol: false,
+        lineStyle: { width: 2.4 },
+        areaStyle: { opacity: 0.08 },
+        emphasis: { focus: "series" },
+        data: points.map((point) => ({
+          value: [point.date, point.close],
+          change_pct: point.change_pct,
+        })),
+      },
+    ],
+  };
+}
+
 function App() {
   const { data, loading, error } = useDashboardData();
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
@@ -556,7 +593,7 @@ function OverviewPage({
     <>
       <section className="overview-market-grid">
         {latestStocks.map((stock) => (
-          <OverviewStockCard stock={stock} key={stock.ticker} />
+          <OverviewStockCard stock={stock} history={data.stocks.history} key={stock.ticker} />
         ))}
         <section className="panel text-panel overview-radar-panel">
           <div className="panel-header compact">
@@ -614,17 +651,22 @@ function OverviewPage({
   );
 }
 
-function OverviewStockCard({ stock }: { stock: StockPoint }) {
+function OverviewStockCard({ stock, history }: { stock: StockPoint; history: StockPoint[] }) {
   return (
     <article className="panel overview-stock-card">
-      <div>
-        <strong>{stock.name}</strong>
-        <span>{stock.ticker} · {stock.exchange}</span>
-        <small>价格日期：{stock.date} · 对比：{stock.previous_date ?? "上一交易日"} 收盘</small>
+      <div className="overview-stock-head">
+        <div>
+          <strong>{stock.name}</strong>
+          <span>{stock.ticker} · {stock.exchange}</span>
+          <small>价格日期：{stock.date} · 对比：{stock.previous_date ?? "上一交易日"} 收盘</small>
+        </div>
+        <div className="overview-stock-price">
+          {stock.close.toLocaleString()} {stock.currency}
+          <b className={stock.change_pct >= 0 ? "up" : "down"}>{stock.change_pct >= 0 ? "+" : ""}{stock.change_pct}%</b>
+        </div>
       </div>
-      <div className="overview-stock-price">
-        {stock.close.toLocaleString()} {stock.currency}
-        <b className={stock.change_pct >= 0 ? "up" : "down"}>{stock.change_pct >= 0 ? "+" : ""}{stock.change_pct}%</b>
+      <div className="overview-stock-chart">
+        <Chart option={makeOverviewStockOption(stock, history)} />
       </div>
     </article>
   );
@@ -1093,7 +1135,7 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
       </div>
       {filtered.length ? (
         <div className="radar-list">
-          {filtered.slice(0, 8).map((record) => (
+          {filtered.slice(0, 12).map((record) => (
             <article className="radar-item" key={record.id}>
               <div>
                 <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>

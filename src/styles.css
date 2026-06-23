@@ -419,14 +419,14 @@ h2 {
 .overview-market-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(360px, 1.05fr);
-  grid-template-rows: repeat(2, minmax(148px, auto));
+  grid-template-rows: repeat(4, minmax(116px, auto));
   gap: 16px;
   align-items: stretch;
 }
 
 .overview-radar-panel {
   grid-column: 3;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 4;
 }
 
 .kpi-card,
@@ -529,15 +529,24 @@ h2 {
 }
 
 .overview-stock-card {
-  min-height: 148px;
+  min-height: 248px;
   display: grid;
-  gap: 14px;
-  align-content: space-between;
+  grid-row: span 2;
+  grid-template-rows: auto minmax(110px, 1fr);
+  gap: 12px;
 }
 
-.overview-stock-card div:first-child {
+.overview-stock-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.overview-stock-head > div:first-child {
   display: grid;
   gap: 6px;
+  min-width: 0;
 }
 
 .overview-stock-card strong {
@@ -551,16 +560,23 @@ h2 {
 }
 
 .overview-stock-price {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: end;
-  font-size: 24px;
+  display: grid;
+  gap: 5px;
+  justify-items: end;
+  flex: 0 0 auto;
+  font-size: 21px;
   font-weight: 850;
+  text-align: right;
 }
 
 .overview-stock-price b {
   font-size: 14px;
+}
+
+.overview-stock-chart,
+.overview-stock-chart .chart {
+  min-height: 120px;
+  height: 100%;
 }
 
 .stock-price {
