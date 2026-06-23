@@ -117,7 +117,20 @@ type AppData = {
   metadata: Metadata;
 };
 
-type PageKey = "markets" | "industry" | "reports";
+type PageKey = "overview" | "markets" | "industry" | "reports";
+
+type IntelRecord = {
+  id: string;
+  type: string;
+  impact: "bullish" | "bearish" | "neutral";
+  date: string;
+  title: string;
+  product: string;
+  source: string;
+  summary: string;
+};
+
+const INTEL_STORAGE_KEY = "storage-dashboard-intel-records-v1";
 
 function useJson<T>(url: string) {
   const [data, setData] = React.useState<T | null>(null);
@@ -329,8 +342,11 @@ function makeStockTrendOption(stock: StockPoint, history: StockPoint[]): echarts
 
 function App() {
   const { data, loading, error } = useDashboardData();
-  const [activePage, setActivePage] = React.useState<PageKey>("markets");
+  const [activePage, setActivePage] = React.useState<PageKey>("overview");
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
+  const [query, setQuery] = React.useState("");
+  const [intelRecords, setIntelRecords] = useLocalIntelRecords();
+  const [captureOpen, setCaptureOpen] = React.useState(false);
 
   if (error) {
     return (
@@ -357,6 +373,7 @@ function App() {
 
   const latestReport = data.reports[0];
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
+  const searchResults = query.trim() ? searchDashboard(data, intelRecords, query) : [];
 
   return (
     <div className="app-shell">
@@ -380,15 +397,23 @@ function App() {
 
       <main className="workspace">
         <header className="topbar">
-          <div className="search-box">
+          <label className="search-box">
             <span aria-hidden="true">⌕</span>
-            <span>DRAM / NAND / HBM / 报告 / 产业链</span>
-          </div>
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="搜索 DRAM、NAND、HBM、报告、产业链、情报"
+              type="search"
+            />
+          </label>
           <div className="topbar-actions">
-            <button className="ghost-button" type="button" onClick={() => setActivePage("reports")}>查看报告</button>
+            <button className="ghost-button" type="button" onClick={() => exportIntelligence(data, intelRecords)}>导出情报</button>
+            <button className="primary-button" type="button" onClick={() => setCaptureOpen(true)}>新增情报</button>
             <button className="primary-button" type="button" onClick={() => setActivePage("markets")}>市场图表</button>
           </div>
         </header>
+
+        {query.trim() ? <SearchResults results={searchResults} onClear={() => setQuery("")} /> : null}
 
         <Hero data={data} latestReport={latestReport} />
 
@@ -399,6 +424,7 @@ function App() {
           <KpiCard icon={<CalendarClock />} label="更新频率" value="每日两次" hint="北京时间 08:30 / 18:30" />
         </section>
 
+        {activePage === "overview" ? <OverviewPage data={data} latestReport={latestReport} intelRecords={intelRecords} /> : null}
         {activePage === "markets" ? <MarketsPage data={data} /> : null}
         {activePage === "industry" ? <IndustryPage data={data} /> : null}
         {activePage === "reports" ? (
@@ -413,6 +439,15 @@ function App() {
         <footer className="disclaimer">
           交易评价与风险提示仅用于行业跟踪和研究记录，不构成投资建议。请结合授权行情、公司公告和自身风险承受能力独立判断。
         </footer>
+        {captureOpen ? (
+          <IntelCaptureModal
+            onClose={() => setCaptureOpen(false)}
+            onSave={(record) => {
+              setIntelRecords([record, ...intelRecords]);
+              setCaptureOpen(false);
+            }}
+          />
+        ) : null}
       </main>
     </div>
   );
@@ -420,6 +455,7 @@ function App() {
 
 function PageNav({ activePage, onChange }: { activePage: PageKey; onChange: (page: PageKey) => void }) {
   const pages: Array<{ key: PageKey; label: string; detail: string }> = [
+    { key: "overview", label: "概览", detail: "关键指标 / 情报" },
     { key: "markets", label: "市场图表", detail: "价格与股价" },
     { key: "industry", label: "产业跟踪", detail: "长协 / 扩产 / 图谱" },
     { key: "reports", label: "报告库", detail: "日报 / 归档 / 导图" },
@@ -458,6 +494,95 @@ function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) 
         </div>
       </div>
     </section>
+  );
+}
+
+function OverviewPage({
+  data,
+  latestReport,
+  intelRecords,
+}: {
+  data: AppData;
+  latestReport?: Report;
+  intelRecords: IntelRecord[];
+}) {
+  const latestStocks = data.stocks.latest.slice(0, 3);
+  const hbmEvents = data.trackers.hbm4_negotiations ?? [];
+  return (
+    <>
+      <section className="dashboard-grid">
+        <section className="panel text-panel">
+          <div className="panel-header compact">
+            <div>
+              <p className="section-kicker">Overview</p>
+              <h2>今日核心信号</h2>
+            </div>
+          </div>
+          <div className="signal-list">
+            {latestStocks.map((stock) => (
+              <article className="signal-item" key={stock.ticker}>
+                <strong>{stock.name}</strong>
+                <p>
+                  {stock.date} 收盘 {stock.close.toLocaleString()} {stock.currency}，
+                  较 {stock.previous_date ?? "上一交易日"} {stock.change_pct >= 0 ? "上涨" : "下跌"} {Math.abs(stock.change_pct)}%。
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="panel text-panel">
+          <div className="panel-header compact">
+            <div>
+              <p className="section-kicker">Latest Report</p>
+              <h2>最新深度报告</h2>
+            </div>
+          </div>
+          {latestReport ? (
+            <article className="analysis-item">
+              <strong>{latestReport.title}</strong>
+              <p>{latestReport.summary}</p>
+              <div className="meta-row">
+                <span className="pill neutral">{latestReport.rating}</span>
+                <span>{latestReport.date}</span>
+                <span>{latestReport.risk_level}风险</span>
+              </div>
+            </article>
+          ) : (
+            <div className="empty-state">暂无报告</div>
+          )}
+        </section>
+      </section>
+
+      <section className="two-column">
+        <section className="panel text-panel">
+          <div className="panel-header compact">
+            <div>
+              <p className="section-kicker">Industry Watch</p>
+              <h2>产业事件速览</h2>
+            </div>
+          </div>
+          <div className="timeline">
+            {hbmEvents.slice(0, 3).map((item) => (
+              <article className="timeline-item neutral" key={`${item.date}-${item.title}`}>
+                <span className="timeline-date">{item.date} · {item.status}</span>
+                <strong>{item.title}</strong>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+            {!hbmEvents.length ? <div className="empty-state">等待产业事件更新</div> : null}
+          </div>
+        </section>
+        <section className="panel text-panel">
+          <div className="panel-header compact">
+            <div>
+              <p className="section-kicker">Local Intel</p>
+              <h2>本地新增情报</h2>
+            </div>
+          </div>
+          <IntelFeed records={intelRecords} />
+        </section>
+      </section>
+    </>
   );
 }
 
@@ -822,6 +947,97 @@ function MarkdownBody({ body }: { body: string }) {
   );
 }
 
+function SearchResults({ results, onClear }: { results: Array<{ type: string; title: string; detail: string }>; onClear: () => void }) {
+  return (
+    <section className="panel search-results">
+      <div className="panel-header compact">
+        <div>
+          <p className="section-kicker">Search</p>
+          <h2>搜索结果</h2>
+        </div>
+        <button className="ghost-button" onClick={onClear} type="button">清除</button>
+      </div>
+      {results.length ? (
+        <div className="feed-grid">
+          {results.slice(0, 12).map((item, index) => (
+            <article className="feed-item" key={`${item.type}-${item.title}-${index}`}>
+              <strong>{item.title}</strong>
+              <p>{item.detail}</p>
+              <div className="meta-row"><span className="pill neutral">{item.type}</span></div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state">没有匹配结果</div>
+      )}
+    </section>
+  );
+}
+
+function IntelFeed({ records }: { records: IntelRecord[] }) {
+  if (!records.length) return <div className="empty-state">还没有本地情报，点击右上角“新增情报”录入。</div>;
+  return (
+    <div className="feed-grid single">
+      {records.slice(0, 6).map((record) => (
+        <article className="feed-item" key={record.id}>
+          <strong>{record.title}</strong>
+          <p>{record.summary}</p>
+          <div className="meta-row">
+            <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>
+            <span>{record.type}</span>
+            <span>{record.date}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function IntelCaptureModal({ onClose, onSave }: { onClose: () => void; onSave: (record: IntelRecord) => void }) {
+  const today = new Date().toISOString().slice(0, 10);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    onSave({
+      id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+      type: String(form.get("type") || "消息"),
+      impact: String(form.get("impact") || "neutral") as IntelRecord["impact"],
+      date: String(form.get("date") || today),
+      title: String(form.get("title") || "").trim(),
+      product: String(form.get("product") || "").trim(),
+      source: String(form.get("source") || "本地录入").trim(),
+      summary: String(form.get("summary") || "").trim(),
+    });
+  };
+
+  return (
+    <div className="modal-backdrop" role="presentation" onClick={onClose}>
+      <section className="mindmap-modal capture-modal" role="dialog" aria-modal="true" aria-label="新增情报" onClick={(event) => event.stopPropagation()}>
+        <header>
+          <div>
+            <span>Capture</span>
+            <h2>新增情报</h2>
+          </div>
+          <button aria-label="关闭新增情报" onClick={onClose} type="button">关闭</button>
+        </header>
+        <form className="intel-form" onSubmit={handleSubmit}>
+          <label>类型<select name="type"><option>产品数据</option><option>行业分析</option><option>重大事件</option><option>消息</option></select></label>
+          <label>影响<select name="impact"><option value="bullish">利好</option><option value="bearish">利空</option><option value="neutral">中性</option></select></label>
+          <label>日期<input name="date" type="date" defaultValue={today} required /></label>
+          <label>标题<input name="title" type="text" maxLength={80} required /></label>
+          <label>相关产品<input name="product" type="text" maxLength={80} placeholder="HBM / DDR5 / NAND" /></label>
+          <label>来源<input name="source" type="text" maxLength={100} placeholder="公司公告 / 研报 / 调研" /></label>
+          <label className="wide">摘要<textarea name="summary" rows={5} maxLength={500} required /></label>
+          <div className="form-actions">
+            <button className="primary-button" type="submit">保存情报</button>
+            <button className="ghost-button" type="reset">重置</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  );
+}
+
 function formatDateTime(value: string) {
   return new Intl.DateTimeFormat("zh-CN", {
     dateStyle: "medium",
@@ -832,6 +1048,75 @@ function formatDateTime(value: string) {
 
 function dataSourceLabel(exchange: string) {
   return exchange === "KRX" || exchange === "NASDAQ" ? "Yahoo Finance" : "公开行情源";
+}
+
+function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAction<IntelRecord[]>>] {
+  const [records, setRecords] = React.useState<IntelRecord[]>(() => {
+    try {
+      return JSON.parse(localStorage.getItem(INTEL_STORAGE_KEY) || "[]") as IntelRecord[];
+    } catch {
+      return [];
+    }
+  });
+  React.useEffect(() => {
+    localStorage.setItem(INTEL_STORAGE_KEY, JSON.stringify(records));
+  }, [records]);
+  return [records, setRecords];
+}
+
+function searchDashboard(data: AppData, records: IntelRecord[], query: string) {
+  const needle = query.toLowerCase();
+  const items: Array<{ type: string; title: string; detail: string; haystack: string }> = [];
+  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}` }));
+  data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}` }));
+  (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}` }));
+  (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}` }));
+  records.forEach((record) => items.push({ type: "本地情报", title: record.title, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.summary}` }));
+  return items.filter((item) => item.haystack.toLowerCase().includes(needle));
+}
+
+function exportIntelligence(data: AppData, records: IntelRecord[]) {
+  const rows = [
+    ...records.map((record) => ({
+      date: record.date,
+      type: record.type,
+      title: record.title,
+      product: record.product,
+      impact: impactLabel(record.impact),
+      source: record.source,
+      summary: record.summary,
+    })),
+    ...data.reports.map((report) => ({
+      date: report.date,
+      type: "报告",
+      title: report.title,
+      product: "存储行业",
+      impact: report.rating,
+      source: report.sources.join("、"),
+      summary: report.summary,
+    })),
+  ];
+  const headers = ["date", "type", "title", "product", "impact", "source", "summary"];
+  const csv = [headers.join(","), ...rows.map((row) => headers.map((key) => csvCell(row[key as keyof typeof row])).join(","))].join("\n");
+  const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `storage-intel-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function csvCell(value: unknown) {
+  return `"${String(value ?? "").replaceAll('"', '""')}"`;
+}
+
+function impactLabel(value: IntelRecord["impact"]) {
+  if (value === "bullish") return "利好";
+  if (value === "bearish") return "利空";
+  return "中性";
 }
 
 createRoot(document.getElementById("root")!).render(<App />);
