@@ -132,6 +132,14 @@ type IntelRecord = {
 };
 
 type ImpactFilter = "all" | IntelRecord["impact"];
+type TimeRange = "all" | "7d" | "30d" | "90d";
+type SearchItem = {
+  type: string;
+  title: string;
+  detail: string;
+  date?: string;
+  haystack: string;
+};
 
 const INTEL_STORAGE_KEY = "storage-dashboard-intel-records-v1";
 
@@ -350,6 +358,7 @@ function App() {
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
+  const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
   const [intelRecords, setIntelRecords] = useLocalIntelRecords();
   const [captureOpen, setCaptureOpen] = React.useState(false);
 
@@ -379,7 +388,7 @@ function App() {
   const latestReport = data.reports[0];
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
   const allIntelRecords = [...data.intel, ...intelRecords];
-  const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query) : [];
+  const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
   const hbmPressure = getHbmPressure(data);
 
   return (
@@ -404,6 +413,15 @@ function App() {
 
       <main className="workspace">
         <header className="topbar">
+          <label className="time-filter">
+            <span>周期</span>
+            <select value={timeRange} onChange={(event) => setTimeRange(event.target.value as TimeRange)}>
+              <option value="all">全部周期</option>
+              <option value="7d">最近7天</option>
+              <option value="30d">最近30天</option>
+              <option value="90d">最近90天</option>
+            </select>
+          </label>
           <label className="search-box">
             <span aria-hidden="true">⌕</span>
             <input
@@ -416,11 +434,10 @@ function App() {
           <div className="topbar-actions">
             <button className="ghost-button" type="button" onClick={() => exportIntelligence(data, allIntelRecords)}>导出情报</button>
             <button className="primary-button" type="button" onClick={() => setCaptureOpen(true)}>新增情报</button>
-            <button className="primary-button" type="button" onClick={() => setActivePage("intel")}>情报库</button>
           </div>
         </header>
 
-        {query.trim() ? <SearchResults results={searchResults} onClear={() => setQuery("")} /> : null}
+        {query.trim() ? <SearchResults results={searchResults} timeRange={timeRange} onClear={() => setQuery("")} /> : null}
 
         <Hero data={data} latestReport={latestReport} />
 
@@ -964,13 +981,14 @@ function MarkdownBody({ body }: { body: string }) {
   );
 }
 
-function SearchResults({ results, onClear }: { results: Array<{ type: string; title: string; detail: string }>; onClear: () => void }) {
+function SearchResults({ results, timeRange, onClear }: { results: SearchItem[]; timeRange: TimeRange; onClear: () => void }) {
   return (
     <section className="panel search-results">
       <div className="panel-header compact">
         <div>
           <p className="section-kicker">Search</p>
           <h2>搜索结果</h2>
+          <small className="search-scope">{timeRangeLabel(timeRange)}</small>
         </div>
         <button className="ghost-button" onClick={onClear} type="button">清除</button>
       </div>
@@ -1308,15 +1326,46 @@ function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAc
   return [records, setRecords];
 }
 
-function searchDashboard(data: AppData, records: IntelRecord[], query: string) {
+function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
-  const items: Array<{ type: string; title: string; detail: string; haystack: string }> = [];
-  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}` }));
-  data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}` }));
-  (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}` }));
-  (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}` }));
-  records.forEach((record) => items.push({ type: "本地情报", title: record.title, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.summary}` }));
-  return items.filter((item) => item.haystack.toLowerCase().includes(needle));
+  const items: SearchItem[] = [];
+  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}` }));
+  data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}` }));
+  (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}` }));
+  (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}` }));
+  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.summary}` }));
+  return items
+    .filter((item) => isWithinTimeRange(item.date, timeRange, data.metadata.generated_at))
+    .filter((item) => item.haystack.toLowerCase().includes(needle));
+}
+
+function isWithinTimeRange(date: string | undefined, range: TimeRange, anchor: string) {
+  if (range === "all") return true;
+  if (!date) return false;
+  const days = range === "7d" ? 7 : range === "30d" ? 30 : 90;
+  const anchorTime = new Date(anchor).getTime();
+  const itemTime = new Date(`${date}T00:00:00`).getTime();
+  if (!Number.isFinite(anchorTime) || !Number.isFinite(itemTime)) return false;
+  const diffDays = Math.floor((startOfDay(anchorTime) - startOfDay(itemTime)) / 86400000);
+  return diffDays >= 0 && diffDays <= days;
+}
+
+function startOfDay(time: number) {
+  const date = new Date(time);
+  date.setHours(0, 0, 0, 0);
+  return date.getTime();
+}
+
+function dateFromText(value: string) {
+  const match = String(value || "").match(/20\d{2}-\d{2}-\d{2}/);
+  return match?.[0];
+}
+
+function timeRangeLabel(range: TimeRange) {
+  if (range === "7d") return "范围：最近7天";
+  if (range === "30d") return "范围：最近30天";
+  if (range === "90d") return "范围：最近90天";
+  return "范围：全部周期";
 }
 
 function exportIntelligence(data: AppData, records: IntelRecord[]) {

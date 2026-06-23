@@ -188,7 +188,7 @@ select {
   top: 0;
   z-index: 10;
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) auto;
+  grid-template-columns: minmax(140px, 180px) minmax(260px, 1fr) auto;
   gap: 12px;
   align-items: center;
   padding: 10px;
@@ -196,6 +196,33 @@ select {
   border-radius: var(--radius);
   background: rgba(245, 247, 246, 0.88);
   backdrop-filter: blur(14px);
+}
+
+.time-filter {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.time-filter span {
+  color: var(--subtle);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.time-filter select {
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  outline: none;
+  font-weight: 700;
 }
 
 .search-box {
@@ -862,6 +889,13 @@ td small {
 
 .search-results {
   border-color: rgba(20, 124, 114, 0.24);
+}
+
+.search-scope {
+  display: block;
+  margin-top: 4px;
+  color: var(--subtle);
+  font-size: 12px;
 }
 
 .timeline {
