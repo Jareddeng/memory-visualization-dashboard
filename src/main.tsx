@@ -359,46 +359,76 @@ function App() {
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
 
   return (
-    <main className="shell">
-      <Header data={data} />
-      <section className="kpi-grid">
-        <KpiCard icon={<Database />} label="价格数据点" value={String(data.metadata.price_points)} hint="DRAM / NAND CSV 与 XLSX 汇总" />
-        <KpiCard icon={<TrendingUp />} label="股票数据点" value={String(data.metadata.stock_points)} hint={data.stocks.source} />
-        <KpiCard icon={<FileText />} label="最新报告" value={latestReport?.date ?? "暂无"} hint={latestReport?.rating ?? "等待 clawbot 提交"} />
-        <KpiCard icon={<CalendarClock />} label="更新频率" value="每日两次" hint="北京时间 08:30 / 18:30" />
-      </section>
+    <div className="app-shell">
+      <aside className="side-nav" aria-label="主导航">
+        <div className="brand">
+          <span className="brand-mark" aria-hidden="true"></span>
+          <div>
+            <strong>Storage Intel</strong>
+            <span>存储行业数据舱</span>
+          </div>
+        </div>
+        <PageNav activePage={activePage} onChange={setActivePage} />
+        <div className="source-status">
+          <span className="status-dot"></span>
+          <div>
+            <strong>Action 生成</strong>
+            <span>{formatDateTime(data.metadata.generated_at)}</span>
+          </div>
+        </div>
+      </aside>
 
-      <PageNav activePage={activePage} onChange={setActivePage} />
+      <main className="workspace">
+        <header className="topbar">
+          <div className="search-box">
+            <span aria-hidden="true">⌕</span>
+            <span>DRAM / NAND / HBM / 报告 / 产业链</span>
+          </div>
+          <div className="topbar-actions">
+            <button className="ghost-button" type="button" onClick={() => setActivePage("reports")}>查看报告</button>
+            <button className="primary-button" type="button" onClick={() => setActivePage("markets")}>市场图表</button>
+          </div>
+        </header>
 
-      {activePage === "markets" ? <MarketsPage data={data} /> : null}
-      {activePage === "industry" ? <IndustryPage data={data} /> : null}
-      {activePage === "reports" ? (
-        <ReportsPage
-          latestReport={latestReport}
-          reports={data.reports}
-          selectedReport={selectedReport}
-          onSelectReport={setSelectedReportSlug}
-        />
-      ) : null}
+        <Hero data={data} latestReport={latestReport} />
 
-      <footer className="disclaimer">
-        交易评价与风险提示仅用于行业跟踪和研究记录，不构成投资建议。请结合授权行情、公司公告和自身风险承受能力独立判断。
-      </footer>
-    </main>
+        <section className="kpi-grid">
+          <KpiCard icon={<Database />} label="价格数据点" value={String(data.metadata.price_points)} hint="DRAM / NAND 历史价格" />
+          <KpiCard icon={<TrendingUp />} label="股票数据点" value={String(data.metadata.stock_points)} hint={data.stocks.source} />
+          <KpiCard icon={<FileText />} label="最新报告" value={latestReport?.date ?? "暂无"} hint={latestReport?.rating ?? "等待 clawbot 提交"} />
+          <KpiCard icon={<CalendarClock />} label="更新频率" value="每日两次" hint="北京时间 08:30 / 18:30" />
+        </section>
+
+        {activePage === "markets" ? <MarketsPage data={data} /> : null}
+        {activePage === "industry" ? <IndustryPage data={data} /> : null}
+        {activePage === "reports" ? (
+          <ReportsPage
+            latestReport={latestReport}
+            reports={data.reports}
+            selectedReport={selectedReport}
+            onSelectReport={setSelectedReportSlug}
+          />
+        ) : null}
+
+        <footer className="disclaimer">
+          交易评价与风险提示仅用于行业跟踪和研究记录，不构成投资建议。请结合授权行情、公司公告和自身风险承受能力独立判断。
+        </footer>
+      </main>
+    </div>
   );
 }
 
 function PageNav({ activePage, onChange }: { activePage: PageKey; onChange: (page: PageKey) => void }) {
   const pages: Array<{ key: PageKey; label: string; detail: string }> = [
     { key: "markets", label: "市场图表", detail: "价格与股价" },
-    { key: "industry", label: "产业跟踪", detail: "长协与扩产" },
-    { key: "reports", label: "报告库", detail: "日报与归档" },
+    { key: "industry", label: "产业跟踪", detail: "长协 / 扩产 / 图谱" },
+    { key: "reports", label: "报告库", detail: "日报 / 归档 / 导图" },
   ];
   return (
-    <nav className="page-nav" aria-label="看板分区导航">
+    <nav className="nav-list" aria-label="看板分区导航">
       {pages.map((page) => (
         <button
-          className={activePage === page.key ? "page-nav-item active" : "page-nav-item"}
+          className={activePage === page.key ? "nav-item active" : "nav-item"}
           key={page.key}
           onClick={() => onChange(page.key)}
           type="button"
@@ -408,6 +438,26 @@ function PageNav({ activePage, onChange }: { activePage: PageKey; onChange: (pag
         </button>
       ))}
     </nav>
+  );
+}
+
+function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) {
+  return (
+    <section className="intel-hero">
+      <img src="./assets/storage-supply-chain.png" alt="存储产业链视觉图" />
+      <div className="hero-overlay">
+        <div>
+          <p className="eyebrow">DRAM / NAND / HBM / EQUITY / REPORT</p>
+          <h1>存储行业可视化看板</h1>
+          <p>跟踪价格、股票、长协谈判、扩产计划、产业链图谱和每日深度报告。</p>
+        </div>
+        <div className="hero-signal">
+          <span>最新报告</span>
+          <strong>{latestReport?.rating ?? "待更新"}</strong>
+          <small>{latestReport?.date ?? formatDateTime(data.metadata.generated_at)}</small>
+        </div>
+      </div>
+    </section>
   );
 }
 
