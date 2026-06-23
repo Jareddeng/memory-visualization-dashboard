@@ -160,7 +160,6 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
     data: item.points.map((point) => ({
       value: [point.date, point.price],
       source: point.source,
-      note: point.note,
       unit: item.unit,
     })),
   }));
@@ -179,9 +178,8 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
             const price = row.value?.[1] ?? "";
             const unit = row.data?.unit ?? "";
             const source = row.data?.source ?? "";
-            const note = row.data?.note ? `<br/>备注：${row.data.note}` : "";
             const head = index === 0 ? `<strong>${date}</strong><br/>` : "";
-            return `${head}${row.marker}${row.seriesName}: ${price} ${unit}<br/>来源：${source}${note}`;
+            return `${head}${row.marker}${row.seriesName}: ${price} ${unit}<br/>来源：${source}`;
           })
           .join("<br/>");
       },
@@ -190,10 +188,12 @@ function makePriceOption(title: string, payload: { series: PriceSeries[] }): ech
       top: 28,
       left: 8,
       right: 8,
-      itemGap: 14,
-      textStyle: { color: "#526071" },
+      itemWidth: 12,
+      itemHeight: 7,
+      itemGap: 8,
+      textStyle: { color: "#526071", fontSize: 11 },
     },
-    grid: { left: 52, right: 22, top: 96, bottom: 78 },
+    grid: { left: 52, right: 22, top: 82, bottom: 78 },
     xAxis: { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
     yAxis: {
       type: "value",

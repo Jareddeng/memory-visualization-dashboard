@@ -103,9 +103,9 @@ async function loadRemotePriceSources() {
       const parsed = JSON.parse(text);
       const records = Array.isArray(parsed) ? parsed : parsed.records || parsed.prices || [];
       if (!Array.isArray(records)) throw new Error(`Remote price JSON must be an array or contain records/prices: ${url}`);
-      rows.push(...records.map((row) => ({ ...row, source: row.source || url })));
+      rows.push(...records.map((row) => ({ ...row, source: row.source || sourceNameFromUrl(url) })));
     } else {
-      rows.push(...parseCsv(text).map((row) => ({ ...row, source: row.source || url })));
+      rows.push(...parseCsv(text).map((row) => ({ ...row, source: row.source || sourceNameFromUrl(url) })));
     }
   }
   return rows;
@@ -122,6 +122,14 @@ function inferRemoteContentType(url, text) {
   if (/\.json($|\?)/i.test(url)) return "json";
   if (/^\s*[\[{]/.test(text)) return "json";
   return "csv";
+}
+
+function sourceNameFromUrl(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
 }
 
 async function loadCsvPrices() {
@@ -168,7 +176,7 @@ function inferWorkbookRows(file, sheetName, matrix) {
 
   const category = /nand/i.test(`${file} ${sheetName}`) ? "NAND" : "DRAM";
   const market_type = /合约/.test(`${file} ${sheetName}`) ? "contract_avg" : "spot";
-  const source = `Local Excel: ${file}`;
+  const source = "WIND";
   const unit = "USD";
   const output = [];
 

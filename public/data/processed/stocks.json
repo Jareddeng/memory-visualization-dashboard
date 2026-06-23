@@ -6,9 +6,9 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 2763000,
-      "change": -156000,
-      "change_pct": -5.34
+      "close": 2750000,
+      "change": -169000,
+      "change_pct": -5.79
     },
     {
       "date": "2026-06-23",
@@ -16,9 +16,9 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 339500,
-      "change": -14000,
-      "change_pct": -3.96
+      "close": 337750,
+      "change": -15750,
+      "change_pct": -4.46
     },
     {
       "date": "2026-06-22",
@@ -1208,9 +1208,9 @@
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 2763000,
-      "change": -156000,
-      "change_pct": -5.34
+      "close": 2750000,
+      "change": -169000,
+      "change_pct": -5.79
     },
     {
       "date": "2025-12-26",
@@ -2388,9 +2388,9 @@
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
-      "close": 339500,
-      "change": -14000,
-      "change_pct": -3.96
+      "close": 337750,
+      "change": -15750,
+      "change_pct": -4.46
     },
     {
       "date": "2025-12-26",
@@ -3604,5 +3604,5 @@
     }
   ],
   "source": "Yahoo Finance chart API (daily close)",
-  "generated_at": "2026-06-23T02:47:44.657Z"
+  "generated_at": "2026-06-23T02:53:23.375Z"
 }
