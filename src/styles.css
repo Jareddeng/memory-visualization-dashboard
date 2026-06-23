@@ -480,6 +480,27 @@ th {
   font-size: 20px;
 }
 
+.report-actions {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.mindmap-button {
+  width: fit-content;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 7px 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mindmap-button:hover {
+  background: #dbeafe;
+}
+
 .badges {
   display: flex;
   gap: 8px;
@@ -563,6 +584,103 @@ th {
   border-radius: 6px;
 }
 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.34);
+}
+
+.mindmap-modal {
+  width: min(1120px, 100%);
+  max-height: min(760px, calc(100vh - 48px));
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  border: 1px solid #dfe7f1;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 18px;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.24);
+}
+
+.mindmap-modal header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.mindmap-modal header span,
+.mindmap-modal > small {
+  color: #607086;
+  font-size: 12px;
+}
+
+.mindmap-modal h2 {
+  margin: 4px 0 0;
+  font-size: 20px;
+}
+
+.mindmap-modal header button {
+  border: 1px solid #d8e0ea;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #172033;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.mindmap-canvas {
+  min-height: 360px;
+  overflow: auto;
+  border: 1px solid #edf1f6;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #fbfdff 0%, #f8fafc 100%);
+  padding: 18px;
+}
+
+.mindmap-root,
+.mindmap-node {
+  display: grid;
+  gap: 10px;
+  min-width: max-content;
+}
+
+.mindmap-root > .mindmap-label {
+  max-width: 360px;
+  background: #172033;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.mindmap-label {
+  width: fit-content;
+  max-width: 320px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #172033;
+  padding: 9px 11px;
+  line-height: 1.45;
+  white-space: normal;
+}
+
+.mindmap-children {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding-left: 18px;
+  border-left: 2px solid #dbeafe;
+}
+
+.mindmap-node .mindmap-children {
+  margin-left: 8px;
+}
+
 .disclaimer {
   margin: 12px 0 0;
   padding: 14px 0 0;
@@ -640,8 +758,21 @@ th {
     flex-direction: column;
   }
 
+  .report-actions {
+    justify-items: start;
+  }
+
   .stock-price {
     justify-items: start;
+  }
+
+  .modal-backdrop {
+    padding: 10px;
+  }
+
+  .mindmap-modal {
+    max-height: calc(100vh - 20px);
+    padding: 13px;
   }
 
   .timeline article {

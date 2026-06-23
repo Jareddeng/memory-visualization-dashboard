@@ -62,6 +62,30 @@ reports/存储报告YYYYMMDD.docx
 
 The GitHub Action runs `npm run import:reports` before data generation. This converts `reports/*.docx` into `content/reports/YYYY-MM-DD.md`. Markdown is still preferred because it gives better control over title, rating, risk level, summary, and sources.
 
+### Optional Report Mind Map
+
+Clawbot may also submit a Markdown-outline mind map source file:
+
+```text
+reports/存储思维导图YYYYMMDD.txt
+```
+
+The filename date must match the report date. The data script compiles the txt file into the matching report JSON, and the site shows a `思维导图` button beside that report title.
+
+Supported outline syntax:
+
+```md
+## 一、核心结论
+- 周期定位：AI驱动存储行业进入强景气周期
+- 核心驱动：HBM、DDR5、大容量NAND需求
+### 子策略一：核心资产配置
+- 策略逻辑：长协锁定业绩能见度
+  1. 业绩确定性：长协增强能见度
+  2. 价格高增：DRAM/NAND 合约价上行
+```
+
+Keep the txt file UTF-8 encoded when possible. If the encoding is uncertain, still submit the file and note it in the PR body.
+
 ## Daily EDB Data Update PR
 
 Use this folder for EDB Excel updates:

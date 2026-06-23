@@ -54,6 +54,19 @@ type Report = {
   summary: string;
   sources: string[];
   body: string;
+  mindmap?: MindmapPayload | null;
+};
+
+type MindmapNode = {
+  title: string;
+  children?: MindmapNode[];
+};
+
+type MindmapPayload = {
+  title: string;
+  source_file: string;
+  format: string;
+  tree: MindmapNode;
 };
 
 type TrackerPayload = {
@@ -619,6 +632,12 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
 }
 
 function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean }) {
+  const [mindmapOpen, setMindmapOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    setMindmapOpen(false);
+  }, [report?.slug]);
+
   return (
     <section className="panel text-panel report-main">
       <h2>{isLatest ? "最新深度报告" : "历史深度报告"}</h2>
@@ -629,19 +648,73 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
               <strong>{report.title}</strong>
               <span>{report.date}</span>
             </div>
-            <div className="badges">
-              <b>{report.rating}</b>
-              <b>{report.risk_level}风险</b>
+            <div className="report-actions">
+              {report.mindmap ? (
+                <button className="mindmap-button" onClick={() => setMindmapOpen(true)} type="button">
+                  思维导图
+                </button>
+              ) : null}
+              <div className="badges">
+                <b>{report.rating}</b>
+                <b>{report.risk_level}风险</b>
+              </div>
             </div>
           </div>
           <p>{report.summary}</p>
           <MarkdownBody body={report.body} />
           {report.sources.length ? <small>来源：{report.sources.join("、")}</small> : null}
+          {report.mindmap && mindmapOpen ? (
+            <MindmapModal mindmap={report.mindmap} onClose={() => setMindmapOpen(false)} />
+          ) : null}
         </>
       ) : (
         <p>暂无报告。clawbot 可通过 PR 新增 `content/reports/YYYY-MM-DD.md`，合并后自动进入这里。</p>
       )}
     </section>
+  );
+}
+
+function MindmapModal({ mindmap, onClose }: { mindmap: MindmapPayload; onClose: () => void }) {
+  React.useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
+
+  return (
+    <div className="modal-backdrop" role="presentation" onClick={onClose}>
+      <section className="mindmap-modal" role="dialog" aria-modal="true" aria-label={mindmap.title} onClick={(event) => event.stopPropagation()}>
+        <header>
+          <div>
+            <span>Mind Map</span>
+            <h2>{mindmap.title}</h2>
+          </div>
+          <button aria-label="关闭思维导图" onClick={onClose} type="button">关闭</button>
+        </header>
+        <div className="mindmap-canvas">
+          <MindmapTree node={mindmap.tree} depth={0} />
+        </div>
+        <small>来源文件：{mindmap.source_file}</small>
+      </section>
+    </div>
+  );
+}
+
+function MindmapTree({ node, depth }: { node: MindmapNode; depth: number }) {
+  const children = node.children ?? [];
+  return (
+    <div className={depth === 0 ? "mindmap-root" : "mindmap-node"}>
+      <div className="mindmap-label">{node.title}</div>
+      {children.length ? (
+        <div className="mindmap-children">
+          {children.map((child, index) => (
+            <MindmapTree node={child} depth={depth + 1} key={`${child.title}-${index}`} />
+          ))}
+        </div>
+      ) : null}
+    </div>
   );
 }
 

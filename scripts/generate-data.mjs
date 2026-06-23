@@ -379,6 +379,7 @@ async function loadReports() {
   } catch {
     return [];
   }
+  const mindmaps = await loadReportMindmaps();
   const reports = [];
   for (const file of files.filter((name) => name.endsWith(".md"))) {
     const raw = await fs.readFile(path.join(reportsDir, file), "utf8");
@@ -393,9 +394,76 @@ async function loadReports() {
       summary: parsed.frontmatter.summary || "",
       sources: parseListValue(parsed.frontmatter.sources),
       body: parsed.body.trim(),
+      mindmap: mindmaps.get(date) ?? null,
     });
   }
   return reports.sort((a, b) => b.date.localeCompare(a.date));
+}
+
+async function loadReportMindmaps() {
+  const mindmaps = new Map();
+  let files = [];
+  try {
+    files = await fs.readdir(path.join(root, "reports"));
+  } catch {
+    return mindmaps;
+  }
+  for (const file of files.filter((name) => name.toLowerCase().endsWith(".txt"))) {
+    const date = dateFromTextFileName(file);
+    if (!date) continue;
+    const raw = await fs.readFile(path.join(root, "reports", file), "utf8");
+    const tree = parseMindmapMarkdown(raw, date);
+    if (tree.children.length) {
+      mindmaps.set(date, {
+        title: tree.title,
+        source_file: file,
+        format: "markdown-outline",
+        tree,
+      });
+    }
+  }
+  return mindmaps;
+}
+
+function dateFromTextFileName(file) {
+  const match = file.match(/(20\d{2})(\d{2})(\d{2})/);
+  return match ? `${match[1]}-${match[2]}-${match[3]}` : "";
+}
+
+function parseMindmapMarkdown(raw, date) {
+  const rootNode = { title: `${date} 思维导图`, children: [] };
+  const stack = [{ level: 0, node: rootNode }];
+  for (const line of raw.replace(/\u00a0/g, " ").split(/\r?\n/)) {
+    if (!line.trim()) continue;
+    const parsed = parseMindmapLine(line);
+    if (!parsed) continue;
+    while (stack.length > 1 && stack[stack.length - 1].level >= parsed.level) stack.pop();
+    const node = { title: parsed.title, children: [] };
+    stack[stack.length - 1].node.children.push(node);
+    stack.push({ level: parsed.level, node });
+  }
+  if (rootNode.children.length === 1 && rootNode.children[0].children.length) {
+    rootNode.title = rootNode.children[0].title;
+    rootNode.children = rootNode.children[0].children;
+  }
+  return rootNode;
+}
+
+function parseMindmapLine(line) {
+  const heading = line.match(/^(#{1,6})\s+(.+)$/);
+  if (heading) return { level: heading[1].length, title: cleanMindmapTitle(heading[2]) };
+
+  const bullet = line.match(/^(\s*)[-*+]\s+(.+)$/);
+  if (bullet) return { level: 6 + Math.floor(bullet[1].replace(/\t/g, "  ").length / 2), title: cleanMindmapTitle(bullet[2]) };
+
+  const numbered = line.match(/^(\s*)\d+[.)、]\s+(.+)$/);
+  if (numbered) return { level: 7 + Math.floor(numbered[1].replace(/\t/g, "  ").length / 2), title: cleanMindmapTitle(numbered[2]) };
+
+  return null;
+}
+
+function cleanMindmapTitle(value) {
+  return String(value).replace(/\*\*/g, "").trim();
 }
 
 async function loadTrackers() {
