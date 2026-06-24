@@ -1006,7 +1006,7 @@ function MindmapModal({ mindmap, onClose }: { mindmap: MindmapPayload; onClose: 
 function MindmapTree({ node, depth }: { node: MindmapNode; depth: number }) {
   const children = node.children ?? [];
   return (
-    <div className={depth === 0 ? "mindmap-root" : "mindmap-node"}>
+    <div className={depth === 0 ? "mindmap-root" : "mindmap-node"} style={{ ["--depth" as string]: depth }}>
       <div className="mindmap-label">{node.title}</div>
       {children.length ? (
         <div className="mindmap-children">
