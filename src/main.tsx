@@ -1222,7 +1222,7 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
       </div>
       {filtered.length ? (
         <div className="radar-list">
-          {filtered.slice(0, 12).map((record) => (
+          {filtered.map((record) => (
             <article className="radar-item" key={record.id}>
               <div>
                 <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>

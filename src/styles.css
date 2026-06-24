@@ -419,7 +419,7 @@ h2 {
 .overview-market-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(360px, 1.05fr);
-  grid-template-rows: repeat(4, minmax(116px, auto));
+  grid-template-rows: repeat(4, 116px);
   gap: 16px;
   align-items: stretch;
 }
@@ -427,6 +427,10 @@ h2 {
 .overview-radar-panel {
   grid-column: 3;
   grid-row: 1 / span 4;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
 }
 
 .kpi-card,
@@ -671,7 +675,10 @@ h2 {
 
 .message-radar {
   display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
   gap: 12px;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .radar-distribution {
@@ -770,7 +777,12 @@ h2 {
 
 .radar-list {
   display: grid;
+  align-content: start;
   gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-gutter: stable;
 }
 
 .radar-item {
