@@ -123,7 +123,7 @@ type PageKey = "overview" | "markets" | "industry" | "reports" | "intel";
 type IntelRecord = {
   id: string;
   type: string;
-  impact: "bullish" | "bearish" | "neutral" | "mixed";
+  impact: "bullish" | "bearish" | "neutral";
   date: string;
   title: string;
   product: string;
@@ -158,8 +158,7 @@ const INTEL_STORAGE_KEY = "storage-dashboard-intel-records-v1";
 const directionOptions = [
   { value: "bullish", label: "利多", detail: "可能提升盈利预期、估值预期或市场情绪" },
   { value: "bearish", label: "利空", detail: "可能压制盈利预期、估值预期或市场情绪" },
-  { value: "neutral", label: "中性", detail: "暂时没有明确方向，或影响较弱" },
-  { value: "mixed", label: "双向", detail: "对不同资产、环节或周期的影响方向不同" },
+  { value: "neutral", label: "中性", detail: "暂时没有明确方向、影响较弱，或对不同环节/周期影响方向不一致" },
 ] as const;
 
 const importanceOptions = [
@@ -1138,22 +1137,20 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
     { key: "bullish", label: "利多" },
     { key: "bearish", label: "利空" },
     { key: "neutral", label: "中性" },
-    { key: "mixed", label: "双向" },
   ];
-  const filtered = filter === "all" ? records : records.filter((record) => record.impact === filter);
+  const filtered = filter === "all" ? records : records.filter((record) => normalizedImpact(record.impact) === filter);
   const total = records.length || 1;
   const distribution: Array<{ key: IntelRecord["impact"]; label: string }> = [
     { key: "bullish", label: "利多" },
     { key: "bearish", label: "利空" },
     { key: "neutral", label: "中性" },
-    { key: "mixed", label: "双向" },
   ];
 
   return (
     <div className="message-radar">
       <div className="radar-distribution" aria-label="利好利空分布">
         {distribution.map((item) => {
-          const count = records.filter((record) => record.impact === item.key).length;
+          const count = records.filter((record) => normalizedImpact(record.impact) === item.key).length;
           const percent = records.length ? Math.round((count / total) * 100) : 0;
           return (
             <div className={`distribution-row ${item.key}`} key={item.key}>
@@ -1412,7 +1409,7 @@ function IntelCaptureModal({ onClose, onSave }: { onClose: () => void; onSave: (
         </header>
         <form className="intel-form" onSubmit={handleSubmit}>
           <label>类型<select name="type"><option>产品数据</option><option>行业分析</option><option>重大事件</option><option>消息</option></select></label>
-          <label>方向<select name="impact"><option value="bullish">利多</option><option value="bearish">利空</option><option value="neutral">中性</option><option value="mixed">双向</option></select></label>
+          <label>方向<select name="impact"><option value="bullish">利多</option><option value="bearish">利空</option><option value="neutral">中性</option></select></label>
           <label>重要性<select name="importance"><option value="S">S级：核心基本面变化</option><option value="A">A级：强预期变化</option><option value="B">B级：情绪或主题变化</option><option value="C">C级：低相关信息</option></select></label>
           <label>市场反应类型<select name="reaction_type"><option value="instant">即时催化型</option><option value="undervalued">重要未定价型</option><option value="sentiment">情绪交易型</option><option value="archive">普通归档型</option></select></label>
           <label>定价状态<select name="pricing_status"><option value="unpriced">未反应</option><option value="partial">部分反应</option><option value="priced">已反应</option><option value="overpriced">过度反应</option><option value="failed">反应失败</option></select></label>
@@ -1594,10 +1591,15 @@ function csvCell(value: unknown) {
   return `"${String(value ?? "").replaceAll('"', '""')}"`;
 }
 
-function impactLabel(value: IntelRecord["impact"]) {
-  if (value === "bullish") return "利多";
-  if (value === "bearish") return "利空";
-  if (value === "mixed") return "双向";
+function normalizedImpact(value: unknown): IntelRecord["impact"] {
+  if (value === "bullish" || value === "bearish") return value;
+  return "neutral";
+}
+
+function impactLabel(value: unknown) {
+  const normalized = normalizedImpact(value);
+  if (normalized === "bullish") return "利多";
+  if (normalized === "bearish") return "利空";
   return "中性";
 }
 

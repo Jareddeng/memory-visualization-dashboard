@@ -199,7 +199,7 @@ Schema:
 
 Rules:
 
-- `impact` must be `bullish`, `bearish`, `neutral`, or `mixed` for 利多 / 利空 / 中性 / 双向.
+- `impact` must be `bullish`, `bearish`, or `neutral` for 利多 / 利空 / 中性.
 - `importance` should be `S`, `A`, `B`, or `C`.
 - `reaction_type` should be `instant`, `undervalued`, `sentiment`, or `archive`.
 - `pricing_status` should be `unpriced`, `partial`, `priced`, `overpriced`, or `failed`.
@@ -213,7 +213,7 @@ Rules:
 
 Classification guidance:
 
-- Direction: 利多 means likely positive for earnings, valuation, or sentiment; 利空 means likely negative; 中性 means weak or unclear direction; 双向 means different impacts across assets, supply-chain links, or time horizons.
+- Direction: 利多 means likely positive for earnings, valuation, or sentiment; 利空 means likely negative; 中性 means weak, unclear, or mixed across assets, supply-chain links, or time horizons. Do not use a separate 双向 direction; explain mixed transmission in `transmission_path`.
 - Importance: S means core fundamental change; A means strong expectation change; B means sentiment or theme change; C means low relevance.
 - Reaction type: 即时催化型 maps to `instant`; 重要未定价型 maps to `undervalued`; 情绪交易型 maps to `sentiment`; 普通归档型 maps to `archive`.
 - Pricing status: 未反应 maps to `unpriced`; 部分反应 maps to `partial`; 已反应 maps to `priced`; 过度反应 maps to `overpriced`; 反应失败 maps to `failed`.

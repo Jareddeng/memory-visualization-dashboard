@@ -729,15 +729,6 @@ h2 {
   background: #b9cfe1;
 }
 
-.distribution-row.mixed {
-  background: #eee7fb;
-  color: #7353b6;
-}
-
-.distribution-row.mixed .distribution-fill {
-  background: #d6c8f2;
-}
-
 .segmented-control {
   display: inline-flex;
   width: fit-content;

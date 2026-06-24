@@ -507,8 +507,7 @@ function normalizeIntelRecord(record, file, index) {
   const title = String(record.title || "").trim();
   const summary = String(record.summary || "").trim();
   if (!title || !summary) throw new Error(`情报缺少标题或摘要: ${file} #${index + 1}`);
-  const impact = String(record.impact || "neutral").trim();
-  assertAllowed(impact, ["bullish", "bearish", "neutral", "mixed"], `情报 impact 只能是 bullish/bearish/neutral/mixed: ${file} #${index + 1}`);
+  const impact = normalizeIntelImpact(record.impact);
   const importance = optionalAllowed(record.importance, ["S", "A", "B", "C"], `情报 importance 只能是 S/A/B/C: ${file} #${index + 1}`);
   const reactionType = optionalAllowed(record.reaction_type, ["instant", "undervalued", "sentiment", "archive"], `情报 reaction_type 无效: ${file} #${index + 1}`);
   const pricingStatus = optionalAllowed(record.pricing_status, ["unpriced", "partial", "priced", "overpriced", "failed"], `情报 pricing_status 无效: ${file} #${index + 1}`);
@@ -533,6 +532,13 @@ function normalizeIntelRecord(record, file, index) {
     action,
     review_date: normalizeDate(record.review_date) || "",
   };
+}
+
+function normalizeIntelImpact(value) {
+  const impact = String(value || "neutral").trim();
+  if (impact === "mixed") return "neutral";
+  assertAllowed(impact, ["bullish", "bearish", "neutral"], "情报 impact 只能是 bullish/bearish/neutral");
+  return impact;
 }
 
 function assertAllowed(value, allowed, message) {
