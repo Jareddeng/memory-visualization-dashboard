@@ -1005,11 +1005,21 @@ function MindmapModal({ mindmap, onClose }: { mindmap: MindmapPayload; onClose: 
 
 function MindmapTree({ node, depth }: { node: MindmapNode; depth: number }) {
   const children = node.children ?? [];
+  const hasChildren = children.length > 0;
+  const [expanded, setExpanded] = React.useState(depth < 2);
   return (
-    <div className={depth === 0 ? "mindmap-root" : "mindmap-node"} style={{ ["--depth" as string]: depth }}>
-      <div className="mindmap-label">{node.title}</div>
-      {children.length ? (
-        <div className="mindmap-children">
+    <div className={`${depth === 0 ? "mindmap-root" : "mindmap-node"} ${expanded ? "expanded" : "collapsed"}`} style={{ ["--depth" as string]: depth }}>
+      <button
+        className={hasChildren ? "mindmap-label expandable" : "mindmap-label"}
+        onClick={() => hasChildren && setExpanded((value) => !value)}
+        type="button"
+        aria-expanded={hasChildren ? expanded : undefined}
+      >
+        {node.title}
+        {hasChildren ? <span>{expanded ? "−" : "+"}</span> : null}
+      </button>
+      {hasChildren ? (
+        <div className="mindmap-children" aria-hidden={!expanded}>
           {children.map((child, index) => (
             <MindmapTree node={child} depth={depth + 1} key={`${child.title}-${index}`} />
           ))}
