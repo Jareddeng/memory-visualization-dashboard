@@ -460,6 +460,7 @@ function App() {
   const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
   const [intelRecords, setIntelRecords] = useLocalIntelRecords();
   const [captureOpen, setCaptureOpen] = React.useState(false);
+  const [editingIntelRecord, setEditingIntelRecord] = React.useState<IntelRecord | null>(null);
 
   if (error) {
     return (
@@ -569,6 +570,10 @@ function App() {
             remoteRecords={data.intel}
             localRecords={intelRecords}
             onAdd={() => setCaptureOpen(true)}
+            onEdit={(record) => {
+              setEditingIntelRecord(record);
+              setCaptureOpen(true);
+            }}
             onDelete={(id) => setIntelRecords(intelRecords.filter((record) => record.id !== id))}
             onExport={() => exportIntelligence(data, allIntelRecords)}
           />
@@ -579,10 +584,15 @@ function App() {
         </footer>
         {captureOpen ? (
           <IntelCaptureModal
-            onClose={() => setCaptureOpen(false)}
-            onSave={(record) => {
-              setIntelRecords([record, ...intelRecords]);
+            record={editingIntelRecord}
+            onClose={() => {
               setCaptureOpen(false);
+              setEditingIntelRecord(null);
+            }}
+            onSave={(record) => {
+              setIntelRecords((current) => (editingIntelRecord ? current.map((item) => (item.id === record.id ? record : item)) : [record, ...current]));
+              setCaptureOpen(false);
+              setEditingIntelRecord(null);
             }}
           />
         ) : null}
@@ -1208,12 +1218,14 @@ function IntelPage({
   remoteRecords,
   localRecords,
   onAdd,
+  onEdit,
   onDelete,
   onExport,
 }: {
   remoteRecords: IntelRecord[];
   localRecords: IntelRecord[];
   onAdd: () => void;
+  onEdit: (record: IntelRecord) => void;
   onDelete: (id: string) => void;
   onExport: () => void;
 }) {
@@ -1279,7 +1291,7 @@ function IntelPage({
             <h2>本地情报记录</h2>
           </div>
         </div>
-        <IntelTable records={localRecords} sourceLabel="浏览器本地" onDelete={onDelete} />
+        <IntelTable records={localRecords} sourceLabel="浏览器本地" onEdit={onEdit} onDelete={onDelete} />
       </section>
     </>
   );
@@ -1326,10 +1338,12 @@ function RuleGroup({ title, options }: { title: string; options: ReadonlyArray<{
 function IntelTable({
   records,
   sourceLabel,
+  onEdit,
   onDelete,
 }: {
   records: IntelRecord[];
   sourceLabel: string;
+  onEdit?: (record: IntelRecord) => void;
   onDelete?: (id: string) => void;
 }) {
   if (!records.length) return <div className="empty-state">暂无{sourceLabel}情报。</div>;
@@ -1348,7 +1362,7 @@ function IntelTable({
             <th>来源</th>
             <th>摘要</th>
             <th>跟踪</th>
-            {onDelete ? <th>操作</th> : null}
+            {onEdit || onDelete ? <th>操作</th> : null}
           </tr>
         </thead>
         <tbody>
@@ -1367,11 +1381,20 @@ function IntelTable({
                 <small>{horizonLabel(record.horizon)} · {confidenceLabel(record.confidence)}置信度 · {actionLabel(record.action)}</small>
                 {record.review_date ? <><br /><small>复核：{record.review_date}</small></> : null}
               </td>
-              {onDelete ? (
+              {onEdit || onDelete ? (
                 <td>
-                  <button className="icon-button danger" type="button" aria-label={`删除 ${record.title}`} onClick={() => onDelete(record.id)}>
-                    <Trash2 size={15} />
-                  </button>
+                  <div className="row-actions">
+                    {onEdit ? (
+                      <button className="icon-button" type="button" aria-label={`编辑 ${record.title}`} onClick={() => onEdit(record)}>
+                        编辑
+                      </button>
+                    ) : null}
+                    {onDelete ? (
+                      <button className="icon-button danger" type="button" aria-label={`删除 ${record.title}`} onClick={() => onDelete(record.id)}>
+                        <Trash2 size={15} />
+                      </button>
+                    ) : null}
+                  </div>
                 </td>
               ) : null}
             </tr>
@@ -1382,13 +1405,14 @@ function IntelTable({
   );
 }
 
-function IntelCaptureModal({ onClose, onSave }: { onClose: () => void; onSave: (record: IntelRecord) => void }) {
+function IntelCaptureModal({ record, onClose, onSave }: { record?: IntelRecord | null; onClose: () => void; onSave: (record: IntelRecord) => void }) {
   const today = new Date().toISOString().slice(0, 10);
+  const isEditing = Boolean(record);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     onSave({
-      id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+      id: record?.id ?? (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())),
       type: String(form.get("type") || "消息"),
       impact: String(form.get("impact") || "neutral") as IntelRecord["impact"],
       date: String(form.get("date") || today),
@@ -1409,32 +1433,32 @@ function IntelCaptureModal({ onClose, onSave }: { onClose: () => void; onSave: (
 
   return (
     <div className="modal-backdrop" role="presentation" onClick={onClose}>
-      <section className="mindmap-modal capture-modal" role="dialog" aria-modal="true" aria-label="新增情报" onClick={(event) => event.stopPropagation()}>
+      <section className="mindmap-modal capture-modal" role="dialog" aria-modal="true" aria-label={isEditing ? "编辑情报" : "新增情报"} onClick={(event) => event.stopPropagation()}>
         <header>
           <div>
             <span>Capture</span>
-            <h2>新增情报</h2>
+            <h2>{isEditing ? "编辑情报" : "新增情报"}</h2>
           </div>
-          <button aria-label="关闭新增情报" onClick={onClose} type="button">关闭</button>
+          <button aria-label="关闭情报弹窗" onClick={onClose} type="button">关闭</button>
         </header>
         <form className="intel-form" onSubmit={handleSubmit}>
-          <label>类型<select name="type"><option>产品数据</option><option>行业分析</option><option>重大事件</option><option>消息</option></select></label>
-          <label>方向<select name="impact"><option value="bullish">利多</option><option value="bearish">利空</option><option value="neutral">中性</option></select></label>
-          <label>重要性<select name="importance"><option value="S">S级：核心基本面变化</option><option value="A">A级：强预期变化</option><option value="B">B级：情绪或主题变化</option><option value="C">C级：低相关信息</option></select></label>
-          <label>市场反应类型<select name="reaction_type"><option value="instant">即时催化型</option><option value="undervalued">重要未定价型</option><option value="sentiment">情绪交易型</option><option value="archive">普通归档型</option></select></label>
-          <label>定价状态<select name="pricing_status"><option value="unpriced">未反应</option><option value="partial">部分反应</option><option value="priced">已反应</option><option value="overpriced">过度反应</option><option value="failed">反应失败</option></select></label>
-          <label>影响周期<select name="horizon"><option value="intraday">盘中</option><option value="1d">1日</option><option value="1w">1周</option><option value="1m">1个月</option><option value="1q">1季度</option><option value="longer">更长</option></select></label>
-          <label>置信度<select name="confidence"><option value="high">高</option><option value="medium">中</option><option value="low">低</option></select></label>
-          <label>建议动作<select name="action"><option value="alert">盘中提醒</option><option value="watch">加入观察池</option><option value="deep_tracking">深度跟踪</option><option value="archive">归档</option></select></label>
-          <label>日期<input name="date" type="date" defaultValue={today} required /></label>
-          <label>复核时间<input name="review_date" type="date" /></label>
-          <label>标题<input name="title" type="text" maxLength={80} required /></label>
-          <label>相关产品<input name="product" type="text" maxLength={80} placeholder="HBM / DDR5 / NAND" /></label>
-          <label>来源<input name="source" type="text" maxLength={100} placeholder="公司公告 / 研报 / 调研" /></label>
-          <label className="wide">传导路径<textarea name="transmission_path" rows={3} maxLength={400} placeholder="新闻如何影响公司、行业、产业链或资产价格" /></label>
-          <label className="wide">摘要<textarea name="summary" rows={5} maxLength={500} required /></label>
+          <label>类型<select name="type" defaultValue={record?.type ?? "消息"}><option>产品数据</option><option>行业分析</option><option>重大事件</option><option>消息</option></select></label>
+          <label>方向<select name="impact" defaultValue={record?.impact ?? "neutral"}><option value="bullish">利多</option><option value="bearish">利空</option><option value="neutral">中性</option></select></label>
+          <label>重要性<select name="importance" defaultValue={record?.importance ?? "B"}><option value="S">S级：核心基本面变化</option><option value="A">A级：强预期变化</option><option value="B">B级：情绪或主题变化</option><option value="C">C级：低相关信息</option></select></label>
+          <label>市场反应类型<select name="reaction_type" defaultValue={record?.reaction_type ?? "archive"}><option value="instant">即时催化型</option><option value="undervalued">重要未定价型</option><option value="sentiment">情绪交易型</option><option value="archive">普通归档型</option></select></label>
+          <label>定价状态<select name="pricing_status" defaultValue={record?.pricing_status ?? "unpriced"}><option value="unpriced">未反应</option><option value="partial">部分反应</option><option value="priced">已反应</option><option value="overpriced">过度反应</option><option value="failed">反应失败</option></select></label>
+          <label>影响周期<select name="horizon" defaultValue={record?.horizon ?? "1w"}><option value="intraday">盘中</option><option value="1d">1日</option><option value="1w">1周</option><option value="1m">1个月</option><option value="1q">1季度</option><option value="longer">更长</option></select></label>
+          <label>置信度<select name="confidence" defaultValue={record?.confidence ?? "medium"}><option value="high">高</option><option value="medium">中</option><option value="low">低</option></select></label>
+          <label>建议动作<select name="action" defaultValue={record?.action ?? "watch"}><option value="alert">盘中提醒</option><option value="watch">加入观察池</option><option value="deep_tracking">深度跟踪</option><option value="archive">归档</option></select></label>
+          <label>日期<input name="date" type="date" defaultValue={record?.date ?? today} required /></label>
+          <label>复核时间<input name="review_date" type="date" defaultValue={record?.review_date ?? ""} /></label>
+          <label>标题<input name="title" type="text" maxLength={80} defaultValue={record?.title ?? ""} required /></label>
+          <label>相关产品<input name="product" type="text" maxLength={80} placeholder="HBM / DDR5 / NAND" defaultValue={record?.product ?? ""} /></label>
+          <label>来源<input name="source" type="text" maxLength={100} placeholder="公司公告 / 研报 / 调研" defaultValue={record?.source ?? ""} /></label>
+          <label className="wide">传导路径<textarea name="transmission_path" rows={3} maxLength={400} placeholder="新闻如何影响公司、行业、产业链或资产价格" defaultValue={record?.transmission_path ?? ""} /></label>
+          <label className="wide">摘要<textarea name="summary" rows={5} maxLength={500} defaultValue={record?.summary ?? ""} required /></label>
           <div className="form-actions">
-            <button className="primary-button" type="submit">保存情报</button>
+            <button className="primary-button" type="submit">{isEditing ? "保存修改" : "保存情报"}</button>
             <button className="ghost-button" type="reset">重置</button>
           </div>
         </form>

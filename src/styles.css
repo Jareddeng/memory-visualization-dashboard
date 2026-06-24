@@ -999,7 +999,7 @@ td small {
 }
 
 .icon-button {
-  width: 32px;
+  min-width: 32px;
   height: 32px;
   display: inline-grid;
   place-items: center;
@@ -1008,6 +1008,9 @@ td small {
   background: #fff;
   color: var(--muted);
   cursor: pointer;
+  padding: 0 8px;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .icon-button:hover,
@@ -1021,6 +1024,12 @@ td small {
   color: var(--red);
   border-color: var(--red);
   background: var(--red-soft);
+}
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
 
 .search-results {
