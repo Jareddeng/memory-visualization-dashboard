@@ -684,6 +684,15 @@ function OverviewPage({
           </div>
           <MessageRadar records={intelRecords} />
         </section>
+        <section className="panel text-panel overview-events-panel">
+          <div className="panel-header compact">
+            <div>
+              <p className="section-kicker">Major Timeline</p>
+              <h2>重大事件时间线</h2>
+            </div>
+          </div>
+          <MajorEventTimeline records={intelRecords} />
+        </section>
       </section>
 
       <section className="dashboard-grid">
@@ -728,6 +737,37 @@ function OverviewPage({
         </section>
       </section>
     </>
+  );
+}
+
+function MajorEventTimeline({ records }: { records: IntelRecord[] }) {
+  const timelineKeywords = ["产能", "扩产", "投产", "量产", "晶圆", "长协", "谈判", "交付", "订单", "供给", "HBM", "HBM4", "capacity", "capex", "wafer", "fab", "supply"];
+  const isTimelineRecord = (record: IntelRecord) => {
+    const text = `${record.title} ${record.product} ${record.summary} ${record.transmission_path ?? ""}`.toLowerCase();
+    return record.importance === "S" && timelineKeywords.some((keyword) => text.includes(keyword.toLowerCase()));
+  };
+  const majorRecords = records
+    .filter(isTimelineRecord)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 5);
+
+  if (!majorRecords.length) {
+    return <div className="empty-state">等待 S 级产能、长协或关键时间线情报。</div>;
+  }
+
+  return (
+    <div className="major-event-timeline">
+      {majorRecords.map((record) => (
+        <article className="major-event-item" key={record.id}>
+          <time>{record.date}</time>
+          <div>
+            <strong>{record.title}</strong>
+            <p>{record.summary}</p>
+            <small>{record.product || record.type} · {reactionTypeLabel(record.reaction_type)} · {pricingStatusLabel(record.pricing_status)}</small>
+          </div>
+        </article>
+      ))}
+    </div>
   );
 }
 

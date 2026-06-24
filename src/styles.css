@@ -419,14 +419,23 @@ h2 {
 .overview-market-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(360px, 1.05fr);
-  grid-template-rows: repeat(4, 116px);
+  grid-template-rows: repeat(6, 116px);
   gap: 16px;
   align-items: stretch;
 }
 
 .overview-radar-panel {
   grid-column: 3;
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 6;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.overview-events-panel {
+  grid-column: 1 / span 2;
+  grid-row: 5 / span 2;
   min-height: 0;
   overflow: hidden;
   display: grid;
@@ -589,6 +598,49 @@ h2 {
 .overview-stock-chart .chart {
   min-height: 120px;
   height: 100%;
+}
+
+.major-event-timeline {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-gutter: stable;
+}
+
+.major-event-item {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 12px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.major-event-item time {
+  color: var(--teal);
+  font-weight: 850;
+  font-size: 12px;
+}
+
+.major-event-item strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.major-event-item p {
+  margin: 5px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.major-event-item small {
+  color: var(--subtle);
+  font-size: 12px;
 }
 
 .stock-price {
@@ -1669,7 +1721,13 @@ button.mindmap-label {
     grid-template-columns: 1fr;
   }
 
-  .overview-radar-panel {
+  .overview-market-grid {
+    grid-template-rows: auto;
+  }
+
+  .overview-stock-card,
+  .overview-radar-panel,
+  .overview-events-panel {
     grid-column: auto;
     grid-row: auto;
   }
