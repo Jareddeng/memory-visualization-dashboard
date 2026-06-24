@@ -16,7 +16,8 @@
       "transmission_path": "HBM 订单锁定确认行业供给极度紧张，支撑定价权和利润率持续性。对封装、设备、材料环节有正向传导。",
       "confidence": "high",
       "action": "deep_tracking",
-      "review_date": "2026-07-27"
+      "review_date": "2026-07-27",
+      "url": "https://www.abhs.in/blog/sk-hynix-q1-2026-718-operating-margin-hbm-demand-exceeds-three-year-supply"
     },
     {
       "id": "2026-06-12-sk-hynix-hbm-3yr-backlog",
@@ -34,7 +35,8 @@
       "transmission_path": "HBM 订单锁定延续至 2028+，确认供给端硬约束。对 GPU 集群部署和云厂商 CAPEX 有供给端传导风险。",
       "confidence": "high",
       "action": "deep_tracking",
-      "review_date": "2026-09-12"
+      "review_date": "2026-09-12",
+      "url": "https://www.abhs.in/blog/sk-hynix-q1-2026-718-operating-margin-hbm-demand-exceeds-three-year-supply"
     },
     {
       "id": "2026-06-22-micron-hbm-sold-out-1t",
@@ -52,7 +54,8 @@
       "transmission_path": "美光 HBM 产能锁定确认三大原厂均处于供给紧张状态，HBM 供不应求格局延续。对美光设备、材料供应商有正向传导。",
       "confidence": "high",
       "action": "deep_tracking",
-      "review_date": "2026-09-22"
+      "review_date": "2026-09-22",
+      "url": "https://www.tastylive.com/news-insights/micron-earnings-preview-the-new-trillion-dollar-chip-stock"
     },
     {
       "id": "2026-01-19-dram-nand-price-forecast-54-55",
@@ -70,7 +73,8 @@
       "transmission_path": "价格涨幅预测支撑原厂收入和利润率预期，对模组厂和终端客户有成本传导压力。",
       "confidence": "medium",
       "action": "deep_tracking",
-      "review_date": "2026-04-19"
+      "review_date": "2026-04-19",
+      "url": "https://www.digitaltoday.co.kr/en/view/1459/samsung-electronics-sk-hynix-set-for-record-results-securities-firms-raise-2026-forecasts"
     },
     {
       "id": "2026-05-15-sk-hynix-hbm-share-54pct",
@@ -88,7 +92,8 @@
       "transmission_path": "HBM 市场份额高度集中，SK Hynix 定价权和产能分配权最强。Samsung 和 Micron 追赶需时间。",
       "confidence": "medium",
       "action": "deep_tracking",
-      "review_date": "2026-08-15"
+      "review_date": "2026-08-15",
+      "url": "https://www.ibtimes.com.au/samsung-vs-sk-hynix-2026-ai-memory-supercycle-1868887"
     },
     {
       "id": "2026-12-19-micron-earnings-spike",
@@ -106,7 +111,8 @@
       "transmission_path": "HBM 供需缺口创 25 年来最大，支撑 HBM 定价持续强势。对三星、SK Hynix 同样有正面预期。",
       "confidence": "high",
       "action": "deep_tracking",
-      "review_date": "2026-03-19"
+      "review_date": "2026-03-19",
+      "url": "https://www.hani.co.kr/arti/english_edition/e_business/1235575.html"
     },
     {
       "id": "2026-01-19-samsung-sk-combined-profit-200t",
@@ -124,7 +130,8 @@
       "transmission_path": "超级周期预期强化原厂估值和 CAPEX 意愿。需关注后续实际出货和价格兑现情况。",
       "confidence": "medium",
       "action": "watch",
-      "review_date": "2026-04-19"
+      "review_date": "2026-04-19",
+      "url": "https://www.digitaltoday.co.kr/en/view/1459/samsung-electronics-sk-hynix-set-for-record-results-securities-firms-raise-2026-forecasts"
     }
   ]
 }
