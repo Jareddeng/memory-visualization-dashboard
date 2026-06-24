@@ -404,7 +404,7 @@ h2 {
 }
 
 .kpi-grid {
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 12px;
 }
 
@@ -479,6 +479,14 @@ h2 {
   color: var(--subtle);
   font-size: 12px;
   line-height: 1.35;
+}
+
+.price-kpi-card strong {
+  font-size: 22px;
+}
+
+.price-kpi-card b {
+  font-size: 12px;
 }
 
 .warning {

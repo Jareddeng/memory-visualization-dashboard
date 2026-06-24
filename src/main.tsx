@@ -153,6 +153,16 @@ type SearchItem = {
   };
 };
 
+type PriceSnapshot = {
+  label: string;
+  spec: string;
+  date: string;
+  price: number;
+  unit: string;
+  change: number;
+  changePct: number;
+};
+
 const INTEL_STORAGE_KEY = "storage-dashboard-intel-records-v1";
 
 const directionOptions = [
@@ -490,6 +500,7 @@ function App() {
   const allIntelRecords = [...data.intel, ...intelRecords];
   const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
   const hbmPressure = getHbmPressure(data);
+  const priceSnapshots = getPriceSnapshots(data.prices);
   const openSearchResult = (item: SearchItem) => {
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
     setActivePage(item.target.page);
@@ -548,6 +559,9 @@ function App() {
         <Hero data={data} latestReport={latestReport} />
 
         <section className="kpi-grid">
+          {priceSnapshots.map((snapshot) => (
+            <PriceKpiCard snapshot={snapshot} key={snapshot.label} />
+          ))}
           <KpiCard icon={<Database />} label="HBM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
           <KpiCard icon={<Database />} label="晶圆可用产能" value="待接入" hint="等待 EDB 或 clawbot 产能数据源" />
           <KpiCard icon={<FileText />} label="最新报告" value={latestReport?.date ?? "暂无"} hint={latestReport?.rating ?? "等待 clawbot 提交"} />
@@ -839,6 +853,21 @@ function KpiCard({ icon, label, value, hint }: { icon: React.ReactNode; label: s
       <span>{label}</span>
       <strong>{value}</strong>
       <p>{hint}</p>
+    </article>
+  );
+}
+
+function PriceKpiCard({ snapshot }: { snapshot: PriceSnapshot }) {
+  const sign = snapshot.changePct >= 0 ? "+" : "";
+  return (
+    <article className="kpi-card price-kpi-card">
+      <div className="icon-box"><Database /></div>
+      <span>{snapshot.label}</span>
+      <strong>{formatPrice(snapshot.price)} {snapshot.unit}</strong>
+      <p>{snapshot.date} · {snapshot.spec}</p>
+      <b className={snapshot.changePct >= 0 ? "up" : "down"}>
+        {sign}{snapshot.changePct.toFixed(2)}% / {sign}{formatPrice(snapshot.change)} {snapshot.unit}
+      </b>
     </article>
   );
 }
@@ -1477,6 +1506,40 @@ function formatDateTime(value: string) {
 
 function dataSourceLabel(exchange: string) {
   return exchange === "KRX" || exchange === "NASDAQ" ? "Yahoo Finance" : "公开行情源";
+}
+
+function getPriceSnapshots(prices: PricePayload): PriceSnapshot[] {
+  const configs = [
+    { label: "DRAM DDR5 16GB现货", payload: prices.DRAM.spot, matcher: (spec: string) => /DDR5/i.test(spec) && (/16Gb/i.test(spec) || /x2/i.test(spec)) },
+    { label: "DRAM DDR4 16GB现货", payload: prices.DRAM.spot, matcher: (spec: string) => /DDR4/i.test(spec) && /16Gb/i.test(spec) },
+    { label: "NAND 64GB现货", payload: prices.NAND.spot, matcher: (spec: string) => /64GB/i.test(spec) },
+    { label: "NAND 32GB现货", payload: prices.NAND.spot, matcher: (spec: string) => /32GB/i.test(spec) },
+  ];
+  return configs
+    .map((config) => makePriceSnapshot(config.label, config.payload.series.find((series) => config.matcher(series.spec))))
+    .filter((snapshot): snapshot is PriceSnapshot => Boolean(snapshot));
+}
+
+function makePriceSnapshot(label: string, series?: PriceSeries): PriceSnapshot | null {
+  const points = (series?.points ?? []).filter((point) => Number.isFinite(point.price) && point.price > 0);
+  if (!series || !points.length) return null;
+  const latest = points[points.length - 1];
+  const previous = points[points.length - 2] ?? latest;
+  const change = latest.price - previous.price;
+  const changePct = previous.price ? (change / previous.price) * 100 : 0;
+  return {
+    label,
+    spec: series.spec,
+    date: latest.date,
+    price: latest.price,
+    unit: series.unit,
+    change: Math.round(change * 1000) / 1000,
+    changePct: Math.round(changePct * 100) / 100,
+  };
+}
+
+function formatPrice(value: number) {
+  return Number.isInteger(value) ? value.toLocaleString() : value.toLocaleString(undefined, { maximumFractionDigits: 3 });
 }
 
 function calculatePriceIndex(payload: { series: PriceSeries[] }) {
