@@ -123,12 +123,20 @@ type PageKey = "overview" | "markets" | "industry" | "reports" | "intel";
 type IntelRecord = {
   id: string;
   type: string;
-  impact: "bullish" | "bearish" | "neutral";
+  impact: "bullish" | "bearish" | "neutral" | "mixed";
   date: string;
   title: string;
   product: string;
   source: string;
   summary: string;
+  importance?: "S" | "A" | "B" | "C";
+  reaction_type?: "instant" | "undervalued" | "sentiment" | "archive";
+  pricing_status?: "unpriced" | "partial" | "priced" | "overpriced" | "failed";
+  horizon?: "intraday" | "1d" | "1w" | "1m" | "1q" | "longer";
+  transmission_path?: string;
+  confidence?: "high" | "medium" | "low";
+  action?: "alert" | "watch" | "deep_tracking" | "archive";
+  review_date?: string;
 };
 
 type ImpactFilter = "all" | IntelRecord["impact"];
@@ -146,6 +154,57 @@ type SearchItem = {
 };
 
 const INTEL_STORAGE_KEY = "storage-dashboard-intel-records-v1";
+
+const directionOptions = [
+  { value: "bullish", label: "利多", detail: "可能提升盈利预期、估值预期或市场情绪" },
+  { value: "bearish", label: "利空", detail: "可能压制盈利预期、估值预期或市场情绪" },
+  { value: "neutral", label: "中性", detail: "暂时没有明确方向，或影响较弱" },
+  { value: "mixed", label: "双向", detail: "对不同资产、环节或周期的影响方向不同" },
+] as const;
+
+const importanceOptions = [
+  { value: "S", label: "S级：核心基本面变化", detail: "可能改变盈利、订单、供需、价格、产能、政策或竞争格局" },
+  { value: "A", label: "A级：强预期变化", detail: "不一定立即改变利润，但可能明显改变市场预期" },
+  { value: "B", label: "B级：情绪或主题变化", detail: "主要影响短期情绪、市场热度或主题交易" },
+  { value: "C", label: "C级：低相关信息", detail: "信息价值有限，对投资判断和交易跟踪帮助较小" },
+] as const;
+
+const reactionTypeOptions = [
+  { value: "instant", label: "即时催化型", detail: "信息明确、影响直接，适合盘中提醒和快速跟踪" },
+  { value: "undervalued", label: "重要未定价型", detail: "重要但尚未充分反应，重点跟踪预期差和传导滞后" },
+  { value: "sentiment", label: "情绪交易型", detail: "基本面影响有限，但可能触发短期主题或资金关注" },
+  { value: "archive", label: "普通归档型", detail: "信息价值较低，主要作数据库留存" },
+] as const;
+
+const pricingStatusOptions = [
+  { value: "unpriced", label: "未反应", detail: "相关资产价格基本没有变化，新闻可能尚未被市场关注" },
+  { value: "partial", label: "部分反应", detail: "部分市场或部分标的已经反应，但传导尚未完成" },
+  { value: "priced", label: "已反应", detail: "主要相关资产已经出现较明显反应" },
+  { value: "overpriced", label: "过度反应", detail: "市场反应可能超过新闻本身能够解释的范围" },
+  { value: "failed", label: "反应失败", detail: "新闻理论上偏利多或利空，但市场并未按预期方向反应" },
+] as const;
+
+const horizonOptions = [
+  { value: "intraday", label: "盘中" },
+  { value: "1d", label: "1日" },
+  { value: "1w", label: "1周" },
+  { value: "1m", label: "1个月" },
+  { value: "1q", label: "1季度" },
+  { value: "longer", label: "更长" },
+] as const;
+
+const confidenceOptions = [
+  { value: "high", label: "高" },
+  { value: "medium", label: "中" },
+  { value: "low", label: "低" },
+] as const;
+
+const actionOptions = [
+  { value: "alert", label: "盘中提醒" },
+  { value: "watch", label: "加入观察池" },
+  { value: "deep_tracking", label: "深度跟踪" },
+  { value: "archive", label: "归档" },
+] as const;
 
 function useJson<T>(url: string) {
   const [data, setData] = React.useState<T | null>(null);
@@ -1076,16 +1135,18 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
   const [filter, setFilter] = React.useState<ImpactFilter>("all");
   const filters: Array<{ key: ImpactFilter; label: string }> = [
     { key: "all", label: "全部" },
-    { key: "bullish", label: "利好" },
+    { key: "bullish", label: "利多" },
     { key: "bearish", label: "利空" },
     { key: "neutral", label: "中性" },
+    { key: "mixed", label: "双向" },
   ];
   const filtered = filter === "all" ? records : records.filter((record) => record.impact === filter);
   const total = records.length || 1;
   const distribution: Array<{ key: IntelRecord["impact"]; label: string }> = [
-    { key: "bullish", label: "利好" },
+    { key: "bullish", label: "利多" },
     { key: "bearish", label: "利空" },
     { key: "neutral", label: "中性" },
+    { key: "mixed", label: "双向" },
   ];
 
   return (
@@ -1125,7 +1186,7 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
               </div>
               <strong>{record.title}</strong>
               <p>{record.summary}</p>
-              <small>{record.product || record.type} · {record.source}</small>
+              <small>{record.product || record.type} · {importanceLabel(record.importance)} · {reactionTypeLabel(record.reaction_type)} · {pricingStatusLabel(record.pricing_status)}</small>
             </article>
           ))}
         </div>
@@ -1173,7 +1234,7 @@ function IntelPage({
           <div className="handoff-box">
             <strong>content/intel/clawbot_intel.json</strong>
             <p>龙虾后续可以通过 PR 更新这个文件。合并后 GitHub Actions 会在下一次构建时生成网站可读的情报数据。</p>
-            <small>字段：date、type、impact、title、product、source、summary。impact 可填 bullish / bearish / neutral。</small>
+            <small>字段：date、type、impact、importance、reaction_type、pricing_status、horizon、confidence、action、review_date、title、product、source、summary、transmission_path。</small>
           </div>
         </section>
 
@@ -1191,6 +1252,8 @@ function IntelPage({
           </div>
         </section>
       </section>
+
+      <IntelRulesPanel />
 
       <section className="panel text-panel">
         <div className="panel-header compact">
@@ -1215,6 +1278,44 @@ function IntelPage({
   );
 }
 
+function IntelRulesPanel() {
+  return (
+    <section className="panel text-panel">
+      <div className="panel-header compact">
+        <div>
+          <p className="section-kicker">Classification Rules</p>
+          <h2>新闻情报库分类规则</h2>
+        </div>
+      </div>
+      <p className="rule-intro">情报库不只判断新闻利多、利空或中性，也跟踪新闻是否已被市场反映、是否存在滞后传导，以及是否值得继续研究和交易跟踪。</p>
+      <div className="rules-grid">
+        <RuleGroup title="方向分类" options={directionOptions} />
+        <RuleGroup title="重要性分类" options={importanceOptions} />
+        <RuleGroup title="市场反应类型" options={reactionTypeOptions} />
+        <RuleGroup title="定价状态" options={pricingStatusOptions} />
+      </div>
+      <div className="rule-matrix">
+        <strong>核心分类矩阵</strong>
+        <p>重要性高且市场可能快速反应：即时催化型；重要性高但暂未充分反应：重要未定价型；重要性低但可能快速交易：情绪交易型；重要性低且未充分反应：普通归档型。</p>
+      </div>
+    </section>
+  );
+}
+
+function RuleGroup({ title, options }: { title: string; options: ReadonlyArray<{ label: string; detail: string }> }) {
+  return (
+    <div className="rule-group">
+      <h3>{title}</h3>
+      {options.map((option) => (
+        <article key={option.label}>
+          <strong>{option.label}</strong>
+          <p>{option.detail}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 function IntelTable({
   records,
   sourceLabel,
@@ -1226,16 +1327,20 @@ function IntelTable({
 }) {
   if (!records.length) return <div className="empty-state">暂无{sourceLabel}情报。</div>;
   return (
-    <div className="table-wrap">
+    <div className="table-wrap intel-table-wrap">
       <table>
         <thead>
           <tr>
             <th>日期</th>
             <th>标题</th>
             <th>类型</th>
-            <th>影响</th>
+            <th>方向</th>
+            <th>重要性</th>
+            <th>反应类型</th>
+            <th>定价状态</th>
             <th>来源</th>
             <th>摘要</th>
+            <th>跟踪</th>
             {onDelete ? <th>操作</th> : null}
           </tr>
         </thead>
@@ -1246,8 +1351,15 @@ function IntelTable({
               <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
               <td>{record.type}</td>
               <td><span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span></td>
+              <td>{importanceLabel(record.importance)}</td>
+              <td>{reactionTypeLabel(record.reaction_type)}</td>
+              <td>{pricingStatusLabel(record.pricing_status)}</td>
               <td>{record.source}</td>
               <td>{record.summary}</td>
+              <td>
+                <small>{horizonLabel(record.horizon)} · {confidenceLabel(record.confidence)}置信度 · {actionLabel(record.action)}</small>
+                {record.review_date ? <><br /><small>复核：{record.review_date}</small></> : null}
+              </td>
               {onDelete ? (
                 <td>
                   <button className="icon-button danger" type="button" aria-label={`删除 ${record.title}`} onClick={() => onDelete(record.id)}>
@@ -1277,6 +1389,14 @@ function IntelCaptureModal({ onClose, onSave }: { onClose: () => void; onSave: (
       product: String(form.get("product") || "").trim(),
       source: String(form.get("source") || "本地录入").trim(),
       summary: String(form.get("summary") || "").trim(),
+      importance: String(form.get("importance") || "B") as IntelRecord["importance"],
+      reaction_type: String(form.get("reaction_type") || "archive") as IntelRecord["reaction_type"],
+      pricing_status: String(form.get("pricing_status") || "unpriced") as IntelRecord["pricing_status"],
+      horizon: String(form.get("horizon") || "1w") as IntelRecord["horizon"],
+      transmission_path: String(form.get("transmission_path") || "").trim(),
+      confidence: String(form.get("confidence") || "medium") as IntelRecord["confidence"],
+      action: String(form.get("action") || "watch") as IntelRecord["action"],
+      review_date: String(form.get("review_date") || "").trim(),
     });
   };
 
@@ -1292,11 +1412,19 @@ function IntelCaptureModal({ onClose, onSave }: { onClose: () => void; onSave: (
         </header>
         <form className="intel-form" onSubmit={handleSubmit}>
           <label>类型<select name="type"><option>产品数据</option><option>行业分析</option><option>重大事件</option><option>消息</option></select></label>
-          <label>影响<select name="impact"><option value="bullish">利好</option><option value="bearish">利空</option><option value="neutral">中性</option></select></label>
+          <label>方向<select name="impact"><option value="bullish">利多</option><option value="bearish">利空</option><option value="neutral">中性</option><option value="mixed">双向</option></select></label>
+          <label>重要性<select name="importance"><option value="S">S级：核心基本面变化</option><option value="A">A级：强预期变化</option><option value="B">B级：情绪或主题变化</option><option value="C">C级：低相关信息</option></select></label>
+          <label>市场反应类型<select name="reaction_type"><option value="instant">即时催化型</option><option value="undervalued">重要未定价型</option><option value="sentiment">情绪交易型</option><option value="archive">普通归档型</option></select></label>
+          <label>定价状态<select name="pricing_status"><option value="unpriced">未反应</option><option value="partial">部分反应</option><option value="priced">已反应</option><option value="overpriced">过度反应</option><option value="failed">反应失败</option></select></label>
+          <label>影响周期<select name="horizon"><option value="intraday">盘中</option><option value="1d">1日</option><option value="1w">1周</option><option value="1m">1个月</option><option value="1q">1季度</option><option value="longer">更长</option></select></label>
+          <label>置信度<select name="confidence"><option value="high">高</option><option value="medium">中</option><option value="low">低</option></select></label>
+          <label>建议动作<select name="action"><option value="alert">盘中提醒</option><option value="watch">加入观察池</option><option value="deep_tracking">深度跟踪</option><option value="archive">归档</option></select></label>
           <label>日期<input name="date" type="date" defaultValue={today} required /></label>
+          <label>复核时间<input name="review_date" type="date" /></label>
           <label>标题<input name="title" type="text" maxLength={80} required /></label>
           <label>相关产品<input name="product" type="text" maxLength={80} placeholder="HBM / DDR5 / NAND" /></label>
           <label>来源<input name="source" type="text" maxLength={100} placeholder="公司公告 / 研报 / 调研" /></label>
+          <label className="wide">传导路径<textarea name="transmission_path" rows={3} maxLength={400} placeholder="新闻如何影响公司、行业、产业链或资产价格" /></label>
           <label className="wide">摘要<textarea name="summary" rows={5} maxLength={500} required /></label>
           <div className="form-actions">
             <button className="primary-button" type="submit">保存情报</button>
@@ -1377,7 +1505,7 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets" } }));
   (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry" } }));
   (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry" } }));
-  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.summary}`, target: { page: "intel" } }));
+  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: { page: "intel" } }));
   return items
     .filter((item) => isWithinTimeRange(item.date, timeRange, data.metadata.generated_at))
     .filter((item) => item.haystack.toLowerCase().includes(needle));
@@ -1422,6 +1550,14 @@ function exportIntelligence(data: AppData, records: IntelRecord[]) {
       impact: impactLabel(record.impact),
       source: record.source,
       summary: record.summary,
+      importance: importanceLabel(record.importance),
+      reaction_type: reactionTypeLabel(record.reaction_type),
+      pricing_status: pricingStatusLabel(record.pricing_status),
+      horizon: horizonLabel(record.horizon),
+      transmission_path: record.transmission_path ?? "",
+      confidence: confidenceLabel(record.confidence),
+      action: actionLabel(record.action),
+      review_date: record.review_date ?? "",
     })),
     ...data.reports.map((report) => ({
       date: report.date,
@@ -1431,9 +1567,17 @@ function exportIntelligence(data: AppData, records: IntelRecord[]) {
       impact: report.rating,
       source: report.sources.join("、"),
       summary: report.summary,
+      importance: "",
+      reaction_type: "",
+      pricing_status: "",
+      horizon: "",
+      transmission_path: "",
+      confidence: "",
+      action: "",
+      review_date: "",
     })),
   ];
-  const headers = ["date", "type", "title", "product", "impact", "source", "summary"];
+  const headers = ["date", "type", "title", "product", "impact", "importance", "reaction_type", "pricing_status", "horizon", "transmission_path", "confidence", "action", "review_date", "source", "summary"];
   const csv = [headers.join(","), ...rows.map((row) => headers.map((key) => csvCell(row[key as keyof typeof row])).join(","))].join("\n");
   const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -1451,9 +1595,38 @@ function csvCell(value: unknown) {
 }
 
 function impactLabel(value: IntelRecord["impact"]) {
-  if (value === "bullish") return "利好";
+  if (value === "bullish") return "利多";
   if (value === "bearish") return "利空";
+  if (value === "mixed") return "双向";
   return "中性";
+}
+
+function optionLabel<T extends string>(options: ReadonlyArray<{ value: T; label: string }>, value?: T) {
+  return options.find((option) => option.value === value)?.label ?? "未分类";
+}
+
+function importanceLabel(value?: IntelRecord["importance"]) {
+  return optionLabel(importanceOptions, value);
+}
+
+function reactionTypeLabel(value?: IntelRecord["reaction_type"]) {
+  return optionLabel(reactionTypeOptions, value);
+}
+
+function pricingStatusLabel(value?: IntelRecord["pricing_status"]) {
+  return optionLabel(pricingStatusOptions, value);
+}
+
+function horizonLabel(value?: IntelRecord["horizon"]) {
+  return optionLabel(horizonOptions, value);
+}
+
+function confidenceLabel(value?: IntelRecord["confidence"]) {
+  return optionLabel(confidenceOptions, value);
+}
+
+function actionLabel(value?: IntelRecord["action"]) {
+  return optionLabel(actionOptions, value);
 }
 
 createRoot(document.getElementById("root")!).render(<App />);

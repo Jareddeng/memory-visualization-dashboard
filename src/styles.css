@@ -729,6 +729,15 @@ h2 {
   background: #b9cfe1;
 }
 
+.distribution-row.mixed {
+  background: #eee7fb;
+  color: #7353b6;
+}
+
+.distribution-row.mixed .distribution-fill {
+  background: #d6c8f2;
+}
+
 .segmented-control {
   display: inline-flex;
   width: fit-content;
@@ -916,6 +925,63 @@ h2 {
 .handoff-box small,
 td small {
   color: var(--subtle);
+}
+
+.rule-intro {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rule-group {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.rule-group h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.rule-group article {
+  display: grid;
+  gap: 3px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.rule-group strong {
+  font-size: 13px;
+}
+
+.rule-group p,
+.rule-matrix p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.rule-matrix {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(20, 124, 114, 0.24);
+  border-radius: 8px;
+  background: rgba(20, 124, 114, 0.06);
+}
+
+.intel-table-wrap table {
+  min-width: 1180px;
 }
 
 .intel-stats {

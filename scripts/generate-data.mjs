@@ -508,9 +508,13 @@ function normalizeIntelRecord(record, file, index) {
   const summary = String(record.summary || "").trim();
   if (!title || !summary) throw new Error(`情报缺少标题或摘要: ${file} #${index + 1}`);
   const impact = String(record.impact || "neutral").trim();
-  if (!["bullish", "bearish", "neutral"].includes(impact)) {
-    throw new Error(`情报 impact 只能是 bullish/bearish/neutral: ${file} #${index + 1}`);
-  }
+  assertAllowed(impact, ["bullish", "bearish", "neutral", "mixed"], `情报 impact 只能是 bullish/bearish/neutral/mixed: ${file} #${index + 1}`);
+  const importance = optionalAllowed(record.importance, ["S", "A", "B", "C"], `情报 importance 只能是 S/A/B/C: ${file} #${index + 1}`);
+  const reactionType = optionalAllowed(record.reaction_type, ["instant", "undervalued", "sentiment", "archive"], `情报 reaction_type 无效: ${file} #${index + 1}`);
+  const pricingStatus = optionalAllowed(record.pricing_status, ["unpriced", "partial", "priced", "overpriced", "failed"], `情报 pricing_status 无效: ${file} #${index + 1}`);
+  const horizon = optionalAllowed(record.horizon, ["intraday", "1d", "1w", "1m", "1q", "longer"], `情报 horizon 无效: ${file} #${index + 1}`);
+  const confidence = optionalAllowed(record.confidence, ["high", "medium", "low"], `情报 confidence 无效: ${file} #${index + 1}`);
+  const action = optionalAllowed(record.action, ["alert", "watch", "deep_tracking", "archive"], `情报 action 无效: ${file} #${index + 1}`);
   return {
     id: String(record.id || `${file.replace(/\.json$/, "")}-${date}-${index + 1}`),
     type: String(record.type || "行业分析").trim(),
@@ -520,7 +524,26 @@ function normalizeIntelRecord(record, file, index) {
     product: String(record.product || "").trim(),
     source: String(record.source || "clawbot").trim(),
     summary,
+    importance,
+    reaction_type: reactionType,
+    pricing_status: pricingStatus,
+    horizon,
+    transmission_path: String(record.transmission_path || "").trim(),
+    confidence,
+    action,
+    review_date: normalizeDate(record.review_date) || "",
   };
+}
+
+function assertAllowed(value, allowed, message) {
+  if (!allowed.includes(value)) throw new Error(message);
+}
+
+function optionalAllowed(value, allowed, message) {
+  const normalized = String(value || "").trim();
+  if (!normalized) return "";
+  assertAllowed(normalized, allowed, message);
+  return normalized;
 }
 
 function parseMarkdownReport(raw) {

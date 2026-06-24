@@ -180,10 +180,18 @@ Schema:
       "date": "2026-06-23",
       "type": "行业分析",
       "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1m",
       "title": "HBM 供给仍偏紧",
       "product": "HBM",
       "source": "clawbot research; sources listed in report PR",
-      "summary": "一句话说明事实、影响方向和需要继续跟踪的变量。"
+      "summary": "一句话说明事实、影响方向和需要继续跟踪的变量。",
+      "transmission_path": "海外 HBM 订单和封装产能约束可能继续传导至先进封装、材料和设备环节。",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "review_date": "2026-06-30"
     }
   ]
 }
@@ -191,11 +199,24 @@ Schema:
 
 Rules:
 
-- `impact` must be `bullish`, `bearish`, or `neutral`.
+- `impact` must be `bullish`, `bearish`, `neutral`, or `mixed` for 利多 / 利空 / 中性 / 双向.
+- `importance` should be `S`, `A`, `B`, or `C`.
+- `reaction_type` should be `instant`, `undervalued`, `sentiment`, or `archive`.
+- `pricing_status` should be `unpriced`, `partial`, `priced`, `overpriced`, or `failed`.
+- `horizon` should be `intraday`, `1d`, `1w`, `1m`, `1q`, or `longer`.
+- `confidence` should be `high`, `medium`, or `low`.
+- `action` should be `alert`, `watch`, `deep_tracking`, or `archive`.
 - Keep `id` stable after publishing. Use a date plus short topic slug.
 - Append new records at the top or bottom; the build script sorts by `date`.
 - Include source notes. If the item depends on a report, mention the report PR or source list.
 - The dashboard updates after the PR is merged and GitHub Actions runs. Browser refresh alone will not fetch unpublished PR content.
+
+Classification guidance:
+
+- Direction: 利多 means likely positive for earnings, valuation, or sentiment; 利空 means likely negative; 中性 means weak or unclear direction; 双向 means different impacts across assets, supply-chain links, or time horizons.
+- Importance: S means core fundamental change; A means strong expectation change; B means sentiment or theme change; C means low relevance.
+- Reaction type: 即时催化型 maps to `instant`; 重要未定价型 maps to `undervalued`; 情绪交易型 maps to `sentiment`; 普通归档型 maps to `archive`.
+- Pricing status: 未反应 maps to `unpriced`; 部分反应 maps to `partial`; 已反应 maps to `priced`; 过度反应 maps to `overpriced`; 反应失败 maps to `failed`.
 
 ## Local Validation Before PR
 
