@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>存储看板批注板</title>
+  <style>
+    :root {
+      --bg: #f5f7f6;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #65746f;
+      --line: #dbe4df;
+      --teal: #147c72;
+      --teal-soft: #dff2ef;
+      --red: #c53d3d;
+      --amber: #b7791f;
+      --green: #16805a;
+      --blue: #2563eb;
+      font-family: Inter, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1280px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 22px 0 40px;
+      display: grid;
+      gap: 16px;
+    }
+
+    header, section {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    header {
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    h1, h2, p { margin: 0; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 17px; margin-bottom: 12px; }
+    p { color: var(--muted); line-height: 1.6; }
+    small { color: var(--muted); }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      padding: 0 12px;
+      cursor: pointer;
+    }
+
+    button.primary {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: #fff;
+    }
+
+    button.danger {
+      color: var(--red);
+    }
+
+    button:hover, button:focus-visible {
+      border-color: var(--teal);
+      outline: none;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 380px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 16px;
+    }
+
+    form {
+      display: grid;
+      gap: 11px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    input, select {
+      min-height: 38px;
+      padding: 0 10px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      padding: 10px;
+      line-height: 1.55;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfdfc;
+      display: grid;
+      gap: 8px;
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .card strong {
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-weight: 800;
+      background: var(--teal-soft);
+      color: var(--teal);
+    }
+
+    .p0 { background: #fee2e2; color: var(--red); }
+    .p1 { background: #fff2cc; color: var(--amber); }
+    .p2 { background: #dbeafe; color: var(--blue); }
+    .p3 { background: #e5e7eb; color: #4b5563; }
+    .done { background: #dcfce7; color: var(--green); }
+
+    .empty {
+      min-height: 180px;
+      display: grid;
+      place-items: center;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      color: var(--muted);
+      text-align: center;
+      padding: 24px;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hidden-file {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      header, .grid { grid-template-columns: 1fr; display: grid; }
+      .filters { grid-template-columns: 1fr 1fr; }
+      .actions { justify-content: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .filters { grid-template-columns: 1fr; }
+      main { width: min(100% - 20px, 1280px); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>存储看板批注板</h1>
+        <p>用于一次性整理你对网站的修改意见、优先级和验收状态。数据保存在当前浏览器本地，可导出 Markdown 或 JSON。</p>
+        <small id="saveStatus">本地自动保存</small>
+      </div>
+      <div class="actions">
+        <button id="exportMd">导出 Markdown</button>
+        <button id="exportJson">导出 JSON</button>
+        <button id="importJson">导入 JSON</button>
+        <button class="danger" id="clearDone">清理已完成</button>
+        <input class="hidden-file" id="fileInput" type="file" accept="application/json,.json" />
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>新增批注</h2>
+        <form id="noteForm">
+          <label>页面
+            <select name="page">
+              <option>概览</option>
+              <option>市场图表</option>
+              <option>产业跟踪</option>
+              <option>报告库</option>
+              <option>情报库</option>
+              <option>思维导图</option>
+              <option>数据更新 / Action</option>
+              <option>其他</option>
+            </select>
+          </label>
+          <label>模块 / 位置
+            <input name="module" placeholder="例如：消息雷达、DRAM 现货图、报告思维导图" required />
+          </label>
+          <label>优先级
+            <select name="priority">
+              <option value="P0">P0 立即修</option>
+              <option value="P1">P1 高优先级</option>
+              <option value="P2" selected>P2 普通优化</option>
+              <option value="P3">P3 以后再说</option>
+            </select>
+          </label>
+          <label>类型
+            <select name="kind">
+              <option>功能</option>
+              <option>视觉</option>
+              <option>数据</option>
+              <option>交互</option>
+              <option>文案</option>
+              <option>龙虾接入</option>
+            </select>
+          </label>
+          <label>意见内容
+            <textarea name="body" placeholder="把你想怎么改、为什么改、参考图/参考页面都写在这里。" required></textarea>
+          </label>
+          <label>验收标准
+            <textarea name="acceptance" placeholder="例如：点击报告思维导图后，节点能顺滑展开；市场图表只显示图，不显示价格卡。"></textarea>
+          </label>
+          <button class="primary" type="submit">保存批注</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>批注列表</h2>
+        <div class="filters">
+          <label>页面筛选
+            <select id="pageFilter"><option value="">全部页面</option></select>
+          </label>
+          <label>状态
+            <select id="statusFilter">
+              <option value="">全部状态</option>
+              <option value="open">待处理</option>
+              <option value="doing">处理中</option>
+              <option value="done">已完成</option>
+            </select>
+          </label>
+          <label>优先级
+            <select id="priorityFilter">
+              <option value="">全部优先级</option>
+              <option>P0</option><option>P1</option><option>P2</option><option>P3</option>
+            </select>
+          </label>
+          <label>关键词
+            <input id="query" placeholder="搜索模块、内容、验收标准" />
+          </label>
+        </div>
+        <div class="list" id="list"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const STORAGE_KEY = "storage-dashboard-feedback-v1";
+    const form = document.getElementById("noteForm");
+    const list = document.getElementById("list");
+    const pageFilter = document.getElementById("pageFilter");
+    const statusFilter = document.getElementById("statusFilter");
+    const priorityFilter = document.getElementById("priorityFilter");
+    const query = document.getElementById("query");
+    const saveStatus = document.getElementById("saveStatus");
+    const pages = ["概览", "市场图表", "产业跟踪", "报告库", "情报库", "思维导图", "数据更新 / Action", "其他"];
+
+    let notes = readNotes();
+    pages.forEach((page) => {
+      const option = document.createElement("option");
+      option.value = page;
+      option.textContent = page;
+      pageFilter.appendChild(option);
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      notes.unshift({
+        id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        status: "open",
+        page: data.get("page"),
+        module: String(data.get("module") || "").trim(),
+        priority: data.get("priority"),
+        kind: data.get("kind"),
+        body: String(data.get("body") || "").trim(),
+        acceptance: String(data.get("acceptance") || "").trim()
+      });
+      form.reset();
+      form.priority.value = "P2";
+      save();
+      render();
+    });
+
+    [pageFilter, statusFilter, priorityFilter, query].forEach((el) => el.addEventListener("input", render));
+
+    document.getElementById("exportMd").addEventListener("click", () => {
+      download(`dashboard-feedback-${today()}.md`, toMarkdown(notes), "text/markdown;charset=utf-8");
+    });
+
+    document.getElementById("exportJson").addEventListener("click", () => {
+      download(`dashboard-feedback-${today()}.json`, JSON.stringify(notes, null, 2), "application/json;charset=utf-8");
+    });
+
+    document.getElementById("importJson").addEventListener("click", () => document.getElementById("fileInput").click());
+    document.getElementById("fileInput").addEventListener("change", async (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const imported = JSON.parse(await file.text());
+      if (!Array.isArray(imported)) {
+        alert("JSON 必须是批注数组。");
+        return;
+      }
+      const byId = new Map([...imported, ...notes].map((item) => [item.id, item]));
+      notes = [...byId.values()].sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+      save();
+      render();
+      event.target.value = "";
+    });
+
+    document.getElementById("clearDone").addEventListener("click", () => {
+      if (!confirm("确认清理所有已完成批注？")) return;
+      notes = notes.filter((note) => note.status !== "done");
+      save();
+      render();
+    });
+
+    function readNotes() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    function save() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+      saveStatus.textContent = `已保存 ${notes.length} 条批注 · ${new Date().toLocaleString("zh-CN", { hour12: false })}`;
+    }
+
+    function render() {
+      const page = pageFilter.value;
+      const status = statusFilter.value;
+      const priority = priorityFilter.value;
+      const needle = query.value.trim().toLowerCase();
+      const filtered = notes.filter((note) => {
+        if (page && note.page !== page) return false;
+        if (status && note.status !== status) return false;
+        if (priority && note.priority !== priority) return false;
+        const haystack = `${note.page} ${note.module} ${note.kind} ${note.body} ${note.acceptance}`.toLowerCase();
+        return !needle || haystack.includes(needle);
+      });
+
+      list.innerHTML = "";
+      if (!filtered.length) {
+        list.innerHTML = `<div class="empty">暂无匹配批注。可以在左侧新增，或者调整筛选。</div>`;
+        return;
+      }
+
+      filtered.forEach((note) => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="card-head">
+            <div>
+              <strong>${escapeHtml(note.module)}</strong>
+              <div class="meta">
+                <span class="pill ${priorityClass(note.priority)}">${note.priority}</span>
+                <span class="pill ${note.status === "done" ? "done" : ""}">${statusLabel(note.status)}</span>
+                <span>${escapeHtml(note.page)}</span>
+                <span>${escapeHtml(note.kind)}</span>
+                <span>${formatDate(note.createdAt)}</span>
+              </div>
+            </div>
+          </div>
+          <p>${escapeHtml(note.body)}</p>
+          ${note.acceptance ? `<p><b>验收：</b>${escapeHtml(note.acceptance)}</p>` : ""}
+          <div class="card-actions">
+            <button data-action="open">待处理</button>
+            <button data-action="doing">处理中</button>
+            <button data-action="done">已完成</button>
+            <button class="danger" data-action="delete">删除</button>
+          </div>
+        `;
+        card.querySelectorAll("button").forEach((button) => {
+          button.addEventListener("click", () => updateNote(note.id, button.dataset.action));
+        });
+        list.appendChild(card);
+      });
+    }
+
+    function updateNote(id, action) {
+      if (action === "delete") {
+        if (!confirm("删除这条批注？")) return;
+        notes = notes.filter((note) => note.id !== id);
+      } else {
+        notes = notes.map((note) => note.id === id ? { ...note, status: action, updatedAt: new Date().toISOString() } : note);
+      }
+      save();
+      render();
+    }
+
+    function toMarkdown(items) {
+      const sorted = [...items].sort((a, b) => `${a.status}-${a.priority}`.localeCompare(`${b.status}-${b.priority}`));
+      return [
+        `# 存储看板批注汇总`,
+        ``,
+        `导出时间：${new Date().toLocaleString("zh-CN", { hour12: false })}`,
+        ``,
+        ...sorted.map((note) => [
+          `## ${note.priority} · ${note.page} · ${note.module}`,
+          ``,
+          `- 状态：${statusLabel(note.status)}`,
+          `- 类型：${note.kind}`,
+          `- 创建：${formatDate(note.createdAt)}`,
+          ``,
+          `### 意见`,
+          note.body,
+          ``,
+          note.acceptance ? `### 验收标准\n${note.acceptance}\n` : ""
+        ].join("\\n"))
+      ].join("\\n");
+    }
+
+    function download(filename, text, type) {
+      const blob = new Blob([text], { type });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function statusLabel(value) {
+      return value === "done" ? "已完成" : value === "doing" ? "处理中" : "待处理";
+    }
+
+    function priorityClass(value) {
+      return String(value || "").toLowerCase();
+    }
+
+    function formatDate(value) {
+      return new Date(value).toLocaleString("zh-CN", { hour12: false });
+    }
+
+    function today() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    save();
+    render();
+  </script>
+</body>
+</html>
