@@ -567,7 +567,7 @@ function App() {
           <KpiCard icon={<Database />} label="晶圆可用产能" value="待接入" hint="等待 EDB 或 clawbot 产能数据源" />
         </section>
 
-        {activePage === "overview" ? <OverviewPage data={data} latestReport={latestReport} intelRecords={allIntelRecords} /> : null}
+        {activePage === "overview" ? <OverviewPage data={data} intelRecords={allIntelRecords} /> : null}
         {activePage === "markets" ? <MarketsPage data={data} /> : null}
         {activePage === "industry" ? <IndustryPage data={data} /> : null}
         {activePage === "reports" ? (
@@ -661,83 +661,45 @@ function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) 
 
 function OverviewPage({
   data,
-  latestReport,
   intelRecords,
 }: {
   data: AppData;
-  latestReport?: Report;
   intelRecords: IntelRecord[];
 }) {
   const latestStocks = data.stocks.latest.slice(0, 4);
-  const hbmEvents = data.trackers.hbm4_negotiations ?? [];
   return (
-    <>
-      <section className="overview-market-grid">
-        {latestStocks.map((stock) => (
-          <OverviewStockCard stock={stock} history={data.stocks.history} key={stock.ticker} />
-        ))}
-        <section className="panel text-panel overview-radar-panel">
-          <div className="panel-header compact">
-            <div>
-              <p className="section-kicker">Message Radar</p>
-              <h2>消息雷达</h2>
-            </div>
+    <section className="overview-market-grid">
+      {latestStocks.map((stock) => (
+        <OverviewStockCard stock={stock} history={data.stocks.history} key={stock.ticker} />
+      ))}
+      <section className="panel text-panel overview-radar-panel">
+        <div className="panel-header compact">
+          <div>
+            <p className="section-kicker">Message Radar</p>
+            <h2>消息雷达</h2>
           </div>
-          <MessageRadar records={intelRecords} />
-        </section>
-        <section className="panel text-panel overview-events-panel">
-          <div className="panel-header compact">
-            <div>
-              <p className="section-kicker">Major Timeline</p>
-              <h2>重大事件时间线</h2>
-            </div>
-          </div>
-          <MajorEventTimeline records={intelRecords} />
-        </section>
+        </div>
+        <MessageRadar records={intelRecords} />
       </section>
-
-      <section className="dashboard-grid">
-        <section className="panel text-panel">
-          <div className="panel-header compact">
-            <div>
-              <p className="section-kicker">Latest Report</p>
-              <h2>最新深度报告</h2>
-            </div>
+      <section className="panel text-panel overview-events-panel">
+        <div className="panel-header compact">
+          <div>
+            <p className="section-kicker">Major Timeline</p>
+            <h2>重大事件时间线</h2>
           </div>
-          {latestReport ? (
-            <article className="analysis-item">
-              <strong>{latestReport.title}</strong>
-              <p>{latestReport.summary}</p>
-              <div className="meta-row">
-                <span className="pill neutral">{latestReport.rating}</span>
-                <span>{latestReport.date}</span>
-                <span>{latestReport.risk_level}风险</span>
-              </div>
-            </article>
-          ) : (
-            <div className="empty-state">暂无报告</div>
-          )}
-        </section>
-        <section className="panel text-panel">
-          <div className="panel-header compact">
-            <div>
-              <p className="section-kicker">Signals / Industry Watch</p>
-              <h2>核心信号与产业事件</h2>
-            </div>
-          </div>
-          <div className="timeline">
-            {hbmEvents.slice(0, 3).map((item) => (
-              <article className="timeline-item neutral" key={`${item.date}-${item.title}`}>
-                <span className="timeline-date">{item.date} · {item.status}</span>
-                <strong>{item.title}</strong>
-                <p>{item.detail}</p>
-              </article>
-            ))}
-            {!hbmEvents.length ? <div className="empty-state">等待产业事件更新</div> : null}
-          </div>
-        </section>
+        </div>
+        <MajorEventTimeline records={intelRecords} />
       </section>
-    </>
+      <section className="panel text-panel overview-theme-panel">
+        <div className="panel-header compact">
+          <div>
+            <p className="section-kicker">Theme Watch</p>
+            <h2>行业分析主题观察</h2>
+          </div>
+        </div>
+        <IndustryThemeWatch records={intelRecords} />
+      </section>
+    </section>
   );
 }
 
@@ -770,6 +732,67 @@ function MajorEventTimeline({ records }: { records: IntelRecord[] }) {
       ))}
     </div>
   );
+}
+
+function IndustryThemeWatch({ records }: { records: IntelRecord[] }) {
+  const focusRecords = records
+    .filter((record) => ["S", "A"].includes(record.importance ?? ""))
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 12);
+  const themes = summarizeIndustryThemes(focusRecords).slice(0, 4);
+
+  if (!themes.length) {
+    return <div className="empty-state">等待小龙虾补充行业分析情报，用于归纳受益环节和地域。</div>;
+  }
+
+  return (
+    <div className="theme-watch-list">
+      {themes.map((theme) => (
+        <article className="theme-watch-item" key={`${theme.segment}-${theme.region}`}>
+          <div>
+            <strong>{theme.segment}</strong>
+            <span>{theme.region}</span>
+          </div>
+          <p>{theme.description}</p>
+          <small>{theme.count} 条情报 · {theme.latestDate}</small>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function summarizeIndustryThemes(records: IntelRecord[]) {
+  const buckets = new Map<string, { segment: string; region: string; count: number; latestDate: string; samples: string[] }>();
+  records.forEach((record) => {
+    const text = `${record.title} ${record.product} ${record.summary} ${record.transmission_path ?? ""}`.toLowerCase();
+    const segment = inferIndustrySegment(text);
+    const region = inferIndustryRegion(text);
+    const key = `${segment}-${region}`;
+    const current = buckets.get(key) ?? { segment, region, count: 0, latestDate: record.date, samples: [] };
+    current.count += 1;
+    current.latestDate = current.latestDate > record.date ? current.latestDate : record.date;
+    if (current.samples.length < 2) current.samples.push(record.title);
+    buckets.set(key, current);
+  });
+  return [...buckets.values()]
+    .sort((a, b) => b.count - a.count || b.latestDate.localeCompare(a.latestDate))
+    .map((bucket) => ({
+      ...bucket,
+      description: bucket.samples.join("；"),
+    }));
+}
+
+function inferIndustrySegment(text: string) {
+  if (/(equipment|tool|wafer|fab|material|substrate|packag|封装|设备|材料|晶圆|衬底|基板|上游)/i.test(text)) return "上游：设备 / 材料 / 封装";
+  if (/(dram|nand|hbm|memory|原厂|三星|海力士|美光|中游)/i.test(text)) return "中游：存储原厂 / HBM";
+  if (/(server|ai|gpu|手机|pc|消费|云|数据中心|下游)/i.test(text)) return "下游：AI 服务器 / 终端需求";
+  return "产业链：综合影响";
+}
+
+function inferIndustryRegion(text: string) {
+  if (/(中国|国内|长鑫|长存|a股|china|cxmt|ymtc)/i.test(text)) return "国内";
+  if (/(海外|韩国|美国|日本|三星|海力士|美光|sk hynix|samsung|micron|nvidia|global)/i.test(text)) return "海外";
+  return "全球";
 }
 
 function OverviewStockCard({ stock, history }: { stock: StockPoint; history: StockPoint[] }) {

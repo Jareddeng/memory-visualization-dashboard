@@ -419,7 +419,7 @@ h2 {
 .overview-market-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(360px, 1.05fr);
-  grid-template-rows: repeat(6, 116px);
+  grid-template-rows: repeat(8, 116px);
   gap: 16px;
   align-items: stretch;
 }
@@ -435,7 +435,16 @@ h2 {
 
 .overview-events-panel {
   grid-column: 1 / span 2;
-  grid-row: 5 / span 2;
+  grid-row: 5 / span 4;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.overview-theme-panel {
+  grid-column: 3;
+  grid-row: 7 / span 2;
   min-height: 0;
   overflow: hidden;
   display: grid;
@@ -639,6 +648,58 @@ h2 {
 }
 
 .major-event-item small {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.theme-watch-list {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-gutter: stable;
+}
+
+.theme-watch-item {
+  display: grid;
+  gap: 7px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.theme-watch-item div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.theme-watch-item strong {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.theme-watch-item span {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--teal);
+  background: var(--teal-soft);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.theme-watch-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.theme-watch-item small {
   color: var(--subtle);
   font-size: 12px;
 }
@@ -1739,7 +1800,8 @@ button.mindmap-label {
 
   .overview-stock-card,
   .overview-radar-panel,
-  .overview-events-panel {
+  .overview-events-panel,
+  .overview-theme-panel {
     grid-column: auto;
     grid-row: auto;
   }
