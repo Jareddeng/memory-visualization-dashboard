@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { AlertTriangle, CalendarClock, Database, FileText, RefreshCw, Trash2 } from "lucide-react";
+import { AlertTriangle, Database, RefreshCw, Trash2 } from "lucide-react";
 import * as echarts from "echarts/core";
 import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { LineChart } from "echarts/charts";
@@ -564,8 +564,6 @@ function App() {
           ))}
           <KpiCard icon={<Database />} label="HBM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
           <KpiCard icon={<Database />} label="晶圆可用产能" value="待接入" hint="等待 EDB 或 clawbot 产能数据源" />
-          <KpiCard icon={<FileText />} label="最新报告" value={latestReport?.date ?? "暂无"} hint={latestReport?.rating ?? "等待 clawbot 提交"} />
-          <KpiCard icon={<CalendarClock />} label="本地情报记录" value={String(intelRecords.length)} hint={`龙虾推送 ${data.intel.length} 条，另有浏览器本地记录`} />
         </section>
 
         {activePage === "overview" ? <OverviewPage data={data} latestReport={latestReport} intelRecords={allIntelRecords} /> : null}
