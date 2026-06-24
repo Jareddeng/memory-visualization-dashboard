@@ -219,7 +219,7 @@ function inferWorkbookRows(workbookFile, sheetName, matrix) {
     headers.forEach((header, columnIndex) => {
       if (columnIndex === dateIndex) return;
       const value = parseNumber(row[columnIndex]);
-      if (!Number.isFinite(value)) return;
+      if (!Number.isFinite(value) || value <= 0) return;
       const spec = normalizeWorkbookSpec(header, category, market_type);
       if (!spec) return;
       output.push({
