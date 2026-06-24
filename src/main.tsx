@@ -128,6 +128,7 @@ type IntelRecord = {
   title: string;
   product: string;
   source: string;
+  url?: string;
   summary: string;
   importance?: "S" | "A" | "B" | "C";
   reaction_type?: "instant" | "undervalued" | "sentiment" | "archive";
@@ -1263,7 +1264,7 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
       {filtered.length ? (
         <div className="radar-list">
           {filtered.map((record) => (
-            <article className="radar-item" key={record.id}>
+            <article className={`radar-item ${record.url ? "clickable" : ""}`} key={record.id} role={record.url ? "link" : undefined} tabIndex={record.url ? 0 : undefined} onClick={() => openIntelUrl(record.url)} onKeyDown={(event) => handleIntelUrlKeyDown(event, record.url)}>
               <div>
                 <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>
                 <time>{record.date}</time>
@@ -1279,6 +1280,17 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
       )}
     </div>
   );
+}
+
+function openIntelUrl(url?: string) {
+  if (!url) return;
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function handleIntelUrlKeyDown(event: React.KeyboardEvent<HTMLElement>, url?: string) {
+  if (!url || (event.key !== "Enter" && event.key !== " ")) return;
+  event.preventDefault();
+  openIntelUrl(url);
 }
 
 function IntelPage({
@@ -1442,7 +1454,7 @@ function IntelTable({
               <td>{importanceLabel(record.importance)}</td>
               <td>{reactionTypeLabel(record.reaction_type)}</td>
               <td>{pricingStatusLabel(record.pricing_status)}</td>
-              <td>{record.source}</td>
+              <td>{record.url ? <a href={record.url} target="_blank" rel="noreferrer">{record.source}</a> : record.source}</td>
               <td>{record.summary}</td>
               <td>
                 <small>{horizonLabel(record.horizon)} · {confidenceLabel(record.confidence)}置信度 · {actionLabel(record.action)}</small>
@@ -1486,6 +1498,7 @@ function IntelCaptureModal({ record, onClose, onSave }: { record?: IntelRecord |
       title: String(form.get("title") || "").trim(),
       product: String(form.get("product") || "").trim(),
       source: String(form.get("source") || "本地录入").trim(),
+      url: String(form.get("url") || "").trim(),
       summary: String(form.get("summary") || "").trim(),
       importance: String(form.get("importance") || "B") as IntelRecord["importance"],
       reaction_type: String(form.get("reaction_type") || "archive") as IntelRecord["reaction_type"],
@@ -1509,7 +1522,7 @@ function IntelCaptureModal({ record, onClose, onSave }: { record?: IntelRecord |
           <button aria-label="关闭情报弹窗" onClick={onClose} type="button">关闭</button>
         </header>
         <form className="intel-form" onSubmit={handleSubmit}>
-          <label>类型<select name="type" defaultValue={record?.type ?? "消息"}><option>产品数据</option><option>行业分析</option><option>重大事件</option><option>消息</option></select></label>
+          <label>类型<select name="type" defaultValue={record?.type ?? "消息"}><option>产品数据</option><option>行业分析</option><option>重大事件</option><option>消息</option><option>市场消息</option></select></label>
           <label>方向<select name="impact" defaultValue={record?.impact ?? "neutral"}><option value="bullish">利多</option><option value="bearish">利空</option><option value="neutral">中性</option></select></label>
           <label>重要性<select name="importance" defaultValue={record?.importance ?? "B"}><option value="S">S级：核心基本面变化</option><option value="A">A级：强预期变化</option><option value="B">B级：情绪或主题变化</option><option value="C">C级：低相关信息</option></select></label>
           <label>市场反应类型<select name="reaction_type" defaultValue={record?.reaction_type ?? "archive"}><option value="instant">即时催化型</option><option value="undervalued">重要未定价型</option><option value="sentiment">情绪交易型</option><option value="archive">普通归档型</option></select></label>
@@ -1521,6 +1534,7 @@ function IntelCaptureModal({ record, onClose, onSave }: { record?: IntelRecord |
           <label>复核时间<input name="review_date" type="date" defaultValue={record?.review_date ?? ""} /></label>
           <label>标题<input name="title" type="text" maxLength={80} defaultValue={record?.title ?? ""} required /></label>
           <label>相关产品<input name="product" type="text" maxLength={80} placeholder="HBM / DDR5 / NAND" defaultValue={record?.product ?? ""} /></label>
+          <label>原文链接<input name="url" type="url" maxLength={300} placeholder="https://..." defaultValue={record?.url ?? ""} /></label>
           <label>来源<input name="source" type="text" maxLength={100} placeholder="公司公告 / 研报 / 调研" defaultValue={record?.source ?? ""} /></label>
           <label className="wide">传导路径<textarea name="transmission_path" rows={3} maxLength={400} placeholder="新闻如何影响公司、行业、产业链或资产价格" defaultValue={record?.transmission_path ?? ""} /></label>
           <label className="wide">摘要<textarea name="summary" rows={5} maxLength={500} defaultValue={record?.summary ?? ""} required /></label>
@@ -1637,7 +1651,7 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets" } }));
   (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry" } }));
   (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry" } }));
-  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: { page: "intel" } }));
+  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: { page: "intel" } }));
   return items
     .filter((item) => isWithinTimeRange(item.date, timeRange, data.metadata.generated_at))
     .filter((item) => item.haystack.toLowerCase().includes(needle));
@@ -1681,6 +1695,7 @@ function exportIntelligence(data: AppData, records: IntelRecord[]) {
       product: record.product,
       impact: impactLabel(record.impact),
       source: record.source,
+      url: record.url ?? "",
       summary: record.summary,
       importance: importanceLabel(record.importance),
       reaction_type: reactionTypeLabel(record.reaction_type),
@@ -1698,6 +1713,7 @@ function exportIntelligence(data: AppData, records: IntelRecord[]) {
       product: "存储行业",
       impact: report.rating,
       source: report.sources.join("、"),
+      url: "",
       summary: report.summary,
       importance: "",
       reaction_type: "",
@@ -1709,7 +1725,7 @@ function exportIntelligence(data: AppData, records: IntelRecord[]) {
       review_date: "",
     })),
   ];
-  const headers = ["date", "type", "title", "product", "impact", "importance", "reaction_type", "pricing_status", "horizon", "transmission_path", "confidence", "action", "review_date", "source", "summary"];
+  const headers = ["date", "type", "title", "product", "impact", "importance", "reaction_type", "pricing_status", "horizon", "transmission_path", "confidence", "action", "review_date", "source", "url", "summary"];
   const csv = [headers.join(","), ...rows.map((row) => headers.map((key) => csvCell(row[key as keyof typeof row])).join(","))].join("\n");
   const blob = new Blob([`\ufeff${csv}`], { type: "text/csv;charset=utf-8" });
   const url = URL.createObjectURL(blob);

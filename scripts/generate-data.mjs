@@ -522,6 +522,7 @@ function normalizeIntelRecord(record, file, index) {
     title,
     product: String(record.product || "").trim(),
     source: String(record.source || "clawbot").trim(),
+    url: normalizeIntelUrl(record.url, file, index),
     summary,
     importance,
     reaction_type: reactionType,
@@ -532,6 +533,20 @@ function normalizeIntelRecord(record, file, index) {
     action,
     review_date: normalizeDate(record.review_date) || "",
   };
+}
+
+function normalizeIntelUrl(value, file, index) {
+  const url = String(value || "").trim();
+  if (!url) return "";
+  try {
+    const parsed = new URL(url);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      throw new Error("unsupported protocol");
+    }
+    return parsed.toString();
+  } catch {
+    throw new Error(`情报 url 必须是 http/https 链接: ${file} #${index + 1}`);
+  }
 }
 
 function normalizeIntelImpact(value) {

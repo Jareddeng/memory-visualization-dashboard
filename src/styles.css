@@ -846,6 +846,18 @@ h2 {
   background: var(--panel-soft);
 }
 
+.radar-item.clickable {
+  cursor: pointer;
+}
+
+.radar-item.clickable:hover,
+.radar-item.clickable:focus-visible {
+  border-color: rgba(15, 118, 110, 0.45);
+  background: #f8fcfb;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  outline: none;
+}
+
 .radar-item div {
   display: flex;
   align-items: center;
