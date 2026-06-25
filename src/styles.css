@@ -511,6 +511,30 @@ h2 {
   font-size: 12px;
 }
 
+.price-change-badge {
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 999px;
+  padding: 5px 10px;
+  line-height: 1;
+  font-weight: 850;
+}
+
+.price-change-badge.bullish {
+  color: #1f7a52;
+  background: #e3f1ea;
+}
+
+.price-change-badge.bearish {
+  color: #bd3f3f;
+  background: #f6dddd;
+}
+
+.price-change-badge.neutral {
+  color: #2f6b9b;
+  background: #deebf5;
+}
+
 .warning {
   display: flex;
   align-items: center;
@@ -599,32 +623,15 @@ h2 {
   text-align: right;
 }
 
-.overview-stock-price b {
-  font-size: 14px;
-}
-
-.change-badge {
-  min-width: 118px;
-  border-radius: 999px;
-  padding: 5px 12px;
-  text-align: left;
+.stock-change-text {
+  width: fit-content;
+  justify-self: end;
   font-size: 14px;
   line-height: 1;
 }
 
-.change-badge.bullish {
-  color: #1f7a52;
-  background: #e3f1ea;
-}
-
-.change-badge.bearish {
-  color: #bd3f3f;
-  background: #f6dddd;
-}
-
-.change-badge.neutral {
-  color: #2f6b9b;
-  background: #deebf5;
+.stock-change-text.neutral {
+  color: var(--blue);
 }
 
 .overview-stock-chart,

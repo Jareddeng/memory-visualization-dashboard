@@ -827,7 +827,7 @@ function OverviewStockCard({ stock, history }: { stock: StockPoint; history: Sto
         </div>
         <div className="overview-stock-price">
           {stock.close.toLocaleString()} {stock.currency}
-          <b className={`change-badge ${stock.change_pct > 0 ? "bullish" : stock.change_pct < 0 ? "bearish" : "neutral"}`}>{stock.change_pct > 0 ? "+" : ""}{stock.change_pct}%</b>
+          <b className={`stock-change-text ${stock.change_pct > 0 ? "up" : stock.change_pct < 0 ? "down" : "neutral"}`}>{stock.change_pct > 0 ? "+" : ""}{stock.change_pct}%</b>
         </div>
       </div>
       <div className="overview-stock-chart">
@@ -948,7 +948,7 @@ function PriceKpiCard({ snapshot }: { snapshot: PriceSnapshot }) {
       <span>{snapshot.label}</span>
       <strong>{formatPrice(snapshot.price)} {snapshot.unit}</strong>
       <p>{snapshot.date} · {snapshot.spec}</p>
-      <b className={snapshot.changePct >= 0 ? "up" : "down"}>
+      <b className={`price-change-badge ${snapshot.changePct > 0 ? "bullish" : snapshot.changePct < 0 ? "bearish" : "neutral"}`}>
         {sign}{snapshot.changePct.toFixed(2)}% / {sign}{formatPrice(snapshot.change)} {snapshot.unit}
       </b>
     </article>
