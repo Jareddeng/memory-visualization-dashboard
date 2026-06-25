@@ -155,6 +155,7 @@ type SearchItem = {
     reportSlug?: string;
     url?: string;
     recordId?: string;
+    anchorId?: string;
   };
 };
 
@@ -266,7 +267,7 @@ function useDashboardData() {
   };
 }
 
-function Chart({ option }: { option: echarts.EChartsCoreOption }) {
+const Chart = React.memo(function Chart({ option }: { option: echarts.EChartsCoreOption }) {
   const ref = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
@@ -282,6 +283,26 @@ function Chart({ option }: { option: echarts.EChartsCoreOption }) {
   }, [option]);
 
   return <div className="chart" ref={ref} />;
+}, areChartOptionsEqual);
+
+function areChartOptionsEqual(prev: { option: echarts.EChartsCoreOption }, next: { option: echarts.EChartsCoreOption }) {
+  return chartOptionSignature(prev.option) === chartOptionSignature(next.option);
+}
+
+function chartOptionSignature(option: echarts.EChartsCoreOption) {
+  const rawTitle = (option as any).title;
+  const rawSeries = (option as any).series;
+  const title = Array.isArray(rawTitle) ? rawTitle.map((item) => item?.text).join("|") : rawTitle?.text;
+  const series = Array.isArray(rawSeries) ? rawSeries : [];
+  return JSON.stringify({
+    title,
+    series: series.map((item) => ({
+      name: item?.name,
+      count: Array.isArray(item?.data) ? item.data.length : 0,
+      first: Array.isArray(item?.data) ? item.data[0] : undefined,
+      last: Array.isArray(item?.data) ? item.data[item.data.length - 1] : undefined,
+    })),
+  });
 }
 
 function makePriceOption(title: string, payload: { series: PriceSeries[] }): echarts.EChartsCoreOption {
@@ -516,8 +537,8 @@ function App() {
     setActivePage(item.target.page);
     setQuery("");
     window.setTimeout(() => {
-      if (item.target.recordId) {
-        const targetId = `intel-${item.target.recordId}`;
+      const targetId = item.target.anchorId ?? (item.target.recordId ? `intel-${item.target.recordId}` : "");
+      if (targetId) {
         window.history.replaceState(null, "", `#${targetId}`);
         document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "center" });
         return;
@@ -865,7 +886,7 @@ function MarketsPage({ data }: { data: AppData }) {
 
       <section className="stock-trend-grid">
         {data.stocks.latest.map((stock) => (
-          <Panel key={`${stock.ticker}-trend`}>
+          <Panel id={`stock-${slugifyId(stock.ticker)}`} key={`${stock.ticker}-trend`}>
             <Chart option={makeStockTrendOption(stock, data.stocks.history)} />
           </Panel>
         ))}
@@ -969,8 +990,8 @@ function PriceKpiCard({ snapshot }: { snapshot: PriceSnapshot }) {
   );
 }
 
-function Panel({ children }: { children: React.ReactNode }) {
-  return <section className="panel">{children}</section>;
+function Panel({ children, id }: { children: React.ReactNode; id?: string }) {
+  return <section className="panel" id={id}>{children}</section>;
 }
 
 function Timeline({ items }: { items: NonNullable<TrackerPayload["hbm4_negotiations"]> }) {
@@ -979,7 +1000,7 @@ function Timeline({ items }: { items: NonNullable<TrackerPayload["hbm4_negotiati
       <h2>HBM4 长协谈判跟踪</h2>
       <div className="timeline">
         {items.map((item) => (
-          <article key={`${item.date}-${item.title}`}>
+          <article id={`hbm-${slugifyId(`${item.date}-${item.title}`)}`} key={`${item.date}-${item.title}`}>
             <time>{item.date}</time>
             <div>
               <strong>{item.title}</strong>
@@ -1011,7 +1032,7 @@ function ExpansionTable({ rows }: { rows: NonNullable<TrackerPayload["expansion_
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={`${row.company}-${row.region}-${row.plan}`}>
+              <tr id={`expansion-${slugifyId(`${row.company}-${row.region}-${row.plan}`)}`} key={`${row.company}-${row.region}-${row.plan}`}>
                 <td>{row.company}</td>
                 <td>{row.region}</td>
                 <td>{row.plan}</td>
@@ -1076,7 +1097,7 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
   }, [report?.slug]);
 
   return (
-    <section className="panel text-panel report-main">
+    <section className="panel text-panel report-main" id="report-detail">
       <h2>{isLatest ? "最新深度报告" : "历史深度报告"}</h2>
       {report ? (
         <>
@@ -1717,11 +1738,11 @@ function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAc
 function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
   const items: SearchItem[] = [];
-  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug } }));
-  data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets" } }));
-  (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry" } }));
-  (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry" } }));
-  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url } : { page: "intel", recordId: record.id } }));
+  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug, anchorId: "report-detail" } }));
+  data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets", anchorId: `stock-${slugifyId(stock.ticker)}` } }));
+  (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry", anchorId: `hbm-${slugifyId(`${item.date}-${item.title}`)}` } }));
+  (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry", anchorId: `expansion-${slugifyId(`${item.company}-${item.region}-${item.plan}`)}` } }));
+  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url } : { page: "intel", anchorId: `intel-${record.id}` } }));
   return items
     .filter((item) => isWithinTimeRange(item.date, timeRange, data.metadata.generated_at))
     .filter((item) => item.haystack.toLowerCase().includes(needle));
@@ -1747,6 +1768,14 @@ function startOfDay(time: number) {
 function dateFromText(value: string) {
   const match = String(value || "").match(/20\d{2}-\d{2}-\d{2}/);
   return match?.[0];
+}
+
+function slugifyId(value: string) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\u4e00-\u9fa5]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
 }
 
 function timeRangeLabel(range: TimeRange) {
