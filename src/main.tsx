@@ -493,10 +493,21 @@ function App() {
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
+  const [searchOpen, setSearchOpen] = React.useState(false);
   const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
   const [intelRecords, setIntelRecords] = useLocalIntelRecords();
   const [captureOpen, setCaptureOpen] = React.useState(false);
   const [editingIntelRecord, setEditingIntelRecord] = React.useState<IntelRecord | null>(null);
+  const topbarRef = React.useRef<HTMLElement | null>(null);
+
+  React.useEffect(() => {
+    const closeSearch = (event: MouseEvent) => {
+      if (!topbarRef.current || topbarRef.current.contains(event.target as Node)) return;
+      setSearchOpen(false);
+    };
+    document.addEventListener("mousedown", closeSearch);
+    return () => document.removeEventListener("mousedown", closeSearch);
+  }, []);
 
   if (error) {
     return (
@@ -530,12 +541,12 @@ function App() {
   const openSearchResult = (item: SearchItem) => {
     if (item.target.url) {
       window.open(item.target.url, "_blank", "noopener,noreferrer");
-      setQuery("");
+      setSearchOpen(false);
       return;
     }
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
     setActivePage(item.target.page);
-    setQuery("");
+    setSearchOpen(false);
     window.setTimeout(() => {
       const targetId = item.target.anchorId ?? (item.target.recordId ? `intel-${item.target.recordId}` : "");
       if (targetId) {
@@ -568,7 +579,7 @@ function App() {
       </aside>
 
       <main className="workspace">
-        <header className="topbar">
+        <header className="topbar" ref={topbarRef}>
           <label className="time-filter">
             <span>周期</span>
             <select value={timeRange} onChange={(event) => setTimeRange(event.target.value as TimeRange)}>
@@ -582,7 +593,11 @@ function App() {
             <span aria-hidden="true">⌕</span>
             <input
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => {
+                setQuery(event.target.value);
+                setSearchOpen(true);
+              }}
+              onFocus={() => setSearchOpen(true)}
               placeholder="搜索 DRAM、NAND、HBM、报告、产业链、情报"
               type="search"
             />
@@ -591,7 +606,7 @@ function App() {
             <button className="ghost-button" type="button" onClick={() => exportIntelligence(data, allIntelRecords)}>导出情报</button>
             <button className="primary-button" type="button" onClick={() => setCaptureOpen(true)}>新增情报</button>
           </div>
-          {query.trim() ? <SearchResults results={searchResults} timeRange={timeRange} onOpen={openSearchResult} onClear={() => setQuery("")} /> : null}
+          {query.trim() && searchOpen ? <SearchResults results={searchResults} timeRange={timeRange} onOpen={openSearchResult} onClear={() => { setQuery(""); setSearchOpen(false); }} /> : null}
         </header>
 
         <Hero data={data} latestReport={latestReport} />
@@ -933,7 +948,7 @@ function ReportsPage({
 }) {
   return (
     <>
-      <section className="section-heading">
+      <section className="section-heading" id="reports-top">
         <div>
           <h2>深度报告跟踪</h2>
           <p>报告由 clawbot 或人工通过 PR 进入仓库，合并后由 GitHub Actions 生成归档。</p>
@@ -1097,7 +1112,7 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
   }, [report?.slug]);
 
   return (
-    <section className="panel text-panel report-main" id="report-detail">
+    <section className="panel text-panel report-main">
       <h2>{isLatest ? "最新深度报告" : "历史深度报告"}</h2>
       {report ? (
         <>
@@ -1738,7 +1753,7 @@ function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAc
 function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
   const items: SearchItem[] = [];
-  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug, anchorId: "report-detail" } }));
+  data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug, anchorId: "reports-top" } }));
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets", anchorId: `stock-${slugifyId(stock.ticker)}` } }));
   (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry", anchorId: `hbm-${slugifyId(`${item.date}-${item.title}`)}` } }));
   (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry", anchorId: `expansion-${slugifyId(`${item.company}-${item.region}-${item.plan}`)}` } }));
