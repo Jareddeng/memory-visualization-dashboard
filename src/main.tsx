@@ -1277,10 +1277,9 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
     { key: "all", label: "所有信息" },
   ];
   const anchor = new Date().toISOString();
-  const filtered = records
-    .filter((record) => filter === "all" || normalizedImpact(record.impact) === filter)
-    .filter((record) => isWithinTimeRange(record.date, timeFilter, anchor));
-  const total = records.length || 1;
+  const timeScopedRecords = records.filter((record) => isWithinTimeRange(record.date, timeFilter, anchor));
+  const filtered = timeScopedRecords.filter((record) => filter === "all" || normalizedImpact(record.impact) === filter);
+  const total = timeScopedRecords.length || 1;
   const distribution: Array<{ key: IntelRecord["impact"]; label: string }> = [
     { key: "bullish", label: "利多" },
     { key: "bearish", label: "利空" },
@@ -1291,8 +1290,8 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
     <div className="message-radar">
       <div className="radar-distribution" aria-label="利好利空分布">
         {distribution.map((item) => {
-          const count = records.filter((record) => normalizedImpact(record.impact) === item.key).length;
-          const percent = records.length ? Math.round((count / total) * 100) : 0;
+          const count = timeScopedRecords.filter((record) => normalizedImpact(record.impact) === item.key).length;
+          const percent = timeScopedRecords.length ? Math.round((count / total) * 100) : 0;
           return (
             <div className={`distribution-row ${item.key}`} key={item.key}>
               <div className="distribution-fill" style={{ width: `${percent}%` }} />
