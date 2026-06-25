@@ -75,6 +75,25 @@
       "action": "watch",
       "review_date": "2026-04-19",
       "url": "https://www.digitaltoday.co.kr/en/view/1459/samsung-electronics-sk-hynix-set-for-record-results-securities-firms-raise-2026-forecasts"
+    },
+    {
+      "id": "2026-06-24-micron-fy26-q3-earnings",
+      "date": "2026-06-24",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1d",
+      "title": "Micron FY26 Q3 营收414.6亿暴超预期，毛利率84.9%创历史新高",
+      "product": "DRAM / NAND / HBM / Micron",
+      "source": "Micron 官方财报；Yahoo Finance；ESMChina",
+      "url": "https://www.esmchina.com/news/14296.html",
+      "summary": "美光FY26 Q3营收414.6亿美元（同比+346%），调整后EPS 25.11美元（同比+1000%+），毛利率84.9%，全部大幅超预期。Q4指引营收490-510亿、EPS 30-32美元，同样远超预期。CEO确认2026年HBM产能已售罄，签署16项长期协议锁定未来3-5年共220亿美元承诺。数据中心营收115.2亿同比增超600%。",
+      "transmission_path": "业绩大超预期 + HBM长协锁定 → 验证存储超级周期持续性 → 提振MU及SK海力士/三星估值预期 → 利好上游设备材料（HBM扩产、先进封装）",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-07-24"
     }
   ]
 }
