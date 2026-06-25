@@ -1,4 +1,6 @@
 # 龙虾接入与 PR 推送说明
+> 本地龙虾执行 EDB 数据推送时，先读取 `clawbot.edb.config.json` 和 `docs/local-clawbot-update-guide.md`。新闻情报字段规范读取 `docs/news-intel-schema.md`。
+
 
 本仓库是一个静态的存储行业看板。龙虾只通过 GitHub Pull Request 提交源文件，不直接改部署后的网页，也不提交构建产物。
 

@@ -1,0 +1,64 @@
+{
+  "name": "memory-visualization-dashboard-local-edb-clawbot",
+  "purpose": "Local clawbot configuration for updating EDB Excel inputs and opening pull requests for the storage dashboard.",
+  "repository": "Jareddeng/memory-visualization-dashboard",
+  "base_branch": "main",
+  "branch_prefix": "edb-update/",
+  "allowed_tasks": [
+    "Update EDB Excel files under edb_data/",
+    "Validate generated data locally",
+    "Open a pull request with source files only"
+  ],
+  "allowed_files": [
+    "edb_data/DRAM价格每日数据更新.xlsx",
+    "edb_data/DRAM合约平均价格.xlsx",
+    "edb_data/Nand Flash.xlsx",
+    "edb_data/NAND合约平均价格.xlsx"
+  ],
+  "do_not_commit": [
+    "dist/",
+    "data/processed/",
+    "public/data/processed/",
+    "node_modules/",
+    "package-lock.json unless dependencies changed intentionally"
+  ],
+  "commands": {
+    "install": "npm ci",
+    "validate_data": "npm run validate:data",
+    "generate_data": "npm run generate:data",
+    "build": "npm run build"
+  },
+  "validation_required_before_pr": [
+    "npm run validate:data",
+    "npm run build"
+  ],
+  "edb_source_priority": {
+    "edb_data": 2,
+    "repository_root_excel": 1,
+    "seed_csv": 0
+  },
+  "edb_file_rules": [
+    "Only update the four fixed Excel files in edb_data/.",
+    "Do not rename files, worksheets, date columns, price columns, or indicator names.",
+    "Append new rows or replace the latest source workbook when the upstream EDB export changes.",
+    "Do not rewrite historical rows unless correcting a verified source error.",
+    "If correcting history, explain date range, reason, and source in the pull request body.",
+    "Zero, 0.0, blank, and negative prices are treated as unavailable data and should not be forced into charts.",
+    "Source displayed by the dashboard for EDB prices is WIND unless a future authorized web source is configured."
+  ],
+  "pull_request": {
+    "title_template": "EDB: update prices through YYYY-MM-DD",
+    "body_template_path": "docs/local-clawbot-update-guide.md",
+    "review_notes_required": [
+      "Latest date covered by each Excel file",
+      "Whether any historical rows were corrected",
+      "Any missing or 0.0 source values",
+      "Validation command results"
+    ]
+  },
+  "deployment_behavior": [
+    "After PR merge to main, GitHub Actions runs import reports, updateData, build, and deploy.",
+    "The website is static; browser refresh does not fetch unmerged PR content.",
+    "The page updates only after GitHub Actions completes and GitHub Pages deploys."
+  ]
+}

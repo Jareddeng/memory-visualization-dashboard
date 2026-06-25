@@ -8,6 +8,14 @@
 
 `docs/clawbot-pr-protocol.md`
 
+本地龙虾执行 EDB 和内容更新时，优先读取：
+
+```text
+clawbot.edb.config.json
+docs/local-clawbot-update-guide.md
+docs/news-intel-schema.md
+```
+
 ## 本地运行
 
 ```powershell
