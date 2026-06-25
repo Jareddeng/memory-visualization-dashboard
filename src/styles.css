@@ -419,7 +419,7 @@ h2 {
 .overview-market-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(360px, 1.05fr);
-  grid-template-rows: repeat(8, 116px);
+  grid-template-rows: repeat(10, 116px);
   gap: 16px;
   align-items: stretch;
 }
@@ -435,7 +435,7 @@ h2 {
 
 .overview-events-panel {
   grid-column: 1 / span 2;
-  grid-row: 5 / span 4;
+  grid-row: 5 / span 6;
   min-height: 0;
   overflow: hidden;
   display: grid;
@@ -444,7 +444,7 @@ h2 {
 
 .overview-theme-panel {
   grid-column: 3;
-  grid-row: 7 / span 2;
+  grid-row: 7 / span 4;
   min-height: 0;
   overflow: hidden;
   display: grid;
