@@ -142,6 +142,8 @@ type IntelRecord = {
 
 type ImpactFilter = "all" | IntelRecord["impact"];
 type TimeRange = "all" | "7d" | "30d" | "90d";
+type RadarTimeRange = "all" | "7d" | "30d";
+type PricingFilter = "all" | NonNullable<IntelRecord["pricing_status"]>;
 type SearchItem = {
   type: string;
   title: string;
@@ -704,6 +706,15 @@ function OverviewPage({
 }
 
 function MajorEventTimeline({ records }: { records: IntelRecord[] }) {
+  const [pricingFilter, setPricingFilter] = React.useState<PricingFilter>("all");
+  const pricingFilters: Array<{ key: PricingFilter; label: string }> = [
+    { key: "all", label: "全部" },
+    { key: "overpriced", label: "过度反应" },
+    { key: "priced", label: "完全反应" },
+    { key: "partial", label: "部分反应" },
+    { key: "unpriced", label: "未反应" },
+    { key: "failed", label: "反应失败" },
+  ];
   const timelineKeywords = ["产能", "扩产", "投产", "量产", "晶圆", "长协", "谈判", "交付", "订单", "供给", "HBM", "HBM4", "capacity", "capex", "wafer", "fab", "supply"];
   const isTimelineRecord = (record: IntelRecord) => {
     const text = `${record.title} ${record.product} ${record.summary} ${record.transmission_path ?? ""}`.toLowerCase();
@@ -711,26 +722,36 @@ function MajorEventTimeline({ records }: { records: IntelRecord[] }) {
   };
   const majorRecords = records
     .filter(isTimelineRecord)
+    .filter((record) => pricingFilter === "all" || record.pricing_status === pricingFilter)
     .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 5);
-
-  if (!majorRecords.length) {
-    return <div className="empty-state">等待 S 级产能、长协或关键时间线情报。</div>;
-  }
+    .slice(0, 10);
 
   return (
-    <div className="major-event-timeline">
-      {majorRecords.map((record) => (
-        <article className="major-event-item" key={record.id}>
-          <time>{record.date}</time>
-          <div>
-            <strong>{record.title}</strong>
-            <p>{record.summary}</p>
-            <small>{record.product || record.type} · {reactionTypeLabel(record.reaction_type)} · {pricingStatusLabel(record.pricing_status)}</small>
-          </div>
-        </article>
-      ))}
-    </div>
+    <>
+      <div className="segmented-control filter-control" aria-label="股价反应状态筛选">
+        {pricingFilters.map((item) => (
+          <button className={pricingFilter === item.key ? "active" : ""} key={item.key} onClick={() => setPricingFilter(item.key)} type="button">
+            {item.label}
+          </button>
+        ))}
+      </div>
+      {majorRecords.length ? (
+        <div className="major-event-timeline">
+          {majorRecords.map((record) => (
+            <article className="major-event-item" key={record.id}>
+              <time>{record.date}</time>
+              <div>
+                <strong>{record.title}</strong>
+                <p>{record.summary}</p>
+                <small>{record.product || record.type} · {reactionTypeLabel(record.reaction_type)} · {pricingStatusLabel(record.pricing_status)}</small>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state">当前筛选下暂无 S 级产能、长协或关键时间线情报。</div>
+      )}
+    </>
   );
 }
 
@@ -806,7 +827,7 @@ function OverviewStockCard({ stock, history }: { stock: StockPoint; history: Sto
         </div>
         <div className="overview-stock-price">
           {stock.close.toLocaleString()} {stock.currency}
-          <b className={stock.change_pct >= 0 ? "up" : "down"}>{stock.change_pct >= 0 ? "+" : ""}{stock.change_pct}%</b>
+          <b className={`change-badge ${stock.change_pct > 0 ? "bullish" : stock.change_pct < 0 ? "bearish" : "neutral"}`}>{stock.change_pct > 0 ? "+" : ""}{stock.change_pct}%</b>
         </div>
       </div>
       <div className="overview-stock-chart">
@@ -1243,13 +1264,22 @@ function IntelFeed({ records }: { records: IntelRecord[] }) {
 
 function MessageRadar({ records }: { records: IntelRecord[] }) {
   const [filter, setFilter] = React.useState<ImpactFilter>("all");
+  const [timeFilter, setTimeFilter] = React.useState<RadarTimeRange>("all");
   const filters: Array<{ key: ImpactFilter; label: string }> = [
     { key: "all", label: "全部" },
     { key: "bullish", label: "利多" },
     { key: "bearish", label: "利空" },
     { key: "neutral", label: "中性" },
   ];
-  const filtered = filter === "all" ? records : records.filter((record) => normalizedImpact(record.impact) === filter);
+  const timeFilters: Array<{ key: RadarTimeRange; label: string }> = [
+    { key: "7d", label: "近7天" },
+    { key: "30d", label: "近一个月" },
+    { key: "all", label: "所有信息" },
+  ];
+  const anchor = new Date().toISOString();
+  const filtered = records
+    .filter((record) => filter === "all" || normalizedImpact(record.impact) === filter)
+    .filter((record) => isWithinTimeRange(record.date, timeFilter, anchor));
   const total = records.length || 1;
   const distribution: Array<{ key: IntelRecord["impact"]; label: string }> = [
     { key: "bullish", label: "利多" },
@@ -1272,17 +1302,21 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
           );
         })}
       </div>
-      <div className="segmented-control" aria-label="消息影响筛选">
-        {filters.map((item) => (
-          <button
-            className={filter === item.key ? "active" : ""}
-            key={item.key}
-            onClick={() => setFilter(item.key)}
-            type="button"
-          >
-            {item.label}
-          </button>
-        ))}
+      <div className="radar-filter-row">
+        <div className="segmented-control" aria-label="消息影响筛选">
+          {filters.map((item) => (
+            <button className={filter === item.key ? "active" : ""} key={item.key} onClick={() => setFilter(item.key)} type="button">
+              {item.label}
+            </button>
+          ))}
+        </div>
+        <div className="segmented-control time-filter" aria-label="消息时间范围筛选">
+          {timeFilters.map((item) => (
+            <button className={timeFilter === item.key ? "active" : ""} key={item.key} onClick={() => setTimeFilter(item.key)} type="button">
+              {item.label}
+            </button>
+          ))}
+        </div>
       </div>
       {filtered.length ? (
         <div className="radar-list">

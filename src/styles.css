@@ -439,7 +439,7 @@ h2 {
   min-height: 0;
   overflow: hidden;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
 }
 
 .overview-theme-panel {
@@ -601,6 +601,30 @@ h2 {
 
 .overview-stock-price b {
   font-size: 14px;
+}
+
+.change-badge {
+  min-width: 118px;
+  border-radius: 999px;
+  padding: 5px 12px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.change-badge.bullish {
+  color: #1f7a52;
+  background: #e3f1ea;
+}
+
+.change-badge.bearish {
+  color: #bd3f3f;
+  background: #f6dddd;
+}
+
+.change-badge.neutral {
+  color: #2f6b9b;
+  background: #deebf5;
 }
 
 .overview-stock-chart,
@@ -905,6 +929,23 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel-soft);
+}
+
+.radar-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+}
+
+.filter-control,
+.time-filter {
+  min-width: 0;
+}
+
+.time-filter button {
+  min-width: 64px;
 }
 
 .radar-item.clickable {
