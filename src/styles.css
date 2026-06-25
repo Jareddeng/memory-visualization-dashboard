@@ -1226,7 +1226,15 @@ td small {
 }
 
 .search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 10px;
+  right: 10px;
+  z-index: 30;
+  max-height: min(520px, calc(100vh - 130px));
+  overflow-y: auto;
   border-color: rgba(20, 124, 114, 0.24);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.16);
 }
 
 .search-scope {
@@ -1234,6 +1242,12 @@ td small {
   margin-top: 4px;
   color: var(--subtle);
   font-size: 12px;
+}
+
+.intel-table-wrap tr:target {
+  outline: 2px solid rgba(20, 124, 114, 0.42);
+  outline-offset: -2px;
+  background: #f0faf7;
 }
 
 .timeline {

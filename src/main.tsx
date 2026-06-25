@@ -153,6 +153,8 @@ type SearchItem = {
   target: {
     page: PageKey;
     reportSlug?: string;
+    url?: string;
+    recordId?: string;
   };
 };
 
@@ -505,10 +507,23 @@ function App() {
   const hbmPressure = getHbmPressure(data);
   const priceSnapshots = getPriceSnapshots(data.prices);
   const openSearchResult = (item: SearchItem) => {
+    if (item.target.url) {
+      window.open(item.target.url, "_blank", "noopener,noreferrer");
+      setQuery("");
+      return;
+    }
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
     setActivePage(item.target.page);
     setQuery("");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.setTimeout(() => {
+      if (item.target.recordId) {
+        const targetId = `intel-${item.target.recordId}`;
+        window.history.replaceState(null, "", `#${targetId}`);
+        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
   };
 
   return (
@@ -555,9 +570,8 @@ function App() {
             <button className="ghost-button" type="button" onClick={() => exportIntelligence(data, allIntelRecords)}>导出情报</button>
             <button className="primary-button" type="button" onClick={() => setCaptureOpen(true)}>新增情报</button>
           </div>
+          {query.trim() ? <SearchResults results={searchResults} timeRange={timeRange} onOpen={openSearchResult} onClear={() => setQuery("")} /> : null}
         </header>
-
-        {query.trim() ? <SearchResults results={searchResults} timeRange={timeRange} onOpen={openSearchResult} onClear={() => setQuery("")} /> : null}
 
         <Hero data={data} latestReport={latestReport} />
 
@@ -1502,7 +1516,7 @@ function IntelTable({
         </thead>
         <tbody>
           {records.map((record) => (
-            <tr key={record.id}>
+            <tr id={`intel-${record.id}`} key={record.id}>
               <td>{record.date}</td>
               <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
               <td>{record.type}</td>
@@ -1707,7 +1721,7 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets" } }));
   (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry" } }));
   (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry" } }));
-  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: { page: "intel" } }));
+  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url } : { page: "intel", recordId: record.id } }));
   return items
     .filter((item) => isWithinTimeRange(item.date, timeRange, data.metadata.generated_at))
     .filter((item) => item.haystack.toLowerCase().includes(needle));
