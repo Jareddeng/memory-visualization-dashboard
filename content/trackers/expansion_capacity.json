@@ -1,0 +1,75 @@
+{
+  "updated_at": "2026-06-26",
+  "source": "demo structure for clawbot-maintained capacity expansion tracking",
+  "companies": [
+    {
+      "company": "SK Hynix",
+      "ticker": "000660.KS",
+      "focus": "HBM / advanced DRAM",
+      "current_capacity": "HBM供给高度紧张，先进DRAM产能优先向HBM倾斜",
+      "current_capacity_level": 82,
+      "capex": "待核实：需补充年度资本开支、HBM专用投资和先进封装配套投资",
+      "expansion_target": "2026-2028提升HBM与先进DRAM供给，优先服务长期锁量客户",
+      "target_capacity_level": 94,
+      "timeline": "2026-2028",
+      "region": "韩国 / 美国",
+      "bottleneck": "先进封装、TSV/堆叠良率、客户认证与CoWoS配套",
+      "confidence": "中",
+      "status": "高优先级跟踪",
+      "evidence": [
+        {
+          "date": "待核实",
+          "label": "扩产/投资披露",
+          "detail": "等待clawbot补充公司公告、法说会或研报中的具体资本开支与产能口径。",
+          "source": "待补充"
+        }
+      ]
+    },
+    {
+      "company": "Samsung Electronics",
+      "ticker": "005930.KS",
+      "focus": "HBM4 / DRAM / NAND / advanced packaging",
+      "current_capacity": "HBM4进入份额恢复窗口，存储产能横跨DRAM、NAND和封装能力",
+      "current_capacity_level": 74,
+      "capex": "待核实：需拆分存储、晶圆厂、封装和HBM4良率爬坡相关投入",
+      "expansion_target": "通过HBM4认证与扩产恢复高端HBM份额，同时维持DRAM/NAND供给弹性",
+      "target_capacity_level": 90,
+      "timeline": "2026-2028",
+      "region": "韩国 / 美国",
+      "bottleneck": "HBM4良率、核心客户份额、先进封装资源分配",
+      "confidence": "中",
+      "status": "份额恢复跟踪",
+      "evidence": [
+        {
+          "date": "待核实",
+          "label": "HBM4量产与扩产",
+          "detail": "等待clawbot补充HBM4量产、客户认证和资本开支来源。",
+          "source": "待补充"
+        }
+      ]
+    },
+    {
+      "company": "Micron Technology",
+      "ticker": "MU",
+      "focus": "HBM / DRAM / NAND",
+      "current_capacity": "HBM供给紧张，DRAM和NAND扩产受资本开支节奏约束",
+      "current_capacity_level": 68,
+      "capex": "待核实：需补充美国、日本、台湾相关制造与封装投资金额",
+      "expansion_target": "提升HBM份额并扩展先进DRAM/NAND供给，争取2027后更高客户覆盖",
+      "target_capacity_level": 86,
+      "timeline": "2026-2028",
+      "region": "美国 / 日本 / 台湾",
+      "bottleneck": "产能爬坡、客户份额、封装资源和成本竞争",
+      "confidence": "中",
+      "status": "扩份额跟踪",
+      "evidence": [
+        {
+          "date": "待核实",
+          "label": "HBM与制造投资",
+          "detail": "等待clawbot补充公司口径中的资本支出、产能节点和扩产后供给变化。",
+          "source": "待补充"
+        }
+      ]
+    }
+  ]
+}

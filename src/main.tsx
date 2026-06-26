@@ -113,6 +113,31 @@ type TrackerPayload = {
     status: string;
     source: string;
   }>;
+  expansion_capacity?: {
+    updated_at?: string;
+    source?: string;
+    companies?: Array<{
+      company: string;
+      ticker?: string;
+      focus: string;
+      current_capacity: string;
+      current_capacity_level: number;
+      capex: string;
+      expansion_target: string;
+      target_capacity_level: number;
+      timeline: string;
+      region: string;
+      bottleneck: string;
+      confidence: string;
+      status: string;
+      evidence?: Array<{
+        date: string;
+        label: string;
+        detail: string;
+        source: string;
+      }>;
+    }>;
+  };
   industry_map?: {
     updated_at?: string | null;
     source?: string;
@@ -955,6 +980,7 @@ function IndustryPage({ data }: { data: AppData }) {
         </div>
       </section>
       <HbmContractBoard tracker={data.trackers.hbm_contracts} />
+      <ExpansionCapacityBoard tracker={data.trackers.expansion_capacity} />
       <section className="detail-grid">
         <Timeline items={data.trackers.hbm4_negotiations ?? []} />
         <ExpansionTable rows={data.trackers.expansion_plans ?? []} />
@@ -1120,6 +1146,99 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
             ))}
           </article>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
+  const companies = tracker?.companies ?? [];
+
+  if (!companies.length) {
+    return null;
+  }
+
+  return (
+    <section className="panel text-panel expansion-capacity-board" id="expansion-capacity-board">
+      <div className="hbm-board-head">
+        <div>
+          <p className="eyebrow">Capacity Expansion Tracker</p>
+          <h2>三大厂扩产能力变化</h2>
+          <p>把“当前产能状态、资本开支、扩产后目标产能、落地时间和瓶颈”压缩到同一张看板里，方便后续按来源复核。</p>
+        </div>
+        <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
+      </div>
+
+      <div className="capacity-grid">
+        {companies.map((company) => {
+          const current = Math.max(0, Math.min(100, company.current_capacity_level));
+          const target = Math.max(current, Math.min(100, company.target_capacity_level));
+          return (
+            <article className="capacity-card" id={`capacity-${slugifyId(company.company)}`} key={company.company}>
+              <div className="hbm-company-top">
+                <div>
+                  <strong>{company.company}</strong>
+                  <span>{company.ticker} · {company.region}</span>
+                </div>
+                <b>{company.status}</b>
+              </div>
+
+              <div className="capacity-focus">
+                <span>扩产方向</span>
+                <strong>{company.focus}</strong>
+              </div>
+
+              <div className="capacity-meter">
+                <div className="capacity-meter-labels">
+                  <span>当前</span>
+                  <span>扩产后</span>
+                </div>
+                <div className="capacity-meter-track">
+                  <i style={{ width: `${current}%` }} />
+                  <b style={{ left: `${target}%` }} />
+                </div>
+                <div className="capacity-meter-values">
+                  <span>{current}%</span>
+                  <span>{target}%</span>
+                </div>
+              </div>
+
+              <dl className="capacity-facts">
+                <div>
+                  <dt>当前产能</dt>
+                  <dd>{company.current_capacity}</dd>
+                </div>
+                <div>
+                  <dt>资本支出</dt>
+                  <dd>{company.capex}</dd>
+                </div>
+                <div>
+                  <dt>扩产后目标</dt>
+                  <dd>{company.expansion_target}</dd>
+                </div>
+                <div>
+                  <dt>落地窗口</dt>
+                  <dd>{company.timeline}</dd>
+                </div>
+              </dl>
+
+              <div className="capacity-risk">
+                <span>核心瓶颈</span>
+                <p>{company.bottleneck}</p>
+                <small>置信度：{company.confidence}</small>
+              </div>
+
+              {(company.evidence ?? []).map((item) => (
+                <div className="hbm-evidence-item" key={`${company.company}-${item.date}-${item.label}`}>
+                  <time>{item.date}</time>
+                  <span>{item.label}</span>
+                  <p>{item.detail}</p>
+                  <small>{item.source}</small>
+                </div>
+              ))}
+            </article>
+          );
+        })}
       </div>
     </section>
   );

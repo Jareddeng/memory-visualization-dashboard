@@ -1473,6 +1473,127 @@ td small {
   color: var(--subtle);
 }
 
+.expansion-capacity-board {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.capacity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.capacity-card {
+  display: grid;
+  gap: 13px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.capacity-focus {
+  display: grid;
+  gap: 5px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f1f6f4;
+}
+
+.capacity-focus span,
+.capacity-risk span,
+.capacity-facts dt {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.capacity-focus strong {
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.capacity-meter {
+  display: grid;
+  gap: 6px;
+}
+
+.capacity-meter-labels,
+.capacity-meter-values {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.capacity-meter-track {
+  position: relative;
+  height: 12px;
+  border-radius: 999px;
+  background: #e8eeee;
+}
+
+.capacity-meter-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+}
+
+.capacity-meter-track b {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #d4943b;
+  box-shadow: 0 0 0 1px rgba(28, 34, 31, 0.18);
+  transform: translate(-50%, -50%);
+}
+
+.capacity-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.capacity-facts div {
+  display: grid;
+  gap: 4px;
+  min-height: 96px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.capacity-facts dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.capacity-risk {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border-left: 3px solid #d4943b;
+  border-radius: 8px;
+  background: #fff8ed;
+}
+
+.capacity-risk p {
+  margin: 0;
+}
+
+.capacity-risk small {
+  color: var(--muted);
+}
+
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -2108,6 +2229,7 @@ button.mindmap-label {
   .feed-grid,
   .hbm-company-grid,
   .hbm-evidence-grid,
+  .capacity-grid,
   .intel-form {
     grid-template-columns: 1fr;
   }
@@ -2143,6 +2265,10 @@ button.mindmap-label {
 
   .hbm-company-card {
     min-height: auto;
+  }
+
+  .capacity-facts {
+    grid-template-columns: 1fr;
   }
 
   .hero-signal {
