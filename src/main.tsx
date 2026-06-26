@@ -990,10 +990,6 @@ function IndustryPage({ data }: { data: AppData }) {
       </section>
       <HbmContractBoard tracker={data.trackers.hbm_contracts} />
       <ExpansionCapacityBoard tracker={data.trackers.expansion_capacity} />
-      <section className="detail-grid">
-        <Timeline items={data.trackers.hbm4_negotiations ?? []} />
-        <ExpansionTable rows={data.trackers.expansion_plans ?? []} />
-      </section>
       <IndustryMap map={data.trackers.industry_map} />
     </>
   );
