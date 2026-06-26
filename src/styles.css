@@ -1168,6 +1168,25 @@ td small {
   min-width: 1180px;
 }
 
+.intel-table-wrap {
+  max-height: 540px;
+  overflow: auto;
+}
+
+.intel-table-wrap thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.pinned-intel-row {
+  background: #f0faf7;
+}
+
+.pinned-intel-row td:first-child {
+  box-shadow: inset 3px 0 0 var(--teal);
+}
+
 .intel-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

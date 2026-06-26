@@ -283,6 +283,11 @@ const actionOptions = [
   { value: "archive", label: "归档" },
 ] as const;
 
+const IntelTableContext = React.createContext<{
+  onEdit?: (record: IntelRecord) => void;
+  pinnedIntelId?: string | null;
+}>({});
+
 function useJson<T>(url: string) {
   const [data, setData] = React.useState<T | null>(null);
   const [error, setError] = React.useState<string | null>(null);
@@ -560,6 +565,7 @@ function App() {
   const [intelRecords, setIntelRecords] = useLocalIntelRecords();
   const [captureOpen, setCaptureOpen] = React.useState(false);
   const [editingIntelRecord, setEditingIntelRecord] = React.useState<IntelRecord | null>(null);
+  const [pinnedIntelId, setPinnedIntelId] = React.useState<string | null>(null);
   const topbarRef = React.useRef<HTMLElement | null>(null);
 
   React.useEffect(() => {
@@ -596,7 +602,9 @@ function App() {
 
   const latestReport = data.reports[0];
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
-  const allIntelRecords = [...data.intel, ...intelRecords];
+  const remoteIntelRecords = mergeRemoteIntelRecords(data.intel, intelRecords);
+  const localOnlyIntelRecords = intelRecords.filter((record) => !data.intel.some((remoteRecord) => remoteRecord.id === record.id));
+  const allIntelRecords = [...remoteIntelRecords, ...localOnlyIntelRecords];
   const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
   const hbmPressure = getHbmPressure(data);
   const priceSnapshots = getPriceSnapshots(data.prices);
@@ -605,6 +613,9 @@ function App() {
       window.open(item.target.url, "_blank", "noopener,noreferrer");
       setSearchOpen(false);
       return;
+    }
+    if (item.target.page === "intel" && item.target.recordId) {
+      setPinnedIntelId(item.target.recordId);
     }
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
     setActivePage(item.target.page);
@@ -694,8 +705,9 @@ function App() {
         ) : null}
         {activePage === "intel" ? (
           <IntelPage
-            remoteRecords={data.intel}
-            localRecords={intelRecords}
+            remoteRecords={remoteIntelRecords}
+            localRecords={localOnlyIntelRecords}
+            pinnedIntelId={pinnedIntelId}
             onAdd={() => setCaptureOpen(true)}
             onEdit={(record) => {
               setEditingIntelRecord(record);
@@ -717,7 +729,7 @@ function App() {
               setEditingIntelRecord(null);
             }}
             onSave={(record) => {
-              setIntelRecords((current) => (editingIntelRecord ? current.map((item) => (item.id === record.id ? record : item)) : [record, ...current]));
+              setIntelRecords((current) => [record, ...current.filter((item) => item.id !== record.id)]);
               setCaptureOpen(false);
               setEditingIntelRecord(null);
             }}
@@ -1644,6 +1656,7 @@ function handleIntelUrlKeyDown(event: React.KeyboardEvent<HTMLElement>, url?: st
 function IntelPage({
   remoteRecords,
   localRecords,
+  pinnedIntelId,
   onAdd,
   onEdit,
   onDelete,
@@ -1651,13 +1664,14 @@ function IntelPage({
 }: {
   remoteRecords: IntelRecord[];
   localRecords: IntelRecord[];
+  pinnedIntelId: string | null;
   onAdd: () => void;
   onEdit: (record: IntelRecord) => void;
   onDelete: (id: string) => void;
   onExport: () => void;
 }) {
   return (
-    <>
+    <IntelTableContext.Provider value={{ onEdit, pinnedIntelId }}>
       <section className="section-heading">
         <div>
           <h2>情报库管理</h2>
@@ -1708,7 +1722,7 @@ function IntelPage({
             <h2>龙虾推送情报</h2>
           </div>
         </div>
-        <IntelTable records={remoteRecords} sourceLabel="PR 文件" />
+        <IntelTable records={remoteRecords} sourceLabel="Clawbot PR" />
       </section>
 
       <section className="panel text-panel">
@@ -1718,9 +1732,9 @@ function IntelPage({
             <h2>本地情报记录</h2>
           </div>
         </div>
-        <IntelTable records={localRecords} sourceLabel="浏览器本地" onEdit={onEdit} onDelete={onDelete} />
+        <IntelTable records={localRecords} sourceLabel="Browser Local" onEdit={onEdit} onDelete={onDelete} />
       </section>
-    </>
+    </IntelTableContext.Provider>
   );
 }
 
@@ -1763,6 +1777,84 @@ function RuleGroup({ title, options }: { title: string; options: ReadonlyArray<{
 }
 
 function IntelTable({
+  records,
+  sourceLabel,
+  onEdit,
+  onDelete,
+}: {
+  records: IntelRecord[];
+  sourceLabel: string;
+  onEdit?: (record: IntelRecord) => void;
+  onDelete?: (id: string) => void;
+}) {
+  const tableContext = React.useContext(IntelTableContext);
+  const effectiveOnEdit = onEdit ?? tableContext.onEdit;
+  const pinnedIntelId = tableContext.pinnedIntelId;
+  const displayRecords = pinnedIntelId
+    ? [...records].sort((a, b) => (a.id === pinnedIntelId ? -1 : b.id === pinnedIntelId ? 1 : 0))
+    : records;
+
+  if (!records.length) return <div className="empty-state">暂无{sourceLabel}情报。</div>;
+
+  return (
+    <div className="table-wrap intel-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>标题</th>
+            <th>类型</th>
+            <th>方向</th>
+            <th>重要性</th>
+            <th>反应类型</th>
+            <th>定价状态</th>
+            <th>来源</th>
+            <th>摘要</th>
+            <th>跟踪</th>
+            {effectiveOnEdit || onDelete ? <th>操作</th> : null}
+          </tr>
+        </thead>
+        <tbody>
+          {displayRecords.map((record) => (
+            <tr id={`intel-${record.id}`} className={record.id === pinnedIntelId ? "pinned-intel-row" : ""} key={record.id}>
+              <td>{record.date}</td>
+              <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
+              <td>{record.type}</td>
+              <td><span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span></td>
+              <td>{importanceLabel(record.importance)}</td>
+              <td>{reactionTypeLabel(record.reaction_type)}</td>
+              <td>{pricingStatusLabel(record.pricing_status)}</td>
+              <td>{record.url ? <a href={record.url} target="_blank" rel="noreferrer">{record.source}</a> : record.source}</td>
+              <td>{record.summary}</td>
+              <td>
+                <small>{horizonLabel(record.horizon)} · {confidenceLabel(record.confidence)}置信度 · {actionLabel(record.action)}</small>
+                {record.review_date ? <><br /><small>复核：{record.review_date}</small></> : null}
+              </td>
+              {effectiveOnEdit || onDelete ? (
+                <td>
+                  <div className="row-actions">
+                    {effectiveOnEdit ? (
+                      <button className="icon-button" type="button" aria-label={`编辑 ${record.title}`} onClick={() => effectiveOnEdit(record)}>
+                        编辑
+                      </button>
+                    ) : null}
+                    {onDelete ? (
+                      <button className="icon-button danger" type="button" aria-label={`删除 ${record.title}`} onClick={() => onDelete(record.id)}>
+                        <Trash2 size={15} />
+                      </button>
+                    ) : null}
+                  </div>
+                </td>
+              ) : null}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function LegacyIntelTable({
   records,
   sourceLabel,
   onEdit,
@@ -1983,6 +2075,11 @@ function getHbmPressure(data: AppData) {
   return { value: "观察", hint: "等待 clawbot 更新 HBM 供给事件" };
 }
 
+function mergeRemoteIntelRecords(remoteRecords: IntelRecord[], localRecords: IntelRecord[]) {
+  const localById = new Map(localRecords.map((record) => [record.id, record]));
+  return remoteRecords.map((record) => localById.get(record.id) ?? record);
+}
+
 function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAction<IntelRecord[]>>] {
   const [records, setRecords] = React.useState<IntelRecord[]>(() => {
     try {
@@ -2004,7 +2101,7 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets", anchorId: `stock-${slugifyId(stock.ticker)}` } }));
   (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry", anchorId: `hbm-${slugifyId(`${item.date}-${item.title}`)}` } }));
   (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry", anchorId: `expansion-${slugifyId(`${item.company}-${item.region}-${item.plan}`)}` } }));
-  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url } : { page: "intel", anchorId: `intel-${record.id}` } }));
+  records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url, recordId: record.id } : { page: "intel", anchorId: `intel-${record.id}`, recordId: record.id } } ));
   return items
     .filter((item) => isWithinTimeRange(item.date, timeRange, data.metadata.generated_at))
     .filter((item) => item.haystack.toLowerCase().includes(needle));
