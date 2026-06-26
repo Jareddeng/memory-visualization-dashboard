@@ -79,6 +79,7 @@ type TrackerPayload = {
       ticker?: string;
       stance: string;
       stage: string;
+      stage_note?: string;
       stage_index: number;
       locked_years: string;
       locked_capacity: string;
@@ -1074,7 +1075,7 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
               </div>
               <div className="hbm-stage-row">
                 <span>当前阶段</span>
-                <strong>{company.stage}</strong>
+                <strong>{company.stage_note ?? `${company.stage} · ${company.locked_years}`}</strong>
               </div>
               <dl className="hbm-facts">
                 <div>
@@ -1100,24 +1101,6 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                 <span>置信度：{company.confidence}</span>
               </div>
             </article>
-          );
-        })}
-      </div>
-
-      <div className="hbm-stage-board">
-        <div className="hbm-stage-labels">
-          {stages.map((stage) => <span key={stage}>{stage}</span>)}
-        </div>
-        {companies.map((company) => {
-          const left = Math.max(0, Math.min(100, (company.stage_index / maxStage) * 100));
-          return (
-            <div className="hbm-stage-track" key={`${company.company}-track`}>
-              <strong>{company.company}</strong>
-              <div>
-                <i />
-                <b style={{ left: `${left}%` }}>{company.stage}</b>
-              </div>
-            </div>
           );
         })}
       </div>

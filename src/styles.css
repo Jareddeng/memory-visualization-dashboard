@@ -1432,66 +1432,6 @@ td small {
   font-size: 12px;
 }
 
-.hbm-stage-board {
-  display: grid;
-  gap: 10px;
-  padding: 14px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fbfcfb;
-}
-
-.hbm-stage-labels {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
-  padding-left: 120px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.hbm-stage-labels span {
-  text-align: center;
-}
-
-.hbm-stage-track {
-  display: grid;
-  grid-template-columns: 104px minmax(0, 1fr);
-  gap: 16px;
-  align-items: center;
-}
-
-.hbm-stage-track > strong {
-  font-size: 13px;
-}
-
-.hbm-stage-track > div {
-  position: relative;
-  height: 34px;
-}
-
-.hbm-stage-track i {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--line-strong), var(--teal), #d4943b);
-  transform: translateY(-50%);
-}
-
-.hbm-stage-track b {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 999px;
-  padding: 5px 10px;
-  background: var(--ink);
-  color: #fff;
-  font-size: 12px;
-  white-space: nowrap;
-}
-
 .hbm-evidence-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2172,14 +2112,6 @@ button.mindmap-label {
     grid-template-columns: 1fr;
   }
 
-  .hbm-stage-labels {
-    padding-left: 0;
-  }
-
-  .hbm-stage-track {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -2211,11 +2143,6 @@ button.mindmap-label {
 
   .hbm-company-card {
     min-height: auto;
-  }
-
-  .hbm-stage-labels {
-    font-size: 11px;
-    gap: 4px;
   }
 
   .hero-signal {
