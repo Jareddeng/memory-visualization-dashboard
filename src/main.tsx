@@ -119,12 +119,21 @@ type TrackerPayload = {
     companies?: Array<{
       company: string;
       ticker?: string;
-      focus: string;
-      current_capacity: string;
-      current_capacity_level: number;
+      products: string[];
+      capacity_metric: string;
+      current_capacity: {
+        label: string;
+        value: number | null;
+        unit: string;
+        display: string;
+      };
       capex: string;
-      expansion_target: string;
-      target_capacity_level: number;
+      target_capacity: {
+        label: string;
+        value: number | null;
+        unit: string;
+        display: string;
+      };
       timeline: string;
       region: string;
       bottleneck: string;
@@ -1171,8 +1180,10 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
 
       <div className="capacity-grid">
         {companies.map((company) => {
-          const current = Math.max(0, Math.min(100, company.current_capacity_level));
-          const target = Math.max(current, Math.min(100, company.target_capacity_level));
+          const values = [company.current_capacity.value, company.target_capacity.value].filter((value): value is number => Number.isFinite(value));
+          const maxValue = Math.max(...values, 1);
+          const currentWidth = company.current_capacity.value ? Math.max(6, (company.current_capacity.value / maxValue) * 100) : 0;
+          const targetWidth = company.target_capacity.value ? Math.max(6, (company.target_capacity.value / maxValue) * 100) : 0;
           return (
             <article className="capacity-card" id={`capacity-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-company-top">
@@ -1183,38 +1194,38 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
                 <b>{company.status}</b>
               </div>
 
-              <div className="capacity-focus">
-                <span>扩产方向</span>
-                <strong>{company.focus}</strong>
+              <div className="capacity-products">
+                {company.products.map((product) => <span key={product}>{product}</span>)}
               </div>
 
-              <div className="capacity-meter">
-                <div className="capacity-meter-labels">
-                  <span>当前</span>
-                  <span>扩产后</span>
+              <div className="capacity-metric">
+                <span>产能口径</span>
+                <strong>{company.capacity_metric}</strong>
+              </div>
+
+              <div className="capacity-bars">
+                <div className="capacity-bar-row">
+                  <span>{company.current_capacity.label}</span>
+                  <div className={`capacity-bar-track ${company.current_capacity.value === null ? "empty" : ""}`}>
+                    <i style={{ width: `${currentWidth}%` }} />
+                    <b>{company.current_capacity.display}</b>
+                  </div>
+                  <strong>{formatCapacityValue(company.current_capacity)}</strong>
                 </div>
-                <div className="capacity-meter-track">
-                  <i style={{ width: `${current}%` }} />
-                  <b style={{ left: `${target}%` }} />
-                </div>
-                <div className="capacity-meter-values">
-                  <span>{current}%</span>
-                  <span>{target}%</span>
+                <div className="capacity-bar-row target">
+                  <span>{company.target_capacity.label}</span>
+                  <div className={`capacity-bar-track ${company.target_capacity.value === null ? "empty" : ""}`}>
+                    <i style={{ width: `${targetWidth}%` }} />
+                    <b>{company.target_capacity.display}</b>
+                  </div>
+                  <strong>{formatCapacityValue(company.target_capacity)}</strong>
                 </div>
               </div>
 
               <dl className="capacity-facts">
                 <div>
-                  <dt>当前产能</dt>
-                  <dd>{company.current_capacity}</dd>
-                </div>
-                <div>
                   <dt>资本支出</dt>
                   <dd>{company.capex}</dd>
-                </div>
-                <div>
-                  <dt>扩产后目标</dt>
-                  <dd>{company.expansion_target}</dd>
                 </div>
                 <div>
                   <dt>落地窗口</dt>
@@ -1933,6 +1944,11 @@ function makePriceSnapshot(label: string, series?: PriceSeries): PriceSnapshot |
 
 function formatPrice(value: number) {
   return Number.isInteger(value) ? value.toLocaleString() : value.toLocaleString(undefined, { maximumFractionDigits: 3 });
+}
+
+function formatCapacityValue(metric: { value: number | null; unit: string }) {
+  if (!Number.isFinite(metric.value)) return "待补充";
+  return `${formatPrice(metric.value as number)} ${metric.unit}`;
 }
 
 function calculatePriceIndex(payload: { series: PriceSeries[] }) {

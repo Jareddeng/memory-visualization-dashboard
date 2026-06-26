@@ -1494,7 +1494,21 @@ td small {
   background: #fff;
 }
 
-.capacity-focus {
+.capacity-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.capacity-products span {
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 12px;
+}
+
+.capacity-metric {
   display: grid;
   gap: 5px;
   padding: 10px 12px;
@@ -1502,55 +1516,139 @@ td small {
   background: #f1f6f4;
 }
 
-.capacity-focus span,
+.capacity-metric span,
 .capacity-risk span,
 .capacity-facts dt {
   color: var(--subtle);
   font-size: 12px;
 }
 
-.capacity-focus strong {
+.capacity-metric strong {
   color: var(--ink);
   line-height: 1.35;
 }
 
-.capacity-meter {
+.capacity-bars {
   display: grid;
-  gap: 6px;
+  gap: 10px;
 }
 
-.capacity-meter-labels,
-.capacity-meter-values {
-  display: flex;
-  justify-content: space-between;
+.capacity-bar-row {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) 74px;
+  gap: 10px;
+  align-items: center;
+}
+
+.capacity-bar-row > span,
+.capacity-bar-row > strong {
   color: var(--muted);
   font-size: 12px;
 }
 
-.capacity-meter-track {
-  position: relative;
-  height: 12px;
-  border-radius: 999px;
-  background: #e8eeee;
+.capacity-bar-row > strong {
+  color: var(--ink);
+  text-align: right;
 }
 
-.capacity-meter-track i {
-  display: block;
-  height: 100%;
+.capacity-bar-track {
+  position: relative;
+  min-height: 32px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #eef3f0;
+}
+
+.capacity-bar-track i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  min-width: 0;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--blue), var(--teal));
 }
 
-.capacity-meter-track b {
+.capacity-bar-row.target .capacity-bar-track i {
+  background: linear-gradient(90deg, var(--teal), #d4943b);
+}
+
+.capacity-bar-track b {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 8px 10px;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.capacity-bar-row.target .capacity-bar-track {
+  border-color: #ead9bf;
+}
+
+.capacity-bar-track.empty {
+  background:
+    repeating-linear-gradient(135deg, #f7f9f8 0 8px, #eef3f0 8px 16px);
+}
+
+.capacity-bar-row.target .capacity-bar-track.empty {
+  background:
+    repeating-linear-gradient(135deg, #fff8ed 0 8px, #f2eadf 8px 16px);
+}
+
+.capacity-bar-track.empty b {
+  color: var(--muted);
+}
+
+.capacity-bar-row.target .capacity-bar-track.empty b {
+  color: #8a6426;
+}
+
+.capacity-bar-row.target > strong {
+  color: #8a6426;
+}
+
+.capacity-bar-track i[style*="0%"] {
+  display: none;
+}
+
+.capacity-bar-track i,
+.capacity-bar-track b {
+  pointer-events: none;
+}
+
+.capacity-card .hbm-company-top b {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.capacity-card .hbm-evidence-item {
+  border-top-color: var(--line);
+}
+
+.capacity-bar-track::after {
+  content: "";
   position: absolute;
-  top: 50%;
-  width: 14px;
-  height: 14px;
-  border: 2px solid #fff;
-  border-radius: 999px;
-  background: #d4943b;
-  box-shadow: 0 0 0 1px rgba(28, 34, 31, 0.18);
-  transform: translate(-50%, -50%);
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+  pointer-events: none;
+}
+
+.capacity-bar-track i + b {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.capacity-bar-row > span {
+  white-space: nowrap;
+}
+
+.capacity-bar-row > strong {
+  white-space: nowrap;
+}
+
+.capacity-bar-track b {
+  word-break: break-word;
 }
 
 .capacity-facts {
