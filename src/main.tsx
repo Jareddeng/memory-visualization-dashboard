@@ -70,6 +70,33 @@ type MindmapPayload = {
 };
 
 type TrackerPayload = {
+  hbm_contracts?: {
+    updated_at?: string;
+    source?: string;
+    stages?: string[];
+    companies?: Array<{
+      company: string;
+      ticker?: string;
+      stance: string;
+      stage: string;
+      stage_index: number;
+      locked_years: string;
+      locked_capacity: string;
+      negotiating: string;
+      expected_term: string;
+      expected_capacity: string;
+      main_customers: string[];
+      confidence: string;
+      risk: string;
+      summary: string;
+      evidence?: Array<{
+        date: string;
+        label: string;
+        detail: string;
+        source: string;
+      }>;
+    }>;
+  };
   hbm4_negotiations?: Array<{
     date: string;
     title: string;
@@ -926,6 +953,7 @@ function IndustryPage({ data }: { data: AppData }) {
           <p>集中查看 HBM4 长协谈判进度、三大厂商扩产计划和后续可扩展的产业事件。</p>
         </div>
       </section>
+      <HbmContractBoard tracker={data.trackers.hbm_contracts} />
       <section className="detail-grid">
         <Timeline items={data.trackers.hbm4_negotiations ?? []} />
         <ExpansionTable rows={data.trackers.expansion_plans ?? []} />
@@ -1007,6 +1035,111 @@ function PriceKpiCard({ snapshot }: { snapshot: PriceSnapshot }) {
 
 function Panel({ children, id }: { children: React.ReactNode; id?: string }) {
   return <section className="panel" id={id}>{children}</section>;
+}
+
+function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts"] }) {
+  const companies = tracker?.companies ?? [];
+  const stages = tracker?.stages ?? ["验证", "报价", "锁量", "签约", "交付"];
+  const maxStage = Math.max(stages.length - 1, 1);
+
+  if (!companies.length) {
+    return null;
+  }
+
+  return (
+    <section className="panel text-panel hbm-contract-board" id="hbm-contract-board">
+      <div className="hbm-board-head">
+        <div>
+          <p className="eyebrow">HBM Contract Tracker</p>
+          <h2>三大厂 HBM 长协锁定状态</h2>
+          <p>把“已锁定年份、产能覆盖、在谈长协、谈判阶段和置信度”放在同一张表里，后续由 clawbot 按证据更新。</p>
+        </div>
+        <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
+      </div>
+
+      <div className="hbm-company-grid">
+        {companies.map((company) => {
+          const progress = Math.max(0, Math.min(100, (company.stage_index / maxStage) * 100));
+          return (
+            <article className="hbm-company-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
+              <div className="hbm-company-top">
+                <div>
+                  <strong>{company.company}</strong>
+                  <span>{company.ticker}</span>
+                </div>
+                <b>{company.stance}</b>
+              </div>
+              <div className="hbm-stage-meter" aria-label={`${company.company} ${company.stage}`}>
+                <i style={{ width: `${progress}%` }} />
+              </div>
+              <div className="hbm-stage-row">
+                <span>当前阶段</span>
+                <strong>{company.stage}</strong>
+              </div>
+              <dl className="hbm-facts">
+                <div>
+                  <dt>已锁定</dt>
+                  <dd>{company.locked_years}</dd>
+                </div>
+                <div>
+                  <dt>产能覆盖</dt>
+                  <dd>{company.locked_capacity}</dd>
+                </div>
+                <div>
+                  <dt>在谈内容</dt>
+                  <dd>{company.negotiating}</dd>
+                </div>
+                <div>
+                  <dt>预计条款</dt>
+                  <dd>{company.expected_term} · {company.expected_capacity}</dd>
+                </div>
+              </dl>
+              <p>{company.summary}</p>
+              <div className="hbm-tags">
+                {company.main_customers.map((customer) => <span key={customer}>{customer}</span>)}
+                <span>置信度：{company.confidence}</span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <div className="hbm-stage-board">
+        <div className="hbm-stage-labels">
+          {stages.map((stage) => <span key={stage}>{stage}</span>)}
+        </div>
+        {companies.map((company) => {
+          const left = Math.max(0, Math.min(100, (company.stage_index / maxStage) * 100));
+          return (
+            <div className="hbm-stage-track" key={`${company.company}-track`}>
+              <strong>{company.company}</strong>
+              <div>
+                <i />
+                <b style={{ left: `${left}%` }}>{company.stage}</b>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="hbm-evidence-grid">
+        {companies.map((company) => (
+          <article key={`${company.company}-evidence`}>
+            <strong>{company.company} 证据与风险</strong>
+            <p>{company.risk}</p>
+            {(company.evidence ?? []).map((item) => (
+              <div className="hbm-evidence-item" key={`${company.company}-${item.date}-${item.label}`}>
+                <time>{item.date}</time>
+                <span>{item.label}</span>
+                <p>{item.detail}</p>
+                <small>{item.source}</small>
+              </div>
+            ))}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function Timeline({ items }: { items: NonNullable<TrackerPayload["hbm4_negotiations"]> }) {

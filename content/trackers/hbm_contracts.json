@@ -1,0 +1,79 @@
+{
+  "updated_at": "2026-06-26",
+  "source": "demo structure for clawbot-maintained HBM contract tracking",
+  "stages": ["验证", "报价", "锁量", "签约", "交付"],
+  "companies": [
+    {
+      "company": "SK Hynix",
+      "ticker": "000660.KS",
+      "stance": "领先锁定",
+      "stage": "签约",
+      "stage_index": 4,
+      "locked_years": "2025-2028+",
+      "locked_capacity": "未来三年可供给量基本被承诺覆盖",
+      "negotiating": "2027-2028 HBM4 / HBM4E 供货、价格与共同投资条款",
+      "expected_term": "3年以上",
+      "expected_capacity": "高比例锁量，优先保障核心AI客户",
+      "main_customers": ["NVIDIA", "大型云厂商"],
+      "confidence": "中高",
+      "risk": "CoWoS配套、HBM4良率、价格重定价节奏",
+      "summary": "HBM订单能见度最高，长协对2026-2028供给形成较强锁定，后续重点看HBM4报价和客户预付款/共同投资条款。",
+      "evidence": [
+        {
+          "date": "2026-06-25",
+          "label": "累计采购承诺",
+          "detail": "公开报道和研报普遍指向SK Hynix HBM供给被长期承诺覆盖。",
+          "source": "clawbot intel / industry reports"
+        }
+      ]
+    },
+    {
+      "company": "Samsung Electronics",
+      "ticker": "005930.KS",
+      "stance": "追赶放量",
+      "stage": "锁量",
+      "stage_index": 3,
+      "locked_years": "2025-2026",
+      "locked_capacity": "部分客户与部分产品线锁定，HBM4放量仍需验证",
+      "negotiating": "HBM4认证后的2026-2027供应份额与价格",
+      "expected_term": "2-3年",
+      "expected_capacity": "中高比例锁量，取决于认证和良率爬坡",
+      "main_customers": ["NVIDIA", "云厂商", "自有AI供应链"],
+      "confidence": "中",
+      "risk": "HBM3E历史验证节奏、HBM4良率、客户份额恢复速度",
+      "summary": "三星的关键不是有没有需求，而是HBM4认证、良率和供货份额恢复的兑现速度。",
+      "evidence": [
+        {
+          "date": "2026-06-25",
+          "label": "HBM4认证与份额恢复",
+          "detail": "多条产业消息显示三星进入HBM4供应链竞争核心位置，但份额仍需持续验证。",
+          "source": "clawbot intel / industry reports"
+        }
+      ]
+    },
+    {
+      "company": "Micron Technology",
+      "ticker": "MU",
+      "stance": "扩份额",
+      "stage": "锁量",
+      "stage_index": 3,
+      "locked_years": "2025-2026",
+      "locked_capacity": "2026 HBM供给紧张，部分客户锁量",
+      "negotiating": "2027 HBM4份额、价格与长期供应协议",
+      "expected_term": "2-4年",
+      "expected_capacity": "中等比例锁量，争取推理与高端训练份额",
+      "main_customers": ["NVIDIA", "北美云厂商"],
+      "confidence": "中",
+      "risk": "产能爬坡、客户份额、与韩厂的成本和交付竞争",
+      "summary": "美光的看点是从HBM3E进入核心客户后，能否在HBM4阶段继续提高份额和长协覆盖。",
+      "evidence": [
+        {
+          "date": "2026-06-25",
+          "label": "2026供给售罄",
+          "detail": "现有情报显示美光HBM供给紧张，后续关注2027-2028长协承诺。",
+          "source": "clawbot intel / company commentary"
+        }
+      ]
+    }
+  ]
+}

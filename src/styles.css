@@ -1299,6 +1299,240 @@ td small {
   line-height: 1.65;
 }
 
+.hbm-contract-board {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.hbm-board-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.hbm-board-head h2 {
+  margin: 4px 0 6px;
+}
+
+.hbm-board-head small {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.hbm-company-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hbm-company-card {
+  display: grid;
+  gap: 12px;
+  min-height: 430px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbfa 100%);
+}
+
+.hbm-company-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.hbm-company-top strong {
+  display: block;
+  font-size: 18px;
+}
+
+.hbm-company-top span {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hbm-company-top b {
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.hbm-stage-meter {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e8eeee;
+}
+
+.hbm-stage-meter i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--teal), #d4943b);
+}
+
+.hbm-stage-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.hbm-stage-row span,
+.hbm-facts dt {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.hbm-stage-row strong {
+  color: var(--teal);
+}
+
+.hbm-facts {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.hbm-facts div {
+  display: grid;
+  gap: 3px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  background: #f1f6f4;
+}
+
+.hbm-facts dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.hbm-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.hbm-tags span {
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 12px;
+}
+
+.hbm-stage-board {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfb;
+}
+
+.hbm-stage-labels {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding-left: 120px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hbm-stage-labels span {
+  text-align: center;
+}
+
+.hbm-stage-track {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.hbm-stage-track > strong {
+  font-size: 13px;
+}
+
+.hbm-stage-track > div {
+  position: relative;
+  height: 34px;
+}
+
+.hbm-stage-track i {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--line-strong), var(--teal), #d4943b);
+  transform: translateY(-50%);
+}
+
+.hbm-stage-track b {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.hbm-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hbm-evidence-grid article {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.hbm-evidence-grid article > strong {
+  font-size: 14px;
+}
+
+.hbm-evidence-item {
+  display: grid;
+  gap: 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.hbm-evidence-item time {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.hbm-evidence-item span {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.hbm-evidence-item small {
+  color: var(--subtle);
+}
+
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -1932,8 +2166,19 @@ button.mindmap-label {
   .chart-grid,
   .stock-strip,
   .feed-grid,
+  .hbm-company-grid,
+  .hbm-evidence-grid,
   .intel-form {
     grid-template-columns: 1fr;
+  }
+
+  .hbm-stage-labels {
+    padding-left: 0;
+  }
+
+  .hbm-stage-track {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 }
 
@@ -1954,9 +2199,23 @@ button.mindmap-label {
   .hero-overlay,
   .stock-card,
   .report-head,
-  .industry-map-head {
+  .industry-map-head,
+  .hbm-board-head {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .hbm-board-head small {
+    white-space: normal;
+  }
+
+  .hbm-company-card {
+    min-height: auto;
+  }
+
+  .hbm-stage-labels {
+    font-size: 11px;
+    gap: 4px;
   }
 
   .hero-signal {
