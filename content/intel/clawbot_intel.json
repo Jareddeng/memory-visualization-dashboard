@@ -2291,6 +2291,293 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-01-17"
+    },
+    {
+      "id": "2026-06-05-nvidia-vera-rubin-hbm4-certification",
+      "date": "2026-06-05",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "NVIDIA CEO黄仁勋首尔宣布：三星、SK海力士、美光全部通过Vera Rubin HBM4认证，进入量产",
+      "product": "HBM4 / DRAM / AI GPU",
+      "source": "公司公告 / Bloomberg",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/nvidia-certifies-samsung-sk-hynix-133001560.html",
+      "summary": "NVIDIA CEO黄仁勋于6月5日在首尔宣布，三星、SK海力士、美光均已通过Vera Rubin HBM4认证，进入全面量产。Vera Rubin在6月1日GTC台北发布后已进入量产，预计Q3正式出货。供应链估计SK海力士占Vera Rubin HBM4份额60-70%，三星25-30%，美光补充剩余份额。黄仁勋同日敦促SK海力士增产HBM，称全球半导体供给仍紧张。Vera Rubin较Grace Blackwell提供10倍agent吞吐能力。",
+      "transmission_path": "HBM4认证量产 → HBM4 supply ramp加速 → 但spec revision导致良率爬坡需要时间 → 短期HBM4仍紧张，支撑HBM/DDR5定价 → HBM4单价$500/stack，市场2028年达$1000亿",
+      "transmission_strength": "strong",
+      "key_figures": {
+        "HBM4_unit_price": "$500/stack",
+        "sk_hynix_share": "60-70%",
+        "samsung_share": "25-30%",
+        "vera_rubin_shipment": "Q3 2026"
+      },
+      "tags": [
+        "NVIDIA",
+        "Vera Rubin",
+        "HBM4",
+        "SK海力士",
+        "三星",
+        "美光",
+        "认证",
+        "量产"
+      ]
+    },
+    {
+      "id": "2026-06-15-rubin-component-shortage-hbm4-dram-mlcc",
+      "date": "2026-06-15",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "NVIDIA Rubin平台拉动HBM4、DRAM、MLCC全面缺货，交期超20周",
+      "product": "HBM4 / DRAM / MLCC / 被动元件",
+      "source": "供应链分析 / GlobX",
+      "url": "https://globx.eu/blog/supply-chain-insight/nvidia-rubin-component-shortage-2026",
+      "summary": "NVIDIA Rubin平台（R100 GPU，3360亿晶体管，最高288GB HBM4，~22TB/s带宽）于2026年H2量产，正全面改写元器件供应链。Rubin及竞品AMD MI450（TSMC 2nm，最高432GB HBM4）同时消耗巨量HBM4和先进封装产能，导致内存厂商将wafer产能从通用DRAM/NAND转向HBM。当前内存交期超20周，高容MLCC达26-40周，allocation-only ordering成常态。",
+      "transmission_path": "Rubin/MI450 HBM4需求激增 → 原厂将wafer产能从commodity DRAM/NAND转向HBM → 通用DRAM/NAND supply收紧 → 企业级DDR5/SSD价格上涨 → 交期延长影响下游采购节奏",
+      "transmission_strength": "strong",
+      "key_figures": {
+        "rubin_memory": "288GB HBM4",
+        "rubin_bandwidth": "22 TB/s",
+        "memory_lead_time": ">20 weeks",
+        "mlcc_lead_time": "26-40 weeks",
+        "mi450_memory": "432GB HBM4"
+      },
+      "tags": [
+        "NVIDIA",
+        "Rubin",
+        "AMD",
+        "MI450",
+        "HBM4",
+        "MLCC",
+        "交期",
+        "短缺"
+      ]
+    },
+    {
+      "id": "2026-06-05-hbm4-spec-war-nvidia-revision-delay",
+      "date": "2026-06-05",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "HBM4规格战：NVIDIA将per-pin速度要求提升至13Gbps，三厂被迫重新设计，量产推迟至Q2",
+      "product": "HBM4 / DRAM",
+      "source": "TechTimes / 供应链分析",
+      "url": "https://www.softwareseni.com/hbm4-delays-and-gddr7-shortages-the-memory-bottlenecks-squeezing-gpu-supply-in-2026/",
+      "summary": "JEDEC于2025年4月批准HBM4标准，per-pin速度6.4-12+Gbps。但NVIDIA在2025年Q3修订Rubin平台HBM4规格，要求所有供应商稳定交付>11Gbps（目标13Gbps），高于JEDEC基线。SK海力士、三星、美光被迫重新设计HBM4 die架构，量产从原2025年推迟至2026年Q1末/Q2初。TrendForce在2026年4月将Rubin在NVIDIA高端GPU出货占比从29%下调至22%，Blackwell占比从61%升至71%。",
+      "transmission_path": "HBM4 spec revision → 三厂重新设计/验证周期延长 → HBM4量产推迟 → 短期HBM3E需求被进一步放大 → HBM3E价格维持高位 → 同时拉动DDR5 enterprise需求",
+      "transmission_strength": "strong",
+      "key_figures": {
+        "hbm4_spec_target": "13 Gbps/pin",
+        "junedec_base": "6.4-12 Gbps",
+        "production_delay": "from 2025 to Q1/Q2 2026",
+        "rubin_share_revised": "29%→22%",
+        "blackwell_share_revised": "61%→71%"
+      },
+      "tags": [
+        "HBM4",
+        "NVIDIA",
+        "规格战",
+        "JEDEC",
+        "SK海力士",
+        "三星",
+        "美光",
+        "推迟"
+      ]
+    },
+    {
+      "id": "2026-03-17-micron-excluded-vera-rubin-hbm4",
+      "date": "2026-03-17",
+      "type": "公司公告",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "overvalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "美光 reportedly 未获Vera Rubin HBM4设计席位，份额由SK海力士(~70%)和三星(~30%)瓜分",
+      "product": "HBM4 / DRAM",
+      "source": "AInvest / 供应链消息",
+      "url": "https://www.ainvest.com/news/micron-sold-2026-hbm4-supply-creates-premium-pricing-play-vera-rubin-exclusion-2603/",
+      "summary": "行业消息显示，美光在NVIDIA下一代Vera Rubin平台的HBM4供应中未获得设计席位。预计Vera Rubin HBM4份额由SK海力士（约70%）和三星（约30%）瓜分。美光此前因HBM4 yield和performance问题在2025年11月进行重新设计，导致qualification落后于竞争对手。但美光2026年HBM4产能已通过长期协议全部锁定给其他客户（超算和政府渠道），并非单一客户依赖。",
+      "transmission_path": "美光失去Vera Rubin高端socket → HBM4 revenue growth略逊于竞争对手 → 但2026 HBM4 sold out仍支撑整体定价 → 需关注HBM4E(48GB 16H)进展能否收复失地",
+      "transmission_strength": "medium",
+      "key_figures": {
+        "sk_hynix_rubin_share": "~70%",
+        "samsung_rubin_share": "~30%",
+        "micron_status": "excluded from Vera Rubin",
+        "micron_hbm4_2026": "sold out via LTAs"
+      },
+      "tags": [
+        "美光",
+        "Micron",
+        "HBM4",
+        "Vera Rubin",
+        "NVIDIA",
+        "设计席位",
+        "份额"
+      ]
+    },
+    {
+      "id": "2026-06-17-jp-morgan-wfe-forecast-upgrade",
+      "date": "2026-06-17",
+      "type": "投研报告",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "摩根大通上调2026-2027全球WFE市场增速预测至28%/29%，foundry和DRAM为主要驱动力",
+      "product": "半导体设备 / WFE / DRAM",
+      "source": "J.P. Morgan Research",
+      "url": "https://finvaulta.com/research/jp-morgan/semiconductor-and-spe-sector-raising-our-2026-27-wfe-market-2026-06-17",
+      "summary": "摩根大通将2026年全球晶圆厂设备(WFE)市场增速预测从21%上调至28%，2027年从18%上调至29%。AI相关基础设施支出和云厂商资本开支加速是主要驱动。foundry和内存芯片（特别是DRAM）是上调的核心板块。TSMC和DRAM厂商的产能扩张是WFE增长的主要需求来源。",
+      "transmission_path": "WFE forecast upgrade → 设备订单增加 → 2027-2028新增DRAM/NAND产能可期 → 但短期产能仍紧张，2027年前供需缺口难弥合 → 支撑memory pricing power",
+      "transmission_strength": "medium",
+      "key_figures": {
+        "wfe_2026_growth": "28% YoY (from 21%)",
+        "wfe_2027_growth": "29% YoY (from 18%)",
+        "primary_drivers": "Foundry + DRAM"
+      },
+      "tags": [
+        "J.P. Morgan",
+        "WFE",
+        "设备",
+        "forecast",
+        "DRAM",
+        "foundry",
+        "capex"
+      ]
+    },
+    {
+      "id": "2026-06-10-omdia-semiconductor-market-319b-q1",
+      "date": "2026-06-10",
+      "type": "市场数据",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "Omdia：全球半导体市场Q1达$319B，内存收入环比激增80%，创历史新高",
+      "product": "半导体 / DRAM / NAND / HBM",
+      "source": "Omdia",
+      "url": "https://omdia.tech.informa.com/pr/2026/june/semiconductor-market-surpasses-300bn-dollars-quarterly-revenue-in-1q26-as-memory-market-shifts-historical-patterns",
+      "summary": "Omdia研究显示，2026年Q1全球半导体市场收入达3190亿美元，首次单季突破3000亿。其中内存收入环比激增80%，推动整体市场增长。这标志着内存市场历史格局的转变——AI驱动的HBM和数据中心需求正重塑传统季节性模式。",
+      "transmission_path": "Q1半导体收入历史新高 → 内存贡献80%环比增长 → 确认supercycle强度 → 支撑全年memory pricing预期 → 下游库存回补意愿增强",
+      "transmission_strength": "medium",
+      "key_figures": {
+        "q1_total_semiconductor": "$319B",
+        "memory_qoq_growth": "80%",
+        "first_300b_quarter": "yes"
+      },
+      "tags": [
+        "Omdia",
+        "半导体市场",
+        "Q1",
+        "memory",
+        "收入",
+        "supercycle"
+      ]
+    },
+    {
+      "id": "2026-06-05-sia-global-chip-sales-april-110b",
+      "date": "2026-06-05",
+      "type": "市场数据",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "SIA：2026年4月全球芯片销售额$110.5B，同比+93.9%，全年预计突破$1.5万亿",
+      "product": "半导体 / DRAM / NAND / HBM",
+      "source": "SIA",
+      "url": "https://www.semiconductors.org/news-events/latest-news/",
+      "summary": "美国半导体产业协会(SIA)宣布，2026年4月全球半导体销售额达1105亿美元，环比增长11%（3月995亿美元），同比增长93.9%。SIA预计2026年全年全球半导体销售额将突破1.5万亿美元。",
+      "transmission_path": "4月销售额同比+93.9% → memory supercycle确认 → 全年$1.5T+指引 → 强化memory pricing预期 → 推动上游capex和扩产决策",
+      "transmission_strength": "medium",
+      "key_figures": {
+        "april_sales": "$110.5B",
+        "mom_growth": "11%",
+        "yoy_growth": "93.9%",
+        "annual_forecast": ">$1.5T"
+      },
+      "tags": [
+        "SIA",
+        "半导体销售",
+        "4月",
+        "同比",
+        "全年预测"
+      ]
+    },
+    {
+      "id": "2026-06-18-ymtc-ipo-star-market-xtacking-license",
+      "date": "2026-06-18",
+      "type": "公司公告",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "none",
+      "horizon": "1y",
+      "title": "长江存储(YMTC)筹备科创板IPO，全球NAND市占13-16%，Xtacking技术授权给三星",
+      "product": "NAND Flash / 3D NAND",
+      "source": "KraneShares / Wind",
+      "url": "https://kraneshares.com/chinas-leading-high-bandwidth-memory-physical-ai-companies-prepare-for-ipo-on-shanghais-star-market/",
+      "summary": "长江存储(YMTC)正筹备在上海科创板上市。截至2026年初，YMTC全球NAND市占率约13-16%，位列全球第四。其独创的Xtacking架构（将存储单元与外围电路分别制造后键合）已授权给三星，这是中国半导体公司首次向韩国领先厂商收取技术授权费。YMTC在武汉运营两座晶圆厂，合计月产能约20万片，第三座工厂预计2026年底投产。",
+      "transmission_path": "YMTC上市融资 + 扩产 → 长期NAND供给增加 → 但短期受限于设备和出口管制 → 对全球NAND pricing影响有限，主要供应中国本土 → 三星获得Xtacking技术可能提升其NAND竞争力",
+      "transmission_strength": "weak",
+      "key_figures": {
+        "ymtc_nand_share": "13-16%",
+        "ymtc_wafer_capacity": "~200K wafers/month",
+        "phase_3": "2026年底",
+        "xtacking_licensee": "Samsung"
+      },
+      "tags": [
+        "YMTC",
+        "长江存储",
+        "NAND",
+        "科创板",
+        "IPO",
+        "Xtacking",
+        "三星"
+      ]
+    },
+    {
+      "id": "2026-05-05-byd-adas-memory-cost-surge",
+      "date": "2026-05-05",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "比亚迪上调ADAS套件价格，称全球内存成本飙升，汽车级DDR4/DDR5供应紧张",
+      "product": "DDR4 / DDR5 / 汽车内存",
+      "source": "Electronics Weekly / FTC Electronics",
+      "url": "https://www.ftcelectronics.nl/news/electronics-weekly-news-apr-27-may-3,2026",
+      "summary": "比亚迪宣布自5月1日起上调LiDAR-based ADAS套件价格，理由是全球内存成本飙升。受AI服务器需求爆发驱动，内存分配持续向高性能计算倾斜，汽车级DDR4和DDR5供应紧张。2026年已有十余家车企调整定价或缩减优惠。这显示半导体成本波动（尤其是DRAM和HBM）正直接传导至终端市场定价。",
+      "transmission_path": "AI服务器内存需求挤压汽车/工业供应 → 汽车级DDR4/DDR5涨价 → 下游车企提价 → 内存成本波动传导至终端市场 → 强化memory strategic resource定位",
+      "transmission_strength": "medium",
+      "key_figures": {
+        "byd_effective_date": "2026-05-01",
+        "affected_memory": "DDR4/DDR5 automotive",
+        "ev_makers_adjusted": "10+"
+      },
+      "tags": [
+        "比亚迪",
+        "BYD",
+        "汽车内存",
+        "DDR4",
+        "DDR5",
+        "ADAS",
+        "成本传导"
+      ]
     }
   ]
 }
