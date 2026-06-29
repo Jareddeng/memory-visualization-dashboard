@@ -44,6 +44,8 @@
 ### 第5轮：政策与政府投资（新增）
 - "US CHIPS Act funding disbursement memory semiconductor after:YYYY-MM-DD"
 - "China IC fund investment semiconductor memory 2026 after:YYYY-MM-DD"
+- "South Korea government semiconductor investment Samsung SK hynix after:YYYY-MM-DD"
+- "Korea chip cluster Honam Chungcheong mega project after:YYYY-MM-DD"
 - "US export controls China memory chips blacklist after:YYYY-MM-DD"
 - "government data center AI computing infrastructure investment 2026 after:YYYY-MM-DD"
 - "tariff trade war semiconductor memory chips after:YYYY-MM-DD"
