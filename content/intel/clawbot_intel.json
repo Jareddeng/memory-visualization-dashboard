@@ -3281,6 +3281,44 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-09-29"
+    },
+    {
+      "id": "2026-06-28-capacity-shift-advanced-process-only",
+      "date": "2026-06-28",
+      "type": "市场消息",
+      "impact": "neutral",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "三星/SK海力士/美光70-80%产能转向HBM系指先进制程及新增资本开支，非整体DRAM产出",
+      "product": "DRAM / HBM / Samsung / SK Hynix / Micron",
+      "source": "新浪财经 / 产业供应链",
+      "url": "https://finance.sina.com.cn/stock/usstock/summary/2026-06-28/doc-iniexucu3930062.shtml",
+      "summary": "6月28日市场澄清：此前传闻三星、SK海力士、美光将70-80%产能转向HBM及DDR5/LPDDR5X，实际是指先进制程产能及新增资本开支的投向，并非从整体DRAM产出中划拨对应份额。这意味着传统DRAM供给收缩幅度可能小于市场此前担忧。",
+      "transmission_path": "产能转向澄清→修正市场对传统DRAM供给大规模收缩的预期→此前因担忧供给转移而溢价的通用DRAM价格可能部分回调→对PC/消费级DRAM价格影响偏空，但AI服务器DRAM和HBM不受影响。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-07-28"
+    },
+    {
+      "id": "2026-06-29-korea-memory-stocks-drop-mega-plan",
+      "date": "2026-06-29",
+      "type": "市场消息",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "intraday",
+      "title": "韩国存储器股下跌，三星跌4.76%、SK海力士跌1.68%，市场静待政府半导体战略",
+      "product": "Samsung / SK Hynix / KOSPI",
+      "source": "Yahoo Finance / TradingKey / 市场数据",
+      "url": "https://hk.finance.yahoo.com/quote/000660.KS/",
+      "summary": "6月29日亚市早盘，三星电子下跌约4.76%至323,000韩元，SK海力士下跌约1.68%至2,628,000韩元，KOSPI指数盘中一度跌逾2%。市场静待韩国政府下午公布新一轮AI与半导体巨型战略。",
+      "transmission_path": "股价下跌反映市场对政府巨额投资计划执行风险的担忧（电力/水务/人才/供应链能否快速到位），以及可能的地区政治争议。短期情绪波动，不改变HBM超级周期基本面。",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-29"
     }
   ]
 }
