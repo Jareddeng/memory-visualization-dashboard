@@ -3243,7 +3243,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-06-30"
+    },
+    {
+      "id": "2026-06-29-micron-100b-sca-ceiling-effect",
+      "date": "2026-06-29",
+      "type": "行业分析",
+      "impact": "neutral",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "title": "Micron $100B长期订单锁定利润底线，但市场担忧估值天花板已现",
+      "product": "DRAM / NAND / HBM / Micron",
+      "source": "Futubull / 多家外媒综合",
+      "url": "https://news.futunn.com/en/post/75218213/micron-s-massive-long-term-order-locks-in-profits-but",
+      "summary": "Micron Q3 FY2026财报后深度分析：16份SCA战略客户协议中14份含最低收入承诺，合计约$100B（2026-2030）；客户预付款/承诺达$22B；价格floor确保毛利率超历史周期最高点，price ceiling约等于Q2 2026市场价；覆盖约20% DRAM出货量和1/3 NAND出货量；2026全年HBM产能已被协议锁定。CEO Sanjay Mehrotra表示'目前看不到供给能追上持续增长的需求的明确时点'，新fab至FY2028才有实质产能贡献。",
+      "transmission_path": "$100B长期合约锁定Micron利润底线 → 消除周期下行风险 → 但股价已涨863%/年，'好到不真实'成为风险 → 盘后涨15.78%次日跌6.69%的'卖新闻'模式 → 市场质疑AI Capex是否2027年见顶 → 若SK Hynix/Samsung快速追赶或AI需求放缓，未覆盖的60%+收入仍面临周期风险",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-13"
     }
-  ],
-  "last_updated": "2026-06-29T08:12:00+08:00"
+  ]
 }
