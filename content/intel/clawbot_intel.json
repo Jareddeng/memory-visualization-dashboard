@@ -3262,6 +3262,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-07-13"
+    },
+    {
+      "id": "2026-06-29-south-korea-mega-chip-cluster",
+      "date": "2026-06-29",
+      "type": "政策事件",
+      "impact": "bearish",
+      "importance": "S",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "title": "韩国政府公布三大跃进巨型项目：三星10年投资1000万亿韩元建西南部半导体集群",
+      "product": "DRAM / NAND / HBM / Samsung / SK Hynix",
+      "source": "Korea Economic Daily / 新浪财经",
+      "url": "https://en.bloomingbit.io/feed/news/115192",
+      "summary": "韩国政府6月29日由总统李在明主持'三大跃进巨型项目'国家简报会，正式公布半导体产业长期投资蓝图。三星集团计划未来10年投资超1000万亿韩元（约$723B），在湖南地区建设大型半导体集群，包含前后段制造，可能建设多达5座芯片厂（每座建设成本约60万亿韩元/$43.4B）。政府+民间总投资规模最高接近2000万亿韩元（约$1.3万亿美元）。SK海力士也将公布规模达数千亿美元的新增投资。但市场态度分化：乐观者认为利好头部企业完善本土产业链；谨慎者指出10年跨度空泛承诺对短期盈利无实质支撑，核心风险为资本开支增速可能超过现金回报增速，且现有基建配套不足以支撑快速落地。",
+      "transmission_path": "韩国政府巨型投资计划公布 → 长期（2028-2035）DRAM/NAND/HBM产能大幅增加 → 存储行业周期下行风险加剧 → 但短期（2-3年内）仅为规划/基建阶段，对当前供需无实质影响 → 需跟踪实际开工时间、土地审批、电力/水务配套进度 → 若执行进度超预期，将提前压制存储价格预期",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-09-29"
     }
   ]
 }
