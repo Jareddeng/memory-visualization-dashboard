@@ -3433,6 +3433,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-07-29"
+    },
+    {
+      "id": "2026-06-29-korea-government-800t-cluster-plan",
+      "date": "2026-06-29",
+      "type": "政策事件",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "title": "韩国政府公布800万亿韩元半导体集群计划：西南建4座晶圆厂，三星/SK海力士各2座",
+      "product": "DRAM / NAND / HBM / Samsung / SK Hynix / 韩国半导体",
+      "source": "21财经 / 界面新闻",
+      "url": "https://m.21jingji.com/article/20260629/herald/79158b54dd3222a6831270e8f6a87079.html",
+      "summary": "6月29日韩国产业通商资源部长官金正官公布：韩国计划投资约800万亿韩元在西南地区建设四座半导体晶圆厂，三星电子和SK海力士各规划建设两座。政府未来15年投入30万亿韩元研发下一代存储技术。中部地区重点发展先进封装，东南部打造半导体材料/零部件/设备/功率半导体产业集群。金正官预计，未来五年全球存储芯片市场规模将增长至目前的四倍。",
+      "transmission_path": "政府800万亿集群计划→西南地区4座晶圆厂（三星2座+SK海力士2座）→2028-2035年DRAM/NAND/HBM产能大幅增加→政府15年30万亿研发基金确保技术领先→但执行风险高（电力/水务/人才/供应链配套）→短期对股价情绪提振，长期供给压力显现→需跟踪审批进度和实际开工时间",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-09-29"
     }
   ]
 }
