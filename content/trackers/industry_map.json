@@ -1,6 +1,6 @@
 {
   "updated_at": "2026-06-30",
-  "source": "第一版人工整理，后续由 clawbot 通过 PR 更新；公司官网用于 logo 与跳转。",
+  "source": "第一版人工整理 + 2026-06-30 修正；后续由 clawbot 通过 PR 更新；公司官网用于 logo 与跳转。",
   "layers": [
     {
       "name": "上游",
@@ -105,11 +105,12 @@
             },
             {
               "name": "雅克科技",
-              "homepage": "http://www.yoke.com.cn/",
-              "logo_url": "http://www.yoke.com.cn/favicon.ico",
+              "homepage": "http://www.yokechem.com/",
+              "logo_url": "http://www.yokechem.com/favicon.ico",
               "region": "China",
               "role": "前驱体/电子材料",
-              "ticker": "002409.SZ"
+              "ticker": "002409.SZ",
+              "note": "官网有访问限制，首页可加载但介绍页可能需安全验证；favicon 可用"
             },
             {
               "name": "鼎龙股份",
