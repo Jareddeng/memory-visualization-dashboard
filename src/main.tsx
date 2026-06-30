@@ -574,6 +574,7 @@ function makeOverviewStockOption(stock: StockPoint, history: StockPoint[]): echa
 function App() {
   const { data, loading, error } = useDashboardData();
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
+  const [pendingAnchor, setPendingAnchor] = React.useState<string | null>(null);
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
   const [searchOpen, setSearchOpen] = React.useState(false);
@@ -592,6 +593,15 @@ function App() {
     document.addEventListener("mousedown", closeSearch);
     return () => document.removeEventListener("mousedown", closeSearch);
   }, []);
+
+  React.useEffect(() => {
+    if (!pendingAnchor) return;
+    const timer = window.setTimeout(() => {
+      document.getElementById(pendingAnchor)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      setPendingAnchor(null);
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [activePage, pendingAnchor]);
 
   if (error) {
     return (
@@ -624,6 +634,13 @@ function App() {
   const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
   const hbmPressure = getHbmPressure(data);
   const priceSnapshots = getPriceSnapshots(data.prices);
+  const navigatePage = (page: PageKey, anchorId?: string) => {
+    setActivePage(page);
+    setPendingAnchor(anchorId ?? null);
+    if (!anchorId) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
   const openSearchResult = (item: SearchItem) => {
     if (item.target.url) {
       window.open(item.target.url, "_blank", "noopener,noreferrer");
@@ -657,7 +674,7 @@ function App() {
             <span>存储行业数据舱</span>
           </div>
         </div>
-        <PageNav activePage={activePage} onChange={setActivePage} />
+        <PageNav activePage={activePage} onNavigate={navigatePage} />
         <div className="source-status">
           <span className="status-dot"></span>
           <div>
@@ -756,31 +773,65 @@ function App() {
   );
 }
 
-function PageNav({ activePage, onChange }: { activePage: PageKey; onChange: (page: PageKey) => void }) {
-  const pages: Array<{ key: PageKey; label: string; detail: string }> = [
-    { key: "overview", label: "概览", detail: "关键指标 / 情报" },
-    { key: "markets", label: "市场图表", detail: "价格与股价" },
-    { key: "industry", label: "产业跟踪", detail: "长协 / 扩产 / 图谱" },
-    { key: "reports", label: "报告库", detail: "日报 / 归档 / 导图" },
-    { key: "intel", label: "情报库", detail: "新增 / 删除 / 推送" },
+type NavSubItem = {
+  label: string;
+  anchorId: string;
+};
+
+function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: (page: PageKey, anchorId?: string) => void }) {
+  const pages: Array<{ key: PageKey; label: string; detail: string; subItems?: NavSubItem[] }> = [
+    { key: "overview", label: "\u6982\u89c8", detail: "\u5173\u952e\u6307\u6807 / \u60c5\u62a5" },
+    {
+      key: "markets",
+      label: "\u5e02\u573a\u56fe\u8868",
+      detail: "\u4ef7\u683c\u4e0e\u80a1\u4ef7",
+      subItems: [
+        { label: "\u80a1\u7968\u4e0e ETF \u8d8b\u52bf\u56fe", anchorId: "markets-stock-trends" },
+        { label: "\u5b58\u50a8\u4ef7\u683c\u8d8b\u52bf\u56fe", anchorId: "markets-storage-prices" },
+      ],
+    },
+    {
+      key: "industry",
+      label: "\u4ea7\u4e1a\u8ddf\u8e2a",
+      detail: "\u957f\u534f / \u6269\u4ea7 / \u56fe\u8c31",
+      subItems: [
+        { label: "\u957f\u534f\u9501\u5b9a\u72b6\u6001", anchorId: "hbm-contract-board" },
+        { label: "\u4e09\u5927\u5382\u6269\u4ea7\u80fd\u529b\u53d8\u5316", anchorId: "expansion-capacity-board" },
+        { label: "\u4ea7\u4e1a\u94fe\u56fe\u8c31", anchorId: "industry-map" },
+      ],
+    },
+    { key: "reports", label: "\u62a5\u544a\u5e93", detail: "\u65e5\u62a5 / \u5f52\u6863 / \u5bfc\u56fe" },
+    { key: "intel", label: "\u60c5\u62a5\u5e93", detail: "\u65b0\u589e / \u5220\u9664 / \u63a8\u9001" },
   ];
   return (
-    <nav className="nav-list" aria-label="看板分区导航">
-      {pages.map((page) => (
-        <button
-          className={activePage === page.key ? "nav-item active" : "nav-item"}
-          key={page.key}
-          onClick={() => onChange(page.key)}
-          type="button"
-        >
-          <strong>{page.label}</strong>
-          <span>{page.detail}</span>
-        </button>
-      ))}
+    <nav className="nav-list" aria-label="\u770b\u677f\u5206\u533a\u5bfc\u822a">
+      {pages.map((page) => {
+        const expanded = activePage === page.key && Boolean(page.subItems?.length);
+        return (
+          <div className={expanded ? "nav-group expanded" : "nav-group"} key={page.key}>
+            <button
+              className={activePage === page.key ? "nav-item active" : "nav-item"}
+              onClick={() => onNavigate(page.key)}
+              type="button"
+            >
+              <strong>{page.label}</strong>
+              <span>{page.detail}</span>
+            </button>
+            {expanded ? (
+              <div className="nav-sub-list" aria-label={page.label}>
+                {page.subItems?.map((item) => (
+                  <button className="nav-sub-item" key={item.anchorId} onClick={() => onNavigate(page.key, item.anchorId)} type="button">
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
     </nav>
   );
 }
-
 function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) {
   return (
     <section className="intel-hero">
@@ -982,7 +1033,7 @@ function MarketsPage({ data }: { data: AppData }) {
     <>
       {data.stocks.warning ? <div className="warning"><AlertTriangle size={16} />{data.stocks.warning}</div> : null}
 
-      <section className="section-heading">
+      <section className="section-heading" id="markets-stock-trends">
         <div>
           <h2>股票与 ETF 趋势图</h2>
           <p>展示各市场已完成交易日收盘价走势；若当天尚未收盘，则沿用上一交易日收盘价，涨跌幅相对再上一交易日收盘价计算。</p>
@@ -995,6 +1046,13 @@ function MarketsPage({ data }: { data: AppData }) {
             <Chart option={makeStockTrendOption(stock, data.stocks.history)} />
           </Panel>
         ))}
+      </section>
+
+      <section className="section-heading section-subheading" id="markets-storage-prices">
+        <div>
+          <h2>存储价格</h2>
+          <p>DRAM 和 NAND 现货价格、合约均价趋势，支持图例筛选和时间框选。</p>
+        </div>
       </section>
 
       <section className="chart-grid">
@@ -1335,7 +1393,7 @@ function ExpansionTable({ rows }: { rows: NonNullable<TrackerPayload["expansion_
 function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
   const layers = map?.layers ?? [];
   return (
-    <section className="panel text-panel industry-map">
+    <section className="panel text-panel industry-map" id="industry-map">
       <div className="industry-map-head">
         <div>
           <h2>产业链图谱</h2>
