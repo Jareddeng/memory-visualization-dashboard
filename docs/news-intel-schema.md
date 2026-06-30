@@ -36,22 +36,31 @@ content/intel/clawbot_intel.json
 }
 ```
 
-## 类型建议
+## 枚举字段严格约束（冷启动必须遵守）
 
-`type` 可以使用：
+以下字段只能使用**明确列出的值**，不允许自行发明新值。写错会导致 GitHub Actions 构建失败。
 
-```text
-市场消息
-产品数据
-行业分析
-重大事件
-公司公告
-财报业绩
-产业链跟踪
-政策事件
-```
+| 字段 | 允许值（只能从中选一个） | 常见错误（会导致构建失败） |
+|------|--------------------------|---------------------------|
+| `impact` | `bullish` / `bearish` / `neutral` | `mixed` |
+| `importance` | `S` / `A` / `B` / `C` | `SS`、`A+` |
+| `reaction_type` | `instant` / `undervalued` / `sentiment` / `archive` | `watch`、`overvalued`、`neutral`、`underappreciated` |
+| `pricing_status` | `unpriced` / `partial` / `priced` / `overpriced` / `failed` | `none` |
+| `horizon` | `intraday` / `1d` / `1w` / `1m` / `1q` / `longer` | `1y`、`2q`、`6m` |
+| `confidence` | `high` / `medium` / `low` | `medium-high` |
+| `action` | `alert` / `watch` / `deep_tracking` / `archive` | `monitor`、`track`、`follow` |
 
-## 原文链接要求
+**错误映射速查：**
+- `watch` → `archive`
+- `overvalued` → `sentiment`
+- `neutral`（作为 reaction_type）→ `sentiment`
+- `underappreciated` → `undervalued`
+- `none`（作为 pricing_status）→ `unpriced`
+- `mixed`（作为 impact）→ `neutral`
+- `1y` / `2q` → `longer` / `1q`
+- `monitor` → `watch`
+
+**验证方法：** 写入 JSON 后，在本地运行 `node scripts/generate-data.mjs` 测试。如果报 `Error: 情报 xxx 无效`，立即修复对应字段。
 
 - 字段名：`url`
 - 可选，不强制每条都有。

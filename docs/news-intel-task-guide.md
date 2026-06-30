@@ -161,4 +161,6 @@
 - 文件：`content/intel/clawbot_intel.json`
 - 使用仓库中的 `batch_restore.py` 脚本写入
 - 遵循 `docs/news-intel-schema.md` 中的 schema
+- **写入前必须校验枚举字段**：`impact` / `reaction_type` / `pricing_status` / `horizon` / `confidence` / `action` 只能用 schema 中明确列出的值，不允许发明新值
 - 提交信息：`Intel: update YYYY-MM-DD intelligence records (N new)`
+- **写入 JSON 后，本地运行 `node scripts/generate-data.mjs` 验证通过后再 push**，避免构建失败
