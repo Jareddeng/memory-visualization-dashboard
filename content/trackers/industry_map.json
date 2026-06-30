@@ -106,11 +106,11 @@
             {
               "name": "雅克科技",
               "homepage": "http://www.yokechem.com/",
-              "logo_url": "http://www.yokechem.com/favicon.ico",
+              "logo_url": "./assets/logos/yoke.png",
               "region": "China",
               "role": "前驱体/电子材料",
               "ticker": "002409.SZ",
-              "note": "官网有访问限制，首页可加载但介绍页可能需安全验证；favicon 可用"
+              "note": "官网有访问限制，首页可加载但介绍页可能需安全验证"
             },
             {
               "name": "鼎龙股份",
@@ -123,7 +123,7 @@
             {
               "name": "广钢气体",
               "homepage": "https://www.ggas.com/Aboutus/1.html",
-              "logo_url": "https://logo.clearbit.com/ggas.com",
+              "logo_url": "./assets/logos/ggas.png",
               "region": "China",
               "role": "电子大宗气体",
               "ticker": "688548.SH"
