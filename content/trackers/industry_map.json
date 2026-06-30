@@ -75,7 +75,7 @@
             {
               "name": "SUMCO",
               "homepage": "https://www.sumcosi.com/english/corporate/profile.html",
-              "logo_url": "https://logo.clearbit.com/sumcosi.com",
+              "logo_url": "./assets/logos/sumco.png",
               "region": "Japan",
               "role": "硅片",
               "ticker": "3436.T"
@@ -105,8 +105,8 @@
             },
             {
               "name": "雅克科技",
-              "homepage": "https://www.yokechem.com/",
-              "logo_url": "https://logo.clearbit.com/yokechem.com",
+              "homepage": "http://www.yoke.com.cn/",
+              "logo_url": "http://www.yoke.com.cn/favicon.ico",
               "region": "China",
               "role": "前驱体/电子材料",
               "ticker": "002409.SZ"
@@ -203,7 +203,7 @@
             {
               "name": "南亚科技",
               "homepage": "https://www.nanya.com/en/About/2/Our%20Company",
-              "logo_url": "https://logo.clearbit.com/nanya.com",
+              "logo_url": "./assets/logos/nanya.png",
               "region": "Taiwan",
               "role": "DRAM",
               "ticker": "2408.TW"
@@ -241,7 +241,7 @@
             {
               "name": "长电科技",
               "homepage": "https://www.jcetglobal.com/",
-              "logo_url": "https://logo.clearbit.com/jcetglobal.com",
+              "logo_url": "./assets/logos/jcet.png",
               "region": "China",
               "role": "封装测试",
               "ticker": "600584.SH"
@@ -294,7 +294,7 @@
             {
               "name": "江波龙",
               "homepage": "https://www.longsys.com/about-longsys/",
-              "logo_url": "https://logo.clearbit.com/longsys.com",
+              "logo_url": "./assets/logos/longsys.png",
               "region": "China",
               "role": "存储模组/企业级存储",
               "ticker": "301308.SZ"

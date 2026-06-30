@@ -1838,10 +1838,10 @@ th {
 
 .industry-company {
   display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
-  gap: 9px;
-  min-height: 78px;
-  padding: 9px;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 10px;
+  min-height: 82px;
+  padding: 10px;
   border: 1px solid rgba(20, 124, 114, 0.18);
   border-radius: 8px;
   background: #ffffff;
@@ -1860,8 +1860,8 @@ th {
   position: relative;
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 76px;
+  height: 38px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -1874,8 +1874,8 @@ th {
 .industry-logo img {
   position: relative;
   z-index: 1;
-  max-width: 28px;
-  max-height: 28px;
+  max-width: 68px;
+  max-height: 30px;
   object-fit: contain;
   background: #ffffff;
 }
