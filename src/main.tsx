@@ -1368,9 +1368,9 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
                         title={node.homepage ? `${node.name} 官网` : node.name}
                       >
                         <span className="industry-logo" aria-hidden="true">
-                          {node.logo_url ? (
+                          {getCompanyLogoUrl(node) ? (
                             <img
-                              src={node.logo_url}
+                              src={getCompanyLogoUrl(node)}
                               alt=""
                               loading="lazy"
                               onError={(event) => {
@@ -1402,6 +1402,13 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
       {map?.source ? <small>来源：{map.source}</small> : null}
     </section>
   );
+}
+
+function getCompanyLogoUrl(node: { homepage?: string; logo_url?: string }) {
+  if (node.homepage) {
+    return `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(node.homepage)}&sz=64`;
+  }
+  return node.logo_url;
 }
 function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean }) {
   const [mindmapOpen, setMindmapOpen] = React.useState(false);

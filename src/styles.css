@@ -1790,35 +1790,6 @@ th {
   line-height: 1.5;
 }
 
-.industry-node-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-content: flex-start;
-}
-
-.industry-node-list span {
-  display: grid;
-  gap: 2px;
-  min-width: 118px;
-  padding: 8px 10px;
-  border: 1px solid rgba(20, 124, 114, 0.22);
-  border-radius: 6px;
-  background: var(--teal-soft);
-}
-
-.industry-node-list b {
-  color: var(--ink);
-  font-size: 13px;
-}
-
-.industry-node-list em,
-.industry-node-list small {
-  color: var(--muted);
-  font-size: 12px;
-  font-style: normal;
-}
-
 .empty-map {
   padding: 18px;
   border: 1px dashed var(--line-strong);
