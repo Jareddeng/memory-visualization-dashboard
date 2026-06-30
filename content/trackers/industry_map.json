@@ -105,8 +105,8 @@
             },
             {
               "name": "雅克科技",
-              "homepage": "http://www.yoke.com.cn/",
-              "logo_url": "http://www.yoke.com.cn/favicon.ico",
+              "homepage": "http://www.yokechem.com/ompany-profile/?security_verify_data=313932302c31303830",
+              "logo_url": "./assets/logos/yoke.png",
               "region": "China",
               "role": "前驱体/电子材料",
               "ticker": "002409.SZ"
@@ -122,7 +122,7 @@
             {
               "name": "广钢气体",
               "homepage": "https://www.ggas.com/Aboutus/1.html",
-              "logo_url": "https://logo.clearbit.com/ggas.com",
+              "logo_url": "./assets/logos/ggas.png",
               "region": "China",
               "role": "电子大宗气体",
               "ticker": "688548.SH"
