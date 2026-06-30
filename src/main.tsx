@@ -1374,6 +1374,11 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
                               alt=""
                               loading="lazy"
                               onError={(event) => {
+                                const fallback = getCompanyLogoFallbackUrl(node);
+                                if (fallback && event.currentTarget.src !== fallback) {
+                                  event.currentTarget.src = fallback;
+                                  return;
+                                }
                                 event.currentTarget.style.display = "none";
                               }}
                             />
@@ -1405,10 +1410,14 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
 }
 
 function getCompanyLogoUrl(node: { homepage?: string; logo_url?: string }) {
+  return node.logo_url ?? getCompanyLogoFallbackUrl(node);
+}
+
+function getCompanyLogoFallbackUrl(node: { homepage?: string }) {
   if (node.homepage) {
     return `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(node.homepage)}&sz=64`;
   }
-  return node.logo_url;
+  return undefined;
 }
 function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean }) {
   const [mindmapOpen, setMindmapOpen] = React.useState(false);
