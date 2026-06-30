@@ -153,11 +153,27 @@ type TrackerPayload = {
     layers?: Array<{
       name: string;
       description?: string;
-      nodes: Array<{
+      groups?: Array<{
         name: string;
+        note?: string;
+        nodes: Array<{
+          name: string;
+          homepage?: string;
+          logo_url?: string;
+          region?: string;
+          role?: string;
+          note?: string;
+          ticker?: string;
+        }>;
+      }>;
+      nodes?: Array<{
+        name: string;
+        homepage?: string;
+        logo_url?: string;
         region?: string;
         role?: string;
         note?: string;
+        ticker?: string;
       }>;
     }>;
   };
@@ -1323,7 +1339,7 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
       <div className="industry-map-head">
         <div>
           <h2>产业链图谱</h2>
-          <p>预留给 clawbot 更新存储产业链环节、公司角色和上下游变化。</p>
+          <p>按上游、中游、下游拆分存储产业链环节；点击公司 logo 可打开官网，后续由 clawbot 通过 PR 更新。</p>
         </div>
         <small>{map?.updated_at ? `更新：${map.updated_at}` : "等待 clawbot 更新"}</small>
       </div>
@@ -1331,33 +1347,62 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
         <div className="industry-map-grid">
           {layers.map((layer) => (
             <article className="industry-layer" key={layer.name}>
-              <div>
+              <div className="industry-layer-head">
                 <strong>{layer.name}</strong>
                 {layer.description ? <p>{layer.description}</p> : null}
               </div>
-              <div className="industry-node-list">
-                {layer.nodes.map((node) => (
-                  <span key={`${layer.name}-${node.name}`}>
-                    <b>{node.name}</b>
-                    {node.role ? <em>{node.role}</em> : null}
-                    {node.region ? <small>{node.region}</small> : null}
-                    {node.note ? <small>{node.note}</small> : null}
-                  </span>
-                ))}
-              </div>
+              {(layer.groups?.length ? layer.groups : [{ name: "核心公司", nodes: layer.nodes ?? [] }]).map((group) => (
+                <div className="industry-group" key={`${layer.name}-${group.name}`}>
+                  <div className="industry-group-head">
+                    <b>{group.name}</b>
+                    {group.note ? <small>{group.note}</small> : null}
+                  </div>
+                  <div className="industry-node-list">
+                    {group.nodes.map((node) => (
+                      <a
+                        className="industry-company"
+                        href={node.homepage ?? "#"}
+                        key={`${layer.name}-${group.name}-${node.name}`}
+                        target={node.homepage ? "_blank" : undefined}
+                        rel={node.homepage ? "noreferrer" : undefined}
+                        title={node.homepage ? `${node.name} 官网` : node.name}
+                      >
+                        <span className="industry-logo" aria-hidden="true">
+                          {node.logo_url ? (
+                            <img
+                              src={node.logo_url}
+                              alt=""
+                              loading="lazy"
+                              onError={(event) => {
+                                event.currentTarget.style.display = "none";
+                              }}
+                            />
+                          ) : null}
+                          <span>{node.name.slice(0, 1)}</span>
+                        </span>
+                        <span className="industry-company-body">
+                          <strong>{node.name}</strong>
+                          {node.role ? <em>{node.role}</em> : null}
+                          <small>{[node.region, node.ticker].filter(Boolean).join(" · ")}</small>
+                          {node.note ? <small>{node.note}</small> : null}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </article>
           ))}
         </div>
       ) : (
         <div className="empty-map">
-          clawbot 后续可通过 PR 更新 `content/trackers/industry_map.json`，合并后这里会显示产业链图谱。
+          clawbot 后续可通过 PR 更新 content/trackers/industry_map.json，合并后这里会显示产业链图谱。
         </div>
       )}
       {map?.source ? <small>来源：{map.source}</small> : null}
     </section>
   );
 }
-
 function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean }) {
   const [mindmapOpen, setMindmapOpen] = React.useState(false);
 
