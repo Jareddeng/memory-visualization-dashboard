@@ -3642,6 +3642,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-09-24"
+    },
+    {
+      "id": "2026-06-29-semi-memory-equipment-52b",
+      "date": "2026-06-29",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "SEMI：2026年全球存储设备投资首超$520亿，DRAM设备$370亿(+29%)，3D NAND设备$140亿(+28%)",
+      "product": "DRAM / NAND / HBM / 半导体设备 / 存储晶圆厂",
+      "source": "SEMI / PRNewswire",
+      "url": "https://www.semi.org/en/semi-press-release/semi-projects-300mm-memory-equipment-investment-to-surpass-50-billion-dollars-in-2026",
+      "summary": "SEMI发布最新300mm晶圆厂展望报告：2026年全球存储 sector 300mm设备投资将达$520亿（首破$500亿，同比+29%），2027年进一步增至$570亿（+11%）。其中DRAM设备$370亿（+29%），3D NAND设备$140亿（+28%）。2024-2029年存储设备支出CAGR达19%，2029年逼近$800亿。全球300mm存储产能2026年达410万片/月，2027年420万片/月。报告涵盖全球413座工厂/产线，较2026年3月版新增155项更新和7个新 fab 项目。",
+      "transmission_path": "SEMI权威数据确认存储设备投资进入超级周期→DRAM/NAND设备支出高增长验证AI需求持续性→设备商（AMAT/Lam/TEL等）订单能见度高→存储原厂扩产计划明确→但SEMI同时指出有效产能增长受技术迁移和工艺复杂度制约（先进DRAM、HBM、高层NAND转进）→短期设备股受益，中长期需跟踪实际产能释放与需求匹配度→若2027-2028年产能集中开出而AI需求放缓，价格拐点风险上升",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-09-29"
     }
   ]
 }
