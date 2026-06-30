@@ -1,5 +1,498 @@
 {
-  "updated_at": null,
-  "source": "待 clawbot 更新",
-  "layers": []
+  "updated_at": "2026-06-30",
+  "source": "第一版人工整理，后续由 clawbot 通过 PR 更新；公司官网用于 logo 与跳转。",
+  "layers": [
+    {
+      "name": "上游",
+      "description": "支撑晶圆制造、先进封装和材料导入，是扩产周期里最先感受到资本开支变化的环节。",
+      "groups": [
+        {
+          "name": "半导体设备",
+          "note": "光刻、刻蚀、沉积、检测量测与清洗设备。",
+          "nodes": [
+            {
+              "name": "ASML",
+              "homepage": "https://www.asml.com/",
+              "logo_url": "https://logo.clearbit.com/asml.com",
+              "region": "Netherlands",
+              "role": "光刻设备",
+              "ticker": "ASML"
+            },
+            {
+              "name": "Applied Materials",
+              "homepage": "https://www.appliedmaterials.com/",
+              "logo_url": "https://logo.clearbit.com/appliedmaterials.com",
+              "region": "US",
+              "role": "沉积/刻蚀/工艺设备",
+              "ticker": "AMAT"
+            },
+            {
+              "name": "Lam Research",
+              "homepage": "https://www.lamresearch.com/",
+              "logo_url": "https://logo.clearbit.com/lamresearch.com",
+              "region": "US",
+              "role": "刻蚀/沉积设备",
+              "ticker": "LRCX"
+            },
+            {
+              "name": "Tokyo Electron",
+              "homepage": "https://www.tel.com/",
+              "logo_url": "https://logo.clearbit.com/tel.com",
+              "region": "Japan",
+              "role": "涂胶显影/刻蚀/沉积",
+              "ticker": "8035.T"
+            },
+            {
+              "name": "KLA",
+              "homepage": "https://www.kla.com/",
+              "logo_url": "https://logo.clearbit.com/kla.com",
+              "region": "US",
+              "role": "检测量测",
+              "ticker": "KLAC"
+            },
+            {
+              "name": "盛美上海",
+              "homepage": "https://www.acmrcsh.com/",
+              "logo_url": "https://logo.clearbit.com/acmrcsh.com",
+              "region": "China",
+              "role": "清洗/电镀设备",
+              "ticker": "688082.SH"
+            }
+          ]
+        },
+        {
+          "name": "晶圆与电子材料",
+          "note": "硅片、光刻胶、前驱体、电子气体、CMP 与湿电子化学品。",
+          "nodes": [
+            {
+              "name": "Shin-Etsu",
+              "homepage": "https://www.shinetsu.co.jp/en/",
+              "logo_url": "https://logo.clearbit.com/shinetsu.co.jp",
+              "region": "Japan",
+              "role": "硅片/光刻胶",
+              "ticker": "4063.T"
+            },
+            {
+              "name": "SUMCO",
+              "homepage": "https://www.sumcosi.com/english/corporate/profile.html",
+              "logo_url": "./assets/logos/sumco.png",
+              "region": "Japan",
+              "role": "硅片",
+              "ticker": "3436.T"
+            },
+            {
+              "name": "SK Siltron",
+              "homepage": "https://www.sksiltron.com/en/",
+              "logo_url": "https://logo.clearbit.com/sksiltron.com",
+              "region": "Korea",
+              "role": "硅片"
+            },
+            {
+              "name": "Entegris",
+              "homepage": "https://www.entegris.com/",
+              "logo_url": "https://logo.clearbit.com/entegris.com",
+              "region": "US",
+              "role": "材料/过滤/容器",
+              "ticker": "ENTG"
+            },
+            {
+              "name": "Merck KGaA",
+              "homepage": "https://www.merckgroup.com/",
+              "logo_url": "https://logo.clearbit.com/merckgroup.com",
+              "region": "Germany",
+              "role": "电子材料",
+              "ticker": "MRK.DE"
+            },
+            {
+              "name": "雅克科技",
+              "homepage": "http://www.yoke.com.cn/",
+              "logo_url": "http://www.yoke.com.cn/favicon.ico",
+              "region": "China",
+              "role": "前驱体/电子材料",
+              "ticker": "002409.SZ"
+            },
+            {
+              "name": "鼎龙股份",
+              "homepage": "https://www.dl-kg.com/company.html",
+              "logo_url": "https://logo.clearbit.com/dl-kg.com",
+              "region": "China",
+              "role": "CMP 抛光垫/材料",
+              "ticker": "300054.SZ"
+            },
+            {
+              "name": "广钢气体",
+              "homepage": "https://www.ggas.com/Aboutus/1.html",
+              "logo_url": "https://logo.clearbit.com/ggas.com",
+              "region": "China",
+              "role": "电子大宗气体",
+              "ticker": "688548.SH"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "中游",
+      "description": "存储原厂、晶圆制造、封测、控制器和模组，是价格、长协和产能变化最直接的承载层。",
+      "groups": [
+        {
+          "name": "存储原厂",
+          "note": "DRAM、NAND、HBM 与利基型存储的核心供给方。",
+          "nodes": [
+            {
+              "name": "Samsung Electronics",
+              "homepage": "https://www.samsung.com/semiconductor/",
+              "logo_url": "https://logo.clearbit.com/samsung.com",
+              "region": "Korea",
+              "role": "DRAM/NAND/HBM",
+              "ticker": "005930.KS"
+            },
+            {
+              "name": "SK hynix",
+              "homepage": "https://www.skhynix.com/",
+              "logo_url": "https://logo.clearbit.com/skhynix.com",
+              "region": "Korea",
+              "role": "DRAM/HBM/NAND",
+              "ticker": "000660.KS"
+            },
+            {
+              "name": "Micron",
+              "homepage": "https://www.micron.com/",
+              "logo_url": "https://logo.clearbit.com/micron.com",
+              "region": "US",
+              "role": "DRAM/NAND/HBM",
+              "ticker": "MU"
+            },
+            {
+              "name": "Kioxia",
+              "homepage": "https://www.kioxia.com/",
+              "logo_url": "https://logo.clearbit.com/kioxia.com",
+              "region": "Japan",
+              "role": "NAND"
+            },
+            {
+              "name": "SanDisk",
+              "homepage": "https://www.sandisk.com/",
+              "logo_url": "https://logo.clearbit.com/sandisk.com",
+              "region": "US",
+              "role": "NAND/存储产品",
+              "ticker": "SNDK"
+            },
+            {
+              "name": "长江存储",
+              "homepage": "https://www.ymtc.com/",
+              "logo_url": "https://logo.clearbit.com/ymtc.com",
+              "region": "China",
+              "role": "NAND"
+            },
+            {
+              "name": "长鑫存储",
+              "homepage": "https://www.cxmt.com/",
+              "logo_url": "https://logo.clearbit.com/cxmt.com",
+              "region": "China",
+              "role": "DRAM"
+            },
+            {
+              "name": "华邦电子",
+              "homepage": "https://www.winbond.com/",
+              "logo_url": "https://logo.clearbit.com/winbond.com",
+              "region": "Taiwan",
+              "role": "利基 DRAM/NOR/NAND",
+              "ticker": "2344.TW"
+            },
+            {
+              "name": "南亚科技",
+              "homepage": "https://www.nanya.com/en/About/2/Our%20Company",
+              "logo_url": "./assets/logos/nanya.png",
+              "region": "Taiwan",
+              "role": "DRAM",
+              "ticker": "2408.TW"
+            }
+          ]
+        },
+        {
+          "name": "先进封装与测试",
+          "note": "HBM 堆叠、CoWoS/先进封装、封测产能与良率相关。",
+          "nodes": [
+            {
+              "name": "TSMC",
+              "homepage": "https://www.tsmc.com/",
+              "logo_url": "https://logo.clearbit.com/tsmc.com",
+              "region": "Taiwan",
+              "role": "先进封装/CoWoS",
+              "ticker": "TSM"
+            },
+            {
+              "name": "ASE",
+              "homepage": "https://www.aseglobal.com/",
+              "logo_url": "https://logo.clearbit.com/aseglobal.com",
+              "region": "Taiwan",
+              "role": "封装测试",
+              "ticker": "3711.TW"
+            },
+            {
+              "name": "Amkor",
+              "homepage": "https://amkor.com/",
+              "logo_url": "https://logo.clearbit.com/amkor.com",
+              "region": "US",
+              "role": "封装测试",
+              "ticker": "AMKR"
+            },
+            {
+              "name": "长电科技",
+              "homepage": "https://www.jcetglobal.com/",
+              "logo_url": "./assets/logos/jcet.png",
+              "region": "China",
+              "role": "封装测试",
+              "ticker": "600584.SH"
+            },
+            {
+              "name": "通富微电",
+              "homepage": "https://www.tfme.com/",
+              "logo_url": "https://logo.clearbit.com/tfme.com",
+              "region": "China",
+              "role": "封装测试",
+              "ticker": "002156.SZ"
+            }
+          ]
+        },
+        {
+          "name": "控制器与模组",
+          "note": "SSD 控制器、模组、企业级存储产品与渠道库存变化。",
+          "nodes": [
+            {
+              "name": "Phison",
+              "homepage": "https://www.phison.com/",
+              "logo_url": "https://logo.clearbit.com/phison.com",
+              "region": "Taiwan",
+              "role": "SSD 控制器/模组",
+              "ticker": "8299.TWO"
+            },
+            {
+              "name": "Silicon Motion",
+              "homepage": "https://www.siliconmotion.com/",
+              "logo_url": "https://logo.clearbit.com/siliconmotion.com",
+              "region": "Taiwan",
+              "role": "NAND 控制器",
+              "ticker": "SIMO"
+            },
+            {
+              "name": "Marvell",
+              "homepage": "https://www.marvell.com/",
+              "logo_url": "https://logo.clearbit.com/marvell.com",
+              "region": "US",
+              "role": "控制器/数据中心芯片",
+              "ticker": "MRVL"
+            },
+            {
+              "name": "Kingston",
+              "homepage": "https://www.kingston.com/",
+              "logo_url": "https://logo.clearbit.com/kingston.com",
+              "region": "US",
+              "role": "内存/SSD 模组"
+            },
+            {
+              "name": "江波龙",
+              "homepage": "https://www.longsys.com/about-longsys/",
+              "logo_url": "./assets/logos/longsys.png",
+              "region": "China",
+              "role": "存储模组/企业级存储",
+              "ticker": "301308.SZ"
+            },
+            {
+              "name": "佰维存储",
+              "homepage": "https://www.biwin.com.cn/",
+              "logo_url": "https://logo.clearbit.com/biwin.com.cn",
+              "region": "China",
+              "role": "存储模组/封测",
+              "ticker": "688525.SH"
+            },
+            {
+              "name": "ADATA",
+              "homepage": "https://www.adata.com/",
+              "logo_url": "https://logo.clearbit.com/adata.com",
+              "region": "Taiwan",
+              "role": "内存/SSD 模组",
+              "ticker": "3260.TW"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "下游",
+      "description": "AI 服务器、云厂商、PC 手机和汽车工业需求决定存储消耗节奏，也是价格传导和库存周期的验证层。",
+      "groups": [
+        {
+          "name": "AI 与云资本开支",
+          "note": "训练/推理集群、HBM、DDR5、企业级 SSD 的核心需求来源。",
+          "nodes": [
+            {
+              "name": "NVIDIA",
+              "homepage": "https://www.nvidia.com/",
+              "logo_url": "https://logo.clearbit.com/nvidia.com",
+              "region": "US",
+              "role": "AI GPU 平台",
+              "ticker": "NVDA"
+            },
+            {
+              "name": "AMD",
+              "homepage": "https://www.amd.com/",
+              "logo_url": "https://logo.clearbit.com/amd.com",
+              "region": "US",
+              "role": "AI GPU/CPU 平台",
+              "ticker": "AMD"
+            },
+            {
+              "name": "Microsoft",
+              "homepage": "https://www.microsoft.com/",
+              "logo_url": "https://logo.clearbit.com/microsoft.com",
+              "region": "US",
+              "role": "云资本开支",
+              "ticker": "MSFT"
+            },
+            {
+              "name": "Amazon AWS",
+              "homepage": "https://aws.amazon.com/",
+              "logo_url": "https://logo.clearbit.com/amazon.com",
+              "region": "US",
+              "role": "云资本开支",
+              "ticker": "AMZN"
+            },
+            {
+              "name": "Google Cloud",
+              "homepage": "https://cloud.google.com/",
+              "logo_url": "https://logo.clearbit.com/google.com",
+              "region": "US",
+              "role": "云资本开支",
+              "ticker": "GOOGL"
+            },
+            {
+              "name": "Meta",
+              "homepage": "https://www.meta.com/",
+              "logo_url": "https://logo.clearbit.com/meta.com",
+              "region": "US",
+              "role": "AI 基建需求",
+              "ticker": "META"
+            },
+            {
+              "name": "Oracle",
+              "homepage": "https://www.oracle.com/",
+              "logo_url": "https://logo.clearbit.com/oracle.com",
+              "region": "US",
+              "role": "云/AI 基建",
+              "ticker": "ORCL"
+            }
+          ]
+        },
+        {
+          "name": "服务器与整机",
+          "note": "服务器 OEM/ODM 拉动内存、SSD 与 HBM 平台放量。",
+          "nodes": [
+            {
+              "name": "Dell Technologies",
+              "homepage": "https://www.dell.com/",
+              "logo_url": "https://logo.clearbit.com/dell.com",
+              "region": "US",
+              "role": "AI 服务器",
+              "ticker": "DELL"
+            },
+            {
+              "name": "HPE",
+              "homepage": "https://www.hpe.com/",
+              "logo_url": "https://logo.clearbit.com/hpe.com",
+              "region": "US",
+              "role": "服务器/存储系统",
+              "ticker": "HPE"
+            },
+            {
+              "name": "Supermicro",
+              "homepage": "https://www.supermicro.com/",
+              "logo_url": "https://logo.clearbit.com/supermicro.com",
+              "region": "US",
+              "role": "AI 服务器",
+              "ticker": "SMCI"
+            },
+            {
+              "name": "Lenovo",
+              "homepage": "https://www.lenovo.com/",
+              "logo_url": "https://logo.clearbit.com/lenovo.com",
+              "region": "China",
+              "role": "服务器/PC",
+              "ticker": "0992.HK"
+            },
+            {
+              "name": "Foxconn",
+              "homepage": "https://www.foxconn.com/",
+              "logo_url": "https://logo.clearbit.com/foxconn.com",
+              "region": "Taiwan",
+              "role": "服务器 ODM",
+              "ticker": "2317.TW"
+            },
+            {
+              "name": "Quanta",
+              "homepage": "https://www.quantatw.com/",
+              "logo_url": "https://logo.clearbit.com/quantatw.com",
+              "region": "Taiwan",
+              "role": "服务器 ODM",
+              "ticker": "2382.TW"
+            }
+          ]
+        },
+        {
+          "name": "终端与汽车工业",
+          "note": "手机、PC、车载、工业和消费电子影响传统 DRAM/NAND 周期。",
+          "nodes": [
+            {
+              "name": "Apple",
+              "homepage": "https://www.apple.com/",
+              "logo_url": "https://logo.clearbit.com/apple.com",
+              "region": "US",
+              "role": "手机/PC/终端",
+              "ticker": "AAPL"
+            },
+            {
+              "name": "Samsung MX",
+              "homepage": "https://www.samsung.com/",
+              "logo_url": "https://logo.clearbit.com/samsung.com",
+              "region": "Korea",
+              "role": "手机/终端",
+              "ticker": "005930.KS"
+            },
+            {
+              "name": "Xiaomi",
+              "homepage": "https://www.mi.com/",
+              "logo_url": "https://logo.clearbit.com/mi.com",
+              "region": "China",
+              "role": "手机/IoT",
+              "ticker": "1810.HK"
+            },
+            {
+              "name": "HP",
+              "homepage": "https://www.hp.com/",
+              "logo_url": "https://logo.clearbit.com/hp.com",
+              "region": "US",
+              "role": "PC",
+              "ticker": "HPQ"
+            },
+            {
+              "name": "Tesla",
+              "homepage": "https://www.tesla.com/",
+              "logo_url": "https://logo.clearbit.com/tesla.com",
+              "region": "US",
+              "role": "汽车/边缘计算",
+              "ticker": "TSLA"
+            },
+            {
+              "name": "Bosch",
+              "homepage": "https://www.bosch.com/",
+              "logo_url": "https://logo.clearbit.com/bosch.com",
+              "region": "Germany",
+              "role": "汽车/工业"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
