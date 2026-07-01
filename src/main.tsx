@@ -1168,6 +1168,15 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
   const companies = tracker?.companies ?? [];
   const stages = tracker?.stages ?? ["验证", "报价", "锁量", "签约", "交付"];
   const maxStage = Math.max(stages.length - 1, 1);
+  const ranges = companies.map((company) => {
+    const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
+    const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
+    const negotiationRange = getNegotiationRange(company, lockedUntil);
+    return { lockedRange, negotiationRange };
+  });
+  const startYear = Math.min(...ranges.flatMap((item) => [item.lockedRange.start, item.negotiationRange.start]).filter(Boolean), 2025) || 2025;
+  const maxYear = Math.max(...ranges.flatMap((item) => [item.lockedRange.end, item.negotiationRange.end]), startYear + 1);
+  const years = Array.from({ length: maxYear - startYear + 1 }, (_, index) => startYear + index);
 
   if (!companies.length) {
     return null;
@@ -1191,6 +1200,11 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
           const negotiationRange = getNegotiationRange(company, lockedUntil);
           const capacityState = getCapacityLockState(company.locked_capacity);
           const progress = Math.max(0, Math.min(100, (company.stage_index / maxStage) * 100));
+          const stageRatio = company.stage_index / maxStage;
+          const progressEnd = negotiationRange.start + Math.max(0.18, stageRatio) * Math.max(negotiationRange.end - negotiationRange.start, 0.75);
+          const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
+          const negotiationPosition = rangePosition(negotiationRange.start, negotiationRange.end, startYear, maxYear);
+          const progressPosition = rangePosition(negotiationRange.start, Math.min(progressEnd, negotiationRange.end), startYear, maxYear);
           return (
             <article className="hbm-contract-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-contract-head">
@@ -1201,44 +1215,41 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                 <span className={`hbm-capacity-pill ${capacityState.tone}`}>{capacityState.label}</span>
               </div>
 
-              <div className="hbm-contract-columns">
-                <div className="hbm-contract-period locked">
-                  <div>
-                    <span>已锁定覆盖</span>
-                    <strong>{lockedRange.start}年初 - {lockedRange.end}年末</strong>
-                  </div>
-                  <div className="hbm-period-bar">
-                    <i />
-                  </div>
-                  <div className="hbm-period-meta">
-                    <b>{lockedUntil}年末</b>
-                    <small title={company.locked_capacity}>{capacityState.summary}</small>
+              <div className="hbm-contract-chart" style={{ ["--year-count" as string]: years.length }}>
+                <div className="hbm-contract-axis">
+                  <span />
+                  {years.map((year) => <b key={`${company.company}-${year}`}>{year}</b>)}
+                </div>
+
+                <div className="hbm-contract-bar-row">
+                  <span>签约覆盖</span>
+                  <div className="hbm-contract-track">
+                    <i className="locked" style={{ left: `${lockedPosition.left}%`, width: `${lockedPosition.width}%` }}>
+                      {lockedRange.start}初-{lockedRange.end}末
+                    </i>
                   </div>
                 </div>
 
-                <div className="hbm-contract-period negotiating">
-                  <div>
-                    <span>未来在谈长协</span>
-                    <strong>{negotiationRange.start}年初 - {negotiationRange.end}年末</strong>
+                <div className="hbm-contract-bar-row">
+                  <span>正在谈</span>
+                  <div className="hbm-contract-track">
+                    <i className="negotiating" style={{ left: `${negotiationPosition.left}%`, width: `${negotiationPosition.width}%` }}>
+                      {negotiationRange.start}初-{negotiationRange.end}末
+                    </i>
                   </div>
-                  <div className="hbm-period-bar">
-                    <i />
-                  </div>
-                  <div className="hbm-period-meta">
-                    <b>{company.stage}</b>
-                    <small title={company.negotiating}>{company.expected_term} · {negotiationRange.summary}</small>
+                </div>
+
+                <div className="hbm-contract-bar-row">
+                  <span>谈判进度</span>
+                  <div className="hbm-contract-track">
+                    <i className="progress" style={{ left: `${progressPosition.left}%`, width: `${progressPosition.width}%` }}>
+                      {company.stage}
+                    </i>
                   </div>
                 </div>
               </div>
 
               <div className="hbm-contract-progress">
-                <div className="hbm-progress-head">
-                  <span>谈判阶段</span>
-                  <b>{company.stage}</b>
-                </div>
-                <div className="hbm-progress-rail">
-                  <i style={{ width: `${progress}%` }} />
-                </div>
                 <div className="hbm-progress-steps">
                   {stages.map((stage, stageIndex) => (
                     <span className={stageIndex <= company.stage_index ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
@@ -1247,8 +1258,8 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
               </div>
 
               <div className="hbm-contract-foot">
-                <span>{company.main_customers.slice(0, 3).join(" / ")}</span>
-                <span title={company.negotiating}>{company.negotiating}</span>
+                <span>{capacityState.summary}</span>
+                <span title={company.negotiating}>{company.expected_term} · {negotiationRange.summary}</span>
               </div>
             </article>
           );
@@ -1292,6 +1303,13 @@ function getNegotiationRange(company: NonNullable<NonNullable<TrackerPayload["hb
 function getExpectedTermYears(value: string) {
   const numbers = [...String(value).matchAll(/\d+/g)].map((match) => Number(match[0]));
   return numbers.length ? Math.max(...numbers) : 2;
+}
+
+function rangePosition(start: number, end: number, minYear: number, maxYear: number) {
+  const total = Math.max(maxYear - minYear + 1, 1);
+  const left = ((Math.max(start, minYear) - minYear) / total) * 100;
+  const width = ((Math.min(end, maxYear) - Math.max(start, minYear) + 1) / total) * 100;
+  return { left, width: Math.max(width, 8) };
 }
 
 function getCapacityLockState(value: string) {
