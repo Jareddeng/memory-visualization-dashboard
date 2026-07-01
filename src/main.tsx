@@ -1200,6 +1200,7 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
           const capacityState = getCapacityLockState(company.locked_capacity);
           const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
           const negotiationPosition = rangePosition(negotiationRange.start, negotiationRange.end, startYear, maxYear);
+          const stagePointer = stages.length > 1 ? Math.max(0, Math.min(100, (company.stage_index / (stages.length - 1)) * 100)) : 0;
           return (
             <article className="hbm-contract-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-contract-head">
@@ -1242,10 +1243,13 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                   <strong>{company.stage}</strong>
                   <small title={company.stage_note}>{company.stage_note}</small>
                 </div>
-                <div className="hbm-progress-steps">
-                  {stages.map((stage, stageIndex) => (
-                    <span className={stageIndex <= company.stage_index ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
-                  ))}
+                <div className="hbm-progress-scale" style={{ ["--stage-progress" as string]: `${stagePointer}%` }}>
+                  <span className="hbm-progress-pointer" title={`当前进度：${company.stage}`} />
+                  <div className="hbm-progress-steps">
+                    {stages.map((stage, stageIndex) => (
+                      <span className={stageIndex === company.stage_index ? "current" : stageIndex < company.stage_index ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
 

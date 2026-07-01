@@ -1526,8 +1526,8 @@ td small {
 
 .hbm-progress-summary {
   display: grid;
-  grid-template-columns: auto auto minmax(0, 1fr);
-  gap: 8px;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 8px;
   align-items: center;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -1547,11 +1547,43 @@ td small {
 }
 
 .hbm-progress-summary small {
+  display: -webkit-box;
+  grid-column: 1 / -1;
   overflow: hidden;
   color: var(--muted);
   font-size: 12px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.hbm-progress-scale {
+  position: relative;
+  padding-top: 14px;
+}
+
+.hbm-progress-scale::before {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(15 64 59 / 18%), transparent);
+  content: "";
+}
+
+.hbm-progress-pointer {
+  position: absolute;
+  top: 1px;
+  left: var(--stage-progress, 0%);
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: 8px solid var(--teal);
+  filter: drop-shadow(0 1px 1px rgb(15 64 59 / 18%));
+  transform: translateX(-50%);
 }
 
 .hbm-progress-steps {
@@ -1565,6 +1597,10 @@ td small {
 }
 
 .hbm-progress-steps span.active {
+  color: rgb(15 64 59 / 62%);
+}
+
+.hbm-progress-steps span.current {
   color: var(--teal);
 }
 
