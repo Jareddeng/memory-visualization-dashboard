@@ -698,6 +698,17 @@ h2 {
   background: var(--panel-soft);
 }
 
+.major-event-item.clickable {
+  cursor: pointer;
+}
+
+.major-event-item.clickable:hover,
+.major-event-item.clickable:focus-visible {
+  border-color: var(--teal);
+  background: #f4fbf9;
+  outline: none;
+}
+
 .major-event-item time {
   color: var(--teal);
   font-weight: 850;

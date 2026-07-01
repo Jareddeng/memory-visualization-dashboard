@@ -931,7 +931,14 @@ function MajorEventTimeline({ records }: { records: IntelRecord[] }) {
       {majorRecords.length ? (
         <div className="major-event-timeline">
           {majorRecords.map((record) => (
-            <article className="major-event-item" key={record.id}>
+            <article
+              className={`major-event-item ${record.url ? "clickable" : ""}`}
+              key={record.id}
+              role={record.url ? "link" : undefined}
+              tabIndex={record.url ? 0 : undefined}
+              onClick={() => openIntelUrl(record.url)}
+              onKeyDown={(event) => handleIntelUrlKeyDown(event, record.url)}
+            >
               <time>{record.date}</time>
               <div>
                 <strong>{record.title}</strong>
