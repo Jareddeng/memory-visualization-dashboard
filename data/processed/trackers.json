@@ -1,4 +1,156 @@
 {
+  "expansion_capacity": {
+    "updated_at": "2026-06-30",
+    "source": "Codex-maintained capacity tracker; updated with SEMI June 2026 report and company disclosures",
+    "metric_note": "真实产能优先使用 wafer starts/month、HBM stacks/month、DRAM/NAND bit output 或公司披露的等效口径。不要用百分比替代真实产能。",
+    "companies": [
+      {
+        "company": "SK Hynix",
+        "ticker": "000660.KS",
+        "region": "韩国 / 美国",
+        "products": [
+          "HBM3E / HBM4 / HBM4E",
+          "DDR5 / LPDDR5",
+          "advanced DRAM"
+        ],
+        "capacity_metric": "wafer/month + HBM stack/month + bit output",
+        "current_capacity": {
+          "label": "当前产能",
+          "value": null,
+          "unit": "wafer/month",
+          "display": "清州 M15X 已投产；HBM 2026 全年售罄；全球 HBM bit output 份额约 50%（2026E，TrendForce）"
+        },
+        "target_capacity": {
+          "label": "扩产后产能",
+          "value": null,
+          "unit": "wafer/month",
+          "display": "龙仁半导体集群（~$15B）2027 年开始分阶段生产；M15X 满产爬坡中"
+        },
+        "capex": "2026年预计 $20.5B（+17% YoY，TrendForce），聚焦 HBM4 产能扩张和 M15X 建设；~$7.9B ASML EUV 设备订单计划 2027 年前交付",
+        "timeline": "2026-2028",
+        "bottleneck": "先进封装（CoWoS/TSV）、HBM4 良率爬坡、EUV 设备交付、龙仁集群建设进度",
+        "confidence": "中高",
+        "status": "高优先级扩产中：M15X 已投产，龙仁 2027 启动，印第安纳封装厂建设中",
+        "evidence": [
+          {
+            "date": "2026-06-29",
+            "label": "SEMI：存储设备投资超级周期",
+            "detail": "SEMI 报告：2026 年全球存储 sector 300mm 设备投资首超 $520亿（+29%），2027 年 $570亿（+11%）；DRAM 设备 $370亿（+29%）。",
+            "source": "SEMI / PRNewswire"
+          },
+          {
+            "date": "2025-12-31",
+            "label": "TrendForce：2026 年 DRAM 资本支出",
+            "detail": "SK Hynix 2026 年 capex 预计 $20.5B（+17% YoY），HBM4 产能扩张于 M15x fab；全球 DRAM 资本支出 $61.3B（+14%）。",
+            "source": "TrendForce / StorageNewsletter"
+          },
+          {
+            "date": "2026-04-28",
+            "label": "HBM 产能与基础设施投资",
+            "detail": "清州 M15X 前端设施（约 $14B）已提前投产；龙仁半导体集群（~$15B）2027 年分阶段生产；美国印第安纳先进封装厂（一期 ~$3.8B）专为 NVIDIA 国内供应。",
+            "source": "AI Vector Ocean / Industry Reports"
+          }
+        ]
+      },
+      {
+        "company": "Samsung Electronics",
+        "ticker": "005930.KS",
+        "region": "韩国 / 美国",
+        "products": [
+          "HBM4 / HBM4E",
+          "DDR5 / LPDDR5",
+          "NAND",
+          "advanced packaging"
+        ],
+        "capacity_metric": "wafer/month + HBM stack/month + bit output",
+        "current_capacity": {
+          "label": "当前产能",
+          "value": null,
+          "unit": "wafer/month",
+          "display": "平泽工厂 HBM4 量产中（2026.02 开始）；1c DRAM 工艺目标 2026 年底 ~150,000 wafers/month；HBM 总产出约 110 亿千兆位/年（2026E）"
+        },
+        "target_capacity": {
+          "label": "扩产后产能",
+          "value": null,
+          "unit": "wafer/month",
+          "display": "HBM4 良率目标 2026 年底 85%；1c 工艺持续扩产；P4L 晶圆产能小幅扩张"
+        },
+        "capex": "2026年预计 $20B（+11% YoY，TrendForce），推进 1C 工艺 HBM 生产和 P4L 小幅扩产；重点在工艺升级而非产能大幅扩张",
+        "timeline": "2026-2028",
+        "bottleneck": "HBM4 良率爬坡（当前 60-70% 热测试）、核心客户份额恢复、先进封装资源分配、1c 工艺成熟度",
+        "confidence": "中",
+        "status": "HBM4 量产中，份额恢复跟踪；重点在良率提升和客户认证",
+        "evidence": [
+          {
+            "date": "2026-06-29",
+            "label": "SEMI：存储设备投资增长",
+            "detail": "2026 年存储设备投资同比 +29%，Samsung 继续推进 1C 工艺 HBM 生产。",
+            "source": "SEMI / PRNewswire"
+          },
+          {
+            "date": "2025-11-28",
+            "label": "1c DRAM 工艺扩产计划",
+            "detail": "Samsung 1c DRAM 工艺目标 2026 年底达到约 150,000 wafers/month；HBM4 采用 1c 工艺。",
+            "source": "SammyGuru"
+          },
+          {
+            "date": "2026-01-29",
+            "label": "HBM4 量产与良率",
+            "detail": "Samsung 2026 年 2 月开始 HBM4 量产；1c 工艺逻辑芯片良率 90%；热测试良率 60-70%；目标 2026 年底 85%。",
+            "source": "ByteIota"
+          }
+        ]
+      },
+      {
+        "company": "Micron Technology",
+        "ticker": "MU",
+        "region": "美国 / 日本 / 新加坡 / 台湾",
+        "products": [
+          "HBM3E / HBM4 / HBM4E",
+          "DRAM",
+          "NAND"
+        ],
+        "capacity_metric": "wafer/month + HBM stack/month + bit output",
+        "current_capacity": {
+          "label": "当前产能",
+          "value": null,
+          "unit": "wafer/month",
+          "display": "HBM4 2026.03 开始量产；36GB 12H 部件 >11 Gb/s per pin；HBM 2026 全年售罄；FY2026 capex ~$20B"
+        },
+        "target_capacity": {
+          "label": "扩产后产能",
+          "value": null,
+          "unit": "wafer/month",
+          "display": "Idaho 和 New York 洁净室空间扩建中；新加坡先进封装厂 2027 年贡献 HBM 供应；1-gamma 节点和 G9 NAND 过渡"
+        },
+        "capex": "FY2026 capex 提升至 ~$20B（从 $18B），专门用于 HBM 和 1-gamma 产能；2026 年 capex 预计超 $25B；2027 财年建设相关 capex 同比增长超 $10B；新加坡先进封装厂 2027 年贡献",
+        "timeline": "2026-2028",
+        "bottleneck": "产能爬坡、客户份额争夺、封装资源、成本竞争、2027 年 capex 大幅上升对 FCF 压力",
+        "confidence": "中高",
+        "status": "积极扩产中：HBM4 量产、Idaho/New York 扩建、新加坡封装厂 2027 上线",
+        "evidence": [
+          {
+            "date": "2026-06-29",
+            "label": "SEMI：存储设备投资超级周期",
+            "detail": "2026 年存储设备投资首超 $520亿；Micron 作为最激进投资者之一，重点在 1-gamma 和 HBM。",
+            "source": "SEMI / PRNewswire"
+          },
+          {
+            "date": "2026-03-18",
+            "label": "FY2026 Q1 法说会：capex 与扩产计划",
+            "detail": "Micron 将 FY2026 capex 提升至 ~$20B；Idaho 和 New York 洁净室建设加速；1-gamma 和 HBM4  ramp 为主要驱动力。",
+            "source": "Micron FY2026 Q1 Earnings Call"
+          },
+          {
+            "date": "2026-03-18",
+            "label": "2027 capex 展望",
+            "detail": "Micron 预计 2027 财年建设相关 capex 同比增长超 $10B；2026 年 capex 超 $25B；新加坡先进封装厂 2027 年为 HBM 供应做出重要贡献。",
+            "source": "SAHM Capital / Micron Guidance"
+          }
+        ]
+      }
+    ]
+  },
   "expansion_plans": [
     {
       "company": "SK海力士",
@@ -40,5 +192,649 @@
       "detail": "后续可按季度维护谈判进展、预计签约窗口、供应风险和价格影响。",
       "source": "manual tracker"
     }
-  ]
+  ],
+  "hbm_contracts": {
+    "updated_at": "2026-06-30",
+    "source": "Codex-maintained HBM contract tracker; updated with June 2026 disclosures",
+    "stages": [
+      "验证",
+      "报价",
+      "锁量",
+      "签约",
+      "交付"
+    ],
+    "companies": [
+      {
+        "company": "SK Hynix",
+        "ticker": "000660.KS",
+        "stance": "领先锁定",
+        "stage": "签约",
+        "stage_note": "2026-06-07 与 NVIDIA 签署多年技术合作与供应协议；覆盖多代产品至 2030 年",
+        "stage_index": 4,
+        "locked_years": "2025-2030",
+        "locked_capacity": "2026 全年 HBM 供给已售罄；未来三年可供给量基本被承诺覆盖",
+        "negotiating": "2027-2028 HBM4 / HBM4E 供货价格与共同投资条款；HBM4E 样品 2026 年内交付",
+        "expected_term": "3年以上",
+        "expected_capacity": "高比例锁量，优先保障核心 AI 客户；Vera Rubin 平台 HBM4 份额预计 60-70%",
+        "main_customers": [
+          "NVIDIA",
+          "AWS",
+          "OpenAI/Stargate",
+          "大型云厂商"
+        ],
+        "confidence": "高",
+        "risk": "CoWoS 配套、HBM4 良率爬坡、价格重定价节奏、龙仁集群建设进度",
+        "summary": "HBM 订单能见度最高，与 NVIDIA 多年协议覆盖至 2030 年；2026 全年 HBM 售罄；HBM4 Vera Rubin 份额预计 60-70%；OpenAI Stargate 已签 HBM 供应协议。",
+        "evidence": [
+          {
+            "date": "2026-06-07",
+            "label": "NVIDIA 多年合作与供应协议",
+            "detail": "SK Hynix 与 NVIDIA 签署多年技术合作与供应协议，覆盖 HBM4、LPDDR5X、DDR5、3D NAND；2026 下半年开始交付 HBM4；协议延伸至 2030 年。",
+            "source": "NVIDIA 官方新闻稿 / SK Hynix 公告"
+          },
+          {
+            "date": "2026-06-05",
+            "label": "NVIDIA CEO 确认三家全部通过 HBM4 认证",
+            "detail": "Jensen Huang 确认 SK Hynix、Samsung、Micron 全部通过 Vera Rubin HBM4 认证；SK Hynix 在 Vera Rubin HBM4 份额预计 60-70%。",
+            "source": "Bloomberg / Yahoo Finance"
+          },
+          {
+            "date": "2026-03-23",
+            "label": "Q1 2026 法说会：HBM4E 样品年内交付",
+            "detail": "SK Hynix 在 Q1 法说会表示，HBM4E 样品将在 2026 年内交付客户，目标 2027 年大规模量产。",
+            "source": "SK Hynix Q1 2026 Earnings Call / Korea IT Times"
+          },
+          {
+            "date": "2026-04-28",
+            "label": "OpenAI Stargate HBM 供应协议",
+            "detail": "SK Hynix 已签署 OpenAI Stargate 超级计算项目 HBM 供应协议；该项目可能有效翻倍行业 HBM 总需求。",
+            "source": "AI Vector Ocean / Industry Reports"
+          }
+        ]
+      },
+      {
+        "company": "Samsung Electronics",
+        "ticker": "005930.KS",
+        "stance": "追赶放量",
+        "stage": "签约",
+        "stage_note": "2026-06-04 与 OpenAI 签署 HBM4 供应协议；2026-02 开始 HBM4 量产；NVIDIA 认证已通过",
+        "stage_index": 4,
+        "locked_years": "2025-2027",
+        "locked_capacity": "OpenAI 锁定最多 8 亿千兆位 12 层 HBM4，约占 Samsung 2026 年 HBM 总产能 7%；HBM4 量产中",
+        "negotiating": "与 NVIDIA 的 HBM4 供应份额与价格谈判；目标价格约 $500+/颗",
+        "expected_term": "2-3年",
+        "expected_capacity": "Vera Rubin HBM4 份额预计 25-30%；2026 年底 HBM4 良率目标 85%",
+        "main_customers": [
+          "NVIDIA",
+          "OpenAI",
+          "AMD",
+          "云厂商",
+          "自有 AI 供应链"
+        ],
+        "confidence": "中高",
+        "risk": "HBM4 良率爬坡、与 SK Hynix 的技术差距、核心客户份额恢复速度、1c 工艺成熟度",
+        "summary": "Samsung 2026 年 2 月开始 HBM4 量产，已通过 NVIDIA 认证；与 OpenAI 签署 HBM4 供应协议；Vera Rubin 份额预计 25-30%；关键看 HBM4 良率爬坡和客户份额恢复。",
+        "evidence": [
+          {
+            "date": "2026-06-04",
+            "label": "OpenAI HBM4 供应协议",
+            "detail": "Samsung 与 OpenAI 签署 HBM4 供应协议，最多 8 亿千兆位 12 层 HBM4，约占 Samsung 2026 年 HBM 总产能 7%。",
+            "source": "Tech Insider / TrendForce"
+          },
+          {
+            "date": "2026-06-05",
+            "label": "NVIDIA HBM4 认证通过",
+            "detail": "NVIDIA CEO Jensen Huang 确认 Samsung 通过 Vera Rubin HBM4 认证；Samsung 2026 年 2 月已开始 HBM4 量产。",
+            "source": "Bloomberg / Yahoo Finance"
+          },
+          {
+            "date": "2026-03-17",
+            "label": "GTC 2026 HBM4 展示",
+            "detail": "Samsung 在 GTC 2026 展示 HBM4 产品，Jensen Huang 在 HBM4 芯片上签名；HBM4 速度 11.7 Gbps，超出行业标准 8 Gbps。",
+            "source": "Samsung Newsroom / TechRitual"
+          }
+        ]
+      },
+      {
+        "company": "Micron Technology",
+        "ticker": "MU",
+        "stance": "扩份额",
+        "stage": "锁量",
+        "stage_note": "2026 全年 HBM 供给已售罄；2026-03 确认 HBM4 量产；多年 LTAs 谈判中",
+        "stage_index": 3,
+        "locked_years": "2025-2026",
+        "locked_capacity": "2026 全年 HBM 已售罄；HBM4 2026 年 3 月开始量产；部分客户已签多年协议",
+        "negotiating": "2027-2028 HBM4 份额、价格与长期供应协议；Broadcom 已锁定供应至 2028 年",
+        "expected_term": "2-5年",
+        "expected_capacity": "目标 2026 年 HBM4 市场份额 >20%；长期目标与 DRAM 份额持平",
+        "main_customers": [
+          "NVIDIA",
+          "Broadcom",
+          "北美云厂商"
+        ],
+        "confidence": "中高",
+        "risk": "产能爬坡、客户份额争夺、与韩厂的成本和交付竞争、2027 年 capex 大幅上升",
+        "summary": "Micron 2026 全年 HBM 售罄，HBM4 于 2026 年 3 月量产；HBM 市场份额从 2024 年 5% 升至约 21%；Broadcom 已锁定至 2028 年；关键看 2027-2028 年长协覆盖和份额提升。",
+        "evidence": [
+          {
+            "date": "2026-03-18",
+            "label": "FY2026 Q1 法说会：HBM 2026 售罄，capex 提升至 $20B",
+            "detail": "Micron CEO Sanjay Mehrotra 确认 2026 全年 HBM 已售罄；capex 预算从 $18B 提升至 $20B，专门用于 HBM 产能扩张；HBM4 量产中。",
+            "source": "Micron FY2026 Q1 Earnings Call / AInvest"
+          },
+          {
+            "date": "2026-04-18",
+            "label": "HBM4 量产与客户锁定",
+            "detail": "Micron HBM4 2026 年 4 月开始量产；36GB 12H 部件达到 >11 Gb/s per pin；HBM 市场份额从 2024 年 5% 升至约 21%。",
+            "source": "AI-Capex / AktienCheck"
+          },
+          {
+            "date": "2026-03-18",
+            "label": "2027 capex 预计超 $25B",
+            "detail": "Micron 预计 2026 年 capex 超 $25B；2027 财年建设相关 capex 同比增长超 $10B；新加坡先进封装厂 2027 年为 HBM 供应做出重要贡献。",
+            "source": "SAHM Capital / Micron Guidance"
+          }
+        ]
+      }
+    ]
+  },
+  "industry_map": {
+    "updated_at": "2026-06-30",
+    "source": "第一版人工整理 + 2026-06-30 修正；后续由 clawbot 通过 PR 更新；公司官网用于 logo 与跳转。",
+    "layers": [
+      {
+        "name": "上游",
+        "description": "支撑晶圆制造、先进封装和材料导入，是扩产周期里最先感受到资本开支变化的环节。",
+        "groups": [
+          {
+            "name": "半导体设备",
+            "note": "光刻、刻蚀、沉积、检测量测与清洗设备。",
+            "nodes": [
+              {
+                "name": "ASML",
+                "homepage": "https://www.asml.com/",
+                "logo_url": "https://logo.clearbit.com/asml.com",
+                "region": "Netherlands",
+                "role": "光刻设备",
+                "ticker": "ASML"
+              },
+              {
+                "name": "Applied Materials",
+                "homepage": "https://www.appliedmaterials.com/",
+                "logo_url": "https://logo.clearbit.com/appliedmaterials.com",
+                "region": "US",
+                "role": "沉积/刻蚀/工艺设备",
+                "ticker": "AMAT"
+              },
+              {
+                "name": "Lam Research",
+                "homepage": "https://www.lamresearch.com/",
+                "logo_url": "https://logo.clearbit.com/lamresearch.com",
+                "region": "US",
+                "role": "刻蚀/沉积设备",
+                "ticker": "LRCX"
+              },
+              {
+                "name": "Tokyo Electron",
+                "homepage": "https://www.tel.com/",
+                "logo_url": "https://logo.clearbit.com/tel.com",
+                "region": "Japan",
+                "role": "涂胶显影/刻蚀/沉积",
+                "ticker": "8035.T"
+              },
+              {
+                "name": "KLA",
+                "homepage": "https://www.kla.com/",
+                "logo_url": "https://logo.clearbit.com/kla.com",
+                "region": "US",
+                "role": "检测量测",
+                "ticker": "KLAC"
+              },
+              {
+                "name": "盛美上海",
+                "homepage": "https://www.acmrcsh.com/",
+                "logo_url": "https://logo.clearbit.com/acmrcsh.com",
+                "region": "China",
+                "role": "清洗/电镀设备",
+                "ticker": "688082.SH"
+              }
+            ]
+          },
+          {
+            "name": "晶圆与电子材料",
+            "note": "硅片、光刻胶、前驱体、电子气体、CMP 与湿电子化学品。",
+            "nodes": [
+              {
+                "name": "Shin-Etsu",
+                "homepage": "https://www.shinetsu.co.jp/en/",
+                "logo_url": "https://logo.clearbit.com/shinetsu.co.jp",
+                "region": "Japan",
+                "role": "硅片/光刻胶",
+                "ticker": "4063.T"
+              },
+              {
+                "name": "SUMCO",
+                "homepage": "https://www.sumcosi.com/english/corporate/profile.html",
+                "logo_url": "./assets/logos/sumco.png",
+                "region": "Japan",
+                "role": "硅片",
+                "ticker": "3436.T"
+              },
+              {
+                "name": "SK Siltron",
+                "homepage": "https://www.sksiltron.com/en/",
+                "logo_url": "https://logo.clearbit.com/sksiltron.com",
+                "region": "Korea",
+                "role": "硅片"
+              },
+              {
+                "name": "Entegris",
+                "homepage": "https://www.entegris.com/",
+                "logo_url": "https://logo.clearbit.com/entegris.com",
+                "region": "US",
+                "role": "材料/过滤/容器",
+                "ticker": "ENTG"
+              },
+              {
+                "name": "Merck KGaA",
+                "homepage": "https://www.merckgroup.com/",
+                "logo_url": "https://logo.clearbit.com/merckgroup.com",
+                "region": "Germany",
+                "role": "电子材料",
+                "ticker": "MRK.DE"
+              },
+              {
+                "name": "雅克科技",
+                "homepage": "http://www.yokechem.com/",
+                "logo_url": "./assets/logos/yoke.png",
+                "region": "China",
+                "role": "前驱体/电子材料",
+                "ticker": "002409.SZ",
+                "note": "官网有访问限制，首页可加载但介绍页可能需安全验证"
+              },
+              {
+                "name": "鼎龙股份",
+                "homepage": "https://www.dl-kg.com/company.html",
+                "logo_url": "https://logo.clearbit.com/dl-kg.com",
+                "region": "China",
+                "role": "CMP 抛光垫/材料",
+                "ticker": "300054.SZ"
+              },
+              {
+                "name": "广钢气体",
+                "homepage": "https://www.ggas.com/Aboutus/1.html",
+                "logo_url": "./assets/logos/ggas.png",
+                "region": "China",
+                "role": "电子大宗气体",
+                "ticker": "688548.SH"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "中游",
+        "description": "存储原厂、晶圆制造、封测、控制器和模组，是价格、长协和产能变化最直接的承载层。",
+        "groups": [
+          {
+            "name": "存储原厂",
+            "note": "DRAM、NAND、HBM 与利基型存储的核心供给方。",
+            "nodes": [
+              {
+                "name": "Samsung Electronics",
+                "homepage": "https://www.samsung.com/semiconductor/",
+                "logo_url": "https://logo.clearbit.com/samsung.com",
+                "region": "Korea",
+                "role": "DRAM/NAND/HBM",
+                "ticker": "005930.KS"
+              },
+              {
+                "name": "SK hynix",
+                "homepage": "https://www.skhynix.com/",
+                "logo_url": "https://logo.clearbit.com/skhynix.com",
+                "region": "Korea",
+                "role": "DRAM/HBM/NAND",
+                "ticker": "000660.KS"
+              },
+              {
+                "name": "Micron",
+                "homepage": "https://www.micron.com/",
+                "logo_url": "https://logo.clearbit.com/micron.com",
+                "region": "US",
+                "role": "DRAM/NAND/HBM",
+                "ticker": "MU"
+              },
+              {
+                "name": "Kioxia",
+                "homepage": "https://www.kioxia.com/",
+                "logo_url": "https://logo.clearbit.com/kioxia.com",
+                "region": "Japan",
+                "role": "NAND"
+              },
+              {
+                "name": "SanDisk",
+                "homepage": "https://www.sandisk.com/",
+                "logo_url": "https://logo.clearbit.com/sandisk.com",
+                "region": "US",
+                "role": "NAND/存储产品",
+                "ticker": "SNDK"
+              },
+              {
+                "name": "长江存储",
+                "homepage": "https://www.ymtc.com/",
+                "logo_url": "https://logo.clearbit.com/ymtc.com",
+                "region": "China",
+                "role": "NAND"
+              },
+              {
+                "name": "长鑫存储",
+                "homepage": "https://www.cxmt.com/",
+                "logo_url": "https://logo.clearbit.com/cxmt.com",
+                "region": "China",
+                "role": "DRAM"
+              },
+              {
+                "name": "华邦电子",
+                "homepage": "https://www.winbond.com/",
+                "logo_url": "https://logo.clearbit.com/winbond.com",
+                "region": "Taiwan",
+                "role": "利基 DRAM/NOR/NAND",
+                "ticker": "2344.TW"
+              },
+              {
+                "name": "南亚科技",
+                "homepage": "https://www.nanya.com/en/About/2/Our%20Company",
+                "logo_url": "./assets/logos/nanya.png",
+                "region": "Taiwan",
+                "role": "DRAM",
+                "ticker": "2408.TW"
+              }
+            ]
+          },
+          {
+            "name": "先进封装与测试",
+            "note": "HBM 堆叠、CoWoS/先进封装、封测产能与良率相关。",
+            "nodes": [
+              {
+                "name": "TSMC",
+                "homepage": "https://www.tsmc.com/",
+                "logo_url": "https://logo.clearbit.com/tsmc.com",
+                "region": "Taiwan",
+                "role": "先进封装/CoWoS",
+                "ticker": "TSM"
+              },
+              {
+                "name": "ASE",
+                "homepage": "https://www.aseglobal.com/",
+                "logo_url": "https://logo.clearbit.com/aseglobal.com",
+                "region": "Taiwan",
+                "role": "封装测试",
+                "ticker": "3711.TW"
+              },
+              {
+                "name": "Amkor",
+                "homepage": "https://amkor.com/",
+                "logo_url": "https://logo.clearbit.com/amkor.com",
+                "region": "US",
+                "role": "封装测试",
+                "ticker": "AMKR"
+              },
+              {
+                "name": "长电科技",
+                "homepage": "https://www.jcetglobal.com/",
+                "logo_url": "./assets/logos/jcet.png",
+                "region": "China",
+                "role": "封装测试",
+                "ticker": "600584.SH"
+              },
+              {
+                "name": "通富微电",
+                "homepage": "https://www.tfme.com/",
+                "logo_url": "https://logo.clearbit.com/tfme.com",
+                "region": "China",
+                "role": "封装测试",
+                "ticker": "002156.SZ"
+              }
+            ]
+          },
+          {
+            "name": "控制器与模组",
+            "note": "SSD 控制器、模组、企业级存储产品与渠道库存变化。",
+            "nodes": [
+              {
+                "name": "Phison",
+                "homepage": "https://www.phison.com/",
+                "logo_url": "https://logo.clearbit.com/phison.com",
+                "region": "Taiwan",
+                "role": "SSD 控制器/模组",
+                "ticker": "8299.TWO"
+              },
+              {
+                "name": "Silicon Motion",
+                "homepage": "https://www.siliconmotion.com/",
+                "logo_url": "https://logo.clearbit.com/siliconmotion.com",
+                "region": "Taiwan",
+                "role": "NAND 控制器",
+                "ticker": "SIMO"
+              },
+              {
+                "name": "Marvell",
+                "homepage": "https://www.marvell.com/",
+                "logo_url": "https://logo.clearbit.com/marvell.com",
+                "region": "US",
+                "role": "控制器/数据中心芯片",
+                "ticker": "MRVL"
+              },
+              {
+                "name": "Kingston",
+                "homepage": "https://www.kingston.com/",
+                "logo_url": "https://logo.clearbit.com/kingston.com",
+                "region": "US",
+                "role": "内存/SSD 模组"
+              },
+              {
+                "name": "江波龙",
+                "homepage": "https://www.longsys.com/about-longsys/",
+                "logo_url": "./assets/logos/longsys.png",
+                "region": "China",
+                "role": "存储模组/企业级存储",
+                "ticker": "301308.SZ"
+              },
+              {
+                "name": "佰维存储",
+                "homepage": "https://www.biwin.com.cn/",
+                "logo_url": "https://logo.clearbit.com/biwin.com.cn",
+                "region": "China",
+                "role": "存储模组/封测",
+                "ticker": "688525.SH"
+              },
+              {
+                "name": "ADATA",
+                "homepage": "https://www.adata.com/",
+                "logo_url": "https://logo.clearbit.com/adata.com",
+                "region": "Taiwan",
+                "role": "内存/SSD 模组",
+                "ticker": "3260.TW"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "下游",
+        "description": "AI 服务器、云厂商、PC 手机和汽车工业需求决定存储消耗节奏，也是价格传导和库存周期的验证层。",
+        "groups": [
+          {
+            "name": "AI 与云资本开支",
+            "note": "训练/推理集群、HBM、DDR5、企业级 SSD 的核心需求来源。",
+            "nodes": [
+              {
+                "name": "NVIDIA",
+                "homepage": "https://www.nvidia.com/",
+                "logo_url": "https://logo.clearbit.com/nvidia.com",
+                "region": "US",
+                "role": "AI GPU 平台",
+                "ticker": "NVDA"
+              },
+              {
+                "name": "AMD",
+                "homepage": "https://www.amd.com/",
+                "logo_url": "https://logo.clearbit.com/amd.com",
+                "region": "US",
+                "role": "AI GPU/CPU 平台",
+                "ticker": "AMD"
+              },
+              {
+                "name": "Microsoft",
+                "homepage": "https://www.microsoft.com/",
+                "logo_url": "https://logo.clearbit.com/microsoft.com",
+                "region": "US",
+                "role": "云资本开支",
+                "ticker": "MSFT"
+              },
+              {
+                "name": "Amazon AWS",
+                "homepage": "https://aws.amazon.com/",
+                "logo_url": "https://logo.clearbit.com/amazon.com",
+                "region": "US",
+                "role": "云资本开支",
+                "ticker": "AMZN"
+              },
+              {
+                "name": "Google Cloud",
+                "homepage": "https://cloud.google.com/",
+                "logo_url": "https://logo.clearbit.com/google.com",
+                "region": "US",
+                "role": "云资本开支",
+                "ticker": "GOOGL"
+              },
+              {
+                "name": "Meta",
+                "homepage": "https://www.meta.com/",
+                "logo_url": "https://logo.clearbit.com/meta.com",
+                "region": "US",
+                "role": "AI 基建需求",
+                "ticker": "META"
+              },
+              {
+                "name": "Oracle",
+                "homepage": "https://www.oracle.com/",
+                "logo_url": "https://logo.clearbit.com/oracle.com",
+                "region": "US",
+                "role": "云/AI 基建",
+                "ticker": "ORCL"
+              }
+            ]
+          },
+          {
+            "name": "服务器与整机",
+            "note": "服务器 OEM/ODM 拉动内存、SSD 与 HBM 平台放量。",
+            "nodes": [
+              {
+                "name": "Dell Technologies",
+                "homepage": "https://www.dell.com/",
+                "logo_url": "https://logo.clearbit.com/dell.com",
+                "region": "US",
+                "role": "AI 服务器",
+                "ticker": "DELL"
+              },
+              {
+                "name": "HPE",
+                "homepage": "https://www.hpe.com/",
+                "logo_url": "https://logo.clearbit.com/hpe.com",
+                "region": "US",
+                "role": "服务器/存储系统",
+                "ticker": "HPE"
+              },
+              {
+                "name": "Supermicro",
+                "homepage": "https://www.supermicro.com/",
+                "logo_url": "https://logo.clearbit.com/supermicro.com",
+                "region": "US",
+                "role": "AI 服务器",
+                "ticker": "SMCI"
+              },
+              {
+                "name": "Lenovo",
+                "homepage": "https://www.lenovo.com/",
+                "logo_url": "https://logo.clearbit.com/lenovo.com",
+                "region": "China",
+                "role": "服务器/PC",
+                "ticker": "0992.HK"
+              },
+              {
+                "name": "Foxconn",
+                "homepage": "https://www.foxconn.com/",
+                "logo_url": "https://logo.clearbit.com/foxconn.com",
+                "region": "Taiwan",
+                "role": "服务器 ODM",
+                "ticker": "2317.TW"
+              },
+              {
+                "name": "Quanta",
+                "homepage": "https://www.quantatw.com/",
+                "logo_url": "https://logo.clearbit.com/quantatw.com",
+                "region": "Taiwan",
+                "role": "服务器 ODM",
+                "ticker": "2382.TW"
+              }
+            ]
+          },
+          {
+            "name": "终端与汽车工业",
+            "note": "手机、PC、车载、工业和消费电子影响传统 DRAM/NAND 周期。",
+            "nodes": [
+              {
+                "name": "Apple",
+                "homepage": "https://www.apple.com/",
+                "logo_url": "https://logo.clearbit.com/apple.com",
+                "region": "US",
+                "role": "手机/PC/终端",
+                "ticker": "AAPL"
+              },
+              {
+                "name": "Samsung MX",
+                "homepage": "https://www.samsung.com/",
+                "logo_url": "https://logo.clearbit.com/samsung.com",
+                "region": "Korea",
+                "role": "手机/终端",
+                "ticker": "005930.KS"
+              },
+              {
+                "name": "Xiaomi",
+                "homepage": "https://www.mi.com/",
+                "logo_url": "https://logo.clearbit.com/mi.com",
+                "region": "China",
+                "role": "手机/IoT",
+                "ticker": "1810.HK"
+              },
+              {
+                "name": "HP",
+                "homepage": "https://www.hp.com/",
+                "logo_url": "https://logo.clearbit.com/hp.com",
+                "region": "US",
+                "role": "PC",
+                "ticker": "HPQ"
+              },
+              {
+                "name": "Tesla",
+                "homepage": "https://www.tesla.com/",
+                "logo_url": "https://logo.clearbit.com/tesla.com",
+                "region": "US",
+                "role": "汽车/边缘计算",
+                "ticker": "TSLA"
+              },
+              {
+                "name": "Bosch",
+                "homepage": "https://www.bosch.com/",
+                "logo_url": "https://logo.clearbit.com/bosch.com",
+                "region": "Germany",
+                "role": "汽车/工业"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }

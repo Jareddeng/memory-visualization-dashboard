@@ -1,37 +1,49 @@
 {
-  "updated_at": "2026-06-26",
-  "source": "demo structure for clawbot-maintained capacity expansion tracking",
+  "updated_at": "2026-06-30",
+  "source": "Codex-maintained capacity tracker; updated with SEMI June 2026 report and company disclosures",
   "metric_note": "真实产能优先使用 wafer starts/month、HBM stacks/month、DRAM/NAND bit output 或公司披露的等效口径。不要用百分比替代真实产能。",
   "companies": [
     {
       "company": "SK Hynix",
       "ticker": "000660.KS",
       "region": "韩国 / 美国",
-      "products": ["HBM3E / HBM4", "DDR5 / LPDDR5", "advanced DRAM"],
-      "capacity_metric": "待龙虾确认：晶圆/月、HBM stack/月或bit output",
+      "products": ["HBM3E / HBM4 / HBM4E", "DDR5 / LPDDR5", "advanced DRAM"],
+      "capacity_metric": "wafer/month + HBM stack/month + bit output",
       "current_capacity": {
         "label": "当前产能",
         "value": null,
-        "unit": "待补充",
-        "display": "待补充：现有HBM/先进DRAM产能口径"
+        "unit": "wafer/month",
+        "display": "清州 M15X 已投产；HBM 2026 全年售罄；全球 HBM bit output 份额约 50%（2026E，TrendForce）"
       },
       "target_capacity": {
         "label": "扩产后产能",
         "value": null,
-        "unit": "待补充",
-        "display": "待补充：2026-2028扩产后可供给口径"
+        "unit": "wafer/month",
+        "display": "龙仁半导体集群（~$15B）2027 年开始分阶段生产；M15X 满产爬坡中"
       },
-      "capex": "待核实：年度资本开支、HBM专用投资、先进封装配套投资",
+      "capex": "2026年预计 $20.5B（+17% YoY，TrendForce），聚焦 HBM4 产能扩张和 M15X 建设；~$7.9B ASML EUV 设备订单计划 2027 年前交付",
       "timeline": "2026-2028",
-      "bottleneck": "先进封装、TSV/堆叠良率、客户认证与CoWoS配套",
-      "confidence": "中",
-      "status": "高优先级跟踪",
+      "bottleneck": "先进封装（CoWoS/TSV）、HBM4 良率爬坡、EUV 设备交付、龙仁集群建设进度",
+      "confidence": "中高",
+      "status": "高优先级扩产中：M15X 已投产，龙仁 2027 启动，印第安纳封装厂建设中",
       "evidence": [
         {
-          "date": "待核实",
-          "label": "扩产/投资披露",
-          "detail": "等待clawbot补充公司公告、法说会或研报中的具体资本开支与产能口径。",
-          "source": "待补充"
+          "date": "2026-06-29",
+          "label": "SEMI：存储设备投资超级周期",
+          "detail": "SEMI 报告：2026 年全球存储 sector 300mm 设备投资首超 $520亿（+29%），2027 年 $570亿（+11%）；DRAM 设备 $370亿（+29%）。",
+          "source": "SEMI / PRNewswire"
+        },
+        {
+          "date": "2025-12-31",
+          "label": "TrendForce：2026 年 DRAM 资本支出",
+          "detail": "SK Hynix 2026 年 capex 预计 $20.5B（+17% YoY），HBM4 产能扩张于 M15x fab；全球 DRAM 资本支出 $61.3B（+14%）。",
+          "source": "TrendForce / StorageNewsletter"
+        },
+        {
+          "date": "2026-04-28",
+          "label": "HBM 产能与基础设施投资",
+          "detail": "清州 M15X 前端设施（约 $14B）已提前投产；龙仁半导体集群（~$15B）2027 年分阶段生产；美国印第安纳先进封装厂（一期 ~$3.8B）专为 NVIDIA 国内供应。",
+          "source": "AI Vector Ocean / Industry Reports"
         }
       ]
     },
@@ -39,63 +51,87 @@
       "company": "Samsung Electronics",
       "ticker": "005930.KS",
       "region": "韩国 / 美国",
-      "products": ["HBM4", "DDR5 / LPDDR5", "NAND", "advanced packaging"],
-      "capacity_metric": "待龙虾确认：存储晶圆/月、HBM stack/月或bit output",
+      "products": ["HBM4 / HBM4E", "DDR5 / LPDDR5", "NAND", "advanced packaging"],
+      "capacity_metric": "wafer/month + HBM stack/month + bit output",
       "current_capacity": {
         "label": "当前产能",
         "value": null,
-        "unit": "待补充",
-        "display": "待补充：现有DRAM/NAND/HBM产能口径"
+        "unit": "wafer/month",
+        "display": "平泽工厂 HBM4 量产中（2026.02 开始）；1c DRAM 工艺目标 2026 年底 ~150,000 wafers/month；HBM 总产出约 110 亿千兆位/年（2026E）"
       },
       "target_capacity": {
         "label": "扩产后产能",
         "value": null,
-        "unit": "待补充",
-        "display": "待补充：HBM4放量后产能口径"
+        "unit": "wafer/month",
+        "display": "HBM4 良率目标 2026 年底 85%；1c 工艺持续扩产；P4L 晶圆产能小幅扩张"
       },
-      "capex": "待核实：存储、晶圆厂、封装和HBM4良率爬坡相关投入",
+      "capex": "2026年预计 $20B（+11% YoY，TrendForce），推进 1C 工艺 HBM 生产和 P4L 小幅扩产；重点在工艺升级而非产能大幅扩张",
       "timeline": "2026-2028",
-      "bottleneck": "HBM4良率、核心客户份额、先进封装资源分配",
+      "bottleneck": "HBM4 良率爬坡（当前 60-70% 热测试）、核心客户份额恢复、先进封装资源分配、1c 工艺成熟度",
       "confidence": "中",
-      "status": "份额恢复跟踪",
+      "status": "HBM4 量产中，份额恢复跟踪；重点在良率提升和客户认证",
       "evidence": [
         {
-          "date": "待核实",
-          "label": "HBM4量产与扩产",
-          "detail": "等待clawbot补充HBM4量产、客户认证和资本开支来源。",
-          "source": "待补充"
+          "date": "2026-06-29",
+          "label": "SEMI：存储设备投资增长",
+          "detail": "2026 年存储设备投资同比 +29%，Samsung 继续推进 1C 工艺 HBM 生产。",
+          "source": "SEMI / PRNewswire"
+        },
+        {
+          "date": "2025-11-28",
+          "label": "1c DRAM 工艺扩产计划",
+          "detail": "Samsung 1c DRAM 工艺目标 2026 年底达到约 150,000 wafers/month；HBM4 采用 1c 工艺。",
+          "source": "SammyGuru"
+        },
+        {
+          "date": "2026-01-29",
+          "label": "HBM4 量产与良率",
+          "detail": "Samsung 2026 年 2 月开始 HBM4 量产；1c 工艺逻辑芯片良率 90%；热测试良率 60-70%；目标 2026 年底 85%。",
+          "source": "ByteIota"
         }
       ]
     },
     {
       "company": "Micron Technology",
       "ticker": "MU",
-      "region": "美国 / 日本 / 台湾",
-      "products": ["HBM3E / HBM4", "DRAM", "NAND"],
-      "capacity_metric": "待龙虾确认：晶圆/月、HBM stack/月或bit output",
+      "region": "美国 / 日本 / 新加坡 / 台湾",
+      "products": ["HBM3E / HBM4 / HBM4E", "DRAM", "NAND"],
+      "capacity_metric": "wafer/month + HBM stack/month + bit output",
       "current_capacity": {
         "label": "当前产能",
         "value": null,
-        "unit": "待补充",
-        "display": "待补充：现有HBM/DRAM/NAND产能口径"
+        "unit": "wafer/month",
+        "display": "HBM4 2026.03 开始量产；36GB 12H 部件 >11 Gb/s per pin；HBM 2026 全年售罄；FY2026 capex ~$20B"
       },
       "target_capacity": {
         "label": "扩产后产能",
         "value": null,
-        "unit": "待补充",
-        "display": "待补充：2026-2028扩产后产能口径"
+        "unit": "wafer/month",
+        "display": "Idaho 和 New York 洁净室空间扩建中；新加坡先进封装厂 2027 年贡献 HBM 供应；1-gamma 节点和 G9 NAND 过渡"
       },
-      "capex": "待核实：美国、日本、台湾相关制造与封装投资金额",
+      "capex": "FY2026 capex 提升至 ~$20B（从 $18B），专门用于 HBM 和 1-gamma 产能；2026 年 capex 预计超 $25B；2027 财年建设相关 capex 同比增长超 $10B；新加坡先进封装厂 2027 年贡献",
       "timeline": "2026-2028",
-      "bottleneck": "产能爬坡、客户份额、封装资源和成本竞争",
-      "confidence": "中",
-      "status": "扩份额跟踪",
+      "bottleneck": "产能爬坡、客户份额争夺、封装资源、成本竞争、2027 年 capex 大幅上升对 FCF 压力",
+      "confidence": "中高",
+      "status": "积极扩产中：HBM4 量产、Idaho/New York 扩建、新加坡封装厂 2027 上线",
       "evidence": [
         {
-          "date": "待核实",
-          "label": "HBM与制造投资",
-          "detail": "等待clawbot补充公司口径中的资本支出、产能节点和扩产后供给变化。",
-          "source": "待补充"
+          "date": "2026-06-29",
+          "label": "SEMI：存储设备投资超级周期",
+          "detail": "2026 年存储设备投资首超 $520亿；Micron 作为最激进投资者之一，重点在 1-gamma 和 HBM。",
+          "source": "SEMI / PRNewswire"
+        },
+        {
+          "date": "2026-03-18",
+          "label": "FY2026 Q1 法说会：capex 与扩产计划",
+          "detail": "Micron 将 FY2026 capex 提升至 ~$20B；Idaho 和 New York 洁净室建设加速；1-gamma 和 HBM4  ramp 为主要驱动力。",
+          "source": "Micron FY2026 Q1 Earnings Call"
+        },
+        {
+          "date": "2026-03-18",
+          "label": "2027 capex 展望",
+          "detail": "Micron 预计 2027 财年建设相关 capex 同比增长超 $10B；2026 年 capex 超 $25B；新加坡先进封装厂 2027 年为 HBM 供应做出重要贡献。",
+          "source": "SAHM Capital / Micron Guidance"
         }
       ]
     }

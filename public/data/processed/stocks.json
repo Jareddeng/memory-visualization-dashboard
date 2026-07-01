@@ -9712,5 +9712,6 @@
     }
   ],
   "source": "Yahoo Finance chart API (daily close)",
-  "generated_at": "2026-06-23T05:29:32.358Z"
+  "generated_at": "2026-06-23T05:29:32.358Z",
+  "warning": "股票在线更新失败，使用既有数据: "
 }

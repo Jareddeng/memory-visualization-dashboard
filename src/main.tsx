@@ -82,6 +82,7 @@ type TrackerPayload = {
       stage_note?: string;
       stage_index: number;
       locked_years: string;
+      locked_until?: number | null;
       locked_capacity: string;
       negotiating: string;
       expected_term: string;
@@ -95,6 +96,7 @@ type TrackerPayload = {
         label: string;
         detail: string;
         source: string;
+        url?: string;
       }>;
     }>;
   };
@@ -153,11 +155,27 @@ type TrackerPayload = {
     layers?: Array<{
       name: string;
       description?: string;
-      nodes: Array<{
+      groups?: Array<{
         name: string;
+        note?: string;
+        nodes: Array<{
+          name: string;
+          homepage?: string;
+          logo_url?: string;
+          region?: string;
+          role?: string;
+          note?: string;
+          ticker?: string;
+        }>;
+      }>;
+      nodes?: Array<{
+        name: string;
+        homepage?: string;
+        logo_url?: string;
         region?: string;
         role?: string;
         note?: string;
+        ticker?: string;
       }>;
     }>;
   };
@@ -558,6 +576,7 @@ function makeOverviewStockOption(stock: StockPoint, history: StockPoint[]): echa
 function App() {
   const { data, loading, error } = useDashboardData();
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
+  const [pendingAnchor, setPendingAnchor] = React.useState<string | null>(null);
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
   const [searchOpen, setSearchOpen] = React.useState(false);
@@ -576,6 +595,15 @@ function App() {
     document.addEventListener("mousedown", closeSearch);
     return () => document.removeEventListener("mousedown", closeSearch);
   }, []);
+
+  React.useEffect(() => {
+    if (!pendingAnchor) return;
+    const timer = window.setTimeout(() => {
+      document.getElementById(pendingAnchor)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      setPendingAnchor(null);
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [activePage, pendingAnchor]);
 
   if (error) {
     return (
@@ -608,6 +636,13 @@ function App() {
   const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
   const hbmPressure = getHbmPressure(data);
   const priceSnapshots = getPriceSnapshots(data.prices);
+  const navigatePage = (page: PageKey, anchorId?: string) => {
+    setActivePage(page);
+    setPendingAnchor(anchorId ?? null);
+    if (!anchorId) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
   const openSearchResult = (item: SearchItem) => {
     if (item.target.url) {
       window.open(item.target.url, "_blank", "noopener,noreferrer");
@@ -641,7 +676,7 @@ function App() {
             <span>存储行业数据舱</span>
           </div>
         </div>
-        <PageNav activePage={activePage} onChange={setActivePage} />
+        <PageNav activePage={activePage} onNavigate={navigatePage} />
         <div className="source-status">
           <span className="status-dot"></span>
           <div>
@@ -740,31 +775,65 @@ function App() {
   );
 }
 
-function PageNav({ activePage, onChange }: { activePage: PageKey; onChange: (page: PageKey) => void }) {
-  const pages: Array<{ key: PageKey; label: string; detail: string }> = [
-    { key: "overview", label: "概览", detail: "关键指标 / 情报" },
-    { key: "markets", label: "市场图表", detail: "价格与股价" },
-    { key: "industry", label: "产业跟踪", detail: "长协 / 扩产 / 图谱" },
-    { key: "reports", label: "报告库", detail: "日报 / 归档 / 导图" },
-    { key: "intel", label: "情报库", detail: "新增 / 删除 / 推送" },
+type NavSubItem = {
+  label: string;
+  anchorId: string;
+};
+
+function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: (page: PageKey, anchorId?: string) => void }) {
+  const pages: Array<{ key: PageKey; label: string; detail: string; subItems?: NavSubItem[] }> = [
+    { key: "overview", label: "\u6982\u89c8", detail: "\u5173\u952e\u6307\u6807 / \u60c5\u62a5" },
+    {
+      key: "markets",
+      label: "\u5e02\u573a\u56fe\u8868",
+      detail: "\u4ef7\u683c\u4e0e\u80a1\u4ef7",
+      subItems: [
+        { label: "\u80a1\u7968\u4e0e ETF \u8d8b\u52bf\u56fe", anchorId: "markets-stock-trends" },
+        { label: "\u5b58\u50a8\u4ef7\u683c\u8d8b\u52bf\u56fe", anchorId: "markets-storage-prices" },
+      ],
+    },
+    {
+      key: "industry",
+      label: "\u4ea7\u4e1a\u8ddf\u8e2a",
+      detail: "\u957f\u534f / \u6269\u4ea7 / \u56fe\u8c31",
+      subItems: [
+        { label: "\u957f\u534f\u9501\u5b9a\u72b6\u6001", anchorId: "hbm-contract-board" },
+        { label: "\u4e09\u5927\u5382\u6269\u4ea7\u80fd\u529b\u53d8\u5316", anchorId: "expansion-capacity-board" },
+        { label: "\u4ea7\u4e1a\u94fe\u56fe\u8c31", anchorId: "industry-map" },
+      ],
+    },
+    { key: "reports", label: "\u62a5\u544a\u5e93", detail: "\u65e5\u62a5 / \u5f52\u6863 / \u5bfc\u56fe" },
+    { key: "intel", label: "\u60c5\u62a5\u5e93", detail: "\u65b0\u589e / \u5220\u9664 / \u63a8\u9001" },
   ];
   return (
-    <nav className="nav-list" aria-label="看板分区导航">
-      {pages.map((page) => (
-        <button
-          className={activePage === page.key ? "nav-item active" : "nav-item"}
-          key={page.key}
-          onClick={() => onChange(page.key)}
-          type="button"
-        >
-          <strong>{page.label}</strong>
-          <span>{page.detail}</span>
-        </button>
-      ))}
+    <nav className="nav-list" aria-label="\u770b\u677f\u5206\u533a\u5bfc\u822a">
+      {pages.map((page) => {
+        const expanded = activePage === page.key && Boolean(page.subItems?.length);
+        return (
+          <div className={expanded ? "nav-group expanded" : "nav-group"} key={page.key}>
+            <button
+              className={activePage === page.key ? "nav-item active" : "nav-item"}
+              onClick={() => onNavigate(page.key)}
+              type="button"
+            >
+              <strong>{page.label}</strong>
+              <span>{page.detail}</span>
+            </button>
+            {expanded ? (
+              <div className="nav-sub-list" aria-label={page.label}>
+                {page.subItems?.map((item) => (
+                  <button className="nav-sub-item" key={item.anchorId} onClick={() => onNavigate(page.key, item.anchorId)} type="button">
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
     </nav>
   );
 }
-
 function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) {
   return (
     <section className="intel-hero">
@@ -966,7 +1035,7 @@ function MarketsPage({ data }: { data: AppData }) {
     <>
       {data.stocks.warning ? <div className="warning"><AlertTriangle size={16} />{data.stocks.warning}</div> : null}
 
-      <section className="section-heading">
+      <section className="section-heading" id="markets-stock-trends">
         <div>
           <h2>股票与 ETF 趋势图</h2>
           <p>展示各市场已完成交易日收盘价走势；若当天尚未收盘，则沿用上一交易日收盘价，涨跌幅相对再上一交易日收盘价计算。</p>
@@ -979,6 +1048,13 @@ function MarketsPage({ data }: { data: AppData }) {
             <Chart option={makeStockTrendOption(stock, data.stocks.history)} />
           </Panel>
         ))}
+      </section>
+
+      <section className="section-heading section-subheading" id="markets-storage-prices">
+        <div>
+          <h2>存储价格</h2>
+          <p>DRAM 和 NAND 现货价格、合约均价趋势，支持图例筛选和时间框选。</p>
+        </div>
       </section>
 
       <section className="chart-grid">
@@ -1083,8 +1159,10 @@ function Panel({ children, id }: { children: React.ReactNode; id?: string }) {
 
 function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts"] }) {
   const companies = tracker?.companies ?? [];
-  const stages = tracker?.stages ?? ["验证", "报价", "锁量", "签约", "交付"];
-  const maxStage = Math.max(stages.length - 1, 1);
+  const startYear = Math.min(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), 2025) || 2025;
+  const parsedNegotiationYears = companies.flatMap((company) => getNegotiationYears(company));
+  const maxYear = Math.max(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), ...parsedNegotiationYears, startYear + 1);
+  const years = Array.from({ length: maxYear - startYear + 1 }, (_, index) => startYear + index);
 
   if (!companies.length) {
     return null;
@@ -1095,17 +1173,18 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
       <div className="hbm-board-head">
         <div>
           <p className="eyebrow">HBM Contract Tracker</p>
-          <h2>三大厂 HBM 长协锁定状态</h2>
-          <p>把“已锁定年份、产能覆盖、在谈长协、谈判阶段和置信度”放在同一张表里，后续由 clawbot 按证据更新。</p>
+          <h2>HBM 长协锁定状态</h2>
+          <p>用年份刻度显示锁定覆盖、在谈年份和谈判阶段，让长协进度一眼可比。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
 
-      <div className="hbm-company-grid">
+      <div className="hbm-company-grid compact">
         {companies.map((company) => {
-          const progress = Math.max(0, Math.min(100, (company.stage_index / maxStage) * 100));
+          const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
+          const width = maxYear === startYear ? 100 : Math.max(3, ((lockedUntil - startYear) / (maxYear - startYear)) * 100);
           return (
-            <article className="hbm-company-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
+            <article className="hbm-company-card compact" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-company-top">
                 <div>
                   <strong>{company.company}</strong>
@@ -1113,61 +1192,106 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                 </div>
                 <b>{company.stance}</b>
               </div>
-              <div className="hbm-stage-meter" aria-label={`${company.company} ${company.stage}`}>
-                <i style={{ width: `${progress}%` }} />
+
+              <div className="hbm-lock-summary">
+                <span>锁定至</span>
+                <strong>{lockedUntil}</strong>
+                <em>{company.stage}</em>
               </div>
-              <div className="hbm-stage-row">
-                <span>当前阶段</span>
-                <strong>{company.stage_note ?? `${company.stage} · ${company.locked_years}`}</strong>
-              </div>
-              <dl className="hbm-facts">
-                <div>
-                  <dt>已锁定</dt>
-                  <dd>{company.locked_years}</dd>
+
+              <div className="hbm-year-scale" aria-label={`${company.company} locked through ${lockedUntil}`}>
+                <div className="hbm-year-ticks" style={{ ["--year-count" as string]: years.length }}>
+                  {years.map((year) => <span key={year}>{year}</span>)}
                 </div>
+                <div className="hbm-lock-rail">
+                  <i style={{ width: `${width}%` }}>
+                    <span>{lockedUntil}</span>
+                  </i>
+                </div>
+              </div>
+
+              <dl className="hbm-quick-facts">
                 <div>
-                  <dt>产能覆盖</dt>
+                  <dt>覆盖</dt>
                   <dd>{company.locked_capacity}</dd>
                 </div>
                 <div>
-                  <dt>在谈内容</dt>
+                  <dt>客户</dt>
+                  <dd>{company.main_customers.join(" / ")}</dd>
+                </div>
+                <div>
+                  <dt>在谈</dt>
                   <dd>{company.negotiating}</dd>
                 </div>
                 <div>
-                  <dt>预计条款</dt>
-                  <dd>{company.expected_term} · {company.expected_capacity}</dd>
+                  <dt>置信度</dt>
+                  <dd>{company.confidence}</dd>
                 </div>
               </dl>
-              <p>{company.summary}</p>
-              <div className="hbm-tags">
-                {company.main_customers.map((customer) => <span key={customer}>{customer}</span>)}
-                <span>置信度：{company.confidence}</span>
-              </div>
             </article>
           );
         })}
       </div>
 
-      <div className="hbm-evidence-grid">
-        {companies.map((company) => (
-          <article key={`${company.company}-evidence`}>
-            <strong>{company.company} 证据与风险</strong>
-            <p>{company.risk}</p>
-            {(company.evidence ?? []).map((item) => (
-              <div className="hbm-evidence-item" key={`${company.company}-${item.date}-${item.label}`}>
-                <time>{item.date}</time>
-                <span>{item.label}</span>
-                <p>{item.detail}</p>
-                <small>{item.source}</small>
+      <div className="hbm-negotiation-board">
+        <div className="hbm-negotiation-head">
+          <div>
+            <strong>未来长协谈判进度</strong>
+            <span>按年份看锁定覆盖与未来条款/份额谈判</span>
+          </div>
+          <div className="hbm-negotiation-legend">
+            <span><i className="locked" />已锁定</span>
+            <span><i className="negotiating" />谈判中</span>
+            <span><i className="watch" />待观察</span>
+          </div>
+        </div>
+
+        <div className="hbm-negotiation-grid" style={{ ["--year-count" as string]: years.length }}>
+          <div className="hbm-negotiation-row header">
+            <span />
+            {years.map((year) => <b key={year}>{year}</b>)}
+          </div>
+          {companies.map((company) => {
+            const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
+            const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
+            const negotiationYears = new Set(getNegotiationYears(company));
+            return (
+              <div className="hbm-negotiation-row" key={`${company.company}-negotiation`}>
+                <strong>{company.company}</strong>
+                {years.map((year) => {
+                  const locked = year >= lockedRange.start && year <= lockedRange.end;
+                  const negotiating = negotiationYears.has(year);
+                  const statusClass = locked && negotiating ? "locked negotiating" : locked ? "locked" : negotiating ? "negotiating" : "watch";
+                  const label = locked && negotiating ? "锁+谈" : locked ? "锁" : negotiating ? "谈" : "";
+                  const title = `${company.company} ${year}: ${locked ? "已锁定覆盖" : "未显示锁定"}${negotiating ? `；谈判：${company.negotiating}` : ""}`;
+                  return <span className={statusClass} title={title} key={`${company.company}-${year}`}>{label}</span>;
+                })}
               </div>
-            ))}
-          </article>
-        ))}
+            );
+          })}
+        </div>
       </div>
+
     </section>
   );
 }
 
+function getLockedUntilYear(lockedYears: string, lockedUntil?: number | null) {
+  if (Number.isFinite(lockedUntil)) return lockedUntil as number;
+  const years = [...String(lockedYears).matchAll(/20\d{2}/g)].map((match) => Number(match[0]));
+  return years.length ? Math.max(...years) : new Date().getFullYear();
+}
+
+function getLockedYearRange(lockedYears: string, fallbackEnd: number) {
+  const years = [...String(lockedYears).matchAll(/20\d{2}/g)].map((match) => Number(match[0]));
+  if (!years.length) return { start: fallbackEnd, end: fallbackEnd };
+  return { start: Math.min(...years), end: Math.max(...years) };
+}
+
+function getNegotiationYears(company: NonNullable<NonNullable<TrackerPayload["hbm_contracts"]>["companies"]>[number]) {
+  const text = [company.negotiating, company.expected_term, company.expected_capacity, company.stage_note, company.summary].join(" ");
+  return [...new Set([...text.matchAll(/20\d{2}/g)].map((match) => Number(match[0])))].filter((year) => Number.isFinite(year));
+}
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
 
@@ -1319,11 +1443,11 @@ function ExpansionTable({ rows }: { rows: NonNullable<TrackerPayload["expansion_
 function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
   const layers = map?.layers ?? [];
   return (
-    <section className="panel text-panel industry-map">
+    <section className="panel text-panel industry-map" id="industry-map">
       <div className="industry-map-head">
         <div>
           <h2>产业链图谱</h2>
-          <p>预留给 clawbot 更新存储产业链环节、公司角色和上下游变化。</p>
+          <p>按上游、中游、下游拆分存储产业链环节；点击公司 logo 可打开官网，后续由 clawbot 通过 PR 更新。</p>
         </div>
         <small>{map?.updated_at ? `更新：${map.updated_at}` : "等待 clawbot 更新"}</small>
       </div>
@@ -1331,26 +1455,61 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
         <div className="industry-map-grid">
           {layers.map((layer) => (
             <article className="industry-layer" key={layer.name}>
-              <div>
+              <div className="industry-layer-head">
                 <strong>{layer.name}</strong>
                 {layer.description ? <p>{layer.description}</p> : null}
               </div>
-              <div className="industry-node-list">
-                {layer.nodes.map((node) => (
-                  <span key={`${layer.name}-${node.name}`}>
-                    <b>{node.name}</b>
-                    {node.role ? <em>{node.role}</em> : null}
-                    {node.region ? <small>{node.region}</small> : null}
-                    {node.note ? <small>{node.note}</small> : null}
-                  </span>
-                ))}
-              </div>
+              {(layer.groups?.length ? layer.groups : [{ name: "核心公司", nodes: layer.nodes ?? [] }]).map((group) => (
+                <div className="industry-group" key={`${layer.name}-${group.name}`}>
+                  <div className="industry-group-head">
+                    <b>{group.name}</b>
+                    {group.note ? <small>{group.note}</small> : null}
+                  </div>
+                  <div className="industry-node-list">
+                    {group.nodes.map((node) => (
+                      <a
+                        className="industry-company"
+                        href={node.homepage ?? "#"}
+                        key={`${layer.name}-${group.name}-${node.name}`}
+                        target={node.homepage ? "_blank" : undefined}
+                        rel={node.homepage ? "noreferrer" : undefined}
+                        title={node.homepage ? `${node.name} 官网` : node.name}
+                      >
+                        <span className="industry-logo" aria-hidden="true">
+                          {getCompanyLogoUrl(node) ? (
+                            <img
+                              src={getCompanyLogoUrl(node)}
+                              alt=""
+                              loading="lazy"
+                              onError={(event) => {
+                                const fallback = getCompanyLogoFallbackUrl(node);
+                                if (fallback && event.currentTarget.src !== fallback) {
+                                  event.currentTarget.src = fallback;
+                                  return;
+                                }
+                                event.currentTarget.style.display = "none";
+                              }}
+                            />
+                          ) : null}
+                          <span>{node.name.slice(0, 1)}</span>
+                        </span>
+                        <span className="industry-company-body">
+                          <strong>{node.name}</strong>
+                          {node.role ? <em>{node.role}</em> : null}
+                          <small>{[node.region, node.ticker].filter(Boolean).join(" · ")}</small>
+                          {node.note ? <small>{node.note}</small> : null}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </article>
           ))}
         </div>
       ) : (
         <div className="empty-map">
-          clawbot 后续可通过 PR 更新 `content/trackers/industry_map.json`，合并后这里会显示产业链图谱。
+          clawbot 后续可通过 PR 更新 content/trackers/industry_map.json，合并后这里会显示产业链图谱。
         </div>
       )}
       {map?.source ? <small>来源：{map.source}</small> : null}
@@ -1358,6 +1517,16 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
   );
 }
 
+function getCompanyLogoUrl(node: { homepage?: string; logo_url?: string }) {
+  return node.logo_url ?? getCompanyLogoFallbackUrl(node);
+}
+
+function getCompanyLogoFallbackUrl(node: { homepage?: string }) {
+  if (node.homepage) {
+    return `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(node.homepage)}&sz=64`;
+  }
+  return undefined;
+}
 function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean }) {
   const [mindmapOpen, setMindmapOpen] = React.useState(false);
 

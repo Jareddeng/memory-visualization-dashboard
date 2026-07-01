@@ -156,9 +156,66 @@
 - 某类信息出现高价值信号，提升频率并扩展到相关维度
 - 宁可多搜一个维度，不要漏掉一个可能的价格驱动因素
 
+## 去重规则（deduplication）
+
+**核心原则：只自动删除 URL 或核心事实完全重复的新闻；凡是来源、数字、市场反应、时间进展有差异的，都不要删，改为合并或标记关联。**
+
+### 可直接删除的情况（无需人工确认）
+
+- `title` 基本相同，`url` 相同。
+- 同一事件被同一来源重复推送，发布时间差在几分钟内。
+- 标题不同但 `url` 完全相同，且正文摘要没有新增信息。
+- 同一公告 / 同一公司新闻被重复抓入多次，只保留字段最完整、时间最早或来源最权威的一条。
+
+**删除时必须写入 `dedupe_note`：**
+```json
+{
+  "dedupe_note": "Deleted: exact duplicate of 2026-06-29-semi-memory-equipment-50b-2026 (same url, same title)"
+}
+```
+
+### 不可自动删除、应合并/关联的情况
+
+- **不同来源报道同一事件，但细节、数字、口径不同** → 不删除，将新增来源并入同一条情报的 `related_sources` 数组，并在 `summary` 中补充差异点。
+- **同一事件后续有更新**（如"传闻"变"确认"）→ 不删除旧条，改为同一事件链：旧条保留，新条引用旧条 `id`，并更新 `pricing_status` / `review_note`。
+- **一条是新闻，一条是公司公告或交易所公告** → 不删除，分别保留，用 `related_ids` 互相关联。
+- **市场反应状态不同**（如一条"unpriced"，后续更新成"partial"）→ 不删除旧条，新条写更新，旧条保留作为历史快照。
+- **时间进展不同**（如"计划投资" vs "正式宣布开工"）→ 视为事件链，旧条保留，新条追加。
+
+### 合并格式示例
+
+```json
+{
+  "id": "2026-06-29-semi-memory-equipment-50b-2026",
+  "related_sources": [
+    {
+      "source": "DIGITIMES",
+      "url": "https://www.digitimes.com/...",
+      "note": "补充了设备细分品类数据"
+    }
+  ],
+  "related_ids": ["2026-06-30-semi-memory-equipment-followup"],
+  "review_note": "初始报道为SEMI官方口径，后续DIGITIMES补充了DRAM/NAND设备细分占比"
+}
+```
+
+### 执行优先级
+
+1. 新搜索到一条情报 → 先在现有 `records` 中查 `url` 是否已存在。
+2. `url` 已存在 → 对比 `title`、`summary`、`source` 是否完全相同。
+3. 完全相同 → 删除新条，写 `dedupe_note`。
+4. 同一事件、不同来源/细节 → 合并到现有条目的 `related_sources`，不新增独立记录。
+5. 同一事件、时间进展更新 → 新增记录，但 `related_ids` 互相关联，旧条不删。
+
+### 一句话给执行者
+
+**只自动删除 URL 或核心事实完全重复的新闻；凡是来源、数字、市场反应、时间进展有差异的，都不要删，改为合并或标记关联。**
+
 ## 输出
 - 仓库：`Jareddeng/memory-visualization-dashboard`
 - 文件：`content/intel/clawbot_intel.json`
 - 使用仓库中的 `batch_restore.py` 脚本写入
 - 遵循 `docs/news-intel-schema.md` 中的 schema
+- **写入前必须校验枚举字段**：`impact` / `reaction_type` / `pricing_status` / `horizon` / `confidence` / `action` 只能用 schema 中明确列出的值，不允许发明新值
 - 提交信息：`Intel: update YYYY-MM-DD intelligence records (N new)`
+- **写入 JSON 后，本地运行 `node scripts/generate-data.mjs` 验证通过后再 push**，避免构建失败
