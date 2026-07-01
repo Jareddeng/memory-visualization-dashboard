@@ -1166,9 +1166,17 @@ function Panel({ children, id }: { children: React.ReactNode; id?: string }) {
 
 function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts"] }) {
   const companies = tracker?.companies ?? [];
-  const startYear = Math.min(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), 2025) || 2025;
-  const parsedNegotiationYears = companies.flatMap((company) => getNegotiationYears(company));
-  const maxYear = Math.max(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), ...parsedNegotiationYears, startYear + 1);
+  const stages = tracker?.stages ?? ["验证", "报价", "锁量", "签约", "交付"];
+  const ranges = companies.map((company) => {
+    const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
+    return {
+      lockedUntil,
+      lockedRange: getLockedYearRange(company.locked_years, lockedUntil),
+      negotiationRange: getNegotiationRange(company, lockedUntil),
+    };
+  });
+  const startYear = Math.min(...ranges.map((item) => item.lockedRange.start).filter(Boolean), 2025) || 2025;
+  const maxYear = Math.max(...ranges.flatMap((item) => [item.lockedRange.end, item.negotiationRange.end]), startYear + 1);
   const years = Array.from({ length: maxYear - startYear + 1 }, (_, index) => startYear + index);
 
   if (!companies.length) {
@@ -1181,102 +1189,80 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
         <div>
           <p className="eyebrow">HBM Contract Tracker</p>
           <h2>HBM 长协锁定状态</h2>
-          <p>用年份刻度显示锁定覆盖、在谈年份和谈判阶段，让长协进度一眼可比。</p>
+          <p>按公司看已锁定覆盖、未来长协谈判窗口和当前谈判阶段，重点判断什么时候能谈下来。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
 
-      <div className="hbm-company-grid compact">
-        {companies.map((company) => {
+      <div className="hbm-deal-grid">
+        {companies.map((company, index) => {
           const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
-          const width = maxYear === startYear ? 100 : Math.max(3, ((lockedUntil - startYear) / (maxYear - startYear)) * 100);
+          const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
+          const negotiationRange = getNegotiationRange(company, lockedUntil);
+          const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
+          const negotiationPosition = rangePosition(negotiationRange.start, negotiationRange.end, startYear, maxYear);
+          const capacityState = getCapacityLockState(company.locked_capacity);
           return (
-            <article className="hbm-company-card compact" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
-              <div className="hbm-company-top">
+            <article className="hbm-deal-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
+              <div className="hbm-deal-side">
                 <div>
+                  <small>{company.ticker}</small>
                   <strong>{company.company}</strong>
-                  <span>{company.ticker}</span>
                 </div>
-                <b>{company.stance}</b>
+                <span className={`hbm-capacity-pill ${capacityState.tone}`}>{capacityState.label}</span>
               </div>
 
-              <div className="hbm-lock-summary">
-                <span>锁定至</span>
-                <strong>{lockedUntil}</strong>
-                <em>{company.stage}</em>
-              </div>
+              <div className="hbm-deal-main">
+                <div className="hbm-deal-metrics">
+                  <span><b>{lockedUntil}</b> 锁定至</span>
+                  <span><b>{negotiationRange.end}</b> 预计谈至</span>
+                  <span><b>{company.stage}</b> 当前阶段</span>
+                  <span title={company.negotiating}><b>{company.expected_term}</b> 预计期限</span>
+                </div>
 
-              <div className="hbm-year-scale" aria-label={`${company.company} locked through ${lockedUntil}`}>
-                <div className="hbm-year-ticks" style={{ ["--year-count" as string]: years.length }}>
+                <div className="hbm-deal-axis" style={{ ["--year-count" as string]: years.length }}>
                   {years.map((year) => <span key={year}>{year}</span>)}
                 </div>
-                <div className="hbm-lock-rail">
-                  <i style={{ width: `${width}%` }}>
-                    <span>{lockedUntil}</span>
+
+                <div className="hbm-deal-track" aria-label={`${company.company} locked through ${lockedUntil}, negotiating through ${negotiationRange.end}`}>
+                  <i
+                    className="locked"
+                    style={{ left: `${lockedPosition.left}%`, width: `${lockedPosition.width}%` }}
+                    title={`已锁定覆盖：${lockedRange.start}-${lockedRange.end}`}
+                  >
+                    已锁定
+                  </i>
+                  <i
+                    className="negotiating"
+                    style={{ left: `${negotiationPosition.left}%`, width: `${negotiationPosition.width}%` }}
+                    title={`在谈窗口：${negotiationRange.start}-${negotiationRange.end}；${company.negotiating}`}
+                  >
+                    在谈
                   </i>
                 </div>
-              </div>
 
-              <dl className="hbm-quick-facts">
-                <div>
-                  <dt>覆盖</dt>
-                  <dd>{company.locked_capacity}</dd>
+                <div className="hbm-stage-line">
+                  {stages.map((stage, stageIndex) => (
+                    <span
+                      className={stageIndex <= company.stage_index ? "active" : ""}
+                      key={`${company.company}-${stage}`}
+                      title={`${company.company} ${stage}`}
+                    >
+                      <i />
+                      <b>{stage}</b>
+                    </span>
+                  ))}
                 </div>
-                <div>
-                  <dt>客户</dt>
-                  <dd>{company.main_customers.join(" / ")}</dd>
+
+                <div className="hbm-deal-note">
+                  <span>{company.main_customers.slice(0, 3).join(" / ")}</span>
+                  <span title={company.locked_capacity}>{capacityState.summary}</span>
+                  <span title={company.negotiating}>{negotiationRange.summary}</span>
                 </div>
-                <div>
-                  <dt>在谈</dt>
-                  <dd>{company.negotiating}</dd>
-                </div>
-                <div>
-                  <dt>置信度</dt>
-                  <dd>{company.confidence}</dd>
-                </div>
-              </dl>
+              </div>
             </article>
           );
         })}
-      </div>
-
-      <div className="hbm-negotiation-board">
-        <div className="hbm-negotiation-head">
-          <div>
-            <strong>未来长协谈判进度</strong>
-            <span>按年份看锁定覆盖与未来条款/份额谈判</span>
-          </div>
-          <div className="hbm-negotiation-legend">
-            <span><i className="locked" />已锁定</span>
-            <span><i className="negotiating" />谈判中</span>
-            <span><i className="watch" />待观察</span>
-          </div>
-        </div>
-
-        <div className="hbm-negotiation-grid" style={{ ["--year-count" as string]: years.length }}>
-          <div className="hbm-negotiation-row header">
-            <span />
-            {years.map((year) => <b key={year}>{year}</b>)}
-          </div>
-          {companies.map((company) => {
-            const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
-            const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
-            const negotiationYears = new Set(getNegotiationYears(company));
-            return (
-              <div className="hbm-negotiation-row" key={`${company.company}-negotiation`}>
-                <strong>{company.company}</strong>
-                {years.map((year) => {
-                  const locked = year >= lockedRange.start && year <= lockedRange.end;
-                  const negotiating = negotiationYears.has(year);
-                  const statusClass = locked && negotiating ? "locked negotiating" : locked ? "locked" : negotiating ? "negotiating" : "watch";
-                  const label = locked && negotiating ? "锁+谈" : locked ? "锁" : negotiating ? "谈" : "";
-                  const title = `${company.company} ${year}: ${locked ? "已锁定覆盖" : "未显示锁定"}${negotiating ? `；谈判：${company.negotiating}` : ""}`;
-                  return <span className={statusClass} title={title} key={`${company.company}-${year}`}>{label}</span>;
-                })}
-              </div>
-            );
-          })}
-        </div>
       </div>
 
     </section>
@@ -1298,6 +1284,42 @@ function getLockedYearRange(lockedYears: string, fallbackEnd: number) {
 function getNegotiationYears(company: NonNullable<NonNullable<TrackerPayload["hbm_contracts"]>["companies"]>[number]) {
   const text = [company.negotiating, company.expected_term, company.expected_capacity, company.stage_note, company.summary].join(" ");
   return [...new Set([...text.matchAll(/20\d{2}/g)].map((match) => Number(match[0])))].filter((year) => Number.isFinite(year));
+}
+
+function getNegotiationRange(company: NonNullable<NonNullable<TrackerPayload["hbm_contracts"]>["companies"]>[number], lockedUntil: number) {
+  const years = getNegotiationYears(company).filter((year) => year >= new Date().getFullYear() - 1);
+  const termYears = getExpectedTermYears(company.expected_term);
+  const start = years.length ? Math.min(...years) : lockedUntil + 1;
+  const explicitEnd = years.length ? Math.max(...years) : start;
+  const end = Math.max(explicitEnd, start + Math.max(termYears - 1, 0));
+  return {
+    start,
+    end,
+    summary: `在谈 ${start}-${end}`,
+  };
+}
+
+function getExpectedTermYears(value: string) {
+  const numbers = [...String(value).matchAll(/\d+/g)].map((match) => Number(match[0]));
+  return numbers.length ? Math.max(...numbers) : 2;
+}
+
+function rangePosition(start: number, end: number, minYear: number, maxYear: number) {
+  const total = Math.max(maxYear - minYear + 1, 1);
+  const left = ((Math.max(start, minYear) - minYear) / total) * 100;
+  const width = ((Math.min(end, maxYear) - Math.max(start, minYear) + 1) / total) * 100;
+  return { left, width: Math.max(width, 8) };
+}
+
+function getCapacityLockState(value: string) {
+  const text = String(value || "");
+  if (/售罄|全[年部]|基本|高比例|100%|fully/i.test(text)) {
+    return { label: "产能高锁定", tone: "full", summary: "产能基本锁定" };
+  }
+  if (/中|部分|争取|取决/i.test(text)) {
+    return { label: "产能部分锁定", tone: "partial", summary: "产能仍有弹性" };
+  }
+  return { label: "产能待确认", tone: "watch", summary: "锁量待确认" };
 }
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
