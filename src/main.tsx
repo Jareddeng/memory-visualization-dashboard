@@ -82,6 +82,7 @@ type TrackerPayload = {
       stage_note?: string;
       stage_index: number;
       locked_years: string;
+      locked_until?: number | null;
       locked_capacity: string;
       negotiating: string;
       expected_term: string;
@@ -95,6 +96,7 @@ type TrackerPayload = {
         label: string;
         detail: string;
         source: string;
+        url?: string;
       }>;
     }>;
   };
@@ -1157,8 +1159,9 @@ function Panel({ children, id }: { children: React.ReactNode; id?: string }) {
 
 function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts"] }) {
   const companies = tracker?.companies ?? [];
-  const stages = tracker?.stages ?? ["验证", "报价", "锁量", "签约", "交付"];
-  const maxStage = Math.max(stages.length - 1, 1);
+  const startYear = Math.min(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), 2025) || 2025;
+  const maxYear = Math.max(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), startYear + 1);
+  const years = Array.from({ length: maxYear - startYear + 1 }, (_, index) => startYear + index);
 
   if (!companies.length) {
     return null;
@@ -1169,17 +1172,18 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
       <div className="hbm-board-head">
         <div>
           <p className="eyebrow">HBM Contract Tracker</p>
-          <h2>三大厂 HBM 长协锁定状态</h2>
-          <p>把“已锁定年份、产能覆盖、在谈长协、谈判阶段和置信度”放在同一张表里，后续由 clawbot 按证据更新。</p>
+          <h2>HBM 长协锁定状态</h2>
+          <p>用年份刻度显示各厂商已锁定合约覆盖到哪一年，证据与风险由 clawbot 按来源更新。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
 
-      <div className="hbm-company-grid">
+      <div className="hbm-company-grid compact">
         {companies.map((company) => {
-          const progress = Math.max(0, Math.min(100, (company.stage_index / maxStage) * 100));
+          const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
+          const width = maxYear === startYear ? 100 : Math.max(3, ((lockedUntil - startYear) / (maxYear - startYear)) * 100);
           return (
-            <article className="hbm-company-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
+            <article className="hbm-company-card compact" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-company-top">
                 <div>
                   <strong>{company.company}</strong>
@@ -1187,54 +1191,64 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                 </div>
                 <b>{company.stance}</b>
               </div>
-              <div className="hbm-stage-meter" aria-label={`${company.company} ${company.stage}`}>
-                <i style={{ width: `${progress}%` }} />
+
+              <div className="hbm-lock-summary">
+                <span>锁定至</span>
+                <strong>{lockedUntil}</strong>
+                <em>{company.stage}</em>
               </div>
-              <div className="hbm-stage-row">
-                <span>当前阶段</span>
-                <strong>{company.stage_note ?? `${company.stage} · ${company.locked_years}`}</strong>
-              </div>
-              <dl className="hbm-facts">
-                <div>
-                  <dt>已锁定</dt>
-                  <dd>{company.locked_years}</dd>
+
+              <div className="hbm-year-scale" aria-label={`${company.company} locked through ${lockedUntil}`}>
+                <div className="hbm-year-ticks" style={{ ["--year-count" as string]: years.length }}>
+                  {years.map((year) => <span key={year}>{year}</span>)}
                 </div>
+                <div className="hbm-lock-rail">
+                  <i style={{ width: `${width}%` }} />
+                  <b style={{ left: `${width}%` }}>{lockedUntil}</b>
+                </div>
+              </div>
+
+              <dl className="hbm-quick-facts">
                 <div>
-                  <dt>产能覆盖</dt>
+                  <dt>覆盖</dt>
                   <dd>{company.locked_capacity}</dd>
                 </div>
                 <div>
-                  <dt>在谈内容</dt>
+                  <dt>客户</dt>
+                  <dd>{company.main_customers.join(" / ")}</dd>
+                </div>
+                <div>
+                  <dt>在谈</dt>
                   <dd>{company.negotiating}</dd>
                 </div>
                 <div>
-                  <dt>预计条款</dt>
-                  <dd>{company.expected_term} · {company.expected_capacity}</dd>
+                  <dt>置信度</dt>
+                  <dd>{company.confidence}</dd>
                 </div>
               </dl>
-              <p>{company.summary}</p>
-              <div className="hbm-tags">
-                {company.main_customers.map((customer) => <span key={customer}>{customer}</span>)}
-                <span>置信度：{company.confidence}</span>
-              </div>
             </article>
           );
         })}
       </div>
 
-      <div className="hbm-evidence-grid">
+      <div className="hbm-evidence-grid compact">
         {companies.map((company) => (
           <article key={`${company.company}-evidence`}>
             <strong>{company.company} 证据与风险</strong>
             <p>{company.risk}</p>
-            {(company.evidence ?? []).map((item) => (
-              <div className="hbm-evidence-item" key={`${company.company}-${item.date}-${item.label}`}>
-                <time>{item.date}</time>
-                <span>{item.label}</span>
-                <p>{item.detail}</p>
-                <small>{item.source}</small>
-              </div>
-            ))}
+            <div className="hbm-evidence-scroll">
+              {(company.evidence ?? [])
+                .slice()
+                .sort((a, b) => b.date.localeCompare(a.date))
+                .map((item) => (
+                  <div className="hbm-evidence-item" key={`${company.company}-${item.date}-${item.label}`}>
+                    <time>{item.date}</time>
+                    <span>{item.label}</span>
+                    <p>{item.detail}</p>
+                    {item.url ? <a href={item.url} target="_blank" rel="noreferrer">{item.source}</a> : <small>{item.source}</small>}
+                  </div>
+                ))}
+            </div>
           </article>
         ))}
       </div>
@@ -1242,6 +1256,11 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
   );
 }
 
+function getLockedUntilYear(lockedYears: string, lockedUntil?: number | null) {
+  if (Number.isFinite(lockedUntil)) return lockedUntil as number;
+  const years = [...String(lockedYears).matchAll(/20\d{2}/g)].map((match) => Number(match[0]));
+  return years.length ? Math.max(...years) : new Date().getFullYear();
+}
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
 
