@@ -2228,7 +2228,7 @@ th {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
-  padding: 34px 42px;
+  padding: 42px 56px;
 }
 
 .mindmap-root,
@@ -2237,47 +2237,67 @@ th {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 42px;
   min-width: max-content;
   transition: gap 220ms ease;
 }
 
-.mindmap-node {
+.mindmap-hub {
+  position: relative;
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  border: 2px solid #2f73ff;
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 0;
+  cursor: default;
+}
+
+.mindmap-root > .mindmap-children > .mindmap-node:nth-child(4n + 1) {
+  --branch-color: #2f73ff;
+}
+
+.mindmap-root > .mindmap-children > .mindmap-node:nth-child(4n + 2) {
   --branch-color: #22c55e;
 }
 
-.mindmap-node .mindmap-node {
+.mindmap-root > .mindmap-children > .mindmap-node:nth-child(4n + 3) {
   --branch-color: #f59e0b;
 }
 
-.mindmap-node .mindmap-node .mindmap-node {
+.mindmap-root > .mindmap-children > .mindmap-node:nth-child(4n) {
   --branch-color: #ef4444;
 }
 
-.mindmap-node .mindmap-node .mindmap-node .mindmap-node {
-  --branch-color: #2563eb;
+.mindmap-node .mindmap-node {
+  --branch-color: inherit;
 }
 
-.mindmap-root > .mindmap-label {
-  max-width: 300px;
-  border-color: var(--branch-color);
-  background: #ffffff;
-  color: #111827;
-  font-size: 15px;
-  font-weight: 800;
+.mindmap-root > .mindmap-children::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 50%;
+  width: 34px;
+  height: calc(100% - 28px);
+  border-left: 2px solid #2f73ff;
+  border-radius: 999px 0 0 999px;
+  transform: translateY(-50%);
 }
 
 .mindmap-label {
   position: relative;
   z-index: 1;
   width: fit-content;
-  max-width: 760px;
+  max-width: 980px;
   border: 0;
   border-radius: 0;
-  background: #ffffff;
+  background: transparent;
   color: #1f2937;
-  padding: 2px 0 2px 18px;
-  line-height: 1.4;
+  padding: 2px 0 2px 16px;
+  line-height: 1.36;
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
@@ -2293,7 +2313,7 @@ button.mindmap-label {
 
 .mindmap-label.expandable {
   cursor: pointer;
-  padding-right: 24px;
+  padding-right: 22px;
 }
 
 .mindmap-label.expandable:hover,
@@ -2307,14 +2327,14 @@ button.mindmap-label {
   position: absolute;
   right: 0;
   top: 50%;
-  width: 17px;
-  height: 17px;
+  width: 14px;
+  height: 14px;
   display: grid;
   place-items: center;
   border-radius: 999px;
   background: color-mix(in srgb, var(--branch-color) 12%, #ffffff);
   color: var(--branch-color);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 800;
   transform: translateY(-50%);
 }
@@ -2324,32 +2344,48 @@ button.mindmap-label {
   position: absolute;
   left: 2px;
   top: 50%;
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border: 2px solid var(--branch-color);
   border-radius: 999px;
   background: #ffffff;
   transform: translateY(-50%);
 }
 
+.mindmap-root > .mindmap-children > .mindmap-node > .mindmap-label {
+  color: #111827;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.mindmap-node .mindmap-node > .mindmap-label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.mindmap-node .mindmap-node .mindmap-node > .mindmap-label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .mindmap-node > .mindmap-label::after {
   content: "";
   position: absolute;
-  left: -18px;
+  left: -42px;
   top: 50%;
-  width: 16px;
+  width: 42px;
   height: 0;
   border-top: 2px solid var(--branch-color);
   border-left: 0;
   border-top-left-radius: 0;
-  opacity: 0.42;
+  opacity: 0.82;
   transform: translateY(-1px);
 }
 
 .mindmap-children {
   position: relative;
   display: grid;
-  gap: 14px;
+  gap: 12px;
   align-items: center;
   padding-left: 0;
   border-left: 0;
@@ -2363,7 +2399,16 @@ button.mindmap-label {
 }
 
 .mindmap-children::before {
-  content: none;
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 20px;
+  height: calc(100% - 18px);
+  border-left: 2px solid var(--branch-color);
+  border-radius: 999px 0 0 999px;
+  opacity: 0.46;
+  transform: translateY(-50%);
 }
 
 .mindmap-node .mindmap-children {
@@ -2397,7 +2442,7 @@ button.mindmap-label {
 
 .mindmap-node:only-child > .mindmap-label::after,
 .mindmap-children:has(> .mindmap-node:only-child)::before {
-  opacity: 0.75;
+  opacity: 0.72;
 }
 
 .disclaimer {
