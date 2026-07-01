@@ -1200,7 +1200,6 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
           const capacityState = getCapacityLockState(company.locked_capacity);
           const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
           const negotiationPosition = rangePosition(negotiationRange.start, negotiationRange.end, startYear, maxYear);
-          const stagePointer = stages.length > 1 ? Math.max(0, Math.min(100, (company.stage_index / (stages.length - 1)) * 100)) : 0;
           return (
             <article className="hbm-contract-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-contract-head">
@@ -1243,8 +1242,7 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                   <strong>{company.stage}</strong>
                   <small title={company.stage_note}>{company.stage_note}</small>
                 </div>
-                <div className="hbm-progress-scale" style={{ ["--stage-progress" as string]: `${stagePointer}%` }}>
-                  <span className="hbm-progress-pointer" title={`当前进度：${company.stage}`} />
+                <div className="hbm-progress-scale">
                   <div className="hbm-progress-steps">
                     {stages.map((stage, stageIndex) => (
                       <span className={stageIndex === company.stage_index ? "current" : stageIndex < company.stage_index ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
@@ -1352,16 +1350,8 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
                 <b>{company.status}</b>
               </div>
 
-              <div className="capacity-products">
-                {company.products.map((product) => <span key={product}>{product}</span>)}
-              </div>
-
-              <div className="capacity-metric">
-                <span>产能口径</span>
-                <strong>{company.capacity_metric}</strong>
-              </div>
-
               <div className="capacity-bars">
+                <div className="capacity-metric-line">口径：{company.capacity_metric}</div>
                 <div className="capacity-bar-row">
                   <span>{company.current_capacity.label}</span>
                   <div className={`capacity-bar-track ${company.current_capacity.value === null ? "empty" : ""}`}>
@@ -1380,31 +1370,24 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
                 </div>
               </div>
 
-              <dl className="capacity-facts">
-                <div>
-                  <dt>资本支出</dt>
-                  <dd>{company.capex}</dd>
+              <div className="capacity-news">
+                <div className="capacity-news-head">
+                  <span>未来扩产消息</span>
+                  <small>{company.timeline} · 置信度：{company.confidence}</small>
                 </div>
-                <div>
-                  <dt>落地窗口</dt>
-                  <dd>{company.timeline}</dd>
+                <div className="capacity-news-meta">
+                  <span title={company.capex}>资本支出：{company.capex}</span>
+                  <span title={company.bottleneck}>瓶颈：{company.bottleneck}</span>
                 </div>
-              </dl>
-
-              <div className="capacity-risk">
-                <span>核心瓶颈</span>
-                <p>{company.bottleneck}</p>
-                <small>置信度：{company.confidence}</small>
+                {(company.evidence ?? []).map((item) => (
+                  <div className="capacity-news-item" key={`${company.company}-${item.date}-${item.label}`}>
+                    <time>{item.date}</time>
+                    <strong>{item.label}</strong>
+                    <p>{item.detail}</p>
+                    <small>{item.source}</small>
+                  </div>
+                ))}
               </div>
-
-              {(company.evidence ?? []).map((item) => (
-                <div className="hbm-evidence-item" key={`${company.company}-${item.date}-${item.label}`}>
-                  <time>{item.date}</time>
-                  <span>{item.label}</span>
-                  <p>{item.detail}</p>
-                  <small>{item.source}</small>
-                </div>
-              ))}
             </article>
           );
         })}
