@@ -241,6 +241,90 @@
 
 **只自动删除 URL 或核心事实完全重复的新闻；凡是来源、数字、市场反应、时间进展有差异的，都不要删，改为合并或标记关联。每次写入前先查重+修 enum。**
 
+## 已有记录状态维护（S/A 级事件跟踪）
+
+**核心原则：S 级和 A 级记录的市场反应状态（`pricing_status` 和 `reaction_type`）必须持续跟踪更新。情报的价值很大程度上取决于"市场是否已反应"和"反应程度如何"。**
+
+### 每次冷启动时必须执行
+
+**Step 1: 筛选待跟踪记录**
+- 找出所有 `importance` 为 `S` 或 `A` 的记录
+- 筛选条件：
+  - `pricing_status` 为 `unpriced` 或 `partial`（未完全反应）
+  - `action` 为 `alert`、`watch` 或 `deep_tracking`（仍在跟踪期）
+  - `review_date` 已到期或即将到期
+
+**Step 2: 搜索市场反应更新**
+- 对这些记录的主题进行定向搜索，检查是否有新的市场反应：
+  - 股价变动（相关公司股价是否已反映该事件）
+  - 行业确认（是否有后续报道、分析师报告、公司公告确认）
+  - 价格变动（DRAM/NAND/HBM 现货/合约价是否受影响）
+  - 订单/产能变化（是否有新的订单、扩产、长协签署）
+
+**Step 3: 更新状态字段**
+- 如果发现市场已开始反应：
+  - `pricing_status`: `unpriced` → `partial`（部分反应）或 `priced`（已完全反应）
+  - `reaction_type`: `undervalued` → `instant`（市场已意识到并开始反应）
+  - `action`: `deep_tracking` → `watch` 或 `watch` → `archive`（根据反应程度）
+  - `review_date`: 顺延到新的复核日期
+  - `review_note`: 添加状态变化说明（如"6/30 股价已上涨 15%，市场开始反应"）
+
+**Step 4: 添加后续记录（如需要）**
+- 如果事件有重要进展（如"传闻"变"确认"、新政策出台、新数据发布），新增一条记录：
+  - 新记录 `id` 加后缀（如 `-update`、`-confirmed`）
+  - `related_ids` 指向原记录
+  - 更新 `pricing_status` 和 `reaction_type`
+  - 原记录保留作为历史快照
+
+### 状态转换规则
+
+| 原状态 | 新状态 | 触发条件 | 示例 |
+|--------|--------|---------|------|
+| `unpriced` | `partial` | 市场开始讨论，股价/价格有轻微反应 | 财报超预期后首日股价涨 5% |
+| `partial` | `priced` | 市场充分反应，价格已反映预期 | 财报后一周股价涨 30%，分析师上调目标价 |
+| `undervalued` | `instant` | 市场突然意识到该事件重要性 | 出口管制消息发布后相关股票暴涨 |
+| `deep_tracking` | `watch` | 事件已部分兑现，需继续观察 | 投资计划宣布后股价已涨，但项目未开工 |
+| `watch` | `archive` | 事件已完全兑现或无后续 | 财报季结束，无新催化剂 |
+
+### 重点跟踪类型
+
+**必须持续跟踪的 S/A 级记录：**
+- 财报业绩（`type: 财报业绩`）：后续股价反应、分析师评级调整
+- 重大投资/扩产（`type: 公司公告/政策事件`）：实际开工、设备订单、产能释放
+- 出口管制/政策（`type: 政策监管/政策事件`）：后续执行细节、企业应对、市场反应
+- HBM 供应紧张（`type: 市场消息`）：价格变动、客户订单、产能释放
+- 云厂商 Capex（`type: 产业链跟踪`）：后续季度指引、实际支出、服务器出货量
+
+### 执行示例
+
+原记录：
+```json
+{
+  "id": "2026-06-29-south-korea-mega-chip-cluster",
+  "date": "2026-06-29",
+  "importance": "S",
+  "pricing_status": "unpriced",
+  "reaction_type": "undervalued",
+  "action": "deep_tracking",
+  "review_date": "2026-07-06"
+}
+```
+
+一周后搜索发现：韩国存储股因该计划上涨 12%，设备商订单增加 → 更新为：
+```json
+{
+  "pricing_status": "partial",
+  "reaction_type": "instant",
+  "action": "watch",
+  "review_date": "2026-07-13",
+  "review_note": "7/1 韩国存储股涨 12%，AMAT/Lam 设备订单增加，市场开始反应但项目未实际开工"
+}
+```
+
+### 一句话给执行者
+
+**S/A 级未反应事件是情报库最有价值的部分。每次冷启动都要检查这些记录的市场反应状态，及时更新 pricing_status 和 reaction_type。不要只关注新增记录，忽略已有记录的跟踪维护。**
+
 ## 输出
 - 仓库：`Jareddeng/memory-visualization-dashboard`
 - 文件：`content/intel/clawbot_intel.json`
