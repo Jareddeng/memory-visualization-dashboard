@@ -1167,7 +1167,6 @@ function Panel({ children, id }: { children: React.ReactNode; id?: string }) {
 function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts"] }) {
   const companies = tracker?.companies ?? [];
   const stages = tracker?.stages ?? ["验证", "报价", "锁量", "签约", "交付"];
-  const maxStage = Math.max(stages.length - 1, 1);
   const ranges = companies.map((company) => {
     const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
     const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
@@ -1199,12 +1198,8 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
           const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
           const negotiationRange = getNegotiationRange(company, lockedUntil);
           const capacityState = getCapacityLockState(company.locked_capacity);
-          const progress = Math.max(0, Math.min(100, (company.stage_index / maxStage) * 100));
-          const stageRatio = company.stage_index / maxStage;
-          const progressEnd = negotiationRange.start + Math.max(0.18, stageRatio) * Math.max(negotiationRange.end - negotiationRange.start, 0.75);
           const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
           const negotiationPosition = rangePosition(negotiationRange.start, negotiationRange.end, startYear, maxYear);
-          const progressPosition = rangePosition(negotiationRange.start, Math.min(progressEnd, negotiationRange.end), startYear, maxYear);
           return (
             <article className="hbm-contract-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-contract-head">
@@ -1239,17 +1234,14 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                   </div>
                 </div>
 
-                <div className="hbm-contract-bar-row">
-                  <span>谈判进度</span>
-                  <div className="hbm-contract-track">
-                    <i className="progress" style={{ left: `${progressPosition.left}%`, width: `${progressPosition.width}%` }}>
-                      {company.stage}
-                    </i>
-                  </div>
-                </div>
               </div>
 
               <div className="hbm-contract-progress">
+                <div className="hbm-progress-summary">
+                  <span>谈判进度</span>
+                  <strong>{company.stage}</strong>
+                  <small title={company.stage_note}>{company.stage_note}</small>
+                </div>
                 <div className="hbm-progress-steps">
                   {stages.map((stage, stageIndex) => (
                     <span className={stageIndex <= company.stage_index ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>

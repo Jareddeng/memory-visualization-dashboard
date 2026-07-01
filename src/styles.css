@@ -1515,20 +1515,43 @@ td small {
 }
 
 .hbm-contract-track i.negotiating {
-  border: 1px solid #dca64b;
-  background:
-    repeating-linear-gradient(135deg, rgb(212 148 59 / 88%) 0 7px, rgb(252 235 202 / 95%) 7px 14px);
-  color: #5e3a07;
-}
-
-.hbm-contract-track i.progress {
-  background: linear-gradient(90deg, #4169e1, #7ca3ff);
+  background: linear-gradient(90deg, #cf8e35, #e4ad58);
   color: #fff;
 }
 
 .hbm-contract-progress {
   display: grid;
   gap: 6px;
+}
+
+.hbm-progress-summary {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.hbm-progress-summary span {
+  color: var(--subtle);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hbm-progress-summary strong {
+  color: var(--teal);
+  font-size: 13px;
+}
+
+.hbm-progress-summary small {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .hbm-progress-steps {
