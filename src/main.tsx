@@ -1203,8 +1203,9 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                   {years.map((year) => <span key={year}>{year}</span>)}
                 </div>
                 <div className="hbm-lock-rail">
-                  <i style={{ width: `${width}%` }} />
-                  <b style={{ left: `${width}%` }}>{lockedUntil}</b>
+                  <i style={{ width: `${width}%` }}>
+                    <span>{lockedUntil}</span>
+                  </i>
                 </div>
               </div>
 
