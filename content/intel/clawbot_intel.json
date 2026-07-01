@@ -3965,6 +3965,44 @@
       "confidence": "medium",
       "action": "deep_tracking",
       "review_date": "2026-09-30"
+    },
+    {
+      "id": "2026-07-01-trendforce-memory-spot-price-update",
+      "date": "2026-07-01",
+      "type": "产品数据",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "title": "TrendForce：DRAM现货低密度DDR4/DDR3微涨，NAND TLC晶圆续跌",
+      "product": "DRAM / NAND / DDR4 / DDR3",
+      "source": "TrendForce",
+      "url": "https://www.trendforce.com/news/2026/07/01/insights-memory-spot-price-update-dram-spot-prices-see-gains-in-low-density-ddr4-and-ddr3-amid-sideways-market/",
+      "summary": "TrendForce 7月1日发布存储现货价格更新。DRAM现货：低密度DDR4和DDR3有上涨动力，主流DDR4 1Gx8 3200MT/s均价从上周$35.90涨至$36.00（+0.28%），整体市场横盘。NAND现货：512Gb TLC晶圆现货跌至$19.862（-1.03%），买方对高价接受度低，供应商被迫降价去库存。",
+      "transmission_path": "DRAM现货微涨验证供应仍紧但动能减弱；NAND现货下跌反映买方抵触高价+供应商库存调整压力 → 短期价格走势分化，DRAM支撑强于NAND → 关注Q3合约价谈判是否延续强势",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-15"
+    },
+    {
+      "id": "2026-07-01-17-semiconductor-price-hike",
+      "date": "2026-07-01",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "17家半导体企业7月1日同步涨价，成本传导加速",
+      "product": "半导体 / DRAM / NAND / 功率芯片",
+      "source": "新浪财经 / ZAKER",
+      "url": "https://finance.sina.com.cn/stock/usstock/summary/2026-06-29/doc-inifaisy7025510.shtml",
+      "summary": "17家半导体企业宣布2026年7月1日同步调整产品价格。英飞凌第二次调价，功率开关器件/AI电源芯片/车规IGBT/MOSFET提价5%-15%；德州仪器12个月内第四次调价；兆易创新部分产品线调价15%-20%。本轮涨价分三层：Q1存储芯片（三星/SK海力士/美光）领涨60%-100%，Q2模拟/功率芯片（ADI/恩智浦）跟进10%-25%，6-7月国内芯片设计企业调价5%-20%。深层驱动为硅片、铜箔、银、钽等原材料普涨。",
+      "transmission_path": "上游原材料涨价→中游芯片制造成本上升→7月1日大规模涨价生效→成本传导至下游终端→存储/功率/模拟芯片价格获成本支撑→短期价格难以下行→关注下游需求能否消化涨价",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-15"
     }
   ]
 }
