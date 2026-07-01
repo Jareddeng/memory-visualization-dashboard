@@ -230,27 +230,32 @@
             "date": "2026-06-07",
             "label": "NVIDIA 多年合作与供应协议",
             "detail": "SK Hynix 与 NVIDIA 签署多年技术合作与供应协议，覆盖 HBM4、LPDDR5X、DDR5、3D NAND；2026 下半年开始交付 HBM4；协议延伸至 2030 年。",
-            "source": "NVIDIA 官方新闻稿 / SK Hynix 公告"
+            "source": "NVIDIA 官方新闻稿 / SK Hynix 公告",
+            "url": "https://news.skhynix.com/"
           },
           {
             "date": "2026-06-05",
             "label": "NVIDIA CEO 确认三家全部通过 HBM4 认证",
             "detail": "Jensen Huang 确认 SK Hynix、Samsung、Micron 全部通过 Vera Rubin HBM4 认证；SK Hynix 在 Vera Rubin HBM4 份额预计 60-70%。",
-            "source": "Bloomberg / Yahoo Finance"
+            "source": "Bloomberg / Yahoo Finance",
+            "url": "https://news.skhynix.com/"
           },
           {
             "date": "2026-03-23",
             "label": "Q1 2026 法说会：HBM4E 样品年内交付",
             "detail": "SK Hynix 在 Q1 法说会表示，HBM4E 样品将在 2026 年内交付客户，目标 2027 年大规模量产。",
-            "source": "SK Hynix Q1 2026 Earnings Call / Korea IT Times"
+            "source": "SK Hynix Q1 2026 Earnings Call / Korea IT Times",
+            "url": "https://news.skhynix.com/"
           },
           {
             "date": "2026-04-28",
             "label": "OpenAI Stargate HBM 供应协议",
             "detail": "SK Hynix 已签署 OpenAI Stargate 超级计算项目 HBM 供应协议；该项目可能有效翻倍行业 HBM 总需求。",
-            "source": "AI Vector Ocean / Industry Reports"
+            "source": "AI Vector Ocean / Industry Reports",
+            "url": "https://news.skhynix.com/"
           }
-        ]
+        ],
+        "locked_until": 2030
       },
       {
         "company": "Samsung Electronics",
@@ -279,21 +284,25 @@
             "date": "2026-06-04",
             "label": "OpenAI HBM4 供应协议",
             "detail": "Samsung 与 OpenAI 签署 HBM4 供应协议，最多 8 亿千兆位 12 层 HBM4，约占 Samsung 2026 年 HBM 总产能 7%。",
-            "source": "Tech Insider / TrendForce"
+            "source": "Tech Insider / TrendForce",
+            "url": "https://semiconductor.samsung.com/newsroom/"
           },
           {
             "date": "2026-06-05",
             "label": "NVIDIA HBM4 认证通过",
             "detail": "NVIDIA CEO Jensen Huang 确认 Samsung 通过 Vera Rubin HBM4 认证；Samsung 2026 年 2 月已开始 HBM4 量产。",
-            "source": "Bloomberg / Yahoo Finance"
+            "source": "Bloomberg / Yahoo Finance",
+            "url": "https://semiconductor.samsung.com/newsroom/"
           },
           {
             "date": "2026-03-17",
             "label": "GTC 2026 HBM4 展示",
             "detail": "Samsung 在 GTC 2026 展示 HBM4 产品，Jensen Huang 在 HBM4 芯片上签名；HBM4 速度 11.7 Gbps，超出行业标准 8 Gbps。",
-            "source": "Samsung Newsroom / TechRitual"
+            "source": "Samsung Newsroom / TechRitual",
+            "url": "https://semiconductor.samsung.com/newsroom/"
           }
-        ]
+        ],
+        "locked_until": 2026
       },
       {
         "company": "Micron Technology",
@@ -320,21 +329,25 @@
             "date": "2026-03-18",
             "label": "FY2026 Q1 法说会：HBM 2026 售罄，capex 提升至 $20B",
             "detail": "Micron CEO Sanjay Mehrotra 确认 2026 全年 HBM 已售罄；capex 预算从 $18B 提升至 $20B，专门用于 HBM 产能扩张；HBM4 量产中。",
-            "source": "Micron FY2026 Q1 Earnings Call / AInvest"
+            "source": "Micron FY2026 Q1 Earnings Call / AInvest",
+            "url": "https://investors.micron.com/"
           },
           {
             "date": "2026-04-18",
             "label": "HBM4 量产与客户锁定",
             "detail": "Micron HBM4 2026 年 4 月开始量产；36GB 12H 部件达到 >11 Gb/s per pin；HBM 市场份额从 2024 年 5% 升至约 21%。",
-            "source": "AI-Capex / AktienCheck"
+            "source": "AI-Capex / AktienCheck",
+            "url": "https://investors.micron.com/"
           },
           {
             "date": "2026-03-18",
             "label": "2027 capex 预计超 $25B",
             "detail": "Micron 预计 2026 年 capex 超 $25B；2027 财年建设相关 capex 同比增长超 $10B；新加坡先进封装厂 2027 年为 HBM 供应做出重要贡献。",
-            "source": "SAHM Capital / Micron Guidance"
+            "source": "SAHM Capital / Micron Guidance",
+            "url": "https://investors.micron.com/"
           }
-        ]
+        ],
+        "locked_until": 2026
       }
     ]
   },
