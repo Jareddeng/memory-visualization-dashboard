@@ -3965,28 +3965,6 @@
       "confidence": "medium",
       "action": "deep_tracking",
       "review_date": "2026-09-30"
-    },
-    {
-      "id": "2026-06-23-samsung-ufs5-announcement",
-      "date": "2026-06-23",
-      "type": "产品发布",
-      "impact": "bullish",
-      "importance": "B",
-      "reaction_type": "undervalued",
-      "pricing_status": "unpriced",
-      "horizon": "1q",
-      "title": "Samsung发布全球首款UFS 5.0存储芯片：顺序读写10.8/9.5GB/s，2026 Q4量产",
-      "product": "UFS 5.0 / NAND Flash / Samsung",
-      "source": "Samsung Newsroom / SamMobile",
-      "url": "https://news.samsung.com/global/samsung-unveils-industrys-fastest-ufs-5-0-solution-for-next-gen-on-device-ai-applications",
-      "summary": "Samsung发布业界首款UFS 5.0嵌入式存储解决方案，顺序读取速度达10.8GB/s，顺序写入9.5GB/s，较UFS 4.1翻倍。能效提升>40%，封装缩小16.7%，最高容量1TB。计划2026年Q4量产，面向旗舰手机、XR头显、AI可穿戴及智能汽车。基于JEDEC最新标准，采用MIPI M-PHY v6.0和UniPro v3.0技术。",
-      "transmission_path": "UFS 5.0性能翻倍→端侧AI设备存储需求升级→旗舰手机/XR/汽车NAND容量和性能需求提升→推动NAND产品结构向高密度/高性能升级→对NAND价格形成长期支撑。Samsung率先发布巩固其在嵌入式存储领域领先地位。",
-      "related_ids": [
-        "2026-06-23-samsung-hbm4-1b-sales"
-      ],
-      "review_date": "2026-07-01",
-      "confidence": "high",
-      "action": "watch"
     }
   ]
 }
