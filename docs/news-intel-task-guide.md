@@ -160,6 +160,33 @@
 
 **核心原则：只自动删除 URL 或核心事实完全重复的新闻；凡是来源、数字、市场反应、时间进展有差异的，都不要删，改为合并或标记关联。**
 
+### 查重流程（每次新增记录前必须执行）
+
+**Step 1: ID 查重**
+- 生成新记录的 `id` 前，先在现有 `records` 中搜索相同 `id`
+- 如果 `id` 已存在 → 跳过或修改 id（加后缀如 `-update`）
+
+**Step 2: URL 查重**
+- 在现有 `records` 中搜索相同 `url`
+- `url` 相同 → 对比 `title` 和 `summary`
+- 完全相同 → 丢弃新条，写 `dedupe_note`
+- 同一事件、不同细节 → 合并到现有条目的 `related_sources`
+
+**Step 3: 内容查重（主题+日期）**
+- 搜索现有记录中同一 `date` + 同一 `product` 的相似标题
+- 相似度判断：
+  - 同一公司财报被不同来源报道 → 只留一条（取信息最完整的）
+  - 同一政府投资计划，中央 vs 企业主体不同 → 分别保留（如韩国政府 800 万亿 vs 三星 2655 万亿）
+  - 同一事件后续更新（"传闻"→"确认"）→ 新增记录，`related_ids` 关联旧条
+
+**Step 4: 自动修复已有记录的 enum 错误**
+- 写入新记录前，扫描现有记录中是否有无效枚举值
+- 使用错误映射自动修复：
+  - `watch` → `archive` | `overvalued` → `sentiment` | `neutral(reaction_type)` → `sentiment`
+  - `underappreciated` → `undervalued` | `none` → `unpriced` | `mixed` → `neutral`
+  - `monitor` → `watch` | `1y/2q/6m` → `longer/1q`
+- 修复后重新运行 `node scripts/generate-data.mjs` 验证
+
 ### 可直接删除的情况（无需人工确认）
 
 - `title` 基本相同，`url` 相同。
@@ -181,6 +208,7 @@
 - **一条是新闻，一条是公司公告或交易所公告** → 不删除，分别保留，用 `related_ids` 互相关联。
 - **市场反应状态不同**（如一条"unpriced"，后续更新成"partial"）→ 不删除旧条，新条写更新，旧条保留作为历史快照。
 - **时间进展不同**（如"计划投资" vs "正式宣布开工"）→ 视为事件链，旧条保留，新条追加。
+- **政府投资 vs 企业投资**（如"韩国政府 800 万亿芯片集群" vs "三星 2655 万亿投资"）→ 主体不同，分别保留。
 
 ### 合并格式示例
 
@@ -201,15 +229,17 @@
 
 ### 执行优先级
 
-1. 新搜索到一条情报 → 先在现有 `records` 中查 `url` 是否已存在。
-2. `url` 已存在 → 对比 `title`、`summary`、`source` 是否完全相同。
-3. 完全相同 → 删除新条，写 `dedupe_note`。
-4. 同一事件、不同来源/细节 → 合并到现有条目的 `related_sources`，不新增独立记录。
-5. 同一事件、时间进展更新 → 新增记录，但 `related_ids` 互相关联，旧条不删。
+1. 新搜索到一条情报 → 先在现有 `records` 中查 `id` 和 `url` 是否已存在。
+2. `id` 已存在 → 修改 id 或跳过。
+3. `url` 已存在 → 对比 `title`、`summary`、`source` 是否完全相同。
+4. 完全相同 → 删除新条，写 `dedupe_note`。
+5. 同一事件、不同来源/细节 → 合并到现有条目的 `related_sources`，不新增独立记录。
+6. 同一事件、时间进展更新 → 新增记录，但 `related_ids` 互相关联，旧条不删。
+7. **写入前扫描所有现有记录，修复无效 enum 值**（自动映射）。
 
 ### 一句话给执行者
 
-**只自动删除 URL 或核心事实完全重复的新闻；凡是来源、数字、市场反应、时间进展有差异的，都不要删，改为合并或标记关联。**
+**只自动删除 URL 或核心事实完全重复的新闻；凡是来源、数字、市场反应、时间进展有差异的，都不要删，改为合并或标记关联。每次写入前先查重+修 enum。**
 
 ## 输出
 - 仓库：`Jareddeng/memory-visualization-dashboard`
@@ -219,3 +249,28 @@
 - **写入前必须校验枚举字段**：`impact` / `reaction_type` / `pricing_status` / `horizon` / `confidence` / `action` 只能用 schema 中明确列出的值，不允许发明新值
 - 提交信息：`Intel: update YYYY-MM-DD intelligence records (N new)`
 - **写入 JSON 后，本地运行 `node scripts/generate-data.mjs` 验证通过后再 push**，避免构建失败
+
+## 推送后验证（post-push verification）
+
+**不要只报告 "push 成功"，必须实际验证远程状态：**
+
+1. **push 后立即执行**：`git log origin/main --oneline -3`
+   - 确认最新提交哈希与本地一致
+   - 若不一致 → 说明 push 失败或远程有更新，需要 `git pull` 后重新处理
+
+2. **本地 working tree 检查**：`git status`
+   - 确认无未 commit 的修改
+   - 若有修改 → 说明之前的内容未提交，需要补 commit
+
+3. **远程内容抽查**：`git show origin/main:content/intel/clawbot_intel.json | head -20`
+   - 确认新增记录确实存在于远程
+
+4. **失败处理**：
+   - 如果 `git push` 报错（如 `rejected` `fetch first`）→ 先 `git pull`，解决冲突，重新验证后 push
+   - 如果本地有未 commit 的修改 → 先 `git add -A && git commit` 再 push
+   - 如果验证发现记录未写入 → 重新执行写入流程
+
+**常见误报场景**：
+- isolated session 中 `git push` 成功但本地 working tree 仍有修改 → 后续任务会基于旧状态工作，导致数据丢失
+- `git push` 返回成功但网络问题导致实际未推送 → 必须通过 `git log origin/main` 核实
+- 多人/多任务同时操作仓库 → 先 pull 再处理冲突
