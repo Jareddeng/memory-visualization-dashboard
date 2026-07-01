@@ -1160,7 +1160,8 @@ function Panel({ children, id }: { children: React.ReactNode; id?: string }) {
 function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts"] }) {
   const companies = tracker?.companies ?? [];
   const startYear = Math.min(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), 2025) || 2025;
-  const maxYear = Math.max(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), startYear + 1);
+  const parsedNegotiationYears = companies.flatMap((company) => getNegotiationYears(company));
+  const maxYear = Math.max(...companies.map((company) => getLockedUntilYear(company.locked_years, company.locked_until)).filter(Boolean), ...parsedNegotiationYears, startYear + 1);
   const years = Array.from({ length: maxYear - startYear + 1 }, (_, index) => startYear + index);
 
   if (!companies.length) {
@@ -1173,7 +1174,7 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
         <div>
           <p className="eyebrow">HBM Contract Tracker</p>
           <h2>HBM 长协锁定状态</h2>
-          <p>用年份刻度显示各厂商已锁定合约覆盖到哪一年，证据与风险由 clawbot 按来源更新。</p>
+          <p>用年份刻度显示锁定覆盖、在谈年份和谈判阶段，让长协进度一眼可比。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
@@ -1232,27 +1233,45 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
         })}
       </div>
 
-      <div className="hbm-evidence-grid compact">
-        {companies.map((company) => (
-          <article key={`${company.company}-evidence`}>
-            <strong>{company.company} 证据与风险</strong>
-            <p>{company.risk}</p>
-            <div className="hbm-evidence-scroll">
-              {(company.evidence ?? [])
-                .slice()
-                .sort((a, b) => b.date.localeCompare(a.date))
-                .map((item) => (
-                  <div className="hbm-evidence-item" key={`${company.company}-${item.date}-${item.label}`}>
-                    <time>{item.date}</time>
-                    <span>{item.label}</span>
-                    <p>{item.detail}</p>
-                    {item.url ? <a href={item.url} target="_blank" rel="noreferrer">{item.source}</a> : <small>{item.source}</small>}
-                  </div>
-                ))}
-            </div>
-          </article>
-        ))}
+      <div className="hbm-negotiation-board">
+        <div className="hbm-negotiation-head">
+          <div>
+            <strong>未来长协谈判进度</strong>
+            <span>按年份看锁定覆盖与未来条款/份额谈判</span>
+          </div>
+          <div className="hbm-negotiation-legend">
+            <span><i className="locked" />已锁定</span>
+            <span><i className="negotiating" />谈判中</span>
+            <span><i className="watch" />待观察</span>
+          </div>
+        </div>
+
+        <div className="hbm-negotiation-grid" style={{ ["--year-count" as string]: years.length }}>
+          <div className="hbm-negotiation-row header">
+            <span />
+            {years.map((year) => <b key={year}>{year}</b>)}
+          </div>
+          {companies.map((company) => {
+            const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
+            const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
+            const negotiationYears = new Set(getNegotiationYears(company));
+            return (
+              <div className="hbm-negotiation-row" key={`${company.company}-negotiation`}>
+                <strong>{company.company}</strong>
+                {years.map((year) => {
+                  const locked = year >= lockedRange.start && year <= lockedRange.end;
+                  const negotiating = negotiationYears.has(year);
+                  const statusClass = locked && negotiating ? "locked negotiating" : locked ? "locked" : negotiating ? "negotiating" : "watch";
+                  const label = locked && negotiating ? "锁+谈" : locked ? "锁" : negotiating ? "谈" : "";
+                  const title = `${company.company} ${year}: ${locked ? "已锁定覆盖" : "未显示锁定"}${negotiating ? `；谈判：${company.negotiating}` : ""}`;
+                  return <span className={statusClass} title={title} key={`${company.company}-${year}`}>{label}</span>;
+                })}
+              </div>
+            );
+          })}
+        </div>
       </div>
+
     </section>
   );
 }
@@ -1261,6 +1280,17 @@ function getLockedUntilYear(lockedYears: string, lockedUntil?: number | null) {
   if (Number.isFinite(lockedUntil)) return lockedUntil as number;
   const years = [...String(lockedYears).matchAll(/20\d{2}/g)].map((match) => Number(match[0]));
   return years.length ? Math.max(...years) : new Date().getFullYear();
+}
+
+function getLockedYearRange(lockedYears: string, fallbackEnd: number) {
+  const years = [...String(lockedYears).matchAll(/20\d{2}/g)].map((match) => Number(match[0]));
+  if (!years.length) return { start: fallbackEnd, end: fallbackEnd };
+  return { start: Math.min(...years), end: Math.max(...years) };
+}
+
+function getNegotiationYears(company: NonNullable<NonNullable<TrackerPayload["hbm_contracts"]>["companies"]>[number]) {
+  const text = [company.negotiating, company.expected_term, company.expected_capacity, company.stage_note, company.summary].join(" ");
+  return [...new Set([...text.matchAll(/20\d{2}/g)].map((match) => Number(match[0])))].filter((year) => Number.isFinite(year));
 }
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
