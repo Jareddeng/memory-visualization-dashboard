@@ -1531,6 +1531,141 @@ td small {
   color: var(--subtle);
 }
 
+.hbm-company-grid.compact {
+  align-items: stretch;
+}
+
+.hbm-company-card.compact {
+  gap: 12px;
+  min-height: 0;
+}
+
+.hbm-lock-summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: end;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f1f6f4;
+}
+
+.hbm-lock-summary span {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.hbm-lock-summary strong {
+  color: var(--teal);
+  font-size: 26px;
+  line-height: 1;
+}
+
+.hbm-lock-summary em {
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.hbm-year-scale {
+  display: grid;
+  gap: 8px;
+}
+
+.hbm-year-ticks {
+  display: grid;
+  grid-template-columns: repeat(var(--year-count, 6), minmax(0, 1fr));
+  color: var(--subtle);
+  font-size: 11px;
+}
+
+.hbm-year-ticks span {
+  text-align: center;
+}
+
+.hbm-lock-rail {
+  position: relative;
+  height: 28px;
+  border-radius: 999px;
+  background: #e8eeee;
+}
+
+.hbm-lock-rail i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--teal), #d4943b);
+}
+
+.hbm-lock-rail b {
+  position: absolute;
+  top: 50%;
+  min-width: 44px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.hbm-quick-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.hbm-quick-facts div {
+  display: grid;
+  gap: 4px;
+  min-height: 78px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.hbm-quick-facts dt {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.hbm-quick-facts dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.hbm-evidence-grid.compact article {
+  align-content: start;
+}
+
+.hbm-evidence-scroll {
+  display: grid;
+  gap: 10px;
+  max-height: 210px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.hbm-evidence-item a {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.hbm-evidence-item a:hover {
+  text-decoration: underline;
+}
+
 .expansion-capacity-board {
   display: grid;
   gap: 18px;
