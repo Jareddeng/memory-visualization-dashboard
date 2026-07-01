@@ -241,6 +241,90 @@
 
 **只自动删除 URL 或核心事实完全重复的新闻；凡是来源、数字、市场反应、时间进展有差异的，都不要删，改为合并或标记关联。每次写入前先查重+修 enum。**
 
+## 已有记录状态维护（S/A 级事件跟踪）
+
+**核心原则：S 级和 A 级记录的市场反应状态（`pricing_status` 和 `reaction_type`）必须持续跟踪更新。情报的价值很大程度上取决于"市场是否已反应"和"反应程度如何"。**
+
+### 每次冷启动时必须执行
+
+**Step 1: 筛选待跟踪记录**
+- 找出所有 `importance` 为 `S` 或 `A` 的记录
+- 筛选条件：
+  - `pricing_status` 为 `unpriced` 或 `partial`（未完全反应）
+  - `action` 为 `alert`、`watch` 或 `deep_tracking`（仍在跟踪期）
+  - `review_date` 已到期或即将到期
+
+**Step 2: 搜索市场反应更新**
+- 对这些记录的主题进行定向搜索，检查是否有新的市场反应：
+  - 股价变动（相关公司股价是否已反映该事件）
+  - 行业确认（是否有后续报道、分析师报告、公司公告确认）
+  - 价格变动（DRAM/NAND/HBM 现货/合约价是否受影响）
+  - 订单/产能变化（是否有新的订单、扩产、长协签署）
+
+**Step 3: 更新状态字段**
+- 如果发现市场已开始反应：
+  - `pricing_status`: `unpriced` → `partial`（部分反应）或 `priced`（已完全反应）
+  - `reaction_type`: `undervalued` → `instant`（市场已意识到并开始反应）
+  - `action`: `deep_tracking` → `watch` 或 `watch` → `archive`（根据反应程度）
+  - `review_date`: 顺延到新的复核日期
+  - `review_note`: 添加状态变化说明（如"6/30 股价已上涨 15%，市场开始反应"）
+
+**Step 4: 添加后续记录（如需要）**
+- 如果事件有重要进展（如"传闻"变"确认"、新政策出台、新数据发布），新增一条记录：
+  - 新记录 `id` 加后缀（如 `-update`、`-confirmed`）
+  - `related_ids` 指向原记录
+  - 更新 `pricing_status` 和 `reaction_type`
+  - 原记录保留作为历史快照
+
+### 状态转换规则
+
+| 原状态 | 新状态 | 触发条件 | 示例 |
+|--------|--------|---------|------|
+| `unpriced` | `partial` | 市场开始讨论，股价/价格有轻微反应 | 财报超预期后首日股价涨 5% |
+| `partial` | `priced` | 市场充分反应，价格已反映预期 | 财报后一周股价涨 30%，分析师上调目标价 |
+| `undervalued` | `instant` | 市场突然意识到该事件重要性 | 出口管制消息发布后相关股票暴涨 |
+| `deep_tracking` | `watch` | 事件已部分兑现，需继续观察 | 投资计划宣布后股价已涨，但项目未开工 |
+| `watch` | `archive` | 事件已完全兑现或无后续 | 财报季结束，无新催化剂 |
+
+### 重点跟踪类型
+
+**必须持续跟踪的 S/A 级记录：**
+- 财报业绩（`type: 财报业绩`）：后续股价反应、分析师评级调整
+- 重大投资/扩产（`type: 公司公告/政策事件`）：实际开工、设备订单、产能释放
+- 出口管制/政策（`type: 政策监管/政策事件`）：后续执行细节、企业应对、市场反应
+- HBM 供应紧张（`type: 市场消息`）：价格变动、客户订单、产能释放
+- 云厂商 Capex（`type: 产业链跟踪`）：后续季度指引、实际支出、服务器出货量
+
+### 执行示例
+
+原记录：
+```json
+{
+  "id": "2026-06-29-south-korea-mega-chip-cluster",
+  "date": "2026-06-29",
+  "importance": "S",
+  "pricing_status": "unpriced",
+  "reaction_type": "undervalued",
+  "action": "deep_tracking",
+  "review_date": "2026-07-06"
+}
+```
+
+一周后搜索发现：韩国存储股因该计划上涨 12%，设备商订单增加 → 更新为：
+```json
+{
+  "pricing_status": "partial",
+  "reaction_type": "instant",
+  "action": "watch",
+  "review_date": "2026-07-13",
+  "review_note": "7/1 韩国存储股涨 12%，AMAT/Lam 设备订单增加，市场开始反应但项目未实际开工"
+}
+```
+
+### 一句话给执行者
+
+**S/A 级未反应事件是情报库最有价值的部分。每次冷启动都要检查这些记录的市场反应状态，及时更新 pricing_status 和 reaction_type。不要只关注新增记录，忽略已有记录的跟踪维护。**
+
 ## 输出
 - 仓库：`Jareddeng/memory-visualization-dashboard`
 - 文件：`content/intel/clawbot_intel.json`
@@ -274,3 +358,40 @@
 - isolated session 中 `git push` 成功但本地 working tree 仍有修改 → 后续任务会基于旧状态工作，导致数据丢失
 - `git push` 返回成功但网络问题导致实际未推送 → 必须通过 `git log origin/main` 核实
 - 多人/多任务同时操作仓库 → 先 pull 再处理冲突
+
+## IMA 笔记与知识库（冷启动可用）
+
+**IMA 已配置，冷启动时可直接使用。** 凭证通过环境变量注入，无需额外配置。
+
+### 使用场景
+
+**场景 1：重要情报摘要存档**
+- 搜索到 S/A 级重要新闻后，同步写入 IMA 笔记作为备份和快速检索
+- 用法：调用 ima-skills `notes/import_doc` 创建摘要笔记
+- 标题格式：`[情报] YYYY-MM-DD 主题`
+- 内容包含：title、source、impact、pricing_status、transmission_path、url
+
+**场景 2：知识库文档收集**
+- 搜索到高质量研报/白皮书/行业分析时，上传 PDF 到 IMA 知识库
+- 用法：调用 ima-skills `knowledge-base/create_media` → COS 上传 → `add_knowledge`
+- 便于后续跨文档检索和问答
+
+**场景 3：跟踪记录速记**
+- S/A 级事件状态更新时，在 IMA 笔记中记录跟踪日志
+- 便于人工快速查阅历史跟踪轨迹
+
+### 调用方式
+
+```bash
+# 笔记操作（读取 notes/SKILL.md 获取完整 API）
+node skills/ima-skills/ima_api.cjs "openapi/import_doc" '{"title":"[情报] 2026-07-01 HBM供应","content":"...","content_format":1}'
+
+# 知识库操作（读取 knowledge-base/SKILL.md 获取完整 API）
+node skills/ima-skills/ima_api.cjs "openapi/create_media" '{"title":"report.pdf","file_name":"report.pdf"}'
+```
+
+### 优先级
+
+- **主流程**：GitHub 仓库写入永远是第一优先级，IMA 为辅助备份
+- IMA 操作失败不影响主流程，记录错误后继续
+- 仅在处理 S/A 级记录时启用 IMA 同步，B/C 级可选

@@ -131,3 +131,99 @@ data.records.forEach(r => {
 - 只允许 `http://` 或 `https://`。
 - 不要填网盘、本地文件路径、聊天记录截图路径。
 - 如果只有来源名称没有可打开页面，保留 `source`，不要伪造 `url`。
+
+## 状态字段生命周期与冷启动维护（S/A 级事件跟踪）
+
+**核心原则：情报的价值取决于"市场是否已反应"和"反应程度如何"。S/A 级未反应事件是情报库最有价值的部分，每次冷启动必须扫描并更新。**
+
+### 状态字段定义
+
+| 字段 | 定义 | 允许值 | 状态转换规则 |
+|------|------|--------|-------------|
+| `pricing_status` | 市场定价状态 | `unpriced` / `partial` / `priced` / `overpriced` / `failed` | `unpriced`→`partial`→`priced`（按市场反应程度递进） |
+| `reaction_type` | 市场反应类型 | `instant` / `undervalued` / `sentiment` / `archive` | `undervalued`→`sentiment`→`instant`（市场从低估到反应） |
+| `action` | 跟踪动作 | `alert` / `watch` / `deep_tracking` / `archive` | `deep_tracking`→`watch`→`archive`（按跟踪深度递减） |
+| `review_date` | 下次复核日期 | ISO 日期（YYYY-MM-DD）| 根据事件进展动态顺延 |
+| `review_note` | 复核说明 | 字符串 | 记录状态变更原因和市场反应证据 |
+
+### 状态转换触发条件
+
+**`pricing_status` 转换：**
+- `unpriced` → `partial`：市场开始讨论，股价/价格有轻微反应（如财报后首日涨 5%）
+- `partial` → `priced`：市场充分反应，价格已反映预期（如财报后一周涨 30%，分析师上调目标价）
+- `priced` → `overpriced`：市场过度反应，存在回调风险（如股价涨 200%+，基本面不支持）
+- 任何状态 → `failed`：事件被证伪或预期落空（如投资计划取消、财报不及预期）
+
+**`reaction_type` 转换：**
+- `undervalued` → `sentiment`：市场开始关注，情绪面有变化但价格未动
+- `sentiment` → `instant`：市场突然意识到重要性，价格快速反应（如出口管制消息发布后暴涨）
+- `instant` → `archive`：事件已完全兑现，无后续催化剂
+
+**`action` 转换：**
+- `deep_tracking` → `watch`：事件已部分兑现，需继续观察（如投资计划宣布后股价已涨，但项目未开工）
+- `watch` → `archive`：事件已完全兑现或无后续（如财报季结束，无新催化剂）
+- `alert` → `watch`：紧急事件已得到市场初步反应，进入持续观察期
+
+### 冷启动扫描规则（必须执行）
+
+**Step 1: 筛选待跟踪记录**
+```javascript
+const trackRecords = data.records.filter(r => 
+  (r.importance === 'S' || r.importance === 'A') &&
+  (r.pricing_status === 'unpriced' || r.pricing_status === 'partial') &&
+  (r.action === 'alert' || r.action === 'watch' || r.action === 'deep_tracking')
+);
+```
+
+**Step 2: 搜索市场反应更新**
+- 对这些记录的主题进行定向搜索，检查是否有新的市场反应：
+  - 股价变动（相关公司股价是否已反映该事件）
+  - 行业确认（是否有后续报道、分析师报告、公司公告确认）
+  - 价格变动（DRAM/NAND/HBM 现货/合约价是否受影响）
+  - 订单/产能变化（是否有新的订单、扩产、长协签署）
+
+**Step 3: 更新状态字段**
+- 如果发现市场已开始反应，更新对应字段并添加 `review_note`
+- `review_date` 顺延到新的复核日期（通常 +7 天或 +30 天）
+
+**Step 4: 添加后续记录（如需要）**
+- 如果事件有重要进展，新增一条记录：
+  - 新记录 `id` 加后缀（如 `-update`、`-confirmed`）
+  - `related_ids` 指向原记录
+  - 原记录保留作为历史快照
+
+### 重点跟踪类型（必须维护）
+
+| 类型 | 跟踪指标 | 状态更新触发 |
+|------|---------|-------------|
+| 财报业绩 | 股价反应、分析师评级调整 | 财报后 1-7 天 |
+| 重大投资/扩产 | 实际开工、设备订单、产能释放 | 宣布后 30-90 天 |
+| 出口管制/政策 | 后续执行细节、企业应对、市场反应 | 政策发布后 7-30 天 |
+| HBM 供应紧张 | 价格变动、客户订单、产能释放 | 持续跟踪 |
+| 云厂商 Capex | 后续季度指引、实际支出、服务器出货量 | 季度财报期 |
+
+### 维护示例
+
+原记录：
+```json
+{
+  "id": "2026-06-29-south-korea-mega-chip-cluster",
+  "date": "2026-06-29",
+  "importance": "S",
+  "pricing_status": "unpriced",
+  "reaction_type": "undervalued",
+  "action": "deep_tracking",
+  "review_date": "2026-07-06"
+}
+```
+
+一周后搜索发现：韩国存储股因该计划上涨 12%，设备商订单增加 → 更新为：
+```json
+{
+  "pricing_status": "partial",
+  "reaction_type": "instant",
+  "action": "watch",
+  "review_date": "2026-07-13",
+  "review_note": "7/1 韩国存储股涨 12%，AMAT/Lam 设备订单增加，市场开始反应但项目未实际开工"
+}
+```
