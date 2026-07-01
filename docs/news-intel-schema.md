@@ -62,6 +62,41 @@ content/intel/clawbot_intel.json
 
 **验证方法：** 写入 JSON 后，在本地运行 `node scripts/generate-data.mjs` 测试。如果报 `Error: 情报 xxx 无效`，立即修复对应字段。
 
+## 自动修复（冷启动时执行）
+
+每次写入新记录前，必须执行以下自动修复脚本，扫描并修复所有现有记录中的无效枚举值：
+
+```javascript
+const allowed = {
+  impact: ['bullish', 'bearish', 'neutral'],
+  reaction_type: ['instant', 'undervalued', 'sentiment', 'archive'],
+  pricing_status: ['unpriced', 'partial', 'priced', 'overpriced', 'failed'],
+  horizon: ['intraday', '1d', '1w', '1m', '1q', 'longer'],
+  confidence: ['high', 'medium', 'low'],
+  action: ['alert', 'watch', 'deep_tracking', 'archive']
+};
+const mappings = {
+  reaction_type: { watch: 'archive', overvalued: 'sentiment', neutral: 'sentiment', underappreciated: 'undervalued' },
+  pricing_status: { none: 'unpriced' },
+  impact: { mixed: 'neutral' },
+  action: { monitor: 'watch' },
+  horizon: { '1y': 'longer', '2q': '1q', '6m': '1q', '3m': '1q' }
+};
+
+// 扫描并修复
+data.records.forEach(r => {
+  for (const [field, values] of Object.entries(allowed)) {
+    const v = r[field];
+    if (v && !values.includes(v)) {
+      const mapped = mappings[field]?.[v];
+      if (mapped) r[field] = mapped;
+    }
+  }
+});
+```
+
+**修复后必须重新运行 `node scripts/generate-data.mjs` 验证。**
+
 ## 来源分级（冷启动必须遵守）
 
 **核心规则：优先英文原文，无英文原文时需在白名单媒体中交叉验证。**
