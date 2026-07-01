@@ -178,7 +178,7 @@
       "impact": "bullish",
       "importance": "A",
       "reaction_type": "undervalued",
-      "pricing_status": "partial",
+      "pricing_status": "priced",
       "horizon": "1m",
       "title": "Samsung HBM4销售额 reportedly 突破$1B，SK Hynix放缓HBM4扩产",
       "product": "HBM4 / Samsung / SK Hynix",
@@ -187,8 +187,9 @@
       "summary": "TrendForce报道Samsung HBM4产品在推出四个月内销售额突破10亿美元。同时，SK Hynix reportedly 放缓HBM4扩产节奏，优先保障DDR5利润。两大巨头在HBM4策略上出现分化：Samsung全力冲刺，SK Hynix选择利润优先。",
       "transmission_path": "Samsung HBM4快速放量验证其产品竞争力恢复，可能改变HBM市场格局（此前SK Hynix占54%份额）。SK Hynix放缓HBM4扩产可能缓解短期HBM供给过剩担忧，但也给Samsung追赶机会。对NVIDIA供应商多元化有利。",
       "confidence": "medium",
-      "action": "deep_tracking",
-      "review_date": "2026-09-23"
+      "action": "watch",
+      "review_date": "2026-07-01",
+      "review_note": "Updated 2026-07-01: Samsung HBM4 >$1B sales confirmed by multiple Tier 1 sources (Yonhap, TechTimes, TrendForce). Market has reacted. Pricing_status: partial->priced."
     },
     {
       "id": "2026-06-23-jedec-sphbm4-standard",
@@ -2304,7 +2305,9 @@
         "美光",
         "认证",
         "量产"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "watch"
     },
     {
       "id": "2026-06-15-rubin-component-shortage-hbm4-dram-mlcc",
@@ -2338,7 +2341,9 @@
         "MLCC",
         "交期",
         "短缺"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "watch"
     },
     {
       "id": "2026-06-05-hbm4-spec-war-nvidia-revision-delay",
@@ -2372,7 +2377,9 @@
         "三星",
         "美光",
         "推迟"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "watch"
     },
     {
       "id": "2026-03-17-micron-excluded-vera-rubin-hbm4",
@@ -2404,7 +2411,9 @@
         "NVIDIA",
         "设计席位",
         "份额"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "watch"
     },
     {
       "id": "2026-06-17-jp-morgan-wfe-forecast-upgrade",
@@ -2435,7 +2444,9 @@
         "DRAM",
         "foundry",
         "capex"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "watch"
     },
     {
       "id": "2026-06-10-omdia-semiconductor-market-319b-q1",
@@ -2465,7 +2476,9 @@
         "memory",
         "收入",
         "supercycle"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "watch"
     },
     {
       "id": "2026-06-05-sia-global-chip-sales-april-110b",
@@ -2495,7 +2508,9 @@
         "4月",
         "同比",
         "全年预测"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "watch"
     },
     {
       "id": "2026-06-18-ymtc-ipo-star-market-xtacking-license",
@@ -2527,7 +2542,9 @@
         "IPO",
         "Xtacking",
         "三星"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "archive"
     },
     {
       "id": "2026-05-05-byd-adas-memory-cost-surge",
@@ -2558,7 +2575,9 @@
         "DDR5",
         "ADAS",
         "成本传导"
-      ]
+      ],
+      "confidence": "medium",
+      "action": "archive"
     },
     {
       "id": "2026-06-27-korea-may-exports-dram-370pct-nand-207pct",
@@ -3946,6 +3965,28 @@
       "confidence": "medium",
       "action": "deep_tracking",
       "review_date": "2026-09-30"
+    },
+    {
+      "id": "2026-06-23-samsung-ufs5-announcement",
+      "date": "2026-06-23",
+      "type": "产品发布",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "title": "Samsung发布全球首款UFS 5.0存储芯片：顺序读写10.8/9.5GB/s，2026 Q4量产",
+      "product": "UFS 5.0 / NAND Flash / Samsung",
+      "source": "Samsung Newsroom / SamMobile",
+      "url": "https://news.samsung.com/global/samsung-unveils-industrys-fastest-ufs-5-0-solution-for-next-gen-on-device-ai-applications",
+      "summary": "Samsung发布业界首款UFS 5.0嵌入式存储解决方案，顺序读取速度达10.8GB/s，顺序写入9.5GB/s，较UFS 4.1翻倍。能效提升>40%，封装缩小16.7%，最高容量1TB。计划2026年Q4量产，面向旗舰手机、XR头显、AI可穿戴及智能汽车。基于JEDEC最新标准，采用MIPI M-PHY v6.0和UniPro v3.0技术。",
+      "transmission_path": "UFS 5.0性能翻倍→端侧AI设备存储需求升级→旗舰手机/XR/汽车NAND容量和性能需求提升→推动NAND产品结构向高密度/高性能升级→对NAND价格形成长期支撑。Samsung率先发布巩固其在嵌入式存储领域领先地位。",
+      "related_ids": [
+        "2026-06-23-samsung-hbm4-1b-sales"
+      ],
+      "review_date": "2026-07-01",
+      "confidence": "high",
+      "action": "watch"
     }
   ]
 }

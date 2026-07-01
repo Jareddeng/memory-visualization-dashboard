@@ -115,6 +115,82 @@
       "review_date": "2026-10-01"
     },
     {
+      "id": "2026-06-30-memory-class-action-lawsuit",
+      "type": "政策监管",
+      "impact": "bearish",
+      "date": "2026-06-30",
+      "title": "三星、SK海力士、美光因涉嫌操纵内存价格遭美国集体诉讼",
+      "product": "Samsung / SK Hynix / Micron / DRAM / NAND",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2412290",
+      "summary": "随着全球内存短缺危机加剧，美国消费者和小型企业已采取法律行动。全球最大三家内存供应商三星、SK海力士和美光因涉嫌操纵内存价格并限制全球供应而遭到集体诉讼。诉讼可能对三家公司的美国业务和声誉造成负面影响。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "集体诉讼 → 潜在巨额赔偿和法律风险 → 若判决不利，可能迫使厂商增加供应或调整定价策略 → 短期情绪偏空，但长期对AI需求基本面无实质影响 → 关注诉讼进展和和解可能性",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-09-30"
+    },
+    {
+      "id": "2026-06-30-roundhill-memory-etf-gigadevice",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-06-30",
+      "title": "Roundhill Memory ETF首次纳入A股存储龙头兆易创新，为第八大重仓股",
+      "product": "GigaDevice / DRAM / NAND / 存储ETF",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2412290",
+      "summary": "全球首只内存领域主动管理型ETF——Roundhill Memory ETF（DRAM）近日进行调仓，首次将A股存储龙头兆易创新纳入投资组合，为第八大重仓股。兆易创新是中国领先的存储芯片设计企业，此举反映国际资本对中国存储产业竞争力的认可。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "transmission_path": "国际ETF纳入中国存储标的 → 增量外资配置需求 → 中国存储企业估值获国际对标 → 对兆易创新股价有直接支撑，对江波龙/佰维等同类企业有情绪带动",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-07-30"
+    },
+    {
+      "id": "2026-06-30-longsys-mssd-1m-capacity",
+      "type": "公司公告",
+      "impact": "bullish",
+      "date": "2026-06-30",
+      "title": "江波龙宣布完成mSSD月产能百万级交付能力建设",
+      "product": "江波龙 / mSSD / NAND / SSD",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2412838",
+      "summary": "江波龙6月30日宣布mSSD高速存储介质产能迎来重要里程碑，公司已建设完成mSSD月产能百万级交付能力，具备稳定且规模化量产交付条件，可充分匹配市场增量需求，后续产能仍具备持续扩容、翻倍释放的空间。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1m",
+      "transmission_path": "江波龙mSSD产能达百万级/月 → 中国本土SSD供应能力提升 → 匹配AI PC和数据中心增量需求 → 对高端NAND需求增加 → 但对全球NAND价格直接影响有限（江波龙为模组厂，非原厂） → 更值得关注的是其主控芯片和封测能力对国产供应链的带动",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-07-30"
+    },
+    {
+      "id": "2026-06-30-samsung-2655-trillion-krw-investment",
+      "type": "公司公告",
+      "impact": "neutral",
+      "date": "2026-06-30",
+      "title": "三星宣布投资计划总额达2,655万亿韩元，半导体产业集群投资2,030万亿韩元",
+      "product": "Samsung / DRAM / NAND / HBM",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2412290",
+      "summary": "三星宣布投资计划总额达2,655万亿韩元（约合11.68万亿元人民币），将在韩国龙仁市和平泽市的半导体产业集群投资2,030万亿韩元。此举为韩国政府三大跃进巨型项目的后续落地，显示三星对长期AI存储需求的承诺。",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "transmission_path": "三星巨额投资计划 → 长期HBM/DRAM/NAND产能大幅增加 → 2028年后供给压力上升 → 但短期2-3年为规划/基建阶段，对当前供需无实质影响 → 需跟踪实际开工和投产进度 → 若执行超预期，将提前压制远期存储价格预期",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "review_date": "2026-09-30"
+    },
+    {
       "id": "2026-06-29-micron-100b-sca-ceiling-effect",
       "type": "行业分析",
       "impact": "neutral",
@@ -283,6 +359,44 @@
       "transmission_path": "终端涨价→消费端需求可能受抑→但存储厂商已将产能转向高利润HBM/企业级产品→消费级DRAM/NAND供给反而更紧张→OEM被迫涨价或降规→存储价格传导机制确认→对原厂是利好（利润率维持），对下游是压力",
       "confidence": "high",
       "action": "watch",
+      "review_date": "2026-09-29"
+    },
+    {
+      "id": "2026-06-29-micron-ramageddon-market-cap-1-27t",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-06-29",
+      "title": "Micron市值突破$1.27万亿，RAMageddon供应危机预计持续至2027年",
+      "product": "Micron / HBM / DRAM / NAND",
+      "source": "TechCrunch",
+      "url": "https://techcrunch.com/2026/06/28/why-wall-street-thinks-us-memory-maker-micron-is-the-next-nvidia/",
+      "summary": "Micron Q3 FY2026营收$414.5亿（同比翻四倍），利润$282亿。Q4指引$490-510亿。市值一度接近$1.27万亿，股价单月暴涨236%至$1132。市场称当前内存危机为RAMageddon，AI服务器需求导致DRAM/NAND严重短缺，已影响苹果产品和Xbox主机供应。Micron已与Nvidia、Anthropic等签署16项战略客户协议，长期合约锁定未来需求。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "transmission_path": "Micron业绩爆炸 + RAMageddon概念 → 市场确认AI内存超级周期强度 → 存储价格持续上行预期强化 → 但股价已涨236%/月，卖新闻风险上升 → 设备商（AMAT/Lam/ASML）和原材料供应商同步受益",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-07-06"
+    },
+    {
+      "id": "2026-06-29-china-state-council-ai-cluster",
+      "type": "政策事件",
+      "impact": "bullish",
+      "date": "2026-06-29",
+      "title": "国常会：加力推进AI创新突破，加快超大规模智算集群建设",
+      "product": "AI算力 / 智算中心 / DRAM / NAND / HBM",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2412070",
+      "summary": "国务院总理李强6月29日主持召开国务院常务会议，会议指出要加力推进人工智能创新突破，加快关键技术攻关和超大规模智算集群建设，强化高质量数据供给，加强人才、资金等要素保障，支持企业开展基础研究和前沿探索。要深入实施人工智能+行动，促进智能产品和服务加快规模化商业应用。",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "国常会部署智算集群建设 → 中国AI算力投资加速 → 对DRAM/NAND/HBM的增量需求 → 尤其利好国产存储和服务器供应链 → 但需关注实际资金落地和项目进度，政策信号到需求释放存在时滞",
+      "confidence": "high",
+      "action": "deep_tracking",
       "review_date": "2026-09-29"
     },
     {
@@ -723,25 +837,6 @@
       "review_date": "2026-07-24"
     },
     {
-      "id": "2026-06-24-micron-q3-fy26-record-earnings",
-      "type": "财报业绩",
-      "impact": "bullish",
-      "date": "2026-06-24",
-      "title": "Micron Q3 FY2026 营收$41.46B同比增346%，毛利率84.9%创历史新高",
-      "product": "Micron / HBM / DRAM / NAND",
-      "source": "Micron 官方财报 / Futurum Research / The Next Web",
-      "url": "https://futurumgroup.com/insights/micron-q3-fy-2026-hbm-and-lpdram-drive-the-next-phase-of-ai-memory-growth/",
-      "summary": "Micron FY2026 Q3营收$41.46B（YoY+346%），Non-GAAP EPS $25.11，毛利率84.9%创历史新高。Q4指引营收$50B。HBM4营收已超$1B，2026全年HBM产能售罄并签有多年合约。16项Strategic Customer Agreements锁定约$100B最低收入。",
-      "importance": "S",
-      "reaction_type": "instant",
-      "pricing_status": "priced",
-      "horizon": "1d",
-      "transmission_path": "Micron业绩大超预期→AI内存需求结构性确认→HBM4爬坡速度为HBM3E两倍→多年合约改变行业周期模式→资本开支提升至$25B+但新产能2028年前无法释放→供给硬约束持续→对SK Hynix/Samsung有对标效应。",
-      "confidence": "high",
-      "action": "alert",
-      "review_date": "2026-07-24"
-    },
-    {
       "id": "2026-06-24-sk-hynix-nasdaq-adr-29bn",
       "type": "公司公告",
       "impact": "bullish",
@@ -848,12 +943,12 @@
       "summary": "TrendForce报道Samsung HBM4产品在推出四个月内销售额突破10亿美元。同时，SK Hynix reportedly 放缓HBM4扩产节奏，优先保障DDR5利润。两大巨头在HBM4策略上出现分化：Samsung全力冲刺，SK Hynix选择利润优先。",
       "importance": "A",
       "reaction_type": "undervalued",
-      "pricing_status": "partial",
+      "pricing_status": "priced",
       "horizon": "1m",
       "transmission_path": "Samsung HBM4快速放量验证其产品竞争力恢复，可能改变HBM市场格局（此前SK Hynix占54%份额）。SK Hynix放缓HBM4扩产可能缓解短期HBM供给过剩担忧，但也给Samsung追赶机会。对NVIDIA供应商多元化有利。",
       "confidence": "medium",
-      "action": "deep_tracking",
-      "review_date": "2026-09-23"
+      "action": "watch",
+      "review_date": "2026-07-01"
     },
     {
       "id": "2026-06-23-jedec-sphbm4-standard",
@@ -911,6 +1006,25 @@
       "confidence": "medium",
       "action": "deep_tracking",
       "review_date": "2026-07-23"
+    },
+    {
+      "id": "2026-06-23-samsung-ufs5-announcement",
+      "type": "产品发布",
+      "impact": "bullish",
+      "date": "2026-06-23",
+      "title": "Samsung发布全球首款UFS 5.0存储芯片：顺序读写10.8/9.5GB/s，2026 Q4量产",
+      "product": "UFS 5.0 / NAND Flash / Samsung",
+      "source": "Samsung Newsroom / SamMobile",
+      "url": "https://news.samsung.com/global/samsung-unveils-industrys-fastest-ufs-5-0-solution-for-next-gen-on-device-ai-applications",
+      "summary": "Samsung发布业界首款UFS 5.0嵌入式存储解决方案，顺序读取速度达10.8GB/s，顺序写入9.5GB/s，较UFS 4.1翻倍。能效提升>40%，封装缩小16.7%，最高容量1TB。计划2026年Q4量产，面向旗舰手机、XR头显、AI可穿戴及智能汽车。基于JEDEC最新标准，采用MIPI M-PHY v6.0和UniPro v3.0技术。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "UFS 5.0性能翻倍→端侧AI设备存储需求升级→旗舰手机/XR/汽车NAND容量和性能需求提升→推动NAND产品结构向高密度/高性能升级→对NAND价格形成长期支撑。Samsung率先发布巩固其在嵌入式存储领域领先地位。",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-01"
     },
     {
       "id": "2026-06-22-micron-hbm-sold-out-1t",
@@ -1193,8 +1307,8 @@
       "pricing_status": "unpriced",
       "horizon": "longer",
       "transmission_path": "YMTC上市融资 + 扩产 → 长期NAND供给增加 → 但短期受限于设备和出口管制 → 对全球NAND pricing影响有限，主要供应中国本土 → 三星获得Xtacking技术可能提升其NAND竞争力",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "archive",
       "review_date": ""
     },
     {
@@ -1231,8 +1345,8 @@
       "pricing_status": "partial",
       "horizon": "1q",
       "transmission_path": "WFE forecast upgrade → 设备订单增加 → 2027-2028新增DRAM/NAND产能可期 → 但短期产能仍紧张，2027年前供需缺口难弥合 → 支撑memory pricing power",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "watch",
       "review_date": ""
     },
     {
@@ -1345,8 +1459,8 @@
       "pricing_status": "partial",
       "horizon": "1q",
       "transmission_path": "Rubin/MI450 HBM4需求激增 → 原厂将wafer产能从commodity DRAM/NAND转向HBM → 通用DRAM/NAND supply收紧 → 企业级DDR5/SSD价格上涨 → 交期延长影响下游采购节奏",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "watch",
       "review_date": ""
     },
     {
@@ -1630,8 +1744,8 @@
       "pricing_status": "partial",
       "horizon": "1m",
       "transmission_path": "Q1半导体收入历史新高 → 内存贡献80%环比增长 → 确认supercycle强度 → 支撑全年memory pricing预期 → 下游库存回补意愿增强",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "watch",
       "review_date": ""
     },
     {
@@ -1839,8 +1953,8 @@
       "pricing_status": "partial",
       "horizon": "1m",
       "transmission_path": "HBM4认证量产 → HBM4 supply ramp加速 → 但spec revision导致良率爬坡需要时间 → 短期HBM4仍紧张，支撑HBM/DDR5定价 → HBM4单价$500/stack，市场2028年达$1000亿",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "watch",
       "review_date": ""
     },
     {
@@ -1858,8 +1972,8 @@
       "pricing_status": "partial",
       "horizon": "1q",
       "transmission_path": "HBM4 spec revision → 三厂重新设计/验证周期延长 → HBM4量产推迟 → 短期HBM3E需求被进一步放大 → HBM3E价格维持高位 → 同时拉动DDR5 enterprise需求",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "watch",
       "review_date": ""
     },
     {
@@ -1877,8 +1991,8 @@
       "pricing_status": "partial",
       "horizon": "1m",
       "transmission_path": "4月销售额同比+93.9% → memory supercycle确认 → 全年$1.5T+指引 → 强化memory pricing预期 → 推动上游capex和扩产决策",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "watch",
       "review_date": ""
     },
     {
@@ -2675,8 +2789,8 @@
       "pricing_status": "partial",
       "horizon": "1m",
       "transmission_path": "AI服务器内存需求挤压汽车/工业供应 → 汽车级DDR4/DDR5涨价 → 下游车企提价 → 内存成本波动传导至终端市场 → 强化memory strategic resource定位",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "archive",
       "review_date": ""
     },
     {
@@ -3112,8 +3226,8 @@
       "pricing_status": "partial",
       "horizon": "1q",
       "transmission_path": "美光失去Vera Rubin高端socket → HBM4 revenue growth略逊于竞争对手 → 但2026 HBM4 sold out仍支撑整体定价 → 需关注HBM4E(48GB 16H)进展能否收复失地",
-      "confidence": "",
-      "action": "",
+      "confidence": "medium",
+      "action": "watch",
       "review_date": ""
     },
     {
