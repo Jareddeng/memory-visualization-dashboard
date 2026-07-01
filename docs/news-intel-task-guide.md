@@ -358,3 +358,40 @@
 - isolated session 中 `git push` 成功但本地 working tree 仍有修改 → 后续任务会基于旧状态工作，导致数据丢失
 - `git push` 返回成功但网络问题导致实际未推送 → 必须通过 `git log origin/main` 核实
 - 多人/多任务同时操作仓库 → 先 pull 再处理冲突
+
+## IMA 笔记与知识库（冷启动可用）
+
+**IMA 已配置，冷启动时可直接使用。** 凭证通过环境变量注入，无需额外配置。
+
+### 使用场景
+
+**场景 1：重要情报摘要存档**
+- 搜索到 S/A 级重要新闻后，同步写入 IMA 笔记作为备份和快速检索
+- 用法：调用 ima-skills `notes/import_doc` 创建摘要笔记
+- 标题格式：`[情报] YYYY-MM-DD 主题`
+- 内容包含：title、source、impact、pricing_status、transmission_path、url
+
+**场景 2：知识库文档收集**
+- 搜索到高质量研报/白皮书/行业分析时，上传 PDF 到 IMA 知识库
+- 用法：调用 ima-skills `knowledge-base/create_media` → COS 上传 → `add_knowledge`
+- 便于后续跨文档检索和问答
+
+**场景 3：跟踪记录速记**
+- S/A 级事件状态更新时，在 IMA 笔记中记录跟踪日志
+- 便于人工快速查阅历史跟踪轨迹
+
+### 调用方式
+
+```bash
+# 笔记操作（读取 notes/SKILL.md 获取完整 API）
+node skills/ima-skills/ima_api.cjs "openapi/import_doc" '{"title":"[情报] 2026-07-01 HBM供应","content":"...","content_format":1}'
+
+# 知识库操作（读取 knowledge-base/SKILL.md 获取完整 API）
+node skills/ima-skills/ima_api.cjs "openapi/create_media" '{"title":"report.pdf","file_name":"report.pdf"}'
+```
+
+### 优先级
+
+- **主流程**：GitHub 仓库写入永远是第一优先级，IMA 为辅助备份
+- IMA 操作失败不影响主流程，记录错误后继续
+- 仅在处理 S/A 级记录时启用 IMA 同步，B/C 级可选
