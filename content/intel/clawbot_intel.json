@@ -1,6 +1,26 @@
 {
   "records": [
     {
+      "id": "2026-07-02-chip-stocks-profit-taking-selloff",
+      "date": "2026-07-02",
+      "type": "市场异动",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "title": "半导体芯片股大幅回调，投资者获利了结",
+      "product": "半导体 / 芯片 / 存储 / 设备",
+      "source": "Charles Schwab",
+      "url": "https://www.schwab.com/learn/story/stock-market-update-open",
+      "summary": "7月1日，主要芯片制造商股价大幅回调，投资者获利了结。Sandisk、Micron、Applied Materials、Lam Research均下跌约10%，Intel和Marvell下跌约9%。PHLX半导体指数(SOX)下跌6.7%，此前在第二季度几乎翻倍。Schwab指出这是市场轮动背景下芯片股经历大幅上涨后的正常获利回吐。",
+      "transmission_path": "芯片股大幅回调 → 短期市场情绪恶化 → 相关半导体公司股价承压 → 但基本面未变，长期AI需求仍支撑行业增长。需关注是否为短期调整还是趋势反转信号。",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-03",
+      "review_note": ""
+    },
+    {
       "id": "2025-08-01-korea-us-350b-investment",
       "date": "2025-08-01",
       "type": "重大事件",
