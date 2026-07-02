@@ -170,6 +170,7 @@ src/styles.css -> .capacity-*
 - 优先补真实产能口径：wafer starts/month、HBM stacks/month、bit output 或公司披露的等效口径。
 - 不要用百分比替代真实产能；实在没有真实数据时，`value` 用 `null`，`display` 写“待补充/待核实”。
 - `current_capacity.unit` 和 `target_capacity.unit` 必须一致，除非页面明确标注不同口径。
+- 若要画清楚“原有产能 vs 扩产后产能”，优先维护 `facilities` 数组：`stage: "base"` 表示已有大工厂，`stage: "expansion"` 表示新建工厂或原有工厂增产；页面会自动按工厂颜色画堆积柱并加总。
 - `evidence` 至少包含 `date`、`label`、`detail`、`source`。
 - 如果有原文链接，后续可给 `evidence` 增加 `url` 字段，再在页面上做可点击来源。
 

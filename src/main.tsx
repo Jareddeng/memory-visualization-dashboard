@@ -148,6 +148,16 @@ type TrackerPayload = {
       bottleneck: string;
       confidence: string;
       status: string;
+      facilities?: Array<{
+        name: string;
+        stage: "base" | "expansion";
+        products: string[];
+        value: number | null;
+        unit: string;
+        display: string;
+        timeline?: string;
+        note?: string;
+      }>;
       evidence?: Array<{
         date: string;
         label: string;
@@ -1377,6 +1387,7 @@ function getCapacitySegmentLabel(status: string) {
 
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
+  const palette = ["#0f766e", "#2563eb", "#d97706", "#7c3aed", "#0ea5e9", "#64748b"];
 
   if (!companies.length) {
     return null;
@@ -1388,17 +1399,37 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
         <div>
           <p className="eyebrow">Capacity Expansion Tracker</p>
           <h2>三大厂扩产能力变化</h2>
-          <p>把“当前产能状态、资本开支、扩产后目标产能、落地时间和瓶颈”压缩到同一张看板里，方便后续按来源复核。</p>
+          <p>先看现有 DRAM / NAND / HBM 工厂底盘，再看新建工厂和原有工厂增产后的总能力。颜色代表不同工厂或项目。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
 
       <div className="capacity-grid">
         {companies.map((company) => {
-          const values = [company.current_capacity.value, company.target_capacity.value].filter((value): value is number => Number.isFinite(value));
+          const facilities = company.facilities ?? [];
+          const baseFacilities = facilities.filter((item) => item.stage === "base");
+          const expansionFacilities = facilities.filter((item) => item.stage === "expansion");
+          const currentFacilities = baseFacilities.length ? baseFacilities : [{
+            name: company.current_capacity.label,
+            stage: "base" as const,
+            products: company.products,
+            value: company.current_capacity.value,
+            unit: company.current_capacity.unit,
+            display: company.current_capacity.display,
+          }];
+          const futureFacilities = facilities.length ? [...baseFacilities, ...expansionFacilities] : [{
+            name: company.target_capacity.label,
+            stage: "expansion" as const,
+            products: company.products,
+            value: company.target_capacity.value,
+            unit: company.target_capacity.unit,
+            display: company.target_capacity.display,
+          }];
+          const currentTotal = sumCapacity(currentFacilities);
+          const futureTotal = sumCapacity(futureFacilities);
+          const hasStackData = currentTotal > 0 || futureTotal > 0;
+          const values = [currentTotal, futureTotal, company.current_capacity.value, company.target_capacity.value].filter((value): value is number => typeof value === "number" && Number.isFinite(value) && value > 0);
           const maxValue = Math.max(...values, 1);
-          const currentWidth = company.current_capacity.value ? Math.max(6, (company.current_capacity.value / maxValue) * 100) : 0;
-          const targetWidth = company.target_capacity.value ? Math.max(6, (company.target_capacity.value / maxValue) * 100) : 0;
           return (
             <article className="capacity-card" id={`capacity-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-company-top">
@@ -1411,22 +1442,23 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
 
               <div className="capacity-bars">
                 <div className="capacity-metric-line">口径：{company.capacity_metric}</div>
-                <div className="capacity-bar-row">
-                  <span>{company.current_capacity.label}</span>
-                  <div className={`capacity-bar-track ${company.current_capacity.value === null ? "empty" : ""}`}>
-                    <i style={{ width: `${currentWidth}%` }} />
-                    <b>{company.current_capacity.display}</b>
+                {hasStackData ? (
+                  <div className="capacity-stack-chart">
+                    <CapacityStackRow label="原有产能" facilities={currentFacilities} maxValue={maxValue} palette={palette} total={currentTotal} />
+                    <CapacityStackRow label="扩产后产能" facilities={futureFacilities} maxValue={maxValue} palette={palette} total={futureTotal} />
                   </div>
-                  <strong>{formatCapacityValue(company.current_capacity)}</strong>
-                </div>
-                <div className="capacity-bar-row target">
-                  <span>{company.target_capacity.label}</span>
-                  <div className={`capacity-bar-track ${company.target_capacity.value === null ? "empty" : ""}`}>
-                    <i style={{ width: `${targetWidth}%` }} />
-                    <b>{company.target_capacity.display}</b>
+                ) : (
+                  <div className="capacity-empty-bars">
+                    <span>等待龙虾补充分工厂真实产能口径后自动生成堆积柱。</span>
+                    <small>{company.current_capacity.display}</small>
+                    <small>{company.target_capacity.display}</small>
                   </div>
-                  <strong>{formatCapacityValue(company.target_capacity)}</strong>
-                </div>
+                )}
+              </div>
+
+              <div className="facility-lists">
+                <FacilityList title="已有大工厂" facilities={baseFacilities} emptyText="待补充已有 DRAM / NAND / HBM 工厂产能" />
+                <FacilityList title="新建 / 增产" facilities={expansionFacilities} emptyText="待补充新建工厂或原厂增产项目" />
               </div>
 
               <div className="capacity-news">
@@ -1453,6 +1485,57 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
       </div>
     </section>
   );
+}
+
+type CapacityFacility = NonNullable<NonNullable<NonNullable<TrackerPayload["expansion_capacity"]>["companies"]>[number]["facilities"]>[number];
+
+function CapacityStackRow({ label, facilities, maxValue, palette, total }: { label: string; facilities: CapacityFacility[]; maxValue: number; palette: string[]; total: number }) {
+  return (
+    <div className="capacity-stack-row">
+      <span>{label}</span>
+      <div className="capacity-stack-track">
+        {facilities.map((facility, index) => {
+          const value = Number(facility.value ?? 0);
+          if (!value) return null;
+          return (
+            <i
+              key={`${label}-${facility.name}`}
+              style={{
+                width: `${Math.max(5, (value / maxValue) * 100)}%`,
+                background: palette[index % palette.length],
+              }}
+              title={`${facility.name}: ${facility.display}`}
+            >
+              {facility.name}
+            </i>
+          );
+        })}
+      </div>
+      <strong>{total ? `${total.toLocaleString()} ${facilities.find((item) => item.unit)?.unit ?? ""}` : "待补充"}</strong>
+    </div>
+  );
+}
+
+function FacilityList({ title, facilities, emptyText }: { title: string; facilities: CapacityFacility[]; emptyText: string }) {
+  return (
+    <div className="facility-list">
+      <div className="facility-list-head">
+        <span>{title}</span>
+        <small>{facilities.length} 项</small>
+      </div>
+      {facilities.length ? facilities.map((facility) => (
+        <div className="facility-item" key={`${title}-${facility.name}`}>
+          <strong>{facility.name}</strong>
+          <span>{facility.display}</span>
+          <small>{facility.products.join(" / ")} · {facility.timeline ?? "时间待补充"}</small>
+        </div>
+      )) : <div className="facility-empty">{emptyText}</div>}
+    </div>
+  );
+}
+
+function sumCapacity(facilities: CapacityFacility[]) {
+  return facilities.reduce((sum, facility) => sum + (Number(facility.value ?? 0) || 0), 0);
 }
 
 function Timeline({ items }: { items: NonNullable<TrackerPayload["hbm4_negotiations"]> }) {
