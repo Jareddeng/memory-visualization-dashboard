@@ -1319,8 +1319,11 @@ function rangePosition(start: number, end: number, minYear: number, maxYear: num
 
 function getCapacityLockState(value: string) {
   const text = String(value || "");
-  if (/售罄|全[年部]|基本|高比例|100%|fully/i.test(text)) {
-    return { label: "产能高锁定", tone: "full", summary: "产能基本锁定" };
+  if (/售罄|sold\s*out|fully\s*sold/i.test(text)) {
+    return { label: "产能已售罄", tone: "soldout", summary: "对应产能已售罄" };
+  }
+  if (/全[年部]|基本|高比例|100%|fully|承诺覆盖|高锁定/i.test(text)) {
+    return { label: "产能高锁定", tone: "full", summary: "产能高比例锁定" };
   }
   if (/中|部分|争取|取决/i.test(text)) {
     return { label: "产能部分锁定", tone: "partial", summary: "产能仍有弹性" };

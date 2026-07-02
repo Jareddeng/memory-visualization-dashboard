@@ -1439,6 +1439,12 @@ td small {
   color: var(--green);
 }
 
+.hbm-capacity-pill.soldout {
+  background: #dff7ef;
+  color: #04785f;
+  box-shadow: inset 0 0 0 1px rgb(4 120 95 / 16%);
+}
+
 .hbm-capacity-pill.partial {
   background: #fff0d6;
   color: #9a5f08;
@@ -1521,6 +1527,11 @@ td small {
 
 .hbm-contract-track i.capacity-lock.full {
   background: linear-gradient(90deg, #0f8a74, #35aa93);
+  color: #fff;
+}
+
+.hbm-contract-track i.capacity-lock.soldout {
+  background: linear-gradient(90deg, #006b5a, #00a381);
   color: #fff;
 }
 
