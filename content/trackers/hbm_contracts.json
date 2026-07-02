@@ -18,6 +18,22 @@
       "stage_index": 4,
       "locked_years": "2025-2030",
       "locked_capacity": "2026 全年 HBM 供给已售罄；未来三年可供给量基本被承诺覆盖",
+      "capacity_lock_segments": [
+        {
+          "start": 2025,
+          "end": 2026,
+          "status": "soldout",
+          "label": "已售罄",
+          "note": "2026 年末前 HBM 供给按当前跟踪口径视为已售罄。"
+        },
+        {
+          "start": 2027,
+          "end": 2030,
+          "status": "full",
+          "label": "高锁定",
+          "note": "2027-2030 为长期承诺/高比例锁量跟踪，不等同于全部售罄。"
+        }
+      ],
       "negotiating": "2027-2028 HBM4 / HBM4E 供货价格与共同投资条款；HBM4E 样品 2026 年内交付",
       "expected_term": "3年以上",
       "expected_capacity": "高比例锁量，优先保障核心 AI 客户；Vera Rubin 平台 HBM4 份额预计 60-70%",
