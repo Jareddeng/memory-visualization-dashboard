@@ -1807,7 +1807,7 @@ function IntelFeed({ records }: { records: IntelRecord[] }) {
           <strong>{record.title}</strong>
           <p>{record.summary}</p>
           <div className="meta-row">
-            <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>
+            <span className={`pill ${normalizedImpact(record.impact)}`}>{impactLabel(record.impact)}</span>
             <span>{record.type}</span>
             <span>{record.date}</span>
           </div>
@@ -1877,7 +1877,7 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
           {filtered.map((record) => (
             <article className={`radar-item ${record.url ? "clickable" : ""}`} key={record.id} role={record.url ? "link" : undefined} tabIndex={record.url ? 0 : undefined} onClick={() => openIntelUrl(record.url)} onKeyDown={(event) => handleIntelUrlKeyDown(event, record.url)}>
               <div>
-                <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>
+                <span className={`pill ${normalizedImpact(record.impact)}`}>{impactLabel(record.impact)}</span>
                 <time>{record.date}</time>
               </div>
               <strong>{record.title}</strong>
@@ -2071,7 +2071,7 @@ function IntelTable({
               <td>{record.date}</td>
               <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
               <td>{record.type}</td>
-              <td><span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span></td>
+              <td><span className={`pill ${normalizedImpact(record.impact)}`}>{impactLabel(record.impact)}</span></td>
               <td>{importanceLabel(record.importance)}</td>
               <td>{reactionTypeLabel(record.reaction_type)}</td>
               <td>{pricingStatusLabel(record.pricing_status)}</td>
@@ -2141,7 +2141,7 @@ function LegacyIntelTable({
               <td>{record.date}</td>
               <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
               <td>{record.type}</td>
-              <td><span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span></td>
+              <td><span className={`pill ${normalizedImpact(record.impact)}`}>{impactLabel(record.impact)}</span></td>
               <td>{importanceLabel(record.importance)}</td>
               <td>{reactionTypeLabel(record.reaction_type)}</td>
               <td>{pricingStatusLabel(record.pricing_status)}</td>
@@ -2452,7 +2452,9 @@ function csvCell(value: unknown) {
 }
 
 function normalizedImpact(value: unknown): IntelRecord["impact"] {
-  if (value === "bullish" || value === "bearish") return value;
+  const normalized = String(value ?? "").trim().toLowerCase();
+  if (["bullish", "positive", "beneficial", "good", "利多", "利好", "看多", "正面"].includes(normalized)) return "bullish";
+  if (["bearish", "negative", "adverse", "bad", "利空", "看空", "负面"].includes(normalized)) return "bearish";
   return "neutral";
 }
 
