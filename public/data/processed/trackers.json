@@ -1,212 +1,150 @@
 {
   "expansion_capacity": {
-    "updated_at": "2026-06-30",
-    "source": "Codex-maintained capacity tracker; updated with SEMI June 2026 report and company disclosures",
-    "metric_note": "真实产能优先使用 wafer starts/month、HBM stacks/month、DRAM/NAND bit output 或公司披露的等效口径。不要用百分比替代真实产能。",
+    "updated_at": "2026-07-02",
+    "source": "User capacity estimate; maintained by Codex/clawbot tracker",
+    "metric_note": "当前图表采用 DRAM 总产能与 NAND 总产能两类，单位为万片/月。DRAM 内部 HBM 与 DDR4+DDR5 只作为说明字段，不在图中拆开，避免用不稳定拆分口径误导横向比较。",
     "companies": [
       {
-        "company": "SK Hynix",
-        "ticker": "000660.KS",
-        "region": "韩国 / 美国",
+        "company": "Samsung Electronics",
+        "ticker": "005930.KS",
+        "region": "韩国 / 中国",
         "products": [
-          "HBM3E / HBM4 / HBM4E",
-          "DDR5 / LPDDR5",
-          "advanced DRAM"
+          "DRAM",
+          "HBM",
+          "DDR4 / DDR5",
+          "NAND"
         ],
-        "capacity_metric": "wafer/month + HBM stack/month + bit output",
+        "capacity_metric": "万片/月；DRAM 与 NAND 两类总产能",
         "current_capacity": {
           "label": "当前产能",
           "value": null,
-          "unit": "wafer/month",
-          "display": "清州 M15X 已投产；HBM 2026 全年售罄；全球 HBM bit output 份额约 50%（2026E，TrendForce）"
+          "unit": "万片/月",
+          "display": "DRAM 总产能约 67.5 万片/月，其中 HBM 约 18.5、DDR4+DDR5 约 29.5；NAND 约 39 万片/月。"
         },
         "target_capacity": {
           "label": "扩产后产能",
           "value": null,
-          "unit": "wafer/month",
-          "display": "龙仁半导体集群（~$15B）2027 年开始分阶段生产；M15X 满产爬坡中"
+          "unit": "万片/月",
+          "display": "扩产后片数暂不估算；后续由龙虾按公司级扩产新闻补充 DRAM/NAND 增量。"
         },
-        "capex": "2026年预计 $20.5B（+17% YoY，TrendForce），聚焦 HBM4 产能扩张和 M15X 建设；~$7.9B ASML EUV 设备订单计划 2027 年前交付",
+        "capex": "后续重点跟踪平泽、P4L、1c DRAM/HBM4 与西安 NAND 相关扩产。当前先使用两类总产能，不拆 DDR4/DDR5 与 HBM。",
         "timeline": "2026-2028",
-        "bottleneck": "先进封装（CoWoS/TSV）、HBM4 良率爬坡、EUV 设备交付、龙仁集群建设进度",
-        "confidence": "中高",
-        "status": "高优先级扩产中：M15X 已投产，龙仁 2027 启动，印第安纳封装厂建设中",
+        "bottleneck": "HBM4 良率、先进封装、客户认证、平泽不同产品线产能拆分",
+        "confidence": "中",
+        "status": "当前产能估算：DRAM 67.5 万片/月，NAND 39 万片/月。",
         "facilities": [
           {
-            "name": "清州 M15 / M16",
-            "stage": "base",
-            "products": [
-              "DRAM",
-              "HBM"
-            ],
-            "value": 60,
-            "unit": "capacity index",
-            "display": "现有先进 DRAM / HBM 底盘，指数占位，待龙虾替换为真实 wafer/month 或 bit output。",
-            "timeline": "现有"
-          },
-          {
-            "name": "无锡 DRAM",
+            "name": "DRAM 总产能",
             "stage": "base",
             "products": [
               "DRAM"
             ],
-            "value": 25,
-            "unit": "capacity index",
-            "display": "现有 DRAM 工厂，指数占位。",
+            "value": 67.5,
+            "unit": "万片/月",
+            "display": "估算当前 DRAM 总产能 67.5 万片/月；内部拆分：HBM 18.5、DDR4+DDR5 29.5。",
             "timeline": "现有"
           },
           {
-            "name": "清州 M15X",
-            "stage": "expansion",
-            "products": [
-              "HBM",
-              "advanced DRAM"
-            ],
-            "value": 35,
-            "unit": "capacity index",
-            "display": "已提前投产并爬坡，主要承接 HBM / 先进 DRAM 扩张。",
-            "timeline": "2026-2027"
-          },
-          {
-            "name": "龙仁集群",
-            "stage": "expansion",
-            "products": [
-              "DRAM",
-              "HBM"
-            ],
-            "value": 60,
-            "unit": "capacity index",
-            "display": "2027 年起分阶段生产，长期扩产主线。",
-            "timeline": "2027+"
-          },
-          {
-            "name": "印第安纳封装",
-            "stage": "expansion",
-            "products": [
-              "HBM packaging"
-            ],
-            "value": 15,
-            "unit": "capacity index",
-            "display": "美国先进封装项目，主要影响 HBM 交付能力。",
-            "timeline": "2027-2028"
-          }
-        ],
-        "evidence": [
-          {
-            "date": "2026-06-29",
-            "label": "SEMI：存储设备投资超级周期",
-            "detail": "SEMI 报告：2026 年全球存储 sector 300mm 设备投资首超 $520亿（+29%），2027 年 $570亿（+11%）；DRAM 设备 $370亿（+29%）。",
-            "source": "SEMI / PRNewswire"
-          },
-          {
-            "date": "2025-12-31",
-            "label": "TrendForce：2026 年 DRAM 资本支出",
-            "detail": "SK Hynix 2026 年 capex 预计 $20.5B（+17% YoY），HBM4 产能扩张于 M15x fab；全球 DRAM 资本支出 $61.3B（+14%）。",
-            "source": "TrendForce / StorageNewsletter"
-          },
-          {
-            "date": "2026-04-28",
-            "label": "HBM 产能与基础设施投资",
-            "detail": "清州 M15X 前端设施（约 $14B）已提前投产；龙仁半导体集群（~$15B）2027 年分阶段生产；美国印第安纳先进封装厂（一期 ~$3.8B）专为 NVIDIA 国内供应。",
-            "source": "AI Vector Ocean / Industry Reports"
-          }
-        ]
-      },
-      {
-        "company": "Samsung Electronics",
-        "ticker": "005930.KS",
-        "region": "韩国 / 美国",
-        "products": [
-          "HBM4 / HBM4E",
-          "DDR5 / LPDDR5",
-          "NAND",
-          "advanced packaging"
-        ],
-        "capacity_metric": "wafer/month + HBM stack/month + bit output",
-        "current_capacity": {
-          "label": "当前产能",
-          "value": null,
-          "unit": "wafer/month",
-          "display": "平泽工厂 HBM4 量产中（2026.02 开始）；1c DRAM 工艺目标 2026 年底 ~150,000 wafers/month；HBM 总产出约 110 亿千兆位/年（2026E）"
-        },
-        "target_capacity": {
-          "label": "扩产后产能",
-          "value": null,
-          "unit": "wafer/month",
-          "display": "HBM4 良率目标 2026 年底 85%；1c 工艺持续扩产；P4L 晶圆产能小幅扩张"
-        },
-        "capex": "2026年预计 $20B（+11% YoY，TrendForce），推进 1C 工艺 HBM 生产和 P4L 小幅扩产；重点在工艺升级而非产能大幅扩张",
-        "timeline": "2026-2028",
-        "bottleneck": "HBM4 良率爬坡（当前 60-70% 热测试）、核心客户份额恢复、先进封装资源分配、1c 工艺成熟度",
-        "confidence": "中",
-        "status": "HBM4 量产中，份额恢复跟踪；重点在良率提升和客户认证",
-        "facilities": [
-          {
-            "name": "平泽 P2/P3",
-            "stage": "base",
-            "products": [
-              "DRAM",
-              "HBM"
-            ],
-            "value": 70,
-            "unit": "capacity index",
-            "display": "现有 DRAM / HBM 主要生产底盘，指数占位。",
-            "timeline": "现有"
-          },
-          {
-            "name": "西安 NAND",
+            "name": "NAND 总产能",
             "stage": "base",
             "products": [
               "NAND"
             ],
-            "value": 35,
-            "unit": "capacity index",
-            "display": "现有 NAND 重要产能，指数占位。",
+            "value": 39,
+            "unit": "万片/月",
+            "display": "估算当前 NAND 总产能 39 万片/月。",
             "timeline": "现有"
           },
           {
-            "name": "1c DRAM 转换",
+            "name": "1c DRAM / HBM4 扩产",
             "stage": "expansion",
             "products": [
-              "HBM4",
               "DRAM"
             ],
-            "value": 30,
-            "unit": "capacity index",
-            "display": "1c 工艺转换和 HBM4 良率爬坡带来可交付能力提升。",
-            "timeline": "2026"
-          },
-          {
-            "name": "P4L / 平泽扩建",
-            "stage": "expansion",
-            "products": [
-              "DRAM",
-              "HBM"
-            ],
-            "value": 25,
-            "unit": "capacity index",
-            "display": "P4L 晶圆产能小幅扩张，重点关注 HBM4 客户认证后放量。",
+            "value": null,
+            "unit": "万片/月",
+            "display": "扩产增量待龙虾按公司级新闻补充，暂不进入柱状图加总。",
             "timeline": "2026-2028"
           }
         ],
         "evidence": [
           {
-            "date": "2026-06-29",
-            "label": "SEMI：存储设备投资增长",
-            "detail": "2026 年存储设备投资同比 +29%，Samsung 继续推进 1C 工艺 HBM 生产。",
-            "source": "SEMI / PRNewswire"
+            "date": "2026-07-02",
+            "label": "当前产能估算口径",
+            "detail": "当前采用用户整理估算：DRAM 总产能 67.5 万片/月，HBM 18.5，DDR4+DDR5 29.5，NAND 39。",
+            "source": "User estimate / to be verified by clawbot"
+          }
+        ]
+      },
+      {
+        "company": "SK Hynix",
+        "ticker": "000660.KS",
+        "region": "韩国 / 中国 / 美国",
+        "products": [
+          "DRAM",
+          "HBM",
+          "DDR4 / DDR5",
+          "NAND"
+        ],
+        "capacity_metric": "万片/月；DRAM 与 NAND 两类总产能",
+        "current_capacity": {
+          "label": "当前产能",
+          "value": null,
+          "unit": "万片/月",
+          "display": "DRAM 总产能约 56.5 万片/月，其中 HBM 约 17.0、DDR4+DDR5 约 27.5；NAND 约 14 万片/月。"
+        },
+        "target_capacity": {
+          "label": "扩产后产能",
+          "value": null,
+          "unit": "万片/月",
+          "display": "扩产后片数暂不估算；后续重点补 M15X、龙仁、无锡及 NAND 相关增量。"
+        },
+        "capex": "后续重点跟踪 M15X、龙仁集群、无锡 DRAM 与 HBM 封装产能。当前先使用 DRAM/NAND 两类总产能。",
+        "timeline": "2026-2028",
+        "bottleneck": "先进封装、HBM4 良率爬坡、EUV 设备交付、龙仁集群建设进度",
+        "confidence": "中",
+        "status": "当前产能估算：DRAM 56.5 万片/月，NAND 14 万片/月。",
+        "facilities": [
+          {
+            "name": "DRAM 总产能",
+            "stage": "base",
+            "products": [
+              "DRAM"
+            ],
+            "value": 56.5,
+            "unit": "万片/月",
+            "display": "估算当前 DRAM 总产能 56.5 万片/月；内部拆分：HBM 17.0、DDR4+DDR5 27.5。",
+            "timeline": "现有"
           },
           {
-            "date": "2025-11-28",
-            "label": "1c DRAM 工艺扩产计划",
-            "detail": "Samsung 1c DRAM 工艺目标 2026 年底达到约 150,000 wafers/month；HBM4 采用 1c 工艺。",
-            "source": "SammyGuru"
+            "name": "NAND 总产能",
+            "stage": "base",
+            "products": [
+              "NAND"
+            ],
+            "value": 14,
+            "unit": "万片/月",
+            "display": "估算当前 NAND 总产能 14 万片/月。",
+            "timeline": "现有"
           },
           {
-            "date": "2026-01-29",
-            "label": "HBM4 量产与良率",
-            "detail": "Samsung 2026 年 2 月开始 HBM4 量产；1c 工艺逻辑芯片良率 90%；热测试良率 60-70%；目标 2026 年底 85%。",
-            "source": "ByteIota"
+            "name": "M15X / 龙仁 DRAM 扩产",
+            "stage": "expansion",
+            "products": [
+              "DRAM"
+            ],
+            "value": null,
+            "unit": "万片/月",
+            "display": "M15X 与龙仁扩产增量待龙虾按公司级新闻补充，暂不进入柱状图加总。",
+            "timeline": "2026-2028"
+          }
+        ],
+        "evidence": [
+          {
+            "date": "2026-07-02",
+            "label": "当前产能估算口径",
+            "detail": "当前采用用户整理估算：DRAM 总产能 56.5 万片/月，HBM 17.0，DDR4+DDR5 27.5，NAND 14。",
+            "source": "User estimate / to be verified by clawbot"
           }
         ]
       },
@@ -215,117 +153,81 @@
         "ticker": "MU",
         "region": "美国 / 日本 / 新加坡 / 台湾",
         "products": [
-          "HBM3E / HBM4 / HBM4E",
           "DRAM",
+          "HBM",
+          "DDR4 / DDR5",
           "NAND"
         ],
-        "capacity_metric": "wafer/month + HBM stack/month + bit output",
+        "capacity_metric": "万片/月；DRAM 与 NAND 两类总产能",
         "current_capacity": {
           "label": "当前产能",
           "value": null,
-          "unit": "wafer/month",
-          "display": "HBM4 2026.03 开始量产；36GB 12H 部件 >11 Gb/s per pin；HBM 2026 全年售罄；FY2026 capex ~$20B"
+          "unit": "万片/月",
+          "display": "DRAM 总产能约 30 万片/月，其中 HBM 约 6.0、DDR4+DDR5 约 14.5；NAND 约 18 万片/月。"
         },
         "target_capacity": {
           "label": "扩产后产能",
           "value": null,
-          "unit": "wafer/month",
-          "display": "Idaho 和 New York 洁净室空间扩建中；新加坡先进封装厂 2027 年贡献 HBM 供应；1-gamma 节点和 G9 NAND 过渡"
+          "unit": "万片/月",
+          "display": "扩产后片数暂不估算；后续重点补 P5、Idaho、New York、Singapore Fab 10B 的 DRAM/NAND 增量。"
         },
-        "capex": "FY2026 capex 提升至 ~$20B（从 $18B），专门用于 HBM 和 1-gamma 产能；2026 年 capex 预计超 $25B；2027 财年建设相关 capex 同比增长超 $10B；新加坡先进封装厂 2027 年贡献",
-        "timeline": "2026-2028",
-        "bottleneck": "产能爬坡、客户份额争夺、封装资源、成本竞争、2027 年 capex 大幅上升对 FCF 压力",
-        "confidence": "中高",
-        "status": "积极扩产中：HBM4 量产、Idaho/New York 扩建、新加坡封装厂 2027 上线",
+        "capex": "后续重点跟踪 P5 铜锣、Idaho、New York、Virginia DDR4、新加坡 Fab 10B NAND。当前先使用 DRAM/NAND 两类总产能。",
+        "timeline": "2026-2029",
+        "bottleneck": "P5 整合、美国新 fab 爬坡、新加坡 NAND Fab 10B 初始 wafer output、HBM 封装资源",
+        "confidence": "中",
+        "status": "当前产能估算：DRAM 30 万片/月，NAND 18 万片/月。",
         "facilities": [
           {
-            "name": "广岛 DRAM",
-            "stage": "base",
-            "products": [
-              "DRAM",
-              "HBM"
-            ],
-            "value": 45,
-            "unit": "capacity index",
-            "display": "现有先进 DRAM / HBM 底盘，指数占位。",
-            "timeline": "现有"
-          },
-          {
-            "name": "台湾 DRAM",
+            "name": "DRAM 总产能",
             "stage": "base",
             "products": [
               "DRAM"
             ],
-            "value": 35,
-            "unit": "capacity index",
-            "display": "现有 DRAM 产能，指数占位。",
+            "value": 30,
+            "unit": "万片/月",
+            "display": "估算当前 DRAM 总产能 30 万片/月；内部拆分：HBM 6.0、DDR4+DDR5 14.5。",
             "timeline": "现有"
           },
           {
-            "name": "新加坡 NAND / 封装",
+            "name": "NAND 总产能",
             "stage": "base",
             "products": [
-              "NAND",
-              "packaging"
+              "NAND"
             ],
-            "value": 20,
-            "unit": "capacity index",
-            "display": "现有 NAND 与封装基础能力，指数占位。",
+            "value": 18,
+            "unit": "万片/月",
+            "display": "估算当前 NAND 总产能 18 万片/月。",
             "timeline": "现有"
           },
           {
-            "name": "Idaho 扩建",
-            "stage": "expansion",
-            "products": [
-              "DRAM",
-              "HBM"
-            ],
-            "value": 40,
-            "unit": "capacity index",
-            "display": "洁净室建设加速，承接 1-gamma 和 HBM 产能。",
-            "timeline": "2026-2028"
-          },
-          {
-            "name": "New York 扩建",
+            "name": "P5 / Idaho / New York DRAM 扩产",
             "stage": "expansion",
             "products": [
               "DRAM"
             ],
-            "value": 50,
-            "unit": "capacity index",
-            "display": "美国制造扩张主线，建设相关 capex 2027 年明显增加。",
-            "timeline": "2027+"
+            "value": null,
+            "unit": "万片/月",
+            "display": "P5、Idaho 与 New York 扩产增量待龙虾按公司级新闻补充，暂不进入柱状图加总。",
+            "timeline": "2027-2029"
           },
           {
-            "name": "新加坡先进封装",
+            "name": "Singapore Fab 10B NAND",
             "stage": "expansion",
             "products": [
-              "HBM packaging"
+              "NAND"
             ],
-            "value": 25,
-            "unit": "capacity index",
-            "display": "2027 年为 HBM 供应做出重要贡献。",
-            "timeline": "2027"
+            "value": null,
+            "unit": "万片/月",
+            "display": "新加坡 Fab 10B NAND 增量片数待补，暂不进入柱状图加总。",
+            "timeline": "2028H2"
           }
         ],
         "evidence": [
           {
-            "date": "2026-06-29",
-            "label": "SEMI：存储设备投资超级周期",
-            "detail": "2026 年存储设备投资首超 $520亿；Micron 作为最激进投资者之一，重点在 1-gamma 和 HBM。",
-            "source": "SEMI / PRNewswire"
-          },
-          {
-            "date": "2026-03-18",
-            "label": "FY2026 Q1 法说会：capex 与扩产计划",
-            "detail": "Micron 将 FY2026 capex 提升至 ~$20B；Idaho 和 New York 洁净室建设加速；1-gamma 和 HBM4  ramp 为主要驱动力。",
-            "source": "Micron FY2026 Q1 Earnings Call"
-          },
-          {
-            "date": "2026-03-18",
-            "label": "2027 capex 展望",
-            "detail": "Micron 预计 2027 财年建设相关 capex 同比增长超 $10B；2026 年 capex 超 $25B；新加坡先进封装厂 2027 年为 HBM 供应做出重要贡献。",
-            "source": "SAHM Capital / Micron Guidance"
+            "date": "2026-07-02",
+            "label": "当前产能估算口径",
+            "detail": "当前采用用户整理估算：DRAM 总产能 30 万片/月，HBM 6.0，DDR4+DDR5 14.5，NAND 18。",
+            "source": "User estimate / to be verified by clawbot"
           }
         ]
       }

@@ -103,6 +103,30 @@ data.records.forEach(r => {
 
 | 等级 | 来源类型 | 举例 | 收录规则 |
 |------|---------|------|---------|
+| **一级（90-100）** | 公司官方、监管披露、权威数据机构 | TrendForce/DRAMeXchange、公司财报/IR、SEC/KRX披露、KITA出口数据、JEDEC标准 | 直接收录，confidence=high |
+| | 国际权威通讯社 | Reuters、Bloomberg、WSJ、FT | 直接收录 |
+| **二级（70-89）** | 半导体垂直媒体 | DIGITIMES、TechPowerUp、BenchGecko、Wccftech、TechTimes | 收录，confidence=medium/high |
+| | 韩美本土主流财经 | Maeil Business、Seoul Economic Daily、Barron's、Yahoo Finance | 收录 |
+| | 头部券商研报 | Goldman Sachs、BofA Merrill、Mirae Asset、Deutsche Bank | 收录 |
+| **三级（40-69）** | 专家专栏、峰会纪要 | 行业分析师个人专栏、会议演讲摘要 | 仅作为线索池，需交叉验证 |
+| | 聚合平台/转述 | 新浪财经、Sina Tech、Naver News、IT之家（无原创采访时） | 需溯源到一级/二级来源 |
+| **四级（0-39）** | 禁用 | 自媒体、匿名爆料、论坛帖、未经验证的社交媒体、AI生成内容 | **禁止收录** |
+
+**国内媒体白名单（无英文原文时使用，需交叉验证）：**
+新华社、央视/央视财经、人民日报、经济日报、中国经营报、经济参考网、金十数据、21世纪经济网、财经网、财新网、第一财经、界面新闻、经济观察网、中新经纬、每日经济新闻、财联社、蓝鲸财经、中国经济周刊、证券日报、投资界、商界、36氪、创业邦、虎嗅
+
+**操作规则：**
+1. 搜索到中文新闻 → 优先找英文原文替代
+2. 无英文原文 → 检查 source 是否在白名单内
+3. 白名单内 → 保留，confidence=medium
+4. 不在白名单 → 需要 2 个以上白名单媒体交叉验证，否则不收录
+5. 严禁收录四级来源（自媒体、匿名爆料、论坛）
+6. `source` 字段必须填写具体媒体名称，不能写"互联网""网络""reportedly"等模糊来源
+7. 每个记录必须有至少 1 个 URL（原文链接），优先用一级/二级来源的 URL
+**核心规则：优先英文原文，无英文原文时需在白名单媒体中交叉验证。**
+
+| 等级 | 来源类型 | 举例 | 收录规则 |
+|------|---------|------|---------|
 | **一级（90-100）** | 权威数据机构 / 官方披露 | TrendForce、DRAMeXchange、公司财报/IR、SEC/KRX披露、KITA出口数据、JEDEC标准 | 直接收录，confidence=high |
 | | 国际权威通讯社 | Reuters、Bloomberg、WSJ、FT | 直接收录 |
 | **二级（70-89）** | 半导体垂直媒体 | DIGITIMES、TechPowerUp、BenchGecko、Wccftech、TechTimes | 收录，confidence=medium/high |
