@@ -31,6 +31,66 @@
         "bottleneck": "先进封装（CoWoS/TSV）、HBM4 良率爬坡、EUV 设备交付、龙仁集群建设进度",
         "confidence": "中高",
         "status": "高优先级扩产中：M15X 已投产，龙仁 2027 启动，印第安纳封装厂建设中",
+        "facilities": [
+          {
+            "name": "清州 M15 / M16",
+            "stage": "base",
+            "products": [
+              "DRAM",
+              "HBM"
+            ],
+            "value": 60,
+            "unit": "capacity index",
+            "display": "现有先进 DRAM / HBM 底盘，指数占位，待龙虾替换为真实 wafer/month 或 bit output。",
+            "timeline": "现有"
+          },
+          {
+            "name": "无锡 DRAM",
+            "stage": "base",
+            "products": [
+              "DRAM"
+            ],
+            "value": 25,
+            "unit": "capacity index",
+            "display": "现有 DRAM 工厂，指数占位。",
+            "timeline": "现有"
+          },
+          {
+            "name": "清州 M15X",
+            "stage": "expansion",
+            "products": [
+              "HBM",
+              "advanced DRAM"
+            ],
+            "value": 35,
+            "unit": "capacity index",
+            "display": "已提前投产并爬坡，主要承接 HBM / 先进 DRAM 扩张。",
+            "timeline": "2026-2027"
+          },
+          {
+            "name": "龙仁集群",
+            "stage": "expansion",
+            "products": [
+              "DRAM",
+              "HBM"
+            ],
+            "value": 60,
+            "unit": "capacity index",
+            "display": "2027 年起分阶段生产，长期扩产主线。",
+            "timeline": "2027+"
+          },
+          {
+            "name": "印第安纳封装",
+            "stage": "expansion",
+            "products": [
+              "HBM packaging"
+            ],
+            "value": 15,
+            "unit": "capacity index",
+            "display": "美国先进封装项目，主要影响 HBM 交付能力。",
+            "timeline": "2027-2028"
+          }
+        ],
         "evidence": [
           {
             "date": "2026-06-29",
@@ -80,6 +140,55 @@
         "bottleneck": "HBM4 良率爬坡（当前 60-70% 热测试）、核心客户份额恢复、先进封装资源分配、1c 工艺成熟度",
         "confidence": "中",
         "status": "HBM4 量产中，份额恢复跟踪；重点在良率提升和客户认证",
+        "facilities": [
+          {
+            "name": "平泽 P2/P3",
+            "stage": "base",
+            "products": [
+              "DRAM",
+              "HBM"
+            ],
+            "value": 70,
+            "unit": "capacity index",
+            "display": "现有 DRAM / HBM 主要生产底盘，指数占位。",
+            "timeline": "现有"
+          },
+          {
+            "name": "西安 NAND",
+            "stage": "base",
+            "products": [
+              "NAND"
+            ],
+            "value": 35,
+            "unit": "capacity index",
+            "display": "现有 NAND 重要产能，指数占位。",
+            "timeline": "现有"
+          },
+          {
+            "name": "1c DRAM 转换",
+            "stage": "expansion",
+            "products": [
+              "HBM4",
+              "DRAM"
+            ],
+            "value": 30,
+            "unit": "capacity index",
+            "display": "1c 工艺转换和 HBM4 良率爬坡带来可交付能力提升。",
+            "timeline": "2026"
+          },
+          {
+            "name": "P4L / 平泽扩建",
+            "stage": "expansion",
+            "products": [
+              "DRAM",
+              "HBM"
+            ],
+            "value": 25,
+            "unit": "capacity index",
+            "display": "P4L 晶圆产能小幅扩张，重点关注 HBM4 客户认证后放量。",
+            "timeline": "2026-2028"
+          }
+        ],
         "evidence": [
           {
             "date": "2026-06-29",
@@ -128,6 +237,77 @@
         "bottleneck": "产能爬坡、客户份额争夺、封装资源、成本竞争、2027 年 capex 大幅上升对 FCF 压力",
         "confidence": "中高",
         "status": "积极扩产中：HBM4 量产、Idaho/New York 扩建、新加坡封装厂 2027 上线",
+        "facilities": [
+          {
+            "name": "广岛 DRAM",
+            "stage": "base",
+            "products": [
+              "DRAM",
+              "HBM"
+            ],
+            "value": 45,
+            "unit": "capacity index",
+            "display": "现有先进 DRAM / HBM 底盘，指数占位。",
+            "timeline": "现有"
+          },
+          {
+            "name": "台湾 DRAM",
+            "stage": "base",
+            "products": [
+              "DRAM"
+            ],
+            "value": 35,
+            "unit": "capacity index",
+            "display": "现有 DRAM 产能，指数占位。",
+            "timeline": "现有"
+          },
+          {
+            "name": "新加坡 NAND / 封装",
+            "stage": "base",
+            "products": [
+              "NAND",
+              "packaging"
+            ],
+            "value": 20,
+            "unit": "capacity index",
+            "display": "现有 NAND 与封装基础能力，指数占位。",
+            "timeline": "现有"
+          },
+          {
+            "name": "Idaho 扩建",
+            "stage": "expansion",
+            "products": [
+              "DRAM",
+              "HBM"
+            ],
+            "value": 40,
+            "unit": "capacity index",
+            "display": "洁净室建设加速，承接 1-gamma 和 HBM 产能。",
+            "timeline": "2026-2028"
+          },
+          {
+            "name": "New York 扩建",
+            "stage": "expansion",
+            "products": [
+              "DRAM"
+            ],
+            "value": 50,
+            "unit": "capacity index",
+            "display": "美国制造扩张主线，建设相关 capex 2027 年明显增加。",
+            "timeline": "2027+"
+          },
+          {
+            "name": "新加坡先进封装",
+            "stage": "expansion",
+            "products": [
+              "HBM packaging"
+            ],
+            "value": 25,
+            "unit": "capacity index",
+            "display": "2027 年为 HBM 供应做出重要贡献。",
+            "timeline": "2027"
+          }
+        ],
         "evidence": [
           {
             "date": "2026-06-29",
@@ -213,6 +393,22 @@
         "stage_index": 4,
         "locked_years": "2025-2030",
         "locked_capacity": "2026 全年 HBM 供给已售罄；未来三年可供给量基本被承诺覆盖",
+        "capacity_lock_segments": [
+          {
+            "start": 2025,
+            "end": 2026,
+            "status": "soldout",
+            "label": "已售罄",
+            "note": "2026 年末前 HBM 供给按当前跟踪口径视为已售罄。"
+          },
+          {
+            "start": 2027,
+            "end": 2030,
+            "status": "full",
+            "label": "高锁定",
+            "note": "2027-2030 为长期承诺/高比例锁量跟踪，不等同于全部售罄。"
+          }
+        ],
         "negotiating": "2027-2028 HBM4 / HBM4E 供货价格与共同投资条款；HBM4E 样品 2026 年内交付",
         "expected_term": "3年以上",
         "expected_capacity": "高比例锁量，优先保障核心 AI 客户；Vera Rubin 平台 HBM4 份额预计 60-70%",

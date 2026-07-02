@@ -84,6 +84,13 @@ type TrackerPayload = {
       locked_years: string;
       locked_until?: number | null;
       locked_capacity: string;
+      capacity_lock_segments?: Array<{
+        start: number;
+        end: number;
+        status: "soldout" | "full" | "partial" | "watch";
+        label?: string;
+        note?: string;
+      }>;
       negotiating: string;
       expected_term: string;
       expected_capacity: string;
@@ -141,6 +148,16 @@ type TrackerPayload = {
       bottleneck: string;
       confidence: string;
       status: string;
+      facilities?: Array<{
+        name: string;
+        stage: "base" | "expansion";
+        products: string[];
+        value: number | null;
+        unit: string;
+        display: string;
+        timeline?: string;
+        note?: string;
+      }>;
       evidence?: Array<{
         date: string;
         label: string;
@@ -1198,6 +1215,9 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
           const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
           const negotiationRange = getNegotiationRange(company, lockedUntil);
           const capacityState = getCapacityLockState(company.locked_capacity);
+          const capacitySegments = getCapacityLockSegments(company, lockedRange, capacityState);
+          const stageIndexByName = stages.findIndex((stage) => stage === company.stage);
+          const currentStageIndex = stageIndexByName >= 0 ? stageIndexByName : company.stage_index;
           const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
           const negotiationPosition = rangePosition(negotiationRange.start, negotiationRange.end, startYear, maxYear);
           return (
@@ -1234,6 +1254,20 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                   </div>
                 </div>
 
+                <div className="hbm-contract-bar-row">
+                  <span>产能锁定</span>
+                  <div className="hbm-contract-track">
+                    {capacitySegments.map((segment) => {
+                      const position = rangePosition(segment.start, segment.end, startYear, maxYear);
+                      return (
+                        <i className={`capacity-lock ${segment.status}`} style={{ left: `${position.left}%`, width: `${position.width}%` }} title={segment.note ?? company.locked_capacity} key={`${company.company}-${segment.start}-${segment.end}-${segment.status}`}>
+                          {segment.label}
+                        </i>
+                      );
+                    })}
+                  </div>
+                </div>
+
               </div>
 
               <div className="hbm-contract-progress">
@@ -1245,7 +1279,7 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                 <div className="hbm-progress-scale">
                   <div className="hbm-progress-steps">
                     {stages.map((stage, stageIndex) => (
-                      <span className={stageIndex === company.stage_index ? "current" : stageIndex < company.stage_index ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
+                      <span className={stageIndex === currentStageIndex ? "current" : stageIndex < currentStageIndex ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
                     ))}
                   </div>
                 </div>
@@ -1308,20 +1342,95 @@ function rangePosition(start: number, end: number, minYear: number, maxYear: num
 
 function getCapacityLockState(value: string) {
   const text = String(value || "");
-  if (/售罄|全[年部]|基本|高比例|100%|fully/i.test(text)) {
-    return { label: "产能高锁定", tone: "full", summary: "产能基本锁定" };
+  if (/售罄|sold\s*out|fully\s*sold/i.test(text)) {
+    return { label: "产能已售罄", tone: "soldout", summary: "对应产能已售罄" };
+  }
+  if (/全[年部]|基本|高比例|100%|fully|承诺覆盖|高锁定/i.test(text)) {
+    return { label: "产能高锁定", tone: "full", summary: "产能高比例锁定" };
   }
   if (/中|部分|争取|取决/i.test(text)) {
     return { label: "产能部分锁定", tone: "partial", summary: "产能仍有弹性" };
   }
   return { label: "产能待确认", tone: "watch", summary: "锁量待确认" };
 }
+
+function getCapacityLockSegments(
+  company: NonNullable<NonNullable<TrackerPayload["hbm_contracts"]>["companies"]>[number],
+  lockedRange: { start: number; end: number },
+  fallbackState: { label: string; tone: string; summary: string },
+) {
+  const segments = company.capacity_lock_segments;
+  if (segments?.length) {
+    return segments.map((segment) => ({
+      start: segment.start,
+      end: segment.end,
+      status: segment.status,
+      label: segment.label ?? getCapacitySegmentLabel(segment.status),
+      note: segment.note,
+    }));
+  }
+  return [{
+    start: lockedRange.start,
+    end: lockedRange.end,
+    status: fallbackState.tone,
+    label: fallbackState.label,
+    note: company.locked_capacity,
+  }];
+}
+
+function getCapacitySegmentLabel(status: string) {
+  if (status === "soldout") return "已售罄";
+  if (status === "full") return "高锁定";
+  if (status === "partial") return "部分锁定";
+  return "待确认";
+}
+
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
+  const categories: CapacityCategory[] = [
+    { key: "hbm", label: "HBM", match: (product) => /hbm/i.test(product) },
+    { key: "ddr", label: "DDR4 / DDR5", match: (product) => /dram|ddr|lpddr/i.test(product) },
+    { key: "nand", label: "NAND", match: (product) => /nand/i.test(product) },
+  ];
 
   if (!companies.length) {
     return null;
   }
+
+  const capacityModels = companies.map((company) => {
+    const facilities = company.facilities ?? [];
+    const baseFacilities = facilities.filter((item) => item.stage === "base");
+    const expansionFacilities = facilities.filter((item) => item.stage === "expansion");
+    const currentFacilities = baseFacilities.length ? baseFacilities : [{
+      name: company.current_capacity.label,
+      stage: "base" as const,
+      products: company.products,
+      value: company.current_capacity.value,
+      unit: company.current_capacity.unit,
+      display: company.current_capacity.display,
+    }];
+    const futureFacilities = facilities.length ? [...baseFacilities, ...expansionFacilities] : [{
+      name: company.target_capacity.label,
+      stage: "expansion" as const,
+      products: company.products,
+      value: company.target_capacity.value,
+      unit: company.target_capacity.unit,
+      display: company.target_capacity.display,
+    }];
+    const currentTotal = sumCapacity(currentFacilities);
+    const futureTotal = sumCapacity(futureFacilities);
+    return {
+      company,
+      categoryRows: categories.map((category) => getCapacityCategoryRow(category, baseFacilities, expansionFacilities)),
+      hasStackData: currentTotal > 0 || futureTotal > 0,
+    };
+  });
+  const globalMaxValue = Math.max(
+    ...capacityModels
+      .flatMap((model) => model.categoryRows.flatMap((row) => [row.currentTotal, row.futureTotal]))
+      .filter((value): value is number => typeof value === "number" && Number.isFinite(value) && value > 0),
+    1,
+  );
 
   return (
     <section className="panel text-panel expansion-capacity-board" id="expansion-capacity-board">
@@ -1329,17 +1438,13 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
         <div>
           <p className="eyebrow">Capacity Expansion Tracker</p>
           <h2>三大厂扩产能力变化</h2>
-          <p>把“当前产能状态、资本开支、扩产后目标产能、落地时间和瓶颈”压缩到同一张看板里，方便后续按来源复核。</p>
+          <p>按 HBM、DDR4/DDR5、NAND 三类拆开看，每类对比原有产能和扩产后产能。下方只保留扩产新闻。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
 
       <div className="capacity-grid">
-        {companies.map((company) => {
-          const values = [company.current_capacity.value, company.target_capacity.value].filter((value): value is number => Number.isFinite(value));
-          const maxValue = Math.max(...values, 1);
-          const currentWidth = company.current_capacity.value ? Math.max(6, (company.current_capacity.value / maxValue) * 100) : 0;
-          const targetWidth = company.target_capacity.value ? Math.max(6, (company.target_capacity.value / maxValue) * 100) : 0;
+        {capacityModels.map(({ company, categoryRows, hasStackData }) => {
           return (
             <article className="capacity-card" id={`capacity-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-company-top">
@@ -1352,32 +1457,25 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
 
               <div className="capacity-bars">
                 <div className="capacity-metric-line">口径：{company.capacity_metric}</div>
-                <div className="capacity-bar-row">
-                  <span>{company.current_capacity.label}</span>
-                  <div className={`capacity-bar-track ${company.current_capacity.value === null ? "empty" : ""}`}>
-                    <i style={{ width: `${currentWidth}%` }} />
-                    <b>{company.current_capacity.display}</b>
+                {hasStackData ? (
+                  <div className="capacity-category-chart">
+                    {categoryRows.map((row) => (
+                      <CapacityCategoryBlock key={`${company.company}-${row.key}`} maxValue={globalMaxValue} row={row} />
+                    ))}
                   </div>
-                  <strong>{formatCapacityValue(company.current_capacity)}</strong>
-                </div>
-                <div className="capacity-bar-row target">
-                  <span>{company.target_capacity.label}</span>
-                  <div className={`capacity-bar-track ${company.target_capacity.value === null ? "empty" : ""}`}>
-                    <i style={{ width: `${targetWidth}%` }} />
-                    <b>{company.target_capacity.display}</b>
+                ) : (
+                  <div className="capacity-empty-bars">
+                    <span>等待龙虾补充分工厂真实产能口径后自动生成堆积柱。</span>
+                    <small>{company.current_capacity.display}</small>
+                    <small>{company.target_capacity.display}</small>
                   </div>
-                  <strong>{formatCapacityValue(company.target_capacity)}</strong>
-                </div>
+                )}
               </div>
 
               <div className="capacity-news">
                 <div className="capacity-news-head">
-                  <span>未来扩产消息</span>
+                  <span>扩产新闻</span>
                   <small>{company.timeline} · 置信度：{company.confidence}</small>
-                </div>
-                <div className="capacity-news-meta">
-                  <span title={company.capex}>资本支出：{company.capex}</span>
-                  <span title={company.bottleneck}>瓶颈：{company.bottleneck}</span>
                 </div>
                 {(company.evidence ?? []).map((item) => (
                   <div className="capacity-news-item" key={`${company.company}-${item.date}-${item.label}`}>
@@ -1394,6 +1492,66 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
       </div>
     </section>
   );
+}
+
+type CapacityFacility = NonNullable<NonNullable<NonNullable<TrackerPayload["expansion_capacity"]>["companies"]>[number]["facilities"]>[number];
+type CapacityCategory = {
+  key: string;
+  label: string;
+  match: (product: string) => boolean;
+};
+
+type CapacityCategoryRow = {
+  key: string;
+  label: string;
+  currentTotal: number;
+  futureTotal: number;
+  currentItems: CapacityFacility[];
+  expansionItems: CapacityFacility[];
+};
+
+function CapacityCategoryBlock({ row, maxValue }: { row: CapacityCategoryRow; maxValue: number }) {
+  return (
+    <div className="capacity-category-block">
+      <div className="capacity-category-title">
+        <strong>{row.label}</strong>
+        <small>{row.expansionItems.length ? `扩产 ${row.expansionItems.length} 项` : "暂无明确扩产项"}</small>
+      </div>
+      <CapacityCategoryBar label="原有" tone="base" total={row.currentTotal} maxValue={maxValue} unit={row.currentItems.find((item) => item.unit)?.unit} />
+      <CapacityCategoryBar label="扩产后" tone="future" total={row.futureTotal} maxValue={maxValue} unit={[...row.currentItems, ...row.expansionItems].find((item) => item.unit)?.unit} />
+    </div>
+  );
+}
+
+function CapacityCategoryBar({ label, tone, total, maxValue, unit }: { label: string; tone: "base" | "future"; total: number; maxValue: number; unit?: string }) {
+  const width = total ? Math.max(5, (total / maxValue) * 100) : 0;
+  return (
+    <div className={`capacity-category-row ${tone}`}>
+      <span>{label}</span>
+      <div className="capacity-category-track">
+        {total ? <i style={{ width: `${width}%` }} /> : null}
+      </div>
+      <b>{total ? `${total.toLocaleString()} ${unit ?? ""}` : "待补充"}</b>
+    </div>
+  );
+}
+
+function getCapacityCategoryRow(category: CapacityCategory, baseFacilities: CapacityFacility[], expansionFacilities: CapacityFacility[]): CapacityCategoryRow {
+  const currentItems = baseFacilities.filter((facility) => facility.products.some(category.match));
+  const expansionItems = expansionFacilities.filter((facility) => facility.products.some(category.match));
+  const currentTotal = sumCapacity(currentItems);
+  return {
+    key: category.key,
+    label: category.label,
+    currentTotal,
+    futureTotal: currentTotal + sumCapacity(expansionItems),
+    currentItems,
+    expansionItems,
+  };
+}
+
+function sumCapacity(facilities: CapacityFacility[]) {
+  return facilities.reduce((sum, facility) => sum + (Number(facility.value ?? 0) || 0), 0);
 }
 
 function Timeline({ items }: { items: NonNullable<TrackerPayload["hbm4_negotiations"]> }) {
@@ -1748,7 +1906,7 @@ function IntelFeed({ records }: { records: IntelRecord[] }) {
           <strong>{record.title}</strong>
           <p>{record.summary}</p>
           <div className="meta-row">
-            <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>
+            <span className={`pill ${normalizedImpact(record.impact)}`}>{impactLabel(record.impact)}</span>
             <span>{record.type}</span>
             <span>{record.date}</span>
           </div>
@@ -1761,6 +1919,7 @@ function IntelFeed({ records }: { records: IntelRecord[] }) {
 function MessageRadar({ records }: { records: IntelRecord[] }) {
   const [filter, setFilter] = React.useState<ImpactFilter>("all");
   const [timeFilter, setTimeFilter] = React.useState<RadarTimeRange>("all");
+  const listRef = React.useRef<HTMLDivElement | null>(null);
   const filters: Array<{ key: ImpactFilter; label: string }> = [
     { key: "all", label: "全部" },
     { key: "bullish", label: "利多" },
@@ -1773,9 +1932,14 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
     { key: "all", label: "所有信息" },
   ];
   const anchor = new Date().toISOString();
-  const timeScopedRecords = records.filter((record) => isWithinTimeRange(record.date, timeFilter, anchor));
+  const timeScopedRecords = records
+    .filter((record) => isWithinTimeRange(record.date, timeFilter, anchor))
+    .sort(compareIntelRecordDateDesc);
   const filtered = timeScopedRecords.filter((record) => filter === "all" || normalizedImpact(record.impact) === filter);
   const total = timeScopedRecords.length || 1;
+  React.useEffect(() => {
+    listRef.current?.scrollTo({ top: 0 });
+  }, [filter, timeFilter, filtered[0]?.id]);
   const distribution: Array<{ key: IntelRecord["impact"]; label: string }> = [
     { key: "bullish", label: "利多" },
     { key: "bearish", label: "利空" },
@@ -1814,11 +1978,11 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
         </div>
       </div>
       {filtered.length ? (
-        <div className="radar-list">
+        <div className="radar-list" key={`${filter}-${timeFilter}-${filtered[0]?.id ?? "empty"}`} ref={listRef}>
           {filtered.map((record) => (
             <article className={`radar-item ${record.url ? "clickable" : ""}`} key={record.id} role={record.url ? "link" : undefined} tabIndex={record.url ? 0 : undefined} onClick={() => openIntelUrl(record.url)} onKeyDown={(event) => handleIntelUrlKeyDown(event, record.url)}>
               <div>
-                <span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span>
+                <span className={`pill ${normalizedImpact(record.impact)}`}>{impactLabel(record.impact)}</span>
                 <time>{record.date}</time>
               </div>
               <strong>{record.title}</strong>
@@ -2012,7 +2176,7 @@ function IntelTable({
               <td>{record.date}</td>
               <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
               <td>{record.type}</td>
-              <td><span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span></td>
+              <td><span className={`pill ${normalizedImpact(record.impact)}`}>{impactLabel(record.impact)}</span></td>
               <td>{importanceLabel(record.importance)}</td>
               <td>{reactionTypeLabel(record.reaction_type)}</td>
               <td>{pricingStatusLabel(record.pricing_status)}</td>
@@ -2082,7 +2246,7 @@ function LegacyIntelTable({
               <td>{record.date}</td>
               <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
               <td>{record.type}</td>
-              <td><span className={`pill ${record.impact}`}>{impactLabel(record.impact)}</span></td>
+              <td><span className={`pill ${normalizedImpact(record.impact)}`}>{impactLabel(record.impact)}</span></td>
               <td>{importanceLabel(record.importance)}</td>
               <td>{reactionTypeLabel(record.reaction_type)}</td>
               <td>{pricingStatusLabel(record.pricing_status)}</td>
@@ -2310,6 +2474,18 @@ function isWithinTimeRange(date: string | undefined, range: TimeRange, anchor: s
   return diffDays >= 0 && diffDays <= days;
 }
 
+function compareIntelRecordDateDesc(a: IntelRecord, b: IntelRecord) {
+  return parseIntelRecordTime(b.date) - parseIntelRecordTime(a.date) || String(b.id).localeCompare(String(a.id));
+}
+
+function parseIntelRecordTime(value: string | undefined) {
+  const text = String(value || "").trim();
+  if (!text) return 0;
+  const normalized = /^\d{4}-\d{2}-\d{2}$/.test(text) ? `${text}T00:00:00` : text.replace(/\//g, "-");
+  const time = new Date(normalized).getTime();
+  return Number.isFinite(time) ? time : 0;
+}
+
 function startOfDay(time: number) {
   const date = new Date(time);
   date.setHours(0, 0, 0, 0);
@@ -2393,7 +2569,9 @@ function csvCell(value: unknown) {
 }
 
 function normalizedImpact(value: unknown): IntelRecord["impact"] {
-  if (value === "bullish" || value === "bearish") return value;
+  const normalized = String(value ?? "").trim().toLowerCase();
+  if (["bullish", "positive", "beneficial", "good", "利多", "利好", "看多", "正面"].includes(normalized)) return "bullish";
+  if (["bearish", "negative", "adverse", "bad", "利空", "看空", "负面"].includes(normalized)) return "bearish";
   return "neutral";
 }
 
