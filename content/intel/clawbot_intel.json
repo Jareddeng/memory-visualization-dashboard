@@ -4003,6 +4003,42 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-07-15"
+    },
+    {
+      "id": "2026-07-01-meta-cloud-compute-ai-infrastructure",
+      "date": "2026-07-01",
+      "type": "重大事件",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "title": "Meta筹备云基础设施业务Meta Compute，向外部出售AI算力和模型",
+      "product": "云服务 / AI基础设施 / HBM / DRAM / 服务器",
+      "source": "Bloomberg / TechCrunch / The Verge / NextPlatform",
+      "url": "https://news.bloomberglaw.com/ip-law/meta-is-building-a-cloud-business-to-sell-excess-ai-compute-1",
+      "summary": "Meta Platforms正筹备云基础设施业务'Meta Compute'，计划向外部客户出售AI算力和托管模型（包括刚发布的Muse Spark），直接对标AWS、Azure、Google Cloud。该业务由Santosh Janardhan（基础设施主管）、Daniel Gross（超级智能实验室负责人）和Dina Powell McCormick（总裁）领导。Meta已承诺1829亿美元AI基础设施投资，正在建设多个吉瓦级数据中心（包括俄亥俄州'曼哈顿规模'项目）。此前Meta已从CoreWeave采购210亿美元算力、从Google Cloud租赁100亿美元容量。",
+      "transmission_path": "Meta进入云服务市场 → 算力总需求扩大（Meta自用+外部客户）→ GPU/AI服务器采购大幅增加 → HBM/DRAM/NAND需求结构性增长。即使部分为闲置产能变现，整体算力供给增加将拉动存储需求。与CoreWeave模式类似，可能成为存储需求的新增量来源。",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-10-01",
+      "related_sources": [
+        {
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/",
+          "note": "Meta Compute业务细节，与SpaceX/xAI类似模式对比"
+        },
+        {
+          "source": "The Verge",
+          "url": "https://www.theverge.com/archives/meta/2026/7/1",
+          "note": "Meta可能推出云计算业务概述"
+        },
+        {
+          "source": "NextPlatform",
+          "url": "https://www.nextplatform.com/cloud/2026/07/01/of-course-meta-platforms-is-going-to-be-a-cloud/5265392",
+          "note": "Zuckerberg此前表态云服务'definitely on the table'"
+        }
+      ]
     }
   ]
 }
