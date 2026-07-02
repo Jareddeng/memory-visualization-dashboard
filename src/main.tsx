@@ -1169,13 +1169,11 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
   const stages = tracker?.stages ?? ["验证", "报价", "锁量", "签约", "交付"];
   const ranges = companies.map((company) => {
     const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
-    return {
-      lockedUntil,
-      lockedRange: getLockedYearRange(company.locked_years, lockedUntil),
-      negotiationRange: getNegotiationRange(company, lockedUntil),
-    };
+    const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
+    const negotiationRange = getNegotiationRange(company, lockedUntil);
+    return { lockedRange, negotiationRange };
   });
-  const startYear = Math.min(...ranges.map((item) => item.lockedRange.start).filter(Boolean), 2025) || 2025;
+  const startYear = Math.min(...ranges.flatMap((item) => [item.lockedRange.start, item.negotiationRange.start]).filter(Boolean), 2025) || 2025;
   const maxYear = Math.max(...ranges.flatMap((item) => [item.lockedRange.end, item.negotiationRange.end]), startYear + 1);
   const years = Array.from({ length: maxYear - startYear + 1 }, (_, index) => startYear + index);
 
@@ -1189,22 +1187,24 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
         <div>
           <p className="eyebrow">HBM Contract Tracker</p>
           <h2>HBM 长协锁定状态</h2>
-          <p>按公司看已锁定覆盖、未来长协谈判窗口和当前谈判阶段，重点判断什么时候能谈下来。</p>
+          <p>按公司拆成“已锁定”和“在谈中”两列，所有年份默认表示覆盖到对应年份年末。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
 
-      <div className="hbm-deal-grid">
-        {companies.map((company, index) => {
+      <div className="hbm-contract-grid">
+        {companies.map((company) => {
           const lockedUntil = getLockedUntilYear(company.locked_years, company.locked_until);
           const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
           const negotiationRange = getNegotiationRange(company, lockedUntil);
+          const capacityState = getCapacityLockState(company.locked_capacity);
+          const stageIndexByName = stages.findIndex((stage) => stage === company.stage);
+          const currentStageIndex = stageIndexByName >= 0 ? stageIndexByName : company.stage_index;
           const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
           const negotiationPosition = rangePosition(negotiationRange.start, negotiationRange.end, startYear, maxYear);
-          const capacityState = getCapacityLockState(company.locked_capacity);
           return (
-            <article className="hbm-deal-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
-              <div className="hbm-deal-side">
+            <article className="hbm-contract-card" id={`hbm-contract-${slugifyId(company.company)}`} key={company.company}>
+              <div className="hbm-contract-head">
                 <div>
                   <small>{company.ticker}</small>
                   <strong>{company.company}</strong>
@@ -1212,53 +1212,59 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                 <span className={`hbm-capacity-pill ${capacityState.tone}`}>{capacityState.label}</span>
               </div>
 
-              <div className="hbm-deal-main">
-                <div className="hbm-deal-metrics">
-                  <span><b>{lockedUntil}</b> 锁定至</span>
-                  <span><b>{negotiationRange.end}</b> 预计谈至</span>
-                  <span><b>{company.stage}</b> 当前阶段</span>
-                  <span title={company.negotiating}><b>{company.expected_term}</b> 预计期限</span>
+              <div className="hbm-contract-chart" style={{ ["--year-count" as string]: years.length }}>
+                <div className="hbm-contract-axis">
+                  <span />
+                  {years.map((year) => <b key={`${company.company}-${year}`}>{year}</b>)}
                 </div>
 
-                <div className="hbm-deal-axis" style={{ ["--year-count" as string]: years.length }}>
-                  {years.map((year) => <span key={year}>{year}</span>)}
+                <div className="hbm-contract-bar-row">
+                  <span>签约覆盖</span>
+                  <div className="hbm-contract-track">
+                    <i className="locked" style={{ left: `${lockedPosition.left}%`, width: `${lockedPosition.width}%` }}>
+                      {lockedRange.start}初-{lockedRange.end}末
+                    </i>
+                  </div>
                 </div>
 
-                <div className="hbm-deal-track" aria-label={`${company.company} locked through ${lockedUntil}, negotiating through ${negotiationRange.end}`}>
-                  <i
-                    className="locked"
-                    style={{ left: `${lockedPosition.left}%`, width: `${lockedPosition.width}%` }}
-                    title={`已锁定覆盖：${lockedRange.start}-${lockedRange.end}`}
-                  >
-                    已锁定
-                  </i>
-                  <i
-                    className="negotiating"
-                    style={{ left: `${negotiationPosition.left}%`, width: `${negotiationPosition.width}%` }}
-                    title={`在谈窗口：${negotiationRange.start}-${negotiationRange.end}；${company.negotiating}`}
-                  >
-                    在谈
-                  </i>
+                <div className="hbm-contract-bar-row">
+                  <span>正在谈</span>
+                  <div className="hbm-contract-track">
+                    <i className="negotiating" style={{ left: `${negotiationPosition.left}%`, width: `${negotiationPosition.width}%` }}>
+                      {negotiationRange.start}初-{negotiationRange.end}末
+                    </i>
+                  </div>
                 </div>
 
-                <div className="hbm-stage-line">
-                  {stages.map((stage, stageIndex) => (
-                    <span
-                      className={stageIndex <= company.stage_index ? "active" : ""}
-                      key={`${company.company}-${stage}`}
-                      title={`${company.company} ${stage}`}
-                    >
-                      <i />
-                      <b>{stage}</b>
-                    </span>
-                  ))}
+                <div className="hbm-contract-bar-row">
+                  <span>产能锁定</span>
+                  <div className="hbm-contract-track">
+                    <i className={`capacity-lock ${capacityState.tone}`} style={{ left: `${lockedPosition.left}%`, width: `${lockedPosition.width}%` }} title={company.locked_capacity}>
+                      {capacityState.label}
+                    </i>
+                  </div>
                 </div>
 
-                <div className="hbm-deal-note">
-                  <span>{company.main_customers.slice(0, 3).join(" / ")}</span>
-                  <span title={company.locked_capacity}>{capacityState.summary}</span>
-                  <span title={company.negotiating}>{negotiationRange.summary}</span>
+              </div>
+
+              <div className="hbm-contract-progress">
+                <div className="hbm-progress-summary">
+                  <span>谈判进度</span>
+                  <strong>{company.stage}</strong>
+                  <small title={company.stage_note}>{company.stage_note}</small>
                 </div>
+                <div className="hbm-progress-scale">
+                  <div className="hbm-progress-steps">
+                    {stages.map((stage, stageIndex) => (
+                      <span className={stageIndex === currentStageIndex ? "current" : stageIndex < currentStageIndex ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="hbm-contract-foot">
+                <span>{capacityState.summary}</span>
+                <span title={company.negotiating}>{company.expected_term} · {negotiationRange.summary}</span>
               </div>
             </article>
           );
@@ -1313,8 +1319,11 @@ function rangePosition(start: number, end: number, minYear: number, maxYear: num
 
 function getCapacityLockState(value: string) {
   const text = String(value || "");
-  if (/售罄|全[年部]|基本|高比例|100%|fully/i.test(text)) {
-    return { label: "产能高锁定", tone: "full", summary: "产能基本锁定" };
+  if (/售罄|sold\s*out|fully\s*sold/i.test(text)) {
+    return { label: "产能已售罄", tone: "soldout", summary: "对应产能已售罄" };
+  }
+  if (/全[年部]|基本|高比例|100%|fully|承诺覆盖|高锁定/i.test(text)) {
+    return { label: "产能高锁定", tone: "full", summary: "产能高比例锁定" };
   }
   if (/中|部分|争取|取决/i.test(text)) {
     return { label: "产能部分锁定", tone: "partial", summary: "产能仍有弹性" };
@@ -1355,16 +1364,8 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
                 <b>{company.status}</b>
               </div>
 
-              <div className="capacity-products">
-                {company.products.map((product) => <span key={product}>{product}</span>)}
-              </div>
-
-              <div className="capacity-metric">
-                <span>产能口径</span>
-                <strong>{company.capacity_metric}</strong>
-              </div>
-
               <div className="capacity-bars">
+                <div className="capacity-metric-line">口径：{company.capacity_metric}</div>
                 <div className="capacity-bar-row">
                   <span>{company.current_capacity.label}</span>
                   <div className={`capacity-bar-track ${company.current_capacity.value === null ? "empty" : ""}`}>
@@ -1383,31 +1384,24 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
                 </div>
               </div>
 
-              <dl className="capacity-facts">
-                <div>
-                  <dt>资本支出</dt>
-                  <dd>{company.capex}</dd>
+              <div className="capacity-news">
+                <div className="capacity-news-head">
+                  <span>未来扩产消息</span>
+                  <small>{company.timeline} · 置信度：{company.confidence}</small>
                 </div>
-                <div>
-                  <dt>落地窗口</dt>
-                  <dd>{company.timeline}</dd>
+                <div className="capacity-news-meta">
+                  <span title={company.capex}>资本支出：{company.capex}</span>
+                  <span title={company.bottleneck}>瓶颈：{company.bottleneck}</span>
                 </div>
-              </dl>
-
-              <div className="capacity-risk">
-                <span>核心瓶颈</span>
-                <p>{company.bottleneck}</p>
-                <small>置信度：{company.confidence}</small>
+                {(company.evidence ?? []).map((item) => (
+                  <div className="capacity-news-item" key={`${company.company}-${item.date}-${item.label}`}>
+                    <time>{item.date}</time>
+                    <strong>{item.label}</strong>
+                    <p>{item.detail}</p>
+                    <small>{item.source}</small>
+                  </div>
+                ))}
               </div>
-
-              {(company.evidence ?? []).map((item) => (
-                <div className="hbm-evidence-item" key={`${company.company}-${item.date}-${item.label}`}>
-                  <time>{item.date}</time>
-                  <span>{item.label}</span>
-                  <p>{item.detail}</p>
-                  <small>{item.source}</small>
-                </div>
-              ))}
             </article>
           );
         })}

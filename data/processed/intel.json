@@ -1,6 +1,28 @@
 {
   "records": [
     {
+<<<<<<< HEAD
+=======
+      "id": "2026-07-02-infineon-500m-euro-ai-expansion",
+      "type": "公司公告",
+      "impact": "bullish",
+      "date": "2026-07-02",
+      "title": "英飞凌AI订单远超预期，提前投入5亿欧元扩产",
+      "product": "Infineon / AI电源 / 功率半导体",
+      "source": "DoNews/金融界",
+      "url": "https://finance.jrj.com.cn/2026/07/02012657660751.shtml",
+      "summary": "英飞凌在媒体日上宣布，AI数据中心电源业务订单远超预期，提前投入5亿欧元扩产。2026财年AI数据中心电源营收预计达15亿欧元。英飞凌还推出了全球首款300毫米GaN功率晶圆。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "英飞凌AI电源订单超预期并扩产 → 验证AI数据中心建设仍在加速 → 服务器电源需求旺盛 → 间接佐证AI服务器出货量持续增长 → 存储芯片(HBM/DRAM/NAND)需求同步受益",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-08-02"
+    },
+    {
+>>>>>>> c71925cd1200f02d803c78d2e407e421b92fa7d7
       "id": "2026-07-01-trendforce-memory-spot-price-update",
       "type": "产品数据",
       "impact": "neutral",
@@ -39,6 +61,85 @@
       "review_date": "2026-07-15"
     },
     {
+<<<<<<< HEAD
+=======
+      "id": "2026-07-01-korea-june-exports-record",
+      "type": "行业数据",
+      "impact": "bullish",
+      "date": "2026-07-01",
+      "title": "韩国6月出口首破千亿美元，半导体出口448.2亿美元同比增199.5%",
+      "product": "HBM / DRAM / NAND / 韩国半导体",
+      "source": "韩联社/韩国产业通商资源部",
+      "url": "https://china.hani.co.kr/arti/economy/17070.html",
+      "summary": "韩国6月出口额达1022.5亿美元，同比增长70.9%，首次突破千亿美元大关，成为全球第四个单月出口破千亿美元的国家。半导体出口额448.2亿美元，同比飙升199.5%，首次突破400亿美元。其中HBM出口126.81亿美元(+171%)，NAND出口同比大增388%，SSD出口增长355%。贸易顺差361.5亿美元，首次突破300亿美元。上半年累计出口4967亿美元，同比增长48.4%。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "transmission_path": "韩国官方出口数据为存储芯片涨价提供最强基本面验证 → 半导体出口448亿美元创历史纪录(+199.5%) → 直接确认HBM/DRAM/NAND需求爆发和价格传导生效 → 存储超级周期获官方数据背书 → 三星/SK海力士业绩能见度极高",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-07-09"
+    },
+    {
+      "id": "2026-07-01-nomura-ai-datacenter-capacity",
+      "type": "研报",
+      "impact": "bullish",
+      "date": "2026-07-01",
+      "title": "野村：AI硬件周期未结束，全球数据中心部署容量上调至2027年32GW",
+      "product": "AI服务器 / HBM / DRAM / 数据中心",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2414508",
+      "summary": "野村研报指出，全球新增数据中心部署容量从2026年26GW上调至2027年32GW。2025年AI基础设施支出约2500亿美元。供应瓶颈已从GPU/存储扩散至载板、PCB和光学元件。AI硬件周期未结束，需求高峰向后延伸。",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "数据中心容量大幅上调(26GW→32GW) → AI服务器出货量预期提升 → HBM和DDR5需求持续增长 → 存储原厂订单能见度延伸至2027年 → 支撑DRAM/HBM价格高位运行 → 供应瓶颈扩散意味着短缺持续时间更长",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-08-01"
+    },
+    {
+      "id": "2026-07-01-us-storage-stocks-selloff",
+      "type": "市场动态",
+      "impact": "bearish",
+      "date": "2026-07-01",
+      "title": "美股存储芯片股重挫，闪迪跌超10%，费城半导体指数暴跌超6%",
+      "product": "Sandisk / Micron / 存储板块 / SOX",
+      "source": "21世纪经济报道/中新经纬",
+      "url": "https://www.21jingji.com/article/20260701/herald/",
+      "summary": "7月1日美股交易中，存储芯片股集体大跌。闪迪跌超10%，美光跌近9%，英特尔跌超9%。费城半导体指数暴跌超6%。市场分析称大轮动冲击存储股，投资者从AI/存储板块转向其他领域，但供应短缺或限制下行空间。同日英伟达逆势收涨。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "transmission_path": "存储股暴跌 → 短期市场情绪恶化/获利了结 → 但基本面（韩国出口+供应短缺）未发生根本改变 → 可能创造逢低布局机会 → 需观察1-2周判断是短期调整还是趋势反转 → 对存储定价的直接影响：股价与现货/合约价脱钩，基本面定价逻辑仍然成立",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-09"
+    },
+    {
+      "id": "2026-07-01-china-korea-semiconductor-exports-92pct",
+      "type": "行业数据",
+      "impact": "bullish",
+      "date": "2026-07-01",
+      "title": "韩国6月对华出口同比增92.1%，半导体为绝对主力",
+      "product": "HBM / DRAM / NAND / 中韩贸易",
+      "source": "韩联社/韩国产业通商资源部",
+      "url": "https://china.hani.co.kr/arti/economy/17070.html",
+      "summary": "韩国6月对华出口同比增长92.1%至200.3亿美元，以半导体为中心首次突破200亿美元。对美出口也增长78.6%至200.2亿美元。两大市场均首次突破200亿美元大关。",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "韩国对华半导体出口激增92% → 中国AI数据中心建设需求旺盛 → 中国市场成为存储芯片需求增长核心引擎之一 → 若地缘政治风险升级可能影响供应 → 但短期需求确定性极高",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-15"
+    },
+    {
+>>>>>>> c71925cd1200f02d803c78d2e407e421b92fa7d7
       "id": "2026-06-30-trendforce-3q26-memory-price-forecast",
       "type": "产品数据",
       "impact": "bullish",
@@ -226,7 +327,7 @@
       "transmission_path": "三星巨额投资计划 → 长期HBM/DRAM/NAND产能大幅增加 → 2028年后供给压力上升 → 但短期2-3年为规划/基建阶段，对当前供需无实质影响 → 需跟踪实际开工和投产进度 → 若执行超预期，将提前压制远期存储价格预期",
       "confidence": "medium",
       "action": "deep_tracking",
-      "review_date": "2026-09-30"
+      "review_date": "2026-07-09"
     },
     {
       "id": "2026-06-29-micron-100b-sca-ceiling-effect",
@@ -606,7 +707,7 @@
       "transmission_path": "Capex大幅超预期 → AI服务器采购量上调 → HBM/DRAM/NAND需求持续强劲 → 存储价格获坚实支撑。电力瓶颈延迟40%项目意味着需求释放周期拉长，超级周期可能延续至2028年后。",
       "confidence": "high",
       "action": "deep_tracking",
-      "review_date": "2026-09-27"
+      "review_date": "2026-07-09"
     },
     {
       "id": "2026-06-26-sk-hynix-fluorine-leak",
@@ -663,7 +764,7 @@
       "transmission_path": "SK Hynix上市募资将显著扩充HBM产能，缓解AI加速器芯片的内存瓶颈。对NVIDIA GPU供应链和云厂商CAPEX有正向传导，但需关注新增产能释放时间（2027-2028）。",
       "confidence": "high",
       "action": "deep_tracking",
-      "review_date": "2026-09-25"
+      "review_date": "2026-07-09"
     },
     {
       "id": "2026-06-25-qualcomm-china-ai-chip",
@@ -682,7 +783,7 @@
       "transmission_path": "Qualcomm中国AI芯片→数据中心加速器竞争加剧→对GPU/HBM需求结构可能有影响→但短期对存储直接传导有限。更关注对中国本土AI芯片（华为昇腾等）的竞争格局影响。",
       "confidence": "medium",
       "action": "archive",
-      "review_date": "2026-09-25"
+      "review_date": "2026-07-09"
     },
     {
       "id": "2026-06-25-ai-hyperscaler-capex-250b-2026",

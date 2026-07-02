@@ -1390,40 +1390,40 @@ td small {
   white-space: nowrap;
 }
 
-.hbm-deal-grid {
+.hbm-contract-grid {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
-.hbm-deal-card {
+.hbm-contract-card {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
-  gap: 16px;
-  padding: 14px;
+  gap: 12px;
+  padding: 15px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fbfdfc;
 }
 
-.hbm-deal-side {
+.hbm-contract-head {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
   gap: 12px;
   min-width: 0;
 }
 
-.hbm-deal-side small {
+.hbm-contract-head small {
   color: var(--subtle);
   font-size: 12px;
   font-weight: 800;
 }
 
-.hbm-deal-side strong {
+.hbm-contract-head strong {
   display: block;
   margin-top: 4px;
   color: var(--ink);
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .hbm-capacity-pill {
@@ -1439,6 +1439,12 @@ td small {
   color: var(--green);
 }
 
+.hbm-capacity-pill.soldout {
+  background: #dff7ef;
+  color: #04785f;
+  box-shadow: inset 0 0 0 1px rgb(4 120 95 / 16%);
+}
+
 .hbm-capacity-pill.partial {
   background: #fff0d6;
   color: #9a5f08;
@@ -1449,128 +1455,182 @@ td small {
   color: var(--blue);
 }
 
-.hbm-deal-main {
+.hbm-contract-chart {
   display: grid;
-  gap: 10px;
-  min-width: 0;
-}
-
-.hbm-deal-metrics {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
-}
-
-.hbm-deal-metrics span {
-  min-width: 0;
+  padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 8px 10px;
   background: #fff;
-  color: var(--subtle);
-  font-size: 12px;
 }
 
-.hbm-deal-metrics b {
-  display: block;
-  overflow: hidden;
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 900;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.hbm-deal-axis {
+.hbm-contract-axis {
   display: grid;
-  grid-template-columns: repeat(var(--year-count, 6), minmax(0, 1fr));
+  grid-template-columns: 62px repeat(var(--year-count, 6), minmax(0, 1fr));
+  gap: 6px;
   color: var(--subtle);
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.hbm-deal-axis span {
+.hbm-contract-axis b {
   text-align: center;
 }
 
-.hbm-deal-track {
+.hbm-contract-bar-row {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+}
+
+.hbm-contract-bar-row > span {
+  color: var(--subtle);
+  font-size: 11px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.hbm-contract-track {
   position: relative;
-  height: 42px;
-  border: 1px solid var(--line);
+  height: 28px;
+  overflow: hidden;
   border-radius: 999px;
   background:
     repeating-linear-gradient(90deg, transparent 0, transparent calc(100% / var(--year-count, 6) - 1px), rgb(15 64 59 / 10%) calc(100% / var(--year-count, 6) - 1px), rgb(15 64 59 / 10%) calc(100% / var(--year-count, 6))),
     #edf4f2;
-  overflow: hidden;
 }
 
-.hbm-deal-track i {
+.hbm-contract-track i {
   position: absolute;
-  top: 7px;
-  bottom: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 58px;
+  inset: 4px auto 4px 0;
+  display: grid;
+  place-items: center;
+  min-width: 44px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 10px;
   font-style: normal;
   font-weight: 900;
-  letter-spacing: 0;
   white-space: nowrap;
 }
 
-.hbm-deal-track i.locked {
-  z-index: 1;
+.hbm-contract-track i.locked {
   background: linear-gradient(90deg, var(--teal), #4aa89d);
   color: #fff;
 }
 
-.hbm-deal-track i.negotiating {
-  z-index: 2;
-  border: 1px solid #dca64b;
-  background:
-    repeating-linear-gradient(135deg, rgb(212 148 59 / 88%) 0 8px, rgb(252 235 202 / 92%) 8px 16px);
-  color: #5e3a07;
-  box-shadow: 0 0 0 3px rgb(255 255 255 / 62%);
+.hbm-contract-track i.negotiating {
+  background: linear-gradient(90deg, #cf8e35, #e4ad58);
+  color: #fff;
 }
 
-.hbm-stage-line {
+.hbm-contract-track i.capacity-lock.full {
+  background: linear-gradient(90deg, #0f8a74, #35aa93);
+  color: #fff;
+}
+
+.hbm-contract-track i.capacity-lock.soldout {
+  background: linear-gradient(90deg, #006b5a, #00a381);
+  color: #fff;
+}
+
+.hbm-contract-track i.capacity-lock.partial {
+  background: linear-gradient(90deg, #d49a42, #efc36f);
+  color: #553806;
+}
+
+.hbm-contract-track i.capacity-lock.watch {
+  background: linear-gradient(90deg, #dce7e4, #edf3f1);
+  color: var(--muted);
+}
+
+.hbm-contract-progress {
+  display: grid;
+  gap: 6px;
+}
+
+.hbm-progress-summary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.hbm-progress-summary span {
+  color: var(--subtle);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hbm-progress-summary strong {
+  color: var(--teal);
+  font-size: 13px;
+}
+
+.hbm-progress-summary small {
+  display: -webkit-box;
+  grid-column: 1 / -1;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.hbm-progress-scale {
+  position: relative;
+  padding-top: 14px;
+}
+
+.hbm-progress-steps {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.hbm-stage-line span {
-  display: grid;
-  gap: 5px;
-  justify-items: center;
+  gap: 6px;
   color: var(--subtle);
   font-size: 11px;
   font-weight: 800;
+  text-align: center;
 }
 
-.hbm-stage-line i {
-  width: 100%;
-  height: 6px;
-  border-radius: 999px;
-  background: #dce6e2;
+.hbm-progress-steps span {
+  position: relative;
 }
 
-.hbm-stage-line span.active {
+.hbm-progress-steps span.active {
+  color: rgb(15 64 59 / 62%);
+}
+
+.hbm-progress-steps span.current {
   color: var(--teal);
 }
 
-.hbm-stage-line span.active i {
-  background: var(--teal);
+.hbm-progress-steps span.current::before {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: 8px solid var(--teal);
+  filter: drop-shadow(0 1px 1px rgb(15 64 59 / 18%));
+  transform: translateX(-50%);
+  content: "";
 }
 
-.hbm-deal-note {
+.hbm-contract-foot {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
 }
 
-.hbm-deal-note span {
+.hbm-contract-foot span {
   max-width: 100%;
   overflow: hidden;
   border-radius: 999px;
@@ -1603,66 +1663,47 @@ td small {
   background: #fff;
 }
 
-.capacity-products {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.capacity-products span {
-  border-radius: 999px;
-  padding: 4px 8px;
-  background: var(--blue-soft);
-  color: var(--blue);
-  font-size: 12px;
-}
-
-.capacity-metric {
-  display: grid;
-  gap: 5px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: #f1f6f4;
-}
-
-.capacity-metric span,
-.capacity-risk span,
-.capacity-facts dt {
-  color: var(--subtle);
-  font-size: 12px;
-}
-
-.capacity-metric strong {
-  color: var(--ink);
-  line-height: 1.35;
-}
-
 .capacity-bars {
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f7faf9;
+}
+
+.capacity-metric-line {
+  overflow: hidden;
+  color: var(--subtle);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .capacity-bar-row {
   display: grid;
-  grid-template-columns: 76px minmax(0, 1fr) 74px;
+  grid-template-columns: 76px minmax(0, 1fr);
   gap: 10px;
   align-items: center;
 }
 
-.capacity-bar-row > span,
-.capacity-bar-row > strong {
+.capacity-bar-row > span {
   color: var(--muted);
   font-size: 12px;
+  font-weight: 800;
 }
 
 .capacity-bar-row > strong {
+  grid-column: 2;
+  margin-top: -7px;
   color: var(--ink);
+  font-size: 12px;
   text-align: right;
 }
 
 .capacity-bar-track {
   position: relative;
-  min-height: 32px;
+  min-height: 40px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -1685,7 +1726,7 @@ td small {
   position: relative;
   z-index: 1;
   display: block;
-  padding: 8px 10px;
+  padding: 11px 12px;
   color: var(--ink);
   font-size: 12px;
   line-height: 1.35;
@@ -1731,10 +1772,6 @@ td small {
   color: var(--green);
 }
 
-.capacity-card .hbm-evidence-item {
-  border-top-color: var(--line);
-}
-
 .capacity-bar-track::after {
   content: "";
   position: absolute;
@@ -1760,45 +1797,77 @@ td small {
   word-break: break-word;
 }
 
-.capacity-facts {
+.capacity-news {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
-  margin: 0;
-}
-
-.capacity-facts div {
-  display: grid;
-  gap: 4px;
-  min-height: 96px;
-  padding: 9px 10px;
+  max-height: 220px;
+  overflow: auto;
+  padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel-soft);
+  background: #fff;
 }
 
-.capacity-facts dd {
-  margin: 0;
+.capacity-news-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.capacity-news-head span {
   color: var(--ink);
   font-size: 13px;
-  line-height: 1.45;
+  font-weight: 900;
 }
 
-.capacity-risk {
+.capacity-news-head small,
+.capacity-news-item small {
+  color: var(--muted);
+}
+
+.capacity-news-meta {
+  display: grid;
+  gap: 5px;
+}
+
+.capacity-news-meta span {
+  overflow: hidden;
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: #f1f6f4;
+  color: var(--muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.capacity-news-item {
   display: grid;
   gap: 4px;
-  padding: 10px 12px;
-  border-left: 3px solid #d4943b;
-  border-radius: 8px;
-  background: #fff8ed;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
 }
 
-.capacity-risk p {
+.capacity-news-item time {
+  color: var(--subtle);
+  font-size: 11px;
+}
+
+.capacity-news-item strong {
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.capacity-news-item p {
+  display: -webkit-box;
+  overflow: hidden;
   margin: 0;
-}
-
-.capacity-risk small {
   color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .table-wrap {
@@ -2568,13 +2637,8 @@ button.mindmap-label {
     grid-template-columns: 1fr;
   }
 
-  .hbm-deal-card {
+  .hbm-contract-grid {
     grid-template-columns: 1fr;
-  }
-
-  .hbm-deal-side {
-    flex-direction: row;
-    align-items: center;
   }
 
 }
@@ -2606,22 +2670,9 @@ button.mindmap-label {
     white-space: normal;
   }
 
-  .hbm-deal-side {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .hbm-deal-metrics {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .hbm-stage-line {
+  .hbm-progress-steps {
     grid-template-columns: repeat(5, minmax(42px, 1fr));
     overflow-x: auto;
-  }
-
-  .capacity-facts {
-    grid-template-columns: 1fr;
   }
 
   .hero-signal {
