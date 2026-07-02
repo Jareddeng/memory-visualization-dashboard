@@ -2053,7 +2053,7 @@ td small {
 
 .capacity-timeline-row span {
   display: grid;
-  grid-template-columns: 76px minmax(0, 1fr);
+  grid-template-columns: 76px minmax(0, 1fr) auto;
   gap: 7px;
   align-items: center;
   color: var(--muted);
@@ -2070,10 +2070,25 @@ td small {
   font-size: 11px;
 }
 
-.capacity-timeline-row em {
+.capacity-timeline-row i {
+  overflow: hidden;
   color: var(--muted);
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.capacity-timeline-row em {
+  color: #8a6426;
   font-size: 12px;
   font-style: normal;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.capacity-timeline-row .capacity-empty-node {
+  color: var(--muted);
+  font-weight: 400;
 }
 
 .table-wrap {

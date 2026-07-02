@@ -174,6 +174,7 @@ src/styles.css -> .capacity-*
 - 扩产能力图表必须使用全模块统一最大刻度，不能每家公司单独归一化，否则会误导横向比较。
 - 扩产证据和来源只放该公司自身相关的扩产、工厂、资本开支、良率爬坡或产能节点；SEMI 全球设备投资、行业总 capex 等背景材料不要放进单个公司卡片。
 - 扩产卡片底部优先展示 HBM、DDR4/DDR5、NAND 三类扩产的实际落地时间；维护 `facilities.timeline` 和 `facilities.display`，不要在页面底部堆长新闻正文。
+- `facilities.value` 和 `facilities.unit` 同时用于柱状图和落地节点里的“落地多少”，龙虾应优先填真实增量产能，不能确认时才使用占位指数并在 `display` 标明。
 - `evidence` 至少包含 `date`、`label`、`detail`、`source`。
 - 如果有原文链接，后续可给 `evidence` 增加 `url` 字段，再在页面上做可点击来源。
 

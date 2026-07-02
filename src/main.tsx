@@ -1537,14 +1537,21 @@ function CapacityTimeline({ rows, timeline, confidence }: { rows: CapacityCatego
             {row.expansionItems.length ? row.expansionItems.map((item) => (
               <span title={item.display} key={`${row.key}-${item.name}`}>
                 <b>{item.timeline ?? "时间待补充"}</b>
-                {item.name}
+                <i>{item.name}</i>
+                <em>{formatFacilityIncrement(item)}</em>
               </span>
-            )) : <em>暂无明确扩产落地节点</em>}
+            )) : <em className="capacity-empty-node">暂无明确扩产落地节点</em>}
           </div>
         </div>
       ))}
     </div>
   );
+}
+
+function formatFacilityIncrement(item: CapacityFacility) {
+  const value = Number(item.value ?? 0);
+  if (!value) return "增量待补充";
+  return `+${value.toLocaleString()} ${item.unit}`;
 }
 
 function getCapacityCategoryRow(category: CapacityCategory, baseFacilities: CapacityFacility[], expansionFacilities: CapacityFacility[]): CapacityCategoryRow {
