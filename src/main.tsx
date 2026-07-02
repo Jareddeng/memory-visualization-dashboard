@@ -1387,7 +1387,11 @@ function getCapacitySegmentLabel(status: string) {
 
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
-  const palette = ["#0f766e", "#2563eb", "#d97706", "#7c3aed", "#0ea5e9", "#64748b"];
+  const categories: CapacityCategory[] = [
+    { key: "hbm", label: "HBM", match: (product) => /hbm/i.test(product) },
+    { key: "ddr", label: "DDR4 / DDR5", match: (product) => /dram|ddr|lpddr/i.test(product) },
+    { key: "nand", label: "NAND", match: (product) => /nand/i.test(product) },
+  ];
 
   if (!companies.length) {
     return null;
@@ -1399,7 +1403,7 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
         <div>
           <p className="eyebrow">Capacity Expansion Tracker</p>
           <h2>三大厂扩产能力变化</h2>
-          <p>先看现有 DRAM / NAND / HBM 工厂底盘，再看新建工厂和原有工厂增产后的总能力。颜色代表不同工厂或项目。</p>
+          <p>按 HBM、DDR4/DDR5、NAND 三类拆开看，每类对比原有产能和扩产后产能。下方只保留扩产新闻。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
@@ -1428,7 +1432,9 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
           const currentTotal = sumCapacity(currentFacilities);
           const futureTotal = sumCapacity(futureFacilities);
           const hasStackData = currentTotal > 0 || futureTotal > 0;
-          const values = [currentTotal, futureTotal, company.current_capacity.value, company.target_capacity.value].filter((value): value is number => typeof value === "number" && Number.isFinite(value) && value > 0);
+          const categoryRows = categories.map((category) => getCapacityCategoryRow(category, baseFacilities, expansionFacilities));
+          const categoryValues = categoryRows.flatMap((row) => [row.currentTotal, row.futureTotal]);
+          const values = [...categoryValues, currentTotal, futureTotal, company.current_capacity.value, company.target_capacity.value].filter((value): value is number => typeof value === "number" && Number.isFinite(value) && value > 0);
           const maxValue = Math.max(...values, 1);
           return (
             <article className="capacity-card" id={`capacity-${slugifyId(company.company)}`} key={company.company}>
@@ -1443,9 +1449,10 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
               <div className="capacity-bars">
                 <div className="capacity-metric-line">口径：{company.capacity_metric}</div>
                 {hasStackData ? (
-                  <div className="capacity-stack-chart">
-                    <CapacityStackRow label="原有产能" facilities={currentFacilities} maxValue={maxValue} palette={palette} total={currentTotal} />
-                    <CapacityStackRow label="扩产后产能" facilities={futureFacilities} maxValue={maxValue} palette={palette} total={futureTotal} />
+                  <div className="capacity-category-chart">
+                    {categoryRows.map((row) => (
+                      <CapacityCategoryBlock key={`${company.company}-${row.key}`} maxValue={maxValue} row={row} />
+                    ))}
                   </div>
                 ) : (
                   <div className="capacity-empty-bars">
@@ -1456,19 +1463,10 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
                 )}
               </div>
 
-              <div className="facility-lists">
-                <FacilityList title="已有大工厂" facilities={baseFacilities} emptyText="待补充已有 DRAM / NAND / HBM 工厂产能" />
-                <FacilityList title="新建 / 增产" facilities={expansionFacilities} emptyText="待补充新建工厂或原厂增产项目" />
-              </div>
-
               <div className="capacity-news">
                 <div className="capacity-news-head">
-                  <span>未来扩产消息</span>
+                  <span>扩产新闻</span>
                   <small>{company.timeline} · 置信度：{company.confidence}</small>
-                </div>
-                <div className="capacity-news-meta">
-                  <span title={company.capex}>资本支出：{company.capex}</span>
-                  <span title={company.bottleneck}>瓶颈：{company.bottleneck}</span>
                 </div>
                 {(company.evidence ?? []).map((item) => (
                   <div className="capacity-news-item" key={`${company.company}-${item.date}-${item.label}`}>
@@ -1488,50 +1486,59 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
 }
 
 type CapacityFacility = NonNullable<NonNullable<NonNullable<TrackerPayload["expansion_capacity"]>["companies"]>[number]["facilities"]>[number];
+type CapacityCategory = {
+  key: string;
+  label: string;
+  match: (product: string) => boolean;
+};
 
-function CapacityStackRow({ label, facilities, maxValue, palette, total }: { label: string; facilities: CapacityFacility[]; maxValue: number; palette: string[]; total: number }) {
+type CapacityCategoryRow = {
+  key: string;
+  label: string;
+  currentTotal: number;
+  futureTotal: number;
+  currentItems: CapacityFacility[];
+  expansionItems: CapacityFacility[];
+};
+
+function CapacityCategoryBlock({ row, maxValue }: { row: CapacityCategoryRow; maxValue: number }) {
   return (
-    <div className="capacity-stack-row">
-      <span>{label}</span>
-      <div className="capacity-stack-track">
-        {facilities.map((facility, index) => {
-          const value = Number(facility.value ?? 0);
-          if (!value) return null;
-          return (
-            <i
-              key={`${label}-${facility.name}`}
-              style={{
-                width: `${Math.max(5, (value / maxValue) * 100)}%`,
-                background: palette[index % palette.length],
-              }}
-              title={`${facility.name}: ${facility.display}`}
-            >
-              {facility.name}
-            </i>
-          );
-        })}
+    <div className="capacity-category-block">
+      <div className="capacity-category-title">
+        <strong>{row.label}</strong>
+        <small>{row.expansionItems.length ? `扩产 ${row.expansionItems.length} 项` : "暂无明确扩产项"}</small>
       </div>
-      <strong>{total ? `${total.toLocaleString()} ${facilities.find((item) => item.unit)?.unit ?? ""}` : "待补充"}</strong>
+      <CapacityCategoryBar label="原有" tone="base" total={row.currentTotal} maxValue={maxValue} unit={row.currentItems.find((item) => item.unit)?.unit} />
+      <CapacityCategoryBar label="扩产后" tone="future" total={row.futureTotal} maxValue={maxValue} unit={[...row.currentItems, ...row.expansionItems].find((item) => item.unit)?.unit} />
     </div>
   );
 }
 
-function FacilityList({ title, facilities, emptyText }: { title: string; facilities: CapacityFacility[]; emptyText: string }) {
+function CapacityCategoryBar({ label, tone, total, maxValue, unit }: { label: string; tone: "base" | "future"; total: number; maxValue: number; unit?: string }) {
+  const width = total ? Math.max(5, (total / maxValue) * 100) : 0;
   return (
-    <div className="facility-list">
-      <div className="facility-list-head">
-        <span>{title}</span>
-        <small>{facilities.length} 项</small>
+    <div className={`capacity-category-row ${tone}`}>
+      <span>{label}</span>
+      <div className="capacity-category-track">
+        {total ? <i style={{ width: `${width}%` }} /> : null}
       </div>
-      {facilities.length ? facilities.map((facility) => (
-        <div className="facility-item" key={`${title}-${facility.name}`}>
-          <strong>{facility.name}</strong>
-          <span>{facility.display}</span>
-          <small>{facility.products.join(" / ")} · {facility.timeline ?? "时间待补充"}</small>
-        </div>
-      )) : <div className="facility-empty">{emptyText}</div>}
+      <b>{total ? `${total.toLocaleString()} ${unit ?? ""}` : "待补充"}</b>
     </div>
   );
+}
+
+function getCapacityCategoryRow(category: CapacityCategory, baseFacilities: CapacityFacility[], expansionFacilities: CapacityFacility[]): CapacityCategoryRow {
+  const currentItems = baseFacilities.filter((facility) => facility.products.some(category.match));
+  const expansionItems = expansionFacilities.filter((facility) => facility.products.some(category.match));
+  const currentTotal = sumCapacity(currentItems);
+  return {
+    key: category.key,
+    label: category.label,
+    currentTotal,
+    futureTotal: currentTotal + sumCapacity(expansionItems),
+    currentItems,
+    expansionItems,
+  };
 }
 
 function sumCapacity(facilities: CapacityFacility[]) {
