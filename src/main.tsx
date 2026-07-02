@@ -84,6 +84,13 @@ type TrackerPayload = {
       locked_years: string;
       locked_until?: number | null;
       locked_capacity: string;
+      capacity_lock_segments?: Array<{
+        start: number;
+        end: number;
+        status: "soldout" | "full" | "partial" | "watch";
+        label?: string;
+        note?: string;
+      }>;
       negotiating: string;
       expected_term: string;
       expected_capacity: string;
@@ -1198,6 +1205,7 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
           const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
           const negotiationRange = getNegotiationRange(company, lockedUntil);
           const capacityState = getCapacityLockState(company.locked_capacity);
+          const capacitySegments = getCapacityLockSegments(company, lockedRange, capacityState);
           const stageIndexByName = stages.findIndex((stage) => stage === company.stage);
           const currentStageIndex = stageIndexByName >= 0 ? stageIndexByName : company.stage_index;
           const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
@@ -1239,9 +1247,14 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                 <div className="hbm-contract-bar-row">
                   <span>产能锁定</span>
                   <div className="hbm-contract-track">
-                    <i className={`capacity-lock ${capacityState.tone}`} style={{ left: `${lockedPosition.left}%`, width: `${lockedPosition.width}%` }} title={company.locked_capacity}>
-                      {capacityState.label}
-                    </i>
+                    {capacitySegments.map((segment) => {
+                      const position = rangePosition(segment.start, segment.end, startYear, maxYear);
+                      return (
+                        <i className={`capacity-lock ${segment.status}`} style={{ left: `${position.left}%`, width: `${position.width}%` }} title={segment.note ?? company.locked_capacity} key={`${company.company}-${segment.start}-${segment.end}-${segment.status}`}>
+                          {segment.label}
+                        </i>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -1330,6 +1343,38 @@ function getCapacityLockState(value: string) {
   }
   return { label: "产能待确认", tone: "watch", summary: "锁量待确认" };
 }
+
+function getCapacityLockSegments(
+  company: NonNullable<NonNullable<TrackerPayload["hbm_contracts"]>["companies"]>[number],
+  lockedRange: { start: number; end: number },
+  fallbackState: { label: string; tone: string; summary: string },
+) {
+  const segments = company.capacity_lock_segments;
+  if (segments?.length) {
+    return segments.map((segment) => ({
+      start: segment.start,
+      end: segment.end,
+      status: segment.status,
+      label: segment.label ?? getCapacitySegmentLabel(segment.status),
+      note: segment.note,
+    }));
+  }
+  return [{
+    start: lockedRange.start,
+    end: lockedRange.end,
+    status: fallbackState.tone,
+    label: fallbackState.label,
+    note: company.locked_capacity,
+  }];
+}
+
+function getCapacitySegmentLabel(status: string) {
+  if (status === "soldout") return "已售罄";
+  if (status === "full") return "高锁定";
+  if (status === "partial") return "部分锁定";
+  return "待确认";
+}
+
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
 
