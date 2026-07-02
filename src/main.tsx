@@ -1438,7 +1438,7 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
         <div>
           <p className="eyebrow">Capacity Expansion Tracker</p>
           <h2>三大厂扩产能力变化</h2>
-          <p>按 HBM、DDR4/DDR5、NAND 三类拆开看，每类对比原有产能和扩产后产能。下方只保留扩产新闻。</p>
+          <p>按 HBM、DDR4/DDR5、NAND 三类拆开看，每类对比原有产能和扩产后产能。下方补充实际落地时间。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
@@ -1472,20 +1472,7 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
                 )}
               </div>
 
-              <div className="capacity-news">
-                <div className="capacity-news-head">
-                  <span>扩产新闻</span>
-                  <small>{company.timeline} · 置信度：{company.confidence}</small>
-                </div>
-                {(company.evidence ?? []).map((item) => (
-                  <div className="capacity-news-item" key={`${company.company}-${item.date}-${item.label}`}>
-                    <time>{item.date}</time>
-                    <strong>{item.label}</strong>
-                    <p>{item.detail}</p>
-                    <small>{item.source}</small>
-                  </div>
-                ))}
-              </div>
+              <CapacityTimeline rows={categoryRows} timeline={company.timeline} confidence={company.confidence} />
             </article>
           );
         })}
@@ -1532,6 +1519,30 @@ function CapacityCategoryBar({ label, tone, total, maxValue, unit }: { label: st
         {total ? <i style={{ width: `${width}%` }} /> : null}
       </div>
       <b>{total ? `${total.toLocaleString()} ${unit ?? ""}` : "待补充"}</b>
+    </div>
+  );
+}
+
+function CapacityTimeline({ rows, timeline, confidence }: { rows: CapacityCategoryRow[]; timeline: string; confidence: string }) {
+  return (
+    <div className="capacity-timeline">
+      <div className="capacity-timeline-head">
+        <span>扩产落地时间</span>
+        <small>{timeline} · 置信度：{confidence}</small>
+      </div>
+      {rows.map((row) => (
+        <div className="capacity-timeline-row" key={row.key}>
+          <strong>{row.label}</strong>
+          <div>
+            {row.expansionItems.length ? row.expansionItems.map((item) => (
+              <span title={item.display} key={`${row.key}-${item.name}`}>
+                <b>{item.timeline ?? "时间待补充"}</b>
+                {item.name}
+              </span>
+            )) : <em>暂无明确扩产落地节点</em>}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

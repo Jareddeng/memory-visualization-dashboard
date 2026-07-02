@@ -2006,77 +2006,74 @@ td small {
   word-break: break-word;
 }
 
-.capacity-news {
+.capacity-timeline {
   display: grid;
-  gap: 8px;
-  max-height: 220px;
-  overflow: auto;
+  gap: 10px;
   padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
 }
 
-.capacity-news-head {
+.capacity-timeline-head {
   display: flex;
   justify-content: space-between;
   gap: 8px;
   align-items: center;
 }
 
-.capacity-news-head span {
+.capacity-timeline-head span {
   color: var(--ink);
   font-size: 13px;
   font-weight: 900;
 }
 
-.capacity-news-head small,
-.capacity-news-item small {
+.capacity-timeline-head small {
   color: var(--muted);
 }
 
-.capacity-news-meta {
+.capacity-timeline-row {
   display: grid;
-  gap: 5px;
-}
-
-.capacity-news-meta span {
-  overflow: hidden;
-  border-radius: 999px;
-  padding: 4px 8px;
-  background: #f1f6f4;
-  color: var(--muted);
-  font-size: 12px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.capacity-news-item {
-  display: grid;
-  gap: 4px;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
   border-top: 1px solid var(--line);
   padding-top: 8px;
 }
 
-.capacity-news-item time {
-  color: var(--subtle);
-  font-size: 11px;
-}
-
-.capacity-news-item strong {
+.capacity-timeline-row strong {
   color: var(--ink);
   font-size: 13px;
 }
 
-.capacity-news-item p {
-  display: -webkit-box;
-  overflow: hidden;
-  margin: 0;
+.capacity-timeline-row > div {
+  display: grid;
+  gap: 6px;
+}
+
+.capacity-timeline-row span {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 7px;
+  align-items: center;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.45;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+}
+
+.capacity-timeline-row b {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 3px 7px;
+  background: #f1f6f4;
+  color: var(--teal);
+  font-size: 11px;
+}
+
+.capacity-timeline-row em {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
 }
 
 .table-wrap {
