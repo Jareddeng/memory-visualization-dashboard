@@ -1,6 +1,8 @@
 {
   "records": [
     {
+<<<<<<< HEAD
+=======
       "id": "2026-07-02-infineon-500m-euro-ai-expansion",
       "type": "公司公告",
       "impact": "bullish",
@@ -20,6 +22,7 @@
       "review_date": "2026-08-02"
     },
     {
+>>>>>>> c71925cd1200f02d803c78d2e407e421b92fa7d7
       "id": "2026-07-01-trendforce-memory-spot-price-update",
       "type": "产品数据",
       "impact": "neutral",
@@ -58,6 +61,8 @@
       "review_date": "2026-07-15"
     },
     {
+<<<<<<< HEAD
+=======
       "id": "2026-07-01-korea-june-exports-record",
       "type": "行业数据",
       "impact": "bullish",
@@ -134,6 +139,7 @@
       "review_date": "2026-07-15"
     },
     {
+>>>>>>> c71925cd1200f02d803c78d2e407e421b92fa7d7
       "id": "2026-06-30-trendforce-3q26-memory-price-forecast",
       "type": "产品数据",
       "impact": "bullish",
