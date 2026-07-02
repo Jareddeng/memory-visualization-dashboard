@@ -167,14 +167,15 @@ src/styles.css -> .capacity-*
 
 维护要求：
 
-- 优先补真实产能口径：wafer starts/month、HBM stacks/month、bit output 或公司披露的等效口径。
-- 不要用百分比替代真实产能；实在没有真实数据时，`value` 用 `null`，`display` 写“待补充/待核实”。
+- 优先补真实产能口径：第一优先级是 `wafers/month` 或 `wafer starts/month`；如果只有 HBM stacks/month、bit output 或公司披露的等效口径，必须在 `unit` 和 `display` 里写清楚，不能和片/月混加。
+- 不要用百分比、资本开支、洁净室面积或“capacity index”替代真实产能；实在没有真实数据时，`value` 用 `null`，`display` 写“片/月待补充/待核实”。
 - `current_capacity.unit` 和 `target_capacity.unit` 必须一致，除非页面明确标注不同口径。
 - 若要画清楚“原有产能 vs 扩产后产能”，优先维护 `facilities` 数组：`stage: "base"` 表示已有大工厂，`stage: "expansion"` 表示新建工厂或原有工厂增产；页面会自动按工厂颜色画堆积柱并加总。
 - 扩产能力图表必须使用全模块统一最大刻度，不能每家公司单独归一化，否则会误导横向比较。
 - 扩产证据和来源只放该公司自身相关的扩产、工厂、资本开支、良率爬坡或产能节点；SEMI 全球设备投资、行业总 capex 等背景材料不要放进单个公司卡片。
 - 扩产卡片底部优先展示 HBM、DDR4/DDR5、NAND 三类扩产的实际落地时间；维护 `facilities.timeline` 和 `facilities.display`，不要在页面底部堆长新闻正文。
-- `facilities.value` 和 `facilities.unit` 同时用于柱状图和落地节点里的“落地多少”，龙虾应优先填真实增量产能，不能确认时才使用占位指数并在 `display` 标明。
+- `facilities.value` 和 `facilities.unit` 同时用于柱状图和落地节点里的“落地多少”，龙虾应优先填真实增量产能。不能确认片数时不要填占位指数，保持 `value: null`。
+- 同一个 `facility` 不要同时挂在 HBM、DDR、NAND 多个产品口径下，除非来源已经拆分片数；综合 fab 需要在 `display` 标明“综合口径/拆分待补”，并谨慎选择一个主要产品分类，避免柱状图重复加总。
 - `evidence` 至少包含 `date`、`label`、`detail`、`source`。
 - 如果有原文链接，后续可给 `evidence` 增加 `url` 字段，再在页面上做可点击来源。
 
