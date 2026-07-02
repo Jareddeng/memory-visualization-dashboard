@@ -1435,14 +1435,14 @@ td small {
 }
 
 .hbm-capacity-pill.full {
-  background: var(--green-soft);
-  color: var(--green);
+  background: #e9f6ef;
+  color: #25745f;
 }
 
 .hbm-capacity-pill.soldout {
-  background: #dff7ef;
-  color: #04785f;
-  box-shadow: inset 0 0 0 1px rgb(4 120 95 / 16%);
+  background: #ccefe2;
+  color: #005f4f;
+  box-shadow: inset 0 0 0 1px rgb(0 95 79 / 22%);
 }
 
 .hbm-capacity-pill.partial {
@@ -1526,12 +1526,12 @@ td small {
 }
 
 .hbm-contract-track i.capacity-lock.full {
-  background: linear-gradient(90deg, #0f8a74, #35aa93);
-  color: #fff;
+  background: linear-gradient(90deg, #bfe8d4, #dff4e8);
+  color: #1d6b57;
 }
 
 .hbm-contract-track i.capacity-lock.soldout {
-  background: linear-gradient(90deg, #006b5a, #00a381);
+  background: linear-gradient(90deg, #005f4f, #008a72);
   color: #fff;
 }
 

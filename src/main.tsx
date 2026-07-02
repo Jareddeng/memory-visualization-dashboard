@@ -1833,7 +1833,9 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
   ];
   const anchor = new Date().toISOString();
   const timeScopedRecords = records.filter((record) => isWithinTimeRange(record.date, timeFilter, anchor));
-  const filtered = timeScopedRecords.filter((record) => filter === "all" || normalizedImpact(record.impact) === filter);
+  const filtered = timeScopedRecords
+    .filter((record) => filter === "all" || normalizedImpact(record.impact) === filter)
+    .sort((a, b) => b.date.localeCompare(a.date));
   const total = timeScopedRecords.length || 1;
   const distribution: Array<{ key: IntelRecord["impact"]; label: string }> = [
     { key: "bullish", label: "利多" },
