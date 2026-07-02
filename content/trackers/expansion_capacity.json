@@ -1,175 +1,127 @@
 {
   "updated_at": "2026-07-02",
-  "source": "Codex-maintained capacity tracker; first wafer/month version compiled from public fab lists and company/news disclosures",
-  "metric_note": "第一版优先使用 wafers/month。只把能找到片/月或公开 fab list 的项目放入柱状图；投产、洁净室面积、资本开支、封装厂等不能直接换算为片/月的项目保留为待补充，不参与加总。",
+  "source": "User capacity estimate; maintained by Codex/clawbot tracker",
+  "metric_note": "当前图表采用 DRAM 总产能与 NAND 总产能两类，单位为万片/月。DRAM 内部 HBM 与 DDR4+DDR5 只作为说明字段，不在图中拆开，避免用不稳定拆分口径误导横向比较。",
   "companies": [
-    {
-      "company": "SK Hynix",
-      "ticker": "000660.KS",
-      "region": "韩国 / 中国 / 美国",
-      "products": ["HBM3E / HBM4 / HBM4E", "DDR5 / LPDDR5", "advanced DRAM"],
-      "capacity_metric": "wafers/month where disclosed; HBM packaging capacity not converted",
-      "current_capacity": {
-        "label": "当前产能",
-        "value": null,
-        "unit": "wafers/month",
-        "display": "可量化公开片数：无锡 DRAM 约 170,000 wafers/month；M16 初始 15,000-20,000 wafers/month。HBM/M15X 片数待补。"
-      },
-      "target_capacity": {
-        "label": "扩产后产能",
-        "value": null,
-        "unit": "wafers/month",
-        "display": "M15X 已进入 wafer deployment，龙仁第一座 fab 计划 2027 年启动；公开资料暂未给片/月，等待龙虾补充。"
-      },
-      "capex": "2026 年预计继续聚焦 HBM4、M15X 和龙仁集群；ASML EUV 设备订单将支撑 M15X 与龙仁先进 DRAM/HBM 产能。",
-      "timeline": "2026-2028",
-      "bottleneck": "先进封装（CoWoS/TSV）、HBM4 良率爬坡、EUV 设备交付、龙仁集群建设进度",
-      "confidence": "中",
-      "status": "已把可找到片/月的无锡和 M16 先入图；M15X、龙仁和印第安纳封装因缺少片数暂不加总。",
-      "facilities": [
-        {
-          "name": "无锡 HC1 DRAM",
-          "stage": "base",
-          "products": ["DDR4/DDR5"],
-          "value": 100000,
-          "unit": "wafers/month",
-          "display": "公开 fab list：HC1 无锡 DRAM 约 100,000 wafers/month。",
-          "timeline": "现有"
-        },
-        {
-          "name": "无锡 HC2 DRAM",
-          "stage": "base",
-          "products": ["DDR4/DDR5"],
-          "value": 70000,
-          "unit": "wafers/month",
-          "display": "公开 fab list：HC2 无锡 DRAM 约 70,000 wafers/month。",
-          "timeline": "现有"
-        },
-        {
-          "name": "利川 M16 DRAM",
-          "stage": "base",
-          "products": ["DDR4/DDR5"],
-          "value": 17500,
-          "unit": "wafers/month",
-          "display": "公开 fab list：M16 初始 15,000-20,000 wafers/month；页面取中值 17,500 作图，需后续复核。",
-          "timeline": "现有"
-        },
-        {
-          "name": "清州 M15X",
-          "stage": "expansion",
-          "products": ["HBM"],
-          "value": null,
-          "unit": "wafers/month",
-          "display": "2026 年进入 wafer deployment，主要承接 HBM / 先进 DRAM 扩张；公开资料未给片/月。",
-          "timeline": "2026"
-        },
-        {
-          "name": "龙仁第一座 fab",
-          "stage": "expansion",
-          "products": ["HBM"],
-          "value": null,
-          "unit": "wafers/month",
-          "display": "计划 2027 年 2 月启动首座 cleanroom，Phase 1 包含 6 个 cleanroom；片/月待补。",
-          "timeline": "2027+"
-        },
-        {
-          "name": "印第安纳 HBM 封装",
-          "stage": "expansion",
-          "products": ["HBM packaging"],
-          "value": null,
-          "unit": "wafers/month",
-          "display": "美国先进封装项目，影响 HBM 交付能力；封装产能不能直接换算为晶圆片/月。",
-          "timeline": "2027-2028"
-        }
-      ],
-      "evidence": [
-        {
-          "date": "2026-06-17",
-          "label": "无锡与 M16 公开 fab list 片数",
-          "detail": "公开 fab list 给出 SK Hynix 无锡 HC1 约 100,000 wafers/month、HC2 约 70,000 wafers/month、M16 初始 15,000-20,000 wafers/month。",
-          "source": "Wikipedia fab list / public summaries"
-        },
-        {
-          "date": "2026-06-17",
-          "label": "M15X 与龙仁扩产进度",
-          "detail": "公开报道显示 M15X 已进入 wafer deployment；龙仁第一座 fab 计划 2027 年 2 月启动，Phase 1 包含 6 个 cleanroom，但未给片/月。",
-          "source": "Tom's Hardware"
-        }
-      ]
-    },
     {
       "company": "Samsung Electronics",
       "ticker": "005930.KS",
       "region": "韩国 / 中国",
-      "products": ["HBM4 / HBM4E", "DDR5 / LPDDR5", "NAND", "advanced packaging"],
-      "capacity_metric": "wafers/month where disclosed; mixed fabs need product split verification",
+      "products": ["DRAM", "HBM", "DDR4 / DDR5", "NAND"],
+      "capacity_metric": "万片/月；DRAM 与 NAND 两类总产能",
       "current_capacity": {
         "label": "当前产能",
         "value": null,
-        "unit": "wafers/month",
-        "display": "可量化公开片数：平泽综合产能约 450,000 wafers/month，西安 NAND 约 100,000 wafers/month；平泽 DRAM/NAND/HBM 拆分待补。"
+        "unit": "万片/月",
+        "display": "DRAM 总产能约 67.5 万片/月，其中 HBM 约 18.5、DDR4+DDR5 约 29.5；NAND 约 39 万片/月。"
       },
       "target_capacity": {
         "label": "扩产后产能",
         "value": null,
-        "unit": "wafers/month",
-        "display": "公开摘要显示 1c DRAM/HBM4 目标约 60,000 wafers/month；P4L 扩建片数待补。"
+        "unit": "万片/月",
+        "display": "扩产后片数暂不估算；后续由龙虾按公司级扩产新闻补充 DRAM/NAND 增量。"
       },
-      "capex": "2026 年重点在 1c 工艺、HBM4 良率和 P4L/平泽扩建；可量化片数仍需拆分平泽 DRAM、NAND 与 HBM 口径。",
+      "capex": "后续重点跟踪平泽、P4L、1c DRAM/HBM4 与西安 NAND 相关扩产。当前先使用两类总产能，不拆 DDR4/DDR5 与 HBM。",
       "timeline": "2026-2028",
-      "bottleneck": "HBM4 良率爬坡、核心客户认证、先进封装资源分配、平泽不同产品线片数拆分",
+      "bottleneck": "HBM4 良率、先进封装、客户认证、平泽不同产品线产能拆分",
       "confidence": "中",
-      "status": "先放入平泽综合、Xi'an NAND 和 1c/HBM4 可量化片数；平泽内部产品拆分需龙虾继续复核。",
+      "status": "当前产能估算：DRAM 67.5 万片/月，NAND 39 万片/月。",
       "facilities": [
         {
-          "name": "平泽综合产能",
+          "name": "DRAM 总产能",
           "stage": "base",
-          "products": ["DDR4/DDR5"],
-          "value": 450000,
-          "unit": "wafers/month",
-          "display": "公开 fab list：Pyeongtaek 约 450,000 wafers/month，覆盖 V-NAND 与 DRAM；当前先放在 DRAM 口径，拆分待补。",
+          "products": ["DRAM"],
+          "value": 67.5,
+          "unit": "万片/月",
+          "display": "估算当前 DRAM 总产能 67.5 万片/月；内部拆分：HBM 18.5、DDR4+DDR5 29.5。",
           "timeline": "现有"
         },
         {
-          "name": "西安 NAND",
+          "name": "NAND 总产能",
           "stage": "base",
           "products": ["NAND"],
-          "value": 100000,
-          "unit": "wafers/month",
-          "display": "公开 fab list：Xi'an VNAND 约 100,000 wafers/month。",
+          "value": 39,
+          "unit": "万片/月",
+          "display": "估算当前 NAND 总产能 39 万片/月。",
           "timeline": "现有"
         },
         {
-          "name": "1c DRAM / HBM4",
+          "name": "1c DRAM / HBM4 扩产",
           "stage": "expansion",
-          "products": ["HBM"],
-          "value": 60000,
-          "unit": "wafers/month",
-          "display": "TrendForce 公开摘要口径：1c DRAM/HBM4 目标约 60,000 wafers/month；需龙虾找原始来源复核。",
-          "timeline": "2026"
-        },
-        {
-          "name": "P4L / 平泽扩建",
-          "stage": "expansion",
-          "products": ["DDR4/DDR5"],
+          "products": ["DRAM"],
           "value": null,
-          "unit": "wafers/month",
-          "display": "P4L 小幅扩建与 HBM4 客户认证相关；公开资料未给片/月。",
+          "unit": "万片/月",
+          "display": "扩产增量待龙虾按公司级新闻补充，暂不进入柱状图加总。",
           "timeline": "2026-2028"
         }
       ],
       "evidence": [
         {
-          "date": "2026-06-17",
-          "label": "平泽与西安公开 fab list 片数",
-          "detail": "公开 fab list 给出 Samsung Pyeongtaek 约 450,000 wafers/month、Xi'an VNAND 约 100,000 wafers/month；平泽为综合口径，需继续拆分产品线。",
-          "source": "Wikipedia fab list / public summaries"
+          "date": "2026-07-02",
+          "label": "当前产能估算口径",
+          "detail": "当前采用用户整理估算：DRAM 总产能 67.5 万片/月，HBM 18.5，DDR4+DDR5 29.5，NAND 39。",
+          "source": "User estimate / to be verified by clawbot"
+        }
+      ]
+    },
+    {
+      "company": "SK Hynix",
+      "ticker": "000660.KS",
+      "region": "韩国 / 中国 / 美国",
+      "products": ["DRAM", "HBM", "DDR4 / DDR5", "NAND"],
+      "capacity_metric": "万片/月；DRAM 与 NAND 两类总产能",
+      "current_capacity": {
+        "label": "当前产能",
+        "value": null,
+        "unit": "万片/月",
+        "display": "DRAM 总产能约 56.5 万片/月，其中 HBM 约 17.0、DDR4+DDR5 约 27.5；NAND 约 14 万片/月。"
+      },
+      "target_capacity": {
+        "label": "扩产后产能",
+        "value": null,
+        "unit": "万片/月",
+        "display": "扩产后片数暂不估算；后续重点补 M15X、龙仁、无锡及 NAND 相关增量。"
+      },
+      "capex": "后续重点跟踪 M15X、龙仁集群、无锡 DRAM 与 HBM 封装产能。当前先使用 DRAM/NAND 两类总产能。",
+      "timeline": "2026-2028",
+      "bottleneck": "先进封装、HBM4 良率爬坡、EUV 设备交付、龙仁集群建设进度",
+      "confidence": "中",
+      "status": "当前产能估算：DRAM 56.5 万片/月，NAND 14 万片/月。",
+      "facilities": [
+        {
+          "name": "DRAM 总产能",
+          "stage": "base",
+          "products": ["DRAM"],
+          "value": 56.5,
+          "unit": "万片/月",
+          "display": "估算当前 DRAM 总产能 56.5 万片/月；内部拆分：HBM 17.0、DDR4+DDR5 27.5。",
+          "timeline": "现有"
         },
         {
-          "date": "2025-09-30",
-          "label": "1c DRAM/HBM4 片数目标",
-          "detail": "公开摘要称 Samsung 扩大 1c DRAM capacity，目标约 60,000 wafers/month 用于 HBM4；该条需龙虾补 TrendForce 原文或更高可信来源。",
-          "source": "TrendForce public summary"
+          "name": "NAND 总产能",
+          "stage": "base",
+          "products": ["NAND"],
+          "value": 14,
+          "unit": "万片/月",
+          "display": "估算当前 NAND 总产能 14 万片/月。",
+          "timeline": "现有"
+        },
+        {
+          "name": "M15X / 龙仁 DRAM 扩产",
+          "stage": "expansion",
+          "products": ["DRAM"],
+          "value": null,
+          "unit": "万片/月",
+          "display": "M15X 与龙仁扩产增量待龙虾按公司级新闻补充，暂不进入柱状图加总。",
+          "timeline": "2026-2028"
+        }
+      ],
+      "evidence": [
+        {
+          "date": "2026-07-02",
+          "label": "当前产能估算口径",
+          "detail": "当前采用用户整理估算：DRAM 总产能 56.5 万片/月，HBM 17.0，DDR4+DDR5 27.5，NAND 14。",
+          "source": "User estimate / to be verified by clawbot"
         }
       ]
     },
@@ -177,102 +129,69 @@
       "company": "Micron Technology",
       "ticker": "MU",
       "region": "美国 / 日本 / 新加坡 / 台湾",
-      "products": ["HBM3E / HBM4 / HBM4E", "DRAM", "NAND"],
-      "capacity_metric": "wafers/month where disclosed; new US/Singapore projects mostly timeline-only for now",
+      "products": ["DRAM", "HBM", "DDR4 / DDR5", "NAND"],
+      "capacity_metric": "万片/月；DRAM 与 NAND 两类总产能",
       "current_capacity": {
         "label": "当前产能",
         "value": null,
-        "unit": "wafers/month",
-        "display": "可量化公开片数：台湾 Fab 16 约 80,000 wafers/month DRAM；广岛、新加坡、美国项目片数待补。"
+        "unit": "万片/月",
+        "display": "DRAM 总产能约 30 万片/月，其中 HBM 约 6.0、DDR4+DDR5 约 14.5；NAND 约 18 万片/月。"
       },
       "target_capacity": {
         "label": "扩产后产能",
         "value": null,
-        "unit": "wafers/month",
-        "display": "P5 铜锣、Idaho、New York、新加坡 Fab 10B 均有落地窗口，但公开新闻主要披露时间/洁净室/投资额，片/月待补。"
+        "unit": "万片/月",
+        "display": "扩产后片数暂不估算；后续重点补 P5、Idaho、New York、Singapore Fab 10B 的 DRAM/NAND 增量。"
       },
-      "capex": "FY2026/FY2027 capex 继续用于 HBM、1-gamma、美国 DRAM fab 和新加坡 NAND/先进封装；当前可量化片数仍偏少。",
+      "capex": "后续重点跟踪 P5 铜锣、Idaho、New York、Virginia DDR4、新加坡 Fab 10B NAND。当前先使用 DRAM/NAND 两类总产能。",
       "timeline": "2026-2029",
-      "bottleneck": "新 fab 爬坡、P5 整合、美国项目建设周期、新加坡 NAND Fab 10B 初始 wafer output 时间、HBM 封装资源",
+      "bottleneck": "P5 整合、美国新 fab 爬坡、新加坡 NAND Fab 10B 初始 wafer output、HBM 封装资源",
       "confidence": "中",
-      "status": "先放入 Fab 16 的公开片数；P5、Idaho、New York、新加坡 10B 暂作为落地节点，不进柱状图。",
+      "status": "当前产能估算：DRAM 30 万片/月，NAND 18 万片/月。",
       "facilities": [
         {
-          "name": "台湾 Fab 16 DRAM",
+          "name": "DRAM 总产能",
           "stage": "base",
-          "products": ["DDR4/DDR5"],
-          "value": 80000,
-          "unit": "wafers/month",
-          "display": "公开 fab list：Fab 16 / Taichung 约 80,000 wafers/month DRAM。",
+          "products": ["DRAM"],
+          "value": 30,
+          "unit": "万片/月",
+          "display": "估算当前 DRAM 总产能 30 万片/月；内部拆分：HBM 6.0、DDR4+DDR5 14.5。",
           "timeline": "现有"
         },
         {
-          "name": "台湾 P5 铜锣 DRAM",
-          "stage": "expansion",
-          "products": ["DDR4/DDR5"],
-          "value": null,
-          "unit": "wafers/month",
-          "display": "Micron 收购 P5；预计 2027 年下半年开始贡献 meaningful wafer output，具体片/月待补。",
-          "timeline": "2027H2"
+          "name": "NAND 总产能",
+          "stage": "base",
+          "products": ["NAND"],
+          "value": 18,
+          "unit": "万片/月",
+          "display": "估算当前 NAND 总产能 18 万片/月。",
+          "timeline": "现有"
         },
         {
-          "name": "Virginia DDR4",
+          "name": "P5 / Idaho / New York DRAM 扩产",
           "stage": "expansion",
-          "products": ["DDR4/DDR5"],
+          "products": ["DRAM"],
           "value": null,
-          "unit": "wafers/month",
-          "display": "公开报道称 DDR4 wafer output 到 2026 年底将扩大至约 4 倍；基数片/月待补，暂不入图。",
-          "timeline": "2026"
+          "unit": "万片/月",
+          "display": "P5、Idaho 与 New York 扩产增量待龙虾按公司级新闻补充，暂不进入柱状图加总。",
+          "timeline": "2027-2029"
         },
         {
-          "name": "Idaho DRAM fab",
-          "stage": "expansion",
-          "products": ["HBM"],
-          "value": null,
-          "unit": "wafers/month",
-          "display": "首座 Idaho fab 预计 2027 年中开始 wafer output；具体片/月待补。",
-          "timeline": "2027H2"
-        },
-        {
-          "name": "New York DRAM fabs",
-          "stage": "expansion",
-          "products": ["DDR4/DDR5"],
-          "value": null,
-          "unit": "wafers/month",
-          "display": "New York 第一座 fab 目标 2029Q1 开始 DRAM 生产；片/月待补。",
-          "timeline": "2029Q1"
-        },
-        {
-          "name": "新加坡 Fab 10B NAND",
+          "name": "Singapore Fab 10B NAND",
           "stage": "expansion",
           "products": ["NAND"],
           "value": null,
-          "unit": "wafers/month",
-          "display": "Fab 10B 增加约 700,000 sq ft 洁净室，预计 2028H2 初始 wafer output；片/月待补。",
+          "unit": "万片/月",
+          "display": "新加坡 Fab 10B NAND 增量片数待补，暂不进入柱状图加总。",
           "timeline": "2028H2"
-        },
-        {
-          "name": "新加坡先进封装",
-          "stage": "expansion",
-          "products": ["HBM packaging"],
-          "value": null,
-          "unit": "wafers/month",
-          "display": "2027 年开始贡献 HBM 供应；封装产能不能直接换算为晶圆片/月。",
-          "timeline": "2027"
         }
       ],
       "evidence": [
         {
-          "date": "2026-06-17",
-          "label": "Fab 16 公开 fab list 片数",
-          "detail": "公开 fab list 给出 Micron Fab 16 / Taichung 约 80,000 wafers/month DRAM。",
-          "source": "Wikipedia fab list / public summaries"
-        },
-        {
-          "date": "2026-06-18",
-          "label": "P5、Idaho、New York、Virginia、新加坡扩产节点",
-          "detail": "公开报道给出 P5 2027H2、Idaho 2027 年中、New York 2029Q1、Virginia DDR4 四倍扩产、新加坡 Fab 10B 2028H2 初始 wafer output 等节点，但多数未给片/月。",
-          "source": "Micron disclosures / Tom's Hardware / Investors.com"
+          "date": "2026-07-02",
+          "label": "当前产能估算口径",
+          "detail": "当前采用用户整理估算：DRAM 总产能 30 万片/月，HBM 6.0，DDR4+DDR5 14.5，NAND 18。",
+          "source": "User estimate / to be verified by clawbot"
         }
       ]
     }

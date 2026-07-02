@@ -163,11 +163,13 @@ src/styles.css -> .capacity-*
 扩产后产能
 ```
 
+图表当前只展示两类：`DRAM` 与 `NAND`，单位优先用 `万片/月`。HBM、DDR4、DDR5 可以作为 DRAM 内部拆分写进 `display`，不要在图表里强行拆成独立分类。
+
 下方再列“未来扩产消息”，包括资本支出、瓶颈、落地窗口和证据来源。
 
 维护要求：
 
-- 优先补真实产能口径：第一优先级是 `wafers/month` 或 `wafer starts/month`；如果只有 HBM stacks/month、bit output 或公司披露的等效口径，必须在 `unit` 和 `display` 里写清楚，不能和片/月混加。
+- 优先补真实产能口径：第一优先级是 `万片/月`、`wafers/month` 或 `wafer starts/month`；如果只有 HBM stacks/month、bit output 或公司披露的等效口径，必须在 `unit` 和 `display` 里写清楚，不能和片/月混加。
 - 不要用百分比、资本开支、洁净室面积或“capacity index”替代真实产能；实在没有真实数据时，`value` 用 `null`，`display` 写“片/月待补充/待核实”。
 - `current_capacity.unit` 和 `target_capacity.unit` 必须一致，除非页面明确标注不同口径。
 - 若要画清楚“原有产能 vs 扩产后产能”，优先维护 `facilities` 数组：`stage: "base"` 表示已有大工厂，`stage: "expansion"` 表示新建工厂或原有工厂增产；页面会自动按工厂颜色画堆积柱并加总。

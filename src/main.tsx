@@ -1388,8 +1388,7 @@ function getCapacitySegmentLabel(status: string) {
 function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansion_capacity"] }) {
   const companies = tracker?.companies ?? [];
   const categories: CapacityCategory[] = [
-    { key: "hbm", label: "HBM", match: (product) => /hbm/i.test(product) },
-    { key: "ddr", label: "DDR4 / DDR5", match: (product) => /dram|ddr|lpddr/i.test(product) },
+    { key: "dram", label: "DRAM", match: (product) => /dram|ddr|lpddr|hbm/i.test(product) },
     { key: "nand", label: "NAND", match: (product) => /nand/i.test(product) },
   ];
 
@@ -1438,7 +1437,7 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
         <div>
           <p className="eyebrow">Capacity Expansion Tracker</p>
           <h2>三大厂扩产能力变化</h2>
-          <p>按 HBM、DDR4/DDR5、NAND 三类拆开看，每类对比原有产能和扩产后产能。下方补充实际落地时间。</p>
+          <p>按 DRAM 与 NAND 两类总产能对比三大厂现有产能，单位为万片/月；HBM 与 DDR4/DDR5 作为 DRAM 内部拆分口径保留在说明里。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>
