@@ -1557,7 +1557,7 @@ function CapacityTimeline({ rows, timeline, confidence }: { rows: CapacityCatego
 
 function formatFacilityIncrement(item: CapacityFacility) {
   const value = Number(item.value ?? 0);
-  if (!value) return "增量待补充";
+  if (!value) return item.note ?? "未披露";
   return `+${value.toLocaleString()} ${item.unit}`;
 }
 
