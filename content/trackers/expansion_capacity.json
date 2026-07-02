@@ -75,12 +75,6 @@
       ],
       "evidence": [
         {
-          "date": "2026-06-29",
-          "label": "SEMI：存储设备投资超级周期",
-          "detail": "SEMI 报告：2026 年全球存储 sector 300mm 设备投资首超 $520亿（+29%），2027 年 $570亿（+11%）；DRAM 设备 $370亿（+29%）。",
-          "source": "SEMI / PRNewswire"
-        },
-        {
           "date": "2025-12-31",
           "label": "TrendForce：2026 年 DRAM 资本支出",
           "detail": "SK Hynix 2026 年 capex 预计 $20.5B（+17% YoY），HBM4 产能扩张于 M15x fab；全球 DRAM 资本支出 $61.3B（+14%）。",
@@ -156,12 +150,6 @@
         }
       ],
       "evidence": [
-        {
-          "date": "2026-06-29",
-          "label": "SEMI：存储设备投资增长",
-          "detail": "2026 年存储设备投资同比 +29%，Samsung 继续推进 1C 工艺 HBM 生产。",
-          "source": "SEMI / PRNewswire"
-        },
         {
           "date": "2025-11-28",
           "label": "1c DRAM 工艺扩产计划",
@@ -256,12 +244,6 @@
         }
       ],
       "evidence": [
-        {
-          "date": "2026-06-29",
-          "label": "SEMI：存储设备投资超级周期",
-          "detail": "2026 年存储设备投资首超 $520亿；Micron 作为最激进投资者之一，重点在 1-gamma 和 HBM。",
-          "source": "SEMI / PRNewswire"
-        },
         {
           "date": "2026-03-18",
           "label": "FY2026 Q1 法说会：capex 与扩产计划",

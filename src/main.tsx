@@ -1397,6 +1397,41 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
     return null;
   }
 
+  const capacityModels = companies.map((company) => {
+    const facilities = company.facilities ?? [];
+    const baseFacilities = facilities.filter((item) => item.stage === "base");
+    const expansionFacilities = facilities.filter((item) => item.stage === "expansion");
+    const currentFacilities = baseFacilities.length ? baseFacilities : [{
+      name: company.current_capacity.label,
+      stage: "base" as const,
+      products: company.products,
+      value: company.current_capacity.value,
+      unit: company.current_capacity.unit,
+      display: company.current_capacity.display,
+    }];
+    const futureFacilities = facilities.length ? [...baseFacilities, ...expansionFacilities] : [{
+      name: company.target_capacity.label,
+      stage: "expansion" as const,
+      products: company.products,
+      value: company.target_capacity.value,
+      unit: company.target_capacity.unit,
+      display: company.target_capacity.display,
+    }];
+    const currentTotal = sumCapacity(currentFacilities);
+    const futureTotal = sumCapacity(futureFacilities);
+    return {
+      company,
+      categoryRows: categories.map((category) => getCapacityCategoryRow(category, baseFacilities, expansionFacilities)),
+      hasStackData: currentTotal > 0 || futureTotal > 0,
+    };
+  });
+  const globalMaxValue = Math.max(
+    ...capacityModels
+      .flatMap((model) => model.categoryRows.flatMap((row) => [row.currentTotal, row.futureTotal]))
+      .filter((value): value is number => typeof value === "number" && Number.isFinite(value) && value > 0),
+    1,
+  );
+
   return (
     <section className="panel text-panel expansion-capacity-board" id="expansion-capacity-board">
       <div className="hbm-board-head">
@@ -1409,33 +1444,7 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
       </div>
 
       <div className="capacity-grid">
-        {companies.map((company) => {
-          const facilities = company.facilities ?? [];
-          const baseFacilities = facilities.filter((item) => item.stage === "base");
-          const expansionFacilities = facilities.filter((item) => item.stage === "expansion");
-          const currentFacilities = baseFacilities.length ? baseFacilities : [{
-            name: company.current_capacity.label,
-            stage: "base" as const,
-            products: company.products,
-            value: company.current_capacity.value,
-            unit: company.current_capacity.unit,
-            display: company.current_capacity.display,
-          }];
-          const futureFacilities = facilities.length ? [...baseFacilities, ...expansionFacilities] : [{
-            name: company.target_capacity.label,
-            stage: "expansion" as const,
-            products: company.products,
-            value: company.target_capacity.value,
-            unit: company.target_capacity.unit,
-            display: company.target_capacity.display,
-          }];
-          const currentTotal = sumCapacity(currentFacilities);
-          const futureTotal = sumCapacity(futureFacilities);
-          const hasStackData = currentTotal > 0 || futureTotal > 0;
-          const categoryRows = categories.map((category) => getCapacityCategoryRow(category, baseFacilities, expansionFacilities));
-          const categoryValues = categoryRows.flatMap((row) => [row.currentTotal, row.futureTotal]);
-          const values = [...categoryValues, currentTotal, futureTotal, company.current_capacity.value, company.target_capacity.value].filter((value): value is number => typeof value === "number" && Number.isFinite(value) && value > 0);
-          const maxValue = Math.max(...values, 1);
+        {capacityModels.map(({ company, categoryRows, hasStackData }) => {
           return (
             <article className="capacity-card" id={`capacity-${slugifyId(company.company)}`} key={company.company}>
               <div className="hbm-company-top">
@@ -1451,7 +1460,7 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
                 {hasStackData ? (
                   <div className="capacity-category-chart">
                     {categoryRows.map((row) => (
-                      <CapacityCategoryBlock key={`${company.company}-${row.key}`} maxValue={maxValue} row={row} />
+                      <CapacityCategoryBlock key={`${company.company}-${row.key}`} maxValue={globalMaxValue} row={row} />
                     ))}
                   </div>
                 ) : (
