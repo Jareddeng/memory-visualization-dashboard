@@ -1975,8 +1975,10 @@ td small {
 }
 
 .capacity-card .hbm-company-top b {
-  background: var(--green-soft);
+  background: transparent;
   color: var(--green);
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .capacity-bar-track::after {
