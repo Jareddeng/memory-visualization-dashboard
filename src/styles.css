@@ -1519,6 +1519,21 @@ td small {
   color: #fff;
 }
 
+.hbm-contract-track i.capacity-lock.full {
+  background: linear-gradient(90deg, #0f8a74, #35aa93);
+  color: #fff;
+}
+
+.hbm-contract-track i.capacity-lock.partial {
+  background: linear-gradient(90deg, #d49a42, #efc36f);
+  color: #553806;
+}
+
+.hbm-contract-track i.capacity-lock.watch {
+  background: linear-gradient(90deg, #dce7e4, #edf3f1);
+  color: var(--muted);
+}
+
 .hbm-contract-progress {
   display: grid;
   gap: 6px;

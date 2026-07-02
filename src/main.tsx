@@ -1198,6 +1198,8 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
           const lockedRange = getLockedYearRange(company.locked_years, lockedUntil);
           const negotiationRange = getNegotiationRange(company, lockedUntil);
           const capacityState = getCapacityLockState(company.locked_capacity);
+          const stageIndexByName = stages.findIndex((stage) => stage === company.stage);
+          const currentStageIndex = stageIndexByName >= 0 ? stageIndexByName : company.stage_index;
           const lockedPosition = rangePosition(lockedRange.start, lockedRange.end, startYear, maxYear);
           const negotiationPosition = rangePosition(negotiationRange.start, negotiationRange.end, startYear, maxYear);
           return (
@@ -1234,6 +1236,15 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                   </div>
                 </div>
 
+                <div className="hbm-contract-bar-row">
+                  <span>产能锁定</span>
+                  <div className="hbm-contract-track">
+                    <i className={`capacity-lock ${capacityState.tone}`} style={{ left: `${lockedPosition.left}%`, width: `${lockedPosition.width}%` }} title={company.locked_capacity}>
+                      {capacityState.label}
+                    </i>
+                  </div>
+                </div>
+
               </div>
 
               <div className="hbm-contract-progress">
@@ -1245,7 +1256,7 @@ function HbmContractBoard({ tracker }: { tracker?: TrackerPayload["hbm_contracts
                 <div className="hbm-progress-scale">
                   <div className="hbm-progress-steps">
                     {stages.map((stage, stageIndex) => (
-                      <span className={stageIndex === company.stage_index ? "current" : stageIndex < company.stage_index ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
+                      <span className={stageIndex === currentStageIndex ? "current" : stageIndex < currentStageIndex ? "active" : ""} key={`${company.company}-${stage}`}>{stage}</span>
                     ))}
                   </div>
                 </div>
