@@ -16,6 +16,12 @@ docs/local-clawbot-update-guide.md
 docs/news-intel-schema.md
 ```
 
+后续由 Codex、KimiWork 或本地龙虾继续修改网站页面时，先读取：
+
+```text
+docs/website-change-guidelines.md
+```
+
 ## 本地运行
 
 ```powershell
