@@ -1903,6 +1903,7 @@ function IntelFeed({ records }: { records: IntelRecord[] }) {
 function MessageRadar({ records }: { records: IntelRecord[] }) {
   const [filter, setFilter] = React.useState<ImpactFilter>("all");
   const [timeFilter, setTimeFilter] = React.useState<RadarTimeRange>("all");
+  const listRef = React.useRef<HTMLDivElement | null>(null);
   const filters: Array<{ key: ImpactFilter; label: string }> = [
     { key: "all", label: "全部" },
     { key: "bullish", label: "利多" },
@@ -1915,11 +1916,14 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
     { key: "all", label: "所有信息" },
   ];
   const anchor = new Date().toISOString();
-  const timeScopedRecords = records.filter((record) => isWithinTimeRange(record.date, timeFilter, anchor));
-  const filtered = timeScopedRecords
-    .filter((record) => filter === "all" || normalizedImpact(record.impact) === filter)
-    .sort((a, b) => b.date.localeCompare(a.date));
+  const timeScopedRecords = records
+    .filter((record) => isWithinTimeRange(record.date, timeFilter, anchor))
+    .sort(compareIntelRecordDateDesc);
+  const filtered = timeScopedRecords.filter((record) => filter === "all" || normalizedImpact(record.impact) === filter);
   const total = timeScopedRecords.length || 1;
+  React.useEffect(() => {
+    listRef.current?.scrollTo({ top: 0 });
+  }, [filter, timeFilter, filtered[0]?.id]);
   const distribution: Array<{ key: IntelRecord["impact"]; label: string }> = [
     { key: "bullish", label: "利多" },
     { key: "bearish", label: "利空" },
@@ -1958,7 +1962,7 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
         </div>
       </div>
       {filtered.length ? (
-        <div className="radar-list">
+        <div className="radar-list" key={`${filter}-${timeFilter}-${filtered[0]?.id ?? "empty"}`} ref={listRef}>
           {filtered.map((record) => (
             <article className={`radar-item ${record.url ? "clickable" : ""}`} key={record.id} role={record.url ? "link" : undefined} tabIndex={record.url ? 0 : undefined} onClick={() => openIntelUrl(record.url)} onKeyDown={(event) => handleIntelUrlKeyDown(event, record.url)}>
               <div>
@@ -2452,6 +2456,18 @@ function isWithinTimeRange(date: string | undefined, range: TimeRange, anchor: s
   if (!Number.isFinite(anchorTime) || !Number.isFinite(itemTime)) return false;
   const diffDays = Math.floor((startOfDay(anchorTime) - startOfDay(itemTime)) / 86400000);
   return diffDays >= 0 && diffDays <= days;
+}
+
+function compareIntelRecordDateDesc(a: IntelRecord, b: IntelRecord) {
+  return parseIntelRecordTime(b.date) - parseIntelRecordTime(a.date) || String(b.id).localeCompare(String(a.id));
+}
+
+function parseIntelRecordTime(value: string | undefined) {
+  const text = String(value || "").trim();
+  if (!text) return 0;
+  const normalized = /^\d{4}-\d{2}-\d{2}$/.test(text) ? `${text}T00:00:00` : text.replace(/\//g, "-");
+  const time = new Date(normalized).getTime();
+  return Number.isFinite(time) ? time : 0;
 }
 
 function startOfDay(time: number) {
