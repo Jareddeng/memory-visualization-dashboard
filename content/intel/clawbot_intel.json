@@ -4119,6 +4119,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-08-02"
+    },
+    {
+      "id": "2026-07-02-korea-market-circuit-breaker-chip-selloff",
+      "date": "2026-07-02",
+      "type": "重大事件",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1d",
+      "title": "韩国股市暴跌6%触发熔断，三星/SK海力士跌超7%，市场担忧AI芯片估值过高",
+      "product": "韩国股市 / 三星电子 / SK海力士 / 美光 / 闪迪",
+      "source": "彭博 / 财新",
+      "url": "https://database.caixin.com/2026-07-02/102459894.html",
+      "summary": "KOSPI指数一度下跌6.5%，三星电子和SK海力士跌幅均至少达到7%。美光科技和闪迪股价均下跌超过10%。Meta计划出售算力引发投资者对AI产能过剩的质疑，导致芯片制造商类股遭抛售。交易所因KOSPI期货大幅下跌暂时中止了程序化卖出操作。",
+      "transmission_path": "Meta出售算力→市场对AI产能过剩担忧→芯片股遭抛售→韩国KOSPI暴跌6%→三星/SK海力士跌超7%→存储芯片需求预期降温→DRAM/NAND价格承压",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-07-03"
     }
   ]
 }
