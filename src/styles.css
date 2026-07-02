@@ -1710,17 +1710,29 @@ td small {
 }
 
 .capacity-category-title strong {
+  display: inline-flex;
+  min-width: 0;
+  gap: 6px;
+  align-items: baseline;
   color: var(--ink);
   font-size: 13px;
 }
 
+.capacity-category-title strong em {
+  color: var(--muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+}
+
 .capacity-category-title small {
+  flex: 0 0 auto;
   color: var(--muted);
 }
 
 .capacity-category-row {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr) 84px;
+  grid-template-columns: 48px minmax(0, 1fr) 64px;
   gap: 8px;
   align-items: center;
 }

@@ -1498,19 +1498,23 @@ type CapacityCategoryRow = {
 };
 
 function CapacityCategoryBlock({ row, maxValue }: { row: CapacityCategoryRow; maxValue: number }) {
+  const unit = getCapacityRowUnit(row);
   return (
     <div className="capacity-category-block">
       <div className="capacity-category-title">
-        <strong>{row.label}</strong>
+        <strong>
+          {row.label}
+          {unit ? <em>{unit}</em> : null}
+        </strong>
         <small>{row.expansionItems.length ? `扩产 ${row.expansionItems.length} 项` : "暂无明确扩产项"}</small>
       </div>
-      <CapacityCategoryBar label="原有" tone="base" total={row.currentTotal} maxValue={maxValue} unit={row.currentItems.find((item) => item.unit)?.unit} />
-      <CapacityCategoryBar label="扩产后" tone="future" total={row.futureTotal} maxValue={maxValue} unit={[...row.currentItems, ...row.expansionItems].find((item) => item.unit)?.unit} />
+      <CapacityCategoryBar label="原有" tone="base" total={row.currentTotal} maxValue={maxValue} />
+      <CapacityCategoryBar label="扩产后" tone="future" total={row.futureTotal} maxValue={maxValue} />
     </div>
   );
 }
 
-function CapacityCategoryBar({ label, tone, total, maxValue, unit }: { label: string; tone: "base" | "future"; total: number; maxValue: number; unit?: string }) {
+function CapacityCategoryBar({ label, tone, total, maxValue }: { label: string; tone: "base" | "future"; total: number; maxValue: number }) {
   const width = total ? Math.max(5, (total / maxValue) * 100) : 0;
   return (
     <div className={`capacity-category-row ${tone}`}>
@@ -1518,9 +1522,13 @@ function CapacityCategoryBar({ label, tone, total, maxValue, unit }: { label: st
       <div className="capacity-category-track">
         {total ? <i style={{ width: `${width}%` }} /> : null}
       </div>
-      <b>{total ? `${total.toLocaleString()} ${unit ?? ""}` : "待补充"}</b>
+      <b>{total ? total.toLocaleString() : "待补充"}</b>
     </div>
   );
+}
+
+function getCapacityRowUnit(row: CapacityCategoryRow) {
+  return [...row.currentItems, ...row.expansionItems].find((item) => item.unit)?.unit;
 }
 
 function CapacityTimeline({ rows, timeline, confidence }: { rows: CapacityCategoryRow[]; timeline: string; confidence: string }) {
