@@ -963,5 +963,49 @@
         ]
       }
     ]
+  },
+  "institutional_charts": {
+    "updated_at": "2026-07-03",
+    "source": "公众号文章图表跟踪",
+    "source_url": "https://mp.weixin.qq.com/s/QcAkXY8CDxnjU9gdUgBDyQ?scene=1&click_id=505608852",
+    "note": "华泰证券-策略专题研究：韩股日度监测体系-260628",
+    "items": [
+      {
+        "chart_no": "图表5",
+        "title": "五大云厂商 Capex 一致预期季度增速",
+        "topic": "AI资本开支 / 云厂商需求",
+        "status": "已上传截图",
+        "source_url": "https://mp.weixin.qq.com/s/QcAkXY8CDxnjU9gdUgBDyQ?scene=1&click_id=505608852",
+        "image_url": "./assets/institutional-charts/chart-5-capex.png",
+        "note": "用于跟踪云厂商资本开支预期变化，对服务器、HBM、DRAM需求有领先意义。"
+      },
+      {
+        "chart_no": "图表7",
+        "title": "SK海力士 DRAM ASP 一致预期调整",
+        "topic": "DRAM价格 / SK海力士盈利预期",
+        "status": "已上传截图",
+        "source_url": "https://mp.weixin.qq.com/s/QcAkXY8CDxnjU9gdUgBDyQ?scene=1&click_id=505608852",
+        "image_url": "./assets/institutional-charts/chart-7-dram-asp.png",
+        "note": "用于跟踪DRAM价格预期是否继续上修。"
+      },
+      {
+        "chart_no": "图表9",
+        "title": "SK海力士 NAND ASP 一致预期调整",
+        "topic": "NAND价格 / SK海力士盈利预期",
+        "status": "已上传截图",
+        "source_url": "https://mp.weixin.qq.com/s/QcAkXY8CDxnjU9gdUgBDyQ?scene=1&click_id=505608852",
+        "image_url": "./assets/institutional-charts/chart-9-nand-asp.png",
+        "note": "用于观察NAND价格预期修复是否同步。"
+      },
+      {
+        "chart_no": "图表15",
+        "title": "韩国 KOSPI 指数 EPS 一致预期调整",
+        "topic": "韩国权益 / 盈利预期",
+        "status": "已上传截图",
+        "source_url": "https://mp.weixin.qq.com/s/QcAkXY8CDxnjU9gdUgBDyQ?scene=1&click_id=505608852",
+        "image_url": "./assets/institutional-charts/chart-15-kospi-eps.png",
+        "note": "用于跟踪韩国市场盈利预期是否与存储周期共振。"
+      }
+    ]
   }
 }
