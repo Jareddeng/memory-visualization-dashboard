@@ -824,7 +824,7 @@ h2 {
 
 .institutional-chart-panel {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .institutional-chart-head {
@@ -844,8 +844,7 @@ h2 {
   margin: 0;
 }
 
-.institutional-chart-head a,
-.institutional-chart-foot a {
+.institutional-chart-head a {
   width: fit-content;
   flex: 0 0 auto;
   border: 1px solid var(--line);
@@ -861,22 +860,22 @@ h2 {
 .institutional-chart-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 
 .institutional-chart-card {
   display: grid;
-  gap: 12px;
+  gap: 9px;
   min-width: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel-soft);
-  padding: 14px;
+  padding: 12px;
 }
 
 .institutional-chart-title {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: flex-start;
 }
 
@@ -885,21 +884,21 @@ h2 {
   border-radius: 999px;
   background: #e5f3ef;
   color: var(--teal);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 900;
-  padding: 4px 8px;
+  padding: 3px 7px;
 }
 
 .institutional-chart-title strong {
   min-width: 0;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.4;
 }
 
 .institutional-chart-media {
   display: grid;
-  min-height: 180px;
+  height: 220px;
   place-items: center;
   overflow: hidden;
   border: 1px dashed var(--line-strong);
@@ -914,6 +913,15 @@ h2 {
   object-fit: contain;
 }
 
+.institutional-chart-media button {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  padding: 0;
+}
+
 .institutional-chart-media div {
   display: grid;
   gap: 6px;
@@ -924,13 +932,6 @@ h2 {
 .institutional-chart-media span {
   color: var(--ink);
   font-weight: 900;
-}
-
-.institutional-chart-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
 }
 
 .institutional-chart-foot {
@@ -944,6 +945,69 @@ h2 {
 .institutional-chart-meta {
   color: var(--subtle);
   font-size: 12px;
+}
+
+.chart-preview-modal {
+  position: fixed;
+  z-index: 80;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+
+.chart-preview-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(12, 20, 18, 0.62);
+  cursor: zoom-out;
+}
+
+.chart-preview-frame {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(1280px, calc(100vw - 56px));
+  max-height: calc(100vh - 56px);
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.chart-preview-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 14px;
+}
+
+.chart-preview-head strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.chart-preview-head button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel-soft);
+  color: var(--teal);
+  font-weight: 800;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.chart-preview-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  padding: 12px;
 }
 
 .detail-grid {

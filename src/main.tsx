@@ -1094,7 +1094,7 @@ function MarketsPage({ data }: { data: AppData }) {
       <section className="section-heading section-subheading" id="markets-stock-trends">
         <div>
           <h2>股票与 ETF 趋势图</h2>
-          <p>展示各市场已完成交易日收盘价走势；若当天尚未收盘，则沿用上一交易日收盘价，涨跌幅相对再上一交易日收盘价计算。</p>
+          <p>SK海力士、三星电子、美光科技与 Roundhill Memory ETF 的近一年日收盘价走势。</p>
         </div>
       </section>
 
@@ -1111,6 +1111,19 @@ function MarketsPage({ data }: { data: AppData }) {
 
 function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["institutional_charts"] }) {
   const items = tracker?.items ?? [];
+  const [preview, setPreview] = React.useState<(typeof items)[number] | null>(null);
+  React.useEffect(() => {
+    if (!preview) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setPreview(null);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [preview]);
   if (!items.length) return null;
   return (
     <section className="panel text-panel institutional-chart-panel" id="markets-institutional-charts">
@@ -1131,7 +1144,9 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
             </div>
             <div className="institutional-chart-media">
               {item.image_url ? (
-                <img alt={`${item.chart_no} ${item.title}`} src={item.image_url} />
+                <button onClick={() => setPreview(item)} type="button">
+                  <img alt={`${item.chart_no} ${item.title}`} src={item.image_url} />
+                </button>
               ) : (
                 <div>
                   <span>等待图表上传</span>
@@ -1139,15 +1154,25 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
                 </div>
               )}
             </div>
-            <p>{item.note}</p>
             <div className="institutional-chart-foot">
               <span>{item.topic}</span>
-              <a href={item.source_url ?? tracker?.source_url} rel="noreferrer" target="_blank">来源</a>
             </div>
           </article>
         ))}
       </div>
       <small className="institutional-chart-meta">更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
+      {preview?.image_url ? (
+        <div className="chart-preview-modal" role="dialog" aria-modal="true" aria-label={`${preview.chart_no} ${preview.title}`}>
+          <button className="chart-preview-backdrop" onClick={() => setPreview(null)} type="button" aria-label="关闭预览" />
+          <div className="chart-preview-frame">
+            <div className="chart-preview-head">
+              <strong>{preview.chart_no} · {preview.title}</strong>
+              <button onClick={() => setPreview(null)} type="button">关闭</button>
+            </div>
+            <img alt={`${preview.chart_no} ${preview.title}`} src={preview.image_url} />
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -1158,7 +1183,7 @@ function IndustryPage({ data }: { data: AppData }) {
       <section className="section-heading">
         <div>
           <h2>产业内容跟踪</h2>
-          <p>集中查看 HBM4 长协谈判进度、三大厂商扩产计划和后续可扩展的产业事件。</p>
+          <p>HBM 长协锁定状态、DRAM 扩产能力变化与存储产业链图谱。</p>
         </div>
       </section>
       <HbmContractBoard tracker={data.trackers.hbm_contracts} />
@@ -1184,7 +1209,7 @@ function ReportsPage({
       <section className="section-heading" id="reports-top">
         <div>
           <h2>深度报告跟踪</h2>
-          <p>报告由 clawbot 或人工通过 PR 进入仓库，合并后由 GitHub Actions 生成归档。</p>
+          <p>每日行业观点、交易评价、风险提示与历史报告归档。</p>
         </div>
       </section>
       <section className="report-grid">
@@ -1699,7 +1724,7 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
       <div className="industry-map-head">
         <div>
           <h2>产业链图谱</h2>
-          <p>按上游、中游、下游拆分存储产业链环节；点击公司 logo 可打开官网，后续由 clawbot 通过 PR 更新。</p>
+          <p>存储产业链上游设备材料、中游存储原厂、下游 AI 服务器与终端需求公司。</p>
         </div>
         <small>{map?.updated_at ? `更新：${map.updated_at}` : "等待 clawbot 更新"}</small>
       </div>
@@ -1816,7 +1841,7 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
           ) : null}
         </>
       ) : (
-        <p>暂无报告。clawbot 可通过 PR 新增 `content/reports/YYYY-MM-DD.md`，合并后自动进入这里。</p>
+        <p>暂无报告。</p>
       )}
     </section>
   );
@@ -1914,7 +1939,7 @@ function ReportArchive({
             <strong>{report.title}</strong>
             <span>{report.rating} · {report.risk_level}风险</span>
           </button>
-        )) : <p>更多历史报告会在每日提交后自动归档。</p>}
+        )) : <p>暂无历史报告。</p>}
       </div>
     </section>
   );
@@ -2116,7 +2141,7 @@ function IntelPage({
       <section className="section-heading">
         <div>
           <h2>情报库管理</h2>
-          <p>本页用于管理你在浏览器里临时记录的情报，也预留给龙虾通过 PR 推送结构化情报。</p>
+          <p>市场消息、公司事件、方向分类、定价状态与复核记录。</p>
         </div>
         <div className="section-actions">
           <button className="primary-button" type="button" onClick={onAdd}>新增情报</button>
@@ -2134,7 +2159,7 @@ function IntelPage({
           </div>
           <div className="handoff-box">
             <strong>content/intel/clawbot_intel.json</strong>
-            <p>龙虾后续可以通过 PR 更新这个文件。合并后 GitHub Actions 会在下一次构建时生成网站可读的情报数据。</p>
+            <p>结构化情报源文件，用于沉淀市场消息、事件分类、定价状态和复核记录。</p>
             <small>字段：date、type、impact、importance、reaction_type、pricing_status、horizon、confidence、action、review_date、title、product、source、summary、transmission_path。</small>
           </div>
         </section>
