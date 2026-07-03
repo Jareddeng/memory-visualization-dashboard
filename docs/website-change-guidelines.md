@@ -346,7 +346,21 @@ src/styles.css 搜索 .hero / .stock-card / .intel-radar / .kpi
 ```text
 src/main.tsx 搜索 markets、LineChart、stock
 src/styles.css 搜索 .chart、.stock
+content/trackers/institutional_charts.json 机构图表跟踪清单
 ```
+
+机构图表跟踪维护：
+
+```text
+content/trackers/institutional_charts.json
+```
+
+- `chart_no` 填图表编号，例如 `图表5`。
+- `title` 填机构图表标题。
+- `source_url` 填原文链接。
+- 如果能保存截图，放到 `public/assets/institutional-charts/` 后把相对路径写入 `image_url`，例如 `./assets/institutional-charts/chart-5.png`。
+- 如果暂时没有截图，`image_url` 保持 `null`，页面会显示“等待图表上传”。
+- 后续如改成结构化数据图表，再新增 `data` 字段和专门组件，不要直接把长篇正文塞进卡片。
 
 改 HBM 长协：
 

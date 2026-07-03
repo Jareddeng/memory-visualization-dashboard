@@ -166,6 +166,21 @@ type TrackerPayload = {
       }>;
     }>;
   };
+  institutional_charts?: {
+    updated_at?: string;
+    source?: string;
+    source_url?: string;
+    note?: string;
+    items?: Array<{
+      chart_no: string;
+      title: string;
+      topic: string;
+      status: string;
+      source_url?: string;
+      image_url?: string | null;
+      note?: string;
+    }>;
+  };
   industry_map?: {
     updated_at?: string | null;
     source?: string;
@@ -805,8 +820,9 @@ function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: 
       label: "\u5e02\u573a\u56fe\u8868",
       detail: "\u4ef7\u683c\u4e0e\u80a1\u4ef7",
       subItems: [
-        { label: "\u80a1\u7968\u4e0e ETF \u8d8b\u52bf\u56fe", anchorId: "markets-stock-trends" },
         { label: "\u5b58\u50a8\u4ef7\u683c\u8d8b\u52bf\u56fe", anchorId: "markets-storage-prices" },
+        { label: "\u673a\u6784\u56fe\u8868\u8ddf\u8e2a", anchorId: "markets-institutional-charts" },
+        { label: "\u80a1\u7968\u4e0e ETF \u8d8b\u52bf\u56fe", anchorId: "markets-stock-trends" },
       ],
     },
     {
@@ -1059,7 +1075,23 @@ function MarketsPage({ data }: { data: AppData }) {
     <>
       {data.stocks.warning ? <div className="warning"><AlertTriangle size={16} />{data.stocks.warning}</div> : null}
 
-      <section className="section-heading" id="markets-stock-trends">
+      <section className="section-heading" id="markets-storage-prices">
+        <div>
+          <h2>存储价格</h2>
+          <p>DRAM 和 NAND 现货价格、合约均价趋势，支持图例筛选和时间框选。</p>
+        </div>
+      </section>
+
+      <section className="chart-grid">
+        <Panel><Chart option={makePriceOption("DRAM 现货价格走势", data.prices.DRAM.spot)} /></Panel>
+        <Panel><Chart option={makePriceOption("DRAM 合约平均价走势", data.prices.DRAM.contract_avg)} /></Panel>
+        <Panel><Chart option={makePriceOption("NAND Flash 现货价格走势", data.prices.NAND.spot)} /></Panel>
+        <Panel><Chart option={makePriceOption("NAND 合约平均价走势", data.prices.NAND.contract_avg)} /></Panel>
+      </section>
+
+      <InstitutionalChartTracker tracker={data.trackers.institutional_charts} />
+
+      <section className="section-heading section-subheading" id="markets-stock-trends">
         <div>
           <h2>股票与 ETF 趋势图</h2>
           <p>展示各市场已完成交易日收盘价走势；若当天尚未收盘，则沿用上一交易日收盘价，涨跌幅相对再上一交易日收盘价计算。</p>
@@ -1073,21 +1105,50 @@ function MarketsPage({ data }: { data: AppData }) {
           </Panel>
         ))}
       </section>
-
-      <section className="section-heading section-subheading" id="markets-storage-prices">
-        <div>
-          <h2>存储价格</h2>
-          <p>DRAM 和 NAND 现货价格、合约均价趋势，支持图例筛选和时间框选。</p>
-        </div>
-      </section>
-
-      <section className="chart-grid">
-        <Panel><Chart option={makePriceOption("DRAM 现货价格走势", data.prices.DRAM.spot)} /></Panel>
-        <Panel><Chart option={makePriceOption("DRAM 合约平均价走势", data.prices.DRAM.contract_avg)} /></Panel>
-        <Panel><Chart option={makePriceOption("NAND Flash 现货价格走势", data.prices.NAND.spot)} /></Panel>
-        <Panel><Chart option={makePriceOption("NAND 合约平均价走势", data.prices.NAND.contract_avg)} /></Panel>
-      </section>
     </>
+  );
+}
+
+function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["institutional_charts"] }) {
+  const items = tracker?.items ?? [];
+  if (!items.length) return null;
+  return (
+    <section className="panel text-panel institutional-chart-panel" id="markets-institutional-charts">
+      <div className="institutional-chart-head">
+        <div>
+          <p className="section-kicker">Institutional Chart Watch</p>
+          <h2>机构图表跟踪</h2>
+          <p>{tracker?.note ?? "跟踪研报、公众号和机构材料中的关键图表，后续可由 clawbot 上传截图或结构化数据。"}</p>
+        </div>
+        <a href={tracker?.source_url} rel="noreferrer" target="_blank">打开原文</a>
+      </div>
+      <div className="institutional-chart-grid">
+        {items.map((item) => (
+          <article className="institutional-chart-card" key={`${item.chart_no}-${item.title}`}>
+            <div className="institutional-chart-title">
+              <span>{item.chart_no}</span>
+              <strong>{item.title}</strong>
+            </div>
+            <div className="institutional-chart-media">
+              {item.image_url ? (
+                <img alt={`${item.chart_no} ${item.title}`} src={item.image_url} />
+              ) : (
+                <div>
+                  <span>等待图表上传</span>
+                  <small>{item.status}</small>
+                </div>
+              )}
+            </div>
+            <p>{item.note}</p>
+            <div className="institutional-chart-foot">
+              <span>{item.topic}</span>
+              <a href={item.source_url ?? tracker?.source_url} rel="noreferrer" target="_blank">来源</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <small className="institutional-chart-meta">更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
+    </section>
   );
 }
 
@@ -2479,6 +2540,7 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   const items: SearchItem[] = [];
   data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug, anchorId: "reports-top" } }));
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets", anchorId: `stock-${slugifyId(stock.ticker)}` } }));
+  (data.trackers.institutional_charts?.items ?? []).forEach((item) => items.push({ type: "图表", title: `${item.chart_no} ${item.title}`, date: data.trackers.institutional_charts?.updated_at ?? data.metadata.generated_at, detail: `${item.topic} · ${item.status}`, haystack: `${item.chart_no} ${item.title} ${item.topic} ${item.note ?? ""}`, target: { page: "markets", anchorId: "markets-institutional-charts" } }));
   (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry", anchorId: `hbm-${slugifyId(`${item.date}-${item.title}`)}` } }));
   (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry", anchorId: `expansion-${slugifyId(`${item.company}-${item.region}-${item.plan}`)}` } }));
   records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url, recordId: record.id } : { page: "intel", anchorId: `intel-${record.id}`, recordId: record.id } } ));

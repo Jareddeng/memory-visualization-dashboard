@@ -822,6 +822,130 @@ h2 {
   height: 320px;
 }
 
+.institutional-chart-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.institutional-chart-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.institutional-chart-head > div {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.institutional-chart-head h2 {
+  margin: 0;
+}
+
+.institutional-chart-head a,
+.institutional-chart-foot a {
+  width: fit-content;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel-soft);
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 10px;
+  text-decoration: none;
+}
+
+.institutional-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.institutional-chart-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+  padding: 14px;
+}
+
+.institutional-chart-title {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.institutional-chart-title span {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #e5f3ef;
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 900;
+  padding: 4px 8px;
+}
+
+.institutional-chart-title strong {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.institutional-chart-media {
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px dashed var(--line-strong);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.institutional-chart-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.institutional-chart-media div {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  color: var(--muted);
+}
+
+.institutional-chart-media span {
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.institutional-chart-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.institutional-chart-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.institutional-chart-foot span,
+.institutional-chart-meta {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
 .detail-grid {
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
 }
@@ -2787,6 +2911,7 @@ button.mindmap-label {
   }
 
   .stock-trend-grid,
+  .institutional-chart-grid,
   .overview-market-grid,
   .dashboard-grid,
   .two-column,
