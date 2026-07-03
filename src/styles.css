@@ -2394,15 +2394,16 @@ th {
 .industry-map-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .industry-layer {
   display: grid;
-  gap: 12px;
-  min-height: 180px;
-  padding: 14px;
+  align-content: start;
+  gap: 8px;
+  min-height: 0;
+  padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel-soft);
@@ -2410,14 +2411,14 @@ th {
 
 .industry-layer strong {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 .industry-layer p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 .empty-map {
@@ -2430,48 +2431,54 @@ th {
 }
 
 .industry-layer-head {
-  padding-bottom: 10px;
+  padding-bottom: 7px;
   border-bottom: 1px solid var(--line);
 }
 
 .industry-group {
   display: grid;
-  gap: 10px;
+  gap: 6px;
 }
 
 .industry-group + .industry-group {
-  padding-top: 12px;
+  padding-top: 8px;
   border-top: 1px solid var(--line);
 }
 
 .industry-group-head {
-  display: grid;
-  gap: 3px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .industry-group-head b {
   color: var(--ink);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .industry-group-head small {
+  overflow: hidden;
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 11px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .industry-node-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(176px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 6px;
 }
 
 .industry-company {
   display: grid;
-  grid-template-rows: 46px minmax(0, 1fr);
-  gap: 8px;
-  min-height: 126px;
-  padding: 11px;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  min-height: 54px;
+  padding: 7px;
   border: 1px solid rgba(20, 124, 114, 0.18);
   border-radius: 8px;
   background: #ffffff;
@@ -2494,8 +2501,8 @@ th {
   position: relative;
   display: grid;
   place-items: center;
-  width: 100%;
-  height: 44px;
+  width: 48px;
+  height: 34px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -2508,8 +2515,8 @@ th {
 .industry-logo img {
   position: relative;
   z-index: 1;
-  max-width: min(112px, 86%);
-  max-height: 34px;
+  max-width: 42px;
+  max-height: 26px;
   object-fit: contain;
   background: #ffffff;
 }
@@ -2523,37 +2530,35 @@ th {
 
 .industry-company-body {
   display: grid;
-  grid-template-rows: auto auto auto;
-  gap: 4px;
+  gap: 1px;
   align-content: start;
   min-width: 0;
 }
 
 .industry-company-body strong {
-  display: -webkit-box;
+  display: block;
   overflow: hidden;
   color: var(--ink);
-  font-size: 13px;
-  line-height: 1.28;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  font-size: 12px;
+  line-height: 1.22;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .industry-company-body em,
 .industry-company-body small {
-  display: -webkit-box;
+  display: block;
   overflow: hidden;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
   font-style: normal;
-  line-height: 1.35;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .industry-company-body small {
   color: var(--subtle);
-  -webkit-line-clamp: 1;
 }
 
 .report-head {
