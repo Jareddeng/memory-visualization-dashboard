@@ -822,29 +822,7 @@ h2 {
   height: 320px;
 }
 
-.institutional-chart-panel {
-  display: grid;
-  gap: 14px;
-}
-
-.institutional-chart-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.institutional-chart-head > div {
-  display: grid;
-  gap: 8px;
-  min-width: 0;
-}
-
-.institutional-chart-head h2 {
-  margin: 0;
-}
-
-.institutional-chart-head a {
+.institutional-source-link {
   width: fit-content;
   flex: 0 0 auto;
   border: 1px solid var(--line);

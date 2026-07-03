@@ -1126,16 +1126,16 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
   }, [preview]);
   if (!items.length) return null;
   return (
-    <section className="panel text-panel institutional-chart-panel" id="markets-institutional-charts">
-      <div className="institutional-chart-head">
+    <>
+      <section className="section-heading section-subheading" id="markets-institutional-charts">
         <div>
           <p className="section-kicker">Institutional Chart Watch</p>
           <h2>机构图表跟踪</h2>
           <p>{tracker?.note ?? "跟踪研报、公众号和机构材料中的关键图表，后续可由 clawbot 上传截图或结构化数据。"}</p>
         </div>
-        <a href={tracker?.source_url} rel="noreferrer" target="_blank">打开原文</a>
-      </div>
-      <div className="institutional-chart-grid">
+        <a className="institutional-source-link" href={tracker?.source_url} rel="noreferrer" target="_blank">打开原文</a>
+      </section>
+      <section className="institutional-chart-grid">
         {items.map((item) => (
           <article className="institutional-chart-card" key={`${item.chart_no}-${item.title}`}>
             <div className="institutional-chart-title">
@@ -1159,8 +1159,7 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
             </div>
           </article>
         ))}
-      </div>
-      <small className="institutional-chart-meta">更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
+      </section>
       {preview?.image_url ? (
         <div className="chart-preview-modal" role="dialog" aria-modal="true" aria-label={`${preview.chart_no} ${preview.title}`}>
           <button className="chart-preview-backdrop" onClick={() => setPreview(null)} type="button" aria-label="关闭预览" />
@@ -1173,7 +1172,7 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
           </div>
         </div>
       ) : null}
-    </section>
+    </>
   );
 }
 
