@@ -859,7 +859,7 @@ h2 {
 
 .institutional-chart-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -898,9 +898,8 @@ h2 {
 
 .institutional-chart-media {
   display: grid;
-  height: 220px;
   place-items: center;
-  overflow: hidden;
+  overflow: visible;
   border: 1px dashed var(--line-strong);
   border-radius: 8px;
   background: #fff;
@@ -909,13 +908,11 @@ h2 {
 .institutional-chart-media img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
 }
 
 .institutional-chart-media button {
   width: 100%;
-  height: 100%;
   border: 0;
   background: transparent;
   cursor: zoom-in;
