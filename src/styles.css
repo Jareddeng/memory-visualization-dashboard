@@ -836,7 +836,25 @@ h2 {
 }
 
 .institutional-chart-panel {
+  display: grid;
+  gap: 12px;
   padding: 12px;
+}
+
+.institutional-chart-panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.institutional-chart-panel-head p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .institutional-chart-grid {

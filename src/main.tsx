@@ -1152,11 +1152,16 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
         <div>
           <p className="section-kicker">Institutional Chart Watch</p>
           <h2>机构图表跟踪</h2>
-          <p>{tracker?.note ?? "跟踪研报、公众号和机构材料中的关键图表，后续可由 clawbot 上传截图或结构化数据。"}</p>
+          <p>跟踪研报、公众号和机构材料中的关键图表。</p>
         </div>
-        <a className="institutional-source-link" href={tracker?.source_url} rel="noreferrer" target="_blank">打开原文</a>
       </section>
       <section className="panel institutional-chart-panel">
+        <div className="institutional-chart-panel-head">
+          <p>{tracker?.note ?? tracker?.source ?? "机构图表资料"}</p>
+          {tracker?.source_url ? (
+            <a className="institutional-source-link" href={tracker.source_url} rel="noreferrer" target="_blank">打开原文</a>
+          ) : null}
+        </div>
         <div className="institutional-chart-grid">
           {items.map((item) => (
             <article className="institutional-chart-card" key={`${item.chart_no}-${item.title}`}>
