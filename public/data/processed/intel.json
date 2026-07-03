@@ -20,25 +20,6 @@
       "review_date": "2026-07-10"
     },
     {
-      "id": "phlx-sox-drop-2026-07-03",
-      "type": "market",
-      "impact": "bearish",
-      "date": "2026-07-03",
-      "title": "费城半导体指数单日暴跌逾6%，闪迪跌幅超14%",
-      "product": "闪迪/美光/DRAM/费城半导体指数",
-      "source": "财联社",
-      "url": "https://www.163.com/dy/article/L0T9U0RF0550B1DU.html",
-      "summary": "2026年7月3日，费城半导体指数跌超6%，闪迪大跌超14%，美光跌超6%，英特尔跌超4%。存储芯片股领跌半导体板块，市场情绪低迷。",
-      "importance": "S",
-      "reaction_type": "instant",
-      "pricing_status": "partial",
-      "horizon": "1d",
-      "transmission_path": "全球芯片股集体下跌→存储芯片成为重灾区→闪迪、美光等龙头跌幅居前→反映市场对AI需求持续性及估值的担忧",
-      "confidence": "high",
-      "action": "alert",
-      "review_date": "2026-07-03"
-    },
-    {
       "id": "hk-china-chip-trade-2026-07-03",
       "type": "analysis",
       "impact": "neutral",
