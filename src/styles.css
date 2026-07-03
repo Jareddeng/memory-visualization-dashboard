@@ -1378,7 +1378,8 @@ td small {
 }
 
 .intel-table-wrap table {
-  min-width: 1180px;
+  min-width: 1480px;
+  table-layout: auto;
 }
 
 .intel-table-wrap {
@@ -1390,6 +1391,80 @@ td small {
   position: sticky;
   top: 0;
   z-index: 1;
+  white-space: nowrap;
+}
+
+.intel-table-wrap th,
+.intel-table-wrap td {
+  word-break: normal;
+}
+
+.intel-table-wrap .intel-col-date {
+  min-width: 118px;
+}
+
+.intel-table-wrap .intel-col-type {
+  min-width: 132px;
+}
+
+.intel-table-wrap .intel-col-impact {
+  min-width: 108px;
+}
+
+.intel-table-wrap .intel-col-importance,
+.intel-table-wrap .intel-col-reaction,
+.intel-table-wrap .intel-col-pricing {
+  min-width: 148px;
+}
+
+.intel-header-control {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.intel-header-control button {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  color: #31453e;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 850;
+  padding: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.intel-header-control button small {
+  color: var(--teal);
+  font-size: 12px;
+}
+
+.intel-header-control button.active span {
+  color: var(--teal);
+}
+
+.intel-header-control select {
+  width: 100%;
+  min-height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  outline: none;
+  padding: 0 7px;
+}
+
+.empty-state.compact {
+  min-height: auto;
+  padding: 14px;
 }
 
 .pinned-intel-row {

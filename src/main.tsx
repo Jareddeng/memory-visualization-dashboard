@@ -282,6 +282,7 @@ type PriceSnapshot = {
 };
 
 const INTEL_STORAGE_KEY = "storage-dashboard-intel-records-v1";
+const INTEL_DELETED_REMOTE_KEY = "storage-dashboard-deleted-remote-intel-v1";
 
 const directionOptions = [
   { value: "bullish", label: "利多", detail: "可能提升盈利预期、估值预期或市场情绪" },
@@ -335,6 +336,7 @@ const actionOptions = [
 
 const IntelTableContext = React.createContext<{
   onEdit?: (record: IntelRecord) => void;
+  onDelete?: (id: string) => void;
   pinnedIntelId?: string | null;
 }>({});
 
@@ -614,6 +616,7 @@ function App() {
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
   const [intelRecords, setIntelRecords] = useLocalIntelRecords();
+  const [deletedRemoteIntelIds, setDeletedRemoteIntelIds] = useDeletedRemoteIntelIds();
   const [captureOpen, setCaptureOpen] = React.useState(false);
   const [editingIntelRecord, setEditingIntelRecord] = React.useState<IntelRecord | null>(null);
   const [pinnedIntelId, setPinnedIntelId] = React.useState<string | null>(null);
@@ -662,9 +665,17 @@ function App() {
 
   const latestReport = data.reports[0];
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
-  const remoteIntelRecords = mergeRemoteIntelRecords(data.intel, intelRecords);
+  const deletedRemoteIntelSet = new Set(deletedRemoteIntelIds);
+  const visibleBaseRemoteIntelRecords = data.intel.filter((record) => !deletedRemoteIntelSet.has(record.id));
+  const remoteIntelRecords = mergeRemoteIntelRecords(visibleBaseRemoteIntelRecords, intelRecords);
   const localOnlyIntelRecords = intelRecords.filter((record) => !data.intel.some((remoteRecord) => remoteRecord.id === record.id));
   const allIntelRecords = [...remoteIntelRecords, ...localOnlyIntelRecords];
+  const handleDeleteIntel = (id: string) => {
+    setIntelRecords((current) => current.filter((record) => record.id !== id));
+    if (data.intel.some((record) => record.id === id)) {
+      setDeletedRemoteIntelIds((current) => current.includes(id) ? current : [...current, id]);
+    }
+  };
   const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
   const hbmPressure = getHbmPressure(data);
   const priceSnapshots = getPriceSnapshots(data.prices);
@@ -780,7 +791,7 @@ function App() {
               setEditingIntelRecord(record);
               setCaptureOpen(true);
             }}
-            onDelete={(id) => setIntelRecords(intelRecords.filter((record) => record.id !== id))}
+            onDelete={handleDeleteIntel}
             onExport={() => exportIntelligence(data, allIntelRecords)}
           />
         ) : null}
@@ -2136,7 +2147,7 @@ function IntelPage({
   onExport: () => void;
 }) {
   return (
-    <IntelTableContext.Provider value={{ onEdit, pinnedIntelId }}>
+    <IntelTableContext.Provider value={{ onEdit, onDelete, pinnedIntelId }}>
       <section className="section-heading">
         <div>
           <h2>情报库管理</h2>
@@ -2187,7 +2198,7 @@ function IntelPage({
             <h2>龙虾推送情报</h2>
           </div>
         </div>
-        <IntelTable records={remoteRecords} sourceLabel="Clawbot PR" />
+        <IntelTable records={remoteRecords} sourceLabel="Clawbot PR" onDelete={onDelete} />
       </section>
 
       <section className="panel text-panel">
@@ -2241,6 +2252,59 @@ function RuleGroup({ title, options }: { title: string; options: ReadonlyArray<{
   );
 }
 
+type IntelTableField = "date" | "type" | "impact" | "importance" | "reaction_type" | "pricing_status";
+type IntelSortDirection = "asc" | "desc";
+type IntelSortConfig = {
+  field: IntelTableField;
+  direction: IntelSortDirection;
+};
+type IntelFilterState = Partial<Record<IntelTableField, string>>;
+
+const INTEL_FILTERABLE_COLUMNS: ReadonlyArray<{ field: IntelTableField; label: string; className: string }> = [
+  { field: "date", label: "日期", className: "intel-col-date" },
+  { field: "type", label: "类型", className: "intel-col-type" },
+  { field: "impact", label: "方向", className: "intel-col-impact" },
+  { field: "importance", label: "重要性", className: "intel-col-importance" },
+  { field: "reaction_type", label: "反应类型", className: "intel-col-reaction" },
+  { field: "pricing_status", label: "定价状态", className: "intel-col-pricing" },
+];
+
+function IntelTableHeaderCell({
+  field,
+  label,
+  records,
+  sortConfig,
+  filterValue,
+  onSort,
+  onFilter,
+}: {
+  field: IntelTableField;
+  label: string;
+  records: IntelRecord[];
+  sortConfig: IntelSortConfig;
+  filterValue?: string;
+  onSort: (field: IntelTableField) => void;
+  onFilter: (field: IntelTableField, value: string) => void;
+}) {
+  const options = getIntelFilterOptions(records, field);
+  const isSorted = sortConfig.field === field;
+  const sortMark = isSorted ? (sortConfig.direction === "asc" ? "↑" : "↓") : "↕";
+  return (
+    <div className="intel-header-control">
+      <button className={isSorted ? "active" : ""} type="button" onClick={() => onSort(field)} aria-label={`按${label}排序`}>
+        <span>{label}</span>
+        <small>{sortMark}</small>
+      </button>
+      <select value={filterValue ?? "all"} onChange={(event) => onFilter(field, event.target.value)} aria-label={`筛选${label}`}>
+        <option value="all">全部</option>
+        {options.map((option) => (
+          <option value={option.value} key={option.value}>{option.label}</option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 function IntelTable({
   records,
   sourceLabel,
@@ -2254,10 +2318,34 @@ function IntelTable({
 }) {
   const tableContext = React.useContext(IntelTableContext);
   const effectiveOnEdit = onEdit ?? tableContext.onEdit;
+  const effectiveOnDelete = onDelete ?? tableContext.onDelete;
   const pinnedIntelId = tableContext.pinnedIntelId;
-  const displayRecords = pinnedIntelId
-    ? [...records].sort((a, b) => (a.id === pinnedIntelId ? -1 : b.id === pinnedIntelId ? 1 : 0))
-    : records;
+  const [sortConfig, setSortConfig] = React.useState<IntelSortConfig>({ field: "date", direction: "desc" });
+  const [columnFilters, setColumnFilters] = React.useState<IntelFilterState>({});
+  const displayRecords = React.useMemo(() => {
+    const filtered = records.filter((record) => {
+      return INTEL_FILTERABLE_COLUMNS.every(({ field }) => {
+        const filterValue = columnFilters[field];
+        if (!filterValue || filterValue === "all") return true;
+        if (field === "date") return isWithinTimeRange(record.date, filterValue as TimeRange, new Date().toISOString());
+        return getIntelFieldValue(record, field) === filterValue;
+      });
+    });
+    const sorted = [...filtered].sort((a, b) => compareIntelRecords(a, b, sortConfig));
+    return pinnedIntelId
+      ? sorted.sort((a, b) => (a.id === pinnedIntelId ? -1 : b.id === pinnedIntelId ? 1 : 0))
+      : sorted;
+  }, [columnFilters, pinnedIntelId, records, sortConfig]);
+  const handleSort = (field: IntelTableField) => {
+    setSortConfig((current) => ({
+      field,
+      direction: current.field === field ? (current.direction === "desc" ? "asc" : "desc") : field === "date" ? "desc" : "asc",
+    }));
+  };
+  const handleFilter = (field: IntelTableField, value: string) => {
+    setColumnFilters((current) => ({ ...current, [field]: value }));
+  };
+  const filterColumnByField = new Map(INTEL_FILTERABLE_COLUMNS.map((column) => [column.field, column]));
 
   if (!records.length) return <div className="empty-state">暂无{sourceLabel}情报。</div>;
 
@@ -2266,21 +2354,44 @@ function IntelTable({
       <table>
         <thead>
           <tr>
-            <th>日期</th>
+            {INTEL_FILTERABLE_COLUMNS.slice(0, 1).map((column) => (
+              <th className={column.className} key={column.field}>
+                <IntelTableHeaderCell
+                  field={column.field}
+                  label={column.label}
+                  records={records}
+                  sortConfig={sortConfig}
+                  filterValue={columnFilters[column.field]}
+                  onSort={handleSort}
+                  onFilter={handleFilter}
+                />
+              </th>
+            ))}
             <th>标题</th>
-            <th>类型</th>
-            <th>方向</th>
-            <th>重要性</th>
-            <th>反应类型</th>
-            <th>定价状态</th>
+            {(["type", "impact", "importance", "reaction_type", "pricing_status"] as IntelTableField[]).map((field) => {
+              const column = filterColumnByField.get(field)!;
+              return (
+                <th className={column.className} key={field}>
+                  <IntelTableHeaderCell
+                    field={field}
+                    label={column.label}
+                    records={records}
+                    sortConfig={sortConfig}
+                    filterValue={columnFilters[field]}
+                    onSort={handleSort}
+                    onFilter={handleFilter}
+                  />
+                </th>
+              );
+            })}
             <th>来源</th>
             <th>摘要</th>
             <th>跟踪</th>
-            {effectiveOnEdit || onDelete ? <th>操作</th> : null}
+            {effectiveOnEdit || effectiveOnDelete ? <th>操作</th> : null}
           </tr>
         </thead>
         <tbody>
-          {displayRecords.map((record) => (
+          {displayRecords.length ? displayRecords.map((record) => (
             <tr id={`intel-${record.id}`} className={record.id === pinnedIntelId ? "pinned-intel-row" : ""} key={record.id}>
               <td>{record.date}</td>
               <td><strong>{record.title}</strong><br /><small>{record.product || "存储行业"}</small></td>
@@ -2295,7 +2406,7 @@ function IntelTable({
                 <small>{horizonLabel(record.horizon)} · {confidenceLabel(record.confidence)}置信度 · {actionLabel(record.action)}</small>
                 {record.review_date ? <><br /><small>复核：{record.review_date}</small></> : null}
               </td>
-              {effectiveOnEdit || onDelete ? (
+              {effectiveOnEdit || effectiveOnDelete ? (
                 <td>
                   <div className="row-actions">
                     {effectiveOnEdit ? (
@@ -2303,8 +2414,8 @@ function IntelTable({
                         编辑
                       </button>
                     ) : null}
-                    {onDelete ? (
-                      <button className="icon-button danger" type="button" aria-label={`删除 ${record.title}`} onClick={() => onDelete(record.id)}>
+                    {effectiveOnDelete ? (
+                      <button className="icon-button danger" type="button" aria-label={`删除 ${record.title}`} onClick={() => effectiveOnDelete(record.id)}>
                         <Trash2 size={15} />
                       </button>
                     ) : null}
@@ -2312,7 +2423,13 @@ function IntelTable({
                 </td>
               ) : null}
             </tr>
-          ))}
+          )) : (
+            <tr>
+              <td colSpan={effectiveOnEdit || effectiveOnDelete ? 11 : 10}>
+                <div className="empty-state compact">当前筛选条件下暂无{sourceLabel}情报。</div>
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
@@ -2559,6 +2676,20 @@ function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAc
   return [records, setRecords];
 }
 
+function useDeletedRemoteIntelIds(): [string[], React.Dispatch<React.SetStateAction<string[]>>] {
+  const [ids, setIds] = React.useState<string[]>(() => {
+    try {
+      return JSON.parse(localStorage.getItem(INTEL_DELETED_REMOTE_KEY) || "[]") as string[];
+    } catch {
+      return [];
+    }
+  });
+  React.useEffect(() => {
+    localStorage.setItem(INTEL_DELETED_REMOTE_KEY, JSON.stringify(ids));
+  }, [ids]);
+  return [ids, setIds];
+}
+
 function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
   const items: SearchItem[] = [];
@@ -2706,6 +2837,64 @@ function reactionTypeLabel(value?: IntelRecord["reaction_type"]) {
 
 function pricingStatusLabel(value?: IntelRecord["pricing_status"]) {
   return optionLabel(pricingStatusOptions, value);
+}
+
+function getIntelFilterOptions(records: IntelRecord[], field: IntelTableField) {
+  if (field === "date") {
+    return [
+      { value: "7d", label: "近7天" },
+      { value: "30d", label: "近30天" },
+      { value: "90d", label: "近90天" },
+    ];
+  }
+  if (field === "impact") {
+    return [
+      { value: "bullish", label: "利多" },
+      { value: "bearish", label: "利空" },
+      { value: "neutral", label: "中性" },
+    ];
+  }
+  if (field === "importance") {
+    return importanceOptions.map((option) => ({ value: option.value, label: option.label }));
+  }
+  if (field === "reaction_type") {
+    return reactionTypeOptions.map((option) => ({ value: option.value, label: option.label }));
+  }
+  if (field === "pricing_status") {
+    return pricingStatusOptions.map((option) => ({ value: option.value, label: option.label }));
+  }
+  return Array.from(new Set(records.map((record) => record.type || "未分类")))
+    .sort((a, b) => a.localeCompare(b, "zh-CN"))
+    .map((value) => ({ value, label: value }));
+}
+
+function getIntelFieldValue(record: IntelRecord, field: IntelTableField) {
+  if (field === "date") return record.date;
+  if (field === "type") return record.type || "未分类";
+  if (field === "impact") return normalizedImpact(record.impact);
+  if (field === "importance") return record.importance ?? "";
+  if (field === "reaction_type") return record.reaction_type ?? "";
+  return record.pricing_status ?? "";
+}
+
+function compareIntelRecords(a: IntelRecord, b: IntelRecord, sortConfig: IntelSortConfig) {
+  const direction = sortConfig.direction === "asc" ? 1 : -1;
+  if (sortConfig.field === "date") {
+    return direction * ((Date.parse(a.date) || 0) - (Date.parse(b.date) || 0));
+  }
+  const orderMaps: Partial<Record<IntelTableField, Record<string, number>>> = {
+    impact: { bullish: 0, bearish: 1, neutral: 2 },
+    importance: { S: 0, A: 1, B: 2, C: 3 },
+    reaction_type: { instant: 0, undervalued: 1, sentiment: 2, archive: 3 },
+    pricing_status: { unpriced: 0, partial: 1, priced: 2, overpriced: 3, failed: 4 },
+  };
+  const orderMap = orderMaps[sortConfig.field];
+  if (orderMap) {
+    const left = orderMap[getIntelFieldValue(a, sortConfig.field)] ?? 99;
+    const right = orderMap[getIntelFieldValue(b, sortConfig.field)] ?? 99;
+    if (left !== right) return direction * (left - right);
+  }
+  return direction * getIntelFieldValue(a, sortConfig.field).localeCompare(getIntelFieldValue(b, sortConfig.field), "zh-CN");
 }
 
 function horizonLabel(value?: IntelRecord["horizon"]) {
