@@ -2462,16 +2462,16 @@ th {
 
 .industry-node-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(176px, 1fr));
+  gap: 10px;
 }
 
 .industry-company {
   display: grid;
-  grid-template-columns: 76px minmax(0, 1fr);
-  gap: 10px;
-  min-height: 82px;
-  padding: 10px;
+  grid-template-rows: 46px minmax(0, 1fr);
+  gap: 8px;
+  min-height: 126px;
+  padding: 11px;
   border: 1px solid rgba(20, 124, 114, 0.18);
   border-radius: 8px;
   background: #ffffff;
@@ -2480,18 +2480,22 @@ th {
   transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
 }
 
-.industry-company:hover {
+.industry-company:hover:not(.static) {
   border-color: rgba(20, 124, 114, 0.42);
   box-shadow: 0 10px 24px rgba(34, 64, 58, 0.09);
   transform: translateY(-1px);
+}
+
+.industry-company.static {
+  cursor: default;
 }
 
 .industry-logo {
   position: relative;
   display: grid;
   place-items: center;
-  width: 76px;
-  height: 38px;
+  width: 100%;
+  height: 44px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -2504,8 +2508,8 @@ th {
 .industry-logo img {
   position: relative;
   z-index: 1;
-  max-width: 68px;
-  max-height: 30px;
+  max-width: min(112px, 86%);
+  max-height: 34px;
   object-fit: contain;
   background: #ffffff;
 }
@@ -2519,27 +2523,37 @@ th {
 
 .industry-company-body {
   display: grid;
-  gap: 3px;
+  grid-template-rows: auto auto auto;
+  gap: 4px;
+  align-content: start;
   min-width: 0;
 }
 
 .industry-company-body strong {
-  display: block;
+  display: -webkit-box;
   overflow: hidden;
   color: var(--ink);
   font-size: 13px;
-  line-height: 1.25;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.28;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .industry-company-body em,
 .industry-company-body small {
-  overflow-wrap: anywhere;
+  display: -webkit-box;
+  overflow: hidden;
   color: var(--muted);
   font-size: 12px;
   font-style: normal;
   line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.industry-company-body small {
+  color: var(--subtle);
+  -webkit-line-clamp: 1;
 }
 
 .report-head {

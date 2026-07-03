@@ -213,6 +213,16 @@ type TrackerPayload = {
   };
 };
 
+type IndustryNode = {
+  name: string;
+  homepage?: string;
+  logo_url?: string;
+  region?: string;
+  role?: string;
+  note?: string;
+  ticker?: string;
+};
+
 type Metadata = {
   generated_at: string;
   price_points: number;
@@ -1753,40 +1763,8 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
                     {group.note ? <small>{group.note}</small> : null}
                   </div>
                   <div className="industry-node-list">
-                    {group.nodes.map((node) => (
-                      <a
-                        className="industry-company"
-                        href={node.homepage ?? "#"}
-                        key={`${layer.name}-${group.name}-${node.name}`}
-                        target={node.homepage ? "_blank" : undefined}
-                        rel={node.homepage ? "noreferrer" : undefined}
-                        title={node.homepage ? `${node.name} 官网` : node.name}
-                      >
-                        <span className="industry-logo" aria-hidden="true">
-                          {getCompanyLogoUrl(node) ? (
-                            <img
-                              src={getCompanyLogoUrl(node)}
-                              alt=""
-                              loading="lazy"
-                              onError={(event) => {
-                                const fallback = getCompanyLogoFallbackUrl(node);
-                                if (fallback && event.currentTarget.src !== fallback) {
-                                  event.currentTarget.src = fallback;
-                                  return;
-                                }
-                                event.currentTarget.style.display = "none";
-                              }}
-                            />
-                          ) : null}
-                          <span>{node.name.slice(0, 1)}</span>
-                        </span>
-                        <span className="industry-company-body">
-                          <strong>{node.name}</strong>
-                          {node.role ? <em>{node.role}</em> : null}
-                          <small>{[node.region, node.ticker].filter(Boolean).join(" · ")}</small>
-                          {node.note ? <small>{node.note}</small> : null}
-                        </span>
-                      </a>
+                    {sortIndustryNodes(group.nodes).map((node) => (
+                      <IndustryCompanyCard node={node} groupName={group.name} layerName={layer.name} key={`${layer.name}-${group.name}-${node.name}`} />
                     ))}
                   </div>
                 </div>
@@ -1804,13 +1782,107 @@ function IndustryMap({ map }: { map?: TrackerPayload["industry_map"] }) {
   );
 }
 
+function IndustryCompanyCard({ node, layerName, groupName }: { node: IndustryNode; layerName: string; groupName: string }) {
+  const homepage = getValidCompanyHomepage(node);
+  const logoUrl = getCompanyLogoUrl(node);
+  const content = (
+    <>
+      <span className="industry-logo" aria-hidden="true">
+        {logoUrl ? (
+          <img
+            src={logoUrl}
+            alt=""
+            loading="lazy"
+            onError={(event) => {
+              const fallback = getCompanyLogoFallbackUrl(node);
+              if (fallback && event.currentTarget.src !== fallback) {
+                event.currentTarget.src = fallback;
+                return;
+              }
+              event.currentTarget.style.display = "none";
+            }}
+          />
+        ) : null}
+        <span>{node.name.slice(0, 1)}</span>
+      </span>
+      <span className="industry-company-body">
+        <strong>{node.name}</strong>
+        {node.role ? <em>{node.role}</em> : null}
+        <small>{[node.region, node.ticker].filter(Boolean).join(" · ")}</small>
+      </span>
+    </>
+  );
+
+  if (!homepage) {
+    return (
+      <div className="industry-company static" title={node.name}>
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <a
+      className="industry-company"
+      href={homepage}
+      target="_blank"
+      rel="noreferrer"
+      title={`${node.name} 官网`}
+      aria-label={`${layerName} ${groupName} ${node.name}`}
+    >
+      {content}
+    </a>
+  );
+}
+
+function sortIndustryNodes(nodes: IndustryNode[]) {
+  return [...nodes].sort((a, b) => industryNodePriority(a) - industryNodePriority(b) || a.name.localeCompare(b.name, "zh-CN"));
+}
+
+function industryNodePriority(node: IndustryNode) {
+  const text = `${node.name} ${node.role ?? ""}`.toLowerCase();
+  const priorityNames = [
+    "samsung",
+    "sk hynix",
+    "micron",
+    "asml",
+    "applied materials",
+    "lam research",
+    "tokyo electron",
+    "kla",
+    "shin-etsu",
+    "sumco",
+    "sk siltron",
+    "entegris",
+    "merck",
+    "tsmc",
+    "ase",
+    "amkor",
+    "marvell",
+    "phison",
+    "silicon motion",
+  ];
+  const index = priorityNames.findIndex((name) => text.includes(name));
+  if (index >= 0) return index;
+  if (/china|中国|长鑫|长江|长电|通富|江波龙|佰维|雅克|鼎龙|广钢|盛美/.test(text)) return 80;
+  return 50;
+}
+
+function getValidCompanyHomepage(node: { homepage?: string }) {
+  if (!node.homepage) return undefined;
+  const homepage = node.homepage.trim();
+  if (!/^https?:\/\//i.test(homepage) || /security_verify/i.test(homepage)) return undefined;
+  return homepage;
+}
+
 function getCompanyLogoUrl(node: { homepage?: string; logo_url?: string }) {
   return node.logo_url ?? getCompanyLogoFallbackUrl(node);
 }
 
 function getCompanyLogoFallbackUrl(node: { homepage?: string }) {
-  if (node.homepage) {
-    return `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(node.homepage)}&sz=64`;
+  const homepage = getValidCompanyHomepage(node);
+  if (homepage) {
+    return `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(homepage)}&sz=64`;
   }
   return undefined;
 }
