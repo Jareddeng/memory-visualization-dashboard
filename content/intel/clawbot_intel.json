@@ -4439,6 +4439,26 @@
       "action": "deep_tracking",
       "review_date": "2026-07-15",
       "review_note": "Monitor Apple supply chain decisions and US-China semiconductor policy changes"
+    },
+    {
+      "id": "2026-07-03-samsung-dram-asp-hike-20pct-q3",
+      "date": "2026-07-03",
+      "type": "产品数据",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "title": "三星电子谈判Q3 DRAM均价上调20%",
+      "product": "DRAM / Samsung",
+      "source": "财联社 / 科创板日报",
+      "url": "https://mp.weixin.qq.com/s/F2SwAzd0Ocs7yAT2VnFn7w",
+      "summary": "业内人士透露，三星电子正在与客户谈判，目标将2026年第三季度DRAM平均售价比上一季度提高20%。",
+      "transmission_path": "三星Q3 DRAM涨价20% → 存储厂商收入利润率提升 → 下游成本压力增加 → 可能传导至终端消费电子产品价格 → 验证存储周期上行趋势",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-07-10",
+      "review_note": ""
     }
   ]
 }
