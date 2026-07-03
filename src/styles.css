@@ -835,6 +835,10 @@ h2 {
   text-decoration: none;
 }
 
+.institutional-chart-panel {
+  padding: 12px;
+}
+
 .institutional-chart-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -843,12 +847,12 @@ h2 {
 
 .institutional-chart-card {
   display: grid;
-  gap: 9px;
+  gap: 8px;
   min-width: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel-soft);
-  padding: 12px;
+  background: #ffffff;
+  padding: 10px;
 }
 
 .institutional-chart-title {

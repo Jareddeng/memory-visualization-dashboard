@@ -1156,30 +1156,32 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
         </div>
         <a className="institutional-source-link" href={tracker?.source_url} rel="noreferrer" target="_blank">打开原文</a>
       </section>
-      <section className="institutional-chart-grid">
-        {items.map((item) => (
-          <article className="institutional-chart-card" key={`${item.chart_no}-${item.title}`}>
-            <div className="institutional-chart-title">
-              <span>{item.chart_no}</span>
-              <strong>{item.title}</strong>
-            </div>
-            <div className="institutional-chart-media">
-              {item.image_url ? (
-                <button onClick={() => setPreview(item)} type="button">
-                  <img alt={`${item.chart_no} ${item.title}`} src={item.image_url} />
-                </button>
-              ) : (
-                <div>
-                  <span>等待图表上传</span>
-                  <small>{item.status}</small>
-                </div>
-              )}
-            </div>
-            <div className="institutional-chart-foot">
-              <span>{item.topic}</span>
-            </div>
-          </article>
-        ))}
+      <section className="panel institutional-chart-panel">
+        <div className="institutional-chart-grid">
+          {items.map((item) => (
+            <article className="institutional-chart-card" key={`${item.chart_no}-${item.title}`}>
+              <div className="institutional-chart-title">
+                <span>{item.chart_no}</span>
+                <strong>{item.title}</strong>
+              </div>
+              <div className="institutional-chart-media">
+                {item.image_url ? (
+                  <button onClick={() => setPreview(item)} type="button">
+                    <img alt={`${item.chart_no} ${item.title}`} src={item.image_url} />
+                  </button>
+                ) : (
+                  <div>
+                    <span>等待图表上传</span>
+                    <small>{item.status}</small>
+                  </div>
+                )}
+              </div>
+              <div className="institutional-chart-foot">
+                <span>{item.topic}</span>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
       {preview?.image_url ? (
         <div className="chart-preview-modal" role="dialog" aria-modal="true" aria-label={`${preview.chart_no} ${preview.title}`}>
