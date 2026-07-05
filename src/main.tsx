@@ -2168,7 +2168,7 @@ function MessageRadar({ records }: { records: IntelRecord[] }) {
             </button>
           ))}
         </div>
-        <div className="segmented-control time-filter" aria-label="消息时间范围筛选">
+        <div className="segmented-control radar-time-filter" aria-label="消息时间范围筛选">
           {timeFilters.map((item) => (
             <button className={timeFilter === item.key ? "active" : ""} key={item.key} onClick={() => setTimeFilter(item.key)} type="button">
               {item.label}

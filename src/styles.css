@@ -1174,20 +1174,38 @@ h2 {
 }
 
 .radar-filter-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
   align-items: center;
-  justify-content: space-between;
   gap: 10px;
   min-width: 0;
 }
 
 .filter-control,
-.time-filter {
+.radar-time-filter {
   min-width: 0;
 }
 
-.time-filter button {
-  min-width: 64px;
+.radar-filter-row .segmented-control {
+  width: 100%;
+  overflow: hidden;
+}
+
+.radar-filter-row .segmented-control button {
+  min-width: 0;
+  padding-right: 7px;
+  padding-left: 7px;
+  white-space: nowrap;
+}
+
+.radar-filter-row .segmented-control:not(.radar-time-filter) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.radar-time-filter {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .radar-item.clickable {
@@ -3060,6 +3078,33 @@ button.mindmap-label {
   }
 }
 
+@media (max-width: 1500px) {
+  .overview-market-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
+    grid-template-rows: repeat(12, minmax(112px, auto));
+  }
+
+  .overview-stock-card {
+    grid-column: 1;
+    grid-row: span 2;
+  }
+
+  .overview-radar-panel {
+    grid-column: 2;
+    grid-row: 1 / span 6;
+  }
+
+  .overview-events-panel {
+    grid-column: 1;
+    grid-row: span 4;
+  }
+
+  .overview-theme-panel {
+    grid-column: 2;
+    grid-row: span 4;
+  }
+}
+
 @media (max-width: 1180px) {
   .kpi-grid {
     grid-template-columns: repeat(2, minmax(150px, 1fr));
@@ -3077,6 +3122,7 @@ button.mindmap-label {
   }
 
   .overview-market-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto;
   }
 
@@ -3086,6 +3132,12 @@ button.mindmap-label {
   .overview-theme-panel {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  .overview-radar-panel,
+  .overview-events-panel,
+  .overview-theme-panel {
+    grid-column: 1 / -1;
   }
 
   .feed-grid {
@@ -3158,6 +3210,21 @@ button.mindmap-label {
 }
 
 @media (max-width: 640px) {
+  .overview-market-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-stock-card,
+  .overview-radar-panel,
+  .overview-events-panel,
+  .overview-theme-panel {
+    grid-column: 1;
+  }
+
+  .radar-filter-row {
+    grid-template-columns: 1fr;
+  }
+
   .brand {
     grid-template-columns: 32px 1fr;
   }
