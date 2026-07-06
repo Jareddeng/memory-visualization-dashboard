@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "ae7fcf4d-6bd7-4f49-ac51-825be4b64241",
+      "name": "news-intel-morning",
+      "description": "Daily morning semiconductor news intel collection",
+      "enabled": true,
+      "createdAtMs": 1782386542262,
+      "updatedAtMs": 1783297374508,
+      "schedule": {
+        "kind": "cron",
+        "expr": "12 8 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin https://${GITHUB_TOKEN}@github.com/Jareddeng/memory-visualization-dashboard.git\n\nRead docs/news-intel-cron-brief.md for full rules. Then collect semiconductor news intel and write to content/intel/clawbot_intel.json.\n\nCRITICAL: DO NOT load entire file content into prompt. Use Python/grep scripts for dedupe checks only.\n\nAfter write: run `node scripts/generate-data.mjs`. After push: verify with `git log origin/main --oneline -3` and `git status`.",
+        "timeoutSeconds": 900,
+        "toolsAllow": [
+          "kimi_search",
+          "exec",
+          "read",
+          "write",
+          "edit",
+          "web_fetch"
+        ],
+        "lightContext": true
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1783383120000,
+        "lastRunAtMs": 1783296720004,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 654504,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": true,
+        "lastError": "Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."
+      },
+      "env": {
+        "IMA_OPENAPI_CLIENTID": "7c4b554c71ba5dafa3ee7862b12ab57c",
+        "IMA_OPENAPI_APIKEY": "3rUCA6vxSBKUBL7QY3dSY3iw7Xk6FR8IY51U9j/5tzpl16avnscogmue8DCQSqnjt9Td6+7FKw=="
+      },
+      "short_msg": true
+    },
+    {
+      "id": "60818ef0-0e78-4586-9eda-8d8401a064a6",
+      "name": "news-intel-noon",
+      "description": "Daily noon semiconductor news intel collection",
+      "enabled": true,
+      "createdAtMs": 1782386560385,
+      "updatedAtMs": 1783311733026,
+      "schedule": {
+        "kind": "cron",
+        "expr": "13 12 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin https://${GITHUB_TOKEN}@github.com/Jareddeng/memory-visualization-dashboard.git\n\nRead docs/news-intel-cron-brief.md for full rules. Then collect semiconductor news intel and write to content/intel/clawbot_intel.json.\n\nCRITICAL: DO NOT load entire file content into prompt. Use Python/grep scripts for dedupe checks only.\n\nAfter write: run `node scripts/generate-data.mjs`. After push: verify with `git log origin/main --oneline -3` and `git status`.",
+        "timeoutSeconds": 900,
+        "toolsAllow": [
+          "kimi_search",
+          "exec",
+          "read",
+          "write",
+          "edit",
+          "web_fetch"
+        ],
+        "lightContext": true
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1783397580000,
+        "lastRunAtMs": 1783311180004,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 553022,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastError": "Context overflow: prompt too large for the model. Try /reset (or /new) to start a fresh session, or use a larger-context model."
+      },
+      "env": {
+        "IMA_OPENAPI_CLIENTID": "7c4b554c71ba5dafa3ee7862b12ab57c",
+        "IMA_OPENAPI_APIKEY": "3rUCA6vxSBKUBL7QY3dSY3iw7Xk6FR8IY51U9j/5tzpl16avnscogmue8DCQSqnjt9Td6+7FKw=="
+      },
+      "short_msg": true
+    },
+    {
+      "id": "4d0178c2-d779-4381-abe0-a3691e6c2da6",
+      "name": "news-intel-afternoon",
+      "description": "Daily afternoon semiconductor news intel collection",
+      "enabled": true,
+      "createdAtMs": 1782386560449,
+      "updatedAtMs": 1783236286251,
+      "schedule": {
+        "kind": "cron",
+        "expr": "14 15 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin https://${GITHUB_TOKEN}@github.com/Jareddeng/memory-visualization-dashboard.git\n\nRead docs/news-intel-cron-brief.md for full rules. Then collect semiconductor news intel and write to content/intel/clawbot_intel.json.\n\nCRITICAL: DO NOT load entire file content into prompt. Use Python/grep scripts for dedupe checks only.\n\nAfter write: run `node scripts/generate-data.mjs`. After push: verify with `git log origin/main --oneline -3` and `git status`.",
+        "timeoutSeconds": 900,
+        "toolsAllow": [
+          "kimi_search",
+          "exec",
+          "read",
+          "write",
+          "edit",
+          "web_fetch"
+        ],
+        "lightContext": true
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1783322040000,
+        "lastRunAtMs": 1783235640004,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 646247,
+        "lastDeliveryStatus": "not-delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": false
+      },
+      "env": {
+        "IMA_OPENAPI_CLIENTID": "7c4b554c71ba5dafa3ee7862b12ab57c",
+        "IMA_OPENAPI_APIKEY": "3rUCA6vxSBKUBL7QY3dSY3iw7Xk6FR8IY51U9j/5tzpl16avnscogmue8DCQSqnjt9Td6+7FKw=="
+      },
+      "short_msg": true
+    },
+    {
+      "id": "9c2da10b-7369-45e1-8e0a-a0348ecf01f7",
+      "name": "news-intel-evening",
+      "description": "Daily evening semiconductor news intel collection",
+      "enabled": true,
+      "createdAtMs": 1782386560457,
+      "updatedAtMs": 1783261607004,
+      "schedule": {
+        "kind": "cron",
+        "expr": "14 22 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin https://${GITHUB_TOKEN}@github.com/Jareddeng/memory-visualization-dashboard.git\n\nRead docs/news-intel-cron-brief.md for full rules. Then collect semiconductor news intel and write to content/intel/clawbot_intel.json.\n\nCRITICAL: DO NOT load entire file content into prompt. Use Python/grep scripts for dedupe checks only.\n\nAfter write: run `node scripts/generate-data.mjs`. After push: verify with `git log origin/main --oneline -3` and `git status`.",
+        "timeoutSeconds": 900,
+        "toolsAllow": [
+          "kimi_search",
+          "exec",
+          "read",
+          "write",
+          "edit",
+          "web_fetch"
+        ],
+        "lightContext": true
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1783347240000,
+        "lastRunAtMs": 1783260840005,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 766999,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": true
+      },
+      "env": {
+        "IMA_OPENAPI_CLIENTID": "7c4b554c71ba5dafa3ee7862b12ab57c",
+        "IMA_OPENAPI_APIKEY": "3rUCA6vxSBKUBL7QY3dSY3iw7Xk6FR8IY51U9j/5tzpl16avnscogmue8DCQSqnjt9Td6+7FKw=="
+      },
+      "short_msg": true
+    }
+  ]
+}
