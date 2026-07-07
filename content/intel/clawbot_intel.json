@@ -4905,6 +4905,44 @@
       "transmission_path": "SK海力士ADR上市→融资约294亿美元→增强全球资本获取能力→支持HBM扩产计划→利好长期发展",
       "importance": "A",
       "url": "https://www.globalbankingandfinance.com/sk-hynix-considering-0-5-fee-payout-adr-offering-bloomberg/"
+    },
+    {
+      "id": "2026-07-07-samsung-q2-actual-89t-record",
+      "date": "2026-07-07",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "title": "三星电子正式披露Q2初步业绩：营业利润89.4万亿韩元，同比暴增1810%，双双超预期",
+      "product": "三星电子 / DRAM / NAND / HBM",
+      "source": "Samsung Electronics / Reuters / The Star",
+      "url": "https://www.thestar.com.my/business/business-news/2026/07/07/samsung-forecasts-record-quarterly-profit-beating-estimates-on-ai-memory-demand",
+      "summary": "7月7日，三星电子正式披露第二季度初步经营业绩，营业利润达89.4万亿韩元（约584.4亿美元），同比暴涨1810%（近19倍），超出LSEG SmartEstimate一致预期的87.3万亿韩元；销售额171万亿韩元，同比增长129%，同样高于市场预估。花旗研究显示Q2 DRAM均价环比上涨44%，NAND上涨53%。AI需求从HBM扩展至传统DRAM和NAND，客户寻求长期供应协议。但半导体事业部员工奖金协议（营业利润10.5%分成）将侵蚀后续季度净利。",
+      "transmission_path": "三星Q2实际业绩超预期→验证AI内存超级周期持续性→DRAM/NAND价格获需求支撑→但奖金计提和估值高位引发获利回吐→存储板块短期波动加大",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-07-14"
+    },
+    {
+      "id": "2026-07-07-samsung-sk-hynix-shares-plunge-earnings-day",
+      "date": "2026-07-07",
+      "type": "市场消息",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "title": "三星SK海力士股价暴跌超8%：创纪录财报日遭遇买预期卖事实获利回吐，KOSPI重挫7.6%",
+      "product": "三星电子 / SK海力士 / KOSPI",
+      "source": "Associated Press / Sina Finance / LetsDataScience",
+      "url": "https://letsdatascience.com/news/asian-markets-retreat-after-ai-stocks-rebound-6755ae27",
+      "summary": "7月7日，尽管三星电子发布创纪录Q2财报，韩国及亚太股市半导体板块仍大幅下挫。KOSPI指数暴跌7.6%收报7444点，三星电子股价跌8.7%，SK海力士跌8.7%。市场解读为典型买预期、卖事实行情——全年涨幅已提前透支利好，且隔夜美股存储板块走弱引发情绪共振。分析师认为存储板块普涨行情基本结束，将进入剧烈分化阶段：高端HBM和AI服务器存储仍具结构性行情，消费级存储估值承压。",
+      "transmission_path": "存储龙头股价暴跌→获利盘集中兑现→AI硬件板块情绪降温→A股存储芯片早盘低开承压→但国产设备材料替代逻辑不受海外周期短期影响",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-07-10"
     }
   ]
 }

@@ -27,10 +27,15 @@ export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin http
    - Tier 3（需 2+ 交叉验证）：分析师专栏、会议纪要
    - Tier 4（禁止）：自媒体、匿名爆料、论坛、AI 生成内容
    - 中文白名单：新华社,央视,人民日报,经济日报,金十数据,21世纪经济,财经网,财新,第一财经,界面,经济观察网,中新经纬,每日经济,财联社,蓝鲸,中国经济周刊,证券日报,投资界,商界,36氪,创业邦,虎嗅,中国经营报,经济参考网
-6. **去重**：用 Python/grep 脚本检查 id/url 是否已存在，脚本返回 boolean ONLY。不要把整个 JSON 读进 prompt。
+6. **去重（严禁 read 工具读取 JSON 文件）**：文件已 308K/250 条，读入会触发上下文溢出。
+   - **强制使用 exec + python3 单行脚本：**
+     - 查最新日期：`python3 -c "import json; print(max(r['date'] for r in json.load(open('content/intel/clawbot_intel.json'))['records']))"`
+     - 查ID是否存在：`python3 -c "import json; ids=[r['id'] for r in json.load(open('content/intel/clawbot_intel.json'))['records']]; print('EXISTS' if 'PLACEHOLDER' in ids else 'OK')"`（替换 PLACEHOLDER）
+     - 查URL是否存在：`python3 -c "import json; urls=[r.get('url','') for r in json.load(open('content/intel/clawbot_intel.json'))['records']]; print('EXISTS' if 'PLACEHOLDER' in urls else 'OK')"`（替换 PLACEHOLDER）
    - 同日市场暴跌/暴涨只保留一条 anchor
-7. **写入后**：运行 `node scripts/generate-data.mjs` 验证
-8. **推送后**：运行 `git log origin/main --oneline -3` + `git status` 验证
+7. **写入**：用 `edit` 工具追加记录到 JSON 数组末尾，不要读取整个文件再重写。
+8. **写入后**：运行 `node scripts/generate-data.mjs` 验证
+9. **推送后**：运行 `git log origin/main --oneline -3` + `git status` 验证
 9. **语言**：title/summary/transmission_path 必须中文
 
 ## 搜索策略（最多 3 轮）
