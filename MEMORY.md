@@ -48,7 +48,9 @@
   - 例：7月3日 08:00 财联社报道"SOX跌6%" → 实际事件日期是 7月2日（美股收盘）→ date 应写 2026-07-02
 - 批量回溯时：S/A 优先，B/C 可选，不硬凑
 
-## 归档规则（已生效）
+## 5条规则变更（2026-07-08）
+- 原来是"不足5条就跳过写入"，改为"5条是搜索深度驱动，没够就继续扩大搜索维度，穷尽后仍不足就提交实际找到的（哪怕0条）"
+- 已同步修改：~/.openclaw/cron/jobs.json 4个任务、docs/news-intel-cron-brief.md、docs/news-intel-task-guide.md
 
 - cron-only 记录（无用户交互的模板化任务）超过 2 天自动归档到 `memory/archive/stm/YYYY-MM-DD_cron.md`
 - USER.md 只保留最近 2 天有实质对话的会话

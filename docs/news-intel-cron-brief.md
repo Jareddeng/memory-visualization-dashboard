@@ -13,7 +13,7 @@ export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin http
    - 韩股开盘 KST 09:00 = 北京时间 08:00
    - 北京时间早上 8 点的新闻说"7月3日"，实际事件日期可能是 7月2日（美股收盘）
    - `date` 字段写**实际事件发生日期**，不是新闻发布日期
-3. **最低 5 条候选**，不足要报告搜索日志。
+3. **5条驱动搜索深度**：5条不是"跳过"门槛而是搜索深度驱动。第一轮没够→继续扩大搜索（更多维度、更多关键词）。搜完所有维度仍不足5条，就提交实际找到的（哪怕0条）。严禁没搜透就跳过。
 4. **枚举值**（严禁自创）：
    - impact: bullish/bearish/neutral
    - reaction_type: instant/undervalued/sentiment/archive
@@ -38,11 +38,12 @@ export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin http
 9. **推送后**：运行 `git log origin/main --oneline -3` + `git status` 验证
 9. **语言**：title/summary/transmission_path 必须中文
 
-## 搜索策略（最多 3 轮）
+## 搜索策略（至少3轮，不够5条就继续扩）
 
 - Round 1: 英文关键词 semiconductor DRAM HBM NAND Samsung SK Hynix Micron NVIDIA AI chip memory storage SSD
 - Round 2: 中文关键词 半导体 DRAM HBM 三星 SK海力士 美光 英伟达 AI芯片 存储 内存 NAND SSD 算力租赁
-- Round 3: 交叉验证补漏
+- Round 3: 政策/跨市场/设备/产能等补漏
+- Round 4+: 如果仍<5条，继续扩大（不同来源、细分产品、上下游传导链）
 
 ## 输出
 
