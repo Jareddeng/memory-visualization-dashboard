@@ -1,25 +1,6 @@
 {
   "records": [
     {
-      "id": "2026-07-10-sk-hynix-adr-nasdaq-listing",
-      "type": "行业分析",
-      "impact": "bullish",
-      "date": "2026-07-10",
-      "title": "SK海力士ADR将于7月10日在纳斯达克上市",
-      "product": "SK海力士 ADR",
-      "source": "globalbankingandfinance.com / investingengineer.com / 新浪财经",
-      "url": "https://www.globalbankingandfinance.com/sk-hynix-considering-0-5-fee-payout-adr-offering-bloomberg/",
-      "summary": "SK海力士美国存托凭证（ADR）将于2026年7月10日在纽约证券交易所（NYSE）开始交易。此次发行计划最多发行1779万股新股（约占总股本的2.4-2.5%），预计募集资金约294亿美元。簿记建档已于7月6日开始，最终定价定于7月9日。高盛、摩根大通、花旗和美国银行担任主承销商。",
-      "importance": "A",
-      "reaction_type": "instant",
-      "pricing_status": "unpriced",
-      "horizon": "1w",
-      "transmission_path": "SK海力士ADR上市→融资约294亿美元→增强全球资本获取能力→支持HBM扩产计划→利好长期发展",
-      "confidence": "high",
-      "action": "alert",
-      "review_date": "2026-07-14"
-    },
-    {
       "id": "2026-07-07-cnbc-memory-ai-driving-rally",
       "type": "行业分析",
       "impact": "bullish",
@@ -94,6 +75,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-08-07"
+    },
+    {
+      "id": "2026-07-07-sk-hynix-adr-nasdaq-listing",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-07-07",
+      "title": "SK海力士ADR将于7月10日在纳斯达克上市（新闻预发布）",
+      "product": "SK海力士 ADR",
+      "source": "globalbankingandfinance.com / investingengineer.com / 新浪财经",
+      "url": "https://www.globalbankingandfinance.com/sk-hynix-considering-0-5-fee-payout-adr-offering-bloomberg/",
+      "summary": "SK海力士美国存托凭证（ADR）将于2026年7月10日在纽约证券交易所（NYSE）开始交易。此次发行计划最多发行1779万股新股（约占总股本的2.4-2.5%），预计募集资金约294亿美元。簿记建档已于7月6日开始，最终定价定于7月9日。高盛、摩根大通、花旗和美国银行担任主承销商。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "transmission_path": "SK海力士ADR上市→融资约294亿美元→增强全球资本获取能力→支持HBM扩产计划→利好长期发展",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-07-14"
     },
     {
       "id": "2026-07-07-samsung-q2-actual-89t-record",
