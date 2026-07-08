@@ -4943,6 +4943,25 @@
       "confidence": "high",
       "action": "alert",
       "review_date": "2026-07-10"
+    },
+    {
+      "id": "2026-07-08-trendforce-dram-price-fixing-hbm-evidence",
+      "date": "2026-07-08",
+      "type": "重大事件",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1m",
+      "title": "TrendForce：HBM扩张能否成为DRAM串谋证据，三星/SK海力士/美光面临新法律考验",
+      "product": "DRAM / HBM",
+      "source": "TrendForce",
+      "url": "https://www.trendforce.com/news/2026/07/08/news-new-dram-price-fixing-case-against-samsung-sk-hynix-and-micron-tests-whether-hbm-expansion-can-prove-collusion/",
+      "summary": "美法院受理针对三星/SK海力士/美光的DRAM价格操纵集体诉讼。原告指控三家公司协调削减传统DRAM供应并转向HBM，推动内存价格4年涨近700%。TrendForce分析指出，此案关键法律争议在于HBM扩张能否作为串谋证据——若原告无法证明存在协调行为，案件可能在审前被驳回；但若诉讼成立，三家公司将首次被迫披露HBM分配和DRAM减产的内部通信。被告均否认指控，三星称运营完全符合公平竞争原则，SK海力士表示正在评估。历史参考：2005年三星曾因价格操纵被美国罚款3亿美元。",
+      "transmission_path": "法律诉讼风险升级→美股存储板块情绪承压→ADR/KOSPI跟跌→国内存储概念股情绪传导→若诉讼进入取证阶段，HBM商业机密可能被迫公开，影响竞争优势评估",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-15"
     }
   ]
 }
