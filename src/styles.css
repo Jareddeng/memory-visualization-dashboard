@@ -595,10 +595,19 @@ h2 {
 }
 
 .section-heading-with-tabs {
+  display: block;
+}
+
+.section-title-block {
+  display: grid;
+  gap: 8px;
+}
+
+.section-title-row {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .section-heading h2 {
@@ -2684,21 +2693,21 @@ th {
 .report-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 4px;
+  gap: 6px;
+  padding: 5px;
   width: fit-content;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   background: #f8fbfa;
 }
 
 .report-tabs button {
   border: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   background: transparent;
   color: var(--muted);
-  padding: 8px 12px;
-  font-size: 13px;
+  padding: 10px 16px;
+  font-size: 15px;
   font-weight: 900;
   cursor: pointer;
 }
@@ -2858,6 +2867,11 @@ th {
 .archive-list {
   display: grid;
   gap: 12px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(20, 124, 114, 0.45) rgba(15, 64, 59, 0.08);
 }
 
 .archive-item {
@@ -3460,7 +3474,12 @@ button.mindmap-label {
     justify-items: start;
   }
 
-  .section-heading-with-tabs .report-tabs {
+  .section-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section-title-row .report-tabs {
     width: 100%;
   }
 

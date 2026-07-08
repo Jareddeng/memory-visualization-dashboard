@@ -642,6 +642,7 @@ function App() {
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
   const [pendingAnchor, setPendingAnchor] = React.useState<string | null>(null);
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
+  const [activeReportTab, setActiveReportTab] = React.useState<ReportTab>("body");
   const [query, setQuery] = React.useState("");
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
@@ -709,8 +710,9 @@ function App() {
   const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
   const hbmPressure = getHbmPressure(data);
   const priceSnapshots = getPriceSnapshots(data.prices);
-  const navigatePage = (page: PageKey, anchorId?: string) => {
+  const navigatePage = (page: PageKey, anchorId?: string, reportTab?: ReportTab) => {
     setActivePage(page);
+    if (reportTab) setActiveReportTab(reportTab);
     setPendingAnchor(anchorId ?? null);
     if (!anchorId) {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -807,7 +809,12 @@ function App() {
             latestReport={latestReport}
             reports={data.reports}
             selectedReport={selectedReport}
-            onSelectReport={setSelectedReportSlug}
+            activeTab={activeReportTab}
+            onTabChange={setActiveReportTab}
+            onSelectReport={(slug) => {
+              setSelectedReportSlug(slug);
+              setActiveReportTab("body");
+            }}
           />
         ) : null}
         {activePage === "intel" ? (
@@ -850,9 +857,10 @@ function App() {
 type NavSubItem = {
   label: string;
   anchorId: string;
+  reportTab?: ReportTab;
 };
 
-function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: (page: PageKey, anchorId?: string) => void }) {
+function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: (page: PageKey, anchorId?: string, reportTab?: ReportTab) => void }) {
   const pages: Array<{ key: PageKey; label: string; detail: string; subItems?: NavSubItem[] }> = [
     { key: "overview", label: "\u6982\u89c8", detail: "\u5173\u952e\u6307\u6807 / \u60c5\u62a5" },
     {
@@ -875,7 +883,16 @@ function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: 
         { label: "\u4ea7\u4e1a\u94fe\u56fe\u8c31", anchorId: "industry-map" },
       ],
     },
-    { key: "reports", label: "\u62a5\u544a\u5e93", detail: "\u65e5\u62a5 / \u5f52\u6863 / \u5bfc\u56fe" },
+    {
+      key: "reports",
+      label: "\u62a5\u544a\u5e93",
+      detail: "\u65e5\u62a5 / \u5f52\u6863 / \u5bfc\u56fe",
+      subItems: [
+        { label: "\u62a5\u544a\u6b63\u6587", anchorId: "reports-top", reportTab: "body" },
+        { label: "\u9886\u5148\u6307\u6807", anchorId: "reports-top", reportTab: "indicators" },
+        { label: "\u65b0\u9896\u89c2\u70b9", anchorId: "reports-top", reportTab: "views" },
+      ],
+    },
     { key: "intel", label: "\u60c5\u62a5\u5e93", detail: "\u65b0\u589e / \u5220\u9664 / \u63a8\u9001" },
   ];
   return (
@@ -895,7 +912,7 @@ function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: 
             {expanded ? (
               <div className="nav-sub-list" aria-label={page.label}>
                 {page.subItems?.map((item) => (
-                  <button className="nav-sub-item" key={item.anchorId} onClick={() => onNavigate(page.key, item.anchorId)} type="button">
+                  <button className="nav-sub-item" key={`${item.anchorId}-${item.reportTab ?? item.label}`} onClick={() => onNavigate(page.key, item.anchorId, item.reportTab)} type="button">
                     {item.label}
                   </button>
                 ))}
@@ -1248,27 +1265,27 @@ function ReportsPage({
   latestReport,
   reports,
   selectedReport,
+  activeTab,
+  onTabChange,
   onSelectReport,
 }: {
   latestReport?: Report;
   reports: Report[];
   selectedReport?: Report;
+  activeTab: ReportTab;
+  onTabChange: (tab: ReportTab) => void;
   onSelectReport: (slug: string) => void;
 }) {
-  const [activeTab, setActiveTab] = React.useState<ReportTab>("body");
-
-  React.useEffect(() => {
-    setActiveTab("body");
-  }, [selectedReport?.slug]);
-
   return (
     <>
       <section className="section-heading section-heading-with-tabs" id="reports-top">
-        <div>
-          <h2>深度报告跟踪</h2>
+        <div className="section-title-block">
+          <div className="section-title-row">
+            <h2>深度报告跟踪</h2>
+            <ReportTabs activeTab={activeTab} onChange={onTabChange} />
+          </div>
           <p>每日行业观点、交易评价、风险提示与历史报告归档。</p>
         </div>
-        <ReportTabs activeTab={activeTab} onChange={setActiveTab} />
       </section>
       <section className="report-grid">
         <LatestReport report={selectedReport} isLatest={selectedReport?.slug === latestReport?.slug} activeTab={activeTab} />
