@@ -776,8 +776,7 @@ function App() {
           {priceSnapshots.map((snapshot) => (
             <PriceKpiCard snapshot={snapshot} key={snapshot.label} />
           ))}
-          <KpiCard icon={<Database />} label="HBM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
-          <KpiCard icon={<Database />} label="晶圆可用产能" value="待接入" hint="等待 EDB 或 clawbot 产能数据源" />
+          <KpiCard icon={<Database />} label="DRAM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
         </section>
 
         {activePage === "overview" ? <OverviewPage data={data} intelRecords={allIntelRecords} /> : null}
@@ -1424,7 +1423,7 @@ function getLockedYearRange(lockedYears: string, fallbackEnd: number) {
 }
 
 function getNegotiationYears(company: NonNullable<NonNullable<TrackerPayload["hbm_contracts"]>["companies"]>[number]) {
-  const text = [company.negotiating, company.expected_term, company.expected_capacity, company.stage_note, company.summary].join(" ");
+  const text = company.negotiating;
   return [...new Set([...text.matchAll(/20\d{2}/g)].map((match) => Number(match[0])))].filter((year) => Number.isFinite(year));
 }
 
@@ -1433,7 +1432,7 @@ function getNegotiationRange(company: NonNullable<NonNullable<TrackerPayload["hb
   const termYears = getExpectedTermYears(company.expected_term);
   const start = years.length ? Math.min(...years) : lockedUntil + 1;
   const explicitEnd = years.length ? Math.max(...years) : start;
-  const end = Math.max(explicitEnd, start + Math.max(termYears - 1, 0));
+  const end = years.length ? explicitEnd : Math.max(explicitEnd, start + Math.max(termYears - 1, 0));
   return {
     start,
     end,
@@ -2726,14 +2725,39 @@ function formatIndexHint(value: number | null, suffix: string) {
 }
 
 function getHbmPressure(data: AppData) {
-  const hbmItems = data.reports
-    .flatMap((report) => [report.title, report.summary, report.body])
-    .join(" ");
-  const trackerCount = data.trackers.hbm4_negotiations?.length ?? 0;
-  if (/供需紧张|紧缺|长协|HBM|高景气/.test(hbmItems) || trackerCount > 0) {
-    return { value: "高", hint: `跟踪 ${trackerCount} 条 HBM4/长协事件` };
+  const companies = data.trackers.hbm_contracts?.companies ?? [];
+  if (!companies.length) {
+    return { value: "观察", hint: "等待 clawbot 更新 HBM 长协与锁量信息" };
   }
-  return { value: "观察", hint: "等待 clawbot 更新 HBM 供给事件" };
+
+  const soldOutCount = companies.filter((company) =>
+    (company.capacity_lock_segments ?? []).some((segment) => segment.status === "soldout"),
+  ).length;
+  const highLockCount = companies.filter((company) =>
+    (company.capacity_lock_segments ?? []).some((segment) => segment.status === "full"),
+  ).length;
+  const signedCount = companies.filter((company) => company.stage_index >= 4).length;
+  const lockUntilYears = companies
+    .map((company) => company.locked_until)
+    .filter((year): year is number => typeof year === "number" && Number.isFinite(year));
+  const maxLockedUntil = lockUntilYears.length ? Math.max(...lockUntilYears) : null;
+  const negotiationCount = companies.filter((company) => company.negotiating || company.expected_term).length;
+
+  if (soldOutCount >= 2 || (soldOutCount >= 1 && highLockCount >= 1)) {
+    return {
+      value: "高",
+      hint: `${soldOutCount} 家出现售罄，${highLockCount} 家高锁定；最长覆盖至 ${maxLockedUntil ?? "待更新"}`,
+    };
+  }
+
+  if (signedCount >= 2 || highLockCount >= 2 || negotiationCount >= 2) {
+    return {
+      value: "中高",
+      hint: `${signedCount} 家进入签约阶段，${negotiationCount} 家仍在谈后续长协`,
+    };
+  }
+
+  return { value: "观察", hint: `${companies.length} 家已纳入长协跟踪，等待锁量确认` };
 }
 
 function mergeRemoteIntelRecords(remoteRecords: IntelRecord[], localRecords: IntelRecord[]) {
