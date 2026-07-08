@@ -2811,6 +2811,11 @@ th {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 16px;
+  max-height: 620px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(20, 124, 114, 0.45) rgba(15, 64, 59, 0.08);
 }
 
 .report-insight-card {
@@ -2862,6 +2867,7 @@ th {
 @media (max-width: 900px) {
   .report-insight-list {
     grid-template-columns: 1fr;
+    max-height: 560px;
   }
 }
 
