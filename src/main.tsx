@@ -1432,7 +1432,7 @@ function getNegotiationRange(company: NonNullable<NonNullable<TrackerPayload["hb
   const termYears = getExpectedTermYears(company.expected_term);
   const start = years.length ? Math.min(...years) : lockedUntil + 1;
   const explicitEnd = years.length ? Math.max(...years) : start;
-  const end = Math.max(explicitEnd, start + Math.max(termYears - 1, 0));
+  const end = years.length ? explicitEnd : Math.max(explicitEnd, start + Math.max(termYears - 1, 0));
   return {
     start,
     end,
