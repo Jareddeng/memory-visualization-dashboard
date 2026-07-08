@@ -776,7 +776,7 @@ function App() {
           {priceSnapshots.map((snapshot) => (
             <PriceKpiCard snapshot={snapshot} key={snapshot.label} />
           ))}
-          <KpiCard icon={<Database />} label="HBM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
+          <KpiCard icon={<Database />} label="DRAM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
         </section>
 
         {activePage === "overview" ? <OverviewPage data={data} intelRecords={allIntelRecords} /> : null}
@@ -1423,7 +1423,7 @@ function getLockedYearRange(lockedYears: string, fallbackEnd: number) {
 }
 
 function getNegotiationYears(company: NonNullable<NonNullable<TrackerPayload["hbm_contracts"]>["companies"]>[number]) {
-  const text = [company.negotiating, company.expected_term, company.expected_capacity, company.stage_note, company.summary].join(" ");
+  const text = company.negotiating;
   return [...new Set([...text.matchAll(/20\d{2}/g)].map((match) => Number(match[0])))].filter((year) => Number.isFinite(year));
 }
 
