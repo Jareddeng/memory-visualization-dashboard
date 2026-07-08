@@ -1923,32 +1923,32 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
 
   return (
     <section className="panel text-panel report-main">
-      <h2>{isLatest ? "最新深度报告" : "历史深度报告"}</h2>
       {report ? (
         <>
           <div className="report-head">
             <div>
+              <h2>{isLatest ? "最新深度报告" : "历史深度报告"}</h2>
               <strong>{report.title}</strong>
               <span>{report.date}</span>
             </div>
             <div className="report-actions">
+              <div className="report-tabs" role="tablist" aria-label="报告内容切换">
+                <button className={activeTab === "body" ? "active" : ""} onClick={() => setActiveTab("body")} type="button">报告正文</button>
+                <button className={activeTab === "indicators" ? "active" : ""} onClick={() => setActiveTab("indicators")} type="button">领先指标</button>
+                <button className={activeTab === "views" ? "active" : ""} onClick={() => setActiveTab("views")} type="button">新颖观点</button>
+              </div>
               {report.mindmap ? (
                 <button className="mindmap-button" onClick={() => setMindmapOpen(true)} type="button">
                   思维导图
                 </button>
               ) : null}
               <div className="badges">
-                <b>{report.rating}</b>
+                <RatingBadge value={report.rating} />
                 <b>{report.risk_level}风险</b>
               </div>
             </div>
           </div>
           <p>{report.summary}</p>
-          <div className="report-tabs" role="tablist" aria-label="报告内容切换">
-            <button className={activeTab === "body" ? "active" : ""} onClick={() => setActiveTab("body")} type="button">报告正文</button>
-            <button className={activeTab === "indicators" ? "active" : ""} onClick={() => setActiveTab("indicators")} type="button">领先指标</button>
-            <button className={activeTab === "views" ? "active" : ""} onClick={() => setActiveTab("views")} type="button">新颖观点</button>
-          </div>
           {activeTab === "body" ? <MarkdownBody body={report.body} /> : null}
           {activeTab === "indicators" ? <ReportIndicatorList items={report.insights?.leading_indicators ?? []} /> : null}
           {activeTab === "views" ? <ReportNovelViewList items={report.insights?.novel_views ?? []} /> : null}
@@ -1962,6 +1962,23 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
       )}
     </section>
   );
+}
+
+function RatingBadge({ value }: { value: string }) {
+  const parsed = splitRatingNote(value);
+  return (
+    <b className={parsed.note ? "rating-badge has-note" : "rating-badge"}>
+      <span>{parsed.main}</span>
+      {parsed.note ? <small>{parsed.note}</small> : null}
+    </b>
+  );
+}
+
+function splitRatingNote(value: string) {
+  const text = String(value || "").trim();
+  const match = text.match(/^(看多|看空|中性偏空|中性偏多|中性)(?:[（(](.+)[）)])?$/);
+  if (!match) return { main: text || "中性", note: "" };
+  return { main: match[1], note: match[2] ?? "" };
 }
 
 function ReportIndicatorList({ items }: { items: NonNullable<ReportInsights["leading_indicators"]> }) {
@@ -2097,7 +2114,7 @@ function ReportArchive({
           >
             <time>{report.date}</time>
             <strong>{report.title}</strong>
-            <span>{report.rating} · {report.risk_level}风险</span>
+            <ArchiveReportMeta rating={report.rating} riskLevel={report.risk_level} />
           </button>
         )) : <p>暂无历史报告。</p>}
       </div>
@@ -2105,28 +2122,158 @@ function ReportArchive({
   );
 }
 
+function ArchiveReportMeta({ rating, riskLevel }: { rating: string; riskLevel: string }) {
+  const parsed = splitRatingNote(rating);
+  return (
+    <span className="archive-meta">
+      <b>{parsed.main} · {riskLevel}风险</b>
+      {parsed.note ? <small>{parsed.note}</small> : null}
+    </span>
+  );
+}
+
 function MarkdownBody({ body }: { body: string }) {
+  const blocks = parseMarkdownBlocks(body);
   return (
     <div className="markdown-body">
-      {body
-        .split(/\n{2,}/)
-        .map((block) => block.trim())
-        .filter(Boolean)
-        .map((block) => {
-          if (block.startsWith("## ")) return <h3 key={block}>{block.replace(/^##\s+/, "")}</h3>;
-          if (block.startsWith("### ")) return <h4 key={block}>{block.replace(/^###\s+/, "")}</h4>;
-          if (block.startsWith("> ")) return <blockquote key={block}>{block.replace(/^>\s+/, "")}</blockquote>;
-          if (block.startsWith("- ")) {
-            return (
-              <ul key={block}>
-                {block.split(/\n/).map((line) => <li key={line}>{line.replace(/^-\s+/, "")}</li>)}
-              </ul>
-            );
-          }
-          return <p key={block}>{block}</p>;
-        })}
+      {blocks.map((block, index) => renderMarkdownBlock(block, index))}
     </div>
   );
+}
+
+type MarkdownBlock =
+  | { type: "h3" | "h4" | "p" | "blockquote"; text: string }
+  | { type: "ul"; items: string[] }
+  | { type: "table"; rows: string[][] };
+
+function parseMarkdownBlocks(body: string): MarkdownBlock[] {
+  const blocks: MarkdownBlock[] = [];
+  const lines = body.replace(/\r\n/g, "\n").split("\n");
+  let paragraph: string[] = [];
+  let list: string[] = [];
+  let table: string[][] = [];
+
+  const flushParagraph = () => {
+    if (paragraph.length) {
+      blocks.push({ type: "p", text: paragraph.join(" ").trim() });
+      paragraph = [];
+    }
+  };
+  const flushList = () => {
+    if (list.length) {
+      blocks.push({ type: "ul", items: list });
+      list = [];
+    }
+  };
+  const flushTable = () => {
+    if (table.length) {
+      blocks.push({ type: "table", rows: table });
+      table = [];
+    }
+  };
+  const flushAll = () => {
+    flushParagraph();
+    flushList();
+    flushTable();
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line) {
+      flushAll();
+      continue;
+    }
+    if (/^---+$/.test(line)) {
+      flushAll();
+      continue;
+    }
+    if (/^#\s+/.test(line)) {
+      flushAll();
+      continue;
+    }
+    if (line.startsWith("## ")) {
+      flushAll();
+      blocks.push({ type: "h3", text: line.replace(/^##\s+/, "") });
+      continue;
+    }
+    if (line.startsWith("### ")) {
+      flushAll();
+      blocks.push({ type: "h4", text: line.replace(/^###\s+/, "") });
+      continue;
+    }
+    if (line.startsWith("> ")) {
+      flushAll();
+      blocks.push({ type: "blockquote", text: line.replace(/^>\s+/, "") });
+      continue;
+    }
+    if (/^[-*]\s+/.test(line)) {
+      flushParagraph();
+      flushTable();
+      list.push(line.replace(/^[-*]\s+/, ""));
+      continue;
+    }
+    if (isMarkdownTableLine(line)) {
+      flushParagraph();
+      flushList();
+      if (!isMarkdownTableDivider(line)) table.push(splitMarkdownTableRow(line));
+      continue;
+    }
+    flushList();
+    flushTable();
+    paragraph.push(line);
+  }
+  flushAll();
+  return blocks.filter((block) => block.type !== "p" || block.text);
+}
+
+function renderMarkdownBlock(block: MarkdownBlock, index: number) {
+  if (block.type === "h3") return <h3 key={index}>{renderInlineMarkdown(block.text)}</h3>;
+  if (block.type === "h4") return <h4 key={index}>{renderInlineMarkdown(block.text)}</h4>;
+  if (block.type === "blockquote") return <blockquote key={index}>{renderInlineMarkdown(block.text)}</blockquote>;
+  if (block.type === "ul") {
+    return <ul key={index}>{block.items.map((item, itemIndex) => <li key={itemIndex}>{renderInlineMarkdown(item)}</li>)}</ul>;
+  }
+  if (block.type === "table") {
+    const [head = [], ...bodyRows] = block.rows;
+    return (
+      <div className="markdown-table-wrap" key={index}>
+        <table>
+          <thead><tr>{head.map((cell, cellIndex) => <th key={cellIndex}>{renderInlineMarkdown(cell)}</th>)}</tr></thead>
+          <tbody>
+            {bodyRows.map((row, rowIndex) => (
+              <tr key={rowIndex}>{row.map((cell, cellIndex) => <td key={cellIndex}>{renderInlineMarkdown(cell)}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+  return <p key={index}>{renderInlineMarkdown(block.text)}</p>;
+}
+
+function renderInlineMarkdown(text: string) {
+  const nodes: React.ReactNode[] = [];
+  const pattern = /\*\*([^*]+)\*\*/g;
+  let lastIndex = 0;
+  for (const match of text.matchAll(pattern)) {
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    nodes.push(<strong key={`${match.index}-${match[1]}`}>{match[1]}</strong>);
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes.length ? nodes : text;
+}
+
+function isMarkdownTableLine(line: string) {
+  return line.startsWith("|") && line.endsWith("|") && line.split("|").length > 2;
+}
+
+function isMarkdownTableDivider(line: string) {
+  return /^\|(?:\s*:?-+:?\s*\|)+$/.test(line);
+}
+
+function splitMarkdownTableRow(line: string) {
+  return line.replace(/^\||\|$/g, "").split("|").map((cell) => cell.trim());
 }
 
 function SearchResults({

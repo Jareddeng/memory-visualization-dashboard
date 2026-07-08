@@ -2615,6 +2615,7 @@ th {
 .report-head div:first-child {
   display: grid;
   gap: 6px;
+  min-width: 0;
 }
 
 .report-head strong {
@@ -2622,9 +2623,12 @@ th {
 }
 
 .report-actions {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  justify-items: end;
+  justify-content: flex-end;
+  align-items: flex-start;
+  min-width: min(520px, 100%);
 }
 
 .mindmap-button {
@@ -2650,18 +2654,37 @@ th {
 }
 
 .badges b {
+  display: grid;
+  gap: 2px;
+  max-width: 260px;
   border-radius: 999px;
   padding: 5px 10px;
   background: var(--blue-soft);
   color: var(--blue);
   font-size: 12px;
+  line-height: 1.25;
+}
+
+.badges .rating-badge.has-note {
+  border-radius: 8px;
+  background: #f2f6f4;
+  color: var(--ink);
+}
+
+.badges .rating-badge span {
+  color: var(--teal);
+}
+
+.badges .rating-badge small {
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .report-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 16px;
   padding: 4px;
   width: fit-content;
   border: 1px solid var(--line);
@@ -2717,6 +2740,52 @@ th {
   padding-left: 20px;
   color: var(--muted);
   line-height: 1.65;
+}
+
+.markdown-body strong {
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.markdown-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.markdown-table-wrap table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.markdown-table-wrap th,
+.markdown-table-wrap td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  color: var(--muted);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.markdown-table-wrap th {
+  background: #f4f8f6;
+  color: var(--ink);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.markdown-table-wrap tr:last-child td {
+  border-bottom: 0;
+}
+
+.markdown-table-wrap th:last-child,
+.markdown-table-wrap td:last-child {
+  border-right: 0;
 }
 
 .report-insight-list {
@@ -2799,6 +2868,22 @@ th {
 .archive-item:hover strong,
 .archive-item.active strong {
   color: var(--teal);
+}
+
+.archive-meta {
+  display: grid;
+  gap: 2px;
+}
+
+.archive-meta b {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.archive-meta small {
+  color: var(--ink);
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 .archive-item.active {
