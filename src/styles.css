@@ -1039,6 +1039,7 @@ h2 {
 
 .report-grid {
   grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr);
+  align-items: start;
 }
 
 .text-panel h2 {
@@ -2867,7 +2868,7 @@ th {
 .archive-list {
   display: grid;
   gap: 12px;
-  max-height: 520px;
+  max-height: 390px;
   overflow-y: auto;
   padding-right: 6px;
   scrollbar-width: thin;

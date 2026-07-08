@@ -1960,35 +1960,40 @@ function LatestReport({ report, isLatest, activeTab }: { report?: Report; isLate
   }, [report?.slug]);
 
   const rating = splitRatingNote(report?.rating ?? "");
+  const showReportBody = activeTab === "body";
 
   return (
     <section className="panel text-panel report-main">
       {report ? (
         <>
-          <div className="report-head">
-            <div>
-              <h2>{isLatest ? "最新深度报告" : "历史深度报告"}</h2>
-              <strong>{report.title}</strong>
-              <span>{report.date}</span>
-            </div>
-            <div className="report-actions">
-              {report.mindmap ? (
-                <button className="mindmap-button" onClick={() => setMindmapOpen(true)} type="button">
-                  思维导图
-                </button>
-              ) : null}
-              <div className="badges">
-                <b>{rating.main}</b>
-                <b>{report.risk_level}风险</b>
+          {showReportBody ? (
+            <>
+              <div className="report-head">
+                <div>
+                  <h2>{isLatest ? "最新深度报告" : "历史深度报告"}</h2>
+                  <strong>{report.title}</strong>
+                  <span>{report.date}</span>
+                </div>
+                <div className="report-actions">
+                  {report.mindmap ? (
+                    <button className="mindmap-button" onClick={() => setMindmapOpen(true)} type="button">
+                      思维导图
+                    </button>
+                  ) : null}
+                  <div className="badges">
+                    <b>{rating.main}</b>
+                    <b>{report.risk_level}风险</b>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          {rating.note ? <p className="report-rating-note">{rating.note}</p> : null}
-          <p>{report.summary}</p>
-          {activeTab === "body" ? <MarkdownBody body={report.body} /> : null}
+              {rating.note ? <p className="report-rating-note">{rating.note}</p> : null}
+              <p>{report.summary}</p>
+              <MarkdownBody body={report.body} />
+              {report.sources.length ? <small>来源：{report.sources.join("、")}</small> : null}
+            </>
+          ) : null}
           {activeTab === "indicators" ? <ReportIndicatorList items={report.insights?.leading_indicators ?? []} /> : null}
           {activeTab === "views" ? <ReportNovelViewList items={report.insights?.novel_views ?? []} /> : null}
-          {report.sources.length ? <small>来源：{report.sources.join("、")}</small> : null}
           {report.mindmap && mindmapOpen ? (
             <MindmapModal mindmap={report.mindmap} onClose={() => setMindmapOpen(false)} />
           ) : null}
