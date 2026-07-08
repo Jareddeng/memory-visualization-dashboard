@@ -777,7 +777,6 @@ function App() {
             <PriceKpiCard snapshot={snapshot} key={snapshot.label} />
           ))}
           <KpiCard icon={<Database />} label="HBM 供给压力" value={hbmPressure.value} hint={hbmPressure.hint} />
-          <KpiCard icon={<Database />} label="晶圆可用产能" value="待接入" hint="等待 EDB 或 clawbot 产能数据源" />
         </section>
 
         {activePage === "overview" ? <OverviewPage data={data} intelRecords={allIntelRecords} /> : null}
@@ -2726,14 +2725,39 @@ function formatIndexHint(value: number | null, suffix: string) {
 }
 
 function getHbmPressure(data: AppData) {
-  const hbmItems = data.reports
-    .flatMap((report) => [report.title, report.summary, report.body])
-    .join(" ");
-  const trackerCount = data.trackers.hbm4_negotiations?.length ?? 0;
-  if (/供需紧张|紧缺|长协|HBM|高景气/.test(hbmItems) || trackerCount > 0) {
-    return { value: "高", hint: `跟踪 ${trackerCount} 条 HBM4/长协事件` };
+  const companies = data.trackers.hbm_contracts?.companies ?? [];
+  if (!companies.length) {
+    return { value: "观察", hint: "等待 clawbot 更新 HBM 长协与锁量信息" };
   }
-  return { value: "观察", hint: "等待 clawbot 更新 HBM 供给事件" };
+
+  const soldOutCount = companies.filter((company) =>
+    (company.capacity_lock_segments ?? []).some((segment) => segment.status === "soldout"),
+  ).length;
+  const highLockCount = companies.filter((company) =>
+    (company.capacity_lock_segments ?? []).some((segment) => segment.status === "full"),
+  ).length;
+  const signedCount = companies.filter((company) => company.stage_index >= 4).length;
+  const lockUntilYears = companies
+    .map((company) => company.locked_until)
+    .filter((year): year is number => typeof year === "number" && Number.isFinite(year));
+  const maxLockedUntil = lockUntilYears.length ? Math.max(...lockUntilYears) : null;
+  const negotiationCount = companies.filter((company) => company.negotiating || company.expected_term).length;
+
+  if (soldOutCount >= 2 || (soldOutCount >= 1 && highLockCount >= 1)) {
+    return {
+      value: "高",
+      hint: `${soldOutCount} 家出现售罄，${highLockCount} 家高锁定；最长覆盖至 ${maxLockedUntil ?? "待更新"}`,
+    };
+  }
+
+  if (signedCount >= 2 || highLockCount >= 2 || negotiationCount >= 2) {
+    return {
+      value: "中高",
+      hint: `${signedCount} 家进入签约阶段，${negotiationCount} 家仍在谈后续长协`,
+    };
+  }
+
+  return { value: "观察", hint: `${companies.length} 家已纳入长协跟踪，等待锁量确认` };
 }
 
 function mergeRemoteIntelRecords(remoteRecords: IntelRecord[], localRecords: IntelRecord[]) {
