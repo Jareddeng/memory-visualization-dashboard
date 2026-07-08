@@ -3,51 +3,67 @@
 ## 任务
 搜索半导体/存储行业新闻，写入 GitHub 仓库。
 
-## 搜索策略（6轮，可自主拓展）
+## 搜索策略（轻量模式，防止上下文溢出）
+
+**核心原则：只搜标题，不累积全文。**
+
+在 isolated cron session 中，`kimi_search` 返回的全文会累积进对话上下文，多轮搜索后触发 context overflow，导致任务超时失败（已发生）。
+
+### 轻量搜索流程
+
+```
+Round 1: kimi_search limit=5 include_content=false → 标题列表
+         判断标题 → 要收录的写进 tmp/news-candidates-{date}.md
+Round 2: kimi_search limit=5 include_content=false → 标题列表  
+         判断标题 → 要收录的追加到 tmp/news-candidates-{date}.md
+Round 3+: 继续补漏搜索，同上
+汇总：从 tmp/news-candidates-{date}.md 读取所有候选
+收录：对每个候选用 web_fetch 单条抓全文 → 写 summary → 写入 JSON
+清理：删除 tmp/news-candidates-{date}.md
+```
+
+### 搜索参数（必须遵守）
+- `kimi_search`: `limit=5`, `include_content=false`
+- `web_fetch`: 只对确认收录的单条 URL 使用
+- **禁止**: `include_content=true` 一次塞满上下文
+- **禁止**: 在上下文中保留多轮搜索的全文结果
+
+### 候选暂存文件格式
+
+`tmp/news-candidates-{date}.md`:
+```markdown
+# News Candidates - 2026-07-08
+
+## [KEEP] 2026-07-08 | Title here
+- URL: https://...
+- Source: Reuters
+- Reason: HBM supply news, new info
+
+## [DROP] 2026-07-08 | Title here  
+- URL: https://...
+- Reason: Duplicate of 2026-07-07 record
+```
+
+### 轮次安排
+- Round 1: 英文关键词 `semiconductor DRAM HBM NAND Samsung SK Hynix Micron NVIDIA AI chip memory storage SSD`
+- Round 2: 中文关键词 `半导体 DRAM HBM 三星 SK海力士 美光 英伟达 AI芯片 存储 内存 NAND SSD 算力租赁`
+- Round 3: 政策/跨市场/设备/产能等补漏
+- Round 4+: 如果仍<5条，继续扩大
 
 **时间过滤（硬性要求）：**
-- **时间窗口**：优先检索「上次更新时间 至 本次更新时间」之间的新信息
-- **搜索方式**：每轮搜索必须附加时间过滤，只搜该时间窗口内的信息
-  - 支持 `after:` 的引擎：关键词后加 `after:YYYY-MM-DD`（上次更新日期）
-  - 不支持 `after:` 的引擎：用「过去X小时」「今日」「最近24小时」等筛选
+- **时间窗口**：优先检索「上次更新日期 至 今天」之间的新信息
+- 每轮搜索必须附加时间过滤
+- 支持 `after:` 的引擎：关键词后加 `after:YYYY-MM-DD`
+- 不支持 `after:` 的引擎：用「过去X小时」「今日」「最近24小时」等筛选
 - **无时间过滤的搜索结果视为无效，直接丢弃**
-- 若某轮搜索因时间过滤导致结果为空，记为「该时段无新信息」，不再放宽时间窗口去凑数
-- **绝对禁止**：收录时间窗口之外的新闻。即使该新闻不在文件中，时间不符也不得添加
-- **时区时间差规则（2026-07-03 确立）**：
-  - 新闻发布时间 ≠ 市场事件发生时间
-  - 美股收盘：美东 16:00 = 北京时间次日 04:00/05:00（夏令时/冬令时）
-  - 韩股开盘：韩国 09:00 = 北京时间 08:00
-  - **北京时间早上 8 点发的新闻说"7月3日"，实际对应的是 7月2日美股收盘 或 7月3日韩股开盘前**
-  - **写入 `date` 字段时必须用事件实际发生日期，不是新闻发布日期**
-  - 例：7月3日 08:00 财联社报道"SOX跌6%" → 实际事件日期是 7月2日（美股收盘）→ date 应写 2026-07-02
 
 **候选情报数量要求：**
 - 目标：每轮更新形成不少于 5 条存储行业相关候选情报
 - 5条是**搜索深度驱动**，不是**写入门槛**
-- 候选情报必须同时满足：
-  1. 在时间窗口内新发布（上次更新后首次出现）
-  2. 首次进入系统（未在 clawbot_intel.json 中存在的 id/url/title）
-  3. 有明确来源（source 字段为具体媒体名称，非 "internet"/"网络"/"reportedly"）
-  4. 有清晰传导路径到存储定价（transmission_path 可解释）
-- **搜索规则**：若有效新增情报不足 5 条，**禁止跳过**，必须继续扩大搜索：
-  - 增加更多搜索轮次（政策、跨市场信号、设备、产能、订单等维度）
-  - 换不同关键词组合，换不同搜索引擎/平台
-  - 检查是否有遗漏的传导链（如算力租赁→云厂商→存储采购）
-  - 检查是否有遗漏的来源（TrendForce、DIGITIMES、Reuters、Bloomberg、政府公告等）
-- **穷尽搜索后仍不足 5 条**：提交实际找到的（哪怕 0 条），在报告中说明：
-  - 检索过程（每轮搜索的关键词、时间过滤、结果数量）
-  - 未采用信息列表（标题+未采用原因：时间不符/重复/来源不合格/无传导路径）
-  - 为什么实际新闻量少于5条（如周末、假期、市场清淡期）
-- **绝对禁止**：
-  - 旧闻（时间窗口外的历史新闻）
-  - 重复信息（已存在于系统中的同一事件）
-  - 无来源内容（source 为空或模糊）
-  - 无法判断传导路径的信息
-  - 没搜透就报告"跳过"
+- 若有效新增情报不足 5 条，**禁止跳过**，必须继续扩大搜索
+- 穷尽搜索后仍不足 5 条：提交实际找到的（哪怕 0 条），在报告中说明检索过程
 
-### 第1轮：广度（供需与价格）
-- "memory semiconductor supply demand 2026 after:YYYY-MM-DD"
-- "DRAM NAND contract price latest TrendForce after:YYYY-MM-DD"
+**来源分级与去重规则不变**（详见 cron-brief）
 - "DRAM NAND spot price latest DRAMeXchange after:YYYY-MM-DD"
 - "server DRAM enterprise SSD price latest after:YYYY-MM-DD"
 - "memory wafer capacity capex equipment 2026 after:YYYY-MM-DD"

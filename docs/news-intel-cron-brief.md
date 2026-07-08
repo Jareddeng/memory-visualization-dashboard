@@ -32,7 +32,13 @@ export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin http
    - Tier 3（需 2+ 交叉验证）：分析师专栏、会议纪要
    - Tier 4（禁止）：自媒体、匿名爆料、论坛、AI 生成内容
    - 中文白名单：新华社,央视,人民日报,经济日报,金十数据,21世纪经济,财经网,财新,第一财经,界面,经济观察网,中新经纬,每日经济,财联社,蓝鲸,中国经济周刊,证券日报,投资界,商界,36氪,创业邦,虎嗅,中国经营报,经济参考网
-6. **去重（严禁 read 工具读取 JSON 文件）**：文件已 308K/250 条，读入会触发上下文溢出。
+6. **轻量搜索（防止上下文溢出）**：
+   - `kimi_search` 必须 `limit=5, include_content=false`，只取标题+URL+日期
+   - 不要在上下文中累积全文。搜到标题后判断是否要收录 → 要收录的写进 `tmp/news-candidates-{date}.md` → 不需要的搜索结果直接丢弃
+   - 确认收录时，用 `web_fetch` 单条抓全文写 summary
+   - 所有候选判断完、写入 JSON 后，删除 `tmp/news-candidates-{date}.md`
+   - **禁止**：`include_content=true` 一次塞满上下文；多轮搜索全文累积
+7. **去重（严禁 read 工具读取 JSON 文件）**：文件已 308K/250 条，读入会触发上下文溢出。
    - **强制使用 exec + python3 单行脚本：**
      - 查最新日期：`python3 -c "import json; print(max(r['date'] for r in json.load(open('content/intel/clawbot_intel.json'))['records']))"`
      - 查ID是否存在：`python3 -c "import json; ids=[r['id'] for r in json.load(open('content/intel/clawbot_intel.json'))['records']]; print('EXISTS' if 'PLACEHOLDER' in ids else 'OK')"`（替换 PLACEHOLDER）
@@ -43,12 +49,22 @@ export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin http
 9. **推送后**：运行 `git log origin/main --oneline -3` + `git status` 验证
 9. **语言**：title/summary/transmission_path 必须中文
 
-## 搜索策略（至少3轮，不够5条就继续扩）
+## 搜索策略（轻量模式，防止上下文溢出）
 
-- Round 1: 英文关键词 semiconductor DRAM HBM NAND Samsung SK Hynix Micron NVIDIA AI chip memory storage SSD
-- Round 2: 中文关键词 半导体 DRAM HBM 三星 SK海力士 美光 英伟达 AI芯片 存储 内存 NAND SSD 算力租赁
-- Round 3: 政策/跨市场/设备/产能等补漏
-- Round 4+: 如果仍<5条，继续扩大（不同来源、细分产品、上下游传导链）
+**核心原则：只搜标题，不累积全文。**
+
+1. `kimi_search` 必须 `limit=5, include_content=false`，只取标题+URL+日期
+2. 每轮搜索后，在上下文中只保留"标题列表"，不要保留全文
+3. 判断要收录的标题 → 写进 `tmp/news-candidates-{date}.md`（标题+URL+初步判断）
+4. 判断不收录的 → 直接在上下文中丢弃，不累积
+5. 所有轮次搜完后，从 `tmp/news-candidates-{date}.md` 读取候选列表
+6. 对每个确认收录的候选，用 `web_fetch` 单条抓全文，写 summary
+7. 写入 JSON 后，删除 `tmp/news-candidates-{date}.md`
+
+**轮次：**
+- Round 1: 英文 `semiconductor DRAM HBM NAND Samsung SK Hynix Micron NVIDIA AI chip memory storage SSD`
+- Round 2: 中文 `半导体 DRAM HBM 三星 SK海力士 美光 英伟达 AI芯片 存储 内存 NAND SSD 算力租赁`
+- Round 3+: 政策/跨市场/设备/产能等补漏，仍<5条就继续扩
 
 ## 输出
 
