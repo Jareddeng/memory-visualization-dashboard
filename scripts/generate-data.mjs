@@ -394,8 +394,8 @@ async function loadReports() {
       slug: file.replace(/\.md$/, ""),
       title: parsed.frontmatter.title || "未命名报告",
       date,
-      rating: parsed.frontmatter.rating || "中性",
-      risk_level: parsed.frontmatter.risk_level || "中",
+      rating: normalizeReportRating(parsed.frontmatter.rating || "中性"),
+      risk_level: normalizeRiskLevel(parsed.frontmatter.risk_level || "中"),
       summary: parsed.frontmatter.summary || "",
       sources: parseListValue(parsed.frontmatter.sources),
       body: parsed.body.trim(),
@@ -404,6 +404,26 @@ async function loadReports() {
     });
   }
   return reports.sort((a, b) => b.date.localeCompare(a.date));
+}
+
+function normalizeReportRating(value) {
+  const raw = String(value || "").trim();
+  const note = raw.match(/[（(].*?[）)]/)?.[0] || "";
+  const text = raw.replace(/[（(].*?[）)]/g, "");
+  let rating = "中性";
+  if (/中性偏多/.test(text)) rating = "中性偏多";
+  else if (/中性偏空/.test(text)) rating = "中性偏空";
+  else if (/看多|积极|乐观|偏多/.test(text)) rating = "看多";
+  else if (/看空|谨慎|悲观|风险上升|偏空/.test(text)) rating = "看空";
+  return `${rating}${note}`;
+}
+
+function normalizeRiskLevel(value) {
+  const text = String(value || "").trim();
+  if (/高/.test(text) && /中/.test(text)) return "中高";
+  if (/高/.test(text)) return "高";
+  if (/低/.test(text)) return "低";
+  return "中";
 }
 
 async function loadReportInsights() {

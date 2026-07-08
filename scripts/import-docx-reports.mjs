@@ -26,8 +26,8 @@ for (const file of files) {
   const title = inferTitle(lines, date);
   const sources = inferSources(lines);
   const summary = inferSummary(lines);
-  const rating = inferRating(markdown);
-  const riskLevel = inferRiskLevel(markdown);
+  const rating = normalizeReportRating(inferRating(markdown));
+  const riskLevel = normalizeRiskLevel(inferRiskLevel(markdown));
   const body = buildBody(lines, title);
   const outputPath = path.join(outputDir, `${date}.md`);
 
@@ -149,6 +149,23 @@ function inferRiskLevel(markdown) {
   if (/风险上升|高风险|大幅回落|需求不及预期|贸易摩擦/.test(markdown)) return "高";
   if (/波动|扰动|回调|不及预期|需警惕|风险/.test(markdown)) return "中";
   return "低";
+}
+
+function normalizeReportRating(value) {
+  const text = String(value || "").trim().replace(/[（(].*?[）)]/g, "");
+  if (/中性偏多/.test(text)) return "中性偏多";
+  if (/中性偏空/.test(text)) return "中性偏空";
+  if (/看多|积极|乐观|偏多/.test(text)) return "看多";
+  if (/看空|谨慎|悲观|风险上升|偏空/.test(text)) return "看空";
+  return "中性";
+}
+
+function normalizeRiskLevel(value) {
+  const text = String(value || "").trim();
+  if (/高/.test(text) && /中/.test(text)) return "中高";
+  if (/高/.test(text)) return "高";
+  if (/低/.test(text)) return "低";
+  return "中";
 }
 
 function buildBody(lines, title) {

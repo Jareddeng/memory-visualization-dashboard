@@ -39,6 +39,26 @@ function extractLine(raw, label, fallback) {
   return stripMarkdown(raw.match(re)?.[1] || fallback);
 }
 
+function normalizeReportRating(value) {
+  const raw = String(value || "").trim();
+  const note = raw.match(/[（(].*?[）)]/)?.[0] || "";
+  const text = raw.replace(/[（(].*?[）)]/g, "");
+  let rating = "中性";
+  if (/中性偏多/.test(text)) rating = "中性偏多";
+  else if (/中性偏空/.test(text)) rating = "中性偏空";
+  else if (/看多|积极|乐观|偏多/.test(text)) rating = "看多";
+  else if (/看空|谨慎|悲观|风险上升|偏空/.test(text)) rating = "看空";
+  return `${rating}${note}`;
+}
+
+function normalizeRiskLevel(value) {
+  const text = String(value || "").trim();
+  if (/高/.test(text) && /中/.test(text)) return "中高";
+  if (/高/.test(text)) return "高";
+  if (/低/.test(text)) return "低";
+  return "中";
+}
+
 function extractSummary(raw) {
   const parts = raw.split(new RegExp(`##\\s*${CORE_HEADING}`));
   const text = parts[1] || raw;
@@ -50,8 +70,8 @@ function extractSummary(raw) {
 }
 
 function normalizeReport(raw, date) {
-  const rating = extractLine(raw, LABEL_RATING, "\u4e2d\u6027");
-  const risk = extractLine(raw, LABEL_RISK, "\u4e2d");
+  const rating = normalizeReportRating(extractLine(raw, LABEL_RATING, "\u4e2d\u6027"));
+  const risk = normalizeRiskLevel(extractLine(raw, LABEL_RISK, "\u4e2d"));
   const summary = extractSummary(raw);
   const title = `${REPORT_TITLE} ${date}`;
   const body = raw.replace(new RegExp(`^#\\s*${REPORT_TITLE}\\s*`, "u"), `# ${title}\n`).trim();

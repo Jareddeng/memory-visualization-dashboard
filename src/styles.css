@@ -2881,6 +2881,18 @@ th {
   scrollbar-color: rgba(20, 124, 114, 0.45) rgba(15, 64, 59, 0.08);
 }
 
+.report-trend-chart {
+  margin: -4px 0 14px;
+  padding: 8px 8px 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.report-trend-chart .chart {
+  height: 220px;
+}
+
 .archive-item {
   display: grid;
   gap: 4px;

@@ -637,6 +637,115 @@ function makeOverviewStockOption(stock: StockPoint, history: StockPoint[]): echa
   };
 }
 
+const reportRatingScale: Record<string, number> = {
+  "看空": 1,
+  "中性偏空": 2,
+  "中性": 3,
+  "中性偏多": 4,
+  "看多": 5,
+};
+
+const reportRiskScale: Record<string, number> = {
+  "低": 1,
+  "中": 2,
+  "中高": 3,
+  "高": 4,
+};
+
+function makeReportTrendOption(reports: Report[]): echarts.EChartsCoreOption {
+  const points = [...reports].sort((a, b) => a.date.localeCompare(b.date));
+  const ratingData = points.map((report) => {
+    const rating = normalizeReportRating(report.rating);
+    return {
+      value: [report.date, reportRatingScale[rating] ?? reportRatingScale["中性"]],
+      label: rating,
+      title: report.title,
+    };
+  });
+  const riskData = points.map((report) => {
+    const risk = normalizeRiskLevel(report.risk_level);
+    return {
+      value: [report.date, reportRiskScale[risk] ?? reportRiskScale["中"]],
+      label: risk,
+      title: report.title,
+    };
+  });
+
+  return {
+    color: ["#147c72", "#d4943b"],
+    tooltip: {
+      trigger: "axis",
+      confine: true,
+      formatter(params: unknown) {
+        const rows = Array.isArray(params) ? params : [params];
+        const date = (rows[0] as any)?.value?.[0] ?? "";
+        const body = rows.map((row: any) => `${row.marker}${row.seriesName}: ${row.data?.label ?? ""}`).join("<br/>");
+        return `<strong>${date}</strong><br/>${body}`;
+      },
+    },
+    legend: {
+      top: 0,
+      right: 4,
+      itemWidth: 12,
+      itemHeight: 7,
+      textStyle: { color: "#63716b", fontSize: 11 },
+    },
+    grid: { left: 42, right: 42, top: 34, bottom: 32 },
+    xAxis: {
+      type: "time",
+      axisLabel: { color: "#87918d", fontSize: 11 },
+      axisLine: { lineStyle: { color: "#d9e1dd" } },
+    },
+    yAxis: [
+      {
+        type: "value",
+        min: 1,
+        max: 5,
+        interval: 1,
+        axisLabel: {
+          color: "#63716b",
+          formatter(value: number) {
+            return ["", "看空", "偏空", "中性", "偏多", "看多"][value] ?? "";
+          },
+        },
+        splitLine: { lineStyle: { color: "#edf1f6" } },
+      },
+      {
+        type: "value",
+        min: 1,
+        max: 4,
+        interval: 1,
+        axisLabel: {
+          color: "#8a6426",
+          formatter(value: number) {
+            return ["", "低", "中", "中高", "高"][value] ?? "";
+          },
+        },
+        splitLine: { show: false },
+      },
+    ],
+    series: [
+      {
+        name: "观点",
+        type: "line",
+        smooth: true,
+        showSymbol: true,
+        symbolSize: 6,
+        data: ratingData,
+      },
+      {
+        name: "风险",
+        type: "line",
+        yAxisIndex: 1,
+        smooth: true,
+        showSymbol: true,
+        symbolSize: 6,
+        data: riskData,
+      },
+    ],
+  };
+}
+
 function App() {
   const { data, loading, error } = useDashboardData();
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
@@ -2008,8 +2117,23 @@ function LatestReport({ report, isLatest, activeTab }: { report?: Report; isLate
 function splitRatingNote(value: string) {
   const text = String(value || "").trim();
   const match = text.match(/^(看多|看空|中性偏空|中性偏多|中性)(?:[（(](.+)[）)])?$/);
-  if (!match) return { main: text || "中性", note: "" };
-  return { main: match[1], note: match[2] ?? "" };
+  if (match) return { main: normalizeReportRating(match[1]), note: match[2] ?? "" };
+  return { main: normalizeReportRating(text), note: "" };
+}
+
+function normalizeReportRating(value: string) {
+  const text = String(value || "").trim().replace(/[（(].*?[）)]/g, "");
+  if (/看多|积极|乐观|偏多|中性偏多/.test(text)) return text.includes("中性偏多") ? "中性偏多" : "看多";
+  if (/看空|谨慎|悲观|风险上升|偏空|中性偏空/.test(text)) return text.includes("中性偏空") ? "中性偏空" : "看空";
+  return "中性";
+}
+
+function normalizeRiskLevel(value: string) {
+  const text = String(value || "").trim();
+  if (/高/.test(text) && /中/.test(text)) return "中高";
+  if (/高/.test(text)) return "高";
+  if (/低/.test(text)) return "低";
+  return "中";
 }
 
 function ReportIndicatorList({ items }: { items: NonNullable<ReportInsights["leading_indicators"]> }) {
@@ -2135,6 +2259,11 @@ function ReportArchive({
   return (
     <section className="panel text-panel">
       <h2>报告归档</h2>
+      {reports.length ? (
+        <div className="report-trend-chart" aria-label="报告观点与风险趋势">
+          <Chart option={makeReportTrendOption(reports)} />
+        </div>
+      ) : null}
       <div className="archive-list">
         {reports.length ? reports.map((report) => (
           <button
