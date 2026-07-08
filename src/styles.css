@@ -411,6 +411,7 @@ h2 {
 
 .hero-signal span,
 .hero-signal strong,
+.hero-signal em,
 .hero-signal small {
   display: block;
 }
@@ -425,6 +426,15 @@ h2 {
   margin-top: 4px;
   color: var(--teal);
   font-size: 22px;
+}
+
+.hero-signal em {
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .kpi-grid,
@@ -582,6 +592,13 @@ h2 {
 
 .section-heading {
   margin: 4px 0 0;
+}
+
+.section-heading-with-tabs {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .section-heading h2 {
@@ -2628,7 +2645,7 @@ th {
   gap: 8px;
   justify-content: flex-end;
   align-items: flex-start;
-  min-width: min(520px, 100%);
+  min-width: min(320px, 100%);
 }
 
 .mindmap-button {
@@ -2654,31 +2671,14 @@ th {
 }
 
 .badges b {
-  display: grid;
-  gap: 2px;
-  max-width: 260px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 999px;
   padding: 5px 10px;
   background: var(--blue-soft);
   color: var(--blue);
   font-size: 12px;
   line-height: 1.25;
-}
-
-.badges .rating-badge.has-note {
-  border-radius: 8px;
-  background: #f2f6f4;
-  color: var(--ink);
-}
-
-.badges .rating-badge span {
-  color: var(--teal);
-}
-
-.badges .rating-badge small {
-  color: var(--ink);
-  font-size: 11px;
-  font-weight: 700;
 }
 
 .report-tabs {
@@ -2707,6 +2707,14 @@ th {
   background: #fff;
   color: var(--teal);
   box-shadow: 0 0 0 1px rgb(15 64 59 / 10%);
+}
+
+.report-rating-note {
+  margin: -4px 0 8px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .markdown-body {
@@ -3417,6 +3425,7 @@ button.mindmap-label {
   .hero-overlay,
   .stock-card,
   .report-head,
+  .section-heading-with-tabs,
   .industry-map-head,
   .hbm-board-head {
     align-items: flex-start;
@@ -3449,6 +3458,10 @@ button.mindmap-label {
   .stock-price,
   .report-actions {
     justify-items: start;
+  }
+
+  .section-heading-with-tabs .report-tabs {
+    width: 100%;
   }
 
   .timeline article {

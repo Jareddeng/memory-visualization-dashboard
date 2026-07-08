@@ -908,6 +908,7 @@ function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: 
   );
 }
 function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) {
+  const latestRating = splitRatingNote(latestReport?.rating ?? "");
   return (
     <section className="intel-hero">
       <img src="./assets/storage-supply-chain.png" alt="存储产业链视觉图" />
@@ -919,8 +920,12 @@ function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) 
         </div>
         <div className="hero-signal">
           <span>最新报告</span>
-          <strong>{latestReport?.rating ?? "待更新"}</strong>
-          <small>{latestReport?.date ?? formatDateTime(data.metadata.generated_at)}</small>
+          <strong>{latestRating.main || "待更新"}</strong>
+          {latestRating.note ? <em>{latestRating.note}</em> : null}
+          <small>
+            {latestReport?.risk_level ? `${latestReport.risk_level}风险 · ` : ""}
+            {latestReport?.date ?? formatDateTime(data.metadata.generated_at)}
+          </small>
         </div>
       </div>
     </section>
@@ -1250,16 +1255,23 @@ function ReportsPage({
   selectedReport?: Report;
   onSelectReport: (slug: string) => void;
 }) {
+  const [activeTab, setActiveTab] = React.useState<ReportTab>("body");
+
+  React.useEffect(() => {
+    setActiveTab("body");
+  }, [selectedReport?.slug]);
+
   return (
     <>
-      <section className="section-heading" id="reports-top">
+      <section className="section-heading section-heading-with-tabs" id="reports-top">
         <div>
           <h2>深度报告跟踪</h2>
           <p>每日行业观点、交易评价、风险提示与历史报告归档。</p>
         </div>
+        <ReportTabs activeTab={activeTab} onChange={setActiveTab} />
       </section>
       <section className="report-grid">
-        <LatestReport report={selectedReport} isLatest={selectedReport?.slug === latestReport?.slug} />
+        <LatestReport report={selectedReport} isLatest={selectedReport?.slug === latestReport?.slug} activeTab={activeTab} />
         <ReportArchive reports={reports} selectedSlug={selectedReport?.slug} onSelect={onSelectReport} />
       </section>
     </>
@@ -1912,14 +1924,25 @@ function getCompanyLogoFallbackUrl(node: { homepage?: string }) {
   }
   return undefined;
 }
-function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean }) {
+
+function ReportTabs({ activeTab, onChange }: { activeTab: ReportTab; onChange: (tab: ReportTab) => void }) {
+  return (
+    <div className="report-tabs" role="tablist" aria-label="报告内容切换">
+      <button className={activeTab === "body" ? "active" : ""} onClick={() => onChange("body")} type="button">报告正文</button>
+      <button className={activeTab === "indicators" ? "active" : ""} onClick={() => onChange("indicators")} type="button">领先指标</button>
+      <button className={activeTab === "views" ? "active" : ""} onClick={() => onChange("views")} type="button">新颖观点</button>
+    </div>
+  );
+}
+
+function LatestReport({ report, isLatest, activeTab }: { report?: Report; isLatest: boolean; activeTab: ReportTab }) {
   const [mindmapOpen, setMindmapOpen] = React.useState(false);
-  const [activeTab, setActiveTab] = React.useState<ReportTab>("body");
 
   React.useEffect(() => {
     setMindmapOpen(false);
-    setActiveTab("body");
   }, [report?.slug]);
+
+  const rating = splitRatingNote(report?.rating ?? "");
 
   return (
     <section className="panel text-panel report-main">
@@ -1932,22 +1955,18 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
               <span>{report.date}</span>
             </div>
             <div className="report-actions">
-              <div className="report-tabs" role="tablist" aria-label="报告内容切换">
-                <button className={activeTab === "body" ? "active" : ""} onClick={() => setActiveTab("body")} type="button">报告正文</button>
-                <button className={activeTab === "indicators" ? "active" : ""} onClick={() => setActiveTab("indicators")} type="button">领先指标</button>
-                <button className={activeTab === "views" ? "active" : ""} onClick={() => setActiveTab("views")} type="button">新颖观点</button>
-              </div>
               {report.mindmap ? (
                 <button className="mindmap-button" onClick={() => setMindmapOpen(true)} type="button">
                   思维导图
                 </button>
               ) : null}
               <div className="badges">
-                <RatingBadge value={report.rating} />
+                <b>{rating.main}</b>
                 <b>{report.risk_level}风险</b>
               </div>
             </div>
           </div>
+          {rating.note ? <p className="report-rating-note">{rating.note}</p> : null}
           <p>{report.summary}</p>
           {activeTab === "body" ? <MarkdownBody body={report.body} /> : null}
           {activeTab === "indicators" ? <ReportIndicatorList items={report.insights?.leading_indicators ?? []} /> : null}
@@ -1961,16 +1980,6 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
         <p>暂无报告。</p>
       )}
     </section>
-  );
-}
-
-function RatingBadge({ value }: { value: string }) {
-  const parsed = splitRatingNote(value);
-  return (
-    <b className={parsed.note ? "rating-badge has-note" : "rating-badge"}>
-      <span>{parsed.main}</span>
-      {parsed.note ? <small>{parsed.note}</small> : null}
-    </b>
   );
 }
 
