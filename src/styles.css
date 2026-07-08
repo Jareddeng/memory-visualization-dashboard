@@ -2657,6 +2657,35 @@ th {
   font-size: 12px;
 }
 
+.report-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 4px;
+  width: fit-content;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fbfa;
+}
+
+.report-tabs button {
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.report-tabs button.active {
+  background: #fff;
+  color: var(--teal);
+  box-shadow: 0 0 0 1px rgb(15 64 59 / 10%);
+}
+
 .markdown-body {
   margin-top: 16px;
   display: grid;
@@ -2688,6 +2717,65 @@ th {
   padding-left: 20px;
   color: var(--muted);
   line-height: 1.65;
+}
+
+.report-insight-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.report-insight-card {
+  display: grid;
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfdfc;
+}
+
+.report-insight-card header {
+  display: grid;
+  gap: 5px;
+}
+
+.report-insight-card header span {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.report-insight-card header strong {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.report-insight-card p,
+.report-insight-card small {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.report-insight-card footer {
+  display: grid;
+  gap: 4px;
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.report-insight-card footer b,
+.report-insight-card footer em {
+  font-style: normal;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .report-insight-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .archive-list {

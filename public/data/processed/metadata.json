@@ -2,7 +2,7 @@
   "generated_at": "2026-07-08T09:06:50.940Z",
   "price_points": 5525,
   "stock_points": 806,
-  "latest_report_date": "2026-06-22",
+  "latest_report_date": "2026-07-08",
   "notes": [
     "价格数据由 data/raw/prices CSV 或可识别的本地 XLSX 文件生成。",
     "若公开行情接口不可用，股票数据会回退到已有 data/processed/stocks.json。"

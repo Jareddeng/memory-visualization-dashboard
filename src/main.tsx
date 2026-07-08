@@ -55,7 +55,27 @@ type Report = {
   sources: string[];
   body: string;
   mindmap?: MindmapPayload | null;
+  insights?: ReportInsights;
 };
+
+type ReportInsights = {
+  leading_indicators?: Array<{
+    indicator: string;
+    usage: string;
+    transmission_path: string;
+    source: string;
+    reference: string;
+  }>;
+  novel_views?: Array<{
+    view: string;
+    evidence: string;
+    date: string;
+    source: string;
+    validation: string;
+  }>;
+};
+
+type ReportTab = "body" | "indicators" | "views";
 
 type MindmapNode = {
   title: string;
@@ -1894,9 +1914,11 @@ function getCompanyLogoFallbackUrl(node: { homepage?: string }) {
 }
 function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean }) {
   const [mindmapOpen, setMindmapOpen] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState<ReportTab>("body");
 
   React.useEffect(() => {
     setMindmapOpen(false);
+    setActiveTab("body");
   }, [report?.slug]);
 
   return (
@@ -1922,7 +1944,14 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
             </div>
           </div>
           <p>{report.summary}</p>
-          <MarkdownBody body={report.body} />
+          <div className="report-tabs" role="tablist" aria-label="报告内容切换">
+            <button className={activeTab === "body" ? "active" : ""} onClick={() => setActiveTab("body")} type="button">报告正文</button>
+            <button className={activeTab === "indicators" ? "active" : ""} onClick={() => setActiveTab("indicators")} type="button">领先指标</button>
+            <button className={activeTab === "views" ? "active" : ""} onClick={() => setActiveTab("views")} type="button">新颖观点</button>
+          </div>
+          {activeTab === "body" ? <MarkdownBody body={report.body} /> : null}
+          {activeTab === "indicators" ? <ReportIndicatorList items={report.insights?.leading_indicators ?? []} /> : null}
+          {activeTab === "views" ? <ReportNovelViewList items={report.insights?.novel_views ?? []} /> : null}
           {report.sources.length ? <small>来源：{report.sources.join("、")}</small> : null}
           {report.mindmap && mindmapOpen ? (
             <MindmapModal mindmap={report.mindmap} onClose={() => setMindmapOpen(false)} />
@@ -1932,6 +1961,49 @@ function LatestReport({ report, isLatest }: { report?: Report; isLatest: boolean
         <p>暂无报告。</p>
       )}
     </section>
+  );
+}
+
+function ReportIndicatorList({ items }: { items: NonNullable<ReportInsights["leading_indicators"]> }) {
+  if (!items.length) return <p className="empty-note">暂无领先指标。</p>;
+  return (
+    <div className="report-insight-list">
+      {items.map((item, index) => (
+        <article className="report-insight-card" key={`${item.indicator}-${index}`}>
+          <header>
+            <span>领先指标</span>
+            <strong>{item.indicator}</strong>
+          </header>
+          <p>{item.usage}</p>
+          <small>{item.transmission_path}</small>
+          <footer>
+            <b>{item.source}</b>
+            {item.reference && item.reference !== "无" ? <em>{item.reference}</em> : null}
+          </footer>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ReportNovelViewList({ items }: { items: NonNullable<ReportInsights["novel_views"]> }) {
+  if (!items.length) return <p className="empty-note">暂无新颖观点。</p>;
+  return (
+    <div className="report-insight-list">
+      {items.map((item, index) => (
+        <article className="report-insight-card" key={`${item.view}-${index}`}>
+          <header>
+            <span>{item.date || "观点"}</span>
+            <strong>{item.view}</strong>
+          </header>
+          <p>{item.evidence}</p>
+          <small>{item.validation}</small>
+          <footer>
+            <b>{item.source}</b>
+          </footer>
+        </article>
+      ))}
+    </div>
   );
 }
 

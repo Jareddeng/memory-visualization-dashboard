@@ -384,6 +384,7 @@ async function loadReports() {
     return [];
   }
   const mindmaps = await loadReportMindmaps();
+  const insights = await loadReportInsights();
   const reports = [];
   for (const file of files.filter((name) => name.endsWith(".md"))) {
     const raw = await fs.readFile(path.join(reportsDir, file), "utf8");
@@ -399,9 +400,18 @@ async function loadReports() {
       sources: parseListValue(parsed.frontmatter.sources),
       body: parsed.body.trim(),
       mindmap: mindmaps.get(date) ?? null,
+      insights,
     });
   }
   return reports.sort((a, b) => b.date.localeCompare(a.date));
+}
+
+async function loadReportInsights() {
+  try {
+    return JSON.parse(await fs.readFile(path.join(root, "content", "report_insights.json"), "utf8"));
+  } catch {
+    return { leading_indicators: [], novel_views: [] };
+  }
 }
 
 async function loadReportMindmaps() {
