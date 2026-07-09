@@ -4999,6 +4999,55 @@
       "horizon": "1m",
       "confidence": "medium",
       "action": "watch"
+    },
+    {
+      "id": "news-20260707-samsung-pm1763-vera-rubin",
+      "date": "2026-07-07",
+      "title": "Samsung Begins Mass Production of PM1763 SSD for NVIDIA Vera Rubin AI Platform",
+      "source": "CryptoBriefing",
+      "source_tier": "Tier 3",
+      "url": "https://cryptobriefing.com/samsung-mass-production-nvidia-vera-rubin-ssd/",
+      "summary": "Samsung has kicked off mass production of the PM1763 SSD, a PCIe 6.0 drive with up to 64TB capacity, specifically designed for NVIDIA's Vera Rubin AI platform. The drive uses Samsung's 9th-generation TLC NAND and a 4nm controller. Samsung is also producing the PM1753 variant for NVIDIA's BlueField-4 STX architecture.",
+      "tags": [
+        "Samsung",
+        "PM1763",
+        "SSD",
+        "NVIDIA",
+        "Vera Rubin",
+        "AI",
+        "storage"
+      ],
+      "impact": "bullish",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "confidence": "high",
+      "action": "alert"
+    },
+    {
+      "id": "news-20260709-cxmt-ipo-apple-google-tencent",
+      "date": "2026-07-09",
+      "title": "CXMT Updates IPO Prospectus: Apple, Google, Tencent Enter Supply Chain",
+      "source": "Odaily",
+      "source_tier": "Tier 3",
+      "url": "https://www.odaily.news/en/post/5211812",
+      "summary": "ChangXin Memory Technologies (CXMT) updated its IPO prospectus for the STAR Market on July 9. Q1 2026 revenue reached 50.8 billion yuan (+719% YoY) with net profit of 33 billion yuan. Apple is lobbying the U.S. government for a special license to include CXMT in its Mac and iPad memory supply chain. Google has initiated a procurement evaluation for CXMT's DRAM. Tencent signed a long-term supply agreement worth over 20 billion yuan. Customer list also includes Alibaba Cloud, ByteDance, Lenovo, Xiaomi, OPPO, vivo, and Honor.",
+      "tags": [
+        "CXMT",
+        "China",
+        "DRAM",
+        "IPO",
+        "Apple",
+        "Google",
+        "Tencent",
+        "supply chain"
+      ],
+      "impact": "bullish",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1m",
+      "confidence": "medium",
+      "action": "deep_tracking"
     }
   ]
 }
