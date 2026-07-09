@@ -4884,6 +4884,121 @@
       "action": "watch",
       "review_date": "2026-07-13",
       "review_note": ""
+    },
+    {
+      "id": "news-20260709-trendforce-h200-china",
+      "date": "2026-07-09",
+      "title": "China Reportedly to Allow NVIDIA H200 Imports, but Approvals May Be Capped Below 200K Chips",
+      "source": "TrendForce",
+      "source_tier": "Tier 1",
+      "url": "https://www.trendforce.com/news/2026/07/09/news-china-reportedly-to-allow-nvidia-h200-imports-but-approvals-may-be-capped-below-200k-chips-less-than-half-requested/",
+      "summary": "China will reportedly allow imports of NVIDIA H200 chips but cap total approvals below 200,000 units, less than half of the ~500,000 requested. The chips are reserved exclusively for training workloads; inference workloads must use domestic chips such as Huawei Ascend. This policy limits HBM3e demand from China AI data centers and reinforces the push for domestic semiconductor self-sufficiency.",
+      "tags": [
+        "HBM3e",
+        "NVIDIA",
+        "China",
+        "export controls",
+        "AI chips",
+        "Huawei",
+        "H200"
+      ],
+      "impact": "bearish",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "confidence": "high",
+      "action": "alert"
+    },
+    {
+      "id": "news-20260709-163-sk-hynix-adr",
+      "date": "2026-07-09",
+      "title": "SK Hynix ADR Listing: CEO Chey Tae-won Visits US for NVIDIA/Tesla AI Memory Cooperation",
+      "source": "163.com",
+      "source_tier": "Tier 2",
+      "url": "https://www.163.com/dy/article/L1D3L55A0550WHYR.html",
+      "summary": "SK Hynix CEO Chey Tae-won is visiting the US for the company's ADR listing scheduled for July 10, 2026. The listing is expected to raise approximately $28.3 billion. During his visit, Chey will meet with NVIDIA and Tesla executives to discuss AI memory chip cooperation. The funds raised will be used for the Yongin semiconductor cluster and Cheongju P&T7 advanced packaging facility, strengthening SK Hynix's position in the HBM supply chain.",
+      "tags": [
+        "SK Hynix",
+        "ADR",
+        "IPO",
+        "NVIDIA",
+        "Tesla",
+        "HBM",
+        "AI memory",
+        "Korea"
+      ],
+      "impact": "bullish",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1d",
+      "confidence": "high",
+      "action": "alert"
+    },
+    {
+      "id": "news-20260709-eastmoney-sk-hynix-ipo",
+      "date": "2026-07-09",
+      "title": "SK Hynix US IPO 7x Oversubscribed, $245B Raise, CEO to Meet NVIDIA and Tesla",
+      "source": "Eastmoney",
+      "source_tier": "Tier 2",
+      "url": "https://finance.eastmoney.com/a/202607093799092350.html",
+      "summary": "SK Hynix's US ADR listing is 7x oversubscribed with total IPO value of $245.25 billion (136.25 million shares). CEO Chey Tae-won will visit the US for the listing and meet with NVIDIA and Tesla executives to discuss AI memory chip cooperation. The strong demand reflects investor confidence in SK Hynix's dominant position in HBM memory for AI accelerators.",
+      "tags": [
+        "SK Hynix",
+        "IPO",
+        "ADR",
+        "NVIDIA",
+        "Tesla",
+        "HBM",
+        "AI memory"
+      ],
+      "impact": "bullish",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1d",
+      "confidence": "high",
+      "action": "alert"
+    },
+    {
+      "id": "news-20260709-digitimes-sk-hynix-pricing",
+      "date": "2026-07-09",
+      "title": "SK Hynix Supplier Talks Show AI Memory Boom Shifting Pricing Power",
+      "source": "DIGITIMES",
+      "source_tier": "Tier 2",
+      "url": "https://www.digitimes.com/news/a20260709PD202/sk-hynix-supplier-talks-show-ai-memory-boom-shifting-pricing-power.html",
+      "summary": "DIGITIMES reports that SK Hynix supplier discussions indicate the AI memory boom is shifting pricing power in the semiconductor supply chain. (Full article behind paywall)",
+      "tags": [
+        "SK Hynix",
+        "pricing",
+        "AI memory",
+        "supply chain"
+      ],
+      "impact": "neutral",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "confidence": "medium",
+      "action": "watch"
+    },
+    {
+      "id": "news-20260709-digitimes-samsung-hbm4",
+      "date": "2026-07-09",
+      "title": "Samsung's HBM4 Comeback Hinges on Chip-Level Advantage",
+      "source": "DIGITIMES",
+      "source_tier": "Tier 2",
+      "url": "https://www.digitimes.com/news/a20260709PD204/samsung-hbm4-comeback-hinges-chip-level-advantage.html",
+      "summary": "DIGITIMES reports that Samsung's comeback in HBM4 depends on achieving chip-level technological advantages over competitors. (Full article behind paywall)",
+      "tags": [
+        "Samsung",
+        "HBM4",
+        "technology",
+        "competition"
+      ],
+      "impact": "neutral",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1m",
+      "confidence": "medium",
+      "action": "watch"
     }
   ]
 }
