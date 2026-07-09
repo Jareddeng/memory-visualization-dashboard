@@ -2070,6 +2070,7 @@ function LatestReport({ report, isLatest, activeTab }: { report?: Report; isLate
 
   const rating = splitRatingNote(report?.rating ?? "");
   const showReportBody = activeTab === "body";
+  const riskLevel = normalizeRiskLevel(report?.risk_level ?? "");
 
   return (
     <section className="panel text-panel report-main">
@@ -2090,8 +2091,8 @@ function LatestReport({ report, isLatest, activeTab }: { report?: Report; isLate
                     </button>
                   ) : null}
                   <div className="badges">
-                    <b>{rating.main}</b>
-                    <b>{report.risk_level}风险</b>
+                    <b className={`report-badge stance ${reportBadgeTone(rating.main)}`}>{rating.main}</b>
+                    <b className={`report-badge risk ${riskBadgeTone(riskLevel)}`}>{riskLevel}风险</b>
                   </div>
                 </div>
               </div>
@@ -2134,6 +2135,18 @@ function normalizeRiskLevel(value: string) {
   if (/高/.test(text)) return "高";
   if (/低/.test(text)) return "低";
   return "中";
+}
+
+function reportBadgeTone(value: string) {
+  if (value.includes("看多") || value.includes("偏多")) return "positive";
+  if (value.includes("看空") || value.includes("偏空")) return "negative";
+  return "neutral";
+}
+
+function riskBadgeTone(value: string) {
+  if (value.includes("高")) return "negative";
+  if (value.includes("低")) return "positive";
+  return "neutral";
 }
 
 function ReportIndicatorList({ items }: { items: NonNullable<ReportInsights["leading_indicators"]> }) {
