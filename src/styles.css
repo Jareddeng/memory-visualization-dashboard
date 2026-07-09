@@ -2683,12 +2683,31 @@ th {
 .badges b {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-height: 26px;
+  min-width: 68px;
   border-radius: 999px;
   padding: 5px 10px;
-  background: var(--blue-soft);
-  color: var(--blue);
   font-size: 12px;
+  font-weight: 850;
   line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.report-badge.positive {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.report-badge.neutral {
+  background: #fff4d8;
+  color: #9a6a13;
+}
+
+.report-badge.negative {
+  background: var(--red-soft);
+  color: var(--red);
 }
 
 .report-tabs {
@@ -3499,7 +3518,17 @@ button.mindmap-label {
   }
 
   .section-title-row .report-tabs {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: thin;
+  }
+
+  .section-title-row .report-tabs button {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    font-size: 14px;
   }
 
   .timeline article {
