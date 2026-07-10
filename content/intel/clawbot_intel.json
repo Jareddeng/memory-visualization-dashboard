@@ -4888,11 +4888,11 @@
     {
       "id": "news-20260709-trendforce-h200-china",
       "date": "2026-07-09",
-      "title": "China Reportedly to Allow NVIDIA H200 Imports, but Approvals May Be Capped Below 200K Chips",
+      "title": "TrendForce：中国 reportedly 将允许NVIDIA H200进口，但审批上限或低于20万颗",
       "source": "TrendForce",
       "source_tier": "Tier 1",
       "url": "https://www.trendforce.com/news/2026/07/09/news-china-reportedly-to-allow-nvidia-h200-imports-but-approvals-may-be-capped-below-200k-chips-less-than-half-requested/",
-      "summary": "China will reportedly allow imports of NVIDIA H200 chips but cap total approvals below 200,000 units, less than half of the ~500,000 requested. The chips are reserved exclusively for training workloads; inference workloads must use domestic chips such as Huawei Ascend. This policy limits HBM3e demand from China AI data centers and reinforces the push for domestic semiconductor self-sufficiency.",
+      "summary": "据报道，中国 reportedly 将允许NVIDIA H200芯片进口，但审批上限可能低于20万颗，不足约50万颗申请量的一半。这些芯片仅限用于训练工作负载；推理工作负载必须使用华为昇腾等国产芯片。该政策限制了中国AI数据中心对HBM3e的需求，并强化了半导体国产化的推进。",
       "tags": [
         "HBM3e",
         "NVIDIA",
@@ -4912,11 +4912,11 @@
     {
       "id": "news-20260709-163-sk-hynix-adr",
       "date": "2026-07-09",
-      "title": "SK Hynix ADR Listing: CEO Chey Tae-won Visits US for NVIDIA/Tesla AI Memory Cooperation",
+      "title": "SK海力士ADR上市：CEO崔泰源访美洽谈与NVIDIA/特斯拉的AI内存合作",
       "source": "163.com",
       "source_tier": "Tier 2",
       "url": "https://www.163.com/dy/article/L1D3L55A0550WHYR.html",
-      "summary": "SK Hynix CEO Chey Tae-won is visiting the US for the company's ADR listing scheduled for July 10, 2026. The listing is expected to raise approximately $28.3 billion. During his visit, Chey will meet with NVIDIA and Tesla executives to discuss AI memory chip cooperation. The funds raised will be used for the Yongin semiconductor cluster and Cheongju P&T7 advanced packaging facility, strengthening SK Hynix's position in the HBM supply chain.",
+      "summary": "SK海力士CEO崔泰源为7月10日的ADR上市访问美国。此次上市预计募资约283亿美元。访问期间，崔泰源将与NVIDIA和特斯拉高管会面，洽谈AI内存芯片合作。募集资金将用于龙仁半导体集群和清州P&T7先进封装工厂，强化SK海力士在HBM供应链中的地位。",
       "tags": [
         "SK Hynix",
         "ADR",
@@ -4937,11 +4937,11 @@
     {
       "id": "news-20260709-eastmoney-sk-hynix-ipo",
       "date": "2026-07-09",
-      "title": "SK Hynix US IPO 7x Oversubscribed, $245B Raise, CEO to Meet NVIDIA and Tesla",
+      "title": "SK海力士美股IPO超额认购7倍，募资约2450亿美元，CEO将与NVIDIA和特斯拉会面",
       "source": "Eastmoney",
       "source_tier": "Tier 2",
       "url": "https://finance.eastmoney.com/a/202607093799092350.html",
-      "summary": "SK Hynix's US ADR listing is 7x oversubscribed with total IPO value of $245.25 billion (136.25 million shares). CEO Chey Tae-won will visit the US for the listing and meet with NVIDIA and Tesla executives to discuss AI memory chip cooperation. The strong demand reflects investor confidence in SK Hynix's dominant position in HBM memory for AI accelerators.",
+      "summary": "SK海力士美股ADR上市超额认购7倍，IPO总值约2452.5亿美元（1.3625亿股）。CEO崔泰源将赴美参加上市活动，并与NVIDIA和特斯拉高管会面，洽谈AI内存芯片合作。强劲需求反映了投资者对SK海力士在AI加速器HBM内存领域主导地位的信心。",
       "tags": [
         "SK Hynix",
         "IPO",
@@ -4961,11 +4961,11 @@
     {
       "id": "news-20260709-digitimes-sk-hynix-pricing",
       "date": "2026-07-09",
-      "title": "SK Hynix Supplier Talks Show AI Memory Boom Shifting Pricing Power",
+      "title": "DIGITIMES：SK海力士供应商谈判显示AI内存热潮正在转移定价权",
       "source": "DIGITIMES",
       "source_tier": "Tier 2",
       "url": "https://www.digitimes.com/news/a20260709PD202/sk-hynix-supplier-talks-show-ai-memory-boom-shifting-pricing-power.html",
-      "summary": "DIGITIMES reports that SK Hynix supplier discussions indicate the AI memory boom is shifting pricing power in the semiconductor supply chain. (Full article behind paywall)",
+      "summary": "DIGITIMES报道，SK海力士供应商谈判显示，AI内存热潮正在转移半导体供应链中的定价权。（全文需付费订阅）",
       "tags": [
         "SK Hynix",
         "pricing",
@@ -4982,11 +4982,11 @@
     {
       "id": "news-20260709-digitimes-samsung-hbm4",
       "date": "2026-07-09",
-      "title": "Samsung's HBM4 Comeback Hinges on Chip-Level Advantage",
+      "title": "DIGITIMES：三星HBM4翻盘取决于芯片级技术优势",
       "source": "DIGITIMES",
       "source_tier": "Tier 2",
       "url": "https://www.digitimes.com/news/a20260709PD204/samsung-hbm4-comeback-hinges-chip-level-advantage.html",
-      "summary": "DIGITIMES reports that Samsung's comeback in HBM4 depends on achieving chip-level technological advantages over competitors. (Full article behind paywall)",
+      "summary": "DIGITIMES报道，三星在HBM4领域的翻盘取决于取得超越竞争对手的芯片级技术优势。（全文需付费订阅）",
       "tags": [
         "Samsung",
         "HBM4",
@@ -5003,11 +5003,11 @@
     {
       "id": "news-20260707-samsung-pm1763-vera-rubin",
       "date": "2026-07-07",
-      "title": "Samsung Begins Mass Production of PM1763 SSD for NVIDIA Vera Rubin AI Platform",
+      "title": "三星开始为NVIDIA Vera Rubin AI平台量产PM1763 SSD",
       "source": "CryptoBriefing",
       "source_tier": "Tier 3",
       "url": "https://cryptobriefing.com/samsung-mass-production-nvidia-vera-rubin-ssd/",
-      "summary": "Samsung has kicked off mass production of the PM1763 SSD, a PCIe 6.0 drive with up to 64TB capacity, specifically designed for NVIDIA's Vera Rubin AI platform. The drive uses Samsung's 9th-generation TLC NAND and a 4nm controller. Samsung is also producing the PM1753 variant for NVIDIA's BlueField-4 STX architecture.",
+      "summary": "三星已开始为NVIDIA Vera Rubin AI平台量产PM1763 SSD。该驱动器采用PCIe 6.0接口，最高容量64TB。产品使用三星第9代TLC NAND和4nm控制器。三星还在生产PM1753变体，用于NVIDIA BlueField-4 STX架构。",
       "tags": [
         "Samsung",
         "PM1763",
@@ -5027,11 +5027,11 @@
     {
       "id": "news-20260709-cxmt-ipo-apple-google-tencent",
       "date": "2026-07-09",
-      "title": "CXMT Updates IPO Prospectus: Apple, Google, Tencent Enter Supply Chain",
+      "title": "长鑫科技更新IPO招股书：苹果、谷歌、腾讯进入供应链",
       "source": "Odaily",
       "source_tier": "Tier 3",
       "url": "https://www.odaily.news/en/post/5211812",
-      "summary": "ChangXin Memory Technologies (CXMT) updated its IPO prospectus for the STAR Market on July 9. Q1 2026 revenue reached 50.8 billion yuan (+719% YoY) with net profit of 33 billion yuan. Apple is lobbying the U.S. government for a special license to include CXMT in its Mac and iPad memory supply chain. Google has initiated a procurement evaluation for CXMT's DRAM. Tencent signed a long-term supply agreement worth over 20 billion yuan. Customer list also includes Alibaba Cloud, ByteDance, Lenovo, Xiaomi, OPPO, vivo, and Honor.",
+      "summary": "长鑫科技（CXMT）7月9日更新科创板IPO招股书。2026年Q1营收508亿元（同比+719%），净利润330亿元。苹果正游说美国政府申请特别许可，将CXMT纳入Mac和iPad内存供应链；谷歌启动对CXMT DRAM的采购评估；腾讯签署超200亿元长期供应协议。客户名单还包括阿里云、字节跳动、联想、小米、OPPO、vivo和荣耀。",
       "tags": [
         "CXMT",
         "China",
@@ -5138,11 +5138,11 @@
       "reaction_type": "sentiment",
       "pricing_status": "unpriced",
       "horizon": "1q",
-      "title": "Samsung HBM4 reportedly verified for NVIDIA Vera Rubin AI platform",
+      "title": "TechPowerUp：据称三星HBM4已通过NVIDIA Vera Rubin AI平台验证",
       "product": "HBM4",
       "source": "TechPowerUp",
       "url": "https://www.techpowerup.com/345693/samsung-hbm4-reportedly-verified-for-nvidia-vera-rubin-ai-platform-could-be-demoed-at-gtc-26",
-      "summary": "据行业消息，三星HBM4模块 reportedly 已通过NVIDIA下一代\"Vera Rubin\" AI加速平台的验证，可能在GTC 2026上进行性能演示。三星采用(up to) 2nm custom HBM逻辑die设计。若验证属实，标志着三星在HBM4领域取得关键突破，有望追赶SK海力士在HBM市场的领先地位。",
+      "summary": "据行业消息，三星HBM4模块据称已通过NVIDIA下一代\"Vera Rubin\" AI加速平台的验证，可能在GTC 2026上进行性能演示。三星采用（最高）2nm定制HBM逻辑die设计。若验证属实，标志着三星在HBM4领域取得关键突破，有望追赶SK海力士在HBM市场的领先地位。",
       "transmission_path": "三星HBM4通过NVIDIA验证 → HBM4竞争格局生变 → 三星有望重获HBM市场份额 → 利好三星存储业务长期前景",
       "confidence": "medium",
       "action": "watch",
