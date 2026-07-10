@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "news-20260710-sina-stock-nav-gigadevice",
+      "type": "公司公告",
+      "impact": "bullish",
+      "date": "2026-07-10",
+      "title": "A股半导体企业H1业绩预告密集发布：兆易创新净利增11倍，工业富联AI服务器营收增230%",
+      "product": "DRAM / NAND / HBM",
+      "source": "Sina Finance",
+      "url": "https://finance.sina.cn/stock/ssgs/2026-07-10/detail-inihhkum8373765.d.html",
+      "summary": "新浪财经7月10日股海导航页面汇总多家半导体及科技企业中报业绩预告。兆易创新预计上半年净利润约69亿元，同比增长1099%，存储芯片产品量价齐升；工业富联预计上半年净利润234-244亿元，同比增长93-101%，AI服务器营收同比增长超230%；大族激光预计上半年净利润12.5-13.5亿元，同比增长156-177%，受益于AI服务器及高速网络交换机带动PCB设备需求；新宙邦预计上半年净利润9.7-10.3亿元，同比增长100-113%，电子信息化学品业务在半导体、算力及数字基建领域市占率稳步提升。整体显示存储及AI产业链上半年业绩高增。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "A股半导体企业中报业绩高增 → 存储芯片供需紧张确认 → AI服务器需求持续旺盛 → 产业链上游（PCB、化学品、设备）同步受益 → 短期市场情绪提振",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-16"
+    },
+    {
       "id": "news-20260709-trendforce-h200-china",
       "type": "行业分析",
       "impact": "bearish",
@@ -207,6 +226,25 @@
       "transmission_path": "三星HBM4通过NVIDIA验证 → HBM4竞争格局生变 → 三星有望重获HBM市场份额 → 利好三星存储业务长期前景",
       "confidence": "medium",
       "action": "watch",
+      "review_date": "2026-07-16"
+    },
+    {
+      "id": "news-20260709-caixin-skhynix-adr",
+      "type": "公司公告",
+      "impact": "bullish",
+      "date": "2026-07-09",
+      "title": "SK海力士美股ADR完成最终定价，7月10日正式挂牌纳斯达克",
+      "product": "HBM / ADR",
+      "source": "Caixin",
+      "url": "https://finance.caixin.com/2026-07-09/102462351.html",
+      "summary": "7月9日韩股收盘后，SK海力士完成美股ADR最终定价。美国时间7月10日，SK海力士美股ADS正式挂牌纳斯达克并开始交易，发行前代码SKHYV，常规交易代码SKHY。每10份ADR对应1股原始股份。同日韩交所同步发行新股。此次ADR发行规模约280亿美元，为近年来最大规模的外国公司美股上市之一。SK海力士作为全球HBM市场领导者（市占率57%），其美股上市将为美国投资者提供直接参与AI内存龙头的机会。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "SK海力士ADR挂牌纳斯达克 → 美国投资者可直接配置HBM龙头 → 估值体系与全球AI半导体对标 → 可能引发资金从韩股向ADR迁移 → 关注对韩股及美光股价的短期影响",
+      "confidence": "high",
+      "action": "deep_tracking",
       "review_date": "2026-07-16"
     },
     {
