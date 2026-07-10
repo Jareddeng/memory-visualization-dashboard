@@ -4910,55 +4910,6 @@
       "action": "alert"
     },
     {
-      "id": "news-20260709-163-sk-hynix-adr",
-      "date": "2026-07-09",
-      "title": "SK海力士ADR上市：CEO崔泰源访美洽谈与NVIDIA/特斯拉的AI内存合作",
-      "source": "163.com",
-      "source_tier": "Tier 2",
-      "url": "https://www.163.com/dy/article/L1D3L55A0550WHYR.html",
-      "summary": "SK海力士CEO崔泰源为7月10日的ADR上市访问美国。此次上市预计募资约283亿美元。访问期间，崔泰源将与NVIDIA和特斯拉高管会面，洽谈AI内存芯片合作。募集资金将用于龙仁半导体集群和清州P&T7先进封装工厂，强化SK海力士在HBM供应链中的地位。",
-      "tags": [
-        "SK Hynix",
-        "ADR",
-        "IPO",
-        "NVIDIA",
-        "Tesla",
-        "HBM",
-        "AI memory",
-        "Korea"
-      ],
-      "impact": "bullish",
-      "reaction_type": "instant",
-      "pricing_status": "unpriced",
-      "horizon": "1d",
-      "confidence": "high",
-      "action": "alert"
-    },
-    {
-      "id": "news-20260709-eastmoney-sk-hynix-ipo",
-      "date": "2026-07-09",
-      "title": "SK海力士美股IPO超额认购7倍，募资约2450亿美元，CEO将与NVIDIA和特斯拉会面",
-      "source": "Eastmoney",
-      "source_tier": "Tier 2",
-      "url": "https://finance.eastmoney.com/a/202607093799092350.html",
-      "summary": "SK海力士美股ADR上市超额认购7倍，IPO总值约2452.5亿美元（1.3625亿股）。CEO崔泰源将赴美参加上市活动，并与NVIDIA和特斯拉高管会面，洽谈AI内存芯片合作。强劲需求反映了投资者对SK海力士在AI加速器HBM内存领域主导地位的信心。",
-      "tags": [
-        "SK Hynix",
-        "IPO",
-        "ADR",
-        "NVIDIA",
-        "Tesla",
-        "HBM",
-        "AI memory"
-      ],
-      "impact": "bullish",
-      "reaction_type": "instant",
-      "pricing_status": "unpriced",
-      "horizon": "1d",
-      "confidence": "high",
-      "action": "alert"
-    },
-    {
       "id": "news-20260709-digitimes-sk-hynix-pricing",
       "date": "2026-07-09",
       "title": "DIGITIMES：SK海力士供应商谈判显示AI内存热潮正在转移定价权",
@@ -5025,31 +4976,6 @@
       "action": "alert"
     },
     {
-      "id": "news-20260709-cxmt-ipo-apple-google-tencent",
-      "date": "2026-07-09",
-      "title": "长鑫科技更新IPO招股书：苹果、谷歌、腾讯进入供应链",
-      "source": "Odaily",
-      "source_tier": "Tier 3",
-      "url": "https://www.odaily.news/en/post/5211812",
-      "summary": "长鑫科技（CXMT）7月9日更新科创板IPO招股书。2026年Q1营收508亿元（同比+719%），净利润330亿元。苹果正游说美国政府申请特别许可，将CXMT纳入Mac和iPad内存供应链；谷歌启动对CXMT DRAM的采购评估；腾讯签署超200亿元长期供应协议。客户名单还包括阿里云、字节跳动、联想、小米、OPPO、vivo和荣耀。",
-      "tags": [
-        "CXMT",
-        "China",
-        "DRAM",
-        "IPO",
-        "Apple",
-        "Google",
-        "Tencent",
-        "supply chain"
-      ],
-      "impact": "bullish",
-      "reaction_type": "undervalued",
-      "pricing_status": "unpriced",
-      "horizon": "1m",
-      "confidence": "medium",
-      "action": "deep_tracking"
-    },
-    {
       "id": "news-20260709-xinhua-memory-super-cycle",
       "date": "2026-07-09",
       "type": "行业分析",
@@ -5107,7 +5033,17 @@
       "confidence": "medium",
       "action": "deep_tracking",
       "review_date": "2026-07-16",
-      "review_note": ""
+      "review_note": "已合并Odaily重复报道",
+      "related_sources": [
+        {
+          "source": "Odaily",
+          "url": "https://www.odaily.news/en/post/5211812",
+          "note": "重复报道，合并入本条"
+        }
+      ],
+      "related_ids": [
+        "news-20260709-cxmt-ipo-apple-google-tencent"
+      ]
     },
     {
       "id": "news-20260709-igorslab-trendforce-q3",
@@ -5187,7 +5123,23 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-07-16",
-      "review_note": ""
+      "review_note": "已合并163.com和Eastmoney的重复报道",
+      "related_sources": [
+        {
+          "source": "163.com",
+          "url": "https://www.163.com/dy/article/L1D3L55A0550WHYR.html",
+          "note": "补充：CEO崔泰源访美洽谈AI内存合作，募资约283亿美元"
+        },
+        {
+          "source": "Eastmoney",
+          "url": "https://finance.eastmoney.com/a/202607093799092350.html",
+          "note": "补充：超额认购7倍，IPO总值约2452.5亿美元（1.3625亿股）"
+        }
+      ],
+      "related_ids": [
+        "news-20260709-163-sk-hynix-adr",
+        "news-20260709-eastmoney-sk-hynix-ipo"
+      ]
     }
   ]
 }

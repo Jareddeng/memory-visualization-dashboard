@@ -47,7 +47,7 @@ export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin http
 7. **写入**：用 `edit` 工具追加记录到 JSON 数组末尾，不要读取整个文件再重写。
 8. **写入后**：运行 `node scripts/generate-data.mjs` 验证
 9. **推送后**：运行 `git log origin/main --oneline -3` + `git status` 验证
-9. **语言**：title/summary/transmission_path 必须中文
+9. **翻译检查（硬性要求）**：所有非中文来源的新闻，title/summary/transmission_path 必须翻译为中文后再写入 JSON。如果来源是英文（Reuters, Bloomberg, TechPowerUp, TrendForce 英文站, DIGITIMES 英文站, Odaily 英文站等），**严禁把英文原文直接 copy-paste 进 JSON**。写入前用中文重新组织标题和摘要。
 
 ## 搜索策略（轻量模式，防止上下文溢出）
 
