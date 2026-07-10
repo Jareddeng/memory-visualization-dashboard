@@ -75,7 +75,10 @@ function normalizeReport(raw, date) {
   const risk = normalizeRiskLevel(extractLine(raw, LABEL_RISK, "\u4e2d"));
   const summary = extractSummary(raw);
   const title = `${REPORT_TITLE} ${date}`;
-  const body = raw.replace(new RegExp(`^#\\s*${REPORT_TITLE}\\s*`, "u"), `# ${title}\n`).trim();
+  const body = raw
+    .replace(new RegExp(`^#\\s*${REPORT_TITLE}\\s*`, "u"), `# ${title}\n`)
+    .trim()
+    .replace(/[ \t]+$/gm, "");
   return [
     "---",
     `title: ${yamlString(title)}`,
