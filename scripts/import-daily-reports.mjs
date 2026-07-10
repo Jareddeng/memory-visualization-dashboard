@@ -55,6 +55,7 @@ function normalizeRiskLevel(value) {
   const text = String(value || "").trim();
   if (/高/.test(text) && /中/.test(text)) return "中高";
   if (/高/.test(text)) return "高";
+  if (/低/.test(text) && /中/.test(text)) return "中低";
   if (/低/.test(text)) return "低";
   return "中";
 }
@@ -74,7 +75,10 @@ function normalizeReport(raw, date) {
   const risk = normalizeRiskLevel(extractLine(raw, LABEL_RISK, "\u4e2d"));
   const summary = extractSummary(raw);
   const title = `${REPORT_TITLE} ${date}`;
-  const body = raw.replace(new RegExp(`^#\\s*${REPORT_TITLE}\\s*`, "u"), `# ${title}\n`).trim();
+  const body = raw
+    .replace(new RegExp(`^#\\s*${REPORT_TITLE}\\s*`, "u"), `# ${title}\n`)
+    .trim()
+    .replace(/[ \t]+$/gm, "");
   return [
     "---",
     `title: ${yamlString(title)}`,

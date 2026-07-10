@@ -647,9 +647,10 @@ const reportRatingScale: Record<string, number> = {
 
 const reportRiskScale: Record<string, number> = {
   "低": 1,
-  "中": 2,
-  "中高": 3,
-  "高": 4,
+  "中低": 2,
+  "中": 3,
+  "中高": 4,
+  "高": 5,
 };
 
 function makeReportTrendOption(reports: Report[]): echarts.EChartsCoreOption {
@@ -713,12 +714,12 @@ function makeReportTrendOption(reports: Report[]): echarts.EChartsCoreOption {
       {
         type: "value",
         min: 1,
-        max: 4,
+        max: 5,
         interval: 1,
         axisLabel: {
           color: "#8a6426",
           formatter(value: number) {
-            return ["", "低", "中", "中高", "高"][value] ?? "";
+            return ["", "低", "中低", "中", "中高", "高"][value] ?? "";
           },
         },
         splitLine: { show: false },
@@ -2133,6 +2134,7 @@ function normalizeRiskLevel(value: string) {
   const text = String(value || "").trim();
   if (/高/.test(text) && /中/.test(text)) return "中高";
   if (/高/.test(text)) return "高";
+  if (/低/.test(text) && /中/.test(text)) return "中低";
   if (/低/.test(text)) return "低";
   return "中";
 }
