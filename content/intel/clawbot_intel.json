@@ -5372,6 +5372,46 @@
       "action": "watch",
       "review_date": "2026-07-11",
       "review_note": ""
+    },
+    {
+      "id": "2026-07-11-jinfu-technology-cxmt-supply-chain",
+      "date": "2026-07-11",
+      "type": "公司公告",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "title": "锦富技术拟参投智算基金切入半导体存储供应链引关注",
+      "product": "半导体存储 / 供应链 / 国产替代",
+      "source": "经济观察网",
+      "url": "http://www.eeo.com.cn/2026/0711/952486.shtml",
+      "summary": "锦富技术正推进半导体存储业务布局，寻求切入长鑫存储（CXMT）供应链。公司已具备无尘精密模切能力并通过晶圆厂认证，拟出资4000万元参投AI算力专项基金。若成功进入CXMT供应链，将打开新增长曲线。但公司存在高额担保风险，担保余额占净资产比例达148.70%。",
+      "transmission_path": "锦富技术切入CXMT供应链 → 国产半导体存储供应链多元化 → 若认证成功将增强国内存储产能配套能力 → 需关注公司财务风险与认证进展",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-07-18",
+      "review_note": ""
+    },
+    {
+      "id": "2026-07-11-sk-hynix-ceo-shortage-until-2030",
+      "date": "2026-07-11",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "title": "SK海力士CEO预计存储芯片短缺将延续至下一个十年",
+      "product": "DRAM / HBM / 存储芯片",
+      "source": "财联社",
+      "url": "https://m.cls.cn/detail/2423400",
+      "summary": "SK海力士CEO郭鲁正表示，存储芯片短缺局面大概率将延续至2030年之后，2027年将是内存短缺周期中最糟糕的一年。客户需求预计在2030年后仍将超过供应能力。SK海力士正在考虑美国、日本、东南亚作为未来晶圆厂选址，但尚未做出决定。客户纷纷签订长期合约，认定短缺状况将持续更久。AI热潮推动数据中心大规模采购，既拉动常规存储芯片需求，也大幅提升HBM市场热度。",
+      "transmission_path": "SK海力士CEO确认短缺延续至2030+ → 强化市场对长期供给不足的预期 → 推动客户签订更长期合约 → 支撑内存价格长期高位 → 利好拥有产能的存储厂商",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-08-11",
+      "review_note": ""
     }
   ]
 }
