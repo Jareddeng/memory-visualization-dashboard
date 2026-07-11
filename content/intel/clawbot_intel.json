@@ -5412,6 +5412,46 @@
       "action": "deep_tracking",
       "review_date": "2026-08-11",
       "review_note": ""
+    },
+    {
+      "id": "2026-07-11-china-helium-export-ban",
+      "date": "2026-07-11",
+      "type": "政策管制",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "中国对氦气实施临时禁止出口管理",
+      "product": "半导体材料 / 氦气",
+      "source": "价值研学社/新浪",
+      "url": "http://k.sina.com.cn/article_5952915705_162d248f906703avq2.html",
+      "summary": "商务部和海关总署联合发布对氦气实施临时禁止出口管理，即日起执行。氦气在半导体制造（刻蚀冷却、EUV光刻机激光腔保护、HBM存储芯片堆叠工艺散热）中至关重要。全球氦气超一半供给来自中东，中国长期严重依赖进口。中东冲突导致氦气供给收缩，价格同比上涨超90%。",
+      "transmission_path": "氦气出口禁令 → 国内氦气供应保障 → 半导体制造企业成本稳定 → 利好国内半导体产业链。需关注氦气相关上市公司（如凯美特气、杭氧股份等）及半导体设备厂商。",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-12",
+      "review_note": ""
+    },
+    {
+      "id": "2026-07-11-hbm4-price-double-next-year",
+      "date": "2026-07-11",
+      "type": "市场预测",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "行业人士：HBM4价格明年或翻倍",
+      "product": "HBM / 高带宽内存",
+      "source": "财联社/DigiTimes",
+      "url": "https://www.cls.cn/detail/2423546",
+      "summary": "DigiTimes报告显示，受AI需求激增、产能结构性瓶颈影响，下一代HBM4价格2026年下半年或从2美元/千比特涨至4-5美元及以上。HBM4生产周期长达4-6个月，初始良率显著偏低。HBM生产耗用的晶圆容量约为标准DDR5 DRAM的3倍。全球三大HBM生产商三星、SK海力士、美光正与AI客户签订3-5年长协锁定供应，到2027年全球近半DRAM产能将无法提供给小型买家。部分供应商的DDR5利润率已突破80%。",
+      "transmission_path": "HBM4价格上涨预期 → 存储芯片厂商（三星、SK海力士、美光）盈利能力提升 → 产业链上游设备和材料需求增加 → 相关公司股价受益。需关注HBM产业链标的。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-07-18",
+      "review_note": ""
     }
   ]
 }
