@@ -5332,6 +5332,46 @@
       "action": "watch",
       "review_date": "2026-07-17",
       "review_note": ""
+    },
+    {
+      "id": "2026-07-10-samsung-sk-hynix-stock-rebound-micron-expansion",
+      "date": "2026-07-10",
+      "type": "市场异动",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "title": "美光扩产、SK海力士赴美上市，日韩存储龙头股价反弹回升",
+      "product": "半导体 / 存储 / DRAM / HBM",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/tech/roll/2026-07-10/doc-inihhrai8488139.shtml",
+      "summary": "受美光科技扩产及SK海力士赴美上市消息影响，7月10日日韩存储芯片龙头股价反弹回升。三星电子涨4.14%至289500韩元/股，SK海力士涨0.87%至2205000韩元/股，铠侠控股涨5.54%。美光7月9日发布扩产计划，拟在2035年前对美投资超2500亿美元，目标将美国产能占DRAM总产能比例提至40%。SK海力士7月10日发行ADR，发行价149美元，拟发行1.779亿份，预计募资265.07亿美元。TrendForce预计Q3服务器DRAM合约价将比Q2增长13%-18%。",
+      "transmission_path": "美光扩产计划与SK海力士ADR上市 → 提振市场信心 → 存储芯片龙头股价反弹 → 但需注意AI算力需求担忧仍存",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-11",
+      "review_note": ""
+    },
+    {
+      "id": "2026-07-10-sk-hynix-adr-listing-memory-race",
+      "date": "2026-07-10",
+      "type": "行业事件",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "SK海力士在美上市背后：全球掀起新一轮存储竞赛",
+      "product": "半导体 / 存储 / HBM / DRAM",
+      "source": "南方财经",
+      "url": "https://www.sfccn.com/2026/7-10/4OMDE1NjlfMjE3OTE4OQ.html",
+      "summary": "7月10日SK海力士在纳斯达克挂牌交易ADR，募资约265亿美元，成为近年全球规模最大科技企业赴美股权融资案例之一。此前全球存储芯片厂商股价经历剧烈震荡，SK海力士股价从6月19日最高276.4万韩元/股回调至218万韩元/股。公司募集资金将主要用于韩国境内45.5万亿韩元资本支出、11.9万亿韩元极紫外光刻机采购，以及龙仁半导体集群、清州先进封装工厂建设。美光科技也在全球扩产，A股存储企业密集IPO/再融资。长期合约模式正在拉长存储周期，但AI需求是否持续仍需观察。",
+      "transmission_path": "SK海力士ADR上市募资 → 大规模资本开支计划 → 全球存储产能扩张竞赛 → 长期合约模式拉长周期 → 但需警惕未来供给过剩风险",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-07-11",
+      "review_note": ""
     }
   ]
 }
