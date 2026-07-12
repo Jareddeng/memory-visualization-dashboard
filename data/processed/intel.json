@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-07-12-hbm-prices-double-2027-digtimes",
+      "type": "价格预测",
+      "impact": "bullish",
+      "date": "2026-07-12",
+      "title": "DigiTimes预测：HBM价格2027年将翻倍，存储芯片行业面临史上最严重供应短缺",
+      "product": "HBM / DRAM / NAND Flash",
+      "source": "证券时报 / DigiTimes",
+      "url": "https://finance.sina.com.cn/stock/t/2026-07-12/doc-inihnhar8111922.shtml",
+      "summary": "研究机构DigiTimes在7月10日发布的报告中预测，受AI需求激增和产能结构性瓶颈影响，HBM价格预计2027年实现翻倍。下一代HBM4价格可能从2026年下半年约2美元/千兆比特飙升至4-5美元甚至更高。SK海力士CEO郭鲁正表示，2027年将成为存储芯片行业供应短缺最严重的一年。威刚董事长陈立白透露，2026年第三季度DRAM合约价将上涨20%-30%，NAND Flash将调涨35%-40%。瑞银大幅上调存储价格预期，预计Q3 DRAM上涨32%、NAND上涨30%。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1m",
+      "transmission_path": "HBM/DRAM/NAND价格大幅上涨预期 → 存储芯片厂商利润大幅提升 → 上游产能持续紧缺 → 中小客户面临断供风险 → 长期协议锁定供应成为行业常态 → 相关存储产业链股票受益",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-19"
+    },
+    {
       "id": "2026-07-11-jinfu-technology-cxmt-supply-chain",
       "type": "公司公告",
       "impact": "neutral",
