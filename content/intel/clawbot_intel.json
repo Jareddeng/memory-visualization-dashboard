@@ -5472,6 +5472,46 @@
       "action": "watch",
       "review_date": "2026-07-18",
       "review_note": ""
+    },
+    {
+      "id": "2026-07-12-sk-hynix-adr-debut-trading",
+      "date": "2026-07-12",
+      "type": "market_data",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "SK海力士ADR纳斯达克首日收涨12.8%，市值1.22万亿美元超越美光",
+      "product": "general_memory",
+      "source": "香港商报/综合",
+      "url": "https://www.hkcd.com.hk/hkcdweb/content/2026/07/12/content_8764356.html",
+      "summary": "SK海力士美国存托凭证(ADR)于美东时间7月10日正式登陆纳斯达克，发行价149美元，首日开盘价170美元，较发行价上涨14%，盘中一度升至177美元，最终收报168.01美元，首日涨幅约12.8%。按收盘价计算，SK海力士总市值约1.22万亿美元(约8.39万亿元人民币)，超越美光科技成为美股市场市值最高的纯存储芯片公司。此次募资规模约265亿美元，创境外企业赴美IPO最高纪录，也成为全球史上第三大IPO。基石投资者包括Baillie Gifford、Coatue、Situational Awareness Partners等，机构超额认购逾7倍。",
+      "transmission_path": "financial_media",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-12",
+      "review_note": "SK海力士ADR首日交易数据确认，市值正式超越美光"
+    },
+    {
+      "id": "2026-07-12-sk-hynix-ceo-financial-disclosure",
+      "date": "2026-07-12",
+      "type": "company_action",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "title": "SK海力士CEO：2027年或成存储史上最缺货一年，Q1营业利润率72%创新高",
+      "product": "HBM",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/marketresearch/2026-07-12/doc-inihnwye6114234.shtml",
+      "summary": "SK海力士CEO郭鲁正7月12日接受采访时表示，2027年将成为存储芯片行业历史上供应最短缺的一年，供不应求局面将延续至2030年以后。公司披露2026年一季度营收35.55亿美元，同比增长198%；营业利润37.61亿美元，同比增长405%；营业利润率72%，净利润率77%，均创历史新高。全球HBM市场份额达56.4%，稳居第一。公司预计HBM4价格将从2026年下半年约2美元/千比特上涨至4-5美元。SK海力士ADR首日上市市值超越美光，打破了美光作为美国本土唯一上市存储巨头的估值稀缺性。",
+      "transmission_path": "direct_from_source",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-07-12",
+      "review_note": "SK海力士CEO详细财务数据首次披露，HBM市场主导地位确认"
     }
   ]
 }
