@@ -5512,6 +5512,156 @@
       "action": "deep_tracking",
       "review_date": "2026-07-12",
       "review_note": "SK海力士CEO详细财务数据首次披露，HBM市场主导地位确认"
+    },
+    {
+      "id": "cxmt-ipo-pricing-20260713",
+      "date": "2026-07-13",
+      "title": "长鑫科技科创板IPO启动初步询价，拟募资295亿元",
+      "url": "https://h5.ifeng.com/c/vivoArticle/v002tJKHJjEO5bEczYHOSrMGk46TazTtM16Lupqg4mZ63wM__",
+      "source": "凤凰网",
+      "source_tier": 2,
+      "region": "china",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "国产DRAM龙头长鑫科技于7月13日启动科创板IPO初步询价，拟募资295亿元用于存储器晶圆制造量产线技术升级改造及DRAM前瞻技术研发。公司2026年上半年预计营收1100-1200亿元，同比增长超600%；净利润预计500-570亿元，同比增长超2200%。按2025年Q4销售额统计，长鑫科技全球DRAM市场份额已达7.67%，客户覆盖阿里云、字节跳动、腾讯等云服务商及联想、小米等终端品牌。",
+      "impact": "bullish",
+      "impact_reason": "国产DRAM龙头上市标志着中国存储产业进入规模化资本运营阶段，有望加速技术迭代和产能扩张，长期利好半导体设备和材料产业链",
+      "reaction_type": "sentiment",
+      "reaction_reason": "IPO事件本身属于市场情绪催化剂，对存储产业链相关标的存在主题投资效应，但短期对DRAM价格无直接影响",
+      "pricing_status": "partial",
+      "pricing_reason": "长鑫科技的产能扩张和技术进步已被部分定价在市场预期中，但IPO募资后的实际扩产进度和良率提升仍存在不确定性",
+      "horizon": "1m",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "DRAM",
+        "长鑫科技",
+        "IPO",
+        "科创板",
+        "国产替代"
+      ]
+    },
+    {
+      "id": "skhy-nasdaq-debut-20260710",
+      "date": "2026-07-10",
+      "title": "SK海力士纳斯达克首日暴涨13%，市值突破1.27万亿美元",
+      "url": "https://finance.sina.com.cn/stock/t/2026-07-11/doc-inihmkxc5005738.shtml",
+      "source": "新浪财经/时代周报",
+      "source_tier": 2,
+      "region": "us",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "SK海力士ADR于7月10日以临时代码SKHYV在纳斯达克启动预发行交易，发行价149美元/股，募资265亿美元，超越阿里巴巴2014年250亿美元纪录，成为美国资本市场有史以来外国企业最大规模IPO。首日开盘价170美元，收盘168.01美元，涨幅12.76%，市值约1.27万亿美元。7月13日起股票代码正式变更为SKHY进入常规交易。全球超500家机构投资者参与申购，超额认购超7倍，基石投资者意向认购70亿美元。",
+      "impact": "bullish",
+      "impact_reason": "全球最大存储芯片IPO获得市场热烈追捧，首日大涨13%验证AI基础设施投资逻辑获机构投资者认可，对HBM和DRAM产业链形成强烈正面信号",
+      "reaction_type": "instant",
+      "reaction_reason": "SK海力士首日暴涨直接带动存储板块情绪，同时ADR溢价（较韩股高16%）表明国际资本对AI存储龙头的估值重估",
+      "pricing_status": "partial",
+      "pricing_reason": "SK海力士2026年HBM产能已全部售罄，AI需求支撑的高利润率已被部分定价，但纳斯达克上市后被动资金流入和估值溢价尚未完全反映",
+      "horizon": "1d",
+      "confidence": "high",
+      "action": "alert",
+      "tags": [
+        "SK海力士",
+        "纳斯达克",
+        "IPO",
+        "HBM",
+        "AI存储"
+      ]
+    },
+    {
+      "id": "samsung-yongin-fab-20260712",
+      "date": "2026-07-12",
+      "title": "三星电子计划将龙仁首座芯片厂投产时间提前至2029年",
+      "url": "https://www.ithome.com/0/975/705.htm",
+      "source": "IT之家/韩联社",
+      "source_tier": 2,
+      "region": "global",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "据韩联社7月12日报道，三星电子正推进龙仁芯片集群首座半导体晶圆厂建设，计划将投产时间提前至2029年，比原计划2030-2031年提早一到两年。三星计划在该园区建设6座晶圆厂，并将在平泽、龙仁两大半导体集群合计投资2030万亿韩元（约9.15万亿元人民币），同时投资400万亿韩元在光州新建两座芯片工厂。业界认为，提前投产将使三星更快应对全球AI芯片需求的快速增长。",
+      "impact": "bullish",
+      "impact_reason": "三星加速AI芯片产能布局表明存储巨头对未来AI需求的强烈信心，大规模资本开支将直接利好半导体设备、材料和建厂产业链",
+      "reaction_type": "undervalued",
+      "reaction_reason": "三星HBM3E此前在英伟达认证中落后于SK海力士和美光，龙仁工厂的提前投产计划显示三星正全力追赶，其HBM市场份额和盈利能力存在修复空间",
+      "pricing_status": "unpriced",
+      "pricing_reason": "龙仁工厂2029年投产对三星短期财务影响有限，但长期将改变HBM和先进DRAM的竞争格局，当前市场对三星HBM追赶进度的定价尚不充分",
+      "horizon": "1q",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "tags": [
+        "三星电子",
+        "龙仁",
+        "晶圆厂",
+        "HBM",
+        "AI芯片"
+      ]
+    },
+    {
+      "id": "trendforce-dram-q3-20260709",
+      "date": "2026-07-09",
+      "title": "TrendForce：第三季服务器DRAM合约价环比涨幅收敛至13-18%",
+      "url": "https://m.sohu.com/a/1047984155_122066678",
+      "source": "搜狐/TrendForce",
+      "source_tier": 2,
+      "region": "global",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "TrendForce集邦咨询7月9日发布报告，预计2026年第三季度服务器DRAM合约价环比涨幅将放缓至13%-18%，相比第二季度约50%的大幅增长显著收敛。涨价趋缓主要受三方面因素影响：上游制造商提前调整价格预期、多家美国云服务提供商已签订长期供应合同、以及CPU供应短缺限制服务器装机速度。尽管如此，整体市场仍处于供不应求状态，TrendForce预计服务器DRAM合约价格将持续上涨至2027年下半年。",
+      "impact": "neutral",
+      "impact_reason": "Q3 DRAM涨幅收敛已在市场预期内，整体供不应求格局未变，价格仍在上行通道。涨幅放缓反映高基数效应而非需求萎缩，对存储原厂盈利能力影响有限",
+      "reaction_type": "sentiment",
+      "reaction_reason": "涨幅收敛数据可能引发短期对存储周期见顶的担忧，但TrendForce明确指出供需紧张态势未改，属于情绪面扰动而非基本面恶化",
+      "pricing_status": "partial",
+      "pricing_reason": "DRAM价格持续上涨趋势已被市场定价，但Q3涨幅具体数字和2027年持续涨价预期仍有部分未完全反映",
+      "horizon": "1w",
+      "confidence": "high",
+      "action": "watch",
+      "tags": [
+        "TrendForce",
+        "DRAM",
+        "服务器内存",
+        "合约价",
+        "存储周期"
+      ]
+    },
+    {
+      "id": "skhy-regular-trading-20260713",
+      "date": "2026-07-13",
+      "title": "SK海力士ADR正式切换代码为SKHY，纳斯达克常规交易开始",
+      "url": "https://www.nasdaqtrader.com/TraderNews.aspx?id=DTN2026-11",
+      "source": "Nasdaq Official",
+      "source_tier": 1,
+      "region": "us",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "根据纳斯达克官方通知，SK海力士ADR于7月10日以临时代码SKHYV开始预发行交易，7月13日起正式切换代码为SKHY并进入常规交易。 settlement date为7月14日。SK海力士ADR每份对应0.1股韩国普通股，发行规模约265亿美元。首日收盘168.01美元，较发行价149美元上涨12.76%。",
+      "impact": "bullish",
+      "impact_reason": "SKHY进入常规交易将吸引更广泛的美股被动资金（包括指数基金和ETF）配置，预计7月14日期权上市后将进一步提升流动性",
+      "reaction_type": "instant",
+      "reaction_reason": "常规交易启动意味着更多散户和被动基金可以买入，短期内可能继续推高股价，同时SK海力士韩股与ADR之间的套利机制将逐步建立",
+      "pricing_status": "partial",
+      "pricing_reason": "SK海力士的HBM龙头地位和AI存储需求已被市场充分认知，但纳斯达克上市后带来的全球投资者基础和被动资金流入尚未完全定价",
+      "horizon": "1d",
+      "confidence": "high",
+      "action": "alert",
+      "tags": [
+        "SK海力士",
+        "SKHY",
+        "纳斯达克",
+        "ADR",
+        "常规交易"
+      ]
     }
   ]
 }
