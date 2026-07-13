@@ -2098,7 +2098,6 @@ function LatestReport({ report, isLatest, activeTab }: { report?: Report; isLate
                 </div>
               </div>
               {rating.note ? <p className="report-rating-note">{rating.note}</p> : null}
-              <p>{report.summary}</p>
               <MarkdownBody body={report.body} />
               {report.sources.length ? <small>来源：{report.sources.join("、")}</small> : null}
             </>
