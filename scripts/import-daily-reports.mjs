@@ -45,7 +45,7 @@ function normalizeReportRating(value) {
   const text = raw.replace(/[（(].*?[）)]/g, "");
   let rating = "中性";
   if (/中性偏多/.test(text)) rating = "中性偏多";
-  else if (/中性偏空/.test(text)) rating = "中性偏空";
+  else if (/中性偏空|中性偏谨慎|偏谨慎/.test(text)) rating = "中性偏空";
   else if (/看多|积极|乐观|偏多/.test(text)) rating = "看多";
   else if (/看空|谨慎|悲观|风险上升|偏空/.test(text)) rating = "看空";
   return `${rating}${note}`;
@@ -76,7 +76,7 @@ function normalizeReport(raw, date) {
   const summary = extractSummary(raw);
   const title = `${REPORT_TITLE} ${date}`;
   const body = raw
-    .replace(new RegExp(`^#\\s*${REPORT_TITLE}\\s*`, "u"), `# ${title}\n`)
+    .replace(new RegExp(`^#\\s*${REPORT_TITLE}(?:[_\\s-]*20\\d{6})?\\s*`, "u"), `# ${title}\n`)
     .trim()
     .replace(/[ \t]+$/gm, "");
   return [

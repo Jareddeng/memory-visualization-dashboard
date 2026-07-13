@@ -2319,6 +2319,7 @@ function MarkdownBody({ body }: { body: string }) {
 type MarkdownBlock =
   | { type: "h3" | "h4" | "p" | "blockquote"; text: string }
   | { type: "ul"; items: string[] }
+  | { type: "ol"; items: string[] }
   | { type: "table"; rows: string[][] };
 
 function parseMarkdownBlocks(body: string): MarkdownBlock[] {
@@ -2326,6 +2327,7 @@ function parseMarkdownBlocks(body: string): MarkdownBlock[] {
   const lines = body.replace(/\r\n/g, "\n").split("\n");
   let paragraph: string[] = [];
   let list: string[] = [];
+  let orderedList: string[] = [];
   let table: string[][] = [];
 
   const flushParagraph = () => {
@@ -2340,6 +2342,12 @@ function parseMarkdownBlocks(body: string): MarkdownBlock[] {
       list = [];
     }
   };
+  const flushOrderedList = () => {
+    if (orderedList.length) {
+      blocks.push({ type: "ol", items: orderedList });
+      orderedList = [];
+    }
+  };
   const flushTable = () => {
     if (table.length) {
       blocks.push({ type: "table", rows: table });
@@ -2349,6 +2357,7 @@ function parseMarkdownBlocks(body: string): MarkdownBlock[] {
   const flushAll = () => {
     flushParagraph();
     flushList();
+    flushOrderedList();
     flushTable();
   };
 
@@ -2383,17 +2392,27 @@ function parseMarkdownBlocks(body: string): MarkdownBlock[] {
     }
     if (/^[-*]\s+/.test(line)) {
       flushParagraph();
+      flushOrderedList();
       flushTable();
       list.push(line.replace(/^[-*]\s+/, ""));
+      continue;
+    }
+    if (/^\d+[.)]\s+/.test(line)) {
+      flushParagraph();
+      flushList();
+      flushTable();
+      orderedList.push(line.replace(/^\d+[.)]\s+/, ""));
       continue;
     }
     if (isMarkdownTableLine(line)) {
       flushParagraph();
       flushList();
+      flushOrderedList();
       if (!isMarkdownTableDivider(line)) table.push(splitMarkdownTableRow(line));
       continue;
     }
     flushList();
+    flushOrderedList();
     flushTable();
     paragraph.push(line);
   }
@@ -2407,6 +2426,9 @@ function renderMarkdownBlock(block: MarkdownBlock, index: number) {
   if (block.type === "blockquote") return <blockquote key={index}>{renderInlineMarkdown(block.text)}</blockquote>;
   if (block.type === "ul") {
     return <ul key={index}>{block.items.map((item, itemIndex) => <li key={itemIndex}>{renderInlineMarkdown(item)}</li>)}</ul>;
+  }
+  if (block.type === "ol") {
+    return <ol key={index}>{block.items.map((item, itemIndex) => <li key={itemIndex}>{renderInlineMarkdown(item)}</li>)}</ol>;
   }
   if (block.type === "table") {
     const [head = [], ...bodyRows] = block.rows;

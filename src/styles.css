@@ -2772,7 +2772,8 @@ th {
   line-height: 1.6;
 }
 
-.markdown-body ul {
+.markdown-body ul,
+.markdown-body ol {
   margin: 0;
   padding-left: 20px;
   color: var(--muted);
