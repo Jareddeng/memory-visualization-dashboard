@@ -970,6 +970,25 @@
       "review_date": ""
     },
     {
+      "id": "2026-07-07-cbt-memory-price-cycle-q3",
+      "type": "价格预测",
+      "impact": "bullish",
+      "date": "2026-07-07",
+      "title": "中国经营报：存储芯片涨价进入连续第三季度，Q3 DRAM涨幅收敛但NAND仍涨",
+      "product": "DRAM / NAND Flash",
+      "source": "中国经营报 / TrendForce / UBS",
+      "url": "http://epaper.cbt.com.cn/ep_m/cbtm/html/2026/07/07/04/04_57.htm",
+      "summary": "截至2026年7月，全球存储芯片涨价已进入连续第三个季度。三星电子计划将Q3通用DRAM平均售价环比上调20%，LPDDR移动端内存涨幅超20%。TrendForce数据显示，Q3整体DRAM格局持续极度紧缺，但合约价涨幅收敛至季增13%-18%（受消费级需求下修及高基期影响）；NAND Flash合约价季增10%-15%，幅度较前几季明显缩减。瑞银大幅上调存储价格预期，预计Q3 DDR合约价环比上涨32%，Q4环比上涨18%，并认为DRAM行业供需紧张将至少持续至2028年上半年。若不考虑下游库存缓冲，2027年供需缺口将从-8.1%扩大至-13.6%。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "存储芯片Q3持续涨价但涨幅放缓 → 高基期效应显现 → 消费端成本压力上升 → 终端产品涨价传导 → 企业级需求仍强劲支撑价格 → 中小客户面临更大压力 → 长期供应协议锁定需求",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-07-14"
+    },
+    {
       "id": "2026-07-06-sk-hynix-adr-bookbuilding-start",
       "type": "重大事件",
       "impact": "bullish",
@@ -2015,6 +2034,25 @@
       "review_date": "2026-07-09"
     },
     {
+      "id": "2026-06-30-ibtimes-samsung-hbm4-vs-sk-hynix-ddr5",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-06-30",
+      "title": "IBTimes：三星加速HBM4量产追赶SK海力士，SK海力士转向收割DDR5高利润",
+      "product": "HBM / DRAM",
+      "source": "International Business Times",
+      "url": "https://www.ibtimes.com.au/samsung-sk-hynix-ai-memory-chip-battle-1871554",
+      "summary": "三星加速HBM4开发，目标2026年Q4开始量产。若成功，三星可能实现盈利增长和估值重估的双重收益，缩小与SK海力士的差距。SK海力士 reportedly 近期选择减缓HBM4生产爬坡，以收割传统DDR5内存的超高利润，该品类供应在厂商过去两年将产能转向HBM后急剧收缩。摩根士丹利分析师认为SK海力士的DDR5转向战略合理，广义内存价格上涨而非HBM份额争夺才是当前利润增长的主要驱动力。SK海力士全球HBM市场份额约52-61%，三星约17-39%。",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "三星HBM4量产时间表明确 → 若成功将重获HBM市场份额 → SK海力士策略性放缓HBM4以聚焦DDR5利润 → 两者竞争格局可能重塑 → 内存市场整体价格上涨是核心驱动力 → 投资者关注HBM4认证和份额分配",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-07-07"
+    },
+    {
       "id": "2026-06-29-micron-100b-sca-ceiling-effect",
       "type": "行业分析",
       "impact": "neutral",
@@ -2716,6 +2754,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-07-07"
+    },
+    {
+      "id": "2026-06-23-cryptobriefing-memory-giants-4.1t",
+      "type": "市场异动",
+      "impact": "bullish",
+      "date": "2026-06-23",
+      "title": "CryptoBriefing：存储三巨头合计市值突破4.1万亿美元，HBM市场格局深度解析",
+      "product": "HBM / DRAM / NAND Flash",
+      "source": "CryptoBriefing",
+      "url": "https://cryptobriefing.com/memory-giants-4-trillion-market-cap/",
+      "summary": "2026年5月，三星、SK海力士和美光三家合计市值突破4.1万亿美元。SK海力士占据全球HBM市场约61%份额，三星17%，美光21%。2026年6月，SK海力士一度超越三星成为韩国最有价值上市公司。与传统智能手机和PC内存需求不同，AI基础设施支出由企业资本预算驱动，微软、谷歌、亚马逊和Meta等签订多年供应协议，提供前所未有的收入可见性。集中度风险值得警惕：三家公司控制全球HBM供应的100%，任何地缘政治、自然灾害或生产相关中断都可能对AI建设时间表产生巨大影响。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "transmission_path": "三巨头市值突破4.1万亿美元 → 市场确认HBM/AI内存为长期增长赛道 → 寡头垄断定价权强化 → 超大规模客户签订长期协议 → 收入能见度大幅提升 → 地缘政治风险成为潜在黑天鹅 → 投资者关注集中度风险",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-06-30"
     },
     {
       "id": "2026-06-22-micron-hbm-sold-out-1t",
@@ -4008,6 +4065,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-09-29"
+    },
+    {
+      "id": "2026-05-27-benzinga-micron-vs-sk-hynix",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-05-27",
+      "title": "Benzinga：美光vs SK海力士，AI内存双雄估值对比与竞争态势",
+      "product": "HBM / DRAM / NAND Flash",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/tech/26/05/52811262/micron-vs-sk-hynix-best-memory-stock-2026",
+      "summary": "美光和SK海力士作为纯粹的内存标的，在AI超级周期中直接竞争。两股年内均涨超200%，过去一年涨超8倍。SK海力士五年回报1624% vs 美光1017%。但展望未来，华尔街预期美光下一财季EPS同比增长906%，vs SK海力士549%。美光前瞻市盈率9.6倍，SK海力士仅6.1倍，两者PEG比率均接近零（0.07和0.08），表明市场尚未充分定价未来增长。SK海力士2025年Q3控制约57% HBM收入，美光约21%。SK海力士在HBM领导地位和估值折价方面更具吸引力，而美光因美国上市地位更容易被全球投资者直接配置。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "两家纯内存龙头股价暴涨 → 估值仍处低位（前瞻PE不足10倍） → 市场可能尚未充分定价AI内存增长 → HBM份额和利润率是决定因素 → 美光受益于美国本土供应链安全叙事 → SK海力士受益于HBM技术领先 → 投资者需权衡估值折扣与流动性",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-06-03"
     },
     {
       "id": "2026-05-26-ai-boom-record-profits-hardware",
