@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "vlsi-kr-memory-selloff-20260714",
+      "type": "行业分析",
+      "impact": "bearish",
+      "date": "2026-07-14",
+      "title": "韩国半导体股暴跌：KOSPI跌8.95%，三星电子跌10.70%，SK海力士跌15.37%",
+      "product": "DRAM, HBM, NAND, 内存芯片",
+      "source": "VLSI Korea",
+      "url": "https://www.vlsi.kr/ko/kospi-8-95-samseongjeonja-sk-hynix-tsmc-bandoce-jusig-beuriping-2026-07-14/",
+      "summary": "2026年7月14日，亚洲半导体篮子平均下跌4.37%，韩国股市KOSPI暴跌8.95%，KOSDAQ下跌4.55%。内存股领跌：SK海力士暴跌15.37%，三星电子下跌10.70%，韩美半导体下跌7.43%。代工板块相对抗跌：台积电上涨1.04%，Lasertec上涨0.88%。此次韩国内存股的暴跌与前一日美国AI算力、内存和设备股的走势传导有关。市场正密切关注memory、foundry、equipment、AI networking的同步性/分化。 upcoming重要事件包括：7月14日美国6月CPI、7月15日ASML二季度业绩、7月16日韩国央行利率决议及台积电二季度业绩、7月29日SK海力士二季度业绩（含HBM利润率、DRAM均价、资本开支及美国上市进展）。",
+      "importance": "",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "transmission_path": "",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": ""
+    },
+    {
       "id": "cxmt-ipo-pricing-20260713",
       "type": "行业分析",
       "impact": "bullish",
