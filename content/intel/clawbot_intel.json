@@ -6103,6 +6103,78 @@
       "action": "watch",
       "transmission_path": "三星创纪录业绩公布 → 市场\"卖事实\"获利了结 → 短期股价承压 → 但HBM/DRAM基本面仍然强劲 → 下半年价格继续上涨",
       "review_date": "2026-07-14"
+    },
+    {
+      "id": "sk-hynix-nasdaq-20260711",
+      "date": "2026-07-11",
+      "title": "SK海力士纳斯达克上市首日大涨19%，创外国公司美国IPO纪录",
+      "url": "https://www.matterfact.com/newsletter/2026-07-11-sk-hynix-storms-nasdaq-samsung-record-shrugged-off",
+      "source": "Matterfact",
+      "source_tier": 2,
+      "region": "global",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "SK海力士在纳斯达克上市，发行价149美元，开盘约177美元，首日涨幅约19%。认购超7倍，需求超1600亿美元。SK集团会长表示客户要求增加5-6倍产能，供应'永远赶不上'需求。Q3 DRAM合约价预计再涨13-18%，NAND涨10-15%。",
+      "impact": "bullish",
+      "impact_reason": "SK海力士美国上市获得巨额资本，将加速HBM和先进DRAM产能扩张，巩固其全球HBM领导地位",
+      "reaction_type": "instant",
+      "reaction_reason": "IPO首日大涨及管理层表态'供应永远赶不上需求'将强化市场对存储超级周期的信心",
+      "pricing_status": "partial",
+      "pricing_reason": "股价已部分反映HBM需求预期，但产能扩张和价格上涨仍有空间",
+      "horizon": "1d",
+      "confidence": "high",
+      "action": "alert",
+      "product": "HBM, DRAM, NAND"
+    },
+    {
+      "id": "hbm-triad-comparison-20260708",
+      "date": "2026-07-08",
+      "title": "美光vs三星vsSK海力士：HBM三巨头竞争力对比",
+      "url": "https://www.biyapay.com/zh/blogdetail/4310-micron-vs-samsung-vs-sk-hynix-comparing-the-hbm-bi",
+      "source": "Biyapay",
+      "source_tier": 3,
+      "region": "global",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "SK海力士2026年Q1收入52.5763万亿韩元、营业利润37.6103万亿韩元。SK海力士HBM4预计2026年市占率54%，锁定英伟达下一代AI平台约70%订单。美光HBM4 36GB 12H已批量出货。三星DS部门收入81.7万亿韩元、营业利润53.7万亿韩元。",
+      "impact": "bullish",
+      "impact_reason": "三巨头业绩均创新高，HBM市场呈现'三强争霸'格局，整体市场规模快速扩张",
+      "reaction_type": "instant",
+      "reaction_reason": "三巨头财务数据和市场份额对比为投资者提供清晰的行业竞争格局",
+      "pricing_status": "priced",
+      "pricing_reason": "Q1业绩已基本被市场消化，但HBM4订单锁定情况仍有超预期空间",
+      "horizon": "1d",
+      "confidence": "high",
+      "action": "alert",
+      "product": "HBM, HBM4"
+    },
+    {
+      "id": "hbm-capacity-sold-out-20260629",
+      "date": "2026-06-29",
+      "title": "三星SK海力士美光2026年HBM产能已被预订一空",
+      "url": "https://cj.sina.com.cn/articles/view/7857201856/1d45362c001907k2g8",
+      "source": "新浪财经",
+      "source_tier": 2,
+      "region": "china",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "SK海力士基本完成2026年HBM产品供应洽谈，计划2025年Q4启动HBM4初步出货，2026年实现大规模量产。美光2026年HBM产能接近全部售出，已有六家客户确认采购。",
+      "impact": "bullish",
+      "impact_reason": "2026年HBM产能全部售罄确认存储超级周期强度，供需紧张将持续至2027年",
+      "reaction_type": "instant",
+      "reaction_reason": "产能售罄消息将推动存储芯片板块情绪继续高涨",
+      "pricing_status": "priced",
+      "pricing_reason": "产能售罄已是市场共识，但HBM4定价和利润率仍有上行空间",
+      "horizon": "1w",
+      "confidence": "high",
+      "action": "alert",
+      "product": "HBM, HBM4"
     }
   ]
 }
