@@ -1116,7 +1116,7 @@ function MajorEventTimeline({ records }: { records: IntelRecord[] }) {
   const timelineKeywords = ["产能", "扩产", "投产", "量产", "晶圆", "长协", "谈判", "交付", "订单", "供给", "HBM", "HBM4", "capacity", "capex", "wafer", "fab", "supply"];
   const isTimelineRecord = (record: IntelRecord) => {
     const text = `${record.title} ${record.product} ${record.summary} ${record.transmission_path ?? ""}`.toLowerCase();
-    return record.importance === "S" && timelineKeywords.some((keyword) => text.includes(keyword.toLowerCase()));
+    return ["S", "A"].includes(record.importance ?? "") && timelineKeywords.some((keyword) => text.includes(keyword.toLowerCase()));
   };
   const majorRecords = records
     .filter(isTimelineRecord)
