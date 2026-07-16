@@ -358,5 +358,35 @@
     "summary_zh": "长鑫科技拟募资295亿元冲刺科创板，成为A股近年最大IPO之一。SK海力士7月10日正式以ADR形式在纳斯达克挂牌上市，市值超万亿美元。长江存储也在同步推进科创板IPO。长鑫全球DRAM市占率一年间从3%升至8%。文章指出中国存储不能仅满足于中低端放量，必须在HBM、高带宽DDR5等塔尖技术上死磕实现高端突围。",
     "id": "news-20260714-0003",
     "created_at": "2026-07-15T22:21:30.619849"
+  },
+  {
+    "id": "hbm-sell-off-2026-07-14",
+    "date": "2026-07-14",
+    "title": "HBM相关股票大幅回调，长期前景仍强劲但估值承压",
+    "source": "Tapbit",
+    "url": "https://www.tapbit.com/en/learn/article/hbm-memory-market-outlook-ai-chip-prices-2026-20260714",
+    "product": "HBM, DRAM",
+    "impact": "bearish",
+    "reaction_type": "sentiment",
+    "pricing_status": "overpriced",
+    "horizon": "1w",
+    "confidence": "medium",
+    "action": "watch",
+    "summary": "HBM相关股票大幅回调。7月14日，SK海力士下跌12.66%至₩172.9万，美光下跌4.3%至37，英伟达下跌3.5%至03.53。尽管HBM市场长期前景仍然强劲（预计从2025年50亿增至2028年000亿），但市场担忧增长预期已被充分定价。供应瓶颈持续（TSV、先进封装、客户认证）。关注：HBM出货指引、HBM4/HBM4E认证进展、毛利率、资本支出、英伟达及超大规模数据中心需求。"
+  },
+  {
+    "id": "samsung-sk-hynix-capacity-expansion-2026-07-14",
+    "date": "2026-07-14",
+    "title": "三星和SK海力士扩大HBM产能以满足AI需求",
+    "source": "Data Center Dynamics",
+    "url": "https://www.datacenterdynamics.com/en/news/samsung-and-sk-hynix-to-scale-up-memory-production-capacity-in-2026-to-meet-ai-demand/",
+    "product": "HBM, DRAM",
+    "impact": "bullish",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "summary": "三星和SK海力士扩大HBM产能以满足AI需求。三星计划2026年将产能扩大约50%，P5工厂预计2028年投产；SK海力士将基础设施投资增加4倍以上，M15X工厂预计2027年中投产。行业存储和内存硬件短缺，产能紧张可能持续长达2年。SK海力士Q3 2025占据HBM市场53%份额，三星35%，美光11%。美光2025年12月宣布退出消费级内存和存储市场，转向AI数据中心客户。"
   }
 ]
