@@ -6455,6 +6455,131 @@
       "action": "watch",
       "review_date": "2026-07-22",
       "review_note": ""
+    },
+    {
+      "id": "hbm-outlook-2026-skhy-20260714",
+      "date": "2026-07-14",
+      "title": "HBM内存展望2026：SK海力士股价达173万韩元，AI芯片股重置",
+      "url": "https://www.benzinga.com/markets/26/07/45924397/hbm-memory-outlook-2026-sk-hynix-at-1-73m-as-ai-chip-stocks-reset",
+      "source": "Benzinga",
+      "source_tier": 2,
+      "region": "us",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "HBM内存市场展望2026，SK海力士股价达到173万韩元水平，AI芯片板块经历调整后重新定价。文章分析HBM供需格局及主要厂商动态。",
+      "impact": "neutral",
+      "impact_reason": "HBM市场展望为中性分析，AI芯片板块重置意味着多空因素交织，SK海力士股价已反映部分预期",
+      "reaction_type": "sentiment",
+      "reaction_reason": "市场展望类文章属于情绪催化剂，影响投资者预期但不直接改变供需基本面",
+      "pricing_status": "priced",
+      "pricing_reason": "SK海力士HBM领先地位和AI需求增长已被市场充分定价",
+      "horizon": "1w",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "HBM",
+        "DRAM",
+        "SK海力士",
+        "AI芯片",
+        "市场展望"
+      ]
+    },
+    {
+      "id": "samsung-skhy-capacity-expansion-20260714",
+      "date": "2026-07-14",
+      "title": "三星与SK海力士计划2026年扩大内存产能以满足AI需求",
+      "url": "https://en.yna.co.kr/view/AEN20260714003951320",
+      "source": "Yonhap News Agency",
+      "source_tier": 1,
+      "region": "korea",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "三星和SK海力士计划2026年扩大内存生产产能以满足AI需求增长。两大存储巨头加速扩产应对HBM和高端DRAM需求。",
+      "impact": "bullish",
+      "impact_reason": "存储巨头扩产计划确认AI需求持续强劲，HBM和高端DRAM供不应求格局延续，利好上游设备和材料厂商",
+      "reaction_type": "sentiment",
+      "reaction_reason": "扩产消息强化市场对AI存储需求高景气的预期，提振产业链情绪",
+      "pricing_status": "partial",
+      "pricing_reason": "AI需求增长已被部分定价，但扩产进度和良率提升的不确定性尚未完全反映",
+      "horizon": "1m",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "DRAM",
+        "NAND",
+        "三星",
+        "SK海力士",
+        "扩产",
+        "AI需求"
+      ]
+    },
+    {
+      "id": "four-memory-giants-comparison-20260715",
+      "date": "2026-07-15",
+      "title": "长鑫、SK海力士、三星与美光四大存储巨头的硬核对比",
+      "url": "https://finance.sina.com.cn/stock/t/2026-07-15/doc-inihvytp8004643.shtml",
+      "source": "新浪财经",
+      "source_tier": 2,
+      "region": "china",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "文章对比分析长鑫科技、SK海力士、三星电子和美光科技四大存储巨头在AI时代的技术路线、市场地位、产能布局和资本市场表现。长鑫科技7月16日启动科创板IPO申购；SK海力士独占全球58% HBM市场，毛利率79.3%；长鑫DRAM市占从3%升至8%。",
+      "impact": "bullish",
+      "impact_reason": "四大巨头对比凸显AI存储需求结构性增长，SK海力士HBM垄断地位稳固，长鑫科技国产替代加速，整体利好存储产业链",
+      "reaction_type": "sentiment",
+      "reaction_reason": "深度对比分析强化市场对存储行业格局的认知，长鑫IPO和SK海力士美股上市提升板块关注度",
+      "pricing_status": "partial",
+      "pricing_reason": "行业格局和AI增长已被部分定价，但长鑫上市后表现和HBM4技术迭代仍存预期差",
+      "horizon": "1m",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "DRAM",
+        "HBM",
+        "NAND",
+        "长鑫科技",
+        "SK海力士",
+        "三星",
+        "美光",
+        "IPO"
+      ]
+    },
+    {
+      "id": "skhy-premarket-down-5pct-20260715",
+      "date": "2026-07-15",
+      "title": "SK海力士美股盘前下跌5%，美光科技、闪迪上涨0.5%",
+      "url": "https://www.cls.cn/detail/2427179",
+      "source": "财联社",
+      "source_tier": 2,
+      "region": "china",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "summary": "SK海力士美股盘前交易中下跌5%，而美光科技和闪迪上涨0.5%，存储芯片板块出现分化走势。",
+      "impact": "bearish",
+      "impact_reason": "SK海力士盘前大跌5%可能反映获利了结或市场对HBM估值过高的担忧，板块内部分化显示资金轮动",
+      "reaction_type": "instant",
+      "reaction_reason": "盘前价格异动属于即时市场反应，可能引发跟风交易和短线波动",
+      "pricing_status": "priced",
+      "pricing_reason": "SK海力士前期涨幅巨大，当前估值已充分反映HBM增长预期，短期回调压力显现",
+      "horizon": "1d",
+      "confidence": "medium",
+      "action": "alert",
+      "tags": [
+        "HBM",
+        "DRAM",
+        "SK海力士",
+        "美光",
+        "盘前",
+        "股价波动"
+      ]
     }
   ]
 }
