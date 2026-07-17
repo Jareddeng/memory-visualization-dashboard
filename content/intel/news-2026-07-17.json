@@ -1,0 +1,357 @@
+{
+  "records": [
+    {
+      "id": "skhynix-memory-service-20260717",
+      "date": "2026-07-17",
+      "title": "SK集团会长提出SK海力士'存储即服务'新模式",
+      "url": "https://www.digitimes.com/news/a20260717VL202/sk-hynix-memory-service-business.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "korea",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "HBM / DRAM",
+      "summary": "SK集团会长崔泰源提出SK海力士应从单纯的存储芯片销售商转型为'存储即服务'(Memory as a Service, MaaS)提供商。这一模式意味着客户不再购买芯片本身，而是按使用付费获取存储算力服务，类似于云计算的订阅模式。此举将改变存储行业的商业模式，从一次性硬件销售转向持续性服务收入，有助于平滑收入波动并锁定长期客户关系。",
+      "impact": "bullish",
+      "impact_reason": "MaaS模式若成功实施，将提升SK海力士的定价能力和客户粘性，创造更稳定的经常性收入流，改变存储行业传统的周期性盈利特征",
+      "reaction_type": "sentiment",
+      "reaction_reason": "商业模式创新属于长期战略概念，短期内对财务影响有限，但将提振市场对SK海力士估值溢价的预期",
+      "pricing_status": "unpriced",
+      "pricing_reason": "MaaS模式尚处于概念阶段，距离实际落地和贡献收入仍有较长时间，当前股价中未包含此商业模式转型的溢价",
+      "horizon": "longer",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "SK海力士",
+        "存储即服务",
+        "MaaS",
+        "商业模式创新",
+        "DRAM",
+        "HBM"
+      ]
+    },
+    {
+      "id": "skhynix-outside-investors-bill-20260717",
+      "date": "2026-07-17",
+      "title": "韩国拟修法允许SK海力士引入外部投资者建设新晶圆厂",
+      "url": "https://www.digitimes.com/news/a20260717VL203/sk-hynix-fab-investment-korea.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "korea",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "DRAM / HBM / 晶圆厂",
+      "summary": "韩国国会正在审议一项法案，可能允许SK海力士在新晶圆厂建设项目中引入外部投资者。当前韩国法律对半导体企业的外资持股比例和 fab 投资结构有严格限制。若法案通过，SK海力士将能够以更灵活的资本结构为龙仁半导体集群等大规模扩建项目融资，减轻自有资本压力并加速产能扩张。",
+      "impact": "bullish",
+      "impact_reason": "放宽投资限制将加速SK海力士的产能扩张计划，特别是龙仁Y1工厂的设备和产线建设，巩固其在HBM和先进DRAM领域的领先地位",
+      "reaction_type": "undervalued",
+      "reaction_reason": "市场尚未充分定价SK海力士龙仁工厂的扩产加速可能性，若法案通过将实质性提升2027-2028年的产能释放预期",
+      "pricing_status": "partial",
+      "pricing_reason": "龙仁工厂扩产计划已被部分市场预期，但引入外部投资者的灵活融资结构尚未被市场充分认知",
+      "horizon": "1m",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "SK海力士",
+        "龙仁",
+        "晶圆厂",
+        "韩国政策",
+        "外资投资",
+        "DRAM扩产"
+      ]
+    },
+    {
+      "id": "cxmt-engineer-profile-20260717",
+      "date": "2026-07-17",
+      "title": "揭秘长鑫科技低调核心工程师：中国DRAM崛起背后的关键人物",
+      "url": "https://www.digitimes.com/news/a20260717VL204/cxmt-dram-engineer-china.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "china",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "DRAM",
+      "summary": "DIGITIMES深度分析长鑫科技(CXMT)背后的核心工程师团队。报道揭示了一位低调但关键的技术负责人如何将CXMT从初创公司打造成为全球第四大DRAM制造商。CXMT通过吸引来自美光、三星等国际大厂的技术人才，快速缩短了与行业龙头的技术差距。其LPDDR5X产品已在中国市场获得超过30%的安卓手机份额。",
+      "impact": "neutral",
+      "impact_reason": "人才流动和团队建设是半导体公司长期竞争力的基础，但单一人物的分析对市场供需和价格的直接影响有限",
+      "reaction_type": "archive",
+      "reaction_reason": "属于人物侧写类报道，更多是行业认知层面的补充信息，不构成投资决策的直接催化剂",
+      "pricing_status": "priced",
+      "pricing_reason": "CXMT的技术追赶和人才策略已被市场充分认知，其IPO和产能扩张计划已是公开信息",
+      "horizon": "longer",
+      "confidence": "medium",
+      "action": "archive",
+      "tags": [
+        "长鑫科技",
+        "CXMT",
+        "DRAM",
+        "人才",
+        "国产替代",
+        "中国半导体"
+      ]
+    },
+    {
+      "id": "hanmi-hanwha-hbm-patent-20260716",
+      "date": "2026-07-16",
+      "title": "韩美半导体与韩华就HBM热压键合设备专利对簿公堂",
+      "url": "https://www.digitimes.com/news/a20260716VL205/hanmi-hanwha-hbm-patent.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "korea",
+      "sectors": [
+        "semiconductor",
+        "equipment"
+      ],
+      "product": "HBM / TC键合机 / 半导体设备",
+      "summary": "韩美半导体(Hanmi)与韩华(Hanwha)就HBM制造关键设备——热压键合机(Thermal Compression Bonder, TCB)的专利技术在法庭上展开激烈交锋。TCB是HBM堆叠封装的核心设备，随着HBM4向12层及以上堆叠发展，TCB的技术门槛和专利价值急剧上升。这场诉讼可能重塑HBM设备供应链格局。",
+      "impact": "bearish",
+      "impact_reason": "专利诉讼可能导致HBM设备供应短期受限，增加SK海力士、三星等HBM制造商的设备采购成本和交付不确定性",
+      "reaction_type": "instant",
+      "reaction_reason": "设备供应链的任何中断都可能影响HBM扩产进度，进而加剧本已紧张的供需矛盾，推高HBM价格",
+      "pricing_status": "partial",
+      "pricing_reason": "HBM设备供应紧张已被部分定价，但专利诉讼带来的额外不确定性尚未完全反映在市场预期中",
+      "horizon": "1w",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "HBM",
+        "TC键合机",
+        "韩美半导体",
+        "韩华",
+        "专利诉讼",
+        "半导体设备"
+      ]
+    },
+    {
+      "id": "cxmt-rd-spending-20260716",
+      "date": "2026-07-16",
+      "title": "长鑫科技IPO文件显示其研发投入占比超越所有全球同行",
+      "url": "https://www.digitimes.com/news/a20260716VL206/cxmt-rd-spending-ipo.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "china",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "DRAM / HBM",
+      "summary": "长鑫科技(CXMT)的IPO招股书披露，其研发投入占营收比例超过三星、SK海力士和美光等所有全球主要竞争对手。2026年上半年，CXMT营收预计达1100-1200亿元人民币，同比增长超600%，净利润500-570亿元。公司正将约20%的DRAM产能转向HBM生产，计划明年量产12层HBM。",
+      "impact": "bullish",
+      "impact_reason": "高研发投入表明CXMT正全力追赶HBM技术，长期将加剧全球HBM市场竞争，但短期对现有三巨头的价格体系形成压力",
+      "reaction_type": "undervalued",
+      "reaction_reason": "市场对CXMT技术追赶速度可能存在低估，其HBM量产进度若超预期将改变全球HBM供应格局",
+      "pricing_status": "partial",
+      "pricing_reason": "CXMT的产能扩张计划已被部分定价，但HBM技术突破和良率提升的不确定性意味着实际竞争影响仍待观察",
+      "horizon": "1q",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "tags": [
+        "长鑫科技",
+        "CXMT",
+        "研发投入",
+        "HBM",
+        "DRAM",
+        "IPO"
+      ]
+    },
+    {
+      "id": "cxmt-talent-micron-samsung-20260716",
+      "date": "2026-07-16",
+      "title": "长鑫科技IPO披露：美光与三星前员工构成中国DRAM突围核心力量",
+      "url": "https://www.digitimes.com/news/a20260716VL207/cxmt-ipo-talent-micron-samsung.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "china",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "DRAM",
+      "summary": "CXMT的IPO文件显示，公司核心技术团队大量引进自美光和三星的存储芯片专家。这些人才的加入帮助CXMT在不到十年内实现了从0到全球DRAM市场8%份额的突破。报道指出，这一人才流动模式正引起美国监管机构的关注，可能成为未来中美半导体摩擦的新焦点。",
+      "impact": "neutral",
+      "impact_reason": "人才流动是半导体行业常态，虽然CXMT的快速崛起得益于国际人才引进，但地缘政治风险可能加剧",
+      "reaction_type": "archive",
+      "reaction_reason": "属于行业背景信息类报道，不构成即时的市场催化剂",
+      "pricing_status": "priced",
+      "pricing_reason": "CXMT的技术来源和团队构成已是市场已知信息",
+      "horizon": "longer",
+      "confidence": "medium",
+      "action": "archive",
+      "tags": [
+        "长鑫科技",
+        "CXMT",
+        "美光",
+        "三星",
+        "人才流动",
+        "DRAM"
+      ]
+    },
+    {
+      "id": "korea-raid-rambus-montage-renesas-20260716",
+      "date": "2026-07-16",
+      "title": "韩国检方突袭Rambus、澜起科技和瑞萨电子，内存接口芯片调查走向国际化",
+      "url": "https://www.digitimes.com/news/a20260716VL208/rambus-montage-renesas-raid.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "global",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "内存接口芯片 / DDR5 / HBM",
+      "summary": "韩国检方对Rambus、澜起科技(Montage Technology)和瑞萨电子(Renesas)的办公室展开突击搜查，调查涉嫌窃取韩国企业内存接口芯片技术的行为。内存接口芯片是连接DRAM与CPU/GPU的关键组件，随着DDR5和HBM的普及，这一领域的技术价值急剧上升。此次跨国调查涉及美国、中国和日本的企业，标志着内存技术知识产权争端升级。",
+      "impact": "bearish",
+      "impact_reason": "内存接口芯片供应链若因调查出现中断，可能影响DDR5和HBM模组的生产交付，加剧存储芯片供应紧张",
+      "reaction_type": "instant",
+      "reaction_reason": "跨国知识产权调查具有高度不确定性，可能引发相关公司的产品禁售或技术授权限制，短期内冲击供应链稳定性",
+      "pricing_status": "unpriced",
+      "pricing_reason": "此次突袭调查是突发新闻，市场对内存接口芯片供应链受影响的预期尚未形成",
+      "horizon": "1w",
+      "confidence": "medium",
+      "action": "alert",
+      "tags": [
+        "内存接口芯片",
+        "Rambus",
+        "澜起科技",
+        "瑞萨",
+        "知识产权",
+        "DDR5",
+        "HBM"
+      ]
+    },
+    {
+      "id": "samsung-hbm4-no-nvidia-order-20260715",
+      "date": "2026-07-15",
+      "title": "消息称三星尚未获得英伟达HBM4量产订单",
+      "url": "https://www.digitimes.com/news/a20260715VL209/samsung-hbm4-nvidia-order.html",
+      "source": "DIGITIMES/DealSite",
+      "source_tier": 2,
+      "region": "korea",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "HBM4",
+      "summary": "据DealSite报道，尽管三星电子的HBM4芯片已通过英伟达的质量认证测试，但截至目前尚未获得英伟达的量产订单。三星此前计划在2026年第二季度向英伟达供应HBM4，用于其Vera Rubin AI加速器平台。这一延迟可能意味着SK海力士将继续在HBM4供应上保持主导地位。",
+      "impact": "bullish",
+      "impact_reason": "三星HBM4量产订单延迟意味着SK海力士的HBM4市场份额将比预期更高，进一步强化其在AI存储领域的垄断地位",
+      "reaction_type": "instant",
+      "reaction_reason": "英伟达HBM4供应商格局直接影响三家存储巨头的收入预期，三星的延迟是SK海力士和美光的直接利好",
+      "pricing_status": "partial",
+      "pricing_reason": "市场已知三星HBM3E认证落后于竞争对手，但HBM4的量产订单延迟可能超出部分投资者的预期",
+      "horizon": "1d",
+      "confidence": "medium",
+      "action": "alert",
+      "tags": [
+        "三星",
+        "HBM4",
+        "英伟达",
+        "SK海力士",
+        "AI加速器",
+        "Vera Rubin"
+      ]
+    },
+    {
+      "id": "skhynix-yongin-equipment-20260715",
+      "date": "2026-07-15",
+      "title": "SK海力士开始为龙仁Y1工厂订购设备，计划月产2万片晶圆",
+      "url": "https://www.digitimes.com/news/a20260715VL217/sk-hynix-equipment-fab-dram-cleanroom.html",
+      "source": "DIGITIMES/ZDNet",
+      "source_tier": 2,
+      "region": "korea",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "DRAM / HBM / 1c DRAM",
+      "summary": "据ZDNet报道，SK海力士已开始向主要供应商订购先进DRAM制造设备，用于龙仁Y1工厂的第一阶段建设。初始产能目标为每月2万片晶圆，采用第六代10纳米级(1c)DRAM工艺。试产线预计2027年2月动工，3-4月开始全面设备安装。龙仁半导体集群总投资达600万亿韩元，包含4座晶圆厂，第四座工厂原计划2045年完工，现已提前至2033年。",
+      "impact": "bullish",
+      "impact_reason": "SK海力士加速龙仁工厂设备采购表明其对未来AI存储需求的强烈信心，新增产能将直接贡献2027-2028年的HBM和DRAM供应",
+      "reaction_type": "undervalued",
+      "reaction_reason": "龙仁工厂的扩产进度若持续加速，将显著提升SK海力士的长期盈利预期，但当前市场估值可能未充分反映这一增长潜力",
+      "pricing_status": "partial",
+      "pricing_reason": "SK海力士的扩产计划已被部分市场预期，但设备订单的实际落地和产能爬坡速度仍存在不确定性",
+      "horizon": "1m",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "tags": [
+        "SK海力士",
+        "龙仁",
+        "晶圆厂",
+        "1c DRAM",
+        "HBM",
+        "设备订单"
+      ]
+    },
+    {
+      "id": "samsung-sk-hynix-nand-designer-20260715",
+      "date": "2026-07-15",
+      "title": "韩国法院禁止前三星NAND设计师跳槽SK海力士",
+      "url": "https://www.digitimes.com/news/a20260715VL210/samsung-sk-hynix-nand-designer.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "korea",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "NAND Flash",
+      "summary": "韩国法院发布禁令，禁止前三星电子NAND闪存设计师加入SK海力士工作。法院认定这些设计师掌握三星NAND核心技术和商业秘密，跳槽至竞争对手将造成不可弥补的损害。此案是三星与SK海力士之间持续人才争夺战的最新升级，反映出韩国存储双雄在NAND领域的技术竞争日趋白热化。",
+      "impact": "neutral",
+      "impact_reason": "禁令仅涉及少数几名设计师，对两家公司的整体NAND产能和技术路线影响有限",
+      "reaction_type": "archive",
+      "reaction_reason": "属于知识产权保护的常规司法程序，不构成影响市场供需的重大催化剂",
+      "pricing_status": "priced",
+      "pricing_reason": "三星与SK海力士的人才竞争已是长期存在的行业现象",
+      "horizon": "1w",
+      "confidence": "medium",
+      "action": "archive",
+      "tags": [
+        "三星",
+        "SK海力士",
+        "NAND",
+        "人才禁令",
+        "商业秘密"
+      ]
+    },
+    {
+      "id": "cxmt-ipo-hbm-challenge-20260715",
+      "date": "2026-07-15",
+      "title": "长鑫科技43亿美元IPO助力中国挑战全球HBM巨头",
+      "url": "https://www.digitimes.com/news/a20260715VL211/cxmt-ipo-china-hbm.html",
+      "source": "DIGITIMES",
+      "source_tier": 2,
+      "region": "china",
+      "sectors": [
+        "semiconductor",
+        "memory"
+      ],
+      "product": "DRAM / HBM",
+      "summary": "长鑫科技(CXMT)正式启动科创板IPO，拟募资295亿元人民币(约43亿美元)，有望成为科创板历史上第二大IPO。募资的69.5%(205亿元)将用于晶圆量产线技术升级和DRAM技术迭代，30.5%(90亿元)用于前瞻性DRAM研发。CXMT的全球DRAM市场份额从2024年Q2的4%攀升至2026年Q1的8%，LPDDR产品已占据中国安卓手机30%以上份额。",
+      "impact": "bearish",
+      "impact_reason": "CXMT的大规模募资和产能扩张将长期增加全球DRAM供给，对三星、SK海力士和美光的定价权构成挑战",
+      "reaction_type": "undervalued",
+      "reaction_reason": "市场可能低估了CXMT IPO后的扩产速度和价格竞争压力，特别是其LPDDR和DDR产品已接近国际竞品定价",
+      "pricing_status": "partial",
+      "pricing_reason": "CXMT的崛起已被部分市场预期，但其IPO募资后的实际扩产节奏和技术突破仍存在不确定性",
+      "horizon": "1q",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "tags": [
+        "长鑫科技",
+        "CXMT",
+        "IPO",
+        "科创板",
+        "HBM",
+        "DRAM",
+        "国产替代"
+      ]
+    }
+  ]
+}
