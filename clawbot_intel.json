@@ -612,5 +612,23 @@
     "confidence": "high",
     "action": "deep_tracking",
     "product": "存储模组、闪存主控芯片、SSD、DRAM模组"
+  },
+  {
+    "date": "2026-07-17",
+    "source": "CNBC / DealCan",
+    "url": "https://dealcan.ca/article/019f7a44-03b0-4646-aa57-345e3655b376",
+    "headline_en": "Global chip stocks plunge: AI valuation panic triggers semiconductor sell-off, Japan and South Korea markets hit hard",
+    "headline_zh": "全球芯片股暴跌：AI估值恐慌引发半导体大抛售，日韩股市遭重创",
+    "impact": "bearish",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1d",
+    "confidence": "high",
+    "action": "alert",
+    "product": "DRAM, NAND, HBM, SSD, 存储芯片",
+    "summary_en": "July 16-17: Global semiconductor stocks crashed on AI valuation fears. SK Hynix plunged 11.53%, KOSPI fell over 6% into bear market. Nikkei 225 dropped over 5%. Triggered by CXMT IPO concerns. SanDisk -12%, Micron -5%, WDC -9%.",
+    "summary_zh": "7月16-17日，全球半导体股票遭遇猛烈抛售，市场对AI硬件高估值的疑虑集中爆发。SK海力士暴跌11.53%，创年内最大单日跌幅；韩国KOSPI暴跌超6%坠入熊市；日经225重挫超5%。导火索是中国存储芯片厂商长鑫存储（CXMT）即将以86亿美元估值IPO的消息，令投资者担忧全球存储芯片市场供应格局将发生剧变。SanDisk跌超12%，美光跌超5%，西部数据跌超9%。",
+    "id": "news-20260718122013",
+    "created_at": "2026-07-18T12:20:13.536001"
   }
 ]
