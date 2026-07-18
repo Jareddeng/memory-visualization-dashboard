@@ -630,5 +630,23 @@
     "summary_zh": "7月16-17日，全球半导体股票遭遇猛烈抛售，市场对AI硬件高估值的疑虑集中爆发。SK海力士暴跌11.53%，创年内最大单日跌幅；韩国KOSPI暴跌超6%坠入熊市；日经225重挫超5%。导火索是中国存储芯片厂商长鑫存储（CXMT）即将以86亿美元估值IPO的消息，令投资者担忧全球存储芯片市场供应格局将发生剧变。SanDisk跌超12%，美光跌超5%，西部数据跌超9%。",
     "id": "news-20260718122013",
     "created_at": "2026-07-18T12:20:13.536001"
+  },
+  {
+    "date": "2026-07-17",
+    "source": "KED Global",
+    "url": "https://www.kedglobal.com/automobiles/newsView/ked202607170001",
+    "headline_en": "Micron inks long-term automotive AI chip supply deals with Qualcomm, Hyundai Mobis, Samsung's Harman",
+    "headline_zh": "美光与高通、现代摩比斯、三星哈曼签署长期汽车AI芯片供应协议",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "priced",
+    "horizon": "1q",
+    "confidence": "medium",
+    "action": "watch",
+    "product": "DRAM, NAND, automotive memory, storage",
+    "summary_en": "Micron Technology signed strategic customer agreements (SCAs) with Qualcomm, Hyundai Mobis, Samsung's Harman, Visteon, Denso, Joynext and Astemo to supply automotive AI memory and storage chips over a 3-5 year period. The deals cover infotainment, ADAS and digital cockpit platforms for AI-enabled vehicles, providing supply visibility amid surging AI-driven memory demand.",
+    "summary_zh": "美光科技与高通、现代摩比斯、三星哈曼、伟世通、电装、Joynext及Astemo签署战略客户协议(SCA)，将在3-5年内供应汽车AI内存和存储芯片。协议涵盖AI智能车的信息娱乐、高级驾驶辅助系统(ADAS)和数字座舱平台，在AI驱动的内存需求激增背景下提供供应保障。",
+    "id": "news-20260717-0001",
+    "created_at": "2026-07-18T07:14:00.000000"
   }
 ]
