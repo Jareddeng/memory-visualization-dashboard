@@ -223,5 +223,21 @@
     "action": "watch",
     "id": "news-2026-07-17-6",
     "status": "pending"
+  },
+  {
+    "source": "koreatimes.co.kr",
+    "date": "2026-07-19",
+    "url": "https://www.koreatimes.co.kr/www/tech/2026/07/133_404371.html",
+    "title": "SK Hynix CEO expects bigger Q2 profit as HBM4 begins mass production",
+    "title_zh": "SK海力士CEO预计Q2利润环比增长，HBM4本季开始量产",
+    "summary": "SK Hynix CEO Kwak Noh-jung said the company is expected to log a bigger operating profit in Q2 than the previous quarter, as HBM4 products begin mass production this quarter.",
+    "summary_zh": "SK海力士CEO郭鲁正表示，公司第二季度营业利润预计将高于上一季度，随着HBM4产品在本季度开始大规模生产，业绩有望进一步提升。",
+    "product": "HBM4, DRAM, 存储芯片",
+    "impact": "bullish",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1d",
+    "confidence": "medium",
+    "action": "alert"
   }
 ]
