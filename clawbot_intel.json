@@ -208,5 +208,20 @@
     "action": "deep_tracking",
     "id": "news-2026-07-16-14",
     "status": "pending"
+  },
+  {
+    "url": "https://www.datacenterdynamics.com/en/news/samsung-and-sk-hynix-to-scale-up-memory-production-capacity-in-2026-to-meet-ai-demand/",
+    "date": "2026-07-17",
+    "source": "Data Center Dynamics",
+    "summary": "存储芯片制造商三星和SK海力士正在扩大高带宽内存(HBM)的生产，以满足AI客户不断增长的需求。三星计划在2026年将其HBM生产能力扩大约50%，而SK海力士已宣布计划将其基础设施投资增加超过之前宣布金额的四倍。两家公司正在韩国建设新工厂以支持这些计划。此前，三星和SK海力士与OpenAI签署了意向书，每月供应90万片DRAM晶圆以满足其Stargate项目的内存需求。同月，三星表示正在与Nvidia就供应下一代HBM4芯片进行密切讨论。SK海力士在2025年第三季度持有53%的HBM市场份额，三星为35%。",
+    "product": "HBM, DRAM, 内存晶圆",
+    "impact": "bullish",
+    "reaction_type": "undervalued",
+    "pricing_status": "partial",
+    "horizon": "1w",
+    "confidence": "medium",
+    "action": "watch",
+    "id": "news-2026-07-17-6",
+    "status": "pending"
   }
 ]
