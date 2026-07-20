@@ -359,5 +359,31 @@
     "action": "watch",
     "id": "news-2026-07-20-2",
     "status": "pending"
+  },
+  {
+    "title": "存储芯片价格暴涨，TCL中环拟投超百亿元建半导体大硅片项目，长鑫科技IPO募资579亿元",
+    "date": "2026-07-20",
+    "url": "https://m.gelonghui.com/p/5633827",
+    "product": "DRAM, NAND, 半导体硅片, 存储芯片",
+    "summary": "格隆汇7月20日早盘综合报告指出，半导体行业存储芯片价格暴涨，上游材料、晶圆代工、封装等环节普遍涨价。TCL中环拟投资超百亿元建设集成电路用半导体大硅片项目。长鑫科技科创板IPO中签结果于7月19日公布，发行价8.66元，募资约579亿元，为科创板史上最大IPO。",
+    "impact": "neutral",
+    "reaction_type": "sentiment",
+    "pricing_status": "unpriced",
+    "horizon": "1w",
+    "confidence": "medium",
+    "action": "watch"
+  },
+  {
+    "title": "美股半导体指数跌入技术性熊市，SK海力士两日暴跌20%后反弹",
+    "date": "2026-07-20",
+    "url": "https://wallstreetcn.com/articles/3777272",
+    "product": "HBM, DRAM, 半导体股票",
+    "summary": "华尔街见闻7月20日财经早餐报道，上周五（7月17日）美股芯片股拖垮大盘，费城半导体指数跌入技术性熊市（较高点回撤20%），全周跌近10%。此前两日跌超20%的SK海力士收涨逾1%。半导体板块遭遇\"史上最大动量抛售之一\"，主因对冲基金集中平仓\"做多半导体、做空云计算商\"配对交易，叠加台积电资本开支预警引发过度投资忧虑。",
+    "impact": "bearish",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1d",
+    "confidence": "high",
+    "action": "alert"
   }
 ]
