@@ -329,5 +329,35 @@
     "confidence": "medium",
     "action": "watch",
     "status": "pending"
+  },
+  {
+    "url": "https://www.digitimes.com/news/a20260720VL204/cxmt-dram-ipo-capacity.html",
+    "date": "2026-07-20",
+    "source": "DIGITIMES",
+    "summary": "中国DRAM制造商长鑫存储(CXMT)在7月16日A股申购后，正加速其制造网络的建设和技术升级，目标是月产能达到35万片。这一动作使其产能扩张和下一代内存路线图受到业界更密切的关注。\n- **impact**: bullish\n- **reaction_type**: sentiment\n- **pricing_status**: unpriced\n- **horizon**: 1m\n- **confidence**: medium\n- **action**: watch",
+    "product": "DRAM, 内存晶圆",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "unpriced",
+    "horizon": "1m",
+    "confidence": "medium",
+    "action": "watch",
+    "id": "news-2026-07-20-1",
+    "status": "pending"
+  },
+  {
+    "url": "https://www.digitimes.com/news/a20260720VL205/micron-globalwafers-wafer-supply.html",
+    "date": "2026-07-20",
+    "source": "DIGITIMES",
+    "summary": "美光科技与GlobalWafers宣布签署一项为期10年的硅晶圆供应协议，美光还提供5亿美元战略资金支持。这是GlobalWafers历史上最长、可能也是最大的长期供应协议。AI数据中心和HBM需求增长正将半导体竞争推向硅晶圆和关键材料的上游领域。\n- **impact**: bullish\n- **reaction_type**: sentiment\n- **pricing_status**: partial\n- **horizon**: 1m\n- **confidence**: medium\n- **action**: watch",
+    "product": "硅晶圆, HBM, DRAM",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "partial",
+    "horizon": "1m",
+    "confidence": "medium",
+    "action": "watch",
+    "id": "news-2026-07-20-2",
+    "status": "pending"
   }
 ]
