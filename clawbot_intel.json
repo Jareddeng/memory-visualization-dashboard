@@ -388,5 +388,71 @@
     "confidence": "high",
     "action": "deep_tracking",
     "summary": "三星和SK海力士扩大HBM产能以满足AI需求。三星计划2026年将产能扩大约50%，P5工厂预计2028年投产；SK海力士将基础设施投资增加4倍以上，M15X工厂预计2027年中投产。行业存储和内存硬件短缺，产能紧张可能持续长达2年。SK海力士Q3 2025占据HBM市场53%份额，三星35%，美光11%。美光2025年12月宣布退出消费级内存和存储市场，转向AI数据中心客户。"
+  },
+  {
+    "id": "news-20260720-0001",
+    "date": "2026-07-20",
+    "source": "OriginBrief / AnySilicon",
+    "headline": "Q3 2026服务器DRAM价格预计上涨18%，AI服务器需求驱动内存市场趋紧",
+    "summary": "据AnySilicon 7月17日报道，2026年第三季度服务器DRAM价格预计将上涨18%。这一价格信号与SEMI创纪录的设备投资预测和全球销售额连续增长相呼应，表明内存市场正在趋紧——AI服务器建设需求在短期内超过了供应增量。18%的季度涨幅将直接影响AI加速器系统和数据中心运营商的物料成本。",
+    "product": "DRAM, server memory",
+    "impact": "bullish",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "confidence": "medium",
+    "action": "alert",
+    "tags": [
+      "DRAM",
+      "server memory",
+      "AI server",
+      "price increase",
+      "Q3 2026"
+    ],
+    "url": "https://www.originbrief.app/en/reports/semiconductor-chip-industry/2026-07-20/weekly"
+  },
+  {
+    "id": "news-20260720-0002",
+    "date": "2026-07-20",
+    "source": "OriginBrief / SEMI",
+    "headline": "SEMI预测2028年全球半导体设备销售额将达创纪录2290亿美元，2026年存储设备投资超500亿美元",
+    "summary": "SEMI于7月14日发布报告，预测2028年全球半导体设备销售额将达创纪录的2290亿美元。2026年第一季度设备账单同比增长14%，预计2026年300mm存储设备投资将超过500亿美元。ESD联盟报告电子系统设计行业2026年第一季度收入达57亿美元，EDA/SIP收入增长12.7%，亚太地区引领复苏。",
+    "product": "semiconductor equipment, memory equipment, HBM",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "unpriced",
+    "horizon": "1q",
+    "confidence": "high",
+    "action": "watch",
+    "tags": [
+      "SEMI",
+      "semiconductor equipment",
+      "memory equipment",
+      "HBM",
+      "investment"
+    ],
+    "url": "https://www.originbrief.app/en/reports/semiconductor-chip-industry/2026-07-20/weekly"
+  },
+  {
+    "id": "news-20260720-0003",
+    "date": "2026-07-20",
+    "source": "OriginBrief / JEDEC",
+    "headline": "JEDEC发布SPHBM4新标准，支持有机基板实现HBM4级带宽",
+    "summary": "JEDEC于7月13日发布新的SPHBM4标准，使HBM4级带宽能够在有机基板上实现。有机基板比硅中介层更便宜，正式标准将加速多供应商采用——可能扩大HBM级存储接口的供应商基础，超越当前领导者。同时JEDEC还发布了新的SiC指南和DDR5 MRDIMM生态系统扩展路线图。",
+    "product": "HBM4, memory, advanced packaging",
+    "impact": "bullish",
+    "reaction_type": "undervalued",
+    "pricing_status": "unpriced",
+    "horizon": "1m",
+    "confidence": "medium",
+    "action": "deep_tracking",
+    "tags": [
+      "JEDEC",
+      "HBM4",
+      "organic substrate",
+      "memory standard",
+      "advanced packaging"
+    ],
+    "url": "https://www.originbrief.app/en/reports/semiconductor-chip-industry/2026-07-20/weekly"
   }
 ]
