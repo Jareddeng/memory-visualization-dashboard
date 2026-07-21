@@ -1,0 +1,48 @@
+{
+  "records": [
+    {
+      "id": "micron-stock-drop-ai-concern-20260720",
+      "date": "2026-07-20",
+      "title": "美光科技股价下跌13%，市场聚焦AI投资前景",
+      "url": "https://ts2.tech/en/micron-technology-nasdaqmu-falls-13-as-market-focuses-on-ai-investment-prospects/",
+      "source": "TS2.tech",
+      "source_tier": 3,
+      "region": "usa",
+      "sectors": ["semiconductor", "memory"],
+      "product": "DRAM / HBM / NAND / 存储芯片",
+      "summary": "美光科技股价过去一周下跌13%，周五收于848.95美元。数据中心部门占营收61%，汽车及嵌入式业务占11%。Alphabet和英特尔本周财报将衡量AI需求强度。芯片板块情绪低迷（'芯片疲劳'），SOX指数较6月22日历史高点下跌20.2%。美光与高通及汽车供应商达成长期协议。Q4营收预计500亿美元，毛利率约86%。",
+      "impact": "bearish",
+      "impact_reason": "美光股价大幅下跌13%，反映市场对AI投资增速的担忧，芯片板块整体情绪低迷",
+      "reaction_type": "instant",
+      "reaction_reason": "股价即时反应市场对AI资本支出放缓的担忧，属于即时价格波动",
+      "pricing_status": "partial",
+      "pricing_reason": "股价已部分反映AI需求不确定性，但Q4强劲指引（86%毛利率）提供一定支撑",
+      "horizon": "1w",
+      "confidence": "high",
+      "action": "watch",
+      "tags": ["美光", "MU", "DRAM", "HBM", "AI投资", "芯片板块", "存储芯片"]
+    },
+    {
+      "id": "skhynix-outlook-2026-hbm4-analysis-20260718",
+      "date": "2026-07-18",
+      "title": "SK海力士2026年股价展望：HBM4增长、竞争与关键风险分析",
+      "url": "https://koreastockai.com/sk-hynix-stock-outlook/",
+      "source": "Korea Stock AI",
+      "source_tier": 3,
+      "region": "korea",
+      "sectors": ["semiconductor", "memory"],
+      "product": "HBM / HBM4 / HBM4E / DRAM / NAND / 存储芯片",
+      "summary": "SK海力士2026年核心投资要点是HBM4量产扩大和AI服务器内存需求。2025年营收97.1万亿韩元，营业利润47.2万亿韩元。2026年Q1营收52.6万亿韩元，营业利润37.6万亿韩元，创新高。HBM4于2025年9月开发完成，带宽翻倍，功耗效率提升40%以上。HBM4E 12层样品于2026年6月供应主要客户。竞争对手三星电子和美光也在加速HBM4供应。2026年SK海力士在美国ADS上市，发行约1779万股。面临风险：高市场预期、HBM价格下行、AI设备投资放缓、通用内存价格下跌。",
+      "impact": "neutral",
+      "impact_reason": "报告呈现平衡观点，既有HBM4增长潜力，也警示竞争加剧和市场预期过高的风险",
+      "reaction_type": "sentiment",
+      "reaction_reason": "属于分析展望类内容，影响市场情绪和估值预期，而非即时价格催化剂",
+      "pricing_status": "priced",
+      "pricing_reason": "SK海力士的高增长预期已充分反映在股价中，市场已定价HBM超级周期",
+      "horizon": "1q",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "tags": ["SK海力士", "HBM4", "HBM4E", "DRAM", "NAND", "AI内存", "存储芯片", "ADS上市"]
+    }
+  ]
+}
