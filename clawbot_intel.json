@@ -18,7 +18,7 @@
     "source": "koreatimes.co.kr",
     "date": "2026-07-19",
     "url": "https://www.koreatimes.co.kr/www/tech/2026/07/133_404371.html",
-    "title": "SK Hynix CEO expects bigger Q2 profit as HBM4 begins mass production",
+    "title": "SK海力士CEO预计HBM4量产后二季度利润将更高",
     "title_zh": "SK海力士CEO预计Q2利润环比增长，HBM4本季开始量产",
     "summary": "SK海力士CEO郭鲁正表示，随着HBM4产品在本季度开始量产，公司二季度营业利润预计将高于上季度。",
     "summary_zh": "SK海力士CEO郭鲁正表示，公司第二季度营业利润预计将高于上一季度，随着HBM4产品在本季度开始大规模生产，业绩有望进一步提升。",
@@ -251,7 +251,7 @@
     "date": "2026-07-20",
     "source": "OriginBrief / AnySilicon",
     "url": "https://www.originbrief.app/en/reports/semiconductor-chip-industry/2026-07-20/weekly",
-    "title": "韩国学者：内存应采用代工模式以解决AI推理瓶颈",
+    "title": "Q3 2026服务器DRAM价格预计上涨18%，AI服务器需求驱动内存市场趋紧",
     "summary": "据AnySilicon 7月17日报道，2026年第三季度服务器DRAM价格预计将上涨18%。这一价格信号与SEMI创纪录的设备投资预测和全球销售额连续增长相呼应，表明内存市场正在趋紧——AI服务器建设需求在短期内超过了供应增量。18%的季度涨幅将直接影响AI加速器系统和数据中心运营商的物料成本。",
     "product": "DRAM, server memory",
     "impact": "bullish",
@@ -291,7 +291,8 @@
       "半导体制造"
     ],
     "url": "https://www.digitimes.com/news/2026-07-22-sk-hynix-denies-intel-ohio-fab",
-    "status": "pending"
+    "status": "pending",
+    "title": "SK海力士否认收购英特尔俄亥俄工厂报道"
   },
   {
     "id": "news-20260722-0002",
@@ -313,7 +314,8 @@
       "内存价格"
     ],
     "url": "https://www.digitimes.com/news/2026-07-22-memory-price-surge-smartphone-shipments",
-    "status": "pending"
+    "status": "pending",
+    "title": "内存价格上涨可能减缓2026年智能手机出货下滑"
   },
   {
     "id": "news-20260721-0001",
@@ -335,7 +337,8 @@
       "内存模组"
     ],
     "url": "https://www.digitimes.com/news/2026-07-21-goldkey-loan-ai-server-memory",
-    "status": "pending"
+    "status": "pending",
+    "title": "Goldkey科技获36亿新台币贷款扩展AI服务器内存业务"
   },
   {
     "id": "news-20260721-0002",
@@ -358,7 +361,8 @@
       "内存控制器"
     ],
     "url": "https://www.digitimes.com/news/2026-07-21-samsung-sk-hynix-micron-cxl-controller",
-    "status": "pending"
+    "status": "pending",
+    "title": "三星、SK海力士、美光放缓CXL控制器自研计划"
   },
   {
     "id": "news-20260721-0003",
@@ -380,7 +384,8 @@
       "芯片通胀"
     ],
     "url": "https://www.digitimes.com/news/2026-07-21-phone-prices-surge-low-end-fade",
-    "status": "pending"
+    "status": "pending",
+    "title": "2026下半年手机价格将飙升，低端机型淡出"
   },
   {
     "id": "news-20260721-0004",
@@ -403,7 +408,8 @@
       "SK海力士"
     ],
     "url": "https://www.digitimes.com/news/2026-07-21-samsung-sk-hynix-prioritize-ddr5",
-    "status": "pending"
+    "status": "pending",
+    "title": "三星、SK海力士优先发展DDR5，利润率接近HBM水平"
   },
   {
     "id": "news-20260720-0001",
@@ -426,7 +432,8 @@
       "先进封装"
     ],
     "url": "https://www.digitimes.com/news/2026-07-20-hbm4-battle-cooling-hybrid-bonding",
-    "status": "pending"
+    "status": "pending",
+    "title": "HBM4竞争转向散热，混合键合进展延后"
   },
   {
     "id": "news-20260720-0002",
@@ -449,7 +456,8 @@
       "长鑫存储"
     ],
     "url": "https://www.digitimes.com/news/2026-07-20-memory-national-security-sk-chair",
-    "status": "pending"
+    "status": "pending",
+    "title": "存储芯片成为国家安全优先事项，SK会长警告"
   },
   {
     "id": "news-20260720-0003",
@@ -471,7 +479,8 @@
       "产能扩张"
     ],
     "url": "https://www.digitimes.com/news/2026-07-20-cxmt-ipo-dram-capacity-race",
-    "status": "pending"
+    "status": "pending",
+    "title": "长鑫存储40亿美元IPO推动DRAM产能竞赛至每月35万片"
   },
   {
     "id": "news-20260720-0004",
@@ -494,7 +503,8 @@
       "半导体材料"
     ],
     "url": "https://www.digitimes.com/news/2026-07-20-micron-globalwafers-10-year-deal",
-    "status": "pending"
+    "status": "pending",
+    "title": "美光与环球晶圆签署10年协议，12寸晶圆供应趋紧"
   },
   {
     "id": "intel-20260722-012",
@@ -594,7 +604,7 @@
   },
   {
     "id": "intel-20260722-018",
-    "title": "Samsung could overtake SK Hynix in the HBM market by 2027",
+    "title": "UBS：三星有望在2027年追平SK海力士HBM市场份额",
     "url": "https://www.digitimes.com/news/a20260721PD205.html",
     "date": "2026-07-22",
     "source": "DIGITIMES",
@@ -659,7 +669,7 @@
   },
   {
     "id": "intel-20260722-022",
-    "title": "HBM4 Price Forecasted to Rise to $4-5 per Gigabit in 2026 H2",
+    "title": "HBM4价格预计2026年下半年涨至每千兆位4-5美元",
     "url": "https://www.woofun.ai/en/flash/detail/31128",
     "date": "2026-07-22",
     "source": "woofun.ai",
@@ -692,7 +702,7 @@
   },
   {
     "id": "intel-20260722-024",
-    "title": "Samsung expands AI memory business with NVIDIA V-NAND supply",
+    "title": "三星扩大与英伟达NAND合作，月产能超10万片晶圆",
     "url": "https://www.digitimes.com/news/a20260720PD201.html",
     "date": "2026-07-22",
     "source": "DIGITIMES",
@@ -726,7 +736,7 @@
   {
     "id": "intel_20260723_082103_40",
     "date": "2026-07-22",
-    "title": "Chinese equipment makers win early production orders as TGV packaging moves beyond the lab",
+    "title": "TGV封装走出实验室，中国设备商获早期量产订单",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260722PD224/chinese-equipment-makers-tgv-packaging.html",
     "summary": "中国半导体设备供应商开始获得玻璃通孔（TGV）制造设备的量产订单，AI芯片先进封装正从实验室阶段进入商业量产。",
@@ -750,7 +760,7 @@
   {
     "id": "intel_20260723_082103_41",
     "date": "2026-07-22",
-    "title": "GigaDevice injects another CNY500M into DRAM subsidiary as memory market boom lifts performance",
+    "title": "存储市场景气带动业绩，兆易创新向DRAM子公司再注资5亿元",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260722VL210/gigadevice-dram-subsidiary-market-performance.html",
     "summary": "中国芯片设计公司兆易创新向其全资子公司追加投资5亿元人民币（约合7390万美元），以支持DRAM业务运营，存储市场持续景气。",
@@ -774,7 +784,7 @@
   {
     "id": "intel_20260723_082103_42",
     "date": "2026-07-22",
-    "title": "Xiaomi raises 2026 phone target as memory prices strain brands",
+    "title": "内存价格上涨挤压品牌利润，小米反而上调2026年手机出货目标",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260722PD213/xiaomi-phone-target-memory-prices.html",
     "summary": "据报道，小米已将2026年全年智能手机出货目标从约9000万台上调至1.1亿台，尽管内存价格上涨给品牌带来压力。",
@@ -798,7 +808,7 @@
   {
     "id": "intel_20260723_082103_43",
     "date": "2026-07-22",
-    "title": "Samsung sounds out suppliers on four new fabs by 2030, report says",
+    "title": "报道称三星正征询供应商能否支持到2030年新建四座晶圆厂",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260722PD212/samsung-suppliers-four-fabs-2030.html",
     "summary": "据报道，三星电子正在征询主要供应商，确认其是否有能力支持到2030年新建四座半导体晶圆厂。",
@@ -824,7 +834,7 @@
   {
     "id": "intel_20260723_082103_44",
     "date": "2026-07-22",
-    "title": "Nvidia's Huang to meet Samsung, SK and Naver chiefs in Silicon Valley, reports say",
+    "title": "报道称英伟达黄仁勋将在硅谷会见三星、SK和Naver高层",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260722PD211/nvidia-huang-samsung-sk-naver.html",
     "summary": "据报道，三星电子会长李在镕、SK集团会长崔泰源和Naver创始人李海珍正准备在硅谷会见英伟达CEO黄仁勋。",
@@ -849,7 +859,7 @@
   {
     "id": "intel_20260723_082103_45",
     "date": "2026-07-22",
-    "title": "Memory price surge may soften 2026 smartphone shipment declines",
+    "title": "内存价格上涨可能缓解2026年智能手机出货下滑幅度",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260722PD209/memory-price-smartphone-shipments.html",
     "summary": "内存价格上涨和关键上游零部件成本上升，迫使智能手机品牌减少中低端机型。",
@@ -873,7 +883,7 @@
   {
     "id": "intel_20260723_082103_46",
     "date": "2026-07-21",
-    "title": "Memory shortage could turn into a glut by 2028 as chipmakers expand",
+    "title": "芯片厂商扩产，内存短缺可能在2028年转为过剩",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260721PD208/memory-shortage-glut-2028.html",
     "summary": "内存芯片股强劲涨势停滞，投资者开始重新考虑AI数据中心创纪录支出是否最终会在2028年导致供应过剩。",
@@ -897,7 +907,7 @@
   {
     "id": "intel_20260723_082103_47",
     "date": "2026-07-21",
-    "title": "Samsung, SK Hynix prioritize DDR5 as margins near HBM levels",
+    "title": "三星、SK海力士优先发展DDR5，利润率逼近HBM水平",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260721PD207/samsung-sk-hynix-ddr5-margins.html",
     "summary": "据报道，三星电子和SK海力士正将额外或灵活的DRAM产能分配给服务器DDR5，因为DDR5利润率已接近HBM水平。",
@@ -922,7 +932,7 @@
   {
     "id": "intel_20260723_082103_48",
     "date": "2026-07-21",
-    "title": "Samsung could overtake SK Hynix in the HBM market by 2027",
+    "title": "UBS预测三星有望在2027年超越SK海力士成为HBM市场第一",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260721PD206/samsung-overtake-sk-hynix-hbm.html",
     "summary": "据瑞银预测，随着HBM4出货扩大，三星电子可能在2027年超越SK海力士成为全球HBM市场领导者。",
@@ -947,7 +957,7 @@
   {
     "id": "intel_20260723_082103_49",
     "date": "2026-07-21",
-    "title": "Goldkey secures NT$3.6 billion loan to expand AI server memory business",
+    "title": "金士顿获36亿新台币贷款扩产AI服务器内存业务",
     "source": "www.digitimes.com",
     "url": "https://www.digitimes.com/news/a20260721PD205/goldkey-loan-ai-server-memory.html",
     "summary": "金士顿科技已完成一笔36亿新台币（约合1.113亿美元）的三年期银团贷款，用于支持AI服务器相关的库存增长和营运资金需求。",
@@ -996,7 +1006,7 @@
   {
     "id": "intel_20260723_082103_51",
     "date": "2026-07-21",
-    "title": "Samsung's Q3 memory prices fail to sway OPPO and vivo as Xiaomi boosts smartphone sales",
+    "title": "三星Q3内存涨价未能打动OPPO和vivo，小米反而增加出货",
     "source": "www.sammyfans.com",
     "url": "https://www.sammyfans.com/2026/07/21/samsung-q3-memory-prices-oppo-vivo-xiaomi/",
     "summary": "三星和其他制造商放宽了2026年Q3内存涨价幅度，但OPPO和vivo reportedly拒绝接受。小米 reportedly正在增加出货目标。",
@@ -1023,7 +1033,7 @@
     "date": "2026-07-23",
     "source": "Xenospectrum / TrendForce",
     "url": "https://xenospectrum.com/en/ddr4-spot-price-branded-demand/",
-    "title": "DDR4 Spot Prices Rise 3.27% in a Week to $41.1",
+    "title": "DDR4现货价格一周上涨3.27%至41.1美元",
     "title_zh": "DDR4现货价格一周上涨3.27%至41.1美元",
     "summary": "据TrendForce7月22日发布的周度调查，DDR4现货价格在截至7月21日的一周内上涨3.27%至41.1美元，反映出DRAM市场持续供应紧张。",
     "summary_zh": "根据TrendForce 7月22日发布的周度调查，DDR4现货价格一周内上涨3.27%，7月21日达到41.1美元。这反映了DRAM市场持续的供应紧张态势。",
@@ -1043,7 +1053,7 @@
     "date": "2026-07-21",
     "source": "财联社 / CFM闪存市场",
     "url": "https://www.cls.cn/subject/2409",
-    "title": "Nvidia Vera Rubin Platform Begins Global Deployment for Gigascale AI Factories",
+    "title": "英伟达Vera Rubin平台开始全球部署用于超大规模AI工厂",
     "title_zh": "英伟达Vera Rubin平台开始全球部署，面向千兆级AI工厂",
     "summary": "英伟达于7月21日宣布，其面向超大规模AI工厂的Vera Rubin平台正在全球扩展。CoreWeave测试显示，Vera Rubin NVL72每兆瓦Token吞吐量达到Grace Blackwell NVL72的10倍，这将带动巨大HBM4需求。",
     "summary_zh": "英伟达7月21日宣布，面向千兆级AI工厂的Vera Rubin平台正在全球扩大部署。CoreWeave测试显示，Vera Rubin NVL72相比Grace Blackwell NVL72每兆瓦可实现10倍Token吞吐提升。这将带动巨大的HBM4需求。",
