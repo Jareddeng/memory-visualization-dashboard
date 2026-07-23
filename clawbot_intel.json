@@ -1067,5 +1067,31 @@
     "status": "active",
     "created_at": "2026-07-23T12:19:40.052163",
     "headline": "英伟达Vera Rubin平台开始全球部署用于超大规模AI工厂"
+  },
+  {
+    "id": "intel-20260723222449",
+    "title": "\"Memi\"概念引爆市场：三星、SK海力士、美光三大存储巨头市值均破万亿美元",
+    "source": "Fortune",
+    "url": "https://fortune.com/2026/07/22/memory-semiconductors-memi-samsung-sk-hynix-micron-tech-ai/",
+    "date": "2026-07-23",
+    "product": "DRAM, HBM, NAND, 存储芯片, 内存",
+    "summary": "资产管理公司Harbor Capital在7月21日的中期展望会议上提出\"memi\"概念（memory+semiconductors），指出存储芯片已成为AI基建7000亿美元投资的最大受益者之一。美光年内涨幅达240%，市值1.1万亿美元；SK海力士本月在纳斯达克上市，募资265亿美元，创外国公司美国IPO历史最大规模；三星年内上涨116%。Harbor指出DRAM定价保持\"坚挺\"，更大规模的内存供应在2028年前不太可能实现，三大\"memi\"巨头的定价权可能持续两年。美光CEO Sanjay Mehrotra称AI对内存带宽的需求\"永不满足\"，美光Q3营收415亿美元（同比+346%），DRAM营收创纪录313亿美元（同比+343%）。但同时警告存储市场以周期性剧烈波动著称，若大型科技公司削减支出，可能面临痛苦回调。",
+    "tags": [
+      "memi",
+      "Harbor Capital",
+      "AI基础设施",
+      "存储芯片超级周期",
+      "HBM",
+      "DRAM定价",
+      "SK海力士IPO",
+      "美光财报"
+    ],
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "priced",
+    "horizon": "1w",
+    "confidence": "medium",
+    "action": "watch",
+    "created_at": "2026-07-23T22:24:49.314863"
   }
 ]
