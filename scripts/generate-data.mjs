@@ -516,26 +516,56 @@ async function loadTrackers() {
 }
 
 async function loadIntel() {
+  const rows = [];
+
+  // 1) 根目录主情报文件 (cron 任务写入位置)
+  try {
+    const raw = JSON.parse(await fs.readFile(path.join(root, "clawbot_intel.json"), "utf8"));
+    const records = Array.isArray(raw) ? raw : raw.records || [];
+    if (Array.isArray(records)) {
+      records.forEach((record, index) => {
+        try {
+          rows.push(normalizeIntelRecord(record, "clawbot_intel.json", index));
+        } catch {
+          // 单条记录格式错误，跳过
+        }
+      });
+    }
+  } catch {
+    // 根目录文件不存在或格式错误，跳过
+  }
+
+  // 2) content/intel/ 目录下的分片文件
   let files = [];
   try {
     files = await fs.readdir(intelDir);
   } catch {
-    return [];
+    return rows;
   }
-  const rows = [];
   for (const file of files.filter((name) => name.endsWith(".json"))) {
     const raw = JSON.parse(await fs.readFile(path.join(intelDir, file), "utf8"));
     const records = Array.isArray(raw) ? raw : raw.records || [];
     if (!Array.isArray(records)) throw new Error(`情报 JSON 必须是数组或包含 records 数组: ${file}`);
     records.forEach((record, index) => rows.push(normalizeIntelRecord(record, file, index)));
   }
-  return rows.sort((a, b) => b.date.localeCompare(a.date));
+
+  // 按 id 去重（保留第一条）
+  const seen = new Set();
+  const deduped = [];
+  for (const row of rows) {
+    if (!seen.has(row.id)) {
+      seen.add(row.id);
+      deduped.push(row);
+    }
+  }
+
+  return deduped.sort((a, b) => b.date.localeCompare(a.date));
 }
 
 function normalizeIntelRecord(record, file, index) {
   const date = normalizeDate(record.date);
   if (!date) throw new Error(`情报缺少有效日期: ${file} #${index + 1}`);
-  const title = String(record.title || "").trim();
+  const title = String(record.title || record.headline || "").trim();
   const summary = String(record.summary || "").trim();
   if (!title || !summary) throw new Error(`情报缺少标题或摘要: ${file} #${index + 1}`);
   const impact = normalizeIntelImpact(record.impact);
