@@ -1000,5 +1000,43 @@
     ],
     "created_at": "2026-07-23T08:21:03.829175",
     "status": "active"
+  },
+  {
+    "id": "news-20260723-0001",
+    "date": "2026-07-23",
+    "source": "Xenospectrum / TrendForce",
+    "url": "https://xenospectrum.com/en/ddr4-spot-price-branded-demand/",
+    "title": "DDR4 Spot Prices Rise 3.27% in a Week to $41.1",
+    "title_zh": "DDR4现货价格一周上涨3.27%至41.1美元",
+    "summary": "According to TrendForce's weekly survey published on July 22, DDR4 spot prices rose 3.27% in a week to $41.1 on July 21, 2026. This reflects continued supply tightness in the DRAM market.",
+    "summary_zh": "根据TrendForce 7月22日发布的周度调查，DDR4现货价格一周内上涨3.27%，7月21日达到41.1美元。这反映了DRAM市场持续的供应紧张态势。",
+    "product": "DDR4, DRAM",
+    "impact": "bullish",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1w",
+    "confidence": "high",
+    "action": "alert",
+    "status": "active",
+    "created_at": "2026-07-23T12:19:40.052150"
+  },
+  {
+    "id": "news-20260723-0002",
+    "date": "2026-07-21",
+    "source": "财联社 / CFM闪存市场",
+    "url": "https://www.cls.cn/subject/2409",
+    "title": "Nvidia Vera Rubin Platform Begins Global Deployment for Gigascale AI Factories",
+    "title_zh": "英伟达Vera Rubin平台开始全球部署，面向千兆级AI工厂",
+    "summary": "NVIDIA announced on July 21 that its Vera Rubin platform for gigascale AI factories is expanding globally. CoreWeave testing shows Vera Rubin NVL72 achieves 10x token throughput per megawatt compared to Grace Blackwell NVL72. This will drive massive HBM4 demand.",
+    "summary_zh": "英伟达7月21日宣布，面向千兆级AI工厂的Vera Rubin平台正在全球扩大部署。CoreWeave测试显示，Vera Rubin NVL72相比Grace Blackwell NVL72每兆瓦可实现10倍Token吞吐提升。这将带动巨大的HBM4需求。",
+    "product": "HBM4, GPU, AI芯片, DRAM",
+    "impact": "bullish",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1m",
+    "confidence": "high",
+    "action": "alert",
+    "status": "active",
+    "created_at": "2026-07-23T12:19:40.052163"
   }
 ]
