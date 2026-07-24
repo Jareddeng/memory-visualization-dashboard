@@ -1,0 +1,47 @@
+[
+  {
+    "id": "2026-07-23-sk-hynix-shortage-beyond-2030",
+    "title": "SK海力士CEO警告：内存芯片短缺可能持续至2030年以后",
+    "source": "Tech Insider / Bloomberg",
+    "date": "2026-07-23",
+    "url": "https://tech-insider.org/memory-chip-shortage-2026-ai-consumer-electronics/",
+    "product": "DRAM/HBM/NAND/memory chip",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "unpriced",
+    "horizon": "longer",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "summary": "SK海力士CEO郭鲁正（Kwak Noh-Jung）于2026年7月向彭博社表示，内存芯片供应紧张局面可能持续至2030年以后，甚至延续到下一个十年。DRAM现货价格在过去一年飙升近700%，数据中心吸收了全球约70%的内存芯片产量。三星、SK海力士和美光已将93%的合计产能转向面向AI数据中心的HBM产品。HBM占DRAM晶圆总产出的比例从2025年的19%上升至2026年4月的23%。惠普披露内存占笔记本电脑物料成本的比例从上一季度的15-18%跃升至约35%。"
+  },
+  {
+    "id": "2026-07-23-sk-hynix-adr-nasdaq-listing",
+    "title": "SK海力士拟赴纳斯达克上市，全球HBM市场格局再审视",
+    "source": "TradingKey",
+    "date": "2026-07-23",
+    "url": "https://www.tradingkey.com/zh-hans/analysis/stocks/more/261994379-samsung-skhynix-adr-sndk-koixia-dram-mu-hbm-tradingkey",
+    "product": "HBM/DRAM/memory chip",
+    "impact": "neutral",
+    "reaction_type": "sentiment",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "confidence": "medium",
+    "action": "watch",
+    "summary": "SK海力士计划以发行美国存托凭证（ADR）方式在纳斯达克上市，股票代码\"SKHY\"。据Counterpoint Research 2026年Q1数据，SK海力士以58%营收份额稳居全球HBM市场第一，三星电子与美光各占21%。SK海力士为英伟达供应超过60%的HBM需求。三星已于2026年2月率先实现HBM4量产并向英伟达供货。英伟达CEO黄仁勋于6月5日确认，SK海力士、三星和美光均已通过认证并开始为Vera Rubin生产HBM4。热管理正成为HBM技术竞争的新焦点。"
+  },
+  {
+    "id": "2026-07-24-samsung-amd-hbm4-cooperation",
+    "title": "三星HBM4将用于AMD最新AI加速器，温阳工厂扩建计划确定",
+    "source": "CFM闪存市场",
+    "date": "2026-07-24",
+    "url": "https://www.chinaflashmarket.com/news",
+    "product": "HBM4/DRAM/semiconductor",
+    "impact": "bullish",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1w",
+    "confidence": "high",
+    "action": "alert",
+    "summary": "三星电子高级工程师James Ahn在'AMD Advancing AI 2026'活动上宣布，三星HBM4将应用于AMD最新AI加速器Instinct MI455X和Helios平台。AMD与三星的合作将在下一代HBM4E（第七代HBM）阶段进一步加强。同时，三星与忠清南道牙山市签订MOU，确定温阳工厂扩建计划。新工厂计划2026年10月开工，目标2029年5月实现HBM量产。该项目为韩国政府三大Mega Project首个落地项目，总投资46万亿韩元，其中6万亿韩元用于HBM生产线建设。此外，长鑫存储LPDDR6芯片已进入送样阶段，有望在2026年下半年实现全球首发量产，速率达12.8Gbps。"
+  }
+]
