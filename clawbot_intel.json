@@ -1093,5 +1093,20 @@
     "confidence": "medium",
     "action": "watch",
     "created_at": "2026-07-23T22:24:49.314863"
+  },
+  {
+    "id": "news-2026-07-23-1",
+    "url": "https://tech-insider.org/memory-chip-shortage-2026-ai-consumer-electronics/",
+    "date": "2026-07-23",
+    "source": "Tech Insider",
+    "summary": "SK海力士CEO郭鲁正（Kwak Noh-Jung）于2026年7月警告，全球存储芯片短缺局面可能延续至2030年之后，甚至\"持续到下一个十年\"。当前AI数据中心消耗全球约70%的存储芯片产量，三星、SK海力士、美光三大厂商已将93%的产能转向AI用高带宽内存（HBM），导致消费级DRAM和NAND严重短缺。过去一年DRAM现货价格飙升近700%，惠普披露内存占笔记本物料成本比例已从上一季度的15%-18%跃升至约35%。Counterpoint Research预计智能手机物料成本未来几季度将上涨15%以上。英特尔CEO表示\"2028年前不会有缓解\"。此轮短缺被IDC定义为制造产能向AI的\"永久性重新分配\"，价格可能永远不会回到2024年水平。\n- **impact**: bullish\n- **reaction_type**: sentiment\n- **pricing_status**: priced\n- **horizon**: longer\n- **confidence**: high\n- **action**: deep_tracking",
+    "product": "HBM, DRAM, NAND, 存储芯片, 内存晶圆",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "priced",
+    "horizon": "longer",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "status": "pending"
   }
 ]
