@@ -118,5 +118,35 @@
     "confidence": "medium",
     "action": "watch",
     "summary": "长鑫科技IPO募资后，研发投入将更趋规模化，这会直接转化为对国产设备和材料的采购订单，给上游企业提供宝贵的\"试错场景\"和\"迭代数据\"。长鑫科技将于7月27日在科创板上市，这将是中国存储芯片产业发展的重要里程碑。"
+  },
+  {
+    "id": "2026-07-24-sk-hynix-3d-dram-us-engineers",
+    "title": "SK海力士在美国招聘工程师推进3D堆叠DRAM",
+    "source": "DIGITIMES",
+    "date": "2026-07-24",
+    "url": "https://www.digitimes.com/",
+    "product": "3D堆叠DRAM, HBM, AI内存",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "unpriced",
+    "horizon": "1m",
+    "confidence": "medium",
+    "action": "watch",
+    "summary": "SK海力士正在圣何塞招募工程师，与美国客户共同设计3D堆叠DRAM-on-logic芯片，将其定制内存策略从高带宽内存(HBM)扩展到端侧AI应用。这显示SK海力士正积极布局下一代内存架构以应对AI计算需求。"
+  },
+  {
+    "id": "2026-07-24-apple-mac-refresh-ai-demand",
+    "title": "苹果准备大规模Mac更新，押注AI驱动需求",
+    "source": "DIGITIMES",
+    "date": "2026-07-24",
+    "url": "https://www.digitimes.com/",
+    "product": "内存, 存储, Mac DRAM/SSD",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "unpriced",
+    "horizon": "1m",
+    "confidence": "medium",
+    "action": "watch",
+    "summary": "苹果准备全面更新Mac产品线，押注AI驱动的需求将带动新机型销售。Mac的更新将增加对DRAM和SSD的需求，为存储芯片市场提供额外支撑。"
   }
 ]
