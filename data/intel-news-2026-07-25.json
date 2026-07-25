@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2026-07-25-存储芯片股崩盘闪迪重挫超10",
+    "title": "存储芯片股崩盘，闪迪重挫超10%",
+    "source": "新浪财经/上海证券报",
+    "date": "2026-07-25",
+    "url": "https://finance.sina.com.cn/roll/2026-07-25/doc-iniiyptp4495038.shtml",
+    "product": "存储芯片, NAND, DRAM, 闪迪, SK海力士, 美光",
+    "impact": "bearish",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1d",
+    "confidence": "high",
+    "action": "alert",
+    "summary": "7月24日美股收盘，存储芯片、光通信板块集体跳水。闪迪跌超10%，Coherent、Credo跌超9%，SK海力士、Lumentum跌逾8%，迈威尔科技、英特尔跌超7%，西部数据、美光科技、希捷科技跌超6%。费城半导体指数跌4.25%。报道称，因存储芯片价格持续飙升推高iPhone整机成本，苹果正向供应链上游施压，要求面板供应商大幅下调OLED屏幕价格约20%。"
+  },
+  {
+    "id": "2026-07-25-三星sk海力士将宣布与美国科技巨头达成大规模芯片合作",
+    "title": "三星、SK海力士将宣布与美国科技巨头达成大规模芯片合作",
+    "source": "新浪财经/上海证券报",
+    "date": "2026-07-25",
+    "url": "https://finance.sina.com.cn/roll/2026-07-25/doc-iniiyptp4495038.shtml",
+    "product": "存储芯片, HBM, DRAM, AI芯片",
+    "impact": "bullish",
+    "reaction_type": "watch",
+    "pricing_status": "unpriced",
+    "horizon": "1q",
+    "confidence": "high",
+    "action": "watch",
+    "summary": "韩国总统府表示，在韩国总统李在明访问硅谷期间，三星电子和SK海力士将公布与美国领先科技公司达成的重大协议，涉及长期存储芯片供应协议、战略投资合作以及谅解备忘录，金额将\"非常庞大\"。李在明将参加AI峰会，并分别会见英伟达CEO黄仁勋、OpenAI CEO萨姆·奥尔特曼等。韩国政府上月公布了至少8800亿美元的投资计划。"
+  }
+]
