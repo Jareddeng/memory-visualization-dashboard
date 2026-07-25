@@ -1206,5 +1206,20 @@
       "AI存储"
     ],
     "language": "zh"
+  },
+  {
+    "url": "https://m.sohu.com/a/1054207019_114760",
+    "date": "2026-07-24",
+    "source": "IT之家 / Tom's Hardware",
+    "summary": "科技媒体Tom's Hardware于7月23日发布博文报道，在AI浪潮带动全球存储芯片短缺背景下，短缺已经冲击到汽车行业，导致消费级汽车出现不同程度的涨价。\n\n在最新财报电话会议上，通用汽车（GM）首席财务官保罗·雅各布森表示，由于DRAM等汽车零部件价格上涨，通用汽车预估2026年额外增加15-20亿美元（约合101.75-135.66亿元人民币）成本，并表示2026年新车价格将上涨0.3%。\n\n美光（Micron Technology）在财报会议上指出，2023年一辆汽车平均使用90GB的DRAM和NAND存储芯片；而在2026年攀升到278GB，增长208.89%，高端车型需求可高达2TB。车载AI助手需要256GB以上，美光预测L4级别自动驾驶至少需要300GB的内存。\n\n根据美国咨询公司AlixPartners的预测，去年AI占DRAM使用量的32%，到2028年预计将上升至48%。虽然汽车的使用量仅占约10%，但AI和数据中心的占比份额不断攀高情况下，会挤压车规存储芯片的产量，进而导致车载存储芯片供应紧张和价格上涨。\n- **impact**: bullish\n- **reaction_type**: sentiment\n- **pricing_status**: partial\n- **horizon**: 1q\n- **confidence**: high\n- **action**: watch",
+    "product": "DRAM, NAND, 存储芯片, 车规存储芯片",
+    "impact": "bullish",
+    "reaction_type": "sentiment",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "confidence": "high",
+    "action": "watch",
+    "status": "pending",
+    "id": "news-2026-07-24-1"
   }
 ]
