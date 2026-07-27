@@ -115,6 +115,25 @@
       "review_date": ""
     },
     {
+      "id": "20260725-012",
+      "type": "财报预告",
+      "impact": "neutral",
+      "date": "2026-07-25",
+      "title": "SK海力士Q2财报将于7月29日发布，HBM需求轨迹成关键数据点",
+      "product": "HBM, DRAM, 存储芯片",
+      "source": "ICT Industry Daily",
+      "url": "https://ictnews.site/ict_daily_en_20260725.html",
+      "summary": "SK海力士将于2026年7月29日发布Q2财报，市场关注HBM需求轨迹及内存周期峰值评估。财报前的仓位调整被指为7月24日抛售的因素之一，KOSPI卖方sidecar被触发。这是评估HBM需求增长和内存超级周期持续性的关键数据点。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1d",
+      "transmission_path": "",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": ""
+    },
+    {
       "id": "intel-20260726-8c34d036",
       "type": "行业分析",
       "impact": "bullish",
@@ -378,6 +397,25 @@
       "transmission_path": "",
       "confidence": "medium",
       "action": "watch",
+      "review_date": ""
+    },
+    {
+      "id": "20260724-011",
+      "type": "市场动态",
+      "impact": "bullish",
+      "date": "2026-07-24",
+      "title": "服务器DRAM现货价暴涨146%，内存缺货潮进一步升级",
+      "product": "服务器DRAM, DDR5, HBM, 存储芯片",
+      "source": "adersaytech / Meritz证券",
+      "url": "https://adersaytech.com/tech-news/tech-news-digest-20260724.html",
+      "summary": "据韩国Meritz证券7月20日报告，服务器DRAM现货价一度飙破每颗3,100美元，较六月底合约价约1,380美元大涨约146%。在AI需求全面外溢、三大原厂产能倾向HBM的背景下，内存缺货潮进一步升级。64GB DDR5模组现货价亦大涨逾140%。更根本的原因在于结构性排挤：掌握全球近九成DRAM市占的三星、SK海力士、美光持续把产能转向AI加速器用的HBM，使传统服务器与消费级DRAM供给更形紧绷。中东主权基金入场直接与三星、SK海力士洽谈中长期供货协议，现货供给瞬间吃紧。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1d",
+      "transmission_path": "",
+      "confidence": "high",
+      "action": "alert",
       "review_date": ""
     },
     {
