@@ -267,6 +267,25 @@
       "review_date": ""
     },
     {
+      "id": "clawbot_intel-2026-07-28-15",
+      "type": "行业动态",
+      "impact": "neutral",
+      "date": "2026-07-28",
+      "title": "苹果请求使用中国存储芯片，美光积极游说反对",
+      "product": "存储芯片, DRAM, NAND",
+      "source": "CFM闪存市场",
+      "url": "",
+      "summary": "苹果已向政府官员提出请求，希望获准在美国以外地区销售的设备中使用长鑫存储和长江存储的存储芯片。美光科技积极游说反对上述请求，其高管警告称允许美国科技企业向中国生产商采购，无论最终产品在何处销售，都将损害美国本土制造业的发展。",
+      "importance": "",
+      "reaction_type": "archive",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "transmission_path": "",
+      "confidence": "medium",
+      "action": "archive",
+      "review_date": ""
+    },
+    {
       "id": "20260727-001",
       "type": "战略合作",
       "impact": "bullish",
@@ -286,7 +305,7 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-27-16",
+      "id": "clawbot_intel-2026-07-27-17",
       "type": "行业动态",
       "impact": "bullish",
       "date": "2026-07-27",
@@ -305,7 +324,7 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-27-17",
+      "id": "clawbot_intel-2026-07-27-18",
       "type": "行业动态",
       "impact": "bullish",
       "date": "2026-07-27",
@@ -324,7 +343,7 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-27-18",
+      "id": "clawbot_intel-2026-07-27-19",
       "type": "行业动态",
       "impact": "bearish",
       "date": "2026-07-27",
@@ -343,7 +362,7 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-27-19",
+      "id": "clawbot_intel-2026-07-27-20",
       "type": "行业动态",
       "impact": "bullish",
       "date": "2026-07-27",
@@ -400,7 +419,7 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-27-22",
+      "id": "clawbot_intel-2026-07-27-23",
       "type": "行业动态",
       "impact": "bullish",
       "date": "2026-07-27",
@@ -419,7 +438,7 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-27-23",
+      "id": "clawbot_intel-2026-07-27-24",
       "type": "行业动态",
       "impact": "bearish",
       "date": "2026-07-27",
@@ -511,6 +530,82 @@
       "transmission_path": "",
       "confidence": "medium",
       "action": "archive",
+      "review_date": ""
+    },
+    {
+      "id": "clawbot_intel-2026-07-27-29",
+      "type": "行业动态",
+      "impact": "bullish",
+      "date": "2026-07-27",
+      "title": "国产DRAM龙头长鑫科技（688825）正式登陆上交所科创板，开盘涨幅达471.59%，报49.5元/股，总市值突破3.31万亿元，成为A股历史上首只开盘市值突破3万亿的科技股，登顶A股市值榜首。发行",
+      "product": "DRAM, HBM, DDR5, LPDDR5X",
+      "source": "央广网/快科技/界面新闻/东方财富",
+      "url": "https://finance.sina.cn/stock/ggyj/2026-07-27/detail-inikfnpm0782362.d.html",
+      "summary": "国产DRAM龙头长鑫科技（688825）正式登陆上交所科创板，开盘涨幅达471.59%，报49.5元/股，总市值突破3.31万亿元，成为A股历史上首只开盘市值突破3万亿的科技股，登顶A股市值榜首。发行总额约579亿元，为科创板史上最大IPO之一。2026年Q1营收508亿元，同比增长719.13%；归母净利润247.62亿元。预计上半年营收1100-1200亿元，同比增长612%-677%；归母净利润500-570亿元，同比增长超22倍。全球DRAM市场份额7.67%，全球第四、中国第一。高盛紧急召开专家会议，判断中国DRAM产能扩张趋势不可逆转，预计2030年年产能翻倍。",
+      "importance": "",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1d",
+      "transmission_path": "",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": ""
+    },
+    {
+      "id": "clawbot_intel-2026-07-27-30",
+      "type": "行业动态",
+      "impact": "bullish",
+      "date": "2026-07-27",
+      "title": "三星电子宣布下一代HBM5的底座芯片（Base Die）将采用2nm GAA（全环绕栅极）晶体管工艺制造，目标速度比HBM4E提升50%以上。同时提升TSV硅通孔堆叠密度，为更高容量和带宽做准备。三星",
+      "product": "HBM5, HBM4, HBM4E, 2nm, GAA, TSV",
+      "source": "DigiTimes/SammyFans/Sammobile/快科技",
+      "url": "https://www.digitimes.com/news/a20260727VL216/samsung-2nm-hbm-performance-hbm4.html",
+      "summary": "三星电子宣布下一代HBM5的底座芯片（Base Die）将采用2nm GAA（全环绕栅极）晶体管工艺制造，目标速度比HBM4E提升50%以上。同时提升TSV硅通孔堆叠密度，为更高容量和带宽做准备。三星今年2月已量产HBM4，5月出样HBM4E 12层样品。三星强调其\"turnkey\"一体化优势（存储+代工+先进封装），试图通过更早介入设计阶段来优化速度、功耗、散热和良率。高端HBM需求仍然紧张。",
+      "importance": "",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "review_date": ""
+    },
+    {
+      "id": "clawbot_intel-2026-07-27-31",
+      "type": "行业动态",
+      "impact": "bearish",
+      "date": "2026-07-27",
+      "title": "日本存储芯片巨头铠侠（Kioxia）股价从过去一年最低点2200日元暴涨至11.2万日元后，最近一个月大幅回调接近腰斩，7月27日股价一度跌至5万日元，收盘跌2.6%。分析师预测若财报不及预期，股价可",
+      "product": "NAND闪存, SSD",
+      "source": "快科技",
+      "url": "https://news.mydrivers.com/blog/20260727.htm",
+      "summary": "日本存储芯片巨头铠侠（Kioxia）股价从过去一年最低点2200日元暴涨至11.2万日元后，最近一个月大幅回调接近腰斩，7月27日股价一度跌至5万日元，收盘跌2.6%。分析师预测若财报不及预期，股价可能下探至3.3万日元。铠侠是纯NAND闪存厂商（前身东芝闪存部门），缺乏HBM等高利润产品，AI基建中地位不明确。7月31日将发布财报。",
+      "importance": "",
+      "reaction_type": "sentiment",
+      "pricing_status": "overpriced",
+      "horizon": "1w",
+      "transmission_path": "",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": ""
+    },
+    {
+      "id": "clawbot_intel-2026-07-27-32",
+      "type": "行业动态",
+      "impact": "bullish",
+      "date": "2026-07-27",
+      "title": "三星电子在AI内存竞赛中展现出新的动能，深化与OpenAI和AMD的合作关系，并将这些合作关系转化为HBM4供应订单。这标志着三星在HBM市场的竞争力正在恢复。",
+      "product": "HBM4",
+      "source": "DigiTimes",
+      "url": "https://www.digitimes.com/tag/samsung/00144.html",
+      "summary": "三星电子在AI内存竞赛中展现出新的动能，深化与OpenAI和AMD的合作关系，并将这些合作关系转化为HBM4供应订单。这标志着三星在HBM市场的竞争力正在恢复。",
+      "importance": "",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "",
+      "confidence": "medium",
+      "action": "alert",
       "review_date": ""
     },
     {
@@ -1882,7 +1977,7 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-20-100",
+      "id": "clawbot_intel-2026-07-20-105",
       "type": "行业动态",
       "impact": "neutral",
       "date": "2026-07-20",
@@ -1901,7 +1996,7 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-20-101",
+      "id": "clawbot_intel-2026-07-20-106",
       "type": "行业动态",
       "impact": "bearish",
       "date": "2026-07-20",
@@ -2110,6 +2205,44 @@
       "review_date": ""
     },
     {
+      "id": "clawbot_intel-2026-07-20-117",
+      "type": "行业动态",
+      "impact": "neutral",
+      "date": "2026-07-20",
+      "title": "存储芯片价格暴涨，TCL中环拟投超百亿元建半导体大硅片项目，长鑫科技IPO募资579亿元",
+      "product": "DRAM, NAND, 半导体硅片, 存储芯片",
+      "source": "clawbot",
+      "url": "https://m.gelonghui.com/p/5633827",
+      "summary": "SK海力士CEO郭鲁正表示，随着HBM4产品在本季度开始量产，公司二季度营业利润预计将高于上季度。",
+      "importance": "",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "transmission_path": "",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": ""
+    },
+    {
+      "id": "clawbot_intel-2026-07-20-118",
+      "type": "行业动态",
+      "impact": "bearish",
+      "date": "2026-07-20",
+      "title": "美股半导体指数跌入技术性熊市，SK海力士两日暴跌20%后反弹",
+      "product": "HBM, DRAM, 半导体股票",
+      "source": "clawbot",
+      "url": "https://wallstreetcn.com/articles/3777272",
+      "summary": "SK海力士CEO郭鲁正表示，随着HBM4产品在本季度开始量产，公司二季度营业利润预计将高于上季度。",
+      "importance": "",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "transmission_path": "",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": ""
+    },
+    {
       "id": "micron-stock-drop-ai-concern-20260720",
       "type": "行业分析",
       "impact": "bearish",
@@ -2129,7 +2262,26 @@
       "review_date": ""
     },
     {
-      "id": "clawbot_intel-2026-07-19-112",
+      "id": "clawbot_intel-2026-07-19-119",
+      "type": "行业动态",
+      "impact": "bullish",
+      "date": "2026-07-19",
+      "title": "SK海力士CEO预计HBM4量产后二季度利润将更高",
+      "product": "HBM4, DRAM, 存储芯片",
+      "source": "koreatimes.co.kr",
+      "url": "https://www.koreatimes.co.kr/www/tech/2026/07/133_404371.html",
+      "summary": "SK海力士CEO郭鲁正表示，随着HBM4产品在本季度开始量产，公司二季度营业利润预计将高于上季度。",
+      "importance": "",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1d",
+      "transmission_path": "",
+      "confidence": "medium",
+      "action": "alert",
+      "review_date": ""
+    },
+    {
+      "id": "clawbot_intel-2026-07-19-120",
       "type": "行业动态",
       "impact": "bullish",
       "date": "2026-07-19",
