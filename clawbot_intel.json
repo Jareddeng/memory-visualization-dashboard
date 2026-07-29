@@ -2151,5 +2151,39 @@
     "action": "watch",
     "id": "news-2026-07-18-1",
     "type": "行业动态"
+  },
+  {
+    "id": "intel-20260727-b768c7",
+    "date": "2026-07-27",
+    "source": "综合（财联社/东方财富/新浪科技）",
+    "url": "https://wap.eastmoney.com/a/202607233819097036.html",
+    "title": "长鑫科技科创板上市，首日暴涨466%登顶A股市值第一",
+    "product": "DRAM, DDR4, DDR5, LPDDR5, 存储芯片, 内存晶圆",
+    "impact": "bullish",
+    "reaction_type": "instant",
+    "pricing_status": "unpriced",
+    "horizon": "1w",
+    "confidence": "high",
+    "action": "alert",
+    "status": "pending",
+    "summary": "国产DRAM龙头长鑫科技（688825.SH）7月27日正式登陆科创板，发行价8.66元/股，首日开盘49.50元，收盘49.00元，涨幅466%。首日市值约3.28万亿元人民币，超越茅台成为A股市值第一。公司募集资金约579亿元，为2026年亚洲最大IPO、科创板史上第二大IPO。Q1营收508亿元（+719% YoY），预计H1营收1100-1200亿元（+612-677% YoY），H1归母净利润500-570亿元（+2244-2544% YoY）。Omdia数据显示长鑫全球DRAM市场份额约7.67%，位列全球第四、中国第一。产品覆盖DDR4/DDR5/LPDDR4X/LPDDR5/5X。蔚来汽车投资1.58亿元获0.27%股权。",
+    "created_at": "2026-07-29T12:37:56.739960"
+  },
+  {
+    "id": "intel-20260729-6a8e79",
+    "date": "2026-07-29",
+    "source": "SK海力士官方/澎湃新闻/国际电子商情",
+    "url": "https://news.skhynix.com/cn/q2-2026-business-results/",
+    "title": "SK海力士Q2营收79.3万亿韩元、营业利润60.5万亿韩元，均创新高但低于预期",
+    "product": "HBM4, HBM4E, DRAM, NAND, eSSD, SOCAMM2, 存储芯片",
+    "impact": "bearish",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1d",
+    "confidence": "high",
+    "action": "alert",
+    "status": "pending",
+    "summary": "SK海力士7月29日发布Q2财报，营收79.32万亿韩元（+257% YoY, +51% QoQ），营业利润60.54万亿韩元（+557% YoY, +61% QoQ），营业利润率76%，均创历史纪录。但两项数据均低于市场预期（预期营业利润64.2万亿、营收83.9万亿）。净利润93.92万亿韩元，净利率118%，其中含一次性铠侠股权出售收益62.17万亿韩元。上半年累计营收首破100万亿韩元。HBM4已于Q2量产出货、下半年将扩产；HBM4E样品上半年已交付；SOCAMM2 Q2销售大增；321层NAND为产量占比最高产品。已与10余家客户签署长期供货协议（LTA）。预计Q3 DRAM出货量环比+10%，NAND小幅增长。2026全年资本开支将处于40-50万亿韩元区间高端。财报后美股ADR收跌8.89%。",
+    "created_at": "2026-07-29T12:37:56.739960"
   }
 ]
