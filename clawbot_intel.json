@@ -198,5 +198,83 @@
       "confidence": "medium",
       "action": "watch"
     }
+  ],
+  "entries": [
+    {
+      "id": "intel-068a8bc43161f596",
+      "date": "2026-07-29",
+      "headline": "SK海力士Q2利润同比飙557% HBM4已量产出货，下半年产能爬坡",
+      "source": "财新网",
+      "url": "https://www.caixin.com/2026-07-29/102469076.html",
+      "product": "HBM4, DRAM, NAND, LPDDR6",
+      "summary": "SK海力士2026年Q2营收79.32万亿韩元（同比+257%），营业利润60.54万亿韩元（同比+557%），利润超2025年全年总和但仍低于市场预期。HBM4已于Q2量产出货，下半年提升产能；HBM4E样品已交付，计划2027年批量生产。2026年资本开支提升至40万亿韩元（同比+超30%）。预计Q3 DRAM bit出货量环比+约10%（服务器AI存储为核心），NAND bit出货量环比低个位数增长。LPDDR6采用1c工艺，下半年全面量产，首批拟搭载小米下一代旗舰。Counterpoint数据显示SK海力士Q1全球HBM市占约58%。股价近5个交易日累计跌幅超30%，呈现典型的'卖事实'效应。",
+      "impact": "bullish",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "confidence": "high",
+      "action": "watch",
+      "tags": [
+        "SK海力士",
+        "HBM4",
+        "DRAM",
+        "NAND",
+        "LPDDR6",
+        "财报",
+        "量产",
+        "AI服务器"
+      ]
+    },
+    {
+      "id": "intel-9461bd85cbe61527",
+      "date": "2026-07-30",
+      "headline": "三星电子Q2营业利润创全球科技企业历史新高，2027年存储供应约束将更严峻",
+      "source": "财新网",
+      "url": "https://www.caixin.com/2026-07-30/102469645.html",
+      "product": "DRAM, NAND, HBM",
+      "summary": "三星电子Q2营收171.5万亿韩元（同比+130%），营业利润89.5万亿韩元（同比+1814%），创全球科技企业单季利润新高。DS部门贡献全公司99.7%营业利润。存储业务Q2营收120.8万亿韩元（同比+471%），DRAM ASP上升中40%区间，NAND ASP上升高60%区间。公司预计2027年供应约束比2026更严重，存储短缺将持续到2028年。已与全球前5大数据中心客户签订5年长期供应协议（LTA），约定最低价格下限+大额预付款，LTA占计划产能60%-70%。华城12号生产线改造完成，将用于15号线后端工艺以加速DRAM产能扩张。预计Q3 DRAM bit出货量环比+4%-6%，NAND bit出货量+7%-9%。",
+      "impact": "bullish",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "tags": [
+        "三星电子",
+        "DRAM",
+        "NAND",
+        "HBM",
+        "财报",
+        "LTA",
+        "供应短缺",
+        "产能扩张"
+      ]
+    },
+    {
+      "id": "intel-08b5fbefff63166d",
+      "date": "2026-07-30",
+      "headline": "DDR5/LPDDR颗粒涨价持续，原厂资源锁定致供应阶段性紧缺",
+      "source": "CFM闪存市场",
+      "url": "https://www.chinaflashmarket.com/news",
+      "product": "DDR5, LPDDR4X, LPDDR5X, NAND, SSD",
+      "summary": "7月存储市场变化聚焦DDR5次级颗粒和LP4X/5X资源涨价带动成品价格上涨，主要由于原厂部分资源被提前锁定，供应出现阶段性紧缺。上游供应难以改善且市场仍存在涨价预期，存储厂商下半年成本压力将进一步加大。SK海力士LPDDR6采用1c工艺，下半年全面量产，首批拟搭载小米下一代旗舰。三星华城12号生产线改造完成，将用于15号线后端工艺以加速DRAM产能扩张。苹果已向美国政府请求获准在美国以外地区销售的设备中使用长鑫存储和长江存储芯片，美光积极游说反对。慧荣科技Q2营收4.51亿美元创历史新高，威刚科技Q2及上半年营收利润刷新历史新高。",
+      "impact": "bullish",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "DDR5",
+        "LPDDR",
+        "NAND",
+        "SSD",
+        "涨价",
+        "供应紧缺",
+        "苹果",
+        "长鑫存储",
+        "长江存储"
+      ]
+    }
   ]
 }
