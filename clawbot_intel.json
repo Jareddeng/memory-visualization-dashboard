@@ -1,6 +1,6 @@
 {
   "date": "2026-07-30",
-  "generated_at": "2026-07-30T08:16:19.614775",
+  "generated_at": "2026-07-30T15:30:00+08:00",
   "news": [
     {
       "title": "AI存储热潮破灭：美光、SK海力士、闪迪暴跌30%且仍在下跌",
@@ -99,6 +99,34 @@
       "horizon": "1q",
       "confidence": "medium",
       "action": "archive"
+    },
+    {
+      "title": "机构：存储芯片迈入营业利润率70%时代",
+      "source": "财闻网",
+      "date": "2026-07-30",
+      "url": "https://www.caiwennews.com/article/1535807.shtml",
+      "summary": "存储芯片行业步入营业利润率超70%的高盈利阶段。三星电子2026年Q2存储事业部营业利润率平均预估为75%（区间70.3%-84.9%），DS部门总营收127.5万亿韩元，营业利润89.2万亿韩元，整体利润率突破70%。SK海力士二季度营收79.3万亿韩元，营业利润60.5万亿韩元，利润率达76.3%，连续两季度站稳70%以上。美光2026年Q3营业利润率高达80.4%，全业务板块创单季新高。根源在于AI基础设施需求激增引发的结构性供给短缺，行业已由出货量驱动转向产能约束下的高溢价模式。",
+      "product": "DRAM, HBM, NAND",
+      "impact": "bullish",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "confidence": "high",
+      "action": "deep_tracking"
+    },
+    {
+      "title": "A股存储芯片回暖：长鑫科技纳入MSCI，三星铠侠财报在即",
+      "source": "ZAKER",
+      "date": "2026-07-29",
+      "url": "https://app.myzaker.com/news/article.php?pk=6a69dd518e9f09542d293b5c",
+      "summary": "7月29日午后A股存储芯片概念震荡回升，C长鑫涨超11%，总市值一度超3.5万亿元。7月28日MSCI公告长鑫科技将被纳入MSCI中国全股票指数，8月10日正式生效。长鑫科技7月27日登陆科创板，首日大涨465.82%，成交额1412亿元创A股纪录，总市值3.28万亿元。存储板块进入财报窗口期，三星将于7月30日公布二季度财报，铠侠7月31日发布财报。摩根士丹利预计AI数据中心存储芯片供应短缺加剧，超级周期将延续到2028年，价格下季度或再涨25%。",
+      "product": "DRAM, HBM, NAND",
+      "impact": "bullish",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "confidence": "medium",
+      "action": "watch"
     }
   ]
 }
