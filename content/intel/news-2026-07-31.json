@@ -1,0 +1,129 @@
+{
+  "records": [
+    {
+      "id": "news-20260731-001",
+      "date": "2026-07-29",
+      "type": "行业分析",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "overpriced",
+      "horizon": "1w",
+      "title": "SK海力士Q2业绩低于预期，Jefferies认为存储芯片价格接近峰值",
+      "product": "DRAM, NAND",
+      "source": "同花顺/财联社/Jefferies",
+      "url": "https://stock.10jqka.com.cn/20260729/c678500775.shtml",
+      "summary": "SK海力士第二季度营业利润60.54万亿韩元，低于预期的64.22万亿韩元；营收79万亿韩元，低于预期的84万亿韩元。二季度DRAM芯片ASP环比上涨约30%，NAND闪存ASP环比上涨约50%~55%。公司称计划2026年下半年大幅扩充HBM4高带宽内存产能供给。Jefferies认为存储芯片价格可能更接近峰值，第三季度涨幅或为15%-20%，低于市场预期的25%-30%。",
+      "confidence": "high",
+      "action": "alert",
+      "tags": [
+        "SK海力士",
+        "DRAM",
+        "NAND",
+        "HBM4",
+        "价格峰值",
+        "Jefferies"
+      ]
+    },
+    {
+      "id": "news-20260731-002",
+      "date": "2026-07-30",
+      "type": "行业分析",
+      "impact": "neutral",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "title": "三星Q2半导体部门创纪录但智能手机部门亏损：HBM挤占DRAM产能的结构性代价",
+      "product": "HBM, DRAM, NAND",
+      "source": "TechTimes",
+      "url": "https://www.techtimes.com/articles/322141/20260729/samsung-q2-2026-memory-division-shatters-records-galaxy-smartphones-post-operating-loss.htm",
+      "summary": "三星电子2026年Q2完整财报显示，半导体部门（DS）创历史纪录利润，但Galaxy智能手机部门（MX）却出现营业亏损。结构性原因在于：三星将晶圆产能向高毛利的HBM倾斜，每片HBM晶圆消耗相当于3-4片普通DRAM的产能，导致普通DRAM供应紧张、价格高企。MX部门作为DRAM/NAND的采购方，面临组件成本上升快于产品提价能力的困境。SK海力士同日也公布创纪录季度但miss预期，引发KOSPI连续两天触发熔断机制。",
+      "confidence": "high",
+      "action": "watch",
+      "tags": [
+        "三星电子",
+        "HBM",
+        "DRAM",
+        "Galaxy",
+        "产能分配",
+        "KOSPI熔断"
+      ]
+    },
+    {
+      "id": "news-20260731-003",
+      "date": "2026-07-30",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "机构：存储芯片迈入营业利润率70%时代，三星SK海力士美光齐创新高",
+      "product": "DRAM, HBM, NAND",
+      "source": "财闻网",
+      "url": "https://www.caiwennews.com/article/1535807.shtml",
+      "summary": "存储芯片行业步入营业利润率超70%的高盈利阶段。三星电子2026年Q2存储事业部营业利润率平均预估为75%（区间70.3%-84.9%），DS部门总营收127.5万亿韩元，营业利润89.2万亿韩元，整体利润率突破70%。SK海力士二季度营收79.3万亿韩元，营业利润60.5万亿韩元，利润率达76.3%，连续两季度站稳70%以上。美光2026年Q3营业利润率高达80.4%，全业务板块创单季新高。根源在于AI基础设施需求激增引发的结构性供给短缺，行业已由出货量驱动转向产能约束下的高溢价模式。",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "tags": [
+        "三星",
+        "SK海力士",
+        "美光",
+        "营业利润率",
+        "存储超级周期",
+        "AI需求"
+      ]
+    },
+    {
+      "id": "news-20260731-004",
+      "date": "2026-07-31",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "铠侠Q2 2026财报：营业利润较前一季度翻倍，NAND市场供不应求持续",
+      "product": "NAND, SSD",
+      "source": "TrendForce/市场综合",
+      "url": "https://www.trendforce.com/news/2026/07/27/news-q2-memory-earnings-preview-what-to-watch-from-samsung-sk-hynix-and-kioxia/",
+      "summary": "日本NAND闪存制造商铠侠于7月31日发布2027财年第一财季（2026年Q2）财报。市场预期其单季度获利有望较前一季度实现倍增。TrendForce指出，服务器需求将保持强劲至2027年，但供应商持续工艺升级、位元产出稳定增长以及消费电子需求疲软，将逐渐恢复市场平衡，当前供应紧张态势预计于2027年下半年缓解。铠侠Q1营业利润已达5968亿日元，Q2预计进一步大幅增长。",
+      "confidence": "medium",
+      "action": "watch",
+      "tags": [
+        "铠侠",
+        "NAND",
+        "SSD",
+        "财报",
+        "服务器需求",
+        "供应紧张"
+      ]
+    },
+    {
+      "id": "news-20260731-005",
+      "date": "2026-07-30",
+      "type": "行业分析",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "overpriced",
+      "horizon": "1w",
+      "title": "SK海力士投资备忘录：创纪录季度仍miss预期，市场定价完美后的剧烈回调",
+      "product": "HBM, DRAM, NAND",
+      "source": "Bloodstone Capital",
+      "url": "https://www.bloodstonecapital.co.uk/research/journal/sk-hynix-record-profits-selloff-july-2026",
+      "summary": "SK海力士Q2 2026营收79.32万亿韩元，营业利润60.54万亿韩元，营业利润率76%，均为历史最高，但仍miss分析师预期（预期营收84万亿/营业利润64万亿）。7月29日财报发布后股价一度跌15-20%，收盘跌9-11%。HBM4已通过客户速度/功耗规格认证，与约10家客户签订5年期长期供应协议（LTA），包括英伟达。净现金头寸达69.4万亿韩元。CEO郭鲁正刚完成创纪录的265亿美元纳斯达克ADR上市。市场担忧在于：资本开支将 ramp 至40万亿韩元以上高位，若AI需求增长正常化，回报率纪律存疑。",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "tags": [
+        "SK海力士",
+        "HBM4",
+        "LTA",
+        "纳斯达克",
+        "业绩miss",
+        "KOSPI熔断"
+      ]
+    }
+  ]
+}
