@@ -716,5 +716,123 @@
     "action": "watch",
     "product": "Memory, Chip",
     "processed_at": "2026-08-01T00:35:22.517828Z"
+  },
+  {
+    "date": "2026-08-01",
+    "generated_at": "2026-08-01T04:35:04.111837Z",
+    "news": [
+      {
+        "title": "1. SK海力士Q2 2026财报：创纪录利润但股价大跌",
+        "date": "2026-07-30",
+        "source": "Bloodstone Capital / SK海力士官方",
+        "url": "https://www.bloodstonecapital.co.uk/research/journal/sk-hynix-record-profits-selloff-july-2026",
+        "summary": "SK海力士Q2 2026营收79.32万亿韩元，营业利润60.54万亿韩元，净利润93.92万亿韩元，营业利润率76%。尽管业绩创历史新高，但不及市场预期（营收预期84.1万亿韩元，营业利润预期64.1万亿韩元），股价7月29日盘中一度暴跌15-20%，最终收跌约9-11%。上半年累计营收首次突破100万亿韩元。HBM4已量产出货并与约10家客户签订5年长期供应协议。",
+        "product": "HBM, DRAM, NAND, SSD",
+        "impact": "bearish",
+        "reaction_type": "sentiment",
+        "pricing_status": "overpriced",
+        "horizon": "1w",
+        "confidence": "high",
+        "action": "watch"
+      },
+      {
+        "title": "2. 三星电子Q2 2026财报：存储业务单季营收超2025全年",
+        "date": "2026-07-30",
+        "source": "CFM闪存市场",
+        "url": "https://www.chinaflashmarket.com/news",
+        "summary": "三星电子Q2 2026存储业务表现强劲，99.7%利润来自DS部门，存储业务单季营收超2025全年。公司计划Q3 DRAM bit出货量环比增长4%-6%，NAND bit出货量增长7%-9%。七成存储产能已被长期协议(LTA)锁定，明年HBM缺口将进一步扩大。HBM4销售预计Q3环比增长超3倍，下半年将占HBM总收入60%以上。",
+        "product": "HBM, DRAM, NAND, SSD",
+        "impact": "bullish",
+        "reaction_type": "instant",
+        "pricing_status": "priced",
+        "horizon": "1q",
+        "confidence": "high",
+        "action": "deep_tracking"
+      },
+      {
+        "title": "3. 铠侠Q1 2026财报：单季净利暴增近47倍",
+        "date": "2026-07-31",
+        "source": "CFM闪存市场",
+        "url": "https://www.chinaflashmarket.com/news",
+        "summary": "铠侠截至2026年6月30日的Q1 2026财季，各项核心财务指标均创历史新高。公司坚守\"价格与利润率优先\"策略，拒绝盲目扩产。CFO表示反对为争夺市场份额而投入高额资本支出。第九代BiCS FLASH™ 1Tb TLC已开始送样，采用230层堆叠工艺，NAND接口速度达4.8Gb/s。",
+        "product": "NAND, SSD",
+        "impact": "bullish",
+        "reaction_type": "instant",
+        "pricing_status": "priced",
+        "horizon": "1q",
+        "confidence": "high",
+        "action": "deep_tracking"
+      },
+      {
+        "title": "4. 慧荣科技Q2 2026财报：营收4.51亿美元创历史新高",
+        "date": "2026-07-30",
+        "source": "CFM闪存市场",
+        "url": "https://www.chinaflashmarket.com/news",
+        "summary": "慧荣科技Q2营收达4.51亿美元，创历史新高，环比增长32%，同比增长127%；毛利率50.2%，税后净利润8,314万美元。边缘和企业级SSD主控芯片同比显著增长50%-55%；嵌入式eMMC和UFS主控芯片同比激增95%-100%。公司预计全年收入增长超过100%，正朝着历史最高年收入迈进。",
+        "product": "SSD主控芯片, eMMC, UFS",
+        "impact": "bullish",
+        "reaction_type": "instant",
+        "pricing_status": "priced",
+        "horizon": "1q",
+        "confidence": "high",
+        "action": "watch"
+      },
+      {
+        "title": "5. 美股存储板块爆发：闪迪涨超25%，美光涨超18%",
+        "date": "2026-07-30",
+        "source": "CFM闪存市场",
+        "url": "https://www.chinaflashmarket.com/news",
+        "summary": "7月30日美股存储板块集体大涨。闪迪涨超25%，美光涨超18%，SK海力士涨超17%，西部数据涨超15%，希捷涨超11%。此前一日（7月29日）因SK海力士财报不及预期引发芯片股抛售，但次日市场反弹强劲，显示投资者对AI存储需求长期前景仍持乐观态度。",
+        "product": "HBM, DRAM, NAND, SSD",
+        "impact": "bullish",
+        "reaction_type": "sentiment",
+        "pricing_status": "partial",
+        "horizon": "1d",
+        "confidence": "medium",
+        "action": "alert"
+      },
+      {
+        "title": "6. A股存储股全线大涨：江波龙、佰维存储涨超11%",
+        "date": "2026-07-31",
+        "source": "CFM闪存市场",
+        "url": "https://www.chinaflashmarket.com/news",
+        "summary": "7月31日A股三大指数集体高开，存储股全线大涨。截至10:00，江波龙、佰维存储、大普微涨超11%，德明利涨停，联芸科技、长鑫涨超10%。同日日韩股市也大幅反弹，韩国KOSPI指数日内暴涨15%，创下1980年以来盘中最大涨幅纪录，三星涨超22%，SK海力士涨超17%，铠侠涨超31%。",
+        "product": "DRAM, NAND, SSD",
+        "impact": "bullish",
+        "reaction_type": "sentiment",
+        "pricing_status": "partial",
+        "horizon": "1d",
+        "confidence": "medium",
+        "action": "alert"
+      },
+      {
+        "title": "7. 微软FY2026 Q4财报：Azure全年收入突破千亿美元，资本支出410亿美元",
+        "date": "2026-07-30",
+        "source": "CFM闪存市场",
+        "url": "https://www.chinaflashmarket.com/news",
+        "summary": "微软公布FY2026 Q4业绩，总营收900亿美元同比增长18%。微软云业务收入593亿美元同比增长27%，全年Azure收入突破千亿美元。该财季资本支出410亿美元，同比提升70%，约三分之二用于购置Azure和AI服务所需的CPU和GPU。积压商业合同价值增长84%达6780亿美元。CEO纳德拉表示生成式AI带动企业云采购需求旺盛。",
+        "product": "AI服务器, HBM, DRAM",
+        "impact": "bullish",
+        "reaction_type": "instant",
+        "pricing_status": "priced",
+        "horizon": "1q",
+        "confidence": "high",
+        "action": "deep_tracking"
+      },
+      {
+        "title": "8. 亚马逊2026年Q2财报：AWS营收422亿美元，资本支出上调至2200亿美元",
+        "date": "2026-07-31",
+        "source": "CFM闪存市场",
+        "url": "https://www.chinaflashmarket.com/news",
+        "summary": "亚马逊公布2026年Q2财报，总营收2006亿美元同比增长20%，归母净利润626亿美元同比增长245%。AWS营收达422亿美元，同比增长37%，创2021年以来最快增速。为应对AI算力需求，亚马逊将2026年全年资本支出预期从2000亿美元上调至2200亿美元。CEO安迪·贾西表示即使达到该支出规模，2026至2027年依然难以满足全部算力需求，客户已提前锁定大量2028年算力订单。",
+        "product": "AI服务器, HBM, DRAM",
+        "impact": "bullish",
+        "reaction_type": "instant",
+        "pricing_status": "priced",
+        "horizon": "1q",
+        "confidence": "high",
+        "action": "deep_tracking"
+      }
+    ]
   }
 ]
