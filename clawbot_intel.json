@@ -1,7 +1,7 @@
 [
   {
     "date": "2026-07-31",
-    "generated_at": "2026-07-31T15:34:12.784532",
+    "generated_at": "2026-08-02T08:17:29.917143",
     "news": [
       {
         "title": "三星电子Q2 2026财报：AI需求推动创纪录利润，利润率超52%",
@@ -198,6 +198,62 @@
         "horizon": "1w",
         "confidence": "medium",
         "action": "watch"
+      },
+      {
+        "title": "国产存储龙头长鑫科技股价大涨超14%市值突破4万亿，苹果CEO库克确认评估其DRAM芯片",
+        "source": "新浪财经/快科技",
+        "date": "2026-07-31",
+        "url": "https://finance.sina.com.cn/stock/relnews/cn/2026-07-31/doc-iniksaip1009656.shtml",
+        "summary": "7月31日早盘，长鑫科技（688825）盘中一度涨超14%，股价摸高至60.6元/股，总市值超4万亿元。公司7月27日登陆科创板，是A股及科创板史上最大IPO。MSCI公告将其纳入MSCI中国全股票指数，8月10日生效。同日苹果CEO库克在业绩会上确认正在评估长鑫科技DRAM芯片，表示更多供应商是好事。但多名美国参议员联名致信库克，要求苹果不使用中国存储芯片，长鑫科技和长江存储已被列入\"中国军事企业清单\"。",
+        "product": "DRAM, 存储芯片",
+        "impact": "bullish",
+        "reaction_type": "instant",
+        "pricing_status": "unpriced",
+        "horizon": "1w",
+        "confidence": "high",
+        "action": "alert"
+      },
+      {
+        "title": "澜起科技全球率先试产CXL 3.2内存扩展控制器芯片，已导入三星SK海力士",
+        "source": "澜起科技官网/IT之家",
+        "date": "2026-07-31",
+        "url": "https://www.montage-tech.com/cn/Press_Releases/20260731",
+        "summary": "7月31日，澜起科技宣布在全球率先试产CXL 3.2内存扩展控制器（MXC）芯片。该芯片面向AI、云计算、数据中心场景的内存扩展与资源池化需求，符合CXL Type 3规范，支持PCIe 6.x（64GT/s），集成双通道DDR5内存控制器（最高8000MT/s）。目前已成功导入三星、SK海力士等主流内存模组厂商的下一代CXL产品并完成初步验证，支持英特尔至强、AMD EPYC等主流服务器平台。",
+        "product": "CXL芯片, DDR5内存控制器",
+        "impact": "bullish",
+        "reaction_type": "undervalued",
+        "pricing_status": "unpriced",
+        "horizon": "1m",
+        "confidence": "high",
+        "action": "deep_tracking"
+      },
+      {
+        "title": "美股存储芯片板块大幅反弹，费城半导体指数涨超8%终结5连跌",
+        "source": "南方财经",
+        "date": "2026-07-30",
+        "url": "https://m.sfccn.com/2026/7-30/zNMDE1MjBfMjE5NDkzNw.html",
+        "summary": "7月30日美股存储芯片板块大幅反弹，费城半导体指数大涨超8%，终结日线5连跌。存储芯片股集体狂飙：闪迪涨超20%，美光科技涨超12%，SK海力士涨超11%，西部数据涨超15%，希捷科技涨超16%。SK集团会长崔泰源首次以个人名义买入3620股SK海力士股票。微软财报超预期，Azure云业务增速创四年最快，带动AI基础设施需求预期。",
+        "product": "HBM, DRAM, NAND, 存储芯片",
+        "impact": "bullish",
+        "reaction_type": "sentiment",
+        "pricing_status": "partial",
+        "horizon": "1d",
+        "confidence": "high",
+        "action": "watch"
+      },
+      {
+        "title": "美国多名参议员施压苹果承诺不用中国存储芯片",
+        "source": "快科技",
+        "date": "2026-07-31",
+        "url": "https://news.mydrivers.com/1/1086/1086171.htm",
+        "summary": "多名美国参议员联名致信苹果CEO库克，明确要求苹果旗下产品不能使用长鑫科技和长江存储两家中国存储芯片企业生产的芯片，即使仅面向中国市场销售也不能突破红线。要求苹果在8月21日前给出正式书面承诺。参与签署议员多来自美光科技和SK海力士扩产的核心布局区域。",
+        "product": "DRAM, 存储芯片",
+        "impact": "bearish",
+        "reaction_type": "instant",
+        "pricing_status": "unpriced",
+        "horizon": "1w",
+        "confidence": "medium",
+        "action": "alert"
       }
     ],
     "entries": [
