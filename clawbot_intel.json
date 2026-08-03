@@ -1565,5 +1565,91 @@
         ]
       }
     ]
+  },
+  {
+    "date": "2026-08-03",
+    "generated_at": "2026-08-03T12:13:00+08:00",
+    "news": [
+      {
+        "title": "长鑫存储LPDDR6研发验证 nearing completion，中国存储芯片首次追平三星、SK海力士技术代差",
+        "source": "Zaker/Tradesmax综合",
+        "date": "2026-08-01",
+        "url": "https://app.myzaker.com/news/article.php?pk=6a6f24388e9f0960ab0d5d0c",
+        "summary": "长鑫存储（CXMT）LPDDR6研发验证已进入尾声，预计2026年下半年量产。首款LPDDR6产品数据速率达12800Mbps，支持16Gb存储芯片，采用1295球PoP封装。虽然速率略低于三星/SK海力士的14400Mbps（DUV光刻机限制），但这标志着中国存储首次在下一代内存芯片领域追平与海外巨头技术代差。SK海力士已出手阻击，计划向中国手机厂商优先供应LPDDR6；美光则反对苹果采购长鑫芯片。",
+        "product": "LPDDR6, DRAM, 存储芯片",
+        "impact": "bullish",
+        "reaction_type": "undervalued",
+        "pricing_status": "partial",
+        "horizon": "1m",
+        "confidence": "high",
+        "action": "deep_tracking"
+      },
+      {
+        "title": "CXMT接近LPDDR6量产：DUV光刻机瓶颈导致12.8 Gbps vs 14.4 Gbps性能差距",
+        "source": "TechTimes",
+        "date": "2026-08-03",
+        "url": "https://www.techtimes.com/articles/322700/20260802/cxmt-nears-lpddr6-production-duv-ceiling-shows-128-gbps-vs-144-gbps-gap.htm",
+        "summary": "长鑫存储（CXMT）LPDDR6生产验证接近完成，但因缺乏EUV光刻机，其LPDDR6速率为12.8Gbps，低于三星和SK海力士使用EUV技术达到的14.4Gbps。这凸显了中国半导体行业在先进制程设备上的持续瓶颈。尽管如此，CXMT预计将在2026年下半年开始量产，成为继三星、SK海力士之后第三家量产LPDDR6的厂商。",
+        "product": "LPDDR6, DRAM, DUV光刻机",
+        "impact": "bullish",
+        "reaction_type": "undervalued",
+        "pricing_status": "partial",
+        "horizon": "1q",
+        "confidence": "high",
+        "action": "deep_tracking"
+      },
+      {
+        "title": "三星利润率将因中国进入LPDDR6市场竞争而下降",
+        "source": "SammyFans",
+        "date": "2026-08-01",
+        "url": "https://www.sammyfans.com/2026/08/01/samsung-profit-margin-decline-china-lpddr6-competition/",
+        "summary": "随着中国长鑫存储（CXMT）即将进入LPDDR6市场，三星在移动DRAM领域的利润率预计将面临下行压力。虽然三星和SK海力士目前在LPDDR6技术上保持领先（14.4Gbps vs CXMT的12.8Gbps），但CXMT的进入将增加市场供应，压缩价格上涨空间。分析指出，美光受冲击最大，因其高度依赖DRAM周期；SK海力士相对较小，因其核心利润来自AI服务器HBM。",
+        "product": "LPDDR6, DRAM, 移动存储",
+        "impact": "bearish",
+        "reaction_type": "sentiment",
+        "pricing_status": "priced",
+        "horizon": "1m",
+        "confidence": "medium",
+        "action": "watch"
+      },
+      {
+        "title": "中国CXMT在LPDDR6 DRAM开发上的突破威胁三星和SK海力士主导地位",
+        "source": "WCCFTech",
+        "date": "2026-08-01",
+        "url": "https://wccftech.com/chinas-cxmt-breakthrough-in-lpddr6-dram-development-threatens-samsung-and-sk-hynix-dominance/",
+        "summary": "长鑫存储（CXMT）在LPDDR6 DRAM开发上取得重大突破，已完成工程样品验证并计划2026年下半年量产。这是中国存储厂商首次在下一代内存技术标准上与国际巨头站在同一起跑线。CXMT采用DUV光刻机生产，速率12.8Gbps，略低于三星/SK海力士使用EUV的14.4Gbps。行业分析认为，这将打破美韩三巨头对全球DRAM市场90%的垄断格局。",
+        "product": "LPDDR6, DRAM, 存储芯片",
+        "impact": "bullish",
+        "reaction_type": "undervalued",
+        "pricing_status": "partial",
+        "horizon": "1q",
+        "confidence": "high",
+        "action": "deep_tracking"
+      }
+    ],
+    "entries": [
+      {
+        "id": "cxmt-lpddr6-20260803",
+        "type": "breakthrough",
+        "title": "长鑫存储LPDDR6突破",
+        "date": "2026-08-03",
+        "products": [
+          "LPDDR6",
+          "DRAM",
+          "存储芯片"
+        ],
+        "companies": [
+          "长鑫存储(CXMT)",
+          "三星",
+          "SK海力士",
+          "美光"
+        ],
+        "summary": "长鑫存储LPDDR6研发验证 nearing completion，预计2026年下半年量产。虽然使用DUV光刻机导致速率(12.8Gbps)略低于三星/SK海力士(14.4Gbps)，但这标志着中国存储首次追平国际巨头技术代差。SK海力士已出手阻击，计划向中国手机厂商优先供应LPDDR6。",
+        "impact": "bullish",
+        "confidence": "high",
+        "action": "deep_tracking",
+        "horizon": "1q"
+      }
+    ]
   }
 ]
