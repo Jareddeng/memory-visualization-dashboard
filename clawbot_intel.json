@@ -1529,5 +1529,41 @@
       "memory",
       "storage"
     ]
+  },
+  {
+    "date": "2026-08-03",
+    "generated_at": "2026-08-03T08:17:31.174112",
+    "news": [
+      "半导体抛售潮与波动率指数：2026年7月芯片暴跌揭示标普500指数之下的市场暗流"
+    ],
+    "entries": [
+      {
+        "id": "34667cc9-a5d6-430c-be4e-8d2863ceb5b5",
+        "date": "2026-08-02",
+        "headline": "半导体抛售潮与波动率指数：2026年7月芯片暴跌揭示标普500指数之下的市场暗流",
+        "source": "businessfinance.news",
+        "url": "https://businessfinance.news/semiconductor-selloff-calm-index-what-the-july-2026-chip-rout-reveals-about-the-market-beneath-the-sp-500/",
+        "product": "DUV光刻机/半导体设备/存储芯片",
+        "summary": "2026年7月下旬半导体股票暴跌的三大因素汇聚：（1）中国开始量产国产浸没式DUV光刻设备，冲击ASML及芯片设备股；（2）中国存储芯片制造商长鑫存储（CXMT）在上海 debut 暴涨466%，引发对美光、三星和SK海力士的竞争担忧；（3）投资者重新评估债务融资的超大规模AI资本支出。杠杆单股票ETF和韩国散户保证金债务放大了抛售。标普500指数反而上涨0.21%，资金轮动至医疗保健、金融、工业和必需品板块。Cboe DSPX离散度指数触及47%的六年高点，而VIX仅为15%，表明个股剧烈波动但指数表面平静。",
+        "impact": "bearish",
+        "reaction_type": "sentiment",
+        "pricing_status": "priced",
+        "horizon": "1w",
+        "confidence": "medium",
+        "action": "watch",
+        "tags": [
+          "半导体",
+          "存储芯片",
+          "DUV光刻机",
+          "ASML",
+          "美光",
+          "三星",
+          "SK海力士",
+          "CXMT",
+          "AI资本支出",
+          "韩国股市"
+        ]
+      }
+    ]
   }
 ]
