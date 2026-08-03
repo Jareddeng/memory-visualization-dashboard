@@ -1,36 +1,24 @@
 # News Candidates - 2026-08-03
+## Date Range: 2026-08-01 to 2026-08-03
+## Scope: Semiconductor/Storage Chip News
 
-## 1. CXMT LPDDR6 Breakthrough (Chinese)
-- Title: 大突破!长鑫存储LPDDR6芯片曝光,打破美韩巨头垄断,SK海力士出手阻击
-- Date: 2026-08-01
-- URL: https://app.myzaker.com/news/article.php?pk=6a6f24388e9f0960ab0d5d0c
-- Language: Chinese
-- Product: LPDDR6, DRAM
+**Search Rounds Completed:** 4 (2 English + 2 Chinese)
 
-## 2. CXMT LPDDR6 - Tradesmax (Chinese)
-- Title: 中国存储杀入LPDDR6，三星、SK海力士、美光的高利润时代要变了！
-- Date: 2026-08-02
-- URL: https://www.tradesmax.com/component/k2/item/28839-中国存储杀入lpddr6，三星、sk海力士、美光的高利润时代要变了！
-- Language: Chinese
-- Product: LPDDR6, DRAM
+**Result:** NO qualifying articles found within the 3-day date window.
 
-## 3. CXMT LPDDR6 - TechTimes (English)
-- Title: CXMT Nears LPDDR6 Production: DUV Ceiling Shows Up in 12.8 Gbps vs. 14.4 Gbps Gap
-- Date: 2026-08-03
-- URL: https://www.techtimes.com/articles/322700/20260802/cxmt-nears-lpddr6-production-duv-ceiling-shows-128-gbps-vs-144-gbps-gap.htm
-- Language: English
-- Product: LPDDR6, DRAM
+All search results returned articles dated before 2026-08-01. The most recent article found was dated 2026-07-29 (Samsung and SK Hynix scaling up HBM production capacity), which was DISCARDED per DATE LOCK rules.
 
-## 4. CXMT LPDDR6 - SammyFans (English)
-- Title: Samsung's profit margin to decline as China enters LPDDR6 competition
-- Date: 2026-08-01
-- URL: https://www.sammyfans.com/2026/08/01/samsung-profit-margin-decline-china-lpddr6-competition/
-- Language: English
-- Product: LPDDR6, DRAM
+### Discarded Articles (outside 3-day window):
+1. **2026-07-29** - Samsung and SK Hynix to scale up memory production capacity in 2026 (datacenterdynamics.com)
+2. **2026-06-30** - Samsung vs SK Hynix Stock analysis (ibtimes.com.au)
+3. **2026-06-29** - 三星、SK海力士与美光遭集体诉讼 (vvp-media.ru)
+4. **2026-06-20** - HBM Pricing & Market Share 2026 (siliconanalysts.com)
+5. **2026-05-27** - Micron Vs. SK Hynix comparison (benzinga.com)
+6. **2026-05-15** - HBM Market Share 2026 snapshot (presenc.ai)
+7. **2026-01-28** - 7 Best Memory Stocks (intellectia.ai)
+8. **2026-01-23** - Samsung Custom HBM4E Design (trendforce.com)
+9. **2026-01-09** - Memory Supercycle analysis (themoneyunlock.com)
+10. **2026-01-08** - Samsung, Micron, SK Hynix printing money (benzinga.com)
+11. **2026-01-06** - 美光加速HBM4芯片扩产 (news.qq.com)
 
-## 5. CXMT LPDDR6 - WCCFTech (English)
-- Title: China's CXMT Breakthrough In LPDDR6 DRAM Development Threatens Samsung & SK Hynix Dominance
-- Date: 2026-08-01
-- URL: https://wccftech.com/chinas-cxmt-breakthrough-in-lpddr6-dram-development-threatens-samsung-and-sk-hynix-dominance/
-- Language: English
-- Product: LPDDR6, DRAM
+**Conclusion:** No actionable semiconductor/storage chip news from the last 3 days.
