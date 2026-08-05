@@ -1679,5 +1679,54 @@
     "horizon": "1m",
     "confidence": "high",
     "action": "alert"
+  },
+  {
+    "date": "2026-08-05",
+    "generated_at": "2026-08-05T08:17:02.144804",
+    "news": [
+      {
+        "title": "Counterpoint：三星Q2 DRAM市占率39%稳居第一，三大原厂已提前售罄2027年DRAM/HBM产能",
+        "source": "sammyfans.com / Counterpoint Research / 电子时报",
+        "date": "2026-08-04",
+        "url": "https://www.sammyfans.com/2026/08/04/counterpoint-research-q2-2026-dram-market-samsung-sk-hynix-micron/",
+        "summary": "据Counterpoint Research数据，三星电子2026年Q2以39%的份额稳居全球DRAM市场第一。更关键的是，三星、SK海力士和美光三大原厂已提前数月完成2027年全年DRAM和HBM产能分配，较往年大幅提前。AI服务器与HBM需求已占据约70%的DRAM产出，导致智能手机与PC制造商面临更严峻的缺货局面——多数买家仅能获得其原始需求量的60%至70%。威刚董事长陈立白公开确认三大DRAM厂商2027年产能已被预订一空。厂商正与主要客户签署3至5年的长期供应协议（LTA），通过预付款锁定产能。NAND方面，三星、美光和闪迪的2027年产能也已被预售，铠侠与SK海力士预计于8月底前敲定。",
+        "product": "DRAM, HBM, NAND",
+        "impact": "bullish",
+        "reaction_type": "instant",
+        "pricing_status": "unpriced",
+        "horizon": "1w",
+        "confidence": "high",
+        "action": "alert"
+      }
+    ],
+    "entries": [
+      {
+        "id": "intel-260805a1b2c3d4",
+        "date": "2026-08-04",
+        "headline": "三大原厂提前售罄2027年DRAM/HBM产能，AI挤占70%产出致手机PC严重缺货",
+        "source": "Counterpoint Research / 电子时报",
+        "url": "https://www.sammyfans.com/2026/08/04/counterpoint-research-q2-2026-dram-market-samsung-sk-hynix-micron/",
+        "product": "DRAM, HBM, NAND",
+        "summary": "三星、SK海力士、美光三大DRAM原厂已提前完成2027年全年产能分配，AI服务器和HBM需求占据约70%的DRAM产出，智能手机和PC制造商仅能获得60%-70%的原始需求量。三星Q2 DRAM市占率39%稳居第一。厂商正签署3-5年LTA长期协议，通过预付款锁定产能。NAND产能同样被提前预订。",
+        "impact": "bullish",
+        "reaction_type": "instant",
+        "pricing_status": "unpriced",
+        "horizon": "1w",
+        "confidence": "high",
+        "action": "alert",
+        "tags": [
+          "三星",
+          "SK海力士",
+          "美光",
+          "DRAM",
+          "HBM",
+          "NAND",
+          "产能分配",
+          "AI服务器",
+          "供应短缺",
+          "LTA"
+        ]
+      }
+    ]
   }
 ]
