@@ -526,6 +526,8 @@ async function loadIntel() {
     return rows;
   }
   for (const file of files.filter((name) => name.endsWith(".json"))) {
+    // 防御性：跳过 archive 目录（即使未来改为递归读取）
+    if (file === "archive") continue;
     const raw = JSON.parse(await fs.readFile(path.join(intelDir, file), "utf8"));
     const records = Array.isArray(raw) ? raw : raw.records || [];
     if (!Array.isArray(records)) throw new Error(`情报 JSON 必须是数组或包含 records 数组: ${file}`);
