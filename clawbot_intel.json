@@ -1,5 +1,25 @@
 [
   {
+    "date": "2026-08-04",
+    "generated_at": "2026-08-05T04:22:56.000000",
+    "news": [
+      {
+        "title": "Counterpoint：三星Q2重夺DRAM市场39%份额，美光紧追SK海力士",
+        "source": "Counterpoint Research / sammyfans.com",
+        "date": "2026-08-04",
+        "url": "https://www.sammyfans.com/2026/08/04/counterpoint-research-q2-2026-dram-market-samsung-sk-hynix-micron/",
+        "summary": "Counterpoint Research报告显示，三星电子在2026年Q2全球DRAM市场份额回升至39%，重夺市场龙头地位（为2024年以来最高水平）。SK海力士尽管营收同比增长214%，但市场份额从2025Q2的39%骤降至26%，主要受HBM平均售价下滑和早期长期协议低价影响。美光市场份额达到25%，正紧追SK海力士，其DRAM营收已达一年前的5倍。传统DRAM价格QoQ飙升，而HBM定价同比下跌，主要因HBM3E价格走软和HBM4推出延迟。HBM4出货量预计在2026Q3随着NVIDIA Vera Rubin和AMD MI455X平台出货而回升。",
+        "product": "DRAM, HBM",
+        "impact": "neutral",
+        "reaction_type": "sentiment",
+        "pricing_status": "partial",
+        "horizon": "1w",
+        "confidence": "high",
+        "action": "watch"
+      }
+    ]
+  },
+  {
     "date": "2026-07-31",
     "generated_at": "2026-08-02T08:17:29.917143",
     "news": [
