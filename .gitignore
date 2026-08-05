@@ -3,3 +3,4 @@ dist/
 .vite/
 *.log
 data/processed/*.tmp
+clawbot_intel.json.bak

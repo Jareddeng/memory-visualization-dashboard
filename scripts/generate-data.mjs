@@ -518,24 +518,7 @@ async function loadTrackers() {
 async function loadIntel() {
   const rows = [];
 
-  // 1) 根目录主情报文件 (cron 任务写入位置)
-  try {
-    const raw = JSON.parse(await fs.readFile(path.join(root, "clawbot_intel.json"), "utf8"));
-    const records = Array.isArray(raw) ? raw : raw.records || [];
-    if (Array.isArray(records)) {
-      records.forEach((record, index) => {
-        try {
-          rows.push(normalizeIntelRecord(record, "clawbot_intel.json", index));
-        } catch {
-          // 单条记录格式错误，跳过
-        }
-      });
-    }
-  } catch {
-    // 根目录文件不存在或格式错误，跳过
-  }
-
-  // 2) content/intel/ 目录下的分片文件
+  // 只读取 content/intel/ 目录下的 JSON 文件
   let files = [];
   try {
     files = await fs.readdir(intelDir);
@@ -546,7 +529,13 @@ async function loadIntel() {
     const raw = JSON.parse(await fs.readFile(path.join(intelDir, file), "utf8"));
     const records = Array.isArray(raw) ? raw : raw.records || [];
     if (!Array.isArray(records)) throw new Error(`情报 JSON 必须是数组或包含 records 数组: ${file}`);
-    records.forEach((record, index) => rows.push(normalizeIntelRecord(record, file, index)));
+    records.forEach((record, index) => {
+      try {
+        rows.push(normalizeIntelRecord(record, file, index));
+      } catch {
+        // 单条记录格式错误，跳过
+      }
+    });
   }
 
   // 按 id 去重（保留第一条）
