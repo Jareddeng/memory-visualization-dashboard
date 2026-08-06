@@ -77,25 +77,6 @@
       "review_date": "2026-08-12"
     },
     {
-      "id": "2026-08-05-dram-hbm-capacity-2027-sold-out",
-      "type": "产业链跟踪",
-      "impact": "bullish",
-      "date": "2026-08-05",
-      "title": "三大原厂2027年DRAM与HBM产能全部售罄",
-      "product": "DRAM,HBM,NAND",
-      "source": "国际电子商情",
-      "url": "https://www.esmchina.com/news/14452.html",
-      "summary": "据台媒援引供应链消息，三星电子、SK海力士、美光三大DRAM原厂已完成2027年全年产能分配谈判，DRAM与HBM产能全部售罄。买家群体包括已签署3至5年长期供货协议(LTA)的云端服务商与AI芯片大客户，以及2026年度已获分配的中小型买家。HBM与AI服务器应用将占据DRAM总产能约七成，手机与PC配额进一步缩水。NAND方面，三星、美光、闪迪全年产能已预售一空。",
-      "importance": "A",
-      "reaction_type": "sentiment",
-      "pricing_status": "priced",
-      "horizon": "1q",
-      "transmission_path": "产能售罄确认存储行业超级周期持续，AI需求主导产能分配。HBM结构性挤压传统DRAM产能，导致消费端供给紧张。价格从恐慌性涨价转向高位常态化，下游终端厂商成本压力长期存在。",
-      "confidence": "medium",
-      "action": "deep_tracking",
-      "review_date": "2026-08-12"
-    },
-    {
       "id": "2026-08-05-musk-ai-memory-demand-200pct",
       "type": "市场消息",
       "impact": "bullish",
