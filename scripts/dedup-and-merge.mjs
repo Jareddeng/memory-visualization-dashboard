@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 情报候选合并脚本：去重 + 合并 + 清理
+// 情报候选合并脚本：去重 + 合并 + 清理 + 最终防线
 // 纯 Node.js，冷启动可用，零 AI 依赖
 import fs from "node:fs";
 import path from "node:path";
@@ -158,13 +158,76 @@ for (const r of candidates) {
 // 4. 合并到主库
 if (newRecords.length > 0) {
   mainRecords.push(...newRecords);
-  fs.writeFileSync(INTEL_FILE, JSON.stringify(mainRaw, null, 2) + "\n");
   console.log(`\n合并完成: 新增 ${newRecords.length} 条, 总计 ${mainRecords.length} 条`);
 } else {
   console.log("\n无新增记录");
 }
 
-// 5. 清理候选文件
+// 5. 最终防线：扫描整个库，清理任何残留的重复（ID/URL/标题日期）
+console.log("\n[最终防线] 扫描全库重复...");
+const idIndex = new Map();
+const urlIndex = new Map();
+const titleDateIndex = new Map();
+const toRemove = [];
+
+for (let i = 0; i < mainRecords.length; i++) {
+  const r = mainRecords[i];
+  const id = r.id;
+  const url = r.url?.trim();
+  const title = r.title?.trim();
+  const date = r.date;
+  const titleDateKey = (title || '') + '|' + (date || '');
+
+  // ID 重复
+  if (id && idIndex.has(id)) {
+    console.log(`  [最终防线] 删除重复ID: ${id} (idx ${i}, first at ${idIndex.get(id)})`);
+    toRemove.push(i);
+    continue;
+  }
+  if (id) idIndex.set(id, i);
+
+  // URL 重复（真正的重复，不是聚合页）
+  if (url && urlIndex.has(url)) {
+    const firstIdx = urlIndex.get(url);
+    const firstRecord = mainRecords[firstIdx];
+    const sim = titleSimilarity(firstRecord?.title, title);
+    if (sim > 0.6 && firstRecord?.date === date) {
+      console.log(`  [最终防线] 删除重复URL: ${id} (idx ${i}, first at ${firstIdx}, sim=${sim.toFixed(2)})`);
+      toRemove.push(i);
+      continue;
+    }
+    // 聚合页情况：清空URL
+    if (sim <= 0.6) {
+      console.log(`  [最终防线] 清空聚合页URL: ${id} (idx ${i}, first at ${firstIdx}, sim=${sim.toFixed(2)})`);
+      r.url = "";
+    }
+  }
+  if (url) urlIndex.set(url, i);
+
+  // 标题+日期 重复
+  if (title && date && titleDateIndex.has(titleDateKey)) {
+    console.log(`  [最终防线] 删除重复标题日期: ${id} (idx ${i}, first at ${titleDateIndex.get(titleDateKey)})`);
+    toRemove.push(i);
+    continue;
+  }
+  if (title && date) titleDateIndex.set(titleDateKey, i);
+}
+
+// 执行删除（从后往前删，避免索引偏移）
+if (toRemove.length > 0) {
+  toRemove.sort((a, b) => b - a);
+  for (const idx of toRemove) {
+    mainRecords.splice(idx, 1);
+  }
+  console.log(`[最终防线] 清理完成: 删除 ${toRemove.length} 条重复, 剩余 ${mainRecords.length} 条`);
+} else {
+  console.log("[最终防线] 无残留重复");
+}
+
+// 6. 写入主文件
+fs.writeFileSync(INTEL_FILE, JSON.stringify(mainRaw, null, 2) + "\n");
+
+// 7. 清理候选文件
 for (const f of candidateFiles) {
   try {
     fs.unlinkSync(path.join(CANDIDATE_DIR, f));
