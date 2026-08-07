@@ -7308,6 +7308,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-08-12"
+    },
+    {
+      "id": "2026-08-05-apple-macbook-air-memory-shortage",
+      "date": "2026-08-05",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "title": "苹果MacBook Air因全球内存短缺面临缺货",
+      "product": "DRAM",
+      "source": "Verak World",
+      "url": "https://verakworld.com/todays-daily-tech-news-05-aug-2026/",
+      "summary": "苹果MacBook Air机型在全球范围内出现库存紧张，行业分析师指出这是由于AI领域对内存组件的巨大需求导致全球内存硬件短缺，供应链承压，消费者需面临更长的发货等待时间。",
+      "transmission_path": "消费端缺货现象验证内存短缺已从AI数据中心传导至PC市场，反映DRAM供需失衡已影响下游终端出货，进一步支撑内存涨价预期。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-08-12"
     }
   ]
 }
