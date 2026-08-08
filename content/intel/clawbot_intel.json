@@ -7498,6 +7498,44 @@
       "confidence": "high",
       "action": "alert",
       "review_date": "2026-08-14"
+    },
+    {
+      "id": "2026-08-06-sk-hynix-next-gen-memory-fms-2026",
+      "date": "2026-08-06",
+      "type": "产品数据",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "SK海力士在美展示下一代存储器，韩国存储产业领先态势延续",
+      "product": "HBM,DRAM",
+      "source": "韩民族日报",
+      "url": "http://china.hani.co.kr/arti/economy/17218.html",
+      "summary": "三星电子、SK海力士等韩国半导体企业在FMS 2026峰会上展示下一代存储器产品和技术。三星首次公开zHBM原型，采用全新结构将HBM垂直堆叠在AI加速器之上，性能最高可达HBM5的8倍。分析认为，得益于韩国企业积极扩大投资，韩国未来5年仍将占据全球存储器市场领先地位。",
+      "transmission_path": "下一代存储技术展示→强化市场对韩厂技术领先预期→支撑HBM/DRAM估值溢价",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-08-13"
+    },
+    {
+      "id": "2026-08-07-changxin-rejects-apple-dram-negotiation",
+      "date": "2026-08-07",
+      "type": "重大事件",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "长鑫拒绝苹果压价引爆DRAM权力转移",
+      "product": "DRAM,LPDDR5X",
+      "source": "太平洋科技",
+      "url": "https://mobile.pconline.com.cn/2179/21798759.html",
+      "summary": "长鑫存储拒绝苹果公司对LPDDR5X移动DRAM的降价要求，坚持报价不低于三星和SK海力士。由于AI服务器需求挤占通用DRAM产能，苹果面临严重供给不足，台积电约10亿美元A20 Pro芯片因缺DRAM无法推进封装。三星、SK海力士将产能转向HBM4等高附加值产品，传统DRAM议价权正从终端厂商向存储制造商转移。",
+      "transmission_path": "存储厂商议价权提升→DRAM价格下行空间有限→存储原厂利润率获支撑→利好三星/SK海力士/美光股价",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-08-14"
     }
   ]
 }
