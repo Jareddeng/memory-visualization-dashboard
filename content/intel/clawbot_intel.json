@@ -7764,6 +7764,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-08-16"
+    },
+    {
+      "id": "2026-08-07-hbm-stocks-selloff",
+      "date": "2026-08-07",
+      "type": "市场消息",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "title": "HBM股双杀：三星通过NVIDIA/AMD认证后竞争加剧，SK海力士股价暴跌45%",
+      "product": "HBM,DRAM",
+      "source": "AJUSSI Guide",
+      "url": "",
+      "summary": "三星已通过NVIDIA和AMD的HBM4认证，并于2026年2月开始商业出货，三强竞争格局再现。但SK海力士股价在7月底一个月内暴跌超45%，截至8月6日较峰值腰斩。美光也较6月峰值下跌约三分之一。SK海力士虽然公布创纪录季度业绩，但营收和营业利润均低于市场过高预期。公司与约十家客户敲定长期协议，但投资者担忧这些合同可能限制其参与价格上涨的机会。",
+      "transmission_path": "HBM市场竞争加剧->三星HBM4出货->SK海力士份额压力->股价下跌->存储芯片板块情绪恶化",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-08-14"
+    },
+    {
+      "id": "2026-08-07-memory-stocks-divergence",
+      "date": "2026-08-07",
+      "type": "市场消息",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "title": "存储三巨头股价分化：三星SK海力士大跌，美光逆势反弹",
+      "product": "HBM,DRAM,NAND",
+      "source": "新浪财经",
+      "url": "https://finance.sina.cn/usstock/mggd/2026-08-07/detail-inimnzse9952345.d.html",
+      "summary": "8月初以来三星电子股价累计下跌12%，SK海力士大跌17.23%；而美光股价上涨7.1%。尽管三星和SK海力士业绩创历史新高，但股价同步下行。美光率先公布长期资本回报方针，承诺将全部超额现金返还给股东，市场关注各家企业股东回报政策差异。",
+      "transmission_path": "股东回报政策差异->美光资本回报明确->资金流入美光->韩国双雄资金流出->存储板块估值重估",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-08-14"
     }
   ]
 }
