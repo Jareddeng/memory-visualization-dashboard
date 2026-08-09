@@ -77,6 +77,25 @@
       "review_date": "2026-08-15"
     },
     {
+      "id": "2026-08-08-storage-investment-logic-restructuring",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-08-08",
+      "title": "存储行业投资逻辑重构：HBM决定算力产出，涨价周期或持续至2027年",
+      "product": "HBM,DRAM",
+      "source": "财新周刊",
+      "url": "https://weekly.caixin.com/2026-08-08/102472472.html",
+      "summary": "财新周刊封面报道分析指出，此轮存储行业爆发已完全颠覆此前投资逻辑。HBM直接决定token产出速率，AI芯片设计已变成围绕HBM来设计。机构根深蒂固地认为存储就是周期性商品，当前三星和海力士的PE看起来很低，不是因为便宜，而是因为市场未按照成长股估值。存储涨价周期在绝对价格和总量层面可能持续至2027年甚至更久，但价格上涨的斜率可能在2026年下半年到四季度见顶。东吴证券首席经济学家指出最关注指标包括半导体全球销售同比、DRAM出口价格同比增速、存储季度合约价同比环比涨幅、云厂商资本支出指引。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "HBM技术壁垒重塑存储行业估值逻辑→从周期股转向成长股→SK海力士/三星估值存在重估空间→韩国股市杠杆资金涌入存储股→短期波动风险积聚但中长期结构性趋势不变",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-08-16"
+    },
+    {
       "id": "2026-08-07-omdia-semiconductor-forecast-94-percent",
       "type": "行业分析",
       "impact": "bullish",
@@ -191,6 +210,25 @@
       "review_date": "2026-08-14"
     },
     {
+      "id": "2026-08-07-memory-triad-2027-sold-out",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-08-07",
+      "title": "存储三巨头2027年DRAM/HBM产能已售罄，AI公司跪求芯片",
+      "product": "DRAM,HBM",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2448129",
+      "summary": "三星、SK海力士和美光已完成2027年全年产能分配谈判，DRAM和HBM产能均已提前售罄，NAND仍有谈判空间。多数客户最终获得的配货量仅为其初始请求的60%至70%。三大供应商目前均无新增产能规划。SK集团会长崔泰源表示，2027年AI半导体需求预计将较2026年大增60%-100%，整体存储芯片需求增幅预计达50%-60%，2027年将面临史上最严重的短缺与供需失衡。内存成本已逐步转嫁至消费者：微软已上调Xbox Series X/S主机售价，任天堂计划下个月提高Switch 2在美售价，iPhone 18 Pro预计售价超1399美元。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "AI需求爆发→存储三巨头产能物理极限→2027年DRAM/HBM完全售罄→客户仅获60-70%配货→存储芯片价格持续飙升→下游消费电子涨价→三大原厂营收利润增长",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-08-16"
+    },
+    {
       "id": "2026-08-06-cxmt-rejects-apple-price-cut",
       "type": "重大事件",
       "impact": "bullish",
@@ -284,6 +322,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-08-15"
+    },
+    {
+      "id": "2026-08-06-nvidia-rubin-ultra-hbm-reduction",
+      "type": "重大事件",
+      "impact": "bullish",
+      "date": "2026-08-06",
+      "title": "NVIDIA测试降低Rubin Ultra HBM配置，应对2027年内存供应短缺",
+      "product": "HBM",
+      "source": "The Signal / TrendForce / The Information",
+      "url": "https://buttondown.com/fjgoff/archive/the-signal-august-7-2026/",
+      "summary": "The Information 8月6日报道，NVIDIA近几周正在测试至少三种减配内存的Rubin Ultra配置，从原计划的12-Hi HBM4e扩展至包括8-Hi HBM4e、12-Hi HBM4和8-Hi HBM4。TrendForce 8月4日预计主流Rubin Ultra SKU将保持HBM4且峰值理论算力不变，但降至8-Hi 192GB配置（当前Rubin为12-Hi 288GB）。驱动因素为2027年DRAM短缺限制了供应商可分配给HBM的晶圆产能，加上12-Hi HBM4e的验证和良率问题未解决。TrendForce补充称多家云厂商正考虑在下一代定制ASIC设计中降低HBM容量。此外，金融时报报道惠普、华硕和宏碁已认证中国长鑫存储CXMT的DRAM用于部分笔记本产品线——AI需求造成的短缺正在推动中国内存进入西方供应链。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "HBM供应严重短缺→NVIDIA被迫降低AI芯片内存配置（192GB vs 288GB）→影响AI服务器实际推理性能与每token成本→云厂商采购计划需重新评估→中国DRAM供应商获得进入西方PC供应链机会",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-08-16"
     },
     {
       "id": "2026-08-05-samsung-zhbm-v10-nand",
