@@ -77,6 +77,25 @@
       "review_date": "2026-08-16"
     },
     {
+      "id": "2026-08-09-sk-hynix-fms-2026-hbm4-nand",
+      "type": "产品数据",
+      "impact": "bullish",
+      "date": "2026-08-09",
+      "title": "SK海力士FMS 2026展示16层HBM4及375层NAND",
+      "product": "HBM,NAND,DRAM",
+      "source": "StorageReview",
+      "url": "https://www.storagereview.com/news/sk-hynix-at-fms-2026-16-high-hbm4-wafer-bonded-375-layer-nand-and-a-tiered-memory-pitch",
+      "summary": "SK海力士在FMS 2026展示全栈AI内存方案：16层48GB HBM4、12层48GB HBM4E（7月开始送样）、375层4D NAND（首款晶圆键合产品，能效提升2.5倍，2027上半年量产）。同时展示HBF（高带宽闪存）标准，容量最高512GB，带宽0.4-3.0TB/s。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "技术领先展示→客户信心增强→订单锁定→产能利用率提升→收入可见性提高→行业技术标杆确立",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-08-16"
+    },
+    {
       "id": "2026-08-08-micron-2026-hbm-sold-out",
       "type": "公司公告",
       "impact": "bullish",
@@ -302,6 +321,25 @@
       "transmission_path": "长协模式锁定收入→降低周期波动性→存储股估值中枢有望从5-6倍提升至8-10倍→国产替代长期构成竞争变量",
       "confidence": "high",
       "action": "deep_tracking",
+      "review_date": "2026-08-15"
+    },
+    {
+      "id": "2026-08-08-ubs-samsung-hbm4-market-share-2027",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-08-08",
+      "title": "UBS预测三星HBM4明年将反超SK海力士夺市场第一",
+      "product": "HBM,DRAM",
+      "source": "SammyFans/UBS",
+      "url": "https://www.sammyfans.com/2026/08/08/samsung-micron-and-sk-hynix-no-longer-alone-in-long-term-deals/",
+      "summary": "UBS预测2026年SK海力士以48%份额维持HBM市场首位，2027年三星将以41%份额微弱反超SK海力士的39%，美光约20%。HBM4将数据通道从1024条增至2048条，三星正扩大HBM4产能。全球内存短缺可能持续至2028年。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "HBM4技术升级→三星产能扩张→市场份额转移→SK海力士竞争应对→行业格局重塑→供需持续紧张",
+      "confidence": "medium",
+      "action": "watch",
       "review_date": "2026-08-15"
     },
     {
