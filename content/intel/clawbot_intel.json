@@ -8011,6 +8011,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-08-14"
+    },
+    {
+      "id": "2026-08-08-memory-death-cycle",
+      "date": "2026-08-08",
+      "type": "行业分析",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "存储产业面临周期见顶担忧，三巨头股价大幅回撤",
+      "product": "DRAM,HBM,NAND",
+      "source": "经济观察报",
+      "url": "",
+      "summary": "三星电子、SK海力士、美光科技第二季度财报均创历史最高业绩纪录，但股价最近一个多月大幅回撤。市场担忧此轮行业繁荣会重蹈'涨价—扩产—过剩—暴跌'的死亡循环。SK海力士2026年资本支出预计接近50万亿韩元，新增先进制程产能几乎全部投向HBM和AI服务器用DRAM，消费电子端供给进一步收紧。三巨头与下游客户签订三至五年期长期供应合同，约定保底价格和照付不议条款。美光确认2026年全年HBM供应已全部售罄。DRAM合约价环比涨幅逐季收窄：Q1约90%，Q2约60%，Q3预计13%-18%。",
+      "transmission_path": "存储芯片价格涨幅收窄→市场担忧周期见顶→存储芯片板块估值承压→相关股票价格下跌",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-08-15"
     }
   ]
 }
