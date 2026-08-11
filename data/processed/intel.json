@@ -343,6 +343,25 @@
       "review_date": "2026-08-15"
     },
     {
+      "id": "2026-08-08-memory-sold-out-stocks-tumble",
+      "type": "市场消息",
+      "impact": "bearish",
+      "date": "2026-08-08",
+      "title": "存储产能售罄至2027年但三巨头股价暴跌，市场定价周期见顶担忧",
+      "product": "DRAM,HBM,NAND",
+      "source": "MarketWise",
+      "url": "",
+      "summary": "尽管三星、SK海力士、美光的DRAM/HBM/NAND产能已售罄至2027年，但三家股价7月底至8月初集体大幅下跌，SK海力士股价较峰值回落约50%，美光跌约三分之一。市场担忧存储超级周期已见顶，同时NAND替代方案（HBF、GDDR、企业级SSD）正在崛起。闪迪股价从6月高点2335美元暴跌至8月6日的1258美元，年内仍涨2890%。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "transmission_path": "周期见顶恐惧→获利了结→股价暴跌→估值压缩→若基本面未恶化则可能出现超跌反弹",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-08-15"
+    },
+    {
       "id": "2026-08-07-omdia-semiconductor-forecast-94-percent",
       "type": "行业分析",
       "impact": "bullish",
@@ -645,6 +664,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-08-17"
+    },
+    {
+      "id": "2026-08-07-sk-hynix-approves-two-new-fabs",
+      "type": "公司公告",
+      "impact": "bullish",
+      "date": "2026-08-07",
+      "title": "SK海力士董事会批准新建两座晶圆厂，投资380亿美元扩产AI内存",
+      "product": "HBM,DRAM",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/08/07/sk-hynix-to-invest-38-billion-building-new-memory-chip-plants-as-demand-soars.html",
+      "summary": "SK海力士董事会批准在韩国龙仁市建设两座新的晶圆厂，总投资额达380亿美元，以满足AI内存需求爆发式增长。新工厂将专注于HBM和先进DRAM的生产。SK集团会长预计2027年AI半导体需求较2026年增长60%至100%。SK海力士计划将韩国本土AI内存产能锁定至2033年，目前美国仍无HBM晶圆制造工厂。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "巨额投资→产能扩张→中长期供应增加→短期资本支出压力→HBM供需缺口逐步缓解→长期竞争力巩固",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-08-14"
     },
     {
       "id": "2026-08-06-cxmt-rejects-apple-price-cut",
