@@ -8201,6 +8201,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-08-16"
+    },
+    {
+      "id": "2026-08-09-hbm-ai-chip-shortage",
+      "date": "2026-08-09",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "deep_tracking",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "AI芯片真正瓶颈并非GPU，而是HBM存储与先进封装",
+      "product": "HBM,DRAM,CoWoS封装",
+      "source": "The Rational Investor",
+      "url": "https://therationalinvestor.in/blog/hbm-memory-tsmc-packaging-ai-bottleneck",
+      "summary": "2026年AI芯片供应链瓶颈已从GPU设计转移至TSMC的CoWoS先进封装产能和HBM存储供应。TSMC CEO魏哲家表示CoWoS产能'极度紧张且已售罄至2026年底'，即使月产能从2024年底的3.5万片提升至2026年底目标的13-13.5万片。Nvidia已认证SK海力士、三星和美光为HBM4供应商，分配比例约为SK海力士60-70%、三星25-30%、美光剩余份额。SK海力士Q2 2026营业利润率达76%，Micron Q3 FY26毛利率指引81%。HBM制造正在消耗常规DRAM产能，每片HBM晶圆替代2片以上标准DRAM晶圆。",
+      "transmission_path": "HBM供应紧张→存储厂商提价→AI服务器成本上升→云厂商 capex 压力→消费端DRAM供应减少→消费电子内存价格上涨",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-08-16"
     }
   ]
 }
