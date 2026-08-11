@@ -96,6 +96,25 @@
       "review_date": "2026-08-16"
     },
     {
+      "id": "2026-08-09-memory-supercycle-long-term-contracts",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-08-09",
+      "title": "存储三巨头签长期协议锁定价格，供需紧张延至2028",
+      "product": "DRAM,HBM,NAND",
+      "source": "新浪财经/经济观察报",
+      "url": "",
+      "summary": "三星、SK海力士、美光均与客户签订3-5年长期供应协议（LTA），约定保底价格和照付不议条款。三巨头管理层确认供需紧张将持续至2027年以后，2028年前不会出现显著新增供应。SK海力士2026年资本支出接近50万亿韩元，几乎全部投向HBM和AI服务器DRAM。",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "长期协议锁定保底价格→消除价格战风险→保障三大存储厂利润稳定性→资本支出聚焦AI方向而非全面扩产→消费电子端供给进一步收紧→存储芯片超级周期可能打破历史死亡循环",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-08-25"
+    },
+    {
       "id": "2026-08-08-micron-2026-hbm-sold-out",
       "type": "公司公告",
       "impact": "bullish",
@@ -1025,6 +1044,25 @@
       "confidence": "medium",
       "action": "deep_tracking",
       "review_date": "2026-08-14"
+    },
+    {
+      "id": "2026-08-05-dram-market-share-shift",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-08-05",
+      "title": "Counterpoint：三星DRAM市占扩至39%，美光紧追SK海力士",
+      "product": "DRAM,HBM",
+      "source": "IT之家/17173",
+      "url": "http://news.17173.com/content/08042026/120702722.shtml",
+      "summary": "Counterpoint Research数据显示，三星电子Q2全球DRAM市占率增至39%，美光市占率达25%，距SK海力士的26%仅一步之遥。SK海力士Q2营收同比增长214%，但市占率较2025Q2历史高点39%下滑三分之一，主因HBM ASP下滑和较早签署的低价LTA协议。",
+      "importance": "B",
+      "reaction_type": "archive",
+      "pricing_status": "priced",
+      "horizon": "1m",
+      "transmission_path": "DRAM市场份额格局变化→三星巩固龙头地位→美光快速追赶缩小与SK海力士差距→SK海力士HBM市占率下降反映竞争加剧→长鑫存储和南亚科技营收暴增（716%和690%）预示DRAM市场新进入者崛起",
+      "confidence": "high",
+      "action": "archive",
+      "review_date": "2026-08-19"
     },
     {
       "id": "2026-08-04-memory-supercycle-crossroads",
