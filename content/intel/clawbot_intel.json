@@ -8296,6 +8296,44 @@
       "confidence": "high",
       "action": "archive",
       "review_date": "2026-08-19"
+    },
+    {
+      "id": "2026-08-10-samsung-hbm4-yield-80",
+      "date": "2026-08-10",
+      "type": "重大事件",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "三星电子HBM4良率突破80%达黄金拐点",
+      "product": "HBM",
+      "source": "财联社",
+      "url": "https://www.cls.cn/subject/2409",
+      "summary": "三星电子HBM4近期良率已达到80%（黄金良率），2月启动量产时良率不足60%，仅用六个月实现良率提升。业内判断SK海力士HBM4良率同样迈入80%区间。瑞银预测2026年SK海力士HBM比特份额48%维持首位，2027年三星将以41%微弱反超SK海力士的39%。",
+      "transmission_path": "三星HBM4良率提升→产能释放加速→HBM供给增加→缓解供应紧张→三星HBM市场份额回升→对SK海力士形成竞争压力→HBM ASP下行压力",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-08-19"
+    },
+    {
+      "id": "2026-08-11-hbm-price-slowdown-hbf-standard",
+      "date": "2026-08-11",
+      "type": "行业分析",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "HBM涨价放缓叠加HBF标准落地",
+      "product": "HBM",
+      "source": "中华网",
+      "url": "https://mtz.china.com/touzi/2026/0811/257174.html",
+      "summary": "2026年8月初，存储芯片市场释放矛盾信号。三大原厂2027年HBM产能已被全部锁定，HBM3E合约价从去年每GB约15-20美元涨至接近50美元。HBF标准落地可能分流部分HBM需求。",
+      "transmission_path": "HBM涨价放缓→市场担忧周期见顶信号→但2027年产能锁定显示需求仍强劲→HBF标准落地分流部分需求→存储投资逻辑重塑→关注HBM ASP拐点",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-08-26"
     }
   ]
 }
