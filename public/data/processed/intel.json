@@ -761,6 +761,25 @@
       "review_date": "2026-08-15"
     },
     {
+      "id": "2026-08-08-memory-capacity-sold-out-2027",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-08-08",
+      "title": "存储芯片产能售罄至2027年，AI需求持续驱动行业超级周期",
+      "product": "DRAM,HBM,NAND",
+      "source": "Marketwise",
+      "url": "https://www.marketwise.com/articles/memory-capacity-is-sold-out-through-2027",
+      "summary": "美光、SK海力士和三星电子的DRAM和HBM产能已全部售罄至2027年。2026年AI服务器内存需求预计增长50%，而供应受到洁净室产能和EUV设备交货周期（超过两年半）的严重制约。SK海力士2026年资本支出预计近50万亿韩元（约350亿美元），新增先进制程产能几乎全部投向HBM和AI服务器DRAM。高盛测算2026年全球DRAM供需缺口为-4.9%，是过去15年来最严重的一次。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "transmission_path": "AI服务器需求爆发→HBM/DRAM产能紧缺→原厂涨价+扩产→设备商订单增加→存储模组厂跟涨",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-08-15"
+    },
+    {
       "id": "2026-08-07-omdia-semiconductor-forecast-94-percent",
       "type": "行业分析",
       "impact": "bullish",
