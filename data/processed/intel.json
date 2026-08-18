@@ -39,6 +39,25 @@
       "review_date": "2026-08-24"
     },
     {
+      "id": "2026-08-17-musk-memory-bottleneck-rally",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-08-17",
+      "title": "马斯克称内存是AI时代关键瓶颈，存储股集体大涨",
+      "product": "DRAM,NAND,HBM",
+      "source": "247wallst",
+      "url": "https://247wallst.com/investing/2026/08/17/sandisk-rallies-8-western-digital-rises-6-micron-gains-5-as-elon-musk-flags-a-memory-bottleneck/",
+      "summary": "埃隆·马斯克周五回复X平台帖子称'很少有人意识到'内存（而非算力）是Agentic AI时代的速率限制因素。受此提振，周一存储板块集体大涨：SanDisk涨8%至1778美元，西部数据涨6%至540美元，美光涨5%至1017美元，SK海力士涨4%至173美元。美光CEO Sanjay Mehrotra重申DRAM和NAND行业需求持续显著超过供应，紧张态势将延续至2027年以后。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1d",
+      "transmission_path": "马斯克表态强化内存瓶颈叙事→存储股情绪提振→AI基础设施投资逻辑强化→HBM/DRAM需求预期上修",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-08-20"
+    },
+    {
       "id": "2026-08-16-samsung-sk-hynix-hbm4-hiring-war",
       "type": "行业分析",
       "impact": "neutral",
@@ -56,6 +75,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-08-23"
+    },
+    {
+      "id": "2026-08-16-storage-supercycle-slowing",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-08-16",
+      "title": "存储超级周期下半场：长协封顶消费承压，涨幅逐季收窄",
+      "product": "DRAM,NAND,eMMC,SSD",
+      "source": "财联社/新浪财经",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-16/doc-ininpfmi1275257.shtml",
+      "summary": "存储合约价仍在上涨但涨幅逐季收窄，消费端和服务器端走势分化。Q3 DRAM合约价预计季增13%-18%（Q2为58%-63%），NAND Flash合约价预计季增10%-15%（Q2为50%-60%）。服务器DRAM需求坚挺，但四季度消费级NAND及SSD合约价上涨动能已基本枯竭。部分低容量eMMC出现现货价格跌破合约价的倒挂现象。长协对价格形成'封顶'效应，2027年DRAM供需缺口或进一步扩大，而NAND可能转为供需宽松。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "存储涨价放缓→模组厂利润空间受挤压→消费终端需求承压→服务器与消费级市场分化加剧",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-08-25"
     },
     {
       "id": "2026-08-15-pan-judges-nand-price-rise-2027",
