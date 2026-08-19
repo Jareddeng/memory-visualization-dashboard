@@ -10291,6 +10291,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-09-17"
+    },
+    {
+      "id": "2026-08-15-memory-chip-shortage-sk-hynix",
+      "date": "2026-08-15",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "SK海力士警告存储芯片短缺可能持续至2030年以后",
+      "product": "DRAM,HBM,NAND",
+      "source": "Tech-Insider",
+      "url": "",
+      "summary": "SK海力士CEO郭鲁正向彭博社表示，存储芯片供应紧张局面可能持续至2030年以后。三大内存制造商（三星、SK海力士、美光）控制全球超过95%的DRAM产能。SK海力士2026年所有DRAM、NAND和HBM产能已售罄，主要供应给NVIDIA用于AI加速器。三星已将部分内存芯片价格较2025年9月水平提高60%。",
+      "transmission_path": "HBM需求激增 -> DRAM/NAND产能被挤压 -> 供应短缺持续 -> 内存价格上涨 -> 存储厂商利润增长",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-08-22"
+    },
+    {
+      "id": "2026-08-10-dram-hbm-capacity-sold-out",
+      "date": "2026-08-10",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "三大原厂2027年DRAM与HBM产能全数售罄",
+      "product": "DRAM,HBM",
+      "source": "国际电子商情",
+      "url": "https://www.eet-china.com/mp/a515968.html",
+      "summary": "三星电子、SK海力士、美光三大DRAM原厂已提前完成2027年全年产能分配谈判，DRAM与HBM生产额度均已被抢购一空。客户仅被分配到初始请求量的60-70%。NAND Flash方面，三星、美光、闪迪全年产能已预售完毕。",
+      "transmission_path": "产能全数售罄 -> 供应紧张持续 -> 内存价格维持高位 -> 存储厂商营收增长 -> 产业链上游设备材料需求增加",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-08-17"
     }
   ]
 }
