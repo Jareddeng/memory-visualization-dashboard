@@ -10500,6 +10500,44 @@
       "confidence": "medium",
       "action": "archive",
       "review_date": "2026-11-19"
+    },
+    {
+      "id": "2026-08-19-sk-hynix-29b-buyback",
+      "date": "2026-08-19",
+      "type": "公司公告",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "title": "SK海力士宣布290亿美元加速股票回购计划",
+      "product": "DRAM,HBM",
+      "source": "Investopedia",
+      "url": "https://www.investopedia.com/stock-market-today-dow-jones-s-and-p-500-08192026-12063119",
+      "summary": "SK海力士宣布将在未来三个月内回购约2407万股股票，价值40万亿韩元（约287.9亿美元）。董事会还批准了考虑增加特别股息的方案，以满足将至少50%自由现金流返还给股东的目标。截至第二季度末，SK海力士拥有约69万亿韩元净现金。其美国上市股票在公告后上涨近4%。",
+      "transmission_path": "SK海力士大规模回购→提振市场信心→股价上升→反映存储芯片行业强劲现金流",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-08-26"
+    },
+    {
+      "id": "2026-08-18-google-pixel-memory-shortage",
+      "date": "2026-08-18",
+      "type": "产业链跟踪",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "谷歌计划将Pixel生产迁出中国，内存短缺推高消费电子价格",
+      "product": "DRAM,NAND,SSD",
+      "source": "Mobile World Live",
+      "url": "https://www.mobileworldlive.com/google/google-to-pull-pixel-production-from-china/",
+      "summary": "谷歌计划到2027年将Pixel智能手机、手表和无线耳机生产迁出中国，扩大在越南和印度的制造。谷歌 reportedly 正在与Micron、三星和SK海力士谈判时合并其云业务和智能手机的内存芯片订单，以增强采购议价能力。谷歌高级副总裁Rick Osterloh表示，RAM和闪存内存短缺正在推高消费电子价格，谷歌需要像其他行业参与者一样提高价格。",
+      "transmission_path": "谷歌整合内存采购→大型CSP采购策略变化→反映内存供应紧张→价格持续上行压力",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-08-27"
     }
   ]
 }
