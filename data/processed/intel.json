@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-08-22-samsung-shareholder-return",
+      "type": "公司公告",
+      "impact": "bullish",
+      "date": "2026-08-22",
+      "title": "三星批准2026年创纪录股东回报计划，规模高达790亿美元",
+      "product": "DRAM,HBM,NAND",
+      "source": "DIGITIMES",
+      "url": "",
+      "summary": "三星电子董事会批准了2026年股东回报计划，总额估计为90万亿至110万亿韩元（约合640-790亿美元），公司称这是韩国企业有史以来最大规模的股东回报计划。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1m",
+      "transmission_path": "股东回报计划反映AI内存需求推动的强劲现金流和盈利能力，强化市场对存储超级周期的信心",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-22"
+    },
+    {
       "id": "2026-08-21-nvidia-hbm-dram-lta-sk-hynix-micron",
       "type": "重大事件",
       "impact": "bullish",
