@@ -286,6 +286,25 @@
       "review_date": "2026-08-30"
     },
     {
+      "id": "2026-08-23-micron-memory-wall-hot-chips",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-08-23",
+      "title": "美光研究员Hot Chips警告：内存墙恶化，HBM供应短缺将持续",
+      "product": "HBM,DRAM",
+      "source": "财联社 / 快科技",
+      "url": "https://www.cls.cn/detail/2462272",
+      "summary": "美光HBM设计架构研究员Ragu Sriramaneni在8月23日斯坦福大学Hot Chips 2026半导体会议上警告，内存墙问题依然存在且正在恶化。关键数据：（1）AI加速器计算性能每两年增长3倍，但同期HBM发展速度不足每两年2倍；（2）最新HBM封装中约90%半导体面积用于存储，存储面积是GPU的8倍多；（3）制造相同存储容量时，HBM消耗的晶圆数量约为普通DDR5的3倍；（4）技术升级越快、芯片尺寸越大、堆叠层数越多，晶圆消耗差距还在扩大。结论：内存行业将持续面临短缺。散热方面，HBM多层堆叠结构导致底层热量难以穿透至顶部冷却系统，液冷和芯片超薄技术正提供解决方案。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1m",
+      "transmission_path": "内存墙瓶颈确认→HBM供需缺口扩大→存储芯片价格支撑→三巨头产能利用率维持高位→行业景气度延长",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-06"
+    },
+    {
       "id": "2026-08-22-samsung-shareholder-return",
       "type": "公司公告",
       "impact": "bullish",

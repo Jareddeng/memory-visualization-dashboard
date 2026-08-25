@@ -11013,6 +11013,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-08-31"
+    },
+    {
+      "id": "2026-08-23-sk-hynix-hbm-advanced-packaging-hot-chips",
+      "date": "2026-08-23",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "deep_tracking",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "SK海力士在Hot Chips 2026披露下一代HBM先进封装路线图",
+      "product": "HBM",
+      "source": "Tom's Hardware / IT之家",
+      "url": "https://www.tomshardware.com/tech-industry/semiconductors/sk-hynix-says-hybrid-bonding-wont-be-ready-for-hbm4e-as-ai-memory-runs-into-a-775-micron-ceiling",
+      "summary": "SK海力士封装工程副总裁Jaesik Lee在Hot Chips 2026大会（8月23日）上发表题为'高带宽内存的先进封装'的报告。核心要点：（1）HBM4规格：2048位I/O、带宽超2TB/s、功耗效率提升40%+、容量最高48GB（12-Hi已量产，16-Hi认证中）；（2）引入英特尔EMIB封装技术，与CoWoS-S/L/R并列，丰富2.5D封装选项；（3）混合键合技术将用于突破16层堆叠限制，目标HBM5；（4）推出i-HBM局部散热方案，可降低30%+热阻；（5）长期目标为3D集成，将HBM直接堆叠于计算芯片之上；（6）MR-MUF封装工艺将延续至Nvidia Rubin世代。市场传言SK海力士与英特尔可能在存储领域成立合资公司。",
+      "transmission_path": "先进封装技术升级→HBM产能与性能提升→AI服务器供应链保障→SK海力士竞争优势巩固→存储行业技术壁垒提高",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-09-06"
+    },
+    {
+      "id": "2026-08-23-micron-memory-wall-hot-chips",
+      "date": "2026-08-23",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1m",
+      "title": "美光研究员Hot Chips警告：内存墙恶化，HBM供应短缺将持续",
+      "product": "HBM,DRAM",
+      "source": "财联社 / 快科技",
+      "url": "https://www.cls.cn/detail/2462272",
+      "summary": "美光HBM设计架构研究员Ragu Sriramaneni在8月23日斯坦福大学Hot Chips 2026半导体会议上警告，内存墙问题依然存在且正在恶化。关键数据：（1）AI加速器计算性能每两年增长3倍，但同期HBM发展速度不足每两年2倍；（2）最新HBM封装中约90%半导体面积用于存储，存储面积是GPU的8倍多；（3）制造相同存储容量时，HBM消耗的晶圆数量约为普通DDR5的3倍；（4）技术升级越快、芯片尺寸越大、堆叠层数越多，晶圆消耗差距还在扩大。结论：内存行业将持续面临短缺。散热方面，HBM多层堆叠结构导致底层热量难以穿透至顶部冷却系统，液冷和芯片超薄技术正提供解决方案。",
+      "transmission_path": "内存墙瓶颈确认→HBM供需缺口扩大→存储芯片价格支撑→三巨头产能利用率维持高位→行业景气度延长",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-06"
     }
   ]
 }
