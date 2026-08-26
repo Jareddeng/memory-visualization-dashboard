@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-06-30",
-  "source": "Codex-maintained HBM contract tracker; updated with June 2026 disclosures",
+  "updated_at": "2026-08-21",
+  "source": "Based on clawbot news library through 2026-08-21; HBM/DRAM sold-out and LTA/SCA tracker",
   "stages": [
     "验证",
     "报价",
@@ -14,66 +14,67 @@
       "ticker": "000660.KS",
       "stance": "领先锁定",
       "stage": "签约",
-      "stage_note": "2026-06-07 与 NVIDIA 签署多年技术合作与供应协议；覆盖多代产品至 2030 年",
+      "stage_note": "2027 年 DRAM/HBM 产能分配已完成；2028-2030 仍按核心 AI 客户长期承诺/高锁定跟踪",
       "stage_index": 4,
       "locked_years": "2025-2030",
-      "locked_capacity": "2026 全年 HBM 供给已售罄；未来三年可供给量基本被承诺覆盖",
+      "locked_capacity": "2026-2027 DRAM/HBM 产能按新闻库口径已售罄；2028-2030 为 NVIDIA 等核心客户长期承诺和高比例锁定，不等同全部售罄",
       "capacity_lock_segments": [
         {
           "start": 2025,
-          "end": 2026,
+          "end": 2027,
           "status": "soldout",
           "label": "已售罄",
-          "note": "2026 年末前 HBM 供给按当前跟踪口径视为已售罄。"
+          "note": "新闻库 2026-08-07/08 多条记录显示三巨头 DRAM/HBM 产能售罄至 2027 年底；SK 海力士 2026 年所有 DRAM/NAND/HBM 亦已售罄。"
         },
         {
-          "start": 2027,
+          "start": 2028,
           "end": 2030,
           "status": "full",
           "label": "高锁定",
-          "note": "2027-2030 为长期承诺/高比例锁量跟踪，不等同于全部售罄。"
+          "note": "2030 以后短缺判断与长期协议提供订单能见度，但新闻库未显示 2028-2030 已全部售罄，因此按高锁定处理。"
         }
       ],
-      "negotiating": "2027-2030 HBM4 / HBM4E 后续供货价格、份额与共同投资条款；当前年度供给已锁定，不纳入正在谈范围",
-      "expected_term": "3年以上",
-      "expected_capacity": "高比例锁量，优先保障核心 AI 客户；Vera Rubin 平台 HBM4 份额预计 60-70%",
+      "negotiating": "2028-2030 HBM4 / HBM4E 供货价格、份额与共同投资条款；2027 年产能分配已完成，不再放入正在谈范围",
+      "expected_term": "3-5年",
+      "expected_capacity": "2027 年配货紧张且客户获配约初始需求 60-70%；Vera Rubin HBM4 份额仍按 60-70% 跟踪，2028-2030 为高锁定而非售罄",
       "main_customers": [
         "NVIDIA",
         "AWS",
         "OpenAI/Stargate",
+        "Google",
         "大型云厂商"
       ],
       "confidence": "高",
-      "risk": "CoWoS 配套、HBM4 良率爬坡、价格重定价节奏、龙仁集群建设进度",
-      "summary": "HBM 订单能见度最高，与 NVIDIA 多年协议覆盖至 2030 年；2026 全年 HBM 售罄；HBM4 Vera Rubin 份额预计 60-70%；OpenAI Stargate 已签 HBM 供应协议。",
+      "risk": "长期协议可能限制短期涨价弹性；CoWoS/先进封装配套、HBM4 良率爬坡与龙仁集群建设进度仍需跟踪",
+      "summary": "SK 海力士 2026-2027 DRAM/HBM 产能按新闻库口径已售罄；2028-2030 维持 NVIDIA 等核心客户高锁定/长期承诺跟踪。",
       "evidence": [
         {
-          "date": "2026-06-07",
-          "label": "NVIDIA 多年合作与供应协议",
-          "detail": "SK Hynix 与 NVIDIA 签署多年技术合作与供应协议，覆盖 HBM4、LPDDR5X、DDR5、3D NAND；2026 下半年开始交付 HBM4；协议延伸至 2030 年。",
-          "source": "NVIDIA 官方新闻稿 / SK Hynix 公告",
-          "url": "https://news.skhynix.com/"
+          "date": "2026-08-07",
+          "label": "三巨头 2027 年 DRAM/HBM 产能已售罄",
+          "detail": "新闻库记录称三星、SK海力士和美光已完成 2027 年全年产能分配谈判，DRAM 和 HBM 产能均已提前售罄，多数客户获配约初始请求的 60-70%。",
+          "source": "财联社",
+          "url": "https://www.cls.cn/detail/2448129"
         },
         {
-          "date": "2026-06-05",
-          "label": "NVIDIA CEO 确认三家全部通过 HBM4 认证",
-          "detail": "Jensen Huang 确认 SK Hynix、Samsung、Micron 全部通过 Vera Rubin HBM4 认证；SK Hynix 在 Vera Rubin HBM4 份额预计 60-70%。",
-          "source": "Bloomberg / Yahoo Finance",
-          "url": "https://news.skhynix.com/"
+          "date": "2026-08-15",
+          "label": "SK 海力士称短缺或延续至 2030 年以后",
+          "detail": "新闻库记录称 SK 海力士 CEO 表示存储芯片供应紧张可能持续至 2030 年以后，且 2026 年所有 DRAM、NAND 和 HBM 产能已售罄。",
+          "source": "Tech-Insider / Bloomberg 摘要",
+          "url": ""
         },
         {
-          "date": "2026-03-23",
-          "label": "Q1 2026 法说会：HBM4E 样品年内交付",
-          "detail": "SK Hynix 在 Q1 法说会表示，HBM4E 样品将在 2026 年内交付客户，目标 2027 年大规模量产。",
-          "source": "SK Hynix Q1 2026 Earnings Call / Korea IT Times",
-          "url": "https://news.skhynix.com/"
+          "date": "2026-08-14",
+          "label": "2027 年或为最严重存储荒",
+          "detail": "SK 集团会长表示核心客户需求接近原订单两倍，2027 年 AI 半导体需求预计较 2026 年增长 60%-100%，产能扩张需四到五年。",
+          "source": "财联社/快科技",
+          "url": "https://finance.sina.com.cn/roll/2026-08-14/doc-ininhait2949038.shtml"
         },
         {
-          "date": "2026-04-28",
-          "label": "OpenAI Stargate HBM 供应协议",
-          "detail": "SK Hynix 已签署 OpenAI Stargate 超级计算项目 HBM 供应协议；该项目可能有效翻倍行业 HBM 总需求。",
-          "source": "AI Vector Ocean / Industry Reports",
-          "url": "https://news.skhynix.com/"
+          "date": "2026-08-08",
+          "label": "3-5 年长期协议重塑周期",
+          "detail": "三巨头正与下游客户签订 3-5 年长期供应合同，约定保底价格和照付不议条款。",
+          "source": "新浪财经",
+          "url": "https://finance.sina.cn/stock/jdts/2026-08-08/detail-inimqptt9796775.d.html"
         }
       ],
       "locked_until": 2030
@@ -81,94 +82,141 @@
     {
       "company": "Samsung Electronics",
       "ticker": "005930.KS",
-      "stance": "追赶放量",
+      "stance": "追赶锁量",
       "stage": "签约",
-      "stage_note": "2026-06-04 与 OpenAI 签署 HBM4 供应协议；2026-02 开始 HBM4 量产；NVIDIA 认证已通过",
+      "stage_note": "2027 年 DRAM/HBM 产能分配已完成；已与 AMD 签署 HBM4 MOU，并推进 NVIDIA/云厂商长协",
       "stage_index": 4,
-      "locked_years": "2025-2027",
-      "locked_capacity": "OpenAI 锁定最多 8 亿千兆位 12 层 HBM4，约占 Samsung 2026 年 HBM 总产能 7%；HBM4 量产中",
-      "negotiating": "与 NVIDIA 的 HBM4 供应份额与价格谈判；目标价格约 $500+/颗",
-      "expected_term": "2-3年",
-      "expected_capacity": "Vera Rubin HBM4 份额预计 25-30%；2026 年底 HBM4 良率目标 85%",
+      "locked_years": "2025-2030",
+      "locked_capacity": "2026-2027 DRAM/HBM 产能按新闻库口径已售罄；三星计划将 60%-70% 产能纳入长协，并与前五大数据中心运营商签署五年协议",
+      "negotiating": "2028-2030 NVIDIA / AMD / 云厂商 HBM4 份额、价格与交付节奏；AMD MI455X 已进入战略合作/主要供应资格",
+      "expected_term": "3-5年",
+      "expected_capacity": "2027 年 DRAM/HBM 已完成分配；五年协议覆盖 60%-70% 产能，AMD MI455X HBM4 供应资格提升锁量确定性",
       "main_customers": [
         "NVIDIA",
-        "OpenAI",
         "AMD",
-        "云厂商",
-        "自有 AI 供应链"
+        "OpenAI",
+        "全球前五大数据中心运营商",
+        "云厂商"
       ],
       "confidence": "中高",
-      "risk": "HBM4 良率爬坡、与 SK Hynix 的技术差距、核心客户份额恢复速度、1c 工艺成熟度",
-      "summary": "Samsung 2026 年 2 月开始 HBM4 量产，已通过 NVIDIA 认证；与 OpenAI 签署 HBM4 供应协议；Vera Rubin 份额预计 25-30%；关键看 HBM4 良率爬坡和客户份额恢复。",
+      "risk": "HBM4 良率与交付稳定性、NVIDIA/AMD 份额兑现、长协覆盖比例与真实锁价条款仍需继续验证",
+      "summary": "Samsung 从单点 OpenAI/NVIDIA 验证更新为 2027 售罄 + 60%-70% 产能长协 + AMD MI455X HBM4 主要供应资格的追赶锁量状态。",
       "evidence": [
         {
-          "date": "2026-06-04",
-          "label": "OpenAI HBM4 供应协议",
-          "detail": "Samsung 与 OpenAI 签署 HBM4 供应协议，最多 8 亿千兆位 12 层 HBM4，约占 Samsung 2026 年 HBM 总产能 7%。",
-          "source": "Tech Insider / TrendForce",
-          "url": "https://semiconductor.samsung.com/newsroom/"
+          "date": "2026-08-07",
+          "label": "三巨头 2027 年 DRAM/HBM 产能已售罄",
+          "detail": "新闻库记录称三星、SK海力士和美光已完成 2027 年全年产能分配谈判，DRAM 和 HBM 产能均已提前售罄。",
+          "source": "财联社",
+          "url": "https://www.cls.cn/detail/2448129"
         },
         {
-          "date": "2026-06-05",
-          "label": "NVIDIA HBM4 认证通过",
-          "detail": "NVIDIA CEO Jensen Huang 确认 Samsung 通过 Vera Rubin HBM4 认证；Samsung 2026 年 2 月已开始 HBM4 量产。",
-          "source": "Bloomberg / Yahoo Finance",
-          "url": "https://semiconductor.samsung.com/newsroom/"
+          "date": "2026-08-08",
+          "label": "三星计划 60%-70% 产能纳入长协",
+          "detail": "新闻库记录称三星计划将 60%-70% 产能纳入长协，并已收到约定预付款总额约四分之一。",
+          "source": "经济观察网",
+          "url": ""
         },
         {
-          "date": "2026-03-17",
-          "label": "GTC 2026 HBM4 展示",
-          "detail": "Samsung 在 GTC 2026 展示 HBM4 产品，Jensen Huang 在 HBM4 芯片上签名；HBM4 速度 11.7 Gbps，超出行业标准 8 Gbps。",
-          "source": "Samsung Newsroom / TechRitual",
-          "url": "https://semiconductor.samsung.com/newsroom/"
+          "date": "2026-08-08",
+          "label": "前五大数据中心运营商五年协议",
+          "detail": "新闻库记录称三星已与全球前五大数据中心运营商签署五年协议，覆盖其 60%-70% 产能。",
+          "source": "MarketWise",
+          "url": "https://marketwise.com/investing/why-micron-sk-hynix-samsung-stock-is-tumbling-during-memory-shortage/"
+        },
+        {
+          "date": "2026-08-15",
+          "label": "三星与 AMD 签署 HBM4 MOU",
+          "detail": "三星与 AMD 签署 HBM4 战略合作备忘录，将成为 AMD Instinct MI455X GPU 的主要 HBM4 供应商。",
+          "source": "Silicon Analysts",
+          "url": ""
         }
       ],
-      "locked_until": 2026
+      "locked_until": 2030,
+      "capacity_lock_segments": [
+        {
+          "start": 2025,
+          "end": 2027,
+          "status": "soldout",
+          "label": "已售罄",
+          "note": "新闻库 2026-08-07/08 记录显示三巨头 DRAM/HBM 售罄至 2027 年底。"
+        },
+        {
+          "start": 2028,
+          "end": 2030,
+          "status": "full",
+          "label": "高锁定",
+          "note": "三星五年长协和 60%-70% 产能纳入长协提供高锁定能见度，但不是全部售罄。"
+        }
+      ]
     },
     {
       "company": "Micron Technology",
       "ticker": "MU",
-      "stance": "扩份额",
-      "stage": "锁量",
-      "stage_note": "2026 全年 HBM 供给已售罄；2026-03 确认 HBM4 量产；多年 LTAs 谈判中",
-      "stage_index": 3,
-      "locked_years": "2025-2026",
-      "locked_capacity": "2026 全年 HBM 已售罄；HBM4 2026 年 3 月开始量产；部分客户已签多年协议",
-      "negotiating": "2027-2028 HBM4 份额、价格与长期供应协议；Broadcom 已锁定供应至 2028 年",
-      "expected_term": "2-5年",
-      "expected_capacity": "目标 2026 年 HBM4 市场份额 >20%；长期目标与 DRAM 份额持平",
+      "stance": "SCA锁定",
+      "stage": "签约",
+      "stage_note": "2026 HBM 已售罄；2027 DRAM/HBM 分配完成；16 份五年期 SCA 已签，进入签约锁量阶段",
+      "stage_index": 4,
+      "locked_years": "2025-2030",
+      "locked_capacity": "2026-2027 DRAM/HBM 产能按新闻库口径已售罄；16 份五年期 SCA 合计约 1000 亿美元保底收入，为 2028-2030 提供高锁定能见度",
+      "negotiating": "2028-2030 HBM4 / AI DRAM 份额、价格与 SCA 扩展；Google 等客户正在整合云业务和终端内存订单谈判",
+      "expected_term": "3-5年",
+      "expected_capacity": "2027 年产能完成分配；16 份五年期 SCA 约 1000 亿美元保底收入、约 220 亿美元现金存款和信用证",
       "main_customers": [
         "NVIDIA",
         "Broadcom",
+        "Google",
         "北美云厂商"
       ],
-      "confidence": "中高",
-      "risk": "产能爬坡、客户份额争夺、与韩厂的成本和交付竞争、2027 年 capex 大幅上升",
-      "summary": "Micron 2026 全年 HBM 售罄，HBM4 于 2026 年 3 月量产；HBM 市场份额从 2024 年 5% 升至约 21%；Broadcom 已锁定至 2028 年；关键看 2027-2028 年长协覆盖和份额提升。",
+      "confidence": "高",
+      "risk": "HBM 份额仍低于韩厂；SCA 锁价可能限制现货涨价弹性；2027-2028 产能爬坡和先进封装交付仍需验证",
+      "summary": "Micron 从“2026 售罄/谈判中”更新为“2027 售罄 + 16 份五年 SCA 签约”的高锁定状态，2028-2030 作为高锁定而非售罄处理。",
       "evidence": [
         {
-          "date": "2026-03-18",
-          "label": "FY2026 Q1 法说会：HBM 2026 售罄，capex 提升至 $20B",
-          "detail": "Micron CEO Sanjay Mehrotra 确认 2026 全年 HBM 已售罄；capex 预算从 $18B 提升至 $20B，专门用于 HBM 产能扩张；HBM4 量产中。",
-          "source": "Micron FY2026 Q1 Earnings Call / AInvest",
-          "url": "https://investors.micron.com/"
+          "date": "2026-08-08",
+          "label": "美光 2026 年 HBM 产能全部售罄",
+          "detail": "美光管理层确认 2026 年全年 HBM 供应已全部售罄，价格和数量均已敲定。",
+          "source": "经济观察网",
+          "url": "http://www.eeo.com.cn/2026/0808/990475.shtml"
         },
         {
-          "date": "2026-04-18",
-          "label": "HBM4 量产与客户锁定",
-          "detail": "Micron HBM4 2026 年 4 月开始量产；36GB 12H 部件达到 >11 Gb/s per pin；HBM 市场份额从 2024 年 5% 升至约 21%。",
-          "source": "AI-Capex / AktienCheck",
-          "url": "https://investors.micron.com/"
+          "date": "2026-08-07",
+          "label": "三巨头 2027 年 DRAM/HBM 产能已售罄",
+          "detail": "新闻库记录称三星、SK海力士和美光已完成 2027 年全年产能分配谈判，DRAM 和 HBM 产能均已提前售罄。",
+          "source": "财联社",
+          "url": "https://www.cls.cn/detail/2448129"
         },
         {
-          "date": "2026-03-18",
-          "label": "2027 capex 预计超 $25B",
-          "detail": "Micron 预计 2026 年 capex 超 $25B；2027 财年建设相关 capex 同比增长超 $10B；新加坡先进封装厂 2027 年为 HBM 供应做出重要贡献。",
-          "source": "SAHM Capital / Micron Guidance",
-          "url": "https://investors.micron.com/"
+          "date": "2026-08-08",
+          "label": "美光 16 份五年期 SCA",
+          "detail": "新闻库记录称美光已签 16 份五年期战略客户协议，按保底价计算合计约 1000 亿美元，将收到约 220 亿美元现金存款和信用证。",
+          "source": "经济观察网 / 新浪财经摘要",
+          "url": "https://finance.sina.cn/stock/jdts/2026-08-08/detail-inimqptt9796775.d.html"
+        },
+        {
+          "date": "2026-08-18",
+          "label": "Google 整合内存订单谈判",
+          "detail": "Google 正在与 Micron、三星和 SK 海力士谈判时合并其云业务和智能手机内存芯片订单，以增强采购议价能力。",
+          "source": "Mobile World Live",
+          "url": "https://www.mobileworldlive.com/google/google-to-pull-pixel-production-from-china/"
         }
       ],
-      "locked_until": 2026
+      "locked_until": 2030,
+      "capacity_lock_segments": [
+        {
+          "start": 2025,
+          "end": 2027,
+          "status": "soldout",
+          "label": "已售罄",
+          "note": "美光 2026 HBM 已售罄；新闻库 2026-08-07/08 记录显示三巨头 DRAM/HBM 售罄至 2027 年底。"
+        },
+        {
+          "start": 2028,
+          "end": 2030,
+          "status": "full",
+          "label": "高锁定",
+          "note": "16 份五年期 SCA 提供高锁定能见度，但未等同为全部产能售罄。"
+        }
+      ]
     }
   ]
 }
