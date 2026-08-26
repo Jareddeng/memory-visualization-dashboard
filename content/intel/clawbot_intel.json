@@ -11300,6 +11300,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-08-26"
+    },
+    {
+      "id": "2026-08-25-nvidia-long-term-hbm-dram-contract",
+      "date": "2026-08-25",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "英伟达签长约锁定SK海力士与美光HBM及DRAM产能至2027年底",
+      "product": "HBM,DRAM",
+      "source": "中关村在线",
+      "url": "https://ai.zol.com.cn/1237/12379208.html",
+      "summary": "英伟达与SK海力士和美光签署长期供应协议，锁定HBM及DRAM产能至2027年底，进一步巩固AI芯片供应链安全",
+      "transmission_path": "长期合约锁定→产能利用率确定→收入可预测性提升→估值溢价",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-02"
     }
   ]
 }
