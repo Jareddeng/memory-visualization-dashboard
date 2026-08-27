@@ -39,6 +39,25 @@
       "review_date": "2026-09-10"
     },
     {
+      "id": "2026-08-26-samsung-sk-hynix-hbm4-8layer-nvidia",
+      "type": "产业链跟踪",
+      "impact": "neutral",
+      "date": "2026-08-26",
+      "title": "三星SK海力士下半年增加英伟达8层HBM4供应占比",
+      "product": "HBM",
+      "source": "ZDNet Korea/科创板日报",
+      "url": "https://www.icviews.cn/news/35045/7",
+      "summary": "据ZDNet Korea报道，三星电子与SK海力士计划在今年下半年增加对英伟达的8层HBM4内存供应量，降低12层型号占比。这一转变主要受英伟达供应策略影响，旨在兼顾散热管理与供应链稳定性。HBM4的I/O通道数量从1024翻倍至2048个，导致整套服务器机柜系统发热量大幅上升。业内认为8层版本极有可能成为下一代HBM4E的旗舰产品。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "英伟达调整HBM4采购结构→8层产品占比提升→12层HBM4需求预期下调→HBM平均售价承压→三星/SK海力士产品组合变化",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-02"
+    },
+    {
       "id": "2026-08-25-micron-hot-chips-memory-wall",
       "type": "行业分析",
       "impact": "bullish",
