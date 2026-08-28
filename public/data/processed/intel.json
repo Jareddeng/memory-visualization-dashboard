@@ -58,6 +58,25 @@
       "review_date": "2026-09-15"
     },
     {
+      "id": "2026-08-27-korean-memory-stocks-rise-nvidia",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-08-27",
+      "title": "Nvidia财报提振韩国存储股，三星涨2% SK海力士涨3%",
+      "product": "HBM,DRAM",
+      "source": "Korea Herald / Mbiz",
+      "url": "https://mbiz.heraldcorp.com/article/10853750",
+      "summary": "Nvidia公布Q2收入$96.22B、EPS $2.22后，韩国股市存储板块应声上涨。Samsung Electronics涨2%，SK海力士涨60,000韩元或3.55%。市场确认AI需求强劲带动HBM需求预期。",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "intraday",
+      "transmission_path": "Nvidia财报超预期→市场确认AI需求无放缓迹象→存储供应商股价直接受益",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-08-28"
+    },
+    {
       "id": "2026-08-26-cxmt-ymtc-supply-push",
       "type": "行业分析",
       "impact": "bearish",
@@ -208,6 +227,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-09-03"
+    },
+    {
+      "id": "2026-08-26-nvidia-q2-earnings",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "date": "2026-08-26",
+      "title": "Nvidia Q2 FY2027财报超预期，数据中心收入$89B，存储成本压力显现",
+      "product": "HBM,DRAM",
+      "source": "NVIDIA官方",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027",
+      "summary": "Nvidia Q2 FY2027收入$96.2B，同比增106%，数据中心收入$89B，同比增117%。Q3指引$108B。公司承认存储组件价格上涨将导致Q4毛利率暂时降至71%-72%。Vera Rubin平台全面投产，AWS签署额外200万GPU部署协议。CEO黄仁勋表示AI已达拐点。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "transmission_path": "Nvidia强劲财报→验证AI基建需求持续→HBM/DRAM需求预期上调→存储厂商定价权增强",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-08-29"
     },
     {
       "id": "2026-08-25-micron-hot-chips-memory-wall",
