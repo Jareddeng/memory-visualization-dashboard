@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-08-28-samsung-sk-qualcomm-hbc",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-08-28",
+      "title": "三星SK海力士与高通合作推进HBC商业化",
+      "product": "HBM,DRAM",
+      "source": "财联社",
+      "url": "https://cj.sina.cn/articles/view/2868676035/aafc85c302001w80c",
+      "summary": "三星电子、SK海力士正与高通积极合作，共同推进高带宽计算芯片（HBC）的商业化。目前两家存储巨头正在同步推进HBC研发，主要负责DRAM芯片的堆叠，并计划与台积电合作整合各项技术和封装工艺。HBC被视为下一代AI计算架构中的关键内存技术，有望在高性能计算领域开辟新的应用场景。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "HBC技术合作推进→拓展HBM应用场景→新增市场需求→存储厂商技术路线多元化→长期竞争力增强",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-09-15"
+    },
+    {
       "id": "2026-08-27-nvidia-hbm4-8layer-shift",
       "type": "产业链跟踪",
       "impact": "bullish",
@@ -75,6 +94,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-08-28"
+    },
+    {
+      "id": "2026-08-27-hbm-core-bottleneck-micron-indiana",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "date": "2026-08-27",
+      "title": "HBM升级为核心瓶颈，美光印第安纳厂投资超40亿美元",
+      "product": "HBM,DRAM,NAND",
+      "source": "CFM闪存市场",
+      "url": "",
+      "summary": "HBM和高性能DRAM已从AI产业链的配套环节升级为算力扩张的核心瓶颈。美光印第安纳晶圆厂总投资额将超过40亿美元，预计2028年10月完成无尘室建设，2029年下半年启动新一代HBM量产。管理层表示存储器价格涨幅已超出原先预期，明年价格或继续上行，供应紧张可能持续到FY2028。此外，铠侠正式启动位于日本岩手县北上工厂Fab3的建设，旨在扩大先进3D NAND BiCS FLASH产能，预计2029财年投入运营。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "HBM成为算力核心瓶颈→供需紧张持续至2028→价格超预期上涨→存储厂商扩产计划确认→产业链上游设备和材料受益",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-09-10"
     },
     {
       "id": "2026-08-26-cxmt-ymtc-supply-push",
