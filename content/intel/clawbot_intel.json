@@ -12003,6 +12003,44 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-09-06"
+    },
+    {
+      "id": "2026-08-28-demingli-h1-report",
+      "date": "2026-08-28",
+      "type": "公司公告",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "watch",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "title": "德明利发布2026年半年度报告 推进PCM SSD与CXL内存扩展",
+      "product": "NAND,DRAM,SSD",
+      "source": "新浪财经",
+      "url": "https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?stockid=001309&id=12563508",
+      "summary": "存储控制芯片及模组厂商德明利披露2026年半年度报告。公司自研H8560芯片已完成回片验证，下半年实现PCM SSD产品化落地，耐久度达150DWPD，随机读时延低至10μs级；H9560主控芯片瞄准CXL内存扩展场景，预计年内完成回片。公司主要原材料为NAND Flash和DRAM存储晶圆，已与主要存储晶圆原厂建立合作关系。",
+      "transmission_path": "存储模组厂商技术进展→PCM SSD/CXL新产品落地→关注国产存储产业链上游机会",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-09-04"
+    },
+    {
+      "id": "2026-08-27-us-storage-stocks-mixed",
+      "date": "2026-08-27",
+      "type": "市场消息",
+      "impact": "neutral",
+      "importance": "C",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "intraday",
+      "title": "美股存储板块8月27日表现分化",
+      "product": "DRAM,HBM,NAND",
+      "source": "CFM闪存市场",
+      "url": "https://www.chinaflashmarket.com/",
+      "summary": "8月27日美股存储板块表现分化：SK海力士涨超2%，希捷涨0.1%，西部数据跌超1%，闪迪跌0.96%，美光跌0.32%。同日美股三大股指集体收涨，纳指涨1.57%。",
+      "transmission_path": "存储个股日常波动→市场情绪参考→无显著趋势信号",
+      "confidence": "high",
+      "action": "archive",
+      "review_date": "2026-08-31"
     }
   ]
 }
