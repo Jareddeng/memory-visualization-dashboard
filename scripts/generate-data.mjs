@@ -307,25 +307,47 @@ function groupPrices(rows) {
 
 async function loadStocks() {
   const fallback = await readExistingJson("stocks.json");
-  try {
-    const histories = await Promise.all(stockSymbols.map(fetchStockHistory));
-    const history = histories.flat().sort((a, b) => `${a.ticker}|${a.date}`.localeCompare(`${b.ticker}|${b.date}`));
-    const latest = stockSymbols.map((stock) => {
-      const rows = history.filter((row) => row.ticker === stock.ticker);
-      return rows[rows.length - 1];
-    }).filter(Boolean);
-    return { latest, history, source: "Yahoo Finance chart API (daily close)", generated_at: new Date().toISOString() };
-  } catch (error) {
-    if (fallback) return { ...fallback, warning: `股票在线更新失败，使用既有数据: ${error.message}` };
-    return { latest: [], history: [], source: "unavailable", warning: `股票在线更新失败: ${error.message}` };
+  const histories = [];
+  const failures = [];
+
+  for (const stock of stockSymbols) {
+    try {
+      histories.push(await fetchStockHistory(stock));
+    } catch (error) {
+      const fallbackRows = fallback?.history?.filter((row) => row.ticker === stock.ticker) ?? [];
+      if (fallbackRows.length) {
+        histories.push(fallbackRows);
+        failures.push(`${stock.ticker}: ${error.message}`);
+      } else {
+        failures.push(`${stock.ticker}: ${error.message}`);
+      }
+    }
   }
+
+  const history = histories.flat().sort((a, b) => `${a.ticker}|${a.date}`.localeCompare(`${b.ticker}|${b.date}`));
+  const latest = stockSymbols.map((stock) => {
+    const rows = history.filter((row) => row.ticker === stock.ticker);
+    return rows[rows.length - 1];
+  }).filter(Boolean);
+
+  if (!history.length && fallback) {
+    return { ...fallback, warning: `股票在线更新失败，使用既有数据: ${failures.join("; ")}` };
+  }
+  if (!history.length) {
+    return { latest: [], history: [], source: "unavailable", warning: `股票在线更新失败: ${failures.join("; ")}` };
+  }
+
+  return {
+    latest,
+    history,
+    source: "Yahoo Finance chart API range=1y (completed daily close)",
+    generated_at: new Date().toISOString(),
+    ...(failures.length ? { warning: `部分股票在线更新失败，已使用既有数据: ${failures.join("; ")}` } : {}),
+  };
 }
 
 async function fetchStockHistory(stock) {
-  const period2 = Math.floor(Date.now() / 1000);
-  const period1 = period2 - 400 * 24 * 60 * 60;
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(stock.ticker)}?period1=${period1}&period2=${period2}&interval=1d`;
-  const json = await getJson(url);
+  const json = await fetchYahooChart(stock.ticker);
   const result = json.chart?.result?.[0];
   if (!result) throw new Error(`无股票数据: ${stock.ticker}`);
   const timestamps = result.timestamp ?? [];
@@ -357,6 +379,23 @@ async function fetchStockHistory(stock) {
     });
   }
   return rows;
+}
+
+async function fetchYahooChart(ticker) {
+  const encodedTicker = encodeURIComponent(ticker);
+  const urls = [
+    `https://query1.finance.yahoo.com/v8/finance/chart/${encodedTicker}?range=1y&interval=1d&includePrePost=false&events=div%7Csplit`,
+    `https://query2.finance.yahoo.com/v8/finance/chart/${encodedTicker}?range=1y&interval=1d&includePrePost=false&events=div%7Csplit`,
+  ];
+  let lastError;
+  for (const url of urls) {
+    try {
+      return await getJson(url);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError;
 }
 
 function isIncompleteTradingDay(rowDate, timezone, regularClose, now) {
