@@ -12421,6 +12421,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-09-15"
+    },
+    {
+      "id": "2026-08-31-gartner-storage-revenue-54pct",
+      "date": "2026-08-31",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "Gartner上修2026年存储营收预测至8373亿美元 占半导体市场54%",
+      "product": "DRAM,HBM,NAND",
+      "source": "电子技术应用ChinaAET",
+      "url": "https://k.sina.com.cn/article_5953740931_162dee08306703wygc.html",
+      "summary": "Gartner在8月进一步上修预期，将2026年全球存储营收由4月预测的6333亿美元调高至8373亿美元，在1.56万亿美元半导体市场中的占比从48%攀升至54%。三大厂商美光、SK海力士与三星主导市场，下游客户纷纷签订长期供货协议锁定产能：SK海力士已与约10家客户达成长期合作；美光16份战略客户协议涵盖合约期内约20%的DRAM产能及约三分之一NAND产能；三星亦与主要客户签署多年期供应合同。近期DRAM与NAND组合成本涨幅已达340%，甚至超过部分顶级SoC的价格。",
+      "transmission_path": "存储营收占半导体市场比重过半，反映AI驱动下HBM/DRAM/NAND需求爆发，存储芯片从大宗商品转变为AI核心战略资源。长期供货协议锁定产能进一步强化涨价预期和供给紧缺逻辑，推动存储厂商盈利能力和估值重估。",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-07"
     }
   ]
 }
