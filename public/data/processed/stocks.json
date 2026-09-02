@@ -10144,5 +10144,6 @@
     }
   ],
   "source": "Yahoo Finance chart API range=1y (completed daily close)",
-  "generated_at": "2026-09-01T10:30:14.256Z"
+  "generated_at": "2026-09-02T00:16:14.359Z",
+  "warning": "部分股票在线更新失败，已使用既有数据: 000660.KS: HTTP 403; 005930.KS: HTTP 403; MU: HTTP 403; DRAM: HTTP 403"
 }
