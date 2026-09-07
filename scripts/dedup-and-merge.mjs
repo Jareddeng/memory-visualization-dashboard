@@ -73,6 +73,12 @@ for (const r of candidates) {
     continue;
   }
 
+  // 硬校验：URL 必填（允许空字符串但会跳过）
+  if (!url || url === "") {
+    console.log(`  跳过无 URL 记录: ${id}（url 为空，禁止写入）`);
+    continue;
+  }
+
   // 层1: id 重复（已有库）
   if (existingIds.has(id)) {
     console.log(`  跳过重复(id-已有库): ${id}`);
