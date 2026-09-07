@@ -20,6 +20,25 @@
       "review_date": "2026-09-14"
     },
     {
+      "id": "2026-09-04-cxmt-dram-share-10pct",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-09-04",
+      "title": "长鑫存储DRAM营收份额升至10% 坐稳全球第四",
+      "product": "DRAM",
+      "source": "快科技",
+      "url": "https://news.mydrivers.com/1/1148/1148621.htm",
+      "summary": "市场调研机构Counterpoint Research发布报告显示，长鑫存储在全球DRAM市场的营收份额已升至10%，位居全球第四大DRAM供应商，与行业头部领先者的市场差距正快速缩小。长鑫存储年度营收增幅领跑全行业，为当时全球增长速度最快的存储芯片厂商。本轮业绩大幅飙升得益于全球AI基础设施建设热潮带动内存芯片需求暴涨、行业供需关系反转的契机。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "长鑫存储市占率突破10%标志着国产DRAM进入规模化竞争阶段。国内大客户长协锁产能确保供应链安全，有望推动全球存储芯片定价体系回归更合理区间，对三星、SK海力士、美光形成长期竞争压力，加速存储芯片国产替代进程。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-09-11"
+    },
+    {
       "id": "2026-09-03-cxmt-dram-share-10pct",
       "type": "市场消息",
       "impact": "bearish",

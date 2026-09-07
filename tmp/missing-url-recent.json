@@ -1,0 +1,814 @@
+[
+  {
+    "idx": 362,
+    "id": "2026-08-05-samsung-sk-hynix-scale-up-hbm-capacity",
+    "date": "2026-08-05",
+    "title": "三星与SK海力士大幅扩产HBM应对AI需求",
+    "source": "DataCenterDynamics"
+  },
+  {
+    "idx": 370,
+    "id": "2026-08-05-trump-chip-tariff-100pct",
+    "date": "2026-08-05",
+    "title": "特朗普称将对芯片和半导体加征约100%关税",
+    "source": "微信公众号/8月7日题材前瞻"
+  },
+  {
+    "idx": 376,
+    "id": "2026-08-06-samsung-sk-hynix-next-gen-memory-fms2026",
+    "date": "2026-08-06",
+    "title": "三星展示zHBM原型，SK海力士联合闪迪发布HBF标准规范",
+    "source": "韩民族日报"
+  },
+  {
+    "idx": 382,
+    "id": "2026-08-08-dram-contract-price-growth-slowing",
+    "date": "2026-08-08",
+    "title": "DRAM合约价涨幅逐季收窄",
+    "source": "经济观察网 / TrendForce"
+  },
+  {
+    "idx": 383,
+    "id": "2026-08-08-nvidia-rubin-ultra-hbm-downgrade",
+    "date": "2026-08-08",
+    "title": "英伟达下调Rubin Ultra HBM配置应对短缺",
+    "source": "经济观察网 / TrendForce"
+  },
+  {
+    "idx": 388,
+    "id": "2026-08-07-hbm-stocks-selloff",
+    "date": "2026-08-07",
+    "title": "HBM股双杀：三星通过NVIDIA/AMD认证后竞争加剧，SK海力士股价暴跌45%",
+    "source": "AJUSSI Guide"
+  },
+  {
+    "idx": 390,
+    "id": "2026-08-08-memory-longterm-contracts",
+    "date": "2026-08-08",
+    "title": "三大存储厂商转向3-5年长协模式，锁定高利润周期",
+    "source": "经济观察网"
+  },
+  {
+    "idx": 391,
+    "id": "2026-08-08-dram-supply-gap-worsens",
+    "date": "2026-08-08",
+    "title": "高盛测算2026年DRAM供需缺口-4.9%，为15年来最严重",
+    "source": "经济观察网"
+  },
+  {
+    "idx": 392,
+    "id": "2026-08-08-cxmt-ipo-domestic-substitution",
+    "date": "2026-08-08",
+    "title": "长鑫科技科创板上市，国产DRAM替代加速",
+    "source": "经济观察网"
+  },
+  {
+    "idx": 393,
+    "id": "2026-08-08-apple-memory-cost-margin-pressure",
+    "date": "2026-08-08",
+    "title": "苹果毛利率持续承压，库克称存储涨价为百年一遇洪水",
+    "source": "经济观察网"
+  },
+  {
+    "idx": 400,
+    "id": "2026-08-07-us-memory-stocks-decline",
+    "date": "2026-08-07",
+    "title": "8月6日美股存储板块多数收跌，西部数据跌超13%",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 401,
+    "id": "2026-08-08-memory-death-cycle",
+    "date": "2026-08-08",
+    "title": "存储产业面临周期见顶担忧，三巨头股价大幅回撤",
+    "source": "经济观察报"
+  },
+  {
+    "idx": 402,
+    "id": "2026-08-07-hbm-stocks-selloff-analysis",
+    "date": "2026-08-07",
+    "title": "HBM内存股中旬暴跌分析：预期重置与周期顶部恐惧",
+    "source": "Ajussi Guide"
+  },
+  {
+    "idx": 412,
+    "id": "2026-08-08-memory-sold-out-stocks-tumble",
+    "date": "2026-08-08",
+    "title": "存储产能售罄至2027年但三巨头股价暴跌，市场定价周期见顶担忧",
+    "source": "MarketWise"
+  },
+  {
+    "idx": 414,
+    "id": "2026-08-09-memory-supercycle-long-term-contracts",
+    "date": "2026-08-09",
+    "title": "存储三巨头签长期协议锁定价格，供需紧张延至2028",
+    "source": "新浪财经/经济观察报"
+  },
+  {
+    "idx": 419,
+    "id": "2026-08-10-adata-memory-uptrend-1h27",
+    "date": "2026-08-10",
+    "title": "威刚预计内存上行趋势延续至2027上半年",
+    "source": "Digitimes"
+  },
+  {
+    "idx": 425,
+    "id": "2026-08-12-cxmt-ipo-semiconductor-forecast",
+    "date": "2026-08-12",
+    "title": "长鑫科技上市成交额超230亿，Omdia上调2026半导体市场增幅至94.1%",
+    "source": "财闻网"
+  },
+  {
+    "idx": 427,
+    "id": "2026-08-12-intel-xbm-memory-return",
+    "date": "2026-08-12",
+    "title": "Intel暗示重返内存市场，XBM带宽据称比HBM4高一倍",
+    "source": "快科技"
+  },
+  {
+    "idx": 428,
+    "id": "2026-08-12-ddr5-hbm-pricing-analysis",
+    "date": "2026-08-12",
+    "title": "DDR5内存利润近20倍于成本，HBM反而成良心价",
+    "source": "快科技"
+  },
+  {
+    "idx": 429,
+    "id": "2026-08-12-memory-lta-expansion",
+    "date": "2026-08-12",
+    "title": "全球存储芯片供应趋紧，内存长协向二三线厂商扩散",
+    "source": "快科技"
+  },
+  {
+    "idx": 430,
+    "id": "2026-08-12-samsung-glass-substrate-delay",
+    "date": "2026-08-12",
+    "title": "三星电机玻璃基板样品验证未过，量产推迟至2028年后",
+    "source": "财闻网"
+  },
+  {
+    "idx": 431,
+    "id": "2026-08-11-korea-chip-exports-surge",
+    "date": "2026-08-11",
+    "title": "韩国8月上旬芯片出口同比激增155.4%",
+    "source": "财联社/韩国关税厅"
+  },
+  {
+    "idx": 432,
+    "id": "2026-08-11-wallstreet-memory-price-slowdown",
+    "date": "2026-08-11",
+    "title": "华尔街称AI存储涨价潮或降温但供应紧张料持续",
+    "source": "财联社/摩根士丹利/伯恩斯坦/摩根大通"
+  },
+  {
+    "idx": 433,
+    "id": "2026-08-12-ymtc-nand-market-share",
+    "date": "2026-08-12",
+    "title": "Counterpoint：2026年Q2长江存储NAND市场份额达14%",
+    "source": "财联社/Counterpoint Research"
+  },
+  {
+    "idx": 434,
+    "id": "2026-08-10-china-memory-breakthrough",
+    "date": "2026-08-10",
+    "title": "国产存储芯片产业迎来标志性节点",
+    "source": "科技日报/武汉市科技局"
+  },
+  {
+    "idx": 435,
+    "id": "2026-08-11-sk-hynix-euv-dram",
+    "date": "2026-08-11",
+    "title": "SK海力士推进EUV光刻技术用于下一代DRAM量产",
+    "source": "科创板日报/财联社"
+  },
+  {
+    "idx": 438,
+    "id": "2026-08-13-korea-chip-ecosystem-fund",
+    "date": "2026-08-13",
+    "title": "韩国推出5万亿韩元芯片生态基金",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 439,
+    "id": "2026-08-12-cxmt-ddr5-yield-90",
+    "date": "2026-08-12",
+    "title": "长鑫存储DDR5良率突破90%",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 440,
+    "id": "2026-08-12-samsung-hbm4-yield-80",
+    "date": "2026-08-12",
+    "title": "三星HBM4良率接近80%",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 441,
+    "id": "2026-08-11-korea-minister-warns-cxmt-capex",
+    "date": "2026-08-11",
+    "title": "韩国部长警告长鑫存储资本开支威胁",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 442,
+    "id": "2026-08-10-sk-hynix-chongqing-stake-sale",
+    "date": "2026-08-10",
+    "title": "SK海力士考虑出售重庆封装厂股份",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 443,
+    "id": "2026-08-10-sk-hynix-us-patent-fight",
+    "date": "2026-08-10",
+    "title": "SK海力士在美国面临HBM和3D NAND专利诉讼",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 445,
+    "id": "2026-08-12-memory-stocks-rally",
+    "date": "2026-08-12",
+    "title": "存储板块普涨，SK海力士涨超9%",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 447,
+    "id": "2026-08-11-sk-hynix-dalian-fab-restart",
+    "date": "2026-08-11",
+    "title": "SK海力士重启大连二号工厂，NAND产能提升50%",
+    "source": "新浪财经/21世纪经济报道"
+  },
+  {
+    "idx": 451,
+    "id": "2026-08-13-sandisk-outlook-boosts-memory-stocks",
+    "date": "2026-08-13",
+    "title": "闪迪乐观长期前景提振存储芯片板块",
+    "source": "财闻网"
+  },
+  {
+    "idx": 453,
+    "id": "2026-08-14-cxmt-market-cap-surpasses-tencent",
+    "date": "2026-08-14",
+    "title": "长鑫科技市值超越腾讯、英特尔",
+    "source": "财闻网"
+  },
+  {
+    "idx": 462,
+    "id": "2026-08-14-netlist-337-complaint-micron",
+    "date": "2026-08-14",
+    "title": "Netlist向ITC提起337调查申请指控美光等侵权",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 463,
+    "id": "2026-08-14-sandisk-investor-day",
+    "date": "2026-08-14",
+    "title": "闪迪投资者日公布长期财务模型",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 464,
+    "id": "2026-08-14-sk-hynix-cheongju-m17",
+    "date": "2026-08-14",
+    "title": "SK海力士计划建设清州M17 NAND新厂",
+    "source": "CFM闪存市场/韩媒"
+  },
+  {
+    "idx": 468,
+    "id": "2026-08-13-sandisk-investor-day-ai-strategy",
+    "date": "2026-08-13",
+    "title": "闪迪投资者日公布AI长期战略，预计2030年数据中心闪存市场达1.2ZB",
+    "source": "财联社"
+  },
+  {
+    "idx": 479,
+    "id": "2026-08-14-longsys-h1-earnings-surge",
+    "date": "2026-08-14",
+    "title": "江波龙上半年净利润同比增长超715倍，存储模组龙头业绩爆发",
+    "source": "CFM闪存市场/公司财报"
+  },
+  {
+    "idx": 480,
+    "id": "2026-08-14-sk-hynix-kioxia-largest-shareholder",
+    "date": "2026-08-14",
+    "title": "SK海力士通过CB投资间接成为铠侠最大股东，NAND格局再整合",
+    "source": "CFM闪存市场/ZDNet/日经新闻"
+  },
+  {
+    "idx": 481,
+    "id": "2026-08-14-samsung-taylor-fab-ramping",
+    "date": "2026-08-14",
+    "title": "三星向德州泰勒工厂持续增派关键人员，瞄准明年全面量产",
+    "source": "CFM闪存市场/韩媒"
+  },
+  {
+    "idx": 482,
+    "id": "2026-08-14-sk-hynix-exploring-options",
+    "date": "2026-08-14",
+    "title": "SK海力士声明正探讨多种提升业务竞争力方案",
+    "source": "CFM闪存市场/SK海力士声明"
+  },
+  {
+    "idx": 483,
+    "id": "2026-08-14-smic-memory-demand-overflow",
+    "date": "2026-08-14",
+    "title": "中芯国际：存储器公司退出低密度存储，需求流向中芯价格持续上涨",
+    "source": "CFM闪存市场/中芯国际业绩会"
+  },
+  {
+    "idx": 484,
+    "id": "2026-08-14-sandisk-investor-day-hbf",
+    "date": "2026-08-14",
+    "title": "闪迪投资者日公布HBF技术路线图，预计2030年数据中心闪存市场达1.2ZB",
+    "source": "财联社/闪迪投资者日"
+  },
+  {
+    "idx": 485,
+    "id": "2026-08-14-goldman-sandisk-buy",
+    "date": "2026-08-14",
+    "title": "高盛维持闪迪买入评级，称投资者日释放强于预期信号",
+    "source": "财联社/高盛"
+  },
+  {
+    "idx": 487,
+    "id": "2026-08-14-nvidia-ssd-vram",
+    "date": "2026-08-14",
+    "title": "英伟达研发新技术，未来可让SSD充当额外显存",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 488,
+    "id": "2026-08-14-phanlix-enterprise-ai-shift",
+    "date": "2026-08-14",
+    "title": "群联宣布未来2-4季聚焦企业级及AI存储应用，消费零售占比降至5%",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 489,
+    "id": "2026-08-14-winbond-dram-price-rise",
+    "date": "2026-08-14",
+    "title": "华邦电子预期本季DRAM价格继续上扬，Flash产品有望同步调涨",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 491,
+    "id": "2026-08-15-hbm-pricing-market-share-analysis",
+    "date": "2026-08-15",
+    "title": "HBM市场价格持续上涨，SK海力士市占率50-55%领先",
+    "source": "Silicon Analysts"
+  },
+  {
+    "idx": 494,
+    "id": "2026-08-15-gelsinger-hbm-lousy-sk-hynix",
+    "date": "2026-08-15",
+    "title": "前英特尔CEO批评HBM技术，SK海力士承认非AI内存最终方案",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 495,
+    "id": "2026-08-15-tripod-record-margins-server-memory",
+    "date": "2026-08-15",
+    "title": "Tripod二季度毛利率创历史新高，服务器与存储需求强劲",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 496,
+    "id": "2026-08-14-memory-supply-crunch-lta-expansion",
+    "date": "2026-08-14",
+    "title": "存储供应紧张推动长期合约扩展至三大巨头之外",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 497,
+    "id": "2026-08-14-skorea-chip-cluster-nine-fabs",
+    "date": "2026-08-14",
+    "title": "韩国芯片产业集群或扩至9座晶圆厂，SK集团计划新投资",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 498,
+    "id": "2026-08-14-skorea-memory-exports-surge-277",
+    "date": "2026-08-14",
+    "title": "韩国7月存储芯片出口同比增长277%，系统芯片下滑",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 499,
+    "id": "2026-08-14-silicon-analysts-hbm-market-share",
+    "date": "2026-08-15",
+    "title": "HBM市场份额分析：SK海力士62%、三星30%、美光8%",
+    "source": "Silicon Analysts"
+  },
+  {
+    "idx": 500,
+    "id": "2026-08-15-hbm4-samsung-amd-mi400-mou",
+    "date": "2026-08-15",
+    "title": "三星与AMD签署HBM4战略合作备忘录，锁定MI455X供应",
+    "source": "Silicon Analysts"
+  },
+  {
+    "idx": 502,
+    "id": "2026-08-17-nand-wafer-price-surge-qlc-ssd",
+    "date": "2026-08-17",
+    "title": "NAND晶圆价格双周大涨：256Gb TLC涨幅超17%，QLC SSD供应趋紧",
+    "source": "DRAMeXchange"
+  },
+  {
+    "idx": 506,
+    "id": "2026-08-17-us-storage-stocks-surge",
+    "date": "2026-08-17",
+    "title": "美股存储板块集体上涨",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 507,
+    "id": "2026-08-17-cmsemicon-h1-report",
+    "date": "2026-08-17",
+    "title": "中微半导体半年报净利翻倍，正式进入存储领域",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 508,
+    "id": "2026-08-17-phison-enterprise-ai-storage",
+    "date": "2026-08-17",
+    "title": "群联持续聚焦企业级及AI存储应用",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 509,
+    "id": "2026-08-17-longsys-h1-earnings",
+    "date": "2026-08-17",
+    "title": "江波龙上半年净利润暴增超700倍",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 510,
+    "id": "2026-08-17-sk-hynix-kioxia-major-shareholder",
+    "date": "2026-08-17",
+    "title": "SK海力士通过可转债投资成为铠侠最大股东",
+    "source": "CFM闪存市场/日经新闻"
+  },
+  {
+    "idx": 511,
+    "id": "2026-08-16-loongson-equity-raise",
+    "date": "2026-08-16",
+    "title": "龙芯中科披露23亿元定增预案",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 512,
+    "id": "2026-08-17-sandisk-investor-day",
+    "date": "2026-08-17",
+    "title": "闪迪举行2026年投资者日活动",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 513,
+    "id": "2026-08-17-intel-new-memory-architecture",
+    "date": "2026-08-17",
+    "title": "英特尔CEO透露正关注新存储架构，聘请前SK海力士高管",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 514,
+    "id": "2026-08-17-lenovo-ai-server-backlog",
+    "date": "2026-08-17",
+    "title": "联想AI服务器项目储备达540亿美元",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 515,
+    "id": "2026-08-17-samsung-giheung-rd-hbm-foundry",
+    "date": "2026-08-17",
+    "title": "三星评估将Giheung R&D线改造为2nm HBM代工产能",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 516,
+    "id": "2026-08-17-phison-nand-shortage-ai",
+    "date": "2026-08-17",
+    "title": "群联CEO预测NAND短缺将持续多年",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 517,
+    "id": "2026-08-17-samsung-china-sales-overtake-us",
+    "date": "2026-08-17",
+    "title": "三星中国销售超过美国，Nvidia不在前五大客户",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 518,
+    "id": "2026-08-17-sigurd-july-revenue-record",
+    "date": "2026-08-17",
+    "title": "Sigurd 7月收入突破20亿新台币，AI测试需求激增",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 520,
+    "id": "2026-08-17-wang-silicon-30k-probe-card",
+    "date": "2026-08-17",
+    "title": "旺矽研发3万针探针卡应对AI芯片与HBM测试需求",
+    "source": "DigiTimes"
+  },
+  {
+    "idx": 523,
+    "id": "2026-08-15-memory-chip-shortage-sk-hynix",
+    "date": "2026-08-15",
+    "title": "SK海力士警告存储芯片短缺可能持续至2030年以后",
+    "source": "Tech-Insider"
+  },
+  {
+    "idx": 529,
+    "id": "2026-08-19-ddr5-price-up-volume-down",
+    "date": "2026-08-19",
+    "title": "本周DDR5内存条价涨量缩，开学季需求未见起色",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 530,
+    "id": "2026-08-19-sk-hynix-net-cash",
+    "date": "2026-08-19",
+    "title": "SK海力士Q2净现金约69万亿韩元，现金创造能力大幅改善",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 531,
+    "id": "2026-08-19-samsung-ds-lab-upgrade",
+    "date": "2026-08-19",
+    "title": "三星DS事业部启动半导体工艺分析实验室升级",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 537,
+    "id": "2026-08-20-samsung-netlist-settlement",
+    "date": "2026-08-20",
+    "title": "三星电子与美国Netlist达成专利纠纷和解",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 541,
+    "id": "2026-08-21-ymtc-ipo-nand-margin",
+    "date": "2026-08-21",
+    "title": "长江存储IPO招股书显示Q1 NAND Flash毛利率达78.73%",
+    "source": "财联社"
+  },
+  {
+    "idx": 543,
+    "id": "2026-08-24-sk-hynix-ai-memory-leadership",
+    "date": "2026-08-24",
+    "title": "SK海力士引领AI存储器市场，业绩连创新高",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 544,
+    "id": "2026-08-24-primemas-micron-cxl-memory",
+    "date": "2026-08-24",
+    "title": "Primemas与美光合作量产JBOM CXL存储解决方案",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 545,
+    "id": "2026-08-24-hbm4-advanced-logic-base-die",
+    "date": "2026-08-24",
+    "title": "HBM4开始应用先进逻辑工艺于基础芯片",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 548,
+    "id": "2026-08-23-cowos-packaging-demand",
+    "date": "2026-08-23",
+    "title": "CoWoS先进封装产能仅满足50-60%需求",
+    "source": "Silicon Analysts"
+  },
+  {
+    "idx": 552,
+    "id": "2026-08-24-ymtc-star-market-listing",
+    "date": "2026-08-24",
+    "title": "上海交易所受理长江存储科创板上市申请",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 554,
+    "id": "2026-08-24-sk-hynix-hbf-cpo",
+    "date": "2026-08-24",
+    "title": "SK海力士推进HBF和CPO布局，超越HBM进入系统级内存竞争",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 565,
+    "id": "2026-08-22-nvidia-sk-micron-long-term-deal",
+    "date": "2026-08-22",
+    "title": "英伟达与SK海力士、美光签署多年期HBM及DRAM供应协议",
+    "source": "Edgewater Research/芯智讯"
+  },
+  {
+    "idx": 567,
+    "id": "2026-08-25-samsung-sk-hynix-china-nand-upgrades",
+    "date": "2026-08-25",
+    "title": "三星、SK海力士加速中国NAND工厂升级以应对美国设备限制风险",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 568,
+    "id": "2026-08-25-nvidia-memory-demand-widens-gap",
+    "date": "2026-08-25",
+    "title": "英伟达AI内存订单扩大SK海力士与三星差距",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 570,
+    "id": "2026-08-25-sk-hynix-hybrid-bonding-hbm5",
+    "date": "2026-08-23",
+    "title": "SK海力士：混合键合技术最早应用于HBM5，HBM4E仍采用传统封装",
+    "source": "Tom's Hardware"
+  },
+  {
+    "idx": 571,
+    "id": "2026-08-24-etron-memory-boom-2028-2030",
+    "date": "2026-08-24",
+    "title": "钰创董事长：存储行业繁荣将延续至2028-2030年",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 572,
+    "id": "2026-08-23-sk-hynix-cpo-nature-electronics",
+    "date": "2026-08-20",
+    "title": "SK海力士在Nature Electronics发表CPO技术论文，布局2030年后高性能计算",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 573,
+    "id": "2026-08-23-samsung-shareholder-return-79b",
+    "date": "2026-08-23",
+    "title": "三星电子批准2026年股东回报计划，规模最高达790亿美元",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 577,
+    "id": "2026-08-25-memory-sector-rebound-after-selloff",
+    "date": "2026-08-25",
+    "title": "美股存储板块盘前小幅反弹，前日重挫近6%",
+    "source": "财联社"
+  },
+  {
+    "idx": 582,
+    "id": "2026-08-27-nvidia-hbm4-8layer-shift",
+    "date": "2026-08-27",
+    "title": "英伟达 reportedly 转向增加8层HBM4采购占比",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 583,
+    "id": "2026-08-27-cxmt-lpddr6-xiaomi",
+    "date": "2026-08-27",
+    "title": "长鑫存储获小米Xring O3 LPDDR6早期商用机会",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 585,
+    "id": "2026-08-26-samsung-lpddr5x-pim",
+    "date": "2026-08-26",
+    "title": "三星在Hot Chips展示LPDDR5X-PIM技术",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 587,
+    "id": "2026-08-26-ymtc-nand-ambitions",
+    "date": "2026-08-26",
+    "title": "长江存储力争2027年底成为全球最大NAND制造商",
+    "source": "Sammyfans"
+  },
+  {
+    "idx": 589,
+    "id": "2026-08-26-nvidia-279b-memory-commitment",
+    "date": "2026-08-26",
+    "title": "英伟达Q2财报披露2790亿美元存储采购承诺验证HBM定价权",
+    "source": "Recessional Alert"
+  },
+  {
+    "idx": 593,
+    "id": "2026-08-27-hbm-core-bottleneck-micron-indiana",
+    "date": "2026-08-27",
+    "title": "HBM升级为核心瓶颈，美光印第安纳厂投资超40亿美元",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 596,
+    "id": "2026-08-27-sk-hynix-questions-pim-thermal-limits",
+    "date": "2026-08-27",
+    "title": "SK海力士质疑PIM路线，热管理与封装瓶颈制约HBM发展",
+    "source": "DigiTimes"
+  },
+  {
+    "idx": 598,
+    "id": "2026-08-28-cxmt-h1-2026-earnings-surge",
+    "date": "2026-08-28",
+    "title": "长鑫科技2026上半年营收1503亿元同比增873%，净利776亿扭亏为盈",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 599,
+    "id": "2026-08-28-china-memory-catchup-ymtc-cxmt",
+    "date": "2026-08-28",
+    "title": "中国存储芯片追赶加速：长江存储NAND份额逼近SK海力士，长鑫DRAM技术再突破",
+    "source": "DigiTimes"
+  },
+  {
+    "idx": 601,
+    "id": "2026-08-27-nvidia-fy2027-q2-memory-bottleneck",
+    "date": "2026-08-27",
+    "title": "英伟达Q2营收962亿美元，HBM成算力扩张核心瓶颈",
+    "source": "CFM闪存市场"
+  },
+  {
+    "idx": 603,
+    "id": "2026-08-27-sk-hynix-indiana-plant",
+    "date": "2026-08-27",
+    "title": "SK海力士40亿美元印第安纳先进封装厂破土动工",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 605,
+    "id": "2026-08-27-nvidia-sk-hynix-revenue-split",
+    "date": "2026-08-26",
+    "title": "SK海力士新增第二大客户，英伟达仍未进入三星前五大客户",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 610,
+    "id": "2026-08-30-china-ai-semiconductor-profits",
+    "date": "2026-08-30",
+    "title": "中国AI投资热潮推动半导体利润大幅增长",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 614,
+    "id": "2026-08-28-samsung-v9-nand-investment",
+    "date": "2026-08-28",
+    "title": "三星追加投资强化V9 NAND闪存生产",
+    "source": "The Register"
+  },
+  {
+    "idx": 615,
+    "id": "2026-08-28-3d-nand-tungsten-molybdenum",
+    "date": "2026-08-28",
+    "title": "3D NAND制造工艺从钨转向钼材料",
+    "source": "The Register/SemiAnalysis"
+  },
+  {
+    "idx": 617,
+    "id": "2026-08-28-primemas-micron-cxl-abaco",
+    "date": "2026-08-28",
+    "title": "Primemas与美光合作CXL内存Abaco项目，机架级内存超100TB",
+    "source": "Blocks and Files"
+  },
+  {
+    "idx": 619,
+    "id": "2026-08-28-cxmt-lpddr6-xiaomi",
+    "date": "2026-08-29",
+    "title": "小米18 Fold全球首发长鑫LPDDR6内存",
+    "source": "证券时报/财闻网"
+  },
+  {
+    "idx": 622,
+    "id": "2026-08-28-dram-supply-tight-2028",
+    "date": "2026-08-28",
+    "title": "瑞银：DRAM供给紧缺将延续至2028年Q2，2027年存储价格仍有40%以上涨幅",
+    "source": "财新网/瑞银证券"
+  },
+  {
+    "idx": 625,
+    "id": "2026-08-29-hbm-supply-long-term-contracts",
+    "date": "2026-08-29",
+    "title": "英伟达与SK海力士、美光签署多年期HBM/DRAM长期供应协议",
+    "source": "百度百科/行业消息"
+  },
+  {
+    "idx": 635,
+    "id": "2026-09-01-sk-hynix-intel-base-die-second-source",
+    "date": "2026-09-01",
+    "title": "SK海力士考虑将Intel代工列为HBM基础芯片第二来源",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 636,
+    "id": "2026-09-01-samsung-hbm4e-8layer-nvidia",
+    "date": "2026-09-01",
+    "title": "三星据悉为英伟达NVHBM开发8层HBM4E",
+    "source": "DIGITIMES/首尔经济日报"
+  },
+  {
+    "idx": 637,
+    "id": "2026-09-01-micron-tainan-plant-opens",
+    "date": "2026-09-01",
+    "title": "美光台南厂正式投产，历时6.5个月完成改造",
+    "source": "DIGITIMES"
+  },
+  {
+    "idx": 638,
+    "id": "2026-09-02-nvidia-hbm-base-die-battle",
+    "date": "2026-09-02",
+    "title": "HBM竞争转向基础芯片控制权，英伟达NVHBM引发行业变革",
+    "source": "DIGITIMES"
+  }
+]
