@@ -12554,6 +12554,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-09-14"
+    },
+    {
+      "id": "2026-09-03-cxmt-dram-share-10pct",
+      "date": "2026-09-03",
+      "type": "市场消息",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "CXMT Q2 DRAM市场份额跃升至10%，SK海力士份额大幅下滑",
+      "product": "DRAM",
+      "source": "Yahoo Finance / Counterpoint Research",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/micron-samsung-sk-hynix-suffer-075901384.html",
+      "summary": "据Counterpoint Research数据，中国DRAM厂商长鑫存储(CXMT)全球DRAM市场份额从一年前的4%跃升至2026年第二季度的10%。同期SK海力士份额大幅下滑。CXMT正推进86亿美元上海IPO，并计划开发HBM和LPDDR6。中国NAND厂商长江存储(YMTC)也在筹备约49亿美元IPO。",
+      "transmission_path": "CXMT市场份额快速提升→中国DRAM竞争力增强→对三星/SK海力士/美光形成长期竞争压力→DRAM行业格局重塑→存储芯片国产替代加速",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-10"
     }
   ]
 }
