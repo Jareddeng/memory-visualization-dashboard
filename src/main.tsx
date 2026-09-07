@@ -1,4 +1,5 @@
 import React from "react";
+import { mergeIntel, intelUrlKey, isArticleUrl } from "./intel-quality.mjs";
 import { createRoot } from "react-dom/client";
 import { AlertTriangle, Database, RefreshCw, Trash2 } from "lucide-react";
 import * as echarts from "echarts/core";
@@ -808,9 +809,9 @@ function App() {
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
   const deletedRemoteIntelSet = new Set(deletedRemoteIntelIds);
   const visibleBaseRemoteIntelRecords = data.intel.filter((record) => !deletedRemoteIntelSet.has(record.id));
-  const remoteIntelRecords = mergeRemoteIntelRecords(visibleBaseRemoteIntelRecords, intelRecords);
-  const localOnlyIntelRecords = intelRecords.filter((record) => !data.intel.some((remoteRecord) => remoteRecord.id === record.id));
-  const allIntelRecords = [...remoteIntelRecords, ...localOnlyIntelRecords];
+  const allIntelRecords = mergeIntel(visibleBaseRemoteIntelRecords, intelRecords.filter(record => !deletedRemoteIntelSet.has(record.id)));
+  const remoteIntelRecords = allIntelRecords.filter(record => data.intel.some(remote => remote.id === record.id));
+  const localOnlyIntelRecords = allIntelRecords.filter(record => !data.intel.some(remote => remote.id === record.id));
   const handleDeleteIntel = (id: string) => {
     setIntelRecords((current) => current.filter((record) => record.id !== id));
     if (data.intel.some((record) => record.id === id)) {
@@ -953,6 +954,15 @@ function App() {
               setEditingIntelRecord(null);
             }}
             onSave={(record) => {
+              if (!isArticleUrl(record.url)) {
+                window.alert('请填写能定位新闻原文的 http/https 文章链接。');
+                return;
+              }
+              const existing = allIntelRecords.find(item => item.id !== record.id && intelUrlKey(item.url) === intelUrlKey(record.url));
+              if (existing) {
+                window.alert(`该链接已用于「${existing.title}」，请编辑已有情报或核对原文链接。`);
+                return;
+              }
               setIntelRecords((current) => [record, ...current.filter((item) => item.id !== record.id)]);
               setCaptureOpen(false);
               setEditingIntelRecord(null);
@@ -3049,7 +3059,7 @@ function IntelCaptureModal({ record, onClose, onSave }: { record?: IntelRecord |
           <label>复核时间<input name="review_date" type="date" defaultValue={record?.review_date ?? ""} /></label>
           <label>标题<input name="title" type="text" maxLength={80} defaultValue={record?.title ?? ""} required /></label>
           <label>相关产品<input name="product" type="text" maxLength={80} placeholder="HBM / DDR5 / NAND" defaultValue={record?.product ?? ""} /></label>
-          <label>原文链接<input name="url" type="url" maxLength={300} placeholder="https://..." defaultValue={record?.url ?? ""} /></label>
+          <label>原文链接<input name="url" type="url" maxLength={2000} placeholder="https://..." defaultValue={record?.url ?? ""} required /></label>
           <label>来源<input name="source" type="text" maxLength={100} placeholder="公司公告 / 研报 / 调研" defaultValue={record?.source ?? ""} /></label>
           <label className="wide">传导路径<textarea name="transmission_path" rows={3} maxLength={400} placeholder="新闻如何影响公司、行业、产业链或资产价格" defaultValue={record?.transmission_path ?? ""} /></label>
           <label className="wide">摘要<textarea name="summary" rows={5} maxLength={500} defaultValue={record?.summary ?? ""} required /></label>
@@ -3173,11 +3183,6 @@ function getHbmPressure(data: AppData) {
   }
 
   return { value: "观察", hint: `${companies.length} 家已纳入长协跟踪，等待锁量确认` };
-}
-
-function mergeRemoteIntelRecords(remoteRecords: IntelRecord[], localRecords: IntelRecord[]) {
-  const localById = new Map(localRecords.map((record) => [record.id, record]));
-  return remoteRecords.map((record) => localById.get(record.id) ?? record);
 }
 
 function useLocalIntelRecords(): [IntelRecord[], React.Dispatch<React.SetStateAction<IntelRecord[]>>] {
