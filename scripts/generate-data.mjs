@@ -3,6 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import https from "node:https";
 import XLSX from "xlsx";
+import { dedupeIntel, assertUniqueIntelUrls } from "../src/intel-quality.mjs";
 
 const root = process.cwd();
 const validateOnly = process.argv.includes("--validate-only");
@@ -570,24 +571,12 @@ async function loadIntel() {
     const raw = JSON.parse(await fs.readFile(path.join(intelDir, file), "utf8"));
     const records = Array.isArray(raw) ? raw : raw.records || [];
     if (!Array.isArray(records)) throw new Error(`情报 JSON 必须是数组或包含 records 数组: ${file}`);
-    records.forEach((record, index) => {
-      try {
-        rows.push(normalizeIntelRecord(record, file, index));
-      } catch {
-        // 单条记录格式错误，跳过
-      }
-    });
+    records.forEach((record, index) => rows.push(normalizeIntelRecord(record, file, index)));
   }
 
-  // 按 id 去重（保留第一条）
-  const seen = new Set();
-  const deduped = [];
-  for (const row of rows) {
-    if (!seen.has(row.id)) {
-      seen.add(row.id);
-      deduped.push(row);
-    }
-  }
+  const deduped = dedupeIntel(rows);
+  if (deduped.length !== rows.length) throw new Error('情报库存在重复记录，请先核对并清理');
+  assertUniqueIntelUrls(deduped);
 
   return deduped.sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -628,7 +617,7 @@ function normalizeIntelRecord(record, file, index) {
 
 function normalizeIntelUrl(value, file, index) {
   const url = String(value || "").trim();
-  if (!url) return "";
+  if (!url) throw new Error(`情报缺少原文 URL: ${file} #${index + 1}；请补全或移入 data/archive/intel/`);
   try {
     const parsed = new URL(url);
     if (!["http:", "https:"].includes(parsed.protocol)) {

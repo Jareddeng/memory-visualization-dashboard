@@ -1,0 +1,404 @@
+{
+  "scope": "全部重复URL、历史恢复URL与明显非文章链接；不是全库每条事实审计",
+  "actions": [
+    {
+      "action": "merge_article",
+      "keep": "samsung-skhy-scale-production-20260709",
+      "duplicates": [
+        "2026-07-09-三星和sk海力士2026年将hbm产能扩大50以上新建晶圆厂应对ai需求",
+        "2026-06-09-samsung-p5-fab-2028-sk-hynix-m15x-2027"
+      ],
+      "url": "https://www.datacenterdynamics.com/en/news/samsung-and-sk-hynix-to-scale-up-memory-production-capacity-in-2026-to-meet-ai-demand/",
+      "title": "三星拟扩大2026年存储产能，SK海力士增加基础设施投资",
+      "summary": "DCD于2026年1月5日报道：三星拟将2026年产能提高约50%，SK海力士拟将基础设施投资提高至此前计划的四倍以上。文中同时提及三星P5预计2028年运营、SK海力士M15X预计2027年中启用。原库将同一篇旧闻重复记为6月及7月新闻，现统一按原文发布日期归档。",
+      "date": "2026-01-05"
+    },
+    {
+      "action": "merge_article",
+      "keep": "2026-06-30-memory-class-action-lawsuit",
+      "duplicates": [
+        "2026-06-30-roundhill-memory-etf-gigadevice",
+        "2026-06-30-samsung-2655-trillion-krw-investment"
+      ],
+      "url": "https://www.cls.cn/detail/2412290",
+      "title": "财联社6月30日早报：存储厂商诉讼、三星投资与存储ETF调仓",
+      "summary": "该早报行业新闻分别报道三家存储原厂遭集体诉讼、三星宣布2655万亿韩元投资计划（其中半导体集群2030万亿韩元）、Roundhill Memory ETF将兆易创新纳入第八大重仓股。三条信息确实来自同一篇早报，合并为一条来源记录。"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-27-hyperscaler-capex-725b-2026",
+      "url": "https://nextwavesinsight.com/hyperscaler-ai-capex-microsoft-google-amazon-meta-2026/",
+      "reason": "重复链接对应页面本次未能读取，无法验证标题和正文匹配；不据此断言网址伪造"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-27-alphabet-cfo-2027-capex-significant-increase",
+      "url": "https://nextwavesinsight.com/hyperscaler-ai-capex-microsoft-google-amazon-meta-2026/",
+      "reason": "重复链接对应页面本次未能读取，无法验证标题和正文匹配；不据此断言网址伪造"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-29-sk-hynix-1c-dram-170k-wafers",
+      "url": "https://seekingalpha.com/article/4910441-micron-upcoming-capacity-ramps-could-change-the-story",
+      "reason": "重复链接对应页面本次未能读取，无法验证标题和正文匹配；不据此断言网址伪造"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-29-micron-capacity-ramp-2027-risk",
+      "url": "https://seekingalpha.com/article/4910441-micron-upcoming-capacity-ramps-could-change-the-story",
+      "reason": "重复链接对应页面本次未能读取，无法验证标题和正文匹配；不据此断言网址伪造"
+    },
+    {
+      "action": "pending",
+      "id": "2026-05-27-hbm-thermal-wall-supply-bottleneck",
+      "url": "https://nextwavesinsight.com/hbm-memory-bottleneck-ai-supply-chain-2026/",
+      "reason": "重复链接对应页面本次未能读取，无法验证标题和正文匹配；不据此断言网址伪造"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-27-micron-lobby-china-export-controls",
+      "url": "https://api.finexus.net/api/news/events/9c0bb5d0-5ddf-4880-a1cc-fccd6ef30617/html",
+      "reason": "重复链接对应页面本次未能读取，无法验证标题和正文匹配；不据此断言网址伪造"
+    },
+    {
+      "action": "pending",
+      "id": "2026-04-26-micron-hbm-2026-fully-allocated",
+      "url": "https://api.finexus.net/api/news/events/9c0bb5d0-5ddf-4880-a1cc-fccd6ef30617/html",
+      "reason": "重复链接对应页面本次未能读取，无法验证标题和正文匹配；不据此断言网址伪造"
+    },
+    {
+      "action": "pending",
+      "id": "2026-04-26-micron-lobbying-stricter-china-controls",
+      "url": "https://api.finexus.net/api/news/events/9c0bb5d0-5ddf-4880-a1cc-fccd6ef30617/html",
+      "reason": "重复链接对应页面本次未能读取，无法验证标题和正文匹配；不据此断言网址伪造"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-27-nvidia-rubin-shortage-hbm4-delay",
+      "url": "https://globx.eu/blog/supply-chain-insight/nvidia-rubin-component-shortage-2026",
+      "reason": "GlobX原文讨论元器件短缺，未找到量产目标从200万下调至150万的核心数字"
+    },
+    {
+      "action": "merge_article",
+      "keep": "2026-06-12-sk-hynix-hbm-3yr-backlog",
+      "duplicates": [
+        "2026-06-12-sk-hynix-hbm-71.8-margin"
+      ],
+      "url": "https://www.abhs.in/blog/sk-hynix-q1-2026-718-operating-margin-hbm-demand-exceeds-three-year-supply",
+      "title": "ABHS研究文章讨论SK海力士HBM供给锁定与高利润率",
+      "summary": "ABHS研究文章讨论HBM供给锁定至2028年及跨三年的需求能见度，并引用约71.8%的利润率。此条为研究文章观点，原财报利润率应以SK海力士官方披露的72%为准。",
+      "date": "2026-06-12"
+    },
+    {
+      "action": "merge_article",
+      "keep": "2026-06-11-korea-dram-exports-370pct",
+      "duplicates": [
+        "2026-06-11-ddr5-server-chip-42-usd-7x",
+        "2026-06-11-hbm-wafer-input-trajectory-18-22-30",
+        "2026-06-27-korea-may-exports-dram-370pct-nand-207pct"
+      ],
+      "url": "https://www.trendforce.com/news/2026/06/11/news-south-korea-chip-export-volume-falls-yet-revenue-surges-may-dram-370-nand-207/",
+      "title": "韩国5月存储出口量价背离，DDR5涨价与HBM产能倾斜",
+      "summary": "TrendForce援引KITA：韩国5月DRAM出口186亿美元，同比增369.8%；NAND出口17亿美元，同比增206.8%。同文援引服务器DDR5 16Gb合约价42美元，较一年前6美元上涨7倍，并列出HBM晶圆投入占比2025/2026/2027年底约18%/22%/30%。"
+    },
+    {
+      "action": "merge_article",
+      "keep": "2026-06-10-omdia-semiconductor-market-319b-q1",
+      "duplicates": [
+        "2026-06-27-omdia-semiconductor-300bn-quarterly-1q26"
+      ],
+      "url": "https://omdia.tech.informa.com/pr/2026/june/semiconductor-market-surpasses-300bn-dollars-quarterly-revenue-in-1q26-as-memory-market-shifts-historical-patterns",
+      "title": "Omdia：1Q26半导体营收3190亿美元，存储营收环比增长逾80%",
+      "summary": "Omdia于6月10日披露，1Q26全球半导体营收达3190亿美元，环比增27%；存储营收环比增逾80%，DRAM和NAND合计占半导体营收超过40%。同一报告的两条情报合并。"
+    },
+    {
+      "action": "merge_article",
+      "keep": "2026-06-01-trendforce-1q26-dram-97b",
+      "duplicates": [
+        "2026-05-06-q1-chip-price-surge"
+      ],
+      "url": "https://www.trendforce.com/presscenter/news/20260601-13070.html",
+      "title": "TrendForce：1Q26 DRAM行业营收环比增长81%",
+      "summary": "TrendForce于6月1日发布1Q26 DRAM市场报告，行业营收约970亿美元，环比增长81%，传统DRAM合约价格上涨93%—98%。原库5月6日条目引用了同一篇6月报告，现归并至原文日期。"
+    },
+    {
+      "action": "merge_article",
+      "keep": "2026-06-29-computex-2026-memory-shortage-hbm4",
+      "duplicates": [
+        "2026-06-29-shinhan-dram-nand-demand-supply-growth-2026"
+      ],
+      "url": "https://www.digitaltoday.co.kr/en/view/58429/computex-2026-memory-shortage-shadow-hbm4-supply-race-intensifies",
+      "title": "Computex 2026存储展望：HBM4竞争与需求超过供给",
+      "summary": "Digital Today讨论Computex 2026的存储短缺和HBM4供应竞赛，同文援引Shinhan预计2026年DRAM与NAND需求分别增长23.6%与18.1%，高于供给增速2.1及4.7个百分点。"
+    },
+    {
+      "action": "pending",
+      "id": "2026-05-19-trendforce-memory-market-551.6b-2026",
+      "url": "https://www.ampheo.com/blog/memory-chip-market-forecast-2026-dram-nand-hbm-and-nor-flash",
+      "reason": "Ampheo正文未找到5516亿/8427亿美元预测，链接不能支撑核心数字"
+    },
+    {
+      "action": "pending",
+      "id": "2026-05-15-sk-hynix-hbm-share-54pct",
+      "url": "https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/",
+      "reason": "官方展望正文给出62%出货份额及57%收入份额，不能支持标题54%及NVIDIA订单70%的口径"
+    },
+    {
+      "action": "pending",
+      "id": "2026-02-13-sk-hynix-2026-profit-forecast-100t",
+      "url": "https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/",
+      "reason": "链接为1月5日市场展望，未找到所称2月券商利润共识"
+    },
+    {
+      "action": "pending",
+      "id": "2026-04-22-sk-hynix-capex-50t-krw-2026",
+      "url": "https://news.skhynix.com/q1-2026-business-results/",
+      "reason": "官方财报只说明投资将显著增加，未披露此条所称50万亿及20%—30%增幅"
+    },
+    {
+      "action": "pending",
+      "id": "2026-01-19-samsung-sk-combined-profit-200t",
+      "url": "https://www.digitaltoday.co.kr/en/view/1459/samsung-electronics-sk-hynix-set-for-record-results-securities-firms-raise-2026-forecasts",
+      "reason": "Digital Today正文支持Hana/Kiwoom对SK海力士的预测，未找到两家公司合计200万亿的数字"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-14-samsung-hbm4-yield-80",
+      "url": "https://www.chinaflashmarket.com/a/184208",
+      "reason": "链接184208的标题和正文实际为英伟达AI服务器涨价，非三星HBM4良率"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-30-trendforce-3q26-memory-price-forecast",
+      "url": "https://www.trendforce.com/presscenter/news/20260630-13201.html",
+      "reason": "从历史归档恢复的网址本次未能读取；未验证正文，不作为已修复记录发布"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-27-trendforce-smartphone-3q26-muted-peak",
+      "url": "https://www.trendforce.com/presscenter/news/20260625-13196.html",
+      "reason": "从历史归档恢复的网址本次未能读取；未验证正文，不作为已修复记录发布"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-05-hbm4-combined-30b-gigabits-target",
+      "url": "https://www.sammobile.com/news/samsung-hbm4-production-11-billion-gigabits/",
+      "reason": "从历史归档恢复的网址本次未能读取；未验证正文，不作为已修复记录发布"
+    },
+    {
+      "action": "pending",
+      "id": "2026-05-10-nand-revenue-q1-83.7pct-qoq",
+      "url": "https://www.trendforce.com/presscenter/news/20260510-13045.html",
+      "reason": "从历史归档恢复的网址本次未能读取；未验证正文，不作为已修复记录发布"
+    },
+    {
+      "action": "pending",
+      "id": "2025-12-01-dram-nand-price-surge-q4",
+      "url": "https://www.tomshardware.com/news/ram-prices-are-exploding-in-december-2025",
+      "reason": "从历史归档恢复的网址本次未能读取；未验证正文，不作为已修复记录发布"
+    },
+    {
+      "action": "pending",
+      "id": "2026-07-10-ubs-memory-sales-record",
+      "url": "https://www.cls.cn/subject/1279",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-07-10-瑞银预计2026年hbm需求同比增长90存储芯片月销售额达创纪录746亿美元",
+      "url": "https://www.cls.cn/subject/11072",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "rbnz-hike-20260708",
+      "url": "https://bank.fx678.com/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-29-korea-memory-stocks-drop-mega-plan",
+      "url": "https://hk.finance.yahoo.com/quote/000660.KS/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-28-us-class-action-memory-makers",
+      "url": "https://law360.com/articles/1234567",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-26-sk-hynix-fluorine-leak",
+      "url": "https://www.digitimes.com/tag/sk_hynix/0017883.html",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-24-sk-hynix-nasdaq-adr-29bn",
+      "url": "https://www.digitimes.com/topic/semiconductors/memory_chips/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-22-micron-hbm-sold-out-1t",
+      "url": "https://finance.yahoo.com/quote/MU/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-27-china-cxmt-ymtc-expansion",
+      "url": "https://www.digitimes.com/tag/ymtc/0019796.html",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-06-27-us-delayed-deepseek-cxmt-blacklist-jun-17",
+      "url": "https://www.digitimes.com/tag/cxmt/00111341.html",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-07-winbond-kaohsiung-fab-expansion",
+      "url": "https://www.semiconductorpackagingnews.com/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-10-samsung-hbm4-yield-80",
+      "url": "https://www.cls.cn/subject/2409",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-11-sk-hynix-kioxia-largest-shareholder",
+      "url": "https://www.digitimes.com/tag/nand_flash/00146.html",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-12-sk-hynix-solidigm-dalian-expansion",
+      "url": "https://www.caiwennews.com/realtimenews",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-14-intel-ceo-hbm-return",
+      "url": "https://www.esmchina.com/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-14-skhynix-chairman-capacity-war",
+      "url": "https://api3.cls.cn/share/subject/11072",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-16-samsung-sk-hynix-hbm4-hiring-war",
+      "url": "https://apps.digitimes.com/topic/semiconductors/memory_chips/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-19-samsung-1d-dram",
+      "url": "https://www.semi.org.cn/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-18-sk-hynix-crash-10-percent",
+      "url": "https://news.10jqka.com.cn/deep-topic/topic/dt_01M0CWR4F1XP43JMVF9S4DR041",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-24-samsung-dram-capacity-shrinks",
+      "url": "https://www.digitimes.com/tag/memory/00112761.html",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-24-samsung-sk-hynix-pricing-power-nvidia",
+      "url": "https://www.sammyfans.com/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-25-samsung-hbm-logic-sk-hynix-packaging-hot-chips",
+      "url": "https://www.digitimes.com/tag/dram/001241.html",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    },
+    {
+      "action": "pending",
+      "id": "2026-08-27-us-storage-stocks-mixed",
+      "url": "https://www.chinaflashmarket.com/",
+      "reason": "链接为首页、标签/栏目页、行情页或明显占位路径，不能定位新闻原文"
+    }
+  ],
+  "corrected": [
+    {
+      "id": "2026-08-24-nvidia-server-prices-rise-memory",
+      "date": "2026-08-24",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "title": "英伟达AI服务器价格因内存成本飙升将上涨超15%",
+      "product": "DRAM,HBM,SSD",
+      "source": "DIGITIMES",
+      "url": "https://chinaflashmarket.com/a/184208",
+      "summary": "CFM于8月24日报道，英伟达已通知部分大型客户，Grace Blackwell和Vera Rubin服务器系统将在明年初出货时涨价，多数情况下超过15%，具体取决于芯片代数和内存配置。",
+      "transmission_path": "内存价格上涨→服务器BOM成本增加→下游涨价→验证内存定价权→存储厂商利润增厚",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-08-31"
+    },
+    {
+      "id": "2026-04-24-skhynix-market-outlook-hbm4-supercycle",
+      "date": "2026-01-05",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "SK Hynix发布2026市场展望：HBM超级周期持续，HBM3E占2/3、HBM4占1/3",
+      "product": "HBM / SK Hynix",
+      "source": "SK Hynix Official / Counterpoint Research / UBS / Goldman Sachs",
+      "url": "https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/",
+      "summary": "SK海力士1月5日发布2026年市场展望，引用分析师预计HBM3E约占全年HBM出货量三分之二，HBM4份额逐步增加；公司预计自身HBM份额继续超过50%。",
+      "transmission_path": "SK Hynix市场展望 → HBM4市占率预期 → 行业格局确认 → 投资者重新评估存储标的配置",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-07-24"
+    },
+    {
+      "id": "2026-04-27-sk-hynix-q1-margin-718",
+      "date": "2026-04-23",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "title": "SK海力士1Q26营业利润率72%，季度营收突破50万亿韩元",
+      "product": "SK Hynix",
+      "source": "SK Hynix Official IR / PRNewswire",
+      "url": "https://news.skhynix.com/q1-2026-business-results/",
+      "summary": "官方披露1Q26营收52.5763万亿韩元，营业利润37.6103万亿韩元，营业利润率72%，为历史新高。",
+      "transmission_path": "SK Hynix利润率→存储行业定价权→上下游盈利预期",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-07-27"
+    }
+  ],
+  "totals": {
+    "before": 651,
+    "published": 472,
+    "pending": 152,
+    "merged": 27
+  }
+}

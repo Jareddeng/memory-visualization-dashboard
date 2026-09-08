@@ -1,0 +1,299 @@
+{
+  "before": 651,
+  "missing_before": 145,
+  "urls_restored": 29,
+  "duplicate_records_merged": 16,
+  "pending": 109,
+  "published": 526,
+  "changes": [
+    {
+      "id": "2026-06-30-trendforce-3q26-memory-price-forecast",
+      "url": "https://www.trendforce.com/presscenter/news/20260630-13201.html",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-30-roundhill-memory-etf-gigadevice",
+      "url": "https://www.cls.cn/detail/2412290",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-30-samsung-2655-trillion-krw-investment",
+      "url": "https://www.cls.cn/detail/2412290",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-27-trendforce-smartphone-3q26-muted-peak",
+      "url": "https://www.trendforce.com/presscenter/news/20260625-13196.html",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-27-alphabet-cfo-2027-capex-significant-increase",
+      "url": "https://nextwavesinsight.com/hyperscaler-ai-capex-microsoft-google-amazon-meta-2026/",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-15-nvidia-rubin-hbm4-drain",
+      "url": "https://globx.eu/blog/supply-chain-insight/nvidia-rubin-component-shortage-2026",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-15-rubin-component-shortage-hbm4-dram-mlcc",
+      "url": "https://globx.eu/blog/supply-chain-insight/nvidia-rubin-component-shortage-2026",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-12-sk-hynix-hbm-71.8-margin",
+      "url": "https://www.abhs.in/blog/sk-hynix-q1-2026-718-operating-margin-hbm-demand-exceeds-three-year-supply",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-11-ddr5-server-chip-42-usd-7x",
+      "url": "https://www.trendforce.com/news/2026/06/11/news-south-korea-chip-export-volume-falls-yet-revenue-surges-may-dram-370-nand-207/",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-11-hbm-wafer-input-trajectory-18-22-30",
+      "url": "https://www.trendforce.com/news/2026/06/11/news-south-korea-chip-export-volume-falls-yet-revenue-surges-may-dram-370-nand-207/",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-27-korea-may-exports-dram-370pct-nand-207pct",
+      "url": "https://www.trendforce.com/news/2026/06/11/news-south-korea-chip-export-volume-falls-yet-revenue-surges-may-dram-370-nand-207/",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-27-omdia-semiconductor-300bn-quarterly-1q26",
+      "url": "https://omdia.tech.informa.com/pr/2026/june/semiconductor-market-surpasses-300bn-dollars-quarterly-revenue-in-1q26-as-memory-market-shifts-historical-patterns",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-05-hbm4-combined-30b-gigabits-target",
+      "url": "https://www.sammobile.com/news/samsung-hbm4-production-11-billion-gigabits/",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-29-micron-capacity-ramp-2027-risk",
+      "url": "https://seekingalpha.com/article/4910441-micron-upcoming-capacity-ramps-could-change-the-story",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-06-29-shinhan-dram-nand-demand-supply-growth-2026",
+      "url": "https://www.digitaltoday.co.kr/en/view/58429/computex-2026-memory-shortage-shadow-hbm4-supply-race-intensifies",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-05-19-wsts-semiconductor-market-975b-memory-295b",
+      "url": "https://www.ampheo.com/blog/memory-chip-market-forecast-2026-dram-nand-hbm-and-nor-flash",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-05-10-nand-revenue-q1-83.7pct-qoq",
+      "url": "https://www.trendforce.com/presscenter/news/20260510-13045.html",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-05-06-q1-chip-price-surge",
+      "url": "https://www.trendforce.com/presscenter/news/20260601-13070.html",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-04-26-micron-hbm-2026-fully-allocated",
+      "url": "https://api.finexus.net/api/news/events/9c0bb5d0-5ddf-4880-a1cc-fccd6ef30617/html",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-04-26-micron-lobbying-stricter-china-controls",
+      "url": "https://api.finexus.net/api/news/events/9c0bb5d0-5ddf-4880-a1cc-fccd6ef30617/html",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-04-24-skhynix-market-outlook-hbm4-supercycle",
+      "url": "https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-04-22-sk-hynix-capex-50t-krw-2026",
+      "url": "https://news.skhynix.com/q1-2026-business-results/",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-02-13-sk-hynix-2026-profit-forecast-100t",
+      "url": "https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-01-19-samsung-sk-combined-profit-200t",
+      "url": "https://www.digitaltoday.co.kr/en/view/1459/samsung-electronics-sk-hynix-set-for-record-results-securities-firms-raise-2026-forecasts",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2025-12-09-korea-2026-budget-semiconductor",
+      "url": "https://flash.jin10.com/detail/20251209154214687800",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2025-12-01-dram-nand-price-surge-q4",
+      "url": "https://www.tomshardware.com/news/ram-prices-are-exploding-in-december-2025",
+      "reason": "恢复同 ID、同标题历史归档中的链接；未重新验证网页存活及全文"
+    },
+    {
+      "id": "2026-08-07-consumer-nand-price-momentum-exhausted",
+      "field": "reaction_type",
+      "from": "watch",
+      "to": "archive"
+    },
+    {
+      "id": "2026-08-09-hbm-ai-chip-shortage",
+      "field": "reaction_type",
+      "from": "deep_tracking",
+      "to": "undervalued"
+    },
+    {
+      "id": "2026-08-11-storage-death-cycle-analysis",
+      "field": "reaction_type",
+      "from": "deep_tracking",
+      "to": "undervalued"
+    },
+    {
+      "id": "2026-08-23-sk-hynix-hbm-advanced-packaging-hot-chips",
+      "field": "reaction_type",
+      "from": "deep_tracking",
+      "to": "undervalued"
+    },
+    {
+      "id": "2026-08-28-demingli-h1-report",
+      "field": "reaction_type",
+      "from": "watch",
+      "to": "archive"
+    },
+    {
+      "id": "2026-08-28-nvidia-amazon-nvhbm",
+      "url": "https://blogs.nvidia.com/blog/nvlink-fusion-nvhbm-custom-high-bandwidth-memory/",
+      "reason": "已核对官方原文"
+    },
+    {
+      "id": "2026-08-28-primemas-micron-cxl-abaco",
+      "url": "https://www.primemas.com/company/press.php?category=0&code=press&idx=103&page=1&ptype=view",
+      "reason": "已核对官方原文"
+    },
+    {
+      "id": "2026-08-28-sk-hynix-indiana-hbm-groundbreaking",
+      "url": "https://news.skhynix.com/en/groundbreaking-ceremony-in-indiana/",
+      "reason": "已核对官方原文"
+    },
+    {
+      "id": "2026-09-01-sk-hynix-intel-base-die-second-source",
+      "field": "reaction_type",
+      "from": "watch",
+      "to": "archive"
+    }
+  ],
+  "duplicate_rules": [
+    {
+      "keep": "2026-08-04-samsung-dram-market-share-expands",
+      "duplicates": [
+        "2026-08-04-counterpoint-dram-share-cxmt",
+        "2026-08-05-dram-market-share-shift"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-07-10-asian-memory-stock-rebound",
+      "duplicates": [
+        "2026-07-10-samsung-sk-hynix-stock-rebound-micron-expansion"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "news-20260709-trendforce-server-dram-q3",
+      "duplicates": [
+        "trendforce-dram-q3-20260709"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-07-06-micron-hiroshima-93b-hbm-expansion",
+      "duplicates": [
+        "2026-07-05-美光科技启动93亿美元日本广岛工厂扩建瞄准hbm生产预计2028年出货"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "dram-lawsuit-samsung-skhy-micron-20260630",
+      "duplicates": [
+        "2026-06-29-涉嫌操纵dram价格及供应三星sk海力士和美光在美遭集体诉讼"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-06-15-rubin-component-shortage-hbm4-dram-mlcc",
+      "duplicates": [
+        "2026-06-15-nvidia-rubin-hbm4-drain"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-06-05-nvidia-vera-rubin-hbm4-certification",
+      "duplicates": [
+        "2026-06-05-nvidia-certifies-three-hbm4-suppliers"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-08-07-samsung-netlist-patent-settlement",
+      "duplicates": [
+        "2026-08-14-samsung-netlist-settlement"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-08-07-sk-hynix-cheongju-nand-fab",
+      "duplicates": [
+        "2026-08-14-sk-hynix-cheongju-m17"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-08-14-nand-market-share-q2-2026",
+      "duplicates": [
+        "2026-08-12-ymtc-nand-market-share"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-08-13-sandisk-investor-day-long-term-guidance",
+      "duplicates": [
+        "2026-08-14-sandisk-investor-day"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-08-13-sandisk-investor-day-ai-strategy",
+      "duplicates": [
+        "2026-08-14-sandisk-investor-day-hbf"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-08-14-sk-hynix-kioxia-largest-shareholder",
+      "duplicates": [
+        "2026-08-17-sk-hynix-kioxia-major-shareholder"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-08-22-samsung-shareholder-return",
+      "duplicates": [
+        "2026-08-23-samsung-shareholder-return-79b"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    },
+    {
+      "keep": "2026-08-05-2027-dram-hbm-capacity-sold-out",
+      "duplicates": [
+        "2026-08-10-dram-hbm-capacity-sold-out"
+      ],
+      "reason": "人工核对标题、摘要及来源：同一事件的重复报道，保留更完整记录；原记录存入修复快照。"
+    }
+  ]
+}
