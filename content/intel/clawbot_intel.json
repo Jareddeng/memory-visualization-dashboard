@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
+      "date": "2026-09-07",
+      "type": "重大事件",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "title": "苹果与铠侠签署NAND长协，不设价格上限",
+      "product": "NAND",
+      "source": "财联社",
+      "url": "https://finance.sina.com.cn/roll/2026-09-08/doc-inircewu6050669.shtml",
+      "summary": "据TrendForce及供应链消息，苹果近期与日本铠侠就NAND闪存供应签署长期供货协议（LTA），期限三至五年，且不设价格上限。这是苹果首次在NAND领域签订多年期长协，此前长期供应协议主要集中在HBM领域。苹果过去惯用短期议价、多源比价策略，此次转向锁量锁价模式，意味着议价权正从下游客户向上游供应商转移。",
+      "transmission_path": "苹果作为最大NAND采购方签长协→铠侠等原厂订单确定性大幅提升→NAND行业从周期性commodity转向战略资源→未来2-3年价格下限抬高→三星、SK海力士或跟进类似条款→存储板块估值体系重构",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "review_date": "2026-09-14"
+    },
+    {
       "id": "2026-08-06-cxmt-rejects-apple-price-cut",
       "date": "2026-08-06",
       "type": "重大事件",
