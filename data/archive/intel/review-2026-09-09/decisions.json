@@ -1,0 +1,358 @@
+{
+  "reviewed_at": "2026-09-09",
+  "scope": "人工原文核对；未恢复条目不等于虚假，未读取付费全文的条目只使用公开摘要。",
+  "decisions": [
+    {
+      "i": 2,
+      "status": "restore",
+      "url": "https://eng.sk.com/news/sk-group-partners-with-openai-to-advance-global-ai-infrastructure",
+      "date": "2025-10-01",
+      "note": "SK官方公告为2025年10月1日，原记录2026年7月7日错置；意向书不是已履行订单。",
+      "title": "SK集团与OpenAI签署意向书，推进Stargate内存供应及韩国AI数据中心",
+      "summary": "SK集团2025年10月1日宣布与OpenAI签署意向书和谅解备忘录，合作推进韩国AI数据中心及Stargate基础设施。SK海力士计划建立可响应OpenAI未来DRAM需求的生产体系；这属于合作规划，不能解读为2026年7月新签的已执行供货订单。",
+      "id": "2026-07-07-sk-hynix-openai-letter-of-intent"
+    },
+    {
+      "i": 4,
+      "status": "restore",
+      "url": "https://www.investing.com/news/stock-market-news/exclusivesamsung-hikes-memory-chip-prices-by-up-to-60-as-shortage-worsens-sources-say-4361101",
+      "date": "2025-11-14",
+      "note": "路透报道发生于2025年11月，不是2026年7月。",
+      "title": "路透：三星2025年11月部分内存价格较9月上调最高约60%",
+      "summary": "路透社2025年11月14日援引知情人士报道，三星11月部分内存芯片合约价较9月上涨最高约60%；其中32GB DDR5模组合约价由149美元升至239美元。报道将涨价与AI数据中心需求、供应紧张及10月推迟定价联系起来。",
+      "id": "2026-07-07-samsung-price-hike-60pct"
+    },
+    {
+      "i": 8,
+      "status": "restore",
+      "url": "https://en.fnnews.com/news/202607010950439833",
+      "date": "2026-07-01",
+      "note": "找到韩媒英文版，可靠性测试良率并非量产良率。",
+      "source": "Financial News（英文版）",
+      "title": "韩媒：三星HBM4E可靠性测试良率超过70%",
+      "summary": "Financial News 7月1日报道，三星HBM4E开发可靠性测试良率超过70%，计划推进后续开发验证。这是开发阶段可靠性测试指标，不能等同于量产良率或已获客户量产认证。",
+      "id": "2026-07-01-三星hbm4e可靠性测试良率突破70第七代ai内存开发进入稳定阶段"
+    },
+    {
+      "i": 17,
+      "status": "pending",
+      "note": "美国商务部原始公告为2024-12-10、最高61.65亿美元，厂址为纽约与爱达荷；无法支持原记录的美光德州HBM及三星HBM2E拨款组合。",
+      "url": "https://www.commerce.gov/news/press-releases/2024/12/department-commerce-awards-chips-incentives-micron-idaho-and-new-york",
+      "id": "2026-05-25-us-chips-act-micron-samsung-disbursements"
+    },
+    {
+      "i": 18,
+      "status": "pending",
+      "note": "标题9.8亿美元与摘要98亿美元相差十倍，且“绝对零度以下0.01°C”表述异常；尚未找到能支持整条消息的官方材料。",
+      "id": "2026-05-20-korea-9.8b-memory-support"
+    },
+    {
+      "i": 22,
+      "status": "pending",
+      "note": "路透报道说2月移除两家公司名单的文件约一小时后被撤回，原记录遗漏撤回事实，不能据此认定限制正式解除。",
+      "url": "https://finance.yahoo.com/news/us-expected-add-alibaba-other-130808897.html",
+      "id": "2026-02-15-cxmt-ymtc-removed-pentagon-list"
+    },
+    {
+      "i": 25,
+      "status": "restore",
+      "url": "https://apnews.com/article/c01b5ce0265b0d294dd10b8966be4436",
+      "date": "2025-08-06",
+      "title": "特朗普称拟对进口芯片征收约100%关税，并提出在美制造豁免",
+      "summary": "美联社2025年8月6日报道，特朗普表示拟对进口计算机芯片征收约100%关税，并称在美国生产或承诺在美设厂的企业可获豁免。这是政策表态，不能据此认定关税当日已全面实施。",
+      "note": "找到2025年8月6日原始报道，原库错置为2026年8月5日，且混入后来的25%关税背景。",
+      "id": "2026-08-05-trump-chip-tariff-100pct"
+    },
+    {
+      "i": 0,
+      "status": "restore",
+      "url": "https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12439134&stockid=600276",
+      "date": "2026-07-10",
+      "title": "恒瑞医药收到卡瑞利珠单抗联合疗法完整回复信",
+      "summary": "恒瑞医药7月10日公告收到FDA就卡瑞利珠单抗联合阿帕替尼用于肝细胞癌一线治疗申请的完整回复信，反馈主要涉及阿帕替尼生产场地的CGMP检查观察项。公司正评估意见并制定改进措施。",
+      "note": "公司公告支持审批事件，删除未在公告核实的股价表现。",
+      "source": "恒瑞医药公告（新浪转载）",
+      "id": "hengrui-pd1-crl-20260710"
+    },
+    {
+      "i": 5,
+      "status": "restore",
+      "url": "https://www.cls.cn/detail/2417573",
+      "date": "2026-07-06",
+      "title": "A股存储芯片概念高开，江波龙涨超10%",
+      "summary": "财联社7月6日早盘报道，江波龙涨超10%，多只存储概念股跟涨。报道同时提到江波龙7月3日业绩预告及三星三季度DRAM提价消息。",
+      "note": "标题、时点和关键涨幅与财联社原文对应。",
+      "source": "财联社",
+      "id": "2026-07-06-china-memory-sector-gap-up"
+    },
+    {
+      "i": 40,
+      "status": "restore",
+      "url": "https://omdia.tech.informa.com/pr/2026/july/ai-demand-drives-94-point-1-percent-surge-in-semiconductor-forecast-for-2026",
+      "date": "2026-07-30",
+      "title": "Omdia上调2026年半导体营收增幅预测至94.1%",
+      "summary": "Omdia7月30日将2026年半导体营收同比增幅预测上调至94.1%，预计存储IC占全年半导体收入逾50%。其认为AI需求使HBM、先进封装和先进制程产能承压，瓶颈可能持续至至少2027年。",
+      "note": "原条目混入另一日的长鑫成交额；保留研究机构原文对应部分，更正发布日期。",
+      "source": "Omdia",
+      "id": "2026-08-12-cxmt-ipo-semiconductor-forecast"
+    },
+    {
+      "i": 45,
+      "status": "restore",
+      "url": "https://en.yna.co.kr/view/AEN20260811002351320",
+      "date": "2026-08-11",
+      "title": "韩国8月上旬芯片出口同比增长155.4%",
+      "summary": "韩联社援引韩国关税厅数据报道，8月1日至10日韩国出口额为213亿美元，同比增长45.3%；其中芯片出口为99.5亿美元，同比增长155.4%。",
+      "note": "英文韩联社报道与关键日期、金额和增长率匹配。",
+      "source": "韩联社",
+      "id": "2026-08-11-korea-chip-exports-surge"
+    },
+    {
+      "i": 49,
+      "status": "restore",
+      "url": "https://www.marketscreener.com/news/south-korea-to-launch-3-5-bln-chip-fund-speed-development-of-semiconductor-hubs-ce7f50d3d18bfe24",
+      "date": "2026-08-10",
+      "title": "韩国拟设5万亿韩元半导体基金",
+      "summary": "路透8月10日报道，韩国计划推出5万亿韩元半导体基金，支持有前景的芯片材料、零部件、设备和无晶圆厂企业，并加快半导体产业基地建设。",
+      "note": "更正原记录8月13日为报道8月10日；属于计划。",
+      "source": "Reuters（MarketScreener转载）",
+      "id": "2026-08-13-korea-chip-ecosystem-fund"
+    },
+    {
+      "i": 53,
+      "status": "restore",
+      "url": "https://www.sec.gov/Archives/edgar/data/2120882/000119312526341163/d64707d6k.htm",
+      "date": "2026-08-10",
+      "title": "SK海力士回应重庆封装厂股权出售报道：尚未作决定",
+      "summary": "SK海力士8月10日提交的6-K披露，韩国交易所就媒体所称重庆封装厂股权出售一事问询。公司表示正在评估增强封装业务竞争力的多种措施，但尚未确定事项。",
+      "note": "使用SEC公司文件核对；出售报道不能写成已批准交易。",
+      "source": "SK海力士SEC 6-K",
+      "id": "2026-08-10-sk-hynix-chongqing-stake-sale"
+    },
+    {
+      "i": 56,
+      "status": "restore",
+      "url": "https://en.sedaily.com/finance/2026/08/11/sk-hynix-to-boost-china-nand-output-50-percent-with-dalian",
+      "date": "2026-08-11",
+      "title": "韩媒：SK海力士重启大连二厂投资，拟增加约50%当地NAND产能",
+      "summary": "首尔经济日报8月11日报道，Solidigm重启大连二厂投资，拟最早11月引进设备、2027年上半年建立量产体系。新线预计月投片约5万片，相对现有一厂约10万片可增加约50%当地能力。",
+      "note": "原文next year应译2027年，非2026年；是产能规划而非已释放产量。",
+      "source": "首尔经济日报（英文版）",
+      "id": "2026-08-11-sk-hynix-dalian-fab-restart"
+    },
+    {
+      "i": 60,
+      "status": "restore",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-11/1225467150.PDF",
+      "date": "2026-08-10",
+      "title": "江波龙2026年上半年归母净利润105.77亿元",
+      "summary": "江波龙2026年半年报显示，上半年营收240.88亿元，同比增长136.26%；归母净利润105.77亿元，同比增长71528.66%；扣非净利润100.47亿元。企业级存储业务收入21.40亿元，同比增长208.80%。",
+      "note": "财联社8月10日披露时间与巨潮半年报数字交叉确认；不是8月14日新业绩。",
+      "source": "江波龙半年度报告（巨潮资讯）",
+      "id": "2026-08-14-longsys-h1-earnings-surge"
+    },
+    {
+      "i": 61,
+      "status": "restore",
+      "url": "https://en.edaily.co.kr/news/eda202608115365/",
+      "date": "2026-08-11",
+      "title": "韩媒：东芝减持后铠侠股权结构变化，SK海力士持有相关可转债",
+      "summary": "Edaily报道，东芝减持后Bain旗下SPC2成为铠侠最大股东；SK海力士持有相关可转换债券。可转债潜在权益不同于已转换的直接表决权，转换仍涉及监管审查。",
+      "note": "纠正“SK直接成为控股股东”的过度简化，保留债券及SPC结构限定。",
+      "source": "Edaily（英文版）",
+      "id": "2026-08-14-sk-hynix-kioxia-largest-shareholder"
+    },
+    {
+      "i": 64,
+      "status": "restore",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-14/doc-ininhaiv9507207.shtml",
+      "date": "2026-08-14",
+      "title": "中芯国际：部分专用低密度存储需求转入代工",
+      "summary": "中芯国际联合CEO赵海军在8月14日业绩说明会上表示，海外厂商增加AI配套芯片生产后挤出了部分传统产品；一些存储器厂商退出专用低密度存储器，相关需求转向中芯国际，价格持续上涨。",
+      "note": "业绩说明会报道直接对应原条目，删除对整体代工产品全面涨价的引申。",
+      "source": "界面新闻（新浪转载）",
+      "id": "2026-08-14-smic-memory-demand-overflow"
+    },
+    {
+      "i": 76,
+      "status": "restore",
+      "url": "https://www.cls.cn/detail/2456419",
+      "date": "2026-08-17",
+      "title": "美股8月17日开盘存储板块普涨",
+      "summary": "财联社8月17日开盘快讯显示，铠侠ADR涨超13%，SK海力士、西部数据、闪迪涨超3%，美光、希捷涨超2%。这是开盘表现，不是全日收盘涨幅。",
+      "note": "核对快讯时点，明确开盘数据。",
+      "source": "财联社",
+      "id": "2026-08-17-us-storage-stocks-surge"
+    },
+    {
+      "i": 83,
+      "status": "restore",
+      "url": "https://news.lenovo.com/pressroom/press-releases/q1-fy-2026-27/",
+      "date": "2026-08-13",
+      "title": "联想披露AI服务器项目储备达540亿美元",
+      "summary": "联想8月13日发布2026/27财年第一季度业绩，披露AI服务器项目储备增至540亿美元，环比增长157%。项目储备反映销售机会，不能等同于已经确认的营收或无条件订单。",
+      "note": "官方公告支持pipeline数字；更正8月17日为8月13日。",
+      "source": "联想官方",
+      "id": "2026-08-17-lenovo-ai-server-backlog"
+    },
+    {
+      "i": 85,
+      "status": "restore",
+      "url": "https://www.digitimes.com/news/a20260814PD201/sigurd-revenue-demand-2026-testing.html",
+      "date": "2026-08-17",
+      "title": "矽格7月营收突破20亿元新台币",
+      "summary": "矽格官方月营收表列示2026年7月营收20.14亿元新台币，环比增长2.8%、同比增长26.6%。DIGITIMES8月17日报道将当月表现与AI及连接相关测试需求联系起来。",
+      "note": "官方月营收表与英文报道交叉确认，million换算为亿元。",
+      "source": "DIGITIMES／矽格月营收公告",
+      "id": "2026-08-17-sigurd-july-revenue-record"
+    },
+    {
+      "i": 89,
+      "status": "restore",
+      "url": "https://en.etnews.com/20260819200009",
+      "date": "2026-08-19",
+      "title": "韩媒：三星升级半导体工艺分析实验室",
+      "summary": "韩国电子新闻8月19日英文报道表示，三星DS部门已启动半导体工艺分析实验室升级，以加强良率管理；SK海力士也在考虑相关设施改善方案。",
+      "note": "找到英文原文及8月18日韩文版本，保留reported属性。",
+      "source": "Electronic Times",
+      "id": "2026-08-19-samsung-ds-lab-upgrade"
+    },
+    {
+      "i": 98,
+      "status": "restore",
+      "url": "https://news.skhynix.com/en/cpo-in-nature-electronics/",
+      "date": "2026-08-20",
+      "title": "SK海力士与研究者在Nature Electronics发表CPO技术路线图",
+      "summary": "SK海力士8月20日介绍其与国际研究者共同发表的共封装光学技术路线图，探讨通过更靠近处理器的光互连改善带宽与能效、应对AI基础设施瓶颈。该文是技术路线讨论，不代表相关产品已经量产。",
+      "note": "官方公告更正原条目日期与成果阶段。",
+      "source": "SK海力士官方",
+      "id": "2026-08-23-sk-hynix-cpo-nature-electronics"
+    },
+    {
+      "i": 110,
+      "status": "restore",
+      "url": "https://blog.google/alphabet/investor-presentation-june-2026/",
+      "date": "2026-06-03",
+      "title": "Alphabet投资者材料：预计2027年资本开支显著高于2026年",
+      "summary": "Alphabet六月投资者材料表示，预计2027年资本开支较2026年显著增加。此为公司前瞻指引，不是已经发生的2027年支出。",
+      "note": "官方页面发布日期6月3日；2027年开支为前瞻指引。",
+      "source": "Alphabet官方",
+      "id": "2026-06-27-alphabet-cfo-2027-capex-significant-increase"
+    },
+    {
+      "i": 118,
+      "status": "restore",
+      "url": "https://www.trendforce.com/presscenter/news/20260122-12893.html",
+      "date": "2026-01-22",
+      "title": "TrendForce一月预测：2026年存储市场5516亿美元",
+      "summary": "TrendForce在2026年1月22日预测全球存储市场2026年为5516亿美元、2027年为8427亿美元。该组数字属于当时预测，不能作为五月新预测或全年实绩。",
+      "note": "原条目5月19日错误，找到研究机构原始版本；5月29日已有上修。",
+      "source": "TrendForce",
+      "id": "2026-05-19-trendforce-memory-market-551.6b-2026"
+    },
+    {
+      "i": 119,
+      "status": "restore",
+      "url": "https://en.yna.co.kr/view/AEN20260128002800320",
+      "date": "2026-01-28",
+      "title": "韩联社：SK海力士获英伟达Vera Rubin逾三分之二HBM供应订单",
+      "summary": "韩联社1月28日援引消息人士称，SK海力士获得英伟达当年Vera Rubin平台逾三分之二HBM供货订单；报道同时引述Counterpoint对其2026年HBM4份额54%的预测。54%是预测，不能表述成已实现的市场份额。",
+      "note": "找到54%与订单占比的原始报道，更正日期和预测属性。",
+      "source": "韩联社",
+      "id": "2026-05-15-sk-hynix-hbm-share-54pct"
+    },
+    {
+      "i": 125,
+      "status": "restore",
+      "url": "https://www.trendforce.com/research/download/RP260625SV",
+      "date": "2026-06-25",
+      "title": "TrendForce：3Q26智能手机存储器或旺季不旺",
+      "summary": "TrendForce6月25日智能手机市场简报公开摘要指出，连续多季存储器涨价令品牌厂商难以消化成本、终端生产承压，预计三季度旺季表现平淡；采购放缓以维护现金流。",
+      "note": "准确找到报告摘要，不宣称读过付费PDF全文；删除未获支持的库存压力表述。",
+      "source": "TrendForce（报告公开摘要）",
+      "id": "2026-06-27-trendforce-smartphone-3q26-muted-peak"
+    },
+    {
+      "i": 127,
+      "status": "restore",
+      "url": "https://www.trendforce.com/presscenter/news/20260525-13058.html",
+      "date": "2026-05-25",
+      "title": "TrendForce：1Q26前五大NAND供应商营收环比增长83.7%",
+      "summary": "TrendForce5月25日调查显示，2026年一季度前五大NAND Flash供应商合计营收超过389亿美元，环比增长83.7%，受企业级SSD需求与供应紧张推动。统计范围为前五大供应商，不是整个NAND市场。",
+      "note": "纠正日期5月10日及统计口径；删除原文尚未核实的价格百分比。",
+      "source": "TrendForce",
+      "id": "2026-05-10-nand-revenue-q1-83.7pct-qoq"
+    },
+    {
+      "i": 134,
+      "status": "restore",
+      "url": "https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19573",
+      "date": "2026-06-26",
+      "title": "韩国启动对25家半导体制造场所的化学品安全检查",
+      "summary": "韩国雇佣劳动部6月26日宣布，对包括SK海力士在内的25家半导体制造场所开展集中检查，重点关注危险化学品、安全操作及爆炸火灾预防，回应近期多次氟泄漏事故。",
+      "note": "韩文政府公告直接支持；删除未由公告核实的厂号、伤者人数和7月15日期限。",
+      "source": "韩国雇佣劳动部",
+      "id": "2026-06-26-sk-hynix-fluorine-leak"
+    },
+    {
+      "i": 138,
+      "status": "restore",
+      "url": "https://www.marketscreener.com/news/us-holds-off-blacklisting-china-s-deepseek-more-than-100-firms-deemed-security-risks-sources-say-ce7f5cdcd88bf225",
+      "date": "2026-06-17",
+      "title": "路透：美国暂缓将DeepSeek、长鑫等企业列入贸易黑名单",
+      "summary": "路透6月16日报道、17日更新称，美国暂缓将DeepSeek、长鑫存储及逾百家被标记为安全风险的企业加入贸易黑名单，以避免加剧对华紧张。此为知情人士报道，不能等同于撤销现有限制。",
+      "note": "更正实体清单与国防部1260H名单混用，删除2月“商务部移除实体清单”错误背景。",
+      "source": "Reuters（MarketScreener转载）",
+      "id": "2026-06-27-us-delayed-deepseek-cxmt-blacklist-jun-17"
+    },
+    {
+      "i": 6,
+      "status": "restore",
+      "url": "https://www.nbd.com.cn/articles/2026-07-03/4451923.html",
+      "date": "2026-07-03",
+      "source": "每日经济新闻（江波龙业绩预告）",
+      "title": "江波龙预计2026年上半年归母净利润92亿至110亿元",
+      "summary": "江波龙7月3日披露半年业绩预告，预计归母净利润92亿至110亿元，同比增长62204%至74394%。这是预告区间，后续半年报实绩应以正式报告为准。",
+      "note": "恢复对应业绩预告，剔除未核实的创始人财富描述；与8月正式半年报是不同事件。",
+      "id": "dd7ebfea0a5a3b19dd9ce7f31aa39790"
+    },
+    {
+      "i": 79,
+      "status": "merge",
+      "keep": "2026-08-14-longsys-h1-earnings-surge",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-11/1225467150.PDF",
+      "note": "逐条对比原摘要及已核实来源，为同一事件重复译稿；以保留记录中的日期、数字及限定条件为准。",
+      "id": "2026-08-17-longsys-h1-earnings"
+    },
+    {
+      "i": 141,
+      "status": "merge",
+      "keep": "2026-08-14-sk-hynix-kioxia-largest-shareholder",
+      "url": "https://en.edaily.co.kr/news/eda202608115365/",
+      "note": "逐条对比原摘要及已核实来源，为同一事件重复译稿；以保留记录中的日期、数字及限定条件为准。",
+      "id": "2026-08-11-sk-hynix-kioxia-largest-shareholder"
+    },
+    {
+      "i": 142,
+      "status": "merge",
+      "keep": "2026-08-11-sk-hynix-dalian-fab-restart",
+      "url": "https://en.sedaily.com/finance/2026/08/11/sk-hynix-to-boost-china-nand-output-50-percent-with-dalian",
+      "note": "逐条对比原摘要及已核实来源，为同一事件重复译稿；以保留记录中的日期、数字及限定条件为准。",
+      "id": "2026-08-12-sk-hynix-solidigm-dalian-expansion"
+    }
+  ],
+  "quarantined": [
+    {
+      "id": "2026-07-06-sk-hynix-adr-bookbuilding-start",
+      "reason": "2026-09-09核对发现：财联社2417573实际为A股存储板块高开，与ADR簿记建档不对应；未找到足以支持原事件时点的对应原文。"
+    }
+  ],
+  "counts": {
+    "restored": 27,
+    "merged": 3,
+    "quarantined": 1,
+    "published": 498,
+    "pending": 123,
+    "archived_duplicates": 30
+  }
+}

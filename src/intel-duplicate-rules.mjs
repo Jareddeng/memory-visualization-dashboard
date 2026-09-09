@@ -158,5 +158,26 @@ export default [
       "2026-06-29-shinhan-dram-nand-demand-supply-growth-2026"
     ],
     "reason": "核对原文后，按一篇文章一条情报归并；各原始记录见 before.json"
+  },
+  {
+    "keep": "2026-08-14-longsys-h1-earnings-surge",
+    "duplicates": [
+      "2026-08-17-longsys-h1-earnings"
+    ],
+    "reason": "逐条对比原摘要及已核实来源，为同一事件重复译稿；以保留记录中的日期、数字及限定条件为准。"
+  },
+  {
+    "keep": "2026-08-14-sk-hynix-kioxia-largest-shareholder",
+    "duplicates": [
+      "2026-08-11-sk-hynix-kioxia-largest-shareholder"
+    ],
+    "reason": "逐条对比原摘要及已核实来源，为同一事件重复译稿；以保留记录中的日期、数字及限定条件为准。"
+  },
+  {
+    "keep": "2026-08-11-sk-hynix-dalian-fab-restart",
+    "duplicates": [
+      "2026-08-12-sk-hynix-solidigm-dalian-expansion"
+    ],
+    "reason": "逐条对比原摘要及已核实来源，为同一事件重复译稿；以保留记录中的日期、数字及限定条件为准。"
   }
 ];
