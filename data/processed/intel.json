@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-09-09-samsung-sk-hynix-memory-inventory-crisis",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-09-09",
+      "title": "三星与SK海力士存储芯片库存跌破10天，内存短缺危机加剧",
+      "product": "DRAM,HBM,NAND",
+      "source": "shattered.io",
+      "url": "https://shattered.io/memory-chip-shortage-10-days-2026/",
+      "summary": "韩国KB证券报告显示，截至2026年第三季度，三星电子与SK海力士的存储芯片库存天数已降至不足10天，远低于常规安全水位。HBM4单片晶圆产能消耗约为传统DRAM的三倍，产能转向HBM4直接挤压通用DRAM与NAND供给。价格方面，三星32GB DDR5模组标价从149美元涨至239美元（+60%），DDR5合约价同比上涨超100%，HBM3E现货价高达2100美元（较合约价溢价4-5倍）。2026年下半年供应商履约率仅75-80%。SK海力士正考虑在日本建设新存储芯片厂，并与铠侠探讨联合生产方案。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "transmission_path": "库存骤降→现货与合约价格同步暴涨→存储厂商毛利率扩张→PC/服务器/手机终端成本上升→消费电子涨价传导",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-09-16"
+    },
+    {
       "id": "2026-09-08-pc-ram-shortage-ai-demand",
       "type": "行业分析",
       "impact": "bullish",
@@ -132,6 +151,25 @@
       "confidence": "high",
       "action": "alert",
       "review_date": "2026-09-15"
+    },
+    {
+      "id": "2026-09-08-kb-securities-warns-memory-supply-crunch-2027",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-09-08",
+      "title": "KB证券警告2027年存储器缺货将更严峻，AI基建投资上修至1.3万亿美元",
+      "product": "DRAM,HBM,NAND",
+      "source": "dram.com.cn",
+      "url": "http://www.dram.com.cn/wap/views.asp?msv=1&menuid=34&sortid=0&id=86585&lanid=1",
+      "summary": "韩国KB证券9月7日发布报告警告，三星电子与SK海力士存储芯片库存已不足10天供应量，2027年可用货源将明显不足。KB证券将全球hyperscaler 2027年AI基础设施投资规模上修至1.3万亿美元（同比增长约60%），存储器在AI基建总投资中的占比将从2025年的14%跃升至2027年的57%，乐观情景下更高达68%。HBM4产能消耗约为传统DRAM三倍，在总晶圆投入受限前提下直接挤压通用DRAM与NAND产能。KB证券预估2027年DRAM与NAND位元需求增速将高出供给增速10个百分点以上。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "AI基建投资大幅上修→存储需求占比从14%跃升至57%→HBM4产能挤压效应放大→2027年供需缺口扩大→存储厂商议价能力持续增强→长期合约价格锁定",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-10-08"
     },
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
