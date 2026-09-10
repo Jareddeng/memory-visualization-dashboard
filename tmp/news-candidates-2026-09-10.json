@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "2026-09-09-memory-chip-shortage-stockpiles",
+    "date": "2026-09-09",
+    "type": "市场消息",
+    "impact": "bullish",
+    "importance": "A",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1w",
+    "title": "2026年存储芯片短缺：库存天数跌破10天",
+    "product": "DRAM,NAND",
+    "source": "Shattered.io",
+    "url": "https://shattered.io/industry-updates/memory-chip-shortage-2026",
+    "summary": "行业报告指出，2026年9月全球存储芯片库存天数已降至10天以下，为五年来最低水平。Samsung、SK Hynix和Micron三大供应商已将超过40%的晶圆产能转向HBM生产，导致传统DRAM和NAND供应持续紧张。现货市场部分DDR5模块价格单周跳涨12%，NAND闪存合约价Q3预计再涨13%-18%。",
+    "transmission_path": "库存紧张 → DRAM/NAND现货及合约价持续上涨 → 存储原厂利润率维持高位 → 下游服务器/PC/手机厂商成本承压",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-09-16"
+  }
+]
