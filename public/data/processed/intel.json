@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-09-10-chip-equipment-memory-boom",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-09-10",
+      "title": "存储资本开支加速推动Lam Research、KLA与ASML设备需求增长",
+      "product": "semiconductor equipment",
+      "source": "247wallst.com",
+      "url": "https://247wallst.com/investing/2026/09/10/3-chip-equipment-stocks-set-to-win-the-memory-boom/",
+      "summary": "存储芯片制造商持续扩产推动半导体设备需求增长。Lam Research预计受益于DRAM设备支出增长29%和NAND设备支出增长28%。KLA的制程控制业务因半导体复杂度提升而获益。ASML上调2026年指引，EUV光刻机需求强劲。Samsung、Micron与SK Hynix虽历史上曾在需求放缓后继续扩产导致过剩，但当前投资集中于先进产品和洁净室建设，周期尚未到达过热阶段。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1m",
+      "transmission_path": "存储厂商扩产 → 设备商订单增加 → 设备股业绩提升 → 但需警惕未来产能过剩风险",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-09-17"
+    },
+    {
       "id": "2026-09-09-samsung-sk-hynix-memory-inventory-crisis",
       "type": "市场消息",
       "impact": "bullish",

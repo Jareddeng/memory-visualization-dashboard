@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -10155,6 +10156,25 @@
       "transmission_path": "Apple签署NAND长协→锁定Kioxia产能→NAND供应进一步收紧→长协模式从HBM/DRAM向NAND扩散→中小客户现货采购难度增加→NAND价格获长期支撑",
       "confidence": "medium",
       "action": "watch",
+      "review_date": "2026-09-16"
+    },
+    {
+      "id": "2026-09-09-memory-chip-shortage-stockpiles",
+      "date": "2026-09-09",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "Samsung与SK Hynix存储芯片库存降至不足10天，HBM4挤压DRAM供应引发价格飙升",
+      "product": "DRAM,HBM,NAND",
+      "source": "shattered.io",
+      "url": "https://shattered.io/memory-chip-shortage-10-days-2026/",
+      "summary": "Samsung与SK Hynix的存储芯片库存已降至不足10天供应量，创历史低位。HBM4生产占用约3倍于普通DRAM的晶圆产能，导致传统DRAM和NAND供应被严重挤压。36GB HBM3E模块现货价格已涨至约2,100美元，是长期协议价格的4-5倍。DDR5合约价同比上涨超100%。KB Securities预计2027年DRAM/NAND位需求将超出供应10个百分点以上，Meritz Securities预测供应商履约率可能降至60%。SK Hynix正考虑在日本建设新厂，可能与Kioxia合作生产。",
+      "transmission_path": "存储库存紧张 → HBM4优先分配晶圆产能 → 传统DRAM/NAND供应减少 → 现货与合约价格上涨 → 下游PC/服务器/AI加速器成本上升 → 存储厂商盈利能力增强但产能扩张滞后",
+      "confidence": "high",
+      "action": "alert",
       "review_date": "2026-09-16"
     },
     {
