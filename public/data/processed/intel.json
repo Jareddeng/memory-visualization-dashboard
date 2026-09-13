@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-09-11-sk-hynix-high-na-euv-dram",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-09-11",
+      "title": "SK海力士计划2028年引入High-NA EUV制造DRAM，美光时间表未定",
+      "product": "DRAM,HBM",
+      "source": "新浪财经",
+      "url": "https://cj.sina.com.cn/articles/view/5953740931/162dee08306703yfgy?froms=ggmp",
+      "summary": "SK海力士宣布计划2028年引入High-NA EUV光刻设备用于DRAM制造，目前其1cnm工艺正加速转型为HBM4E量产做准备。2026年第二季度1cnm约占SK海力士DRAM产能的13%，预计第四季度将达34%，2027年第一季度将超越1bnm成为第一大工艺。相比之下，美光虽已在1γ工艺首次应用EUV，但下一代1δ工艺引入最新EUV设备的时间表尚未确定。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "transmission_path": "SK海力士先进制程技术领先信号 → 长期HBM4E产能与良率优势预期 → 巩固AI内存龙头地位",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-11"
+    },
+    {
       "id": "2026-09-10-chip-equipment-memory-boom",
       "type": "行业分析",
       "impact": "bullish",
