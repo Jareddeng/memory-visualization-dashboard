@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "2026-09-14-sk-hynix-dram-share-decline",
+    "date": "2026-09-14",
+    "type": "行业分析",
+    "impact": "bearish",
+    "importance": "A",
+    "reaction_type": "sentiment",
+    "pricing_status": "priced",
+    "horizon": "1w",
+    "title": "SK海力士DRAM市场份额下滑至24.9%，三星以39.4%居首",
+    "product": "DRAM",
+    "source": "财闻网/TrendForce",
+    "url": "https://www.caiwennews.com/article/1599075.shtml",
+    "summary": "TrendForce 2026年第二季度数据显示，SK海力士DRAM营收环比增长37.9%至385.9亿美元，但市场份额从28.8%下降3.9个百分点至24.9%。三星电子以39.4%的份额重回榜首，美光科技以23.3%的份额将与SK海力士的差距缩小至1.6个百分点。份额下滑主要因为SK海力士产品组合中HBM占比过高，以及三星在产量上的优势。",
+    "transmission_path": "TrendForce发布Q2 DRAM市场份额数据 → SK海力士份额下滑引发市场对其通用DRAM竞争力的担忧 → 尽管HBM业务强劲，但DRAM基本盘份额下降可能影响整体营收结构 → 投资者重新评估三巨头的竞争格局",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-09-21"
+  },
+  {
+    "id": "2026-09-14-apple-kioxia-nand-lta",
+    "date": "2026-09-14",
+    "type": "产业链跟踪",
+    "impact": "bullish",
+    "importance": "A",
+    "reaction_type": "undervalued",
+    "pricing_status": "unpriced",
+    "horizon": "1q",
+    "title": "苹果据称与铠侠签订三至五年NAND闪存长期供货协议，不设价格上限",
+    "product": "NAND",
+    "source": "财联社",
+    "url": "https://www.cls.cn/subject/2409",
+    "summary": "苹果近期放弃与芯片供应商短期议价的惯例，据称已与日本NAND闪存制造商铠侠签订为期三至五年的长期供货协议（LTA），且不设价格上限。此前多年期长协主要集中在HBM领域，此次延伸至NAND标志着下游客户对存储供应稳定性的重视程度提升。铠侠此前已计划与合作伙伴闪迪在未来六年投资超5万亿日元扩大NAND产能。",
+    "transmission_path": "苹果与铠侠签订长期NAND供货协议 → 下游大客户通过长协锁定供应，减少价格波动风险 → NAND行业供需格局进一步向卖方市场倾斜 → 其他NAND厂商（三星、SK海力士、美光）可能跟进签订类似长协 → 行业定价权持续向上游集中",
+    "confidence": "medium",
+    "action": "deep_tracking",
+    "review_date": "2026-10-14"
+  }
+]
