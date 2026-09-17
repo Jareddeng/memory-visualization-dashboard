@@ -1,0 +1,21 @@
+[
+  {
+    "id": "2026-09-15-apple-iphone18-pro-storage-pricing",
+    "date": "2026-09-15",
+    "type": "重大事件",
+    "impact": "bullish",
+    "importance": "S",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "title": "苹果秋季发布会：iPhone 18 Pro 9999元起售，存储成本重塑终端定价",
+    "product": "NAND,DRAM,LPDDR",
+    "source": "CFM闪存市场",
+    "url": "https://www.chinaflashmarket.com/a/183212",
+    "summary": "苹果2026年秋季发布会推出iPhone 18 Pro系列（9999元起售）及首款折叠屏iPhone Duo；部分在售旧款iPhone不降反涨，打破“发新降旧”惯例。据CFM分析，持续攀升的存储芯片成本压力是苹果调整终端定价逻辑的重要背景。",
+    "transmission_path": "存储芯片成本持续大涨→苹果新品提价且旧款跟涨→终端价格传导落地→验证NAND/LPDDR需求韧性，强化存储涨价周期持续性预期",
+    "confidence": "high",
+    "action": "alert",
+    "review_date": "2026-10-15"
+  }
+]
