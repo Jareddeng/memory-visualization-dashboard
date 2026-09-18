@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-09-17-micron-india-sanand-output-ramp",
+      "type": "产业链跟踪",
+      "impact": "neutral",
+      "date": "2026-09-17",
+      "title": "美光CEO：印度Sanand封测厂2026年处理数千万枚芯片，2027年扩至数亿枚",
+      "product": "DRAM,NAND,存储封测",
+      "source": "Moneycontrol",
+      "url": "https://www.moneycontrol.com/news/business/micron-s-india-chip-output-to-jump-from-tens-of-millions-to-hundreds-of-millions-in-2027-14031859.html",
+      "summary": "美光CEO Sanjay Mehrotra在SEMICON India 2026开幕式（新德里）上表示，美光位于印度古吉拉特邦Sanand的半导体封装测试厂2026年将组装和测试数千万枚芯片，2027年产能将扩大至数亿枚；该厂总投资约27.5亿美元（含政府合作伙伴），是印度半导体使命（ISM）下首个开始商业化生产和出货的项目。Mehrotra称成品DRAM和NAND产品已以\"Made in India\"标签发往全球客户，工厂当前产出能力已超过印度笔记本电脑市场的存储总需求；他表示印度半导体计划已从政策宣示进入执行阶段。",
+      "importance": "C",
+      "reaction_type": "archive",
+      "pricing_status": "priced",
+      "horizon": "longer",
+      "transmission_path": "美光将后端封测产能向印度Sanand厂分流 → 全球存储封测供应链多元化、地域韧性增强 → 对全球存储供需格局影响有限，不改紧缺主线",
+      "confidence": "high",
+      "action": "archive",
+      "review_date": "2026-10-17"
+    },
+    {
       "id": "2026-09-16-sk-hynix-intel-hbm-base-dies",
       "type": "产业链跟踪",
       "impact": "neutral",
@@ -94,6 +113,25 @@
       "confidence": "high",
       "action": "archive",
       "review_date": "2026-09-23"
+    },
+    {
+      "id": "2026-09-16-citic-silicon-wafer-lta-price-hike",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-09-16",
+      "title": "中信证券：重掺硅片下半年持续紧缺，厂商或于9-10月调涨2027年长协价",
+      "product": "硅片,DRAM,NAND,企业级SSD",
+      "source": "100万基金网",
+      "url": "https://www.100wjjw.com/knowledgeinfo/3667.html",
+      "summary": "中信证券判断，重掺硅片下半年继续紧缺，相关公司可能在9月到10月调涨明年长协价，涨价周期至少持续到2027年；晶圆厂在扩产，但产能释放有滞后，供需一段时间内维持偏紧。TrendForce数据：2026年二季度一般型DRAM合约价季增58%-63%，NAND闪存合约价季增70%-75%，企业级固态硬盘合约价季增48%-53%；三大原厂财报同步确认涨价：三星DRAM均价环比涨约40%、NAND超60%，美光DRAM环比涨约60%、NAND涨约80%。Counterpoint Research：2026年上半年智能手机存储芯片合约均价较2025年末涨幅超过200%，另有跟踪数据显示存储芯片现货价三个月内累计上涨超过300%。界面新闻9月15日从产业链获悉，苹果已接受三星电子2027年一季度存储芯片报价：DRAM接近2.0美元/Gb、NAND闪存接近0.33美元/Gb，较2026年三季度报价上涨30%-40%；此前OPPO、vivo曾拒绝三星三季度报价，买方从拒绝到接受，议价格局已经改变。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "硅片与存储合约涨价由预期转为合同 → 上游硅片、DRAM/NAND原厂及模组厂盈利预测继续上修 → 产业链相关公司业绩与估值获得支撑",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-16"
     },
     {
       "id": "2026-09-15-dram-supply-tighten-2027",
