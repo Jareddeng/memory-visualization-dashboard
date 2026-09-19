@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -11106,6 +11107,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-09-25"
+    },
+    {
+      "id": "2026-09-17-sk-hynix-intel-us-memory",
+      "date": "2026-09-17",
+      "type": "行业分析",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "title": "分析称SK海力士可能借助Intel美国工厂生产存储芯片",
+      "product": "DRAM,NAND,HBM,存储芯片",
+      "source": "Fortune",
+      "url": "https://fortune.com/2026/09/17/why-sk-hynix-may-tap-intel-make-memory-chips-us/",
+      "summary": "Fortune分析文章指出，SK海力士可能委托Intel在美国的晶圆厂代工生产存储芯片。SK海力士已于7月完成纳斯达克二次上市，正面临客户与各国政府要求扩大芯片产出的巨大压力。文章分析称，存储厂商将DRAM或NAND产能转移至美国本土制造的可能性上升，但具体芯片类型尚不明确，HBM仍是其利润核心。",
+      "transmission_path": "SK海力士探讨借助Intel美国产能→存储IDM厂商与代工模式可能出现跨界合作→缓解地缘政治风险与产能瓶颈→长期或改变全球存储产能的地理分布格局",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-17"
     }
   ]
 }

@@ -20,6 +20,25 @@
       "review_date": "2026-09-25"
     },
     {
+      "id": "2026-09-18-sk-hynix-solidigm-us-nand-fab",
+      "type": "重大事件",
+      "impact": "bullish",
+      "date": "2026-09-18",
+      "title": "SK海力士旗下Solidigm考虑在美国新建NAND闪存工厂",
+      "product": "NAND,闪存,存储芯片",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/asia-pacific/sk-hynixs-solidigm-unit-is-weighing-nand-memory-chip-factory-us-sources-say-2026-09-18/",
+      "summary": "据路透社援引消息人士报道，SK海力士旗下NAND子公司Solidigm正考虑在美国新建一座NAND闪存芯片工厂，目前处于早期评估阶段。此举将扩大SK海力士在北美的NAND产能布局，但具体选址、投资规模和时间表尚未确定。",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "Solidigm评估在美建厂→北美NAND产能扩张预期升温→若落地将缓解美国本土存储供应紧张并利好半导体设备与材料链→短期对NAND现货与合约价格影响有限，中长期增加供给预期",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-09-25"
+    },
+    {
       "id": "2026-09-17-micron-india-sanand-output-ramp",
       "type": "产业链跟踪",
       "impact": "neutral",
