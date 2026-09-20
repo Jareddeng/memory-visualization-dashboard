@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -11182,6 +11183,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-10-20"
+    },
+    {
+      "id": "2026-09-18-amd-chip-price-hike-tsmc",
+      "date": "2026-09-18",
+      "type": "产业链跟踪",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "AMD通知客户Q4起涨价约10% 全额转嫁台积电代工成本",
+      "product": "AI加速器芯片,GPU,芯片组,晶圆",
+      "source": "华尔街见闻",
+      "url": "https://finance.sina.com.cn/roll/2026-09-19/doc-inishrap3022671.shtml",
+      "summary": "据ChannelGate报道，因台积电上调晶圆代工报价约10%，AMD已通知多家客户，计划自2026年第四季度起将AI加速芯片、消费级GPU及主板芯片组价格统一上调约10%，采取全额转嫁策略；Ryzen CPU未被明确列入，但存在跟进涨价可能。英特尔亦计划自10月5日起再度上调PC CPU价格约10%，为2025年底以来第三轮涨价。消息传出后，AMD股价9月18日盘前一度上涨近2%。",
+      "transmission_path": "台积电晶圆代工涨价→芯片设计商成本上升→AI加速器、GPU、CPU涨价→服务器与PC整机成本系统性上行→与内存、SSD涨价叠加，终端产品全面涨价抑制消费需求",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-09-25"
     }
   ]
 }

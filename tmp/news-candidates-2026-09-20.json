@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "2026-09-20-cxmt-g5-dram-mass-production",
+    "date": "2026-09-20",
+    "type": "重大事件",
+    "impact": "neutral",
+    "importance": "A",
+    "reaction_type": "undervalued",
+    "pricing_status": "unpriced",
+    "horizon": "1q",
+    "title": "长鑫科技G5 DRAM平台正式量产 单晶圆产出提升50%",
+    "product": "DRAM,DDR5,LPDDR5X,LPDDR6,晶圆",
+    "source": "财联社",
+    "url": "https://finance.sina.cn/2026-09-20/detail-inisnnkt1433555.d.html",
+    "summary": "9月20日，长鑫科技在2026世界制造业大会上正式发布第五代DRAM技术平台（G5）并宣布量产。G5平台不依赖EUV，采用DUV四重曝光将内存阵列有源区半间距微缩至11.95纳米，存储电容深宽比达45:1，并开发HKMG工艺将核心功能区高度降至6762纳米；每片晶圆产出裸片数量较第四代平台提升至少50%。基于G5的24Gb LPDDR5X已进入规模量产并全面进入国产主流旗舰手机，8月底量产的LPDDR6也首次亮相。公司副总裁骆晓东称工艺能力已与业界最先进量产节点相当。",
+    "transmission_path": "国产DRAM制程节点追近国际顶尖水平→长鑫在当前缺货周期中承接更多中高端订单→缓解国内存储供给压力、提升国产替代份额→中长期或对Samsung、SK Hynix、Micron的成熟及主流产品定价构成竞争压力",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "review_date": "2026-10-20"
+  },
+  {
+    "id": "2026-09-18-amd-chip-price-hike-tsmc",
+    "date": "2026-09-18",
+    "type": "产业链跟踪",
+    "impact": "neutral",
+    "importance": "B",
+    "reaction_type": "sentiment",
+    "pricing_status": "partial",
+    "horizon": "1m",
+    "title": "AMD通知客户Q4起涨价约10% 全额转嫁台积电代工成本",
+    "product": "AI加速器芯片,GPU,芯片组,晶圆",
+    "source": "华尔街见闻",
+    "url": "https://finance.sina.com.cn/roll/2026-09-19/doc-inishrap3022671.shtml",
+    "summary": "据ChannelGate报道，因台积电上调晶圆代工报价约10%，AMD已通知多家客户，计划自2026年第四季度起将AI加速芯片、消费级GPU及主板芯片组价格统一上调约10%，采取全额转嫁策略；Ryzen CPU未被明确列入，但存在跟进涨价可能。英特尔亦计划自10月5日起再度上调PC CPU价格约10%，为2025年底以来第三轮涨价。消息传出后，AMD股价9月18日盘前一度上涨近2%。",
+    "transmission_path": "台积电晶圆代工涨价→芯片设计商成本上升→AI加速器、GPU、CPU涨价→服务器与PC整机成本系统性上行→与内存、SSD涨价叠加，终端产品全面涨价抑制消费需求",
+    "confidence": "medium",
+    "action": "watch",
+    "review_date": "2026-09-25"
+  }
+]
