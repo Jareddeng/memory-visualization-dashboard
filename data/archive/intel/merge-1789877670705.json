@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -11144,6 +11145,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-10-18"
+    },
+    {
+      "id": "2026-09-20-kioxia-nand-price-hike-pause",
+      "date": "2026-09-20",
+      "type": "产业链跟踪",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "铠侠CEO表态不再主动推动NAND大幅涨价，国内模组厂库存增值红利见顶",
+      "product": "NAND",
+      "source": "财新",
+      "url": "https://database.caixin.com/2026-09-20/102486684.html",
+      "summary": "2026年9月，铠侠(Kioxia)CEO太田裕雄公开表态，不再主动推动NAND闪存进一步大幅涨价。2026年上半年全球存储行业量价齐升，NAND合约价连续大幅上行，铠侠、三星、SK海力士等原厂业绩高增；国内模组厂江波龙(301308.SZ)、佰维存储(688525.SH)、德明利(001309.SZ)半年报均实现从微利或亏损向数十亿净利润的反转，但经营性现金流集体大幅流出。分析指出，模组厂盈利被海外原厂颗粒供给与价格策略牵动，铠侠不再推涨合约价意味着库存增值红利逐步见顶，为模组板块后续盈利画上边界。",
+      "transmission_path": "铠侠等原厂放缓NAND涨价节奏→上游颗粒价格动能减弱→国内模组厂库存增值收益见顶、盈利空间收窄→中游模组厂现金流压力与业绩预期下修→A股存储模组板块估值与情绪承压；同时原厂获利高位放缓信号或引发市场对存储周期顶部临近的重新定价。",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-20"
     },
     {
       "id": "2026-09-20-kioxia-nand-price-hike-pause",
