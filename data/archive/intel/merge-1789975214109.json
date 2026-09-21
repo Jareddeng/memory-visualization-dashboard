@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -11220,6 +11221,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-19"
+    },
+    {
+      "id": "2026-09-20-cxmt-g5-dram-mass-production",
+      "date": "2026-09-20",
+      "type": "重大事件",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "长鑫科技第五代DRAM技术平台宣布量产，国产存储供给加速爬坡",
+      "product": "DRAM,DDR5",
+      "source": "财新",
+      "url": "https://www.caixin.com/2026-09-20/102486905.html",
+      "summary": "长鑫存储母公司长鑫科技9月20日在合肥世界制造业大会宣布其第五代技术平台（G5）实现量产，新一代DRAM产品具备更强性能与更低功耗。G5平台量产标志着中国大陆DRAM在技术节点与产能规模上继续爬坡，叠加此前路透报道CXMT已筹备建设NAND研发产线、YMTC新厂扩产，国产存储供给扩张正在加速，对全球存储定价形成长期压制力量。",
+      "transmission_path": "CXMT G5平台量产→国产DRAM供给份额持续提升→中低端DRAM（DDR4/主流DDR5）现货价率先承压→Samsung/SK Hynix/Micron合约价谈判空间收窄→存储周期见顶风险随国产产能释放而累积",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-10-20"
     }
   ]
 }
