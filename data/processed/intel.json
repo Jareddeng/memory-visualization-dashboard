@@ -77,6 +77,25 @@
       "review_date": "2026-10-19"
     },
     {
+      "id": "2026-09-19-samsung-fab-robot-team",
+      "type": "产业链跟踪",
+      "impact": "neutral",
+      "date": "2026-09-19",
+      "title": "三星组建专职团队研发晶圆厂机器人，推进产线自动化",
+      "product": "半导体设备,晶圆厂",
+      "source": "CNMO科技",
+      "url": "https://m.cnmo.com/news/818871.html",
+      "summary": "据外媒报道，Samsung在设备解决方案（DS）部门内新设专职团队AX/PI，负责晶圆厂自动化机器人的开发与导入。团队于2025年底以任务小组（TF）形式组建，2026年9月正式升格为常设组织，人员以原设备技术研究所研究人员为主。首个研发方向为设备预防性维护（PM）机器人，形态或与泛林研究（Lam Research）2024年发布的协作机器人Dextro类似，目标替代合作厂商现场工程师的消耗品安装、螺栓紧固、部件清洗等精密重复性作业，以降低人力依赖并减少人为操作波动带来的良率损失。目前项目处于早期阶段，正在收集晶圆厂数据并研究作业标准化。",
+      "importance": "C",
+      "reaction_type": "archive",
+      "pricing_status": "priced",
+      "horizon": "longer",
+      "transmission_path": "晶圆厂维护环节机器人化 → 降低人力依赖、提升制程稳定性与良率 → 长期制造成本下降 → 对存储产能利用率形成温和正贡献，短期对存储供需格局与价格影响有限",
+      "confidence": "medium",
+      "action": "archive",
+      "review_date": "2026-10-19"
+    },
+    {
       "id": "2026-09-18-asia-memory-stocks-surge",
       "type": "市场消息",
       "impact": "bullish",
