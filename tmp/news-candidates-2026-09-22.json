@@ -17,5 +17,24 @@
     "confidence": "high",
     "action": "watch",
     "review_date": "2026-09-28"
+  },
+  {
+    "id": "2026-09-20-samsung-ddr5-outsourcing-hbm",
+    "date": "2026-09-20",
+    "type": "产业链跟踪",
+    "impact": "bullish",
+    "importance": "A",
+    "reaction_type": "undervalued",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "title": "Samsung将DDR5内存模组与SSD增产全部外包OSAT伙伴，集中自有产能于HBM",
+    "product": "DRAM,HBM,NAND,SSD",
+    "source": "TechEDT",
+    "url": "https://www.techedt.com/samsung-shifts-ddr5-and-ssd-production-towards-outsourcing-as-hbm-demand-grows",
+    "summary": "Samsung决定不再扩充自有DDR5内存模组与SSD产能，将PC、服务器和笔记本所需的增产部分全部交由OSAT合作伙伴承接，以将有限的内部资源集中于HBM等高附加值存储产品。Samsung正敦促OSAT伙伴扩产并提前产能扩张时间表，同时将天安和温阳封装厂的空间与设备转向HBM先进封装。TrendForce数据显示，HBM占三大原厂DRAM晶圆投入比重预计从2025年底的18%升至2026年的22%、2027年的30%；Samsung二季度DRAM营收环比增长63.4%至609.8亿美元，以39.4%市占率排名第一。越南、印度、菲律宾的区域组装厂及SFA Semiconductor等后端厂商将承接更多常规存储模组业务。",
+    "transmission_path": "Samsung将DDR5/SSD常规产品增产全部外包→OSAT及越南、印度、菲律宾区域组装厂承接后端产能→Samsung内部封装资源向HBM倾斜→HBM供给扩张但常规存储供应弹性下降→若AI服务器需求持续超预期，DDR5与SSD供需进一步收紧→存储合约价与原厂盈利预期上修",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "review_date": "2026-10-20"
   }
 ]
