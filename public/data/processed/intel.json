@@ -58,6 +58,25 @@
       "review_date": "2026-09-28"
     },
     {
+      "id": "2026-09-21-nasdaq-record-memory-rally",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-09-21",
+      "title": "美股9月21日：纳指创历史新高，AI与存储芯片股集体走强，AMD市值突破1万亿美元",
+      "product": "DRAM,NAND,半导体",
+      "source": "Investopedia",
+      "url": "https://www.investopedia.com/stock-market-today-dow-jones-s-and-p-500-09212026-12131453",
+      "summary": "9月21日美股收盘，纳斯达克指数创历史新高，AI交易重回焦点，Nvidia、Intel、AMD、Micron、SanDisk等芯片股普涨。盘中Roundhill Memory ETF（DRAM）涨约3%，费城半导体ETF（SOXX）涨约2.5%，AMD市值突破1万亿美元。此前一周AI交易曾因多位CEO呼吁基于安全担忧放缓AI开发的言论而受挫，目前该担忧缓解。SanDisk股价自周低点反弹约20%至1,791美元，Micron涨至1,015美元、创9月9日以来新高。市场关注下周Micron财报对AI交易持续性的验证。",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "transmission_path": "AI安全担忧缓解→资金回流AI与存储板块→存储ETF与SOXX上涨带动Micron、SanDisk、SK Hynix股价→板块风险偏好回升，为下周Micron财报前的情绪铺垫",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-28"
+    },
+    {
       "id": "2026-09-20-kioxia-nand-price-hike-pause",
       "type": "产业链跟踪",
       "impact": "bearish",
