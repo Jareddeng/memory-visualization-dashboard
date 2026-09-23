@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-09-22-michael-burry-micron-short",
+      "type": "市场消息",
+      "impact": "bearish",
+      "date": "2026-09-22",
+      "title": "Michael Burry加码做空Micron，Acer董事长示警存储供给回升",
+      "product": "DRAM,NAND,HBM,Micron",
+      "source": "TechNews（MoneyDJ）",
+      "url": "https://finance.technews.tw/2026/09/23/michael-burry-adds-to-micron-nebius-palantir-shorts-as-acer-flags-rising-memory-supply/",
+      "summary": "2026年9月22日（美国时间），Michael Burry旗下基金被追踪账户披露加码做空Micron，并同时做空Nebius与Palantir；同期Acer董事长陈俊聖再度示警「存储器不缺」，称存储供给正在回升。市场担忧DRAM/NAND涨价周期持续性及Micron当前估值水平，存储板块多空分歧加大。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "知名投资人Burry加码做空Micron → 空头叙事获名人效应放大 → 叠加下游Acer称存储供给回升 → 市场对存储涨价持续性与Micron高毛利率定价产生分歧 → 若后续财报或现货价数据佐证，存储股波动可能加剧",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-09-29"
+    },
+    {
       "id": "2026-09-21-samsung-hbm4-output-double",
       "type": "市场消息",
       "impact": "bullish",
@@ -113,6 +132,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-10-21"
+    },
+    {
+      "id": "2026-09-21-kospi-7000-chip-rally",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-09-21",
+      "title": "芯片涨势推动韩国KOSPI重回7000点",
+      "product": "DRAM,HBM,NAND,存储芯片",
+      "source": "Aju Press",
+      "url": "https://www.ajupress.com/view/20260921102111267",
+      "summary": "2026年9月21日（周一）早盘，韩国KOSPI指数重回7000点，为约七个月来首次，芯片股领涨：Samsung Electronics上涨3.9%，SK hynix上涨1.0%。此前美股半导体板块大涨，市场对AI驱动的存储芯片（DRAM/HBM/NAND）需求信心增强，韩国存储权重跟随上行。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "transmission_path": "美股芯片股大涨 → 风险偏好外溢至亚洲市场 → Samsung Electronics、SK hynix等存储权重领涨，KOSPI重回7000点 → 强化全球存储景气叙事，带动A股/港股存储及半导体设备板块情绪",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-09-28"
     },
     {
       "id": "2026-09-20-kioxia-nand-price-hike-pause",
