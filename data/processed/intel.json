@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-09-23-micron-earnings-preview-sept-30",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-09-23",
+      "title": "美光财报前瞻：9月30日财报前股价上涨3.5%，HBM供应与指引成焦点",
+      "product": "DRAM,HBM,NAND",
+      "source": "Investing.com",
+      "url": "https://www.investing.com/news/stock-market-news/micron-earnings-outlook-what-to-watch-ahead-of-the-september-30-report-93CH-4911385",
+      "summary": "美光将于9月30日公布2026财年第四季度财报。财报前美光股价报1,080.67美元，上涨3.52%。市场关注焦点包括HBM（高带宽内存）供应状况、AI服务器需求持续性以及公司对下一季度的指引。美光此前已指引该季度营收约500亿美元，其2026年HBM产能已通过长期协议全部锁定。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "美光财报指引→HBM/DRAM供需与价格预期→存储三巨头（三星、SK海力士、美光）估值联动→A股存储芯片与半导体设备板块情绪",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-09-30"
+    },
+    {
       "id": "2026-09-22-michael-burry-micron-short",
       "type": "市场消息",
       "impact": "bearish",
