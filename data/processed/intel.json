@@ -39,6 +39,25 @@
       "review_date": "2026-10-24"
     },
     {
+      "id": "2026-09-24-memory-etf-micron-discount",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-09-24",
+      "title": "260亿美元存储ETF集齐MU、SK Hynix与Samsung，9月回调后现折价机会",
+      "product": "DRAM,HBM,NAND",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/etf/2026/09/24/forget-betting-on-micron-alone-the-26b-memory-etf-owns-mu-sk-hynix-and-samsung-at-a-september-discount/",
+      "summary": "24/7 Wall St.撰文称，一只规模约260亿美元的存储主题ETF同时持有Micron(MU)、SK Hynix与Samsung，在9月板块回调后提供折价布局窗口。文中数据：DRAM价格8月上涨约18%，9月10日因Kioxia定价消息回落约4%；该ETF年内仍上涨14.19%。文章强调AI服务器需求推动存储超级周期，三大原厂DRAM/HBM产能已基本售罄至2027年。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1m",
+      "transmission_path": "ETF资金借9月回调流入Micron、SK Hynix、Samsung三大存储龙头 → 龙头股价获增量资金支撑 → 传导逻辑为DRAM/NAND产能售罄至2027年、AI服务器需求持续超预期",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-01"
+    },
+    {
       "id": "2026-09-23-micron-earnings-preview-sept-30",
       "type": "市场消息",
       "impact": "bullish",
