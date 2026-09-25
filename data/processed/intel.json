@@ -20,6 +20,25 @@
       "review_date": "2026-10-01"
     },
     {
+      "id": "2026-09-24-sk-hynix-indiana-lawsuit",
+      "type": "重大事件",
+      "impact": "neutral",
+      "date": "2026-09-24",
+      "title": "SK海力士印第安纳HBM工厂遭遇当地居民土地诉讼",
+      "product": "HBM",
+      "source": "DIGITIMES",
+      "url": "https://www.digitimes.com/news/a20260923PD230/sk-hynix-hbm-lawsuit-production-bandwidth.html",
+      "summary": "据DIGITIMES报道，SK海力士在建的印第安纳州West Lafayette HBM封装工厂卷入当地居民诉讼：居民起诉市议会土地重新分区程序违规（将住宅区R-1改为工业区I-3）。2026年5月法院驳回被告简易判决动议，案件实质庭审定于2026年12月。SK海力士在法庭文件中主张现在叫停建设已为时过晚，但若返回原选址需重新设计。该项目投资超40亿美元，规划2029年量产HBM4E，并包含与Purdue大学的先进封装研发合作。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "transmission_path": "诉讼进展 → 工厂建设与选址时间表不确定性 → 美国本土HBM封装产能投产风险 → 2029年前后HBM供应链区域化布局及客户承诺兑现受到影响",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-24"
+    },
+    {
       "id": "2026-09-23-micron-earnings-preview-sept-30",
       "type": "市场消息",
       "impact": "bullish",
@@ -94,6 +113,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-09-30"
+    },
+    {
+      "id": "2026-09-23-samsung-dram-hybrid-bonding",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-09-23",
+      "title": "三星sub-10nm DRAM路线图转向混合键合技术",
+      "product": "DRAM,先进封装",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/1/006/335.htm",
+      "summary": "据ZDNET Korea报道，三星将其sub-10nm DRAM（D0a）制程路线图从传统凸点互连转向hybrid bonding（混合键合）技术：D0a基线版本预计2027年量产，衍生版本D0a-V采用VCT（垂直通道晶体管）结构。混合键合可显著降低功耗并提升I/O速度，但技术切换可能推迟量产时点，影响三星先进DRAM的供应节奏。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "transmission_path": "制程路线变更 → sub-10nm DRAM量产时点与资本开支不确定性上升 → 先进DRAM供应增速可能放缓 → 中期DRAM价格与技术竞争格局受到影响",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-23"
     },
     {
       "id": "2026-09-22-michael-burry-micron-short",
