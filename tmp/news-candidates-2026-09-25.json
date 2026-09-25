@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "2026-09-24-samsung-dram-price-hike-30",
+    "date": "2026-09-24",
+    "type": "市场消息",
+    "impact": "bullish",
+    "importance": "S",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "title": "三星本周DRAM报价上调约30%，美光通知涨价20%-30%并暂停接单",
+    "product": "DRAM,NAND",
+    "source": "doofinancial",
+    "url": "https://www.doofinancial.com/usstock/20260924171023301059320",
+    "summary": "据doofinancial 9月24日报道，三星本周将DRAM报价上调约30%，显著高于此前预期的15%-20%涨幅；美光已通知客户DRAM和NAND价格将上涨20%-30%，并暂停接受新订单。美银预计Q3 DRAM平均售价环比上涨20%-30%，NAND涨幅超15%。受涨价预期推动，9月22日美股存储板块大涨：闪迪涨6.82%、美光涨5.00%、希捷涨4.85%、西部数据涨3.67%、SK海力士涨3.45%。美光将于9月30日发布财报，Q4为长期协议（LTA）谈判窗口期，CXMT市场份额预计从约4%提升至10%。",
+    "transmission_path": "三星、美光上调原厂报价→合约价随行就市上修→模组厂与终端厂商成本上升→存储产业链盈利预期上调；Q4 LTA谈判窗口开启，下游客户加速锁定长期产能；CXMT份额提升或改变供给格局",
+    "confidence": "high",
+    "action": "alert",
+    "review_date": "2026-10-24"
+  }
+]
