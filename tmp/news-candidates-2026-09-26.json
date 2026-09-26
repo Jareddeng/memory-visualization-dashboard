@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "2026-09-24-memory-stocks-pullback-yields",
+    "date": "2026-09-24",
+    "type": "市场消息",
+    "impact": "neutral",
+    "importance": "B",
+    "reaction_type": "sentiment",
+    "pricing_status": "priced",
+    "horizon": "1w",
+    "title": "美债收益率飙升致存储股高位回调，华尔街仍看至45%上行空间",
+    "product": "DRAM,NAND,HBM",
+    "source": "BigGo Finance",
+    "url": "https://finance.biggo.com/news/3a23758f-f2ac-45cb-9eb8-c37508287403",
+    "summary": "9月24日，受美债收益率飙升引发的科技股抛售影响，存储板块集体回调。此前存储股经历强劲上涨：美光年内涨超240%，闪迪涨超560%，SK海力士涨约24%。华尔街维持看多立场：美光获29位分析师Strong Buy一致评级，平均目标价1557.12美元，隐含约45%上行空间；SK海力士全部11位分析师给出买入评级，平均目标价254.70美元，约35%上行空间。Wolfe Research预计存储需求到2028年前都将高于供应，DRAM与NAND现货价过去三个月上涨20%-30%，并将SK海力士目标价从200美元上调至250美元，维持美光1500美元目标价。美光将于9月30日盘后发布财报，市场预期调整后EPS为31.49美元（上年同期3.03美元），营收约509.1亿美元（同比增长超350%）。花旗分析师Atif Malik将美光目标价从1150美元上调至1300美元，理由是混合DRAM定价强于预期，美光约60%产出未覆盖长期协议。",
+    "transmission_path": "美债收益率上升→科技股估值承压→存储板块高位回调；DRAM/NAND现货价持续上涨叠加分析师上调目标价→基本面支撑仍在→回调或成资金布局窗口→焦点转向美光9月30日财报指引",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-10-01"
+  },
+  {
+    "id": "2026-09-25-asml-europe-zero-sales",
+    "date": "2026-09-25",
+    "type": "行业分析",
+    "impact": "neutral",
+    "importance": "C",
+    "reaction_type": "sentiment",
+    "pricing_status": "priced",
+    "horizon": "1q",
+    "title": "ASML痛批欧洲半导体停滞：2026年在欧洲一台EUV设备也未售出",
+    "product": "半导体设备,EUV光刻机",
+    "source": "格隆汇",
+    "url": "https://www.xueqiu.com/S/ASML/410587641",
+    "summary": "9月25日，据快科技报道，全球唯一EUV光刻机供应商ASML在一场座谈会上表示，2026年在欧洲一台设备都没有卖出去，欧洲营收占比已从2025年的1%降至0%。ASML公共事务执行副总裁Frank Heemskerk直言欧洲没有投资、没有晶圆厂在建，呼吁欧盟出手创造芯片需求。目前在欧洲在建的晶圆厂均非先进制程项目，无需EUV或High-NA EUV设备。",
+    "transmission_path": "欧洲先进制程投资停滞→ASML欧洲营收归零→全球先进光刻设备需求进一步向美亚集中→欧洲芯片自给战略受挫→对存储扩产设备供应链格局影响有限",
+    "confidence": "medium",
+    "action": "archive",
+    "review_date": "2026-10-25"
+  }
+]
