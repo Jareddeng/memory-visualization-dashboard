@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -11771,6 +11772,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-10-24"
+    },
+    {
+      "id": "2026-09-24-micron-gddr7-eol",
+      "date": "2026-09-24",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "Micron reportedly停产2GB GDDR7显存，NVIDIA RTX 50系列供应选项收窄",
+      "product": "GDDR7,DRAM,显卡显存",
+      "source": "TrendForce",
+      "url": "https://www.trendforce.com/news/2026/09/24/news-micron-reportedly-ends-2gb-gddr7-narrowing-supply-options-for-nvidias-rtx-50-series/",
+      "summary": "据 TechPowerUp、Gazlog 引 UNIKO's Hardware 报道，Micron产品目录已将28 Gbps D8FHL芯片（MT68A512M32DF-28）及32 Gbps版本标记为EOL（停产），Micron剩余GDDR7供应仅剩3GB模块。Micron今年早些时候才开始向NVIDIA批量供应GDDR7，本非RTX 50系列主力供应商（主力为Samsung与SK hynix），但存储市场供应紧张之际再失一供应源可能加剧 squeeze。成本方面，3GB GDDR7单价约60–70美元，约为标准2GB模块（约20美元）的三倍，仅多50%容量，成本障碍已拖累RTX 50 Super refresh；另有市场传闻称GR20x系列（Rubin架构RTX 60）或从2H27推迟至2028年。",
+      "transmission_path": "显存供应来源减少→GDDR7现货与合约价获得支撑→显卡厂商成本压力上升→消费级GPU面临涨价或新品延期风险→NVIDIA游戏GPU路线图承压，存储厂商则将产能优先分配给AI/HBM等高利润产品",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-01"
     },
     {
       "id": "2026-09-25-wafer-lta-price-hike",
