@@ -248,6 +248,25 @@
       "review_date": "2026-10-22"
     },
     {
+      "id": "2026-09-22-memory-stocks-surge-price-hikes",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-09-22",
+      "title": "三星上调DRAM报价约30%，美光涨价20%-30%并暂停接单，存储板块集体大涨",
+      "product": "DRAM,NAND",
+      "source": "DooFinancial",
+      "url": "https://www.doofinancial.com.au/zh/media/memory-chip-stocks-surge-samsung-micron-price-hike-2026",
+      "summary": "美东9月22日，美股存储芯片板块集体走强：闪迪涨6.82%，美光涨5.00%，希捷涨4.85%，西部数据涨3.67%，SK海力士涨3.45%，同日费城半导体指数涨超2%。直接催化为原厂新一轮涨价——三星本周将DRAM报价上调约30%，NAND闪存上涨5%-10%；美光通知客户全线产品涨价20%-30%，并暂停接受新订单，仅消化老客户排产。美银分析师Simon Woo确认三季度DRAM均价环比上涨20%-30%，NAND涨幅超15%。TrendForce数据显示，2026年一季度普通DRAM合约价已环比涨90%-95%，二季度再涨58%-63%。美光已签订多份多年期战略客户协议，锁定约220亿美元客户承诺，管理层称未来可能一半收入来自多年期高价合约。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "原厂大幅涨价叠加暂停接单→确认存储供需严重失衡、原厂订单能见度高→存储厂商营收与毛利率预期进一步上修→板块股价即时上涨；下游云厂商与OEM成本持续承压→终端产品涨价传导，四季度长协谈判价格成为下一观察点",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-09-29"
+    },
+    {
       "id": "2026-09-21-samsung-hbm4-output-double",
       "type": "市场消息",
       "impact": "bullish",
