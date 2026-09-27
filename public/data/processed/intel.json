@@ -248,6 +248,25 @@
       "review_date": "2026-10-23"
     },
     {
+      "id": "2026-09-23-itc-dram-337-investigation",
+      "type": "政策事件",
+      "impact": "bearish",
+      "date": "2026-09-23",
+      "title": "美国ITC对DRAM设备启动337调查，美光、联想、HPE、Supermicro被列为被告",
+      "product": "DRAM",
+      "source": "美国国际贸易委员会（USITC）",
+      "url": "https://www.usitc.gov/press_room/news_release/2026/er0923_69264.htm",
+      "summary": "2026年9月23日，美国国际贸易委员会（ITC）投票决定对特定动态随机存取存储器（DRAM）设备及其下游产品和组件（III）启动337调查（调查编码337-TA-1523）。本案由加州Netlist公司于8月11日提起，指控美光（Micron）DDR5 DIMM等企业级服务器内存产品侵犯其四项美国专利（专利号10,025,731、10,217,523、12,373,366、12,675,407），请求发布有限排除令和禁止令。列名被告包括美光科技、美光半导体产品公司、HPE、联想集团、联想（美国）及Supermicro。这是Netlist自2025年9月以来第三次针对DRAM产品向ITC提起337调查。ITC将在立案后45天内确定调查结束目标日期。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "ITC立案→337调查程序启动→若行政法官初步裁定及委员会最终裁定侵权，美光DDR5 DIMM及相关下游产品可能被有限排除令禁止进口美国、HPE/联想/Supermicro服务器产品受连带影响→美光美国市场收入及下游客户供应链面临扰动→存储板块专利诉讼风险情绪承压，同时加剧DRAM供应端不确定性",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-23"
+    },
+    {
       "id": "2026-09-22-michael-burry-micron-short",
       "type": "市场消息",
       "impact": "bearish",
