@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-09-27-dram-spot-price-update",
+      "type": "产品数据",
+      "impact": "bullish",
+      "date": "2026-09-27",
+      "title": "DRAM现货价追踪：DDR5 16Gb颗粒9月27日报59.25美元，30日涨7.3%",
+      "product": "DRAM,DDR5,DDR4",
+      "source": "memoryindex.io",
+      "url": "https://memoryindex.io/zh/dram-prices",
+      "summary": "截至2026年9月27日20:00（CST），DRAM现货市场DDR5 16Gb (2Gx8) 4800/5600颗粒报价59.25美元/颗，30日环比上涨7.30%，同比上涨480%；6个跟踪品种组合均值30日涨4.41%，同比上涨501.67%。现货价持续高于合约价，预示下一轮合约谈判涨价压力。",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "transmission_path": "现货价持续上涨且高于合约价→下一季合约价上调压力加大→模组厂补货成本上升→终端SSD与内存条价格跟随上调",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-04"
+    },
+    {
       "id": "2026-09-25-asml-europe-zero-sales",
       "type": "行业分析",
       "impact": "neutral",
