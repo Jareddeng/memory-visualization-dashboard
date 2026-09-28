@@ -10144,6 +10144,6 @@
     }
   ],
   "source": "Yahoo Finance chart API range=1y (completed daily close)",
-  "generated_at": "2026-09-28T07:18:50.978Z",
-  "warning": "部分股票在线更新失败，已使用既有数据: 000660.KS: HTTP 429; 005930.KS: HTTP 403; MU: HTTP 403; DRAM: HTTP 403"
+  "generated_at": "2026-09-28T14:18:41.308Z",
+  "warning": "部分股票在线更新失败，已使用既有数据: 000660.KS: HTTP 429; 005930.KS: HTTP 429; MU: HTTP 429; DRAM: HTTP 429"
 }
