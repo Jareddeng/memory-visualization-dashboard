@@ -20,6 +20,25 @@
       "review_date": "2026-10-04"
     },
     {
+      "id": "2026-09-26-samsung-dram-price-hike-apple",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-09-26",
+      "title": "Samsung向手机厂开出2027年DRAM新价$2.00/Gb（+33%），多数厂商拒绝提前议价、Apple已签署",
+      "product": "DRAM,LPDDR5X,NAND",
+      "source": "Matterfact（HBM & Memory Supercycle周报）",
+      "url": "https://www.matterfact.com/newsletter/2026-09-26-hbm-samsung-memory-ask-micron",
+      "summary": "据AppleInsider Podcast本周讨论（Matterfact 9月26日周报汇总）：Samsung就2027年上半年存储供应向手机厂商报价DRAM $2.00/Gb，较当前$1.50/Gb上调约33%；NAND约$0.33/Gb，整体较2026Q3采购价高30%-40%。多数手机厂拒绝如此提前谈判，Apple已签署该报价，iPhone 18系列已因存储成本上涨$100。此前DigiTimes 9月16日报道确认Apple接受Samsung 2027年报价。报道预计2028年前存储紧张难以缓解；美光FQ4财报将于9月30日盘后公布，市场预期营收约$50.9B、EPS约$31.49。",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "原厂对2027年合约提价并获Apple接受 → 下游整机BOM成本上升 → 2027年iPhone/iPad/Mac进一步涨价预期 → 消费类存储需求受抑、产能进一步向AI服务器倾斜 → DRAM/NAND合约价中枢上移，模组厂成本压力加大",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "review_date": "2026-10-26"
+    },
+    {
       "id": "2026-09-25-asml-europe-zero-sales",
       "type": "行业分析",
       "impact": "neutral",
