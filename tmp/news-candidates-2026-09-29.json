@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "2026-09-28-korea-memory-stocks-selloff",
+    "date": "2026-09-28",
+    "type": "市场消息",
+    "impact": "bearish",
+    "importance": "A",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1d",
+    "title": "外资抛售致KOSPI盘中跌逾2%失守6900点，Samsung与SK海力士领跌",
+    "product": "DRAM,存储芯片,半导体",
+    "source": "AJU Business Daily",
+    "url": "https://m.ajupress.com/amp/20260928114070600",
+    "summary": "9月28日（韩国中秋假期后首个交易日），KOSPI盘中跌破6900点，截至11:36跌2.38%报6912.74。半导体权重股Samsung Electronics与SK Hynix均跌逾4%，跌幅居前。韩国交易所数据显示，当日盘中外资净卖出1.4457万亿韩元，机构净卖出6041亿韩元，散户净买入1.345万亿韩元，程序化交易净卖出9044亿韩元。市场担忧美国长期国债收益率持续上升，压制科技股估值。",
+    "transmission_path": "美债长端收益率上行推高贴现率并压制高估值科技股→外资从拥挤的AI存储交易撤退→Samsung、SK Hynix等存储权重股遭抛售拖累KOSPI→若情绪蔓延，或传导至Micron等美股存储板块及DRAM/HBM短期风险偏好",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-10-05"
+  },
+  {
+    "id": "2026-09-27-micron-earnings-week-ahead",
+    "date": "2026-09-27",
+    "type": "行业分析",
+    "impact": "neutral",
+    "importance": "B",
+    "reaction_type": "undervalued",
+    "pricing_status": "partial",
+    "horizon": "1w",
+    "title": "本周前瞻：Micron 9月30日盘后发布财报，HBM与AI存储需求将迎关键验证",
+    "product": "DRAM,HBM,NAND,存储芯片",
+    "source": "TradingKey",
+    "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262188313-weekly-preview-us-august-pce-september-nonfarm-payrolls-micron-earnings-tradingkey",
+    "summary": "TradingKey 9月27日当周市场前瞻指出，Micron将于美东时间9月30日盘后发布2026财年第四季度财报并举行电话会（16:30 ET）。市场预期营收约508亿美元、non-GAAP EPS约31.28美元，远高于上年同期水平。Micron此前指引第四财季营收约500亿美元±10亿、non-GAAP EPS约31美元±1。市场焦点将集中在HBM、DRAM、NAND价格走势、AI服务器驱动的存储需求，以及管理层对2027年AI存储需求、产能扩张与资本开支的表述，相关内容可能比单季业绩数字更关键。",
+    "transmission_path": "Micron财报结果与2027财年指引、资本开支及产能评论→重塑市场对DRAM/HBM/NAND供需与价格预期→影响SK Hynix、Samsung估值及美股存储链（Micron/SanDisk/WDC）与A股存储板块情绪",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-10-04"
+  }
+]
