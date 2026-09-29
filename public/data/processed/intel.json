@@ -39,6 +39,25 @@
       "review_date": "2026-10-05"
     },
     {
+      "id": "2026-09-28-micron-earnings-preview",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-09-28",
+      "title": "美光财报前瞻：AI存储周期能否延续成焦点",
+      "product": "DRAM,HBM,NAND",
+      "source": "tastylive",
+      "url": "https://www.tastylive.com/news-insights/micron-earnings-preview-can-the-ai-memory-cycle-keep-delivering-",
+      "summary": "美光将于9月30日盘后公布2026财年Q4财报，分析师预期EPS约31.52美元、营收506亿美元；公司指引营收500亿±10亿美元、非GAAP毛利率约86%。美光已签署约1000亿美元具约束力的HBM take-or-pay多年合同及16份战略客户协议（承诺金额超220亿美元），业务从现货定价转向基建式合约收入。DRAM现货价自1月以来累计上涨约52%。期权市场定价财报后波动8.5%-11%。主要看空风险为2027-2028年Micron、SK海力士、三星同步大规模扩产或导致HBM与DRAM供过于求，高盛目标价约400美元。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "美光财报指引→验证HBM需求与合约价持续性→影响三星/SK海力士及存储产业链估值；若Q1 FY2027指引不及约570亿美元的市场共识，可能触发获利了结",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-10-06"
+    },
+    {
       "id": "2026-09-27-dram-spot-price-update",
       "type": "产品数据",
       "impact": "bullish",

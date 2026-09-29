@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -11904,6 +11905,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-04"
+    },
+    {
+      "id": "2026-09-28-korea-memory-stocks-selloff",
+      "date": "2026-09-28",
+      "type": "市场消息",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "title": "韩国存储双雄暴跌逾5%：三星、SK海力士中秋后复牌重挫",
+      "product": "DRAM,HBM,NAND",
+      "source": "TIKR",
+      "url": "https://www.tikr.com/blog/samsung-and-sk-hynix-fell-over-5-heres-what-microns-september-30-report-must-show",
+      "summary": "9月28日韩国股市中秋假期后重新开盘，三星电子收跌5.43%，SK海力士（000660.KS）下跌5.05%，外资净卖出3.24万亿韩元KOSPI股票。SBS将下跌归因于假期期间全球市场波动集中兑现；另有传闻称SK海力士旗下Solidigm部门计划赴美上市。美光（MU）将于9月30日盘后发布财报，被市场视为存储板块的下一个关键数据点。",
+      "transmission_path": "韩国存储股重挫→风险情绪传导至美股存储板块→美光9月30日财报成为多空分水岭",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-06"
     },
     {
       "id": "2026-09-28-micron-earnings-preview",
