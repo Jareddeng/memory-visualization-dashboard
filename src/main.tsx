@@ -999,7 +999,7 @@ function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: 
       detail: "\u957f\u534f / \u6269\u4ea7 / \u56fe\u8c31",
       subItems: [
         { label: "\u957f\u534f\u9501\u5b9a\u72b6\u6001", anchorId: "hbm-contract-board" },
-        { label: "\u4e09\u5927\u5382\u6269\u4ea7\u80fd\u529b\u53d8\u5316", anchorId: "expansion-capacity-board" },
+        { label: "DRAM \u6269\u4ea7\u80fd\u529b\u53d8\u5316", anchorId: "expansion-capacity-board" },
         { label: "\u4ea7\u4e1a\u94fe\u56fe\u8c31", anchorId: "industry-map" },
       ],
     },
@@ -1716,8 +1716,8 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
       <div className="hbm-board-head">
         <div>
           <p className="eyebrow">Capacity Expansion Tracker</p>
-          <h2>三大厂扩产能力变化</h2>
-          <p>按 DRAM 总产能对比三大厂现有与明确披露的新增产能，单位为万片/月；HBM 与 DDR4/DDR5 作为 DRAM 内部拆分口径保留在说明里。</p>
+          <h2>DRAM 扩产能力变化</h2>
+          <p>按 DRAM 总产能对比主要厂商现有与明确披露的新增产能，单位为万片/月；HBM 与 DDR4/DDR5 作为 DRAM 内部拆分口径保留在说明里。</p>
         </div>
         <small>更新：{tracker?.updated_at ?? "待更新"} · {tracker?.source ?? "manual tracker"}</small>
       </div>

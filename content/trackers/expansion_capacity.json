@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-07-02",
-  "source": "User capacity estimate and disclosed expansion targets; maintained by Codex/clawbot tracker",
+  "updated_at": "2026-09-24",
+  "source": "User capacity estimates and disclosed expansion targets; CXMT updated from the intelligence library",
   "metric_note": "当前图表只展示 DRAM 总产能，单位为万片/月。只有明确为新增产能或可加总增量的项目进入“扩产后”柱状图；转换产线、子口径目标或未披露目标只在落地信息中展示，不参与加总。NAND 因缺少明确未来 WSPM 目标，暂不放入本模块。",
   "companies": [
     {
@@ -217,6 +217,75 @@
           "detail": "2028 年中远期高峰估算 45-50 万片/月，图表取中值 47.5 万片/月；增量来自日本广岛 EUV/1γ 扩建、Idaho ID2、纽约首座大型晶圆厂等项目。",
           "source": "User estimate / Yahoo Finance Taiwan / Nikkei Asia / Bloomberg analysis",
           "url": "https://tw.stock.yahoo.com/news/%E6%90%B6%E9%A3%9Fhbm%E5%A4%A7%E9%A4%85%EF%BC%81%E7%BE%8E%E5%85%89%E7%A0%B815%E5%85%86%E6%97%A5%E5%9C%93%E6%93%B4%E5%BB%BA%E5%BB%A3%E5%B3%B6%E5%BB%A0-%E9%A0%90%E8%A8%882028%E4%B8%8B%E5%8D%8A%E5%B9%B4%E8%A8%AD%E5%82%99%E9%80%B2%E9%A7%90-063000193.html"
+        }
+      ]
+    },
+    {
+      "company": "长鑫科技",
+      "ticker": "CXMT",
+      "region": "中国",
+      "products": ["DRAM", "DDR5", "LPDDR5X"],
+      "capacity_metric": "万片/月；DRAM 总产能",
+      "current_capacity": {
+        "label": "当前产能",
+        "value": 32,
+        "unit": "万片/月",
+        "display": "当前 DRAM 月产能约 32 万片。"
+      },
+      "target_capacity": {
+        "label": "扩产后产能",
+        "value": 42,
+        "unit": "万片/月",
+        "display": "预计 2027 年 DRAM 月产能提升至约 42 万片，新增约 10 万片/月。"
+      },
+      "capex": "重点跟踪 G5 平台量产爬坡、DDR5/LPDDR5X 产品占比与新增产能被国内 AI 和云需求吸收的速度。",
+      "timeline": "2026-2027",
+      "bottleneck": "G5 良率与爬坡速度、先进制程设备供给、国内 AI 与云需求消化能力",
+      "confidence": "高",
+      "status": "当前 DRAM 约 32 万片/月；预计 2027 年约 42 万片/月。",
+      "facilities": [
+        {
+          "name": "DRAM 总产能",
+          "stage": "base",
+          "products": ["DRAM"],
+          "value": 32,
+          "unit": "万片/月",
+          "display": "当前 DRAM 月产能约 32 万片。",
+          "timeline": "现有"
+        },
+        {
+          "name": "DRAM 扩产",
+          "stage": "expansion",
+          "products": ["DRAM"],
+          "value": 10,
+          "unit": "万片/月",
+          "display": "预计 2027 年月产能由约 32 万片提升至约 42 万片，新增约 10 万片/月。",
+          "timeline": "2027",
+          "note": "新增约10万"
+        },
+        {
+          "name": "G5 DRAM 平台",
+          "stage": "expansion",
+          "products": ["DRAM note"],
+          "value": null,
+          "unit": "万片/月",
+          "display": "G5 平台已量产，单晶圆裸片产出较上一代提升至少 50%；属于效率和产品结构口径，不重复计入月产能增量。",
+          "timeline": "2026",
+          "note": "G5量产"
+        }
+      ],
+      "evidence": [
+        {
+          "date": "2026-09-24",
+          "label": "DRAM 月产能扩张",
+          "detail": "知识库收录的 TrendForce/Commercial Times 信息显示，长鑫 DRAM 月产能预计从当前约 32 万片提升至 2027 年约 42 万片。",
+          "source": "TrendForce / Commercial Times"
+        },
+        {
+          "date": "2026-09-22",
+          "label": "G5 平台量产",
+          "detail": "长鑫第五代 DRAM 技术平台 G5 已实现量产，单晶圆裸片产出较上一代提升至少 50%。",
+          "source": "Korea Herald / 财联社"
         }
       ]
     }
