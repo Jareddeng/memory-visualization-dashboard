@@ -4,11 +4,11 @@ import { createRoot } from "react-dom/client";
 import { AlertTriangle, Database, RefreshCw, Trash2 } from "lucide-react";
 import * as echarts from "echarts/core";
 import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
-import { LineChart } from "echarts/charts";
+import { BarChart, LineChart } from "echarts/charts";
 import { CanvasRenderer } from "echarts/renderers";
 import "./styles.css";
 
-echarts.use([DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent, LineChart, CanvasRenderer]);
+echarts.use([DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent, BarChart, LineChart, CanvasRenderer]);
 
 type PricePoint = {
   date: string;
@@ -146,6 +146,29 @@ type TrackerPayload = {
   expansion_capacity?: {
     updated_at?: string;
     source?: string;
+    supply_demand?: {
+      updated_at: string;
+      source: string;
+      source_file: string;
+      source_pages: string;
+      capacity_snapshot: {
+        unit: string;
+        note: string;
+        points: Array<{
+          label: string;
+          period: string;
+          value: number;
+          detail: string;
+        }>;
+      };
+      forecasts: Record<"DRAM" | "NAND", {
+        unit: string;
+        years: string[];
+        supply: number[];
+        demand: number[];
+        gap_pct: number[];
+      }>;
+    };
     companies?: Array<{
       company: string;
       ticker?: string;
@@ -1756,8 +1779,130 @@ function ExpansionCapacityBoard({ tracker }: { tracker?: TrackerPayload["expansi
           );
         })}
       </div>
+
+      <CapacitySupplyDemand outlook={tracker?.supply_demand} />
     </section>
   );
+}
+
+type CapacityOutlook = NonNullable<NonNullable<TrackerPayload["expansion_capacity"]>["supply_demand"]>;
+
+function CapacitySupplyDemand({ outlook }: { outlook?: CapacityOutlook }) {
+  const [memoryType, setMemoryType] = React.useState<"DRAM" | "NAND">("DRAM");
+
+  if (!outlook) return null;
+
+  const forecast = outlook.forecasts[memoryType];
+  return (
+    <div className="capacity-outlook-grid">
+      <article className="capacity-outlook-card">
+        <div className="capacity-outlook-head">
+          <div>
+            <strong>产能与当前需求</strong>
+            <span>{outlook.capacity_snapshot.unit}</span>
+          </div>
+          <small>需求为折算值</small>
+        </div>
+        <Chart option={makeCapacitySnapshotOption(outlook.capacity_snapshot)} />
+        <p className="capacity-outlook-note">{outlook.capacity_snapshot.note}</p>
+      </article>
+
+      <article className="capacity-outlook-card">
+        <div className="capacity-outlook-head">
+          <div>
+            <strong>年度供需预算</strong>
+            <span>供给与需求 · {forecast.unit}</span>
+          </div>
+          <div className="segmented-control capacity-memory-switch" aria-label="存储类型">
+            {(["DRAM", "NAND"] as const).map((type) => (
+              <button className={memoryType === type ? "active" : ""} key={type} onClick={() => setMemoryType(type)} type="button">{type}</button>
+            ))}
+          </div>
+        </div>
+        <Chart option={makeSupplyDemandOption(memoryType, forecast)} />
+        <div className="capacity-gap-strip" aria-label={`${memoryType}供需缺口`}>
+          {forecast.years.map((year, index) => (
+            <span className={(forecast.gap_pct[index] ?? 0) < 0 ? "shortage" : "surplus"} key={year}>
+              <small>{year}</small>
+              <b>{formatSignedPercent(forecast.gap_pct[index])}</b>
+            </span>
+          ))}
+        </div>
+      </article>
+
+      <p className="capacity-outlook-source">来源：{outlook.source}，第 {outlook.source_pages} 页 · 更新：{outlook.updated_at}</p>
+    </div>
+  );
+}
+
+function makeCapacitySnapshotOption(snapshot: CapacityOutlook["capacity_snapshot"]): echarts.EChartsCoreOption {
+  const colors = ["#8eaebe", "#16877d", "#d3973f"];
+  return {
+    animation: false,
+    grid: { left: 54, right: 20, top: 34, bottom: 62 },
+    tooltip: {
+      trigger: "item",
+      formatter: (params: any) => {
+        const point = snapshot.points[params.dataIndex];
+        return `<strong>${point.label} · ${point.period}</strong><br/>${point.value} 万片/月<br/>${point.detail}`;
+      },
+    },
+    xAxis: {
+      type: "category",
+      data: snapshot.points.map((point) => `${point.label}\n${point.period}`),
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: "#cbd8d4" } },
+      axisLabel: { color: "#5f6f69", fontSize: 11, lineHeight: 16, interval: 0 },
+    },
+    yAxis: {
+      type: "value",
+      name: "万片/月",
+      nameTextStyle: { color: "#7a8883", fontSize: 11 },
+      splitLine: { lineStyle: { color: "#e8efec" } },
+      axisLabel: { color: "#7a8883", fontSize: 11 },
+    },
+    series: [{
+      name: "等效晶圆",
+      type: "bar",
+      barMaxWidth: 62,
+      label: { show: true, position: "top", color: "#17211e", fontWeight: 800, formatter: "{c}" },
+      data: snapshot.points.map((point, index) => ({ value: point.value, itemStyle: { color: colors[index] } })),
+    }],
+  };
+}
+
+function makeSupplyDemandOption(memoryType: "DRAM" | "NAND", forecast: CapacityOutlook["forecasts"]["DRAM"]): echarts.EChartsCoreOption {
+  return {
+    animation: false,
+    color: ["#16877d", "#d3973f"],
+    legend: { top: 0, right: 0, itemWidth: 18, itemHeight: 8, textStyle: { color: "#5f6f69", fontSize: 11 } },
+    grid: { left: 58, right: 22, top: 42, bottom: 42 },
+    tooltip: { trigger: "axis", valueFormatter: (value: unknown) => `${value} ${forecast.unit}` },
+    xAxis: {
+      type: "category",
+      boundaryGap: false,
+      data: forecast.years,
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: "#cbd8d4" } },
+      axisLabel: { color: "#5f6f69", fontSize: 11 },
+    },
+    yAxis: {
+      type: "value",
+      name: `${memoryType} · ${forecast.unit}`,
+      nameTextStyle: { color: "#7a8883", fontSize: 11 },
+      splitLine: { lineStyle: { color: "#e8efec" } },
+      axisLabel: { color: "#7a8883", fontSize: 11 },
+    },
+    series: [
+      { name: "供给", type: "line", symbol: "circle", symbolSize: 8, lineStyle: { width: 3 }, data: forecast.supply },
+      { name: "需求", type: "line", symbol: "circle", symbolSize: 8, lineStyle: { width: 3 }, data: forecast.demand },
+    ],
+  };
+}
+
+function formatSignedPercent(value: number | undefined) {
+  const numeric = Number(value ?? 0);
+  return `${numeric > 0 ? "+" : ""}${numeric.toFixed(2)}%`;
 }
 
 type CapacityFacility = NonNullable<NonNullable<NonNullable<TrackerPayload["expansion_capacity"]>["companies"]>[number]["facilities"]>[number];

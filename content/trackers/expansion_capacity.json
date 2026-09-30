@@ -2,6 +2,52 @@
   "updated_at": "2026-09-24",
   "source": "User capacity estimates and disclosed expansion targets; CXMT updated from the intelligence library",
   "metric_note": "当前图表只展示 DRAM 总产能，单位为万片/月。只有明确为新增产能或可加总增量的项目进入“扩产后”柱状图；转换产线、子口径目标或未披露目标只在落地信息中展示，不参与加总。NAND 因缺少明确未来 WSPM 目标，暂不放入本模块。",
+  "supply_demand": {
+    "updated_at": "2026-09-30",
+    "source": "兴业证券《电子行业存储专题系列2：如何看待此轮存储周期的不同》",
+    "source_file": "20260409-兴业证券-电子行业存储专题系列2：如何看待此轮存储周期的不同.pdf",
+    "source_pages": "12-14",
+    "capacity_snapshot": {
+      "unit": "万片/月（等效12英寸晶圆）",
+      "note": "产能取报告中 DRAM 与 NAND 等效12英寸月产能之和；需求按报告的年度需求量与单片晶圆容量假设折算。",
+      "points": [
+        {
+          "label": "现有产能",
+          "period": "2026E",
+          "value": 338.5,
+          "detail": "DRAM 205.3 + NAND 133.2"
+        },
+        {
+          "label": "未来产能",
+          "period": "2027E",
+          "value": 380.8,
+          "detail": "DRAM 230.1 + NAND 150.7"
+        },
+        {
+          "label": "当前需求",
+          "period": "2026E折算",
+          "value": 362.7,
+          "detail": "DRAM 52EB / 1950GB + NAND 1130EB / 67TB，折算月度等效晶圆"
+        }
+      ]
+    },
+    "forecasts": {
+      "DRAM": {
+        "unit": "EB",
+        "years": ["2024", "2025E", "2026E", "2027E"],
+        "supply": [34, 41, 48, 68],
+        "demand": [31, 40, 52, 69],
+        "gap_pct": [7.41, 3.24, -7.22, -1.77]
+      },
+      "NAND": {
+        "unit": "EB",
+        "years": ["2024", "2025E", "2026E", "2027E"],
+        "supply": [839, 986, 1071, 1447],
+        "demand": [778, 988, 1130, 1501],
+        "gap_pct": [7.8, -0.18, -5.26, -3.6]
+      }
+    }
+  },
   "companies": [
     {
       "company": "SK Hynix",

@@ -1962,6 +1962,107 @@ td small {
   gap: 14px;
 }
 
+.capacity-outlook-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.capacity-outlook-card {
+  display: grid;
+  min-width: 0;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.capacity-outlook-head {
+  display: flex;
+  min-width: 0;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.capacity-outlook-head > div:first-child {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.capacity-outlook-head strong {
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.capacity-outlook-head span,
+.capacity-outlook-head > small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.capacity-outlook-head > small {
+  flex: 0 0 auto;
+  color: #a56b16;
+  font-weight: 800;
+}
+
+.capacity-outlook-card .chart {
+  height: 290px;
+}
+
+.capacity-outlook-note,
+.capacity-outlook-source {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.capacity-outlook-source {
+  grid-column: 1 / -1;
+  padding: 0 2px;
+}
+
+.capacity-memory-switch {
+  flex: 0 0 auto;
+}
+
+.capacity-gap-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.capacity-gap-strip span {
+  display: grid;
+  gap: 2px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: #edf4f1;
+  text-align: center;
+}
+
+.capacity-gap-strip span.shortage {
+  background: #f8e7e5;
+}
+
+.capacity-gap-strip small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.capacity-gap-strip b {
+  color: var(--green);
+  font-size: 12px;
+}
+
+.capacity-gap-strip .shortage b {
+  color: var(--red);
+}
+
 .capacity-card {
   display: grid;
   gap: 13px;
@@ -3387,6 +3488,10 @@ button.mindmap-label {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .capacity-outlook-grid {
+    grid-template-columns: 1fr;
+  }
+
 }
 
 @media (max-width: 860px) {
@@ -3449,6 +3554,10 @@ button.mindmap-label {
 
   .hbm-contract-grid {
     grid-template-columns: 1fr;
+  }
+
+  .capacity-outlook-head {
+    flex-wrap: wrap;
   }
 
 }
