@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -12037,6 +12038,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-10-07"
+    },
+    {
+      "id": "2026-09-28-sk-hynix-hbm5-tsmc-validation",
+      "date": "2026-09-28",
+      "type": "重大事件",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "SK Hynix完成HBM5与TSMC CoWoS封装联合验证，获年度最佳合作伙伴奖",
+      "product": "HBM5,HBM4,DRAM",
+      "source": "DIGITIMES",
+      "url": "https://www.digitimes.com/news/a20260929VL203/tsmc-sk-hynix-nvidia-hbm4-packaging.html",
+      "summary": "SK Hynix于9月28日在TSMC OIP大会上宣布，已完成基于TSMC CoWoS先进封装技术的HBM5联合验证，并获得TSMC'3DFabric-HBM Integration'年度最佳合作伙伴奖，连续第二年获奖。验证涵盖物理、电气和热耐受性测试，为Nvidia下一代Vera Rubin平台做准备。SK Hynix还展示了12层36GB HBM4模块和16层48GB HBM4E工程样品。",
+      "transmission_path": "HBM5通过TSMC CoWoS验证 → 确保与Nvidia下一代Vera Rubin AI加速器平台的兼容性 → 巩固SK Hynix在HBM市场约60%的份额领先地位 → 增强HBM出货量确定性和市场定价能力 → 利好SK Hynix营收预期",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-28"
     },
     {
       "id": "2026-09-28-samsung-hbm-dram-capacity-30",
