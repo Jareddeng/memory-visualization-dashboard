@@ -2030,6 +2030,22 @@ td small {
   flex: 0 0 auto;
 }
 
+.capacity-gap-title {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.capacity-gap-title small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+}
+
 .capacity-gap-strip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

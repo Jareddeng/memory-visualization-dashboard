@@ -154,11 +154,13 @@ type TrackerPayload = {
       capacity_snapshot: {
         unit: string;
         note: string;
-        points: Array<{
+        groups: Array<{
           label: string;
           period: string;
-          value: number;
-          detail: string;
+          supply: number;
+          demand: number;
+          supply_detail: string;
+          demand_detail: string;
         }>;
       };
       forecasts: Record<"DRAM" | "NAND", {
@@ -1820,13 +1822,17 @@ function CapacitySupplyDemand({ outlook }: { outlook?: CapacityOutlook }) {
           </div>
         </div>
         <Chart option={makeSupplyDemandOption(memoryType, forecast)} />
-        <div className="capacity-gap-strip" aria-label={`${memoryType}供需缺口`}>
-          {forecast.years.map((year, index) => (
-            <span className={(forecast.gap_pct[index] ?? 0) < 0 ? "shortage" : "surplus"} key={year}>
+        <p className="capacity-gap-title">供给缺口 <small>需求 - 供给</small></p>
+        <div className="capacity-gap-strip" aria-label={`${memoryType}供给缺口`}>
+          {forecast.years.map((year, index) => {
+            const gap = (forecast.demand[index] ?? 0) - (forecast.supply[index] ?? 0);
+            return (
+            <span className={gap > 0 ? "shortage" : "surplus"} key={year}>
               <small>{year}</small>
-              <b>{formatSignedPercent(forecast.gap_pct[index])}</b>
+              <b>{formatSignedValue(gap)} {forecast.unit}</b>
             </span>
-          ))}
+            );
+          })}
         </div>
       </article>
 
@@ -1836,38 +1842,50 @@ function CapacitySupplyDemand({ outlook }: { outlook?: CapacityOutlook }) {
 }
 
 function makeCapacitySnapshotOption(snapshot: CapacityOutlook["capacity_snapshot"]): echarts.EChartsCoreOption {
-  const colors = ["#8eaebe", "#16877d", "#d3973f"];
   return {
     animation: false,
-    grid: { left: 54, right: 20, top: 34, bottom: 62 },
+    color: ["#16877d", "#d3973f"],
+    legend: { top: 0, right: 0, itemWidth: 18, itemHeight: 8, textStyle: { color: "#5f6f69", fontSize: 11 } },
+    grid: { left: 82, right: 48, top: 42, bottom: 34 },
     tooltip: {
-      trigger: "item",
-      formatter: (params: any) => {
-        const point = snapshot.points[params.dataIndex];
-        return `<strong>${point.label} · ${point.period}</strong><br/>${point.value} 万片/月<br/>${point.detail}`;
+      trigger: "axis",
+      axisPointer: { type: "shadow" },
+      formatter: (params: any[]) => {
+        const group = snapshot.groups[params[0]?.dataIndex ?? 0];
+        return `<strong>${group.label} · ${group.period}</strong><br/>供应 ${group.supply} 万片/月<br/>${group.supply_detail}<br/>需求 ${group.demand} 万片/月<br/>${group.demand_detail}`;
       },
     },
     xAxis: {
-      type: "category",
-      data: snapshot.points.map((point) => `${point.label}\n${point.period}`),
-      axisTick: { show: false },
-      axisLine: { lineStyle: { color: "#cbd8d4" } },
-      axisLabel: { color: "#5f6f69", fontSize: 11, lineHeight: 16, interval: 0 },
-    },
-    yAxis: {
       type: "value",
       name: "万片/月",
       nameTextStyle: { color: "#7a8883", fontSize: 11 },
       splitLine: { lineStyle: { color: "#e8efec" } },
       axisLabel: { color: "#7a8883", fontSize: 11 },
     },
-    series: [{
-      name: "等效晶圆",
-      type: "bar",
-      barMaxWidth: 62,
-      label: { show: true, position: "top", color: "#17211e", fontWeight: 800, formatter: "{c}" },
-      data: snapshot.points.map((point, index) => ({ value: point.value, itemStyle: { color: colors[index] } })),
-    }],
+    yAxis: {
+      type: "category",
+      inverse: true,
+      data: snapshot.groups.map((group) => `${group.label}\n${group.period}`),
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: "#cbd8d4" } },
+      axisLabel: { color: "#5f6f69", fontSize: 11, lineHeight: 16 },
+    },
+    series: [
+      {
+        name: "供应",
+        type: "bar",
+        barMaxWidth: 28,
+        label: { show: true, position: "right", color: "#17211e", fontWeight: 800, formatter: "{c}" },
+        data: snapshot.groups.map((group) => group.supply),
+      },
+      {
+        name: "需求",
+        type: "bar",
+        barMaxWidth: 28,
+        label: { show: true, position: "right", color: "#17211e", fontWeight: 800, formatter: "{c}" },
+        data: snapshot.groups.map((group) => group.demand),
+      },
+    ],
   };
 }
 
@@ -1900,9 +1918,9 @@ function makeSupplyDemandOption(memoryType: "DRAM" | "NAND", forecast: CapacityO
   };
 }
 
-function formatSignedPercent(value: number | undefined) {
+function formatSignedValue(value: number | undefined) {
   const numeric = Number(value ?? 0);
-  return `${numeric > 0 ? "+" : ""}${numeric.toFixed(2)}%`;
+  return `${numeric > 0 ? "+" : ""}${Number.isInteger(numeric) ? numeric : numeric.toFixed(1)}`;
 }
 
 type CapacityFacility = NonNullable<NonNullable<NonNullable<TrackerPayload["expansion_capacity"]>["companies"]>[number]["facilities"]>[number];
