@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "2026-09-30-micron-record-earnings-samsung-readthrough",
+    "date": "2026-09-30",
+    "type": "财报业绩",
+    "impact": "bullish",
+    "importance": "S",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "title": "美光发布创纪录财报，AI内存热潮收紧常规芯片供应，三星SK海力士业绩前景向好",
+    "product": "DRAM,HBM,NAND,SSD",
+    "source": "Korea JoongAng Daily",
+    "url": "https://www.koreajoongangdaily.com/business/micron-posts-record-earnings-signals-upside-for-samsung-sk-hynix/12900972",
+    "summary": "美光发布创纪录季度业绩。路透社报道其接获订单远超产能，AI内存热潮收紧常规芯片供应并推高价格。CEO Mehrotra指出战略客户长期协议（LTA）为客户提前锁定内存供应，使美光对未来需求有更清晰的可预见性。美光股价周三常规交易收于1065.11美元持平，财报发布后盘后上涨。分析师认为美光强劲业绩和乐观指引对即将发布三季度业绩的三星电子和SK海力士是利好信号。",
+    "transmission_path": "美光创纪录财报验证AI存储需求超预期→订单远超产能、常规DRAM/NAND供应进一步收紧→存储合约价延续上涨周期→三星和SK海力士三季度业绩预期上修→韩国及全球存储产业链估值重塑",
+    "confidence": "high",
+    "action": "alert",
+    "review_date": "2026-10-30"
+  },
+  {
+    "id": "2026-09-30-micron-supply-tighter-2027-2028",
+    "date": "2026-09-30",
+    "type": "财报业绩",
+    "impact": "bullish",
+    "importance": "A",
+    "reaction_type": "undervalued",
+    "pricing_status": "partial",
+    "horizon": "longer",
+    "title": "美光CEO预计2027-2028年存储供需比2026年更紧张，数据中心SSD收入同比增超10倍",
+    "product": "DRAM,HBM,NAND,SSD",
+    "source": "Aju Press",
+    "url": "https://m.ajupress.com/amp/20261001110756946",
+    "summary": "美光CEO Sanjay Mehrotra在财报电话会上表示，预计2027和2028年存储供需状况将比2026年更加紧张。数据中心SSD收入上季度接近100亿美元，同比增长超10倍，AI推理任务越来越多使用NAND存储卸载缓存数据。公司预计服务器出货量2026和2027年均保持高十位数增长。新建晶圆厂无法快速缓解供应——爱达荷首座新厂预计2027年中才开始晶圆产出，日本和新加坡产能到位更晚。韩国股市因投资者担忧美债收益率飙升，三星和SK海力士周四早盘基本持平。",
+    "transmission_path": "美光指引2027-2028年供应更紧张、SSD需求爆发→市场可能低估存储超级周期持续时间→云厂商加速签订长期协议锁定产能→远期存储价格预期持续上修→三大原厂扩产计划推进但投产需数年",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "review_date": "2026-10-30"
+  }
+]
