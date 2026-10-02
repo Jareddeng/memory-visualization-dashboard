@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-02-micron-supply-crunch-outlook",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-10-02",
+      "title": "分析：存储供应紧缺将持续至2028年，Samsung称HBM将占DRAM晶圆产能30%",
+      "product": "DRAM,HBM,NAND",
+      "source": "Tech Insider",
+      "url": "https://tech-insider.org/micron-memory-crunch-20-percent-supply-growth-2026/",
+      "summary": "综合美光FQ4财报电话会及行业动态的分析指出：美光CEO Mehrotra明确表示2027和2028年存储供需将比2026年更紧张，即使2028年新洁净室投产也需逐步爬坡，HBM3E向HBM4/HBM4E切换的trade ratio意味着每片晶圆可用产出反而下降。NAND方面，美光预计2027-2028年行业bit出货增速约mid-20s%，两年均供应受限。Samsung EVP Kim Taewoo表示，HBM占DRAM原厂晶圆产能比例将从2026年约20%升至2027年约30%。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "transmission_path": "原厂管理层确认多年期供应紧缺 → 存储超级周期持续时间预期延长 → 长期合约价和HBM溢价持续走高 → 利好Samsung/SK Hynix/Micron资本开支回报率，但加剧下游终端厂商成本压力",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-11-01"
+    },
+    {
       "id": "2026-10-01-memory-giants-ranking-analysis",
       "type": "行业分析",
       "impact": "neutral",
@@ -16,6 +35,25 @@
       "horizon": "1q",
       "transmission_path": "HBM份额与盈利高度集中于SK海力士，NAND景气由铠侠、闪迪领涨；市场分析提示存储价格处历史高位、估值已含极度乐观预期，需警惕供需边际变化",
       "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-31"
+    },
+    {
+      "id": "2026-10-01-cfm-q4-outlook-continue-rise",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-10-01",
+      "title": "CFM：Q4存储价格将继续上涨，明年Q1 Mobile LPDDR5X或涨超20%",
+      "product": "DRAM,NAND,DDR5,eSSD,LPDDR5X",
+      "source": "CFM闪存市场",
+      "url": "https://chinaflashmarket.com/a/184313",
+      "summary": "CFM闪存市场发布2026年Q4存储市场展望报告：预计Q4服务器DDR5、eSSD价格环比涨幅0%~10%；Mobile LPDDR4X/5X涨幅约0%~5%，eMMC/UFS约0%~3%；PC DDR5/LPDDR5X涨幅约0%~10%，cSSD涨幅约0%~3%。预计明年Q1 Mobile LPDDR5X价格将大幅上涨超20%，因原厂将更多LPDDR5X产能调配至服务器市场（Vera CPU、AMD Verano CPU等带动服务器LPDDR5X需求增速最高翻倍），Mobile供应比例进一步收缩。当前行业DDR5次级颗粒及嵌入式LP资源已涨至历史峰值，部分存储厂商开始减缓资源采购。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "CFM Q4涨价预期确认 → 服务器/PC存储合约价继续上行但涨幅收敛 → 原厂Q4营收环比继续增长 → Mobile LPDDR5X因产能被服务器挤占面临更大涨价压力，手机终端厂商成本承压",
+      "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-31"
     },
@@ -112,6 +150,25 @@
       "transmission_path": "伯恩斯坦下调Rubin Ultra单颗HBM容量假设→市场下修英伟达高端GPU的HBM需求预期→但释放晶圆产能转向传统服务器DRAM→DRAM整体供应仍紧张→存储价格2027年前维持高位，HBM结构性溢价或小幅收窄",
       "confidence": "high",
       "action": "watch",
+      "review_date": "2026-10-30"
+    },
+    {
+      "id": "2026-09-30-micron-q4-earnings",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "date": "2026-09-30",
+      "title": "美光FQ4营收$54.2B创纪录，2027年HBM产能已基本售罄",
+      "product": "DRAM,HBM,NAND",
+      "source": "Blocks & Files",
+      "url": "https://www.blocksandfiles.com/flash/2026/10/01/memory-gold-rush-bonanza-makes-billions-for-micron/5300445",
+      "summary": "美光发布FY2026 Q4财报：营收$54.2B，毛利率86.8%（去年同期44.7%），摊薄EPS $32.87。DRAM与HBM收入$39.8B，同比增长331%；NAND收入$14.1B，同比增长526%。公司指引FQ1 FY27营收$61.5B±$1.5B。CEO Mehrotra在财报电话会上表示，2027和2028年存储供需将比2026年更紧张，2027年HBM产能大部分已以远高于2026年的价格锁定。NAND方面，预计2027-2028年行业bit出货增速约mid-20s%，两年均将持续供应受限。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "美光FQ4业绩超预期+2027-2028供需趋紧指引 → 市场强化存储超级周期持续性预期 → DRAM/HBM/NAND合约价看涨情绪升温 → Samsung、SK Hynix跟涨预期增强，下游客户加速锁定LTA",
+      "confidence": "high",
+      "action": "alert",
       "review_date": "2026-10-30"
     },
     {
