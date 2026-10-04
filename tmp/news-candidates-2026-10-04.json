@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "2026-10-02-samsung-sk-hynix-low-inventory-warning",
+    "date": "2026-10-02",
+    "type": "行业分析",
+    "impact": "bullish",
+    "importance": "A",
+    "reaction_type": "sentiment",
+    "pricing_status": "partial",
+    "horizon": "longer",
+    "title": "KB证券警示：三星、SK海力士DRAM/NAND库存跌破10天，2027年或现历史性短缺",
+    "product": "DRAM,NAND,HBM4,企业级SSD,服务器DDR5",
+    "source": "DOIT",
+    "url": "https://www.doit.com.cn/storage/855474214432837.html",
+    "summary": "10月2日，韩国券商KB Securities发布警示：三星电子与SK海力士的DRAM和NAND库存已跌破10天，创极低水平。主要推手为HBM4量产——其消耗的晶圆产能约为普通内存三倍，正持续吞噬两大厂商常规存储产能。KB证券预计2027年DRAM与NAND需求增速将高出供给增速10个百分点以上，若供需缺口延续，2027年存储市场可能出现'历史性短缺'，涨价压力正从HBM向全品类传导。摩根大通、高盛此前亦提示HBM已售罄至2026年。数据面印证：韩国9月半导体出口达603亿美元，同比增长262.8%，带动总出口创1209亿美元历史单月新高，制造业PMI同步改善。",
+    "transmission_path": "原厂库存跌破10天→供给刚性叠加HBM4挤占常规产能→原厂议价能力与合约价继续上行→服务器DDR5、企业级SSD乃至消费级存储逐层涨价→三星、SK海力士盈利与资本开支预期上修",
+    "confidence": "medium",
+    "action": "deep_tracking",
+    "review_date": "2026-11-01"
+  }
+]
