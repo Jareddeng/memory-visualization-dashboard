@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-04-morgan-stanley-nvidia-top-pick",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-10-04",
+      "title": "大摩重列英伟达为半导体首选股 目标价300美元",
+      "product": "GPU,AI芯片,半导体",
+      "source": "新浪财经",
+      "url": "https://finance.sina.com.cn/stock/t/2026-10-04/doc-initzkxm4044844.shtml",
+      "summary": "摩根士丹利10月2日报告重列英伟达为半导体首选股，维持增持评级，目标价300美元。核心逻辑：客户结构广度（约一半业务来自模型公司、新云厂商、主权实体）；80家云合作伙伴中55家在美国境外；Feynman架构将把每吉瓦收入从400亿美元提升至500亿美元以上；常驻智能体推高GPU需求，CPU产值预计从2026年200亿美元翻倍至2027年400亿美元。预计英伟达收入从2026年约2160亿美元增至2027年约4060亿、2028年约6900亿美元。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "transmission_path": "大摩将半导体板块首选从存储股切换至GPU → 反映AI算力需求持续强劲、半导体景气周期延续 → 资金在半导体板块内部轮动 → 存储板块短期或面临仓位调整压力，但AI驱动的总需求未减弱",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-03"
+    },
+    {
       "id": "2026-10-03-amazon-nvidia-chip-spv",
       "type": "产业链跟踪",
       "impact": "neutral",
@@ -17,6 +36,25 @@
       "transmission_path": "云厂商AI资本开支融资压力上升→通过表外SPV结构继续采购英伟达GPU→短期GPU/HBM/服务器DRAM需求不改，但融资结构复杂化提示资本开支可持续性风险→若后续hyperscaler capex指引下修，将向下传导至HBM与服务器存储需求预期及存储板块估值",
       "confidence": "medium",
       "action": "watch",
+      "review_date": "2026-10-10"
+    },
+    {
+      "id": "2026-10-03-kirin-9050-pro-teardown",
+      "type": "产品数据",
+      "impact": "bullish",
+      "date": "2026-10-03",
+      "title": "拆解揭示麒麟9050 Pro双Die逻辑折叠架构细节",
+      "product": "逻辑折叠芯片,3D IC,混合键合,先进封装",
+      "source": "国际电子商情",
+      "url": "https://www.icsmart.cn/142696/",
+      "summary": "半导体分析机构Kurnal Insights发布麒麟9050 Pro（Hi36E0）芯片裸片照片。芯片采用计算Die（N+3工艺）与SRAM Die（N+2工艺）分离设计，通过逻辑折叠技术键合。两颗Die各120.65mm²，含500万个信号传输键合点，跨Die带宽125TB/s。晶体管密度2.38亿颗/mm²，较上代提升55%，关键路径时延降低30%。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1m",
+      "transmission_path": "拆解证实双Die混合键合架构已量产 → 非EUV路径实现先进制程等效性能 → 中国在3D IC和先进封装领域取得突破 → 利好封测厂、键合设备商、材料供应链",
+      "confidence": "high",
+      "action": "deep_tracking",
       "review_date": "2026-10-10"
     },
     {
@@ -208,6 +246,25 @@
       "confidence": "high",
       "action": "alert",
       "review_date": "2026-10-31"
+    },
+    {
+      "id": "2026-10-01-huawei-mate90-kirin-chips",
+      "type": "重大事件",
+      "impact": "bullish",
+      "date": "2026-10-01",
+      "title": "华为Mate 90全系搭载韬定律麒麟芯片发布",
+      "product": "手机SoC,逻辑折叠芯片,先进封装",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/1/009/451.htm",
+      "summary": "华为10月1日发布Mate 90系列手机，全系搭载韬定律芯片：标准版搭载麒麟9030，Pro版首发麒麟9035，Pro Max/RS非凡大师搭载逻辑折叠芯片麒麟9050/9050 Pro。麒麟9050 Pro采用晶圆对晶圆混合键合技术，晶体管密度2.38亿颗/mm²，CPU多核性能提升23%，GPU渲染提升40%，NPU提升140%。央视新闻评论称韬芯片走出了世界半导体的一条新路。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1m",
+      "transmission_path": "华为旗舰全系采用国产先进芯片 → 逻辑折叠技术路线获量产验证 → 中国半导体自主可控信心增强 → 利好国产芯片设计、先进封装、设备材料板块情绪",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-08"
     },
     {
       "id": "2026-09-30-china-memory-chip-rebound",
