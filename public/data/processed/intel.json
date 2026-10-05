@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-03-amazon-nvidia-chip-spv",
+      "type": "产业链跟踪",
+      "impact": "neutral",
+      "date": "2026-10-03",
+      "title": "亚马逊拟通过售后回租SPV向外部投资者出售约80亿美元英伟达芯片",
+      "product": "NVIDIA GPU,AI芯片,HBM",
+      "source": "Fair Value",
+      "url": "https://buttondown.com/fairvalue/archive/fair-value-saturday-october-3-2026/",
+      "summary": "据Fair Value 10月3日报道，亚马逊正寻求通过售后回租SPV（特殊目的载体）结构向外部投资者出售约80亿美元的英伟达先进芯片，以减轻资产负债表压力。其FY2026资本开支指引约2200亿美元（因存储等成本上升从2000亿美元上调），二季度资本开支542亿美元（同比+68%），自由现金流已转为负值（-76亿美元）。五大美国云厂商（微软、谷歌、亚马逊、Meta、Oracle）过去12个月资本开支合计5860亿美元（同比+84%），占经营现金流的82.9%。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "云厂商AI资本开支融资压力上升→通过表外SPV结构继续采购英伟达GPU→短期GPU/HBM/服务器DRAM需求不改，但融资结构复杂化提示资本开支可持续性风险→若后续hyperscaler capex指引下修，将向下传导至HBM与服务器存储需求预期及存储板块估值",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-10"
+    },
+    {
       "id": "2026-10-02-micron-supply-crunch-outlook",
       "type": "行业分析",
       "impact": "bullish",
