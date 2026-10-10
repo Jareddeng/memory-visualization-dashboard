@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-09-global-semiconductor-market-2-trillion",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-10-09",
+      "title": "全球半导体市场逼近2万亿美元，上半年存储芯片增速达305%",
+      "product": "DRAM,HBM,NAND",
+      "source": "TechTimes",
+      "url": "https://www.techtimes.com/articles/328825/20261009/global-semiconductor-market-closing-2-trillion-samsung-sets-earnings-record.htm",
+      "summary": "WSTS数据显示，2026年上半年全球半导体市场收入达7020亿美元，同比增长102%。其中存储芯片增速达305%，远超逻辑芯片的45%。HBM已从专业产品转变为半导体生态系统中战略地位最高的组件，HBM4单栈带宽2TB/s，约为标准DDR5模组的20倍。HBM生产消耗晶圆产能与DDR5之比为3:1，结构性推高常规DRAM价格。美国出口管制推动中国超大规模厂商转向国产替代。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "全球半导体市场规模超预期增长→存储芯片增速远超逻辑芯片→AI基建持续拉动HBM/DDR5/eSSD需求→原厂产能向高利润产品集中→常规存储供需缺口延续→终端产品持续面临涨价压力",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-08"
+    },
+    {
       "id": "2026-10-08-samsung-hbm4e-nvidia-rubin",
       "type": "产业链跟踪",
       "impact": "bullish",
@@ -94,6 +113,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-15"
+    },
+    {
+      "id": "2026-10-08-samsung-winbond-lpddr4-tv-dram",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "date": "2026-10-08",
+      "title": "三星VD事业部2027年起转向华邦采购LPDDR4，存量DRAM供应持续紧张",
+      "product": "DRAM,LPDDR4",
+      "source": "C114通信网",
+      "url": "https://www.c114.net.cn/chipnews/130960.html",
+      "summary": "业内人士透露，三星电子VD事业部已决定自2027年起采购华邦电子LPDDR4和LPDDR4X芯片，品质认证测试已于2026年上半年完成。华邦作为三星新增DRAM供应商，仍处于通知供应链及客户审批流程，实际导入预计2027年。三星VD事业部考虑2027年在约50%电视产品中配置华邦DRAM。背景为三大原厂逐步退出LPDDR4/LPDDR4X生产，电视用存量存储供应日益吃紧。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "三大原厂退出LPDDR4/LPDDR4X生产→存量DRAM供应缺口扩大→三星等大客户寻求第二供应商→华邦等二线DRAM厂获得转单→存量DRAM价格获支撑→电视等终端产品存储成本维持高位",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-07"
     },
     {
       "id": "2026-10-07-server-dram-lta-pricing",
@@ -207,6 +245,25 @@
       "transmission_path": "美股存储板块上涨→市场情绪改善→亚洲存储厂商股价联动",
       "confidence": "high",
       "action": "watch",
+      "review_date": "2026-10-14"
+    },
+    {
+      "id": "2026-10-07-micron-taiwan-strike-authorization",
+      "type": "重大事件",
+      "impact": "bullish",
+      "date": "2026-10-07",
+      "title": "美光台湾桃园工会取得罢工授权，DRAM/HBM供应风险升级",
+      "product": "DRAM,HBM",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2499332",
+      "summary": "美光台湾桃园工厂工会10月7日宣布，以88.3%的会员同意率通过罢工投票（实际投票同意率超99%），取得合法罢工权，为台湾地区高科技产业工会首次。台湾占美光DRAM/HBM产能约50%-60%，桃园与台中两大工会合计代表1.5万员工中的80%以上。工会核心诉求为营业利润15%固定分润（对比三星半导体12%、SK海力士10%）。台中工厂工会10月22日进行二次劳资调解，若破裂也将启动罢工投票。桃园工会计划10月19日集体请假示威，不排除突袭式罢工。",
+      "importance": "S",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "美光台湾工会取得罢工权→若实际罢工将直接冲击DRAM/HBM产出→存储供给进一步收紧→合约价与现货价面临新一轮上涨→下游模组厂和终端厂商成本压力加剧",
+      "confidence": "high",
+      "action": "deep_tracking",
       "review_date": "2026-10-14"
     },
     {

@@ -1,4 +1,5 @@
 {
+  "reason": "去重前快照；缺少有效链接的记录待核实",
   "records": [
     {
       "id": "2026-09-07-apple-kioxia-nand-lta-no-price-cap",
@@ -12797,6 +12798,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-14"
+    },
+    {
+      "id": "2026-10-08-samsung-q3-record-earnings",
+      "date": "2026-10-08",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "三星Q3营业利润107.4万亿韩元创历史纪录，存储超级周期持续",
+      "product": "DRAM,HBM,NAND",
+      "source": "Nikkei Asia",
+      "url": "https://asia.nikkei.com/business/tech/semiconductors/samsung-q3-profit-jumps-nearly-9-times-to-80bn-in-ai-chip-boom",
+      "summary": "三星电子10月8日发布2026年Q3初步财报，营业利润107.4万亿韩元（约802亿美元），同比增长782.5%，营收195万亿韩元，同比增长126.6%，营业利润率55.1%，为史上首家季度营业利润突破100万亿韩元的科技公司。连续第四个季度创纪录，超出LSEG共识预期106.1万亿韩元。存储芯片业务为业绩主要驱动力，分析师估计Q3 HBM位元出货环比增长约50%。移动业务部门预计录得超10亿美元营业亏损，代工业务持续亏损。完整财报将于10月29日公布。",
+      "transmission_path": "三星Q3业绩创纪录→验证AI驱动的存储超级周期强度→DRAM/HBM/NAND合约价维持高位→原厂产能继续向HBM倾斜→常规存储供给持续紧张→下游终端厂商成本承压，消费电子涨价压力加大",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-11-07"
     },
     {
       "id": "2026-10-07-micron-taiwan-strike-authorization",
