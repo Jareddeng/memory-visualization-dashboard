@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "2026-10-12-cxmt-4f2-dram-breakthrough",
+    "date": "2026-10-12",
+    "type": "市场消息",
+    "impact": "bearish",
+    "importance": "A",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1w",
+    "title": "长鑫存储公布4F² DRAM关键进展，三星、SK Hynix盘中跌逾4%",
+    "product": "DRAM,DDR5",
+    "source": "TradingKey",
+    "url": "https://www.tradingkey.com/zh-hans/analysis/stocks/us-stock/262210861-cxmt-dram-progress-samsung-sk-hynix-shares-fall-tradingkey",
+    "summary": "长鑫存储（CXMT）宣布下一代4F² DRAM存储单元结构研发取得关键进展，计划2026年底前推出基于该技术的新一代DDR5 RDIMM服务器内存产品。10月12日韩国存储股盘中明显走低，三星电子一度跌约4.2%至252500韩元，SK Hynix一度跌约4.01%至1624000韩元。与目前主流商用DRAM采用的6F²结构相比，4F²设计可在单位芯片面积内集成更多存储单元，在提升存储密度的同时改善能效，CXMT采用自主研发的垂直环绕栅极（Vertical Surrounding Gate）晶体管架构以缩小存储单元面积并减少漏电。Counterpoint数据显示，2026年第二季度CXMT全球DRAM营收份额升至10%，较去年同期的4%明显增长；同期三星约占38%，SK Hynix约占25%，美光约占24%。CXMT尚未公布新一代产品的完整技术参数和具体量产时间，技术突破能否转化为大规模商业订单仍需观察。",
+    "transmission_path": "CXMT公布下一代DRAM技术进展→市场担忧全球DRAM行业竞争加剧→三星、SK Hynix股价盘中即时下跌超4%→投资者重新评估传统存储厂商长期份额与定价能力→若2026年底DDR5 RDIMM量产落地，服务器DRAM供需格局或进一步变化",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "review_date": "2026-10-19"
+  },
+  {
+    "id": "2026-10-10-sumitomo-bakelite-packaging-expansion",
+    "date": "2026-10-10",
+    "type": "产业链跟踪",
+    "impact": "bullish",
+    "importance": "B",
+    "reaction_type": "sentiment",
+    "pricing_status": "unpriced",
+    "horizon": "longer",
+    "title": "住友电木拟在苏州及新加坡扩产先进封装材料",
+    "product": "半导体封装材料,HBM",
+    "source": "南华早报",
+    "url": "https://www.scmp.com/tech/tech-trends/article/3370468/japans-sumitomo-bakelite-expands-china-chip-packaging-materials-output-amid-ai-boom",
+    "summary": "据南华早报报道，日本半导体材料厂商住友电木（Sumitomo Bakelite）计划扩大在中国苏州和新加坡的先进芯片封装材料产能，投资约100亿日元（约6320万美元），在两地工厂新增SUMIKON™ EME底部填充材料（MUF）与压缩成型颗粒产线，新产能预计2030财年投产，MUF产能约翻倍、压缩成型颗粒产能约增至三倍。这是该公司近四个月来第二次宣布在华扩产，反映生成式AI与数据中心投资持续增长带来的先进封装材料需求。高算力芯片对封装材料的耐热性、机械强度和长期可靠性要求更高，靠近客户扩产有助于提升供应灵活性、降低运输等供应链风险。此前该公司已于6月宣布苏州工厂扩产计划（新增产能约2028年底投产）。",
+    "transmission_path": "AI芯片与数据中心投资增长→先进封装需求上升→上游封装材料龙头扩产锁定长期订单→封装材料供给能力提升→支撑HBM等高端芯片封装环节供应安全与成本优化",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-11-09"
+  }
+]
