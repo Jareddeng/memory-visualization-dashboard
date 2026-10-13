@@ -151,6 +151,17 @@ type TrackerPayload = {
       source: string;
       source_file: string;
       source_pages: string;
+      capital_expenditure: {
+        unit: string;
+        note: string;
+        source: string;
+        source_date: string;
+        source_pages: string;
+        years: string[];
+        dram: number[];
+        nand: number[];
+        total: number[];
+      };
       capacity_snapshot: {
         unit: string;
         note: string;
@@ -1836,6 +1847,19 @@ function CapacitySupplyDemand({ outlook }: { outlook?: CapacityOutlook }) {
         </div>
       </article>
 
+      <article className="capacity-outlook-card">
+        <div className="capacity-outlook-head">
+          <div>
+            <strong>全球存储行业资本开支</strong>
+            <span>{outlook.capital_expenditure.unit} · 2026E为预测值</span>
+          </div>
+        </div>
+        <Chart option={makeCapitalExpenditureOption(outlook.capital_expenditure)} />
+        <p className="capacity-outlook-note">
+          来源：{outlook.capital_expenditure.source}，{outlook.capital_expenditure.source_date}，{outlook.capital_expenditure.source_pages}
+        </p>
+      </article>
+
       <p className="capacity-outlook-source">来源：{outlook.source}，第 {outlook.source_pages} 页 · 更新：{outlook.updated_at}</p>
     </div>
   );
@@ -1914,6 +1938,60 @@ function makeSupplyDemandOption(memoryType: "DRAM" | "NAND", forecast: CapacityO
     series: [
       { name: "供给", type: "line", symbol: "circle", symbolSize: 8, lineStyle: { width: 3 }, data: forecast.supply },
       { name: "需求", type: "line", symbol: "circle", symbolSize: 8, lineStyle: { width: 3 }, data: forecast.demand },
+    ],
+  };
+}
+
+function makeCapitalExpenditureOption(capex: CapacityOutlook["capital_expenditure"]): echarts.EChartsCoreOption {
+  return {
+    animation: false,
+    color: ["#16877d", "#8eaebe", "#d3973f"],
+    legend: {
+      top: 0,
+      right: 0,
+      itemWidth: 18,
+      itemHeight: 8,
+      textStyle: { color: "#5f6f69", fontSize: 11 },
+    },
+    grid: { left: 52, right: 22, top: 42, bottom: 42 },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: { type: "shadow" },
+      valueFormatter: (value: unknown) => `${value} ${capex.unit}`,
+    },
+    xAxis: {
+      type: "category",
+      data: capex.years,
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: "#cbd8d4" } },
+      axisLabel: { color: "#5f6f69", fontSize: 11, interval: 0 },
+    },
+    yAxis: {
+      type: "value",
+      name: capex.unit,
+      nameTextStyle: { color: "#7a8883", fontSize: 11 },
+      splitLine: { lineStyle: { color: "#e8efec" } },
+      axisLabel: { color: "#7a8883", fontSize: 11 },
+    },
+    series: [
+      { name: "DRAM", type: "bar", barMaxWidth: 24, data: capex.dram },
+      { name: "NAND", type: "bar", barMaxWidth: 24, data: capex.nand },
+      {
+        name: "合计",
+        type: "line",
+        symbol: "circle",
+        symbolSize: 7,
+        lineStyle: { width: 3 },
+        label: {
+          show: true,
+          position: "top",
+          color: "#17211e",
+          fontSize: 10,
+          fontWeight: 700,
+          formatter: "{c}",
+        },
+        data: capex.total,
+      },
     ],
   };
 }
