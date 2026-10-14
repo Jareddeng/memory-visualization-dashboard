@@ -77,6 +77,25 @@
       "review_date": "2026-11-11"
     },
     {
+      "id": "2026-10-12-toshiba-cuts-kioxia-stake",
+      "type": "公司公告",
+      "impact": "neutral",
+      "date": "2026-10-12",
+      "title": "东芝持续减持铠侠股份，持股比重跌破12%",
+      "product": "NAND",
+      "source": "MoneyDJ",
+      "url": "https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=ea23b492-038d-4d59-ad0c-a76c356e5333",
+      "summary": "据10月12日报道，东芝（Toshiba）持续出售其持有的NAND Flash大厂铠侠（Kioxia）股份：截至10月1日持股比例由9月7日的12.84%降至11.80%，正式跌破12%关口。东芝10月8日向关东财务局提交的持股变动报告显示，9月8日至10月1日期间分8次（9/8、9/9、9/10、9/18、9/24、9/25、9/29、10/1）通过市场交易减持；加上8月至9月初的7次减持，不到3个月累计减持15次。相较铠侠2024年12月IPO时东芝逾30%的持股，目前已大幅缩水至11.80%。铠侠股价较6月22日历史高点已回落逾五成，但今年迄今累计仍上涨约400%。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "transmission_path": "东芝持续减持铠侠股份→铠侠流通股供给增加、股价短期承压→情绪面扰动但不改AI驱动下NAND基本面→关注大股东减持节奏对铠侠及NAND板块情绪的边际影响",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-19"
+    },
+    {
       "id": "2026-10-10-memory-chip-phone-price-hike",
       "type": "行业分析",
       "impact": "bullish",
