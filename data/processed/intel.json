@@ -172,6 +172,25 @@
       "review_date": "2026-10-19"
     },
     {
+      "id": "2026-10-12-micron-buyback-memory-price-rise",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-10-12",
+      "title": "美光推大额回购，存储涨价周期反转讨论升温",
+      "product": "DRAM,NAND,HBM,企业级SSD",
+      "source": "淘股吧",
+      "url": "https://www.tgb.cn/a/2vOHe3iZipR",
+      "summary": "A股周末复盘指出，2026年四季度DRAM、NAND闪存合约价持续上涨，服务器内存、企业级SSD同步涨价。涨价主要由AI算力需求驱动，三星、SK海力士、美光等将大量先进产能转向HBM、服务器DRAM等高利润产品，挤压消费级存储供给。美光同步推出大额股票回购，传递管理层对周期持续性的信心。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "存储合约价持续上涨 → 原厂Q4盈利预期上修 → 美光大额回购传递管理层信心 → 板块情绪修复，存储周期反转叙事进一步强化",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-19"
+    },
+    {
       "id": "2026-10-10-memory-chip-phone-price-hike",
       "type": "行业分析",
       "impact": "bullish",
