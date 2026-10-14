@@ -13120,6 +13120,25 @@
       "confidence": "medium",
       "action": "deep_tracking",
       "review_date": "2026-10-20"
+    },
+    {
+      "id": "2026-10-13-memory-giants-compared-hbm",
+      "date": "2026-10-13",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "全球存储七强对比：SK Hynix占HBM收入50%，TrendForce预计Q4 DRAM合约价再涨10-15%",
+      "product": "DRAM,HBM,NAND",
+      "source": "VLSI Korea",
+      "url": "https://www.vlsi.kr/en/memory-giants-compared-2026-en/",
+      "summary": "vlsi.kr 10月13日发布全球七大存储厂商实力对比：SK Hynix以50%份额居HBM收入第一（2026年6月季度Counterpoint数据），Samsung DRAM营收份额39.4%居首，10月初行业消息称其HBM4E 12层样品已通过NVIDIA认证，2026年HBM4供应基本售罄；Micron手握180亿美元长协预付款、2026年HBM4产能全部售罄；TrendForce 9月30日预计Q4常规DRAM合约价环比上涨10-15%、NAND涨15-20%、企业级SSD涨23-28%；HBM4价格约31-32美元/GB，2027年HBM均价或上涨121%；风险项包括Micron台湾厂罢工授权投票（10月，99%赞成）与SK Hynix混合键合研发受阻传闻；CXMT DRAM份额9.5%升至全球第四，YMTC NAND出货进入全球前三。",
+      "transmission_path": "Q4合约价全线上涨（DRAM +10-15%、NAND +15-20%、企业级SSD +23-28%）→Samsung/SK Hynix/Micron四季度营收与毛利率继续抬升；2027年HBM均价预期翻倍→HBM敞口最高的SK Hynix利润弹性最大；中国大陆厂商份额上升与美国Entity List管制变量→2027-2028年供需格局关键在于地缘政治",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-11-12"
     }
   ]
 }
