@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-15-korea-premarket-selloff",
+      "type": "市场消息",
+      "impact": "bearish",
+      "date": "2026-10-15",
+      "title": "三星与SK海力士Nextrade盘前交易均跌超6%",
+      "product": "DRAM,NAND,HBM",
+      "source": "财联社",
+      "url": "https://www.sohu.com/a/1087901148_122029351",
+      "summary": "10月15日早盘，三星电子和SK海力士在韩国另类交易所Nextrade盘前交易中均跌超6%，显示长鑫存储4F² DRAM架构消息引发的抛售压力仍在延续，存储股高波动行情持续。",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1d",
+      "transmission_path": "Nextrade盘前大跌预示韩国常规交易时段存储股继续承压→CXMT技术突破担忧持续压制韩厂估值→波动可能传导至当日美股存储板块",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-10-22"
+    },
+    {
       "id": "2026-10-14-musk-micron-praised-rivals-extortionate",
       "type": "市场消息",
       "impact": "neutral",
@@ -54,6 +73,25 @@
       "horizon": "1m",
       "transmission_path": "CXMT 4F² DRAM量产预期升温 → 市场下调存储原厂长期定价权溢价 → SK Hynix、Samsung、Micron股价承压 → 若中国厂商产能如期落地，2027-2028年通用DRAM合约价涨幅预期收窄 → 存储板块估值中枢下移，但HBM链条相对免疫",
       "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-10-21"
+    },
+    {
+      "id": "2026-10-14-korea-memory-stocks-rebound",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-10-14",
+      "title": "日韩股市反弹：三星电子涨近4%，SK海力士涨2.91%",
+      "product": "DRAM,NAND,HBM,SSD",
+      "source": "东方财富",
+      "url": "https://finance.eastmoney.com/a/202610143894804681.html",
+      "summary": "10月14日，韩国综合股价指数（KOSPI）涨幅扩大至1.95%，SK海力士上涨2.91%，三星电子上涨近4%，存储股在前一交易日CXMT消息引发的大跌后反弹。2026年OCP全球峰会上，三星电子与AMD共同演示基于CXL的内存扩展解决方案，并展出定制化HBM、全新HBM5及存算一体技术。高盛发布研报指出，高带宽闪存（HBF）等新型NAND技术有望缓解\"内存墙\"问题，在GPU采用率达15%-50%的情况下潜在市场规模可达400亿至1500亿美元，维持闪迪和SK海力士\"买入\"评级。",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "transmission_path": "韩国存储股反弹修复前一日恐慌情绪→OCP峰会技术展示强化HBM/CXL技术叙事→高盛HBF报告利好NAND技术领先厂商→市场情绪回暖但高波动持续",
+      "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-21"
     },
