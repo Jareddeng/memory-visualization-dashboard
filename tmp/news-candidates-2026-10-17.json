@@ -1,0 +1,21 @@
+[
+  {
+    "id": "2026-10-16-apple-cxmt-dram-iphone-mac",
+    "date": "2026-10-16",
+    "type": "重大事件",
+    "impact": "bearish",
+    "importance": "A",
+    "reaction_type": "sentiment",
+    "pricing_status": "partial",
+    "horizon": "1m",
+    "title": "苹果CEO Ternus拒绝排除在iPhone和Mac中采用CXMT DRAM",
+    "product": "DRAM",
+    "source": "SammyFans",
+    "url": "https://www.sammyfans.com/2026/10/16/apple-ceo-refuses-to-rule-out-chinese-dram-for-iphones-and-macs/amp/",
+    "summary": "10月16日，苹果新任CEO John Ternus在本周接受Chosun采访时承认，存储市场严重短缺已迫使苹果重新审视所有可用的供应链渠道，未排除采用CXMT等中国存储元件的可能性。AI基础设施投资大幅分流产能至数据中心HBM，波及标准DRAM模组供应，导致移动存储元件价格飙升，Samsung和SK Hynix年内持续上调低功耗DRAM供应价格。据报道，苹果已对CXMT DRAM进行早期资格测试，计划优先用于中国版iPhone或Mac，再考虑更大范围推广。若苹果打破对Samsung、SK Hynix、美光的完全依赖，将直接削弱传统存储供应商的议价能力。",
+    "transmission_path": "苹果公开评估CXMT DRAM→若资格测试通过并导入，将削弱Samsung/SK Hynix/美光在高端移动DRAM市场的议价能力与份额→长期DRAM供给格局面临重塑压力→短期进一步印证低功耗DRAM供应紧张、价格上行趋势延续",
+    "confidence": "medium",
+    "action": "deep_tracking",
+    "review_date": "2026-10-23"
+  }
+]
