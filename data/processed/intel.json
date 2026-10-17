@@ -77,6 +77,25 @@
       "review_date": "2026-10-23"
     },
     {
+      "id": "2026-10-16-sk-hynix-q3-earnings-date",
+      "type": "公司公告",
+      "impact": "neutral",
+      "date": "2026-10-16",
+      "title": "SK Hynix确定10月28日召开Q3财报电话会",
+      "product": "DRAM,HBM,NAND",
+      "source": "The Globe and Mail",
+      "url": "https://www.theglobeandmail.com/investing/markets/stocks/SKHY/pressreleases/7817208/sk-hynix-sets-october-28-conference-call-for-q3-2026-earnings/",
+      "summary": "SK Hynix宣布将于10月28日（韩国时间）举行Q3 2026财报电话会。市场共识预期：EPS $5.97，营收约664亿美元（约96万亿韩元），营业利润共识约77万亿韩元（环比+27%，同比+579%），有望创存储行业史上最高单季利润。本次财报四大看点：Q3营业利润确认、追加股东回报细节（4万亿韩元回购计划第二阶段）、HBM4量产进展及收入占比、2027年供需指引。Q2财报后SKHY已产生+36.2%的财报后正漂移。Barclays目标价300美元，较当前有50%+上行空间。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "transmission_path": "SK Hynix确定财报日期→10月28日成为存储板块下一关键催化剂→市场提前交易Q3业绩超预期及HBM4进展预期→若营业利润接近或超77万亿韩元共识，将进一步确认存储超级周期 intact→带动SKHY及存储供应链情绪",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-23"
+    },
+    {
       "id": "2026-10-15-korea-premarket-selloff",
       "type": "市场消息",
       "impact": "bearish",
@@ -283,6 +302,25 @@
       "transmission_path": "晶圆厂安全事故传闻→若获证实将影响Intel先进制程产能与设备供应链→半导体设备板块短期情绪波动→对存储芯片供需基本面无直接传导",
       "confidence": "low",
       "action": "watch",
+      "review_date": "2026-10-22"
+    },
+    {
+      "id": "2026-10-15-tsmc-q3-record-earnings",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "date": "2026-10-15",
+      "title": "TSMC Q3营收创纪录达467亿美元，Q4指引环比增14%",
+      "product": "晶圆代工,2nm,3nm,先进制程,半导体",
+      "source": "TSMC官方",
+      "url": "https://pr.tsmc.com/english/news/3346",
+      "summary": "TSMC于10月15日发布Q3财报：合并营收新台币14,942.4亿元（467.2亿美元），同比增50.9%，环比增17.6%，超指引上限；净利润7,630.6亿元，同比增68.7%；稀释EPS新台币29.43元；毛利率66.4%（环比降1.3pct，因2nm爬坡稀释），营业利润率58.7%超指引。2nm制程占晶圆收入8%，3nm占33%，5nm占28%。Q4营收指引523-543亿美元（环比中值+14%，同比+58%），2026全年美元营收增速上调至44%，资本开支维持600-640亿美元。管理层确认AI和HPC结构性需求持续强劲，2nm产能2027年将翻倍，但提示消费类终端受元件涨价和宏观不确定性影响承压。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1w",
+      "transmission_path": "TSMC财报超预期且Q4指引强劲→验证AI芯片需求无放缓迹象→先进制程产能持续满载→上游设备/材料商（ASML、AMAT等）订单能见度延伸→半导体设备与代工板块情绪获支撑；同时管理层提示消费端承压→存储涨价对消费电子的挤压效应获进一步确认",
+      "confidence": "high",
+      "action": "deep_tracking",
       "review_date": "2026-10-22"
     },
     {
