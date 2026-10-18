@@ -13614,6 +13614,44 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-23"
+    },
+    {
+      "id": "2026-10-16-cxmt-dram-revenue-selloff",
+      "date": "2026-10-16",
+      "type": "市场消息",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1q",
+      "title": "长鑫存储DRAM营收暴增约7倍逼近200亿美元，存储股10月16日遭重挫",
+      "product": "DRAM,NAND,存储芯片",
+      "source": "247 Wall St.",
+      "url": "https://247wallst.com/investing/2026/10/17/chinas-answer-to-micron-just-made-nearly-20-billion/",
+      "summary": "长鑫存储（CXMT）借AI存储热潮披露DRAM营收增长约7倍、逼近200亿美元，正挑战Samsung、SK Hynix与Micron的市场地位。10月16日美股交易时段存储板块集体大跌：SK Hynix跌6.58%、Micron跌5.63%、SanDisk跌6.85%、Western Digital跌6.86%、Seagate跌7.50%。市场担忧中国存储供给扩张（CXMT全球DRAM份额已升至约10%，并计划进军NAND）将侵蚀原厂份额与定价权。",
+      "transmission_path": "CXMT营收暴增并公布扩产计划→市场担忧中国供给冲击DRAM/NAND格局→Samsung/SK Hynix/Micron份额与定价权预期受侵蚀→存储板块股价单日重挫→短期情绪面主导，后续需跟踪CXMT NAND工厂审批与产能落地节奏",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-11-15"
+    },
+    {
+      "id": "2026-10-16-sk-hynix-3d-fenand",
+      "date": "2026-10-16",
+      "type": "产品数据",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "title": "SK海力士公布3D FeNAND存内计算研究：吞吐量提升10-20倍、能效提升4000-5000倍",
+      "product": "NAND,3D FeNAND,存储芯片",
+      "source": "The Elec",
+      "url": "https://www.thelec.net/news/articleView.html?idxno=14602",
+      "summary": "SK Hynix在新闻室公布3D FeNAND模拟存内计算（A-CiM）技术细节（基于IEEE IEDM 2025论文）：利用铁电材料极化态存储数据并让NAND在存储阵列内直接执行MAC运算，联合优化cell、non-cell与page方案；在同等芯片面积约束下，仿真显示吞吐量较传统2D非易失存储阵列提升10-20倍、能效提升4000-5000倍。属研究成果披露，未公布量产时间表。SK Hynix并于OCP Global Summit 2026提出以存储为中心的服务器系统愿景。",
+      "transmission_path": "SK Hynix推动NAND从存储介质向AI计算平台演进→长期或重塑AI推理存储架构、开辟NAND新应用场景→短期无量产计划、不影响现货供需→强化其技术领先叙事与远期估值支撑",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-15"
     }
   ]
 }
