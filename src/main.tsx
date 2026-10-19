@@ -298,6 +298,7 @@ type AppData = {
 };
 
 type PageKey = "overview" | "markets" | "industry" | "reports" | "intel";
+type SectorKey = "tech" | "a-share" | "macro";
 
 type IntelRecord = {
   id: string;
@@ -786,6 +787,7 @@ function makeReportTrendOption(reports: Report[]): echarts.EChartsCoreOption {
 
 function App() {
   const { data, loading, error } = useDashboardData();
+  const [activeSector, setActiveSector] = React.useState<SectorKey>("tech");
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
   const [pendingAnchor, setPendingAnchor] = React.useState<string | null>(null);
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
@@ -865,6 +867,13 @@ function App() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+  const navigateSector = (sector: SectorKey) => {
+    setActiveSector(sector);
+    setActivePage("overview");
+    setPendingAnchor(null);
+    setSearchOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const openSearchResult = (item: SearchItem) => {
     if (item.target.url) {
       window.open(item.target.url, "_blank", "noopener,noreferrer");
@@ -875,6 +884,7 @@ function App() {
       setPinnedIntelId(item.target.recordId);
     }
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
+    setActiveSector("tech");
     setActivePage(item.target.page);
     setSearchOpen(false);
     window.setTimeout(() => {
@@ -894,22 +904,23 @@ function App() {
         <div className="brand">
           <span className="brand-mark" aria-hidden="true"></span>
           <div>
-            <strong>Storage Intel</strong>
-            <span>存储行业数据舱</span>
+            <strong>Market Intel</strong>
+            <span>多资产研究中枢</span>
           </div>
         </div>
-        <PageNav activePage={activePage} onNavigate={navigatePage} />
-        <div className="source-status">
+        <SectorNav activeSector={activeSector} onNavigate={navigateSector} />
+        <PageNav activeSector={activeSector} activePage={activePage} onNavigate={navigatePage} />
+        {activeSector === "tech" ? <div className="source-status">
           <span className="status-dot"></span>
           <div>
             <strong>Action 生成</strong>
             <span>{formatDateTime(data.metadata.generated_at)}</span>
           </div>
-        </div>
+        </div> : null}
       </aside>
 
       <main className="workspace">
-        <header className="topbar" ref={topbarRef}>
+        {activeSector === "tech" ? <header className="topbar" ref={topbarRef}>
           <label className="time-filter">
             <span>周期</span>
             <select value={timeRange} onChange={(event) => setTimeRange(event.target.value as TimeRange)}>
@@ -937,8 +948,9 @@ function App() {
             <button className="primary-button" type="button" onClick={() => setCaptureOpen(true)}>新增情报</button>
           </div>
           {query.trim() && searchOpen ? <SearchResults results={searchResults} timeRange={timeRange} onOpen={openSearchResult} onClear={() => { setQuery(""); setSearchOpen(false); }} /> : null}
-        </header>
+        </header> : null}
 
+        {activeSector === "tech" ? <>
         <Hero data={data} latestReport={latestReport} />
 
         <section className="kpi-grid">
@@ -978,10 +990,11 @@ function App() {
             onExport={() => exportIntelligence(data, allIntelRecords)}
           />
         ) : null}
+        </> : <EmptySectorPage sector={activeSector} page={activePage} />}
 
-        <footer className="disclaimer">
+        {activeSector === "tech" ? <footer className="disclaimer">
           交易评价与风险提示仅用于行业跟踪和研究记录，不构成投资建议。请结合授权行情、公司公告和自身风险承受能力独立判断。
-        </footer>
+        </footer> : null}
         {captureOpen ? (
           <IntelCaptureModal
             record={editingIntelRecord}
@@ -1016,8 +1029,40 @@ type NavSubItem = {
   reportTab?: ReportTab;
 };
 
-function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: (page: PageKey, anchorId?: string, reportTab?: ReportTab) => void }) {
-  const pages: Array<{ key: PageKey; label: string; detail: string; subItems?: NavSubItem[] }> = [
+type PageNavItem = {
+  key: PageKey;
+  label: string;
+  detail: string;
+  subItems?: NavSubItem[];
+};
+
+const sectorOptions: Array<{ key: SectorKey; label: string; eyebrow: string }> = [
+  { key: "tech", label: "科技", eyebrow: "TECH" },
+  { key: "a-share", label: "A股", eyebrow: "A-SHARE" },
+  { key: "macro", label: "宏观", eyebrow: "MACRO" },
+];
+
+function SectorNav({ activeSector, onNavigate }: { activeSector: SectorKey; onNavigate: (sector: SectorKey) => void }) {
+  return (
+    <nav className="sector-tabs" aria-label="研究板块切换">
+      {sectorOptions.map((sector) => (
+        <button
+          aria-current={activeSector === sector.key ? "page" : undefined}
+          className={activeSector === sector.key ? "sector-tab active" : "sector-tab"}
+          key={sector.key}
+          onClick={() => onNavigate(sector.key)}
+          type="button"
+        >
+          <small>{sector.eyebrow}</small>
+          <strong>{sector.label}</strong>
+        </button>
+      ))}
+    </nav>
+  );
+}
+
+function PageNav({ activeSector, activePage, onNavigate }: { activeSector: SectorKey; activePage: PageKey; onNavigate: (page: PageKey, anchorId?: string, reportTab?: ReportTab) => void }) {
+  const techPages: PageNavItem[] = [
     { key: "overview", label: "\u6982\u89c8", detail: "\u5173\u952e\u6307\u6807 / \u60c5\u62a5" },
     {
       key: "markets",
@@ -1051,6 +1096,12 @@ function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: 
     },
     { key: "intel", label: "\u60c5\u62a5\u5e93", detail: "\u65b0\u589e / \u5220\u9664 / \u63a8\u9001" },
   ];
+  const placeholderPages: PageNavItem[] = [
+    { key: "overview", label: "概览", detail: "关键指标 / 摘要" },
+    { key: "markets", label: "市场图表", detail: "行情 / 趋势 / 对比" },
+    { key: "reports", label: "报告库", detail: "日报 / 专题 / 归档" },
+  ];
+  const pages = activeSector === "tech" ? techPages : placeholderPages;
   return (
     <nav className="nav-list" aria-label="\u770b\u677f\u5206\u533a\u5bfc\u822a">
       {pages.map((page) => {
@@ -1080,6 +1131,25 @@ function PageNav({ activePage, onNavigate }: { activePage: PageKey; onNavigate: 
     </nav>
   );
 }
+
+function EmptySectorPage({ sector, page }: { sector: Exclude<SectorKey, "tech">; page: PageKey }) {
+  const sectorLabel = sector === "a-share" ? "A股" : "宏观";
+  const pageLabel = page === "markets" ? "市场图表" : page === "reports" ? "报告库" : "概览";
+  return (
+    <section className="empty-sector" aria-labelledby="empty-sector-title">
+      <div className={`empty-sector-mark ${sector}`} aria-hidden="true">
+        {sector === "a-share" ? "A" : "M"}
+      </div>
+      <p className="eyebrow">{sector === "a-share" ? "A-SHARE RESEARCH" : "MACRO RESEARCH"}</p>
+      <h1 id="empty-sector-title">{sectorLabel} · {pageLabel}</h1>
+      <p>板块框架已就位，内容将在后续需求中接入。</p>
+      <div className="empty-sector-slots" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </section>
+  );
+}
+
 function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) {
   const latestRating = splitRatingNote(latestReport?.rating ?? "");
   return (

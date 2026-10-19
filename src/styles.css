@@ -111,7 +111,107 @@ select {
 .nav-list {
   display: grid;
   gap: 6px;
-  margin-top: 28px;
+  margin-top: 18px;
+}
+
+.sector-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  margin-top: 22px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.sector-tab {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 8px 4px 7px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #98a9a0;
+  text-align: center;
+}
+
+.sector-tab small {
+  overflow: hidden;
+  font-size: 8px;
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+}
+
+.sector-tab strong {
+  font-size: 13px;
+}
+
+.sector-tab:hover,
+.sector-tab:focus-visible {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  outline: none;
+}
+
+.sector-tab.active {
+  background: rgba(44, 165, 143, 0.24);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(117, 214, 190, 0.26);
+}
+
+.empty-sector {
+  min-height: calc(100vh - 96px);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.empty-sector-mark {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(20, 124, 114, 0.22);
+  border-radius: 8px;
+  background: #e7f3f0;
+  color: var(--teal);
+  font-size: 28px;
+  font-weight: 900;
+  box-shadow: var(--shadow);
+}
+
+.empty-sector-mark.macro {
+  background: #e8eef4;
+  color: var(--blue);
+}
+
+.empty-sector h1 {
+  margin: 6px 0 10px;
+  font-size: 38px;
+}
+
+.empty-sector > p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+}
+
+.empty-sector-slots {
+  width: min(520px, 80vw);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.empty-sector-slots span {
+  height: 7px;
+  border-radius: 999px;
+  background: var(--line);
 }
 
 .nav-group {
@@ -3522,8 +3622,7 @@ button.mindmap-label {
   }
 
   .nav-list {
-    grid-template-columns: repeat(3, minmax(160px, 1fr));
-    overflow-x: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 16px;
     padding-bottom: 4px;
   }
