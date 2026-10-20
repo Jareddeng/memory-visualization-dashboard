@@ -13709,6 +13709,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-25"
+    },
+    {
+      "id": "2026-10-19-micron-taichung-mediation-oct22",
+      "date": "2026-10-19",
+      "type": "重大事件",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "title": "美光台湾桃园工会10月19日台北集会，台中工会10月22日调解成关键节点",
+      "product": "DRAM,HBM",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/micron-union-taiwan-voted-99-074601054.html",
+      "summary": "美光台湾桃园工厂工会（2258名会员，99%投票赞成罢工授权）于10月19日在台北举行集会施压（据路透社报道，集会本身并非罢工，尚无任何生产日期）。关键节点：台中工会与美光的第三轮调解定于10月22日，若谈判破裂，台中工会（1.2万名员工、逾80%入会率）也可能发起罢工投票。台湾承担美光全球DRAM产能60%以上，其Q4'26 DRAM营收创纪录达398亿美元（环比+27%，同比+343%），占美光总收入73%。工会核心诉求为将15%营业利润制度化分配为员工季度奖金，美光2026财年已向台湾员工发放每人100万新台币现金奖金但工会仍不满意。",
+      "transmission_path": "10月22日台中调解结果 → 若破裂则罢工范围从桃园扩大到台中 → 全球DRAM/HBM供应中断风险急升 → DRAM现货价跳涨+美光股价承压+竞争对手（三星/SK海力士）受益；若调解成功 → 供应风险溢价回落 → 存储股短线回调",
+      "confidence": "medium",
+      "action": "alert",
+      "review_date": "2026-10-26"
     }
   ]
 }
