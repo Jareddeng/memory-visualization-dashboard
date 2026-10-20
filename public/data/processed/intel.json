@@ -20,6 +20,25 @@
       "review_date": "2026-10-25"
     },
     {
+      "id": "2026-10-18-sk-hynix-q3-forecast-upgrade",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-10-18",
+      "title": "机构上修SK海力士Q3业绩预期：营业利润或近77万亿韩元",
+      "product": "DRAM,HBM",
+      "source": "上海证券报（新浪财经）",
+      "url": "https://finance.sina.cn/2026-10-18/detail-inivsnma0907895.d.html",
+      "summary": "10月18日晚间韩国媒体报道，受HBM高价长协（LTA）持续兑现与通用DRAM现货、合约价双重上涨推动，机构再度上调SK海力士三季度预测：营收98.23万亿韩元、营业利润76.96万亿韩元（营业利润率78.4%），部分机构预计营业利润突破80万亿韩元，高于9月底市场共识（营收94.1万亿、营业利润74.1万亿韩元）。公司正式财报将于10月28日发布。KB证券预计SK海力士2026年全年营业利润达277万亿韩元（利润率约78.1%）。韩国副总理李炯日称半导体行业繁荣至少持续到2027年。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "机构上修盈利预期→财报前情绪与估值支撑→SK海力士及存储板块股价获动能；若10月28日财报兑现，强化DRAM/HBM涨价持续性叙事",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-25"
+    },
+    {
       "id": "2026-10-17-samsung-ai-substrate-expansion-delay",
       "type": "产业链跟踪",
       "impact": "neutral",
