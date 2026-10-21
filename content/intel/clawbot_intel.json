@@ -13785,6 +13785,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-27"
+    },
+    {
+      "id": "2026-10-19-goldman-structural-memory-shortage",
+      "date": "2026-10-19",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "title": "高盛：本轮存储短缺为结构性，紧张格局或延续至2028年以后",
+      "product": "DRAM,NAND,HBM",
+      "source": "VLSI Korea",
+      "url": "https://www.vlsi.kr/en/goldman-sachs-memory-shortage-2027-en/",
+      "summary": "高盛论证本轮存储短缺为结构性而非周期性：其一，AI服务器需求可见度高，2026-2027年服务器内存（含常规DRAM、SOCAMM、HBM）占DRAM总需求比例已超过50%，需求直接体现在超大规模厂商资本开支计划中；其二，供给增长受限，Samsung、SK Hynix、Micron维持供应纪律，Micron月产能至2027年维持在12万-14万片，SK Hynix 2026年HBM产能已全部售罄，新建晶圆厂从开工到投产约需3年；其三，长协（LTA）刚性锁定量与价，Micron已获得超320亿美元客户承诺，Kioxia目标2028年产出50%纳入长协。管理层表态方面，SK Hynix CEO今年7月称2027年将是最紧张的一年、需求超过供给将持续至2030年以后；Samsung同月表示2027年将比2026年更紧、紧张持续至2028年；Micron CEO在9月财报电话会上表示2027和2028年存储供需将比今年紧张得多。",
+      "transmission_path": "投行结构性短缺论证强化涨价周期持续性预期→长协覆盖率与预付款机制锁定未来需求→DRAM/NAND现货与合约价获得长期支撑→Samsung、SK Hynix、Micron、Kioxia盈利可见性与估值中枢上移",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "review_date": "2026-11-18"
     }
   ]
 }
