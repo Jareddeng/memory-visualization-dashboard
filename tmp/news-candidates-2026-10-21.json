@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "2026-10-20-us-memory-stocks-premarket-drop",
+    "date": "2026-10-20",
+    "type": "市场消息",
+    "impact": "bearish",
+    "importance": "B",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1d",
+    "title": "美股存储芯片股盘前走低：SK海力士跌4%，美光、闪迪跌超2%",
+    "product": "DRAM,NAND,存储芯片股",
+    "source": "财联社",
+    "url": "https://m.cls.cn/detail/2509832",
+    "summary": "10月20日美股盘前，存储芯片股集体走低：SK海力士跌4%，美光科技、闪迪跌超2%。",
+    "transmission_path": "存储股高位回调→短期获利了结与情绪波动→板块短线承压，但存储涨价与缺货基本面逻辑未发生改变",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-10-27"
+  }
+]
