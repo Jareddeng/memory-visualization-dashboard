@@ -1,7 +1,7 @@
 import React from "react";
 import { mergeIntel, intelUrlKey, isArticleUrl } from "./intel-quality.mjs";
 import { createRoot } from "react-dom/client";
-import { AlertTriangle, Database, RefreshCw, Trash2 } from "lucide-react";
+import { Activity, AlertTriangle, Database, RefreshCw, Trash2 } from "lucide-react";
 import * as echarts from "echarts/core";
 import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { BarChart, LineChart } from "echarts/charts";
@@ -374,6 +374,7 @@ type SearchItem = {
   date?: string;
   haystack: string;
   target: {
+    sector?: SectorKey;
     page: PageKey;
     reportSlug?: string;
     url?: string;
@@ -926,6 +927,7 @@ function App() {
   const openSearchResult = (item: SearchItem) => {
     if (item.target.url) {
       window.open(item.target.url, "_blank", "noopener,noreferrer");
+      setQuery("");
       setSearchOpen(false);
       return;
     }
@@ -933,8 +935,9 @@ function App() {
       setPinnedIntelId(item.target.recordId);
     }
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
-    setActiveSector("tech");
+    setActiveSector(item.target.sector ?? "tech");
     setActivePage(item.target.page);
+    setQuery("");
     setSearchOpen(false);
     window.setTimeout(() => {
       const targetId = item.target.anchorId ?? (item.target.recordId ? `intel-${item.target.recordId}` : "");
@@ -969,7 +972,7 @@ function App() {
       </aside>
 
       <main className="workspace">
-        {activeSector === "tech" ? <header className="topbar" ref={topbarRef}>
+        <header className={activeSector === "tech" ? "topbar" : "topbar cross-sector-topbar"} ref={topbarRef}>
           <label className="time-filter">
             <span>周期</span>
             <select value={timeRange} onChange={(event) => setTimeRange(event.target.value as TimeRange)}>
@@ -988,16 +991,18 @@ function App() {
                 setSearchOpen(true);
               }}
               onFocus={() => setSearchOpen(true)}
-              placeholder="搜索 DRAM、NAND、HBM、报告、产业链、情报"
+              placeholder="搜索股票、指数、图表、报告和情报"
               type="search"
             />
           </label>
-          <div className="topbar-actions">
+          {activeSector === "tech" ? <div className="topbar-actions">
             <button className="ghost-button" type="button" onClick={() => exportIntelligence(data, allIntelRecords)}>导出情报</button>
             <button className="primary-button" type="button" onClick={() => setCaptureOpen(true)}>新增情报</button>
-          </div>
+          </div> : null}
           {query.trim() && searchOpen ? <SearchResults results={searchResults} timeRange={timeRange} onOpen={openSearchResult} onClear={() => { setQuery(""); setSearchOpen(false); }} /> : null}
-        </header> : null}
+        </header>
+
+        {activeSector === "a-share" ? <AShareHero latestIndex={data.aShareIndices.latest.find((item) => item.ticker === "000001.SS")} /> : null}
 
         {activeSector === "tech" ? <>
         <Hero data={data} latestReport={latestReport} />
@@ -1260,6 +1265,26 @@ function Hero({ data, latestReport }: { data: AppData; latestReport?: Report }) 
   );
 }
 
+function AShareHero({ latestIndex }: { latestIndex?: StockPoint }) {
+  return (
+    <section className="intel-hero">
+      <img src="./assets/storage-supply-chain.png" alt="市场研究背景" />
+      <div className="hero-overlay">
+        <div>
+          <p className="eyebrow">A-SHARE / EQUITY / INDEX</p>
+          <h1>A股可视化看板</h1>
+          <p>跟踪拥挤度、主要指数、期权报价与年化基差。</p>
+        </div>
+        <div className="hero-signal">
+          <span>上证指数</span>
+          <strong>{latestIndex ? latestIndex.close.toLocaleString("zh-CN", { maximumFractionDigits: 2 }) : "待更新"}</strong>
+          <small>{latestIndex?.date ?? "行情暂未获取"}</small>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function OverviewPage({
   data,
   intelRecords,
@@ -1312,14 +1337,10 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
   const indexOrder = ["000001.SS", "000300.SS", "000688.SS", "000852.SS"];
   return (
     <section className="a-share-overview">
-      <div className="section-heading">
-        <h1>A股可视化看板</h1>
-        <p>拥挤度最新观测与主要指数近一年走势</p>
-      </div>
       <div className="a-share-overview-kpis">
         {(["top5", "top10"] as const).map((key) => (
-          <article className="kpi-card a-share-crowding-kpi" key={key}>
-            <span>A股前{key === "top5" ? "5%" : "10%"}拥挤度</span>
+          <article className="kpi-card a-share-crowding-kpi" id={`a-share-crowding-${key}`} key={key}>
+            <div className="a-share-kpi-heading"><div className="icon-box"><Activity /></div><span>A股前{key === "top5" ? "5%" : "10%"}拥挤度</span></div>
             <strong>{latestCrowding ? `${latestCrowding[key].toFixed(1)}%` : "暂无数据"}</strong>
             <p>{latestCrowding ? `${latestCrowding.date} · 滚动三年分位 ${latestCrowding[key === "top5" ? "top5Rank" : "top10Rank"].toFixed(1)}%` : "等待拥挤度数据更新"}</p>
           </article>
@@ -1328,8 +1349,8 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
       <div className="a-share-index-grid" aria-label="A股指数近一年趋势">
         {indexOrder.map((ticker) => {
           const stock = indices.latest.find((item) => item.ticker === ticker);
-          return stock ? <OverviewStockCard stock={stock} history={indices.history} key={ticker} /> : (
-            <article className="panel a-share-index-empty" key={ticker}>
+          return stock ? <div id={`a-share-index-${ticker.split(".")[0]}`} key={ticker}><OverviewStockCard stock={stock} history={indices.history} /></div> : (
+            <article className="panel a-share-index-empty" id={`a-share-index-${ticker.split(".")[0]}`} key={ticker}>
               <strong>{({ "000001.SS": "上证指数", "000300.SS": "沪深300", "000688.SS": "科创50", "000852.SS": "中证1000" } as Record<string, string>)[ticker]}</strong>
               <span>行情暂未获取</span>
             </article>
@@ -1337,7 +1358,7 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
         })}
       </div>
       {indices.warning ? <p className="a-share-source-note">{indices.warning}</p> : null}
-      <p className="a-share-source-note">指数收盘价由定时 Action 更新 · {indices.source === "unavailable" ? "数据源暂不可用" : indices.source.startsWith("Eastmoney") ? "东方财富日线" : "Yahoo Finance 日线"}</p>
+      <p className="a-share-source-note">指数收盘价来源：{indices.source === "unavailable" ? "数据暂不可用" : indices.source.startsWith("Eastmoney") ? "东方财富日线" : "Yahoo Finance 日线"}</p>
     </section>
   );
 }
@@ -3943,6 +3964,29 @@ function useDeletedRemoteIntelIds(): [string[], React.Dispatch<React.SetStateAct
 function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
   const items: SearchItem[] = [];
+  data.aShareIndices.latest.forEach((index) => items.push({
+    type: "A股指数", title: index.name, date: index.date,
+    detail: `${index.ticker} · ${index.date} · ${index.close.toLocaleString()} 点`,
+    haystack: `A股 指数 走势 ${index.name} ${index.ticker}`,
+    target: { sector: "a-share", page: "overview", anchorId: `a-share-index-${index.ticker.split(".")[0]}` },
+  }));
+  ([{ key: "top5", label: "前5%" }, { key: "top10", label: "前10%" }] as const).forEach(({ key, label }) => {
+    const point = data.aShare.crowding.points.at(-1);
+    items.push({ type: "A股指标", title: `A股${label}拥挤度`, date: point?.date,
+      detail: point ? `${point.date} · ${point[key].toFixed(1)}%` : "暂无数据",
+      haystack: `A股 拥挤度 ${label} ${key} 三年分位`,
+      target: { sector: "a-share", page: "overview", anchorId: `a-share-crowding-${key}` },
+    });
+  });
+  items.push(
+    { type: "A股图表", title: "中证1000期权与期货报价", date: data.aShare.quoteDate, detail: `报价日期 ${data.aShare.quoteDate}`, haystack: "A股 期权 报价 对冲成本 中证1000 期货", target: { sector: "a-share", page: "markets", anchorId: "a-share-option-quotes" } },
+    { type: "A股图表", title: "中证1000年化基差趋势", date: data.aShare.basis.points.at(-1)?.date, detail: "中证1000股指期货年化基差", haystack: "A股 基差 趋势 中证1000 期货", target: { sector: "a-share", page: "markets", anchorId: "a-share-basis" } },
+    { type: "A股图表", title: "A股拥挤度趋势", date: data.aShare.crowding.points.at(-1)?.date, detail: "前5%与前10%拥挤度及三年分位", haystack: "A股 拥挤度 趋势 前5% 前10% 分位", target: { sector: "a-share", page: "markets", anchorId: "a-share-crowding" } },
+  );
+  data.macro.charts.forEach((chart) => items.push({ type: "宏观图表", title: chart.title, date: chart.latestDate ?? undefined,
+    detail: `${chart.unit} · ${chart.sourceFile}`, haystack: `宏观 ${chart.title} ${chart.series.map((series) => series.name).join(" ")}`,
+    target: { sector: "macro", page: "markets", anchorId: `macro-${chart.id}` },
+  }));
   data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug, anchorId: "reports-top" } }));
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets", anchorId: `stock-${slugifyId(stock.ticker)}` } }));
   (data.trackers.institutional_charts?.items ?? []).forEach((item) => items.push({ type: "图表", title: `${item.chart_no} ${item.title}`, date: data.trackers.institutional_charts?.updated_at ?? data.metadata.generated_at, detail: `${item.topic} · ${item.status}`, haystack: `${item.chart_no} ${item.title} ${item.topic} ${item.note ?? ""}`, target: { page: "markets", anchorId: "markets-institutional-charts" } }));
