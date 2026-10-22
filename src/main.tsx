@@ -1306,7 +1306,7 @@ function OverviewPage({
 
 function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["crowding"]; indices: StockPayload }) {
   const latestCrowding = [...crowding.points]
-    .filter((point) => Number.isFinite(point.top5) && Number.isFinite(point.top10))
+    .filter((point) => Number.isFinite(point.top5) && point.top5 > 0 && Number.isFinite(point.top10) && point.top10 > 0)
     .sort((a, b) => a.date.localeCompare(b.date))
     .at(-1);
   const indexOrder = ["000001.SS", "000300.SS", "000688.SS", "000852.SS"];
