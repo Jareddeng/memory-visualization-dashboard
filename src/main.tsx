@@ -25,6 +25,30 @@ type PriceSeries = {
 
 type PricePayload = Record<"DRAM" | "NAND", Record<"spot" | "contract_avg", { series: PriceSeries[] }>>;
 
+type AShareQuote = {
+  label: string;
+  kind: "put" | "future";
+  date: string;
+  underlying: number | null;
+  strike: number | null;
+  contract: string | null;
+  moneynessPct: number | null;
+  expiry: string | null;
+  daysToExpiry: number | null;
+  settlement: number | null;
+  periodCostPct: number | null;
+  annualCostPct: number | null;
+  delta: number | null;
+  status: "available" | "unavailable";
+};
+
+type ASharePayload = {
+  source: string;
+  quoteDate: string;
+  quotes: AShareQuote[];
+  basis: { name: string; unit: string; points: Array<{ date: string; value: number }> };
+};
+
 type StockPoint = {
   date: string;
   previous_date?: string | null;
@@ -290,6 +314,7 @@ type Metadata = {
 
 type AppData = {
   prices: PricePayload;
+  aShare: ASharePayload;
   stocks: StockPayload;
   reports: Report[];
   trackers: TrackerPayload;
@@ -428,20 +453,22 @@ function useJson<T>(url: string) {
 
 function useDashboardData() {
   const prices = useJson<PricePayload>("./data/processed/prices.json");
+  const aShare = useJson<ASharePayload>("./data/processed/a-share.json");
   const stocks = useJson<StockPayload>("./data/processed/stocks.json");
   const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json");
   const trackers = useJson<TrackerPayload>("./data/processed/trackers.json");
   const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json");
   const metadata = useJson<Metadata>("./data/processed/metadata.json");
 
-  const error = prices.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
-  const loading = !prices.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
+  const error = prices.error || aShare.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
+  const loading = !prices.data || !aShare.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
 
   return {
     data:
-      prices.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
+      prices.data && aShare.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
         ? {
             prices: prices.data,
+            aShare: aShare.data,
             stocks: stocks.data,
             reports: reports.data.reports,
             trackers: trackers.data,
@@ -990,7 +1017,9 @@ function App() {
             onExport={() => exportIntelligence(data, allIntelRecords)}
           />
         ) : null}
-        </> : <EmptySectorPage sector={activeSector} page={activePage} />}
+        </> : activeSector === "a-share" && activePage === "markets"
+          ? <AShareMarketsPage data={data.aShare} />
+          : <EmptySectorPage sector={activeSector} page={activePage} />}
 
         {activeSector === "tech" ? <footer className="disclaimer">
           交易评价与风险提示仅用于行业跟踪和研究记录，不构成投资建议。请结合授权行情、公司公告和自身风险承受能力独立判断。
@@ -1101,7 +1130,20 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     { key: "markets", label: "市场图表", detail: "行情 / 趋势 / 对比" },
     { key: "reports", label: "报告库", detail: "日报 / 专题 / 归档" },
   ];
-  const pages = activeSector === "tech" ? techPages : placeholderPages;
+  const aSharePages: PageNavItem[] = [
+    placeholderPages[0],
+    {
+      key: "markets",
+      label: "市场图表",
+      detail: "期权报价 / 中证1000基差",
+      subItems: [
+        { label: "期权报价", anchorId: "a-share-option-quotes" },
+        { label: "年化基差趋势", anchorId: "a-share-basis" },
+      ],
+    },
+    placeholderPages[2],
+  ];
+  const pages = activeSector === "tech" ? techPages : activeSector === "a-share" ? aSharePages : placeholderPages;
   return (
     <nav className="nav-list" aria-label="\u770b\u677f\u5206\u533a\u5bfc\u822a">
       {pages.map((page) => {
@@ -1355,6 +1397,117 @@ function OverviewStockCard({ stock, history }: { stock: StockPoint; history: Sto
         <Chart option={makeOverviewStockOption(stock, history)} />
       </div>
     </article>
+  );
+}
+
+function makeBasisOption(data: ASharePayload["basis"]): echarts.EChartsCoreOption {
+  return {
+    color: ["#157f75"],
+    tooltip: {
+      trigger: "axis",
+      confine: true,
+      formatter(params: unknown) {
+        const row = Array.isArray(params) ? (params[0] as any) : (params as any);
+        return `<strong>${row?.value?.[0] ?? ""}</strong><br/>年化基差：${Number(row?.value?.[1] ?? 0).toFixed(2)}%`;
+      },
+    },
+    grid: { left: 58, right: 22, top: 26, bottom: 74 },
+    xAxis: { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
+    yAxis: {
+      type: "value",
+      scale: true,
+      axisLabel: { color: "#607086", formatter: "{value}%" },
+      splitLine: { lineStyle: { color: "#edf1f6" } },
+    },
+    dataZoom: [
+      {
+        type: "slider",
+        xAxisIndex: 0,
+        start: Math.max(0, (1 - 252 / data.points.length) * 100),
+        height: 24,
+        bottom: 16,
+        borderColor: "#d8e0ea",
+        fillerColor: "rgba(21, 127, 117, 0.12)",
+        handleStyle: { color: "#157f75", borderColor: "#11685f" },
+        textStyle: { color: "#607086" },
+      },
+      { type: "inside", xAxisIndex: 0, filterMode: "none" },
+    ],
+    series: [{
+      name: data.name,
+      type: "line",
+      showSymbol: false,
+      smooth: false,
+      data: data.points.map((point) => [point.date, point.value]),
+    }],
+  };
+}
+
+function AShareMarketsPage({ data }: { data: ASharePayload }) {
+  const quotes = data.quotes;
+  const value = (amount: number | null, digits = 2) => amount === null
+    ? null
+    : amount.toLocaleString("zh-CN", { minimumFractionDigits: digits, maximumFractionDigits: digits });
+  const rows: Array<{ label: string; values: Array<string | null>; suffix?: string; futureBlank?: boolean; emphasis?: boolean }> = [
+    { label: "日期", values: quotes.map((quote) => quote.date) },
+    { label: "标的行情", values: quotes.map((quote) => value(quote.underlying)) },
+    { label: "理论行权价", values: quotes.map((quote) => value(quote.strike, 0)), futureBlank: true },
+    { label: "合约代码", values: quotes.map((quote) => quote.contract) },
+    { label: "实际虚值", values: quotes.map((quote) => value(quote.moneynessPct)), suffix: "%", futureBlank: true },
+    { label: "最后交易日", values: quotes.map((quote) => quote.expiry) },
+    { label: "剩余天数", values: quotes.map((quote) => value(quote.daysToExpiry, 0)) },
+    { label: "结算价", values: quotes.map((quote) => value(quote.settlement)) },
+    { label: "当期对冲成本", values: quotes.map((quote) => value(quote.periodCostPct)), suffix: "%", emphasis: true },
+    { label: "年化对冲成本", values: quotes.map((quote) => value(quote.annualCostPct)), suffix: "%", emphasis: true },
+    { label: "Delta", values: quotes.map((quote) => value(quote.delta, 4)), futureBlank: true },
+  ];
+
+  return (
+    <>
+      <section className="section-heading" id="a-share-option-quotes">
+        <div>
+          <h2>中证1000期权与期货报价</h2>
+          <p>报价日期 {data.quoteDate} · {data.source}</p>
+        </div>
+      </section>
+      <section className="panel a-share-quotes-panel">
+        <div className="a-share-table-scroll">
+          <table className="a-share-quote-table">
+            <thead>
+              <tr>
+                <th scope="col">指标</th>
+                {quotes.map((quote) => <th scope="col" key={quote.label}>
+                  <span>{quote.label}</span>
+                  {quote.status === "unavailable" ? <small>报价未取得</small> : null}
+                </th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => <tr key={row.label}>
+                <th scope="row">{row.label}</th>
+                {row.values.map((cell, index) => {
+                  const notApplicable = row.futureBlank && quotes[index].kind === "future";
+                  return <td className={cell === null && !notApplicable ? "missing" : row.emphasis ? "cost" : ""} key={quotes[index].label}>
+                    {notApplicable ? "—" : cell === null || cell === "" ? "待获取" : `${cell}${row.suffix ?? ""}`}
+                  </td>;
+                })}
+              </tr>)}
+            </tbody>
+          </table>
+        </div>
+        <p className="a-share-source-note">工作簿报价快照。缺失项表示合约到期日或行情未取得，相关对冲成本不参与展示。</p>
+      </section>
+
+      <section className="section-heading section-subheading" id="a-share-basis">
+        <div>
+          <h2>中证1000年化基差趋势</h2>
+          <p>{data.basis.points[0]?.date} 至 {data.basis.points.at(-1)?.date} · 单位：%</p>
+        </div>
+      </section>
+      <section className="panel a-share-basis-panel">
+        <Chart option={makeBasisOption(data.basis)} />
+      </section>
+    </>
   );
 }
 

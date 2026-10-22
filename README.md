@@ -46,6 +46,7 @@ npm run preview:static
 - 远程 CSV/JSON 使用同一字段：`date,category,market_type,spec,price,unit,source,note`。如果远程数据没有 `source` 字段，脚本会用 URL 作为来源。
 - 推荐把 TrendForce/DRAMeXchange、供应商导出、Google Sheet 发布 CSV、私有 API 代理等授权来源配置成 `PRICE_SOURCE_URLS`，不要依赖不可控网页爬取。
 - 当前仓库里的 Excel 文件会被脚本尝试读取；若表内没有可识别日期/价格列，则跳过。
+- A 股期权报价与中证1000年化基差读取 `edb_data/A股.xlsx` 的缓存值；更新该工作簿并提交后，部署流程会重新生成 A 股市场图表。
 - 深度报告放在 `content/reports/YYYY-MM-DD.md`，clawbot 可通过 PR 新增报告。
 - HBM4 和扩产计划放在 `content/trackers/*.json`。
 

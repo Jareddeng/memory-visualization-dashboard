@@ -934,6 +934,96 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.a-share-quotes-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.a-share-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.a-share-quote-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+
+.a-share-quote-table th,
+.a-share-quote-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.a-share-quote-table th:first-child {
+  width: 146px;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  text-align: left;
+  background: var(--panel);
+}
+
+.a-share-quote-table thead th {
+  height: 64px;
+  background: var(--panel-soft);
+  color: var(--text);
+  vertical-align: middle;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.a-share-quote-table thead th:first-child {
+  z-index: 2;
+  background: var(--panel-soft);
+}
+
+.a-share-quote-table thead small {
+  display: block;
+  margin-top: 4px;
+  color: #9a6112;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.a-share-quote-table tbody th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.a-share-quote-table tbody tr:last-child th,
+.a-share-quote-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.a-share-quote-table td.cost {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.a-share-quote-table td.missing {
+  color: #9a6112;
+  font-weight: 600;
+}
+
+.a-share-source-note {
+  margin: 0;
+  padding: 10px 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.a-share-basis-panel .chart {
+  height: 360px;
+}
+
 .panel {
   min-width: 0;
   padding: 16px;
