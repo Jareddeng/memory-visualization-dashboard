@@ -1158,7 +1158,45 @@ h2 {
   height: 360px;
 }
 
+.macro-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.macro-chart-panel {
+  min-width: 0;
+  scroll-margin-top: 18px;
+}
+
+.macro-chart-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+  min-height: 40px;
+}
+
+.macro-chart-head h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.macro-chart-head span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.macro-chart-panel .chart {
+  height: 390px;
+}
+
 @media (max-width: 1180px) {
+  .macro-chart-grid {
+    grid-template-columns: 1fr;
+  }
+
   .a-share-chart-grid {
     grid-template-columns: 1fr;
   }

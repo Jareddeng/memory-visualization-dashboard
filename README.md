@@ -47,6 +47,7 @@ npm run preview:static
 - 推荐把 TrendForce/DRAMeXchange、供应商导出、Google Sheet 发布 CSV、私有 API 代理等授权来源配置成 `PRICE_SOURCE_URLS`，不要依赖不可控网页爬取。
 - 当前仓库里的 Excel 文件会被脚本尝试读取；若表内没有可识别日期/价格列，则跳过。
 - A 股期权报价与中证1000年化基差读取 `edb_data/A股.xlsx`，前5%/10%拥挤度及近三年分位读取 `edb_data/A股-拥挤度指标.xlsx` 的缓存值；更新工作簿并提交后，部署流程会重新生成 A 股市场图表。
+- 宏观市场图表读取 `edb_data/宏观-*.xlsx` 中对应的五个工作簿，生成 `data/processed/macro.json` 和 `public/data/processed/macro.json`。A 股对应 `a-share.json`；定期更新时覆盖同名工作簿、提交并部署即可，无需修改前端。工作簿中的错误值及社融季节图里未公布月份的 0 不会绘成有效数据。
 - 深度报告放在 `content/reports/YYYY-MM-DD.md`，clawbot 可通过 PR 新增报告。
 - HBM4 和扩产计划放在 `content/trackers/*.json`。
 

@@ -53,6 +53,18 @@ type ASharePayload = {
   };
 };
 
+type MacroChartPayload = {
+  id: string;
+  title: string;
+  kind: "seasonal-line" | "line" | "stacked-bar";
+  unit: string;
+  sourceFile: string;
+  latestDate: string | null;
+  series: Array<{ name: string; points: Array<{ date: string; value: number | null }> }>;
+};
+
+type MacroPayload = { charts: MacroChartPayload[] };
+
 type StockPoint = {
   date: string;
   previous_date?: string | null;
@@ -319,6 +331,7 @@ type Metadata = {
 type AppData = {
   prices: PricePayload;
   aShare: ASharePayload;
+  macro: MacroPayload;
   stocks: StockPayload;
   reports: Report[];
   trackers: TrackerPayload;
@@ -458,21 +471,23 @@ function useJson<T>(url: string) {
 function useDashboardData() {
   const prices = useJson<PricePayload>("./data/processed/prices.json");
   const aShare = useJson<ASharePayload>("./data/processed/a-share.json");
+  const macro = useJson<MacroPayload>("./data/processed/macro.json");
   const stocks = useJson<StockPayload>("./data/processed/stocks.json");
   const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json");
   const trackers = useJson<TrackerPayload>("./data/processed/trackers.json");
   const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json");
   const metadata = useJson<Metadata>("./data/processed/metadata.json");
 
-  const error = prices.error || aShare.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
-  const loading = !prices.data || !aShare.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
+  const error = prices.error || aShare.error || macro.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
+  const loading = !prices.data || !aShare.data || !macro.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
 
   return {
     data:
-      prices.data && aShare.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
+      prices.data && aShare.data && macro.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
         ? {
             prices: prices.data,
             aShare: aShare.data,
+            macro: macro.data,
             stocks: stocks.data,
             reports: reports.data.reports,
             trackers: trackers.data,
@@ -1023,6 +1038,8 @@ function App() {
         ) : null}
         </> : activeSector === "a-share" && activePage === "markets"
           ? <AShareMarketsPage data={data.aShare} />
+          : activeSector === "macro" && activePage === "markets"
+            ? <MacroMarketsPage data={data.macro} />
           : <EmptySectorPage sector={activeSector} page={activePage} />}
 
         {activeSector === "tech" ? <footer className="disclaimer">
@@ -1148,7 +1165,23 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     },
     placeholderPages[2],
   ];
-  const pages = activeSector === "tech" ? techPages : activeSector === "a-share" ? aSharePages : placeholderPages;
+  const macroPages: PageNavItem[] = [
+    placeholderPages[0],
+    {
+      key: "markets",
+      label: "市场图表",
+      detail: "社融 / 通胀 / 非农",
+      subItems: [
+        { label: "社融当月值", anchorId: "macro-social-financing" },
+        { label: "社融与 M2", anchorId: "macro-credit-growth" },
+        { label: "美国通胀", anchorId: "macro-us-inflation" },
+        { label: "非农就业", anchorId: "macro-us-payroll" },
+        { label: "非农分项", anchorId: "macro-us-payroll-sectors" },
+      ],
+    },
+    placeholderPages[2],
+  ];
+  const pages = activeSector === "tech" ? techPages : activeSector === "a-share" ? aSharePages : activeSector === "macro" ? macroPages : placeholderPages;
   return (
     <nav className="nav-list" aria-label="\u770b\u677f\u5206\u533a\u5bfc\u822a">
       {pages.map((page) => {
@@ -1602,6 +1635,85 @@ function AShareMarketsPage({ data }: { data: ASharePayload }) {
         </article>
       </section>
     </>
+  );
+}
+
+function makeMacroOption(chart: MacroChartPayload): echarts.EChartsCoreOption {
+  const seasonal = chart.kind === "seasonal-line";
+  const stacked = chart.kind === "stacked-bar";
+  const months = Array.from({ length: 12 }, (_, index) => `${index + 1}月`);
+  const palette = ["#2388a6", "#e99534", "#62bdba", "#e46e6b", "#52679a", "#d5b64c", "#75aa80", "#97877d"];
+  const series = chart.series.map((item, index) => ({
+    name: item.name,
+    type: stacked ? "bar" : "line",
+    stack: stacked ? "employment" : undefined,
+    barMaxWidth: stacked ? 13 : undefined,
+    showSymbol: false,
+    connectNulls: false,
+    lineStyle: stacked ? undefined : { width: seasonal && index === chart.series.length - 1 ? 2.8 : 1.8 },
+    emphasis: { focus: "series" },
+    data: seasonal
+      ? months.map((_, monthIndex) => item.points.find((point) => Number(point.date) === monthIndex + 1)?.value ?? null)
+      : item.points.map((point) => [point.date, point.value]),
+  }));
+  return {
+    color: palette,
+    tooltip: {
+      trigger: "axis",
+      confine: true,
+      valueFormatter(value: unknown) {
+        const amount = Array.isArray(value) ? value[1] : value;
+        return typeof amount === "number" ? `${amount.toLocaleString("zh-CN", { maximumFractionDigits: 2 })} ${chart.unit}` : "—";
+      },
+    },
+    legend: {
+      type: chart.series.length > 4 ? "scroll" : "plain",
+      bottom: 0,
+      left: 8,
+      right: 8,
+      itemWidth: 14,
+      itemHeight: 8,
+      textStyle: { color: "#607086", fontSize: 11 },
+    },
+    grid: { left: 58, right: 20, top: 24, bottom: seasonal ? 52 : 88 },
+    xAxis: seasonal
+      ? { type: "category", boundaryGap: false, data: months, axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } }
+      : { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
+    yAxis: {
+      type: "value",
+      name: chart.unit,
+      scale: !stacked,
+      nameTextStyle: { color: "#607086" },
+      axisLabel: { color: "#607086" },
+      splitLine: { lineStyle: { color: "#edf1f6" } },
+    },
+    dataZoom: seasonal ? undefined : [
+      {
+        type: "slider", xAxisIndex: 0, start: 0,
+        height: 20, bottom: 30, borderColor: "#d8e0ea",
+        fillerColor: "rgba(35, 136, 166, 0.12)",
+        handleStyle: { color: "#2388a6", borderColor: "#1d7893" },
+        textStyle: { color: "#607086" },
+      },
+      { type: "inside", xAxisIndex: 0, filterMode: "none" },
+    ],
+    series,
+  };
+}
+
+function MacroMarketsPage({ data }: { data: MacroPayload }) {
+  return (
+    <section className="macro-chart-grid" aria-label="宏观市场图表">
+      {data.charts.map((chart) => (
+        <article className="panel macro-chart-panel" id={`macro-${chart.id}`} key={chart.id}>
+          <div className="macro-chart-head">
+            <h2>{chart.title}</h2>
+            <span>截至 {chart.latestDate}</span>
+          </div>
+          <Chart option={makeMacroOption(chart)} />
+        </article>
+      ))}
+    </section>
   );
 }
 

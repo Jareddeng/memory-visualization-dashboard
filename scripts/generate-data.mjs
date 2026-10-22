@@ -4,6 +4,7 @@ import process from "node:process";
 import https from "node:https";
 import XLSX from "xlsx";
 import { loadAShareData, loadCrowdingData } from "./a-share-data.mjs";
+import { loadMacroData } from "./macro-data.mjs";
 import { dedupeIntel, assertUniqueIntelUrls } from "../src/intel-quality.mjs";
 
 const root = process.cwd();
@@ -31,6 +32,7 @@ await fs.mkdir(publicProcessedDir, { recursive: true });
 const prices = await loadPrices();
 const aShare = loadAShareData(path.join(root, "edb_data", "A股.xlsx"));
 aShare.crowding = loadCrowdingData(path.join(root, "edb_data", "A股-拥挤度指标.xlsx"));
+const macro = loadMacroData(path.join(root, "edb_data"));
 const reports = await loadReports();
 const trackers = await loadTrackers();
 const intel = await loadIntel();
@@ -49,6 +51,7 @@ const metadata = {
 if (!validateOnly) {
   await writeJson("prices.json", groupPrices(prices));
   await writeJson("a-share.json", aShare);
+  await writeJson("macro.json", macro);
   await writeJson("stocks.json", stocks);
   await writeJson("reports.json", { reports });
   await writeJson("trackers.json", trackers);
