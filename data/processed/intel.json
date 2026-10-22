@@ -20,6 +20,25 @@
       "review_date": "2026-10-29"
     },
     {
+      "id": "2026-10-22-sk-hynix-q3-earnings-preview",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-10-22",
+      "title": "分析：美光财报预示SK海力士Q3业绩强劲，10月27日财报前市场聚焦四大看点",
+      "product": "DRAM,NAND,HBM",
+      "source": "Seeking Alpha",
+      "url": "https://seekingalpha.com/article/4956032-sk-hynix-q3-micron-already-told-us-whats-coming",
+      "summary": "Seeking Alpha分析文章指出，美光FQ3（截至9月季度）营收环比增长31%至542亿美元，DRAM价格上涨约20%区间，NAND价格上涨约30%，毛利率创新高，为SK海力士10月27日公布的Q3财报提供了最直接的需求与定价环境验证。市场共识预期SK海力士Q3营业利润达77万亿韩元（环比+27%），显著超过Q2创纪录的60.5万亿韩元；财报会同时关注HBM4量产进展、股东回报（40万亿韩元回购后续）及2027年指引。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "美光财报确认存储涨价与AI需求持续至2027年 → 市场以美光业绩为先行指标提前交易SK海力士Q3超预期预期 → SK海力士10月27日财报验证定价环境，带动存储板块及HBM产业链情绪",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-29"
+    },
+    {
       "id": "2026-10-21-samsung-sk-hynix-china-nand-upgrade",
       "type": "产业链跟踪",
       "impact": "bearish",
