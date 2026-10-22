@@ -47,6 +47,10 @@ type ASharePayload = {
   quoteDate: string;
   quotes: AShareQuote[];
   basis: { name: string; unit: string; points: Array<{ date: string; value: number }> };
+  crowding: {
+    source: string;
+    points: Array<{ date: string; top5: number; top10: number; top5Rank: number; top10Rank: number }>;
+  };
 };
 
 type StockPoint = {
@@ -1135,10 +1139,11 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     {
       key: "markets",
       label: "市场图表",
-      detail: "期权报价 / 中证1000基差",
+      detail: "期权 / 基差 / 拥挤度",
       subItems: [
         { label: "期权报价", anchorId: "a-share-option-quotes" },
         { label: "年化基差趋势", anchorId: "a-share-basis" },
+        { label: "A股拥挤度", anchorId: "a-share-crowding" },
       ],
     },
     placeholderPages[2],
@@ -1443,7 +1448,67 @@ function makeBasisOption(data: ASharePayload["basis"]): echarts.EChartsCoreOptio
   };
 }
 
+function makeCrowdingOption(
+  data: ASharePayload["crowding"],
+  mode: "both" | "top5" | "top10",
+  showRankLines: boolean,
+): echarts.EChartsCoreOption {
+  const selected = mode === "both" ? ["top5", "top10"] as const : [mode] as const;
+  const series: any[] = [];
+  for (const key of selected) {
+    const isTop5 = key === "top5";
+    const label = isTop5 ? "前5%" : "前10%";
+    const color = isTop5 ? "#147d75" : "#d69332";
+    const rankKey = isTop5 ? "top5Rank" : "top10Rank";
+    series.push({
+      name: `${label}三年分位·柱`, type: "bar", yAxisIndex: 1, barMaxWidth: 5,
+      itemStyle: { color, opacity: 0.16 }, z: 1,
+      data: data.points.map((point) => [point.date, point[rankKey]]),
+    });
+    series.push({
+      name: `${label}拥挤度`, type: "line", yAxisIndex: 0, showSymbol: false,
+      lineStyle: { width: 2, color }, itemStyle: { color }, z: 3,
+      data: data.points.map((point) => [point.date, point[key]]),
+    });
+    if (showRankLines) series.push({
+      name: `${label}三年分位·线`, type: "line", yAxisIndex: 1, showSymbol: false,
+      lineStyle: { width: 1.5, type: "dashed", color }, itemStyle: { color }, z: 4,
+      data: data.points.map((point) => [point.date, point[rankKey]]),
+    });
+  }
+  return {
+    tooltip: {
+      trigger: "axis", confine: true,
+      formatter(params: unknown) {
+        const items = Array.isArray(params) ? params as any[] : [];
+        const date = items[0]?.value?.[0] ?? "";
+        return `<strong>${date}</strong><br/>${items.map((item) => `${item.marker}${item.seriesName}：${Number(item.value?.[1] ?? 0).toFixed(1)}%`).join("<br/>")}`;
+      },
+    },
+    grid: { left: 52, right: 54, top: 32, bottom: 74 },
+    xAxis: { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
+    yAxis: [
+      { type: "value", name: "拥挤度", scale: true, nameTextStyle: { color: "#607086" }, axisLabel: { color: "#607086", formatter: "{value}%" }, splitLine: { lineStyle: { color: "#edf1f6" } } },
+      { type: "value", name: "三年分位", min: 0, max: 100, nameTextStyle: { color: "#607086" }, axisLabel: { color: "#607086", formatter: "{value}%" }, splitLine: { show: false } },
+    ],
+    dataZoom: [
+      {
+        type: "slider", xAxisIndex: 0,
+        start: Math.max(0, (1 - 120 / data.points.length) * 100),
+        height: 24, bottom: 16, borderColor: "#d8e0ea",
+        fillerColor: "rgba(21, 127, 117, 0.12)",
+        handleStyle: { color: "#157f75", borderColor: "#11685f" },
+        textStyle: { color: "#607086" },
+      },
+      { type: "inside", xAxisIndex: 0, filterMode: "none" },
+    ],
+    series,
+  };
+}
+
 function AShareMarketsPage({ data }: { data: ASharePayload }) {
+  const [crowdingMode, setCrowdingMode] = React.useState<"both" | "top5" | "top10">("both");
+  const [showRankLines, setShowRankLines] = React.useState(false);
   const quotes = data.quotes;
   const value = (amount: number | null, digits = 2) => amount === null
     ? null
@@ -1471,41 +1536,70 @@ function AShareMarketsPage({ data }: { data: ASharePayload }) {
         </div>
       </section>
       <section className="panel a-share-quotes-panel">
-        <div className="a-share-table-scroll">
-          <table className="a-share-quote-table">
-            <thead>
-              <tr>
-                <th scope="col">指标</th>
-                {quotes.map((quote) => <th scope="col" key={quote.label}>
-                  <span>{quote.label}</span>
-                  {quote.status === "unavailable" ? <small>报价未取得</small> : null}
-                </th>)}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => <tr key={row.label}>
-                <th scope="row">{row.label}</th>
-                {row.values.map((cell, index) => {
-                  const notApplicable = row.futureBlank && quotes[index].kind === "future";
-                  return <td className={cell === null && !notApplicable ? "missing" : row.emphasis ? "cost" : ""} key={quotes[index].label}>
-                    {notApplicable ? "—" : cell === null || cell === "" ? "待获取" : `${cell}${row.suffix ?? ""}`}
-                  </td>;
-                })}
-              </tr>)}
-            </tbody>
-          </table>
+        <div className="a-share-quote-layout">
+          <div className="a-share-table-scroll">
+            <table className="a-share-quote-table">
+              <thead>
+                <tr>
+                  <th scope="col">指标</th>
+                  {quotes.map((quote) => <th scope="col" key={quote.label}>{quote.label}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row) => <tr key={row.label}>
+                  <th scope="row">{row.label}</th>
+                  {row.values.map((cell, index) => {
+                    const notApplicable = row.futureBlank && quotes[index].kind === "future";
+                    return <td className={cell === null && !notApplicable ? "missing" : row.emphasis ? "cost" : ""} key={quotes[index].label}>
+                      {notApplicable ? "—" : cell === null || cell === "" ? "待获取" : `${cell}${row.suffix ?? ""}`}
+                    </td>;
+                  })}
+                </tr>)}
+              </tbody>
+            </table>
+          </div>
+          <aside className="a-share-roll-rules" aria-label="换月规则">
+            <h3>换月规则</h3>
+            <dl>
+              <div><dt>11月–1月</dt><dd>持有3月合约</dd></div>
+              <div><dt>2月–4月</dt><dd>持有6月合约</dd></div>
+              <div><dt>5月–7月</dt><dd>持有9月合约</dd></div>
+              <div><dt>8月–10月</dt><dd>持有12月合约</dd></div>
+            </dl>
+          </aside>
         </div>
         <p className="a-share-source-note">工作簿报价快照。缺失项表示合约到期日或行情未取得，相关对冲成本不参与展示。</p>
       </section>
 
-      <section className="section-heading section-subheading" id="a-share-basis">
-        <div>
-          <h2>中证1000年化基差趋势</h2>
-          <p>{data.basis.points[0]?.date} 至 {data.basis.points.at(-1)?.date} · 单位：%</p>
-        </div>
-      </section>
-      <section className="panel a-share-basis-panel">
-        <Chart option={makeBasisOption(data.basis)} />
+      <section className="a-share-chart-grid" aria-label="A股趋势图">
+        <article className="panel a-share-chart-panel" id="a-share-basis">
+          <div className="a-share-chart-head">
+            <h2>中证1000年化基差趋势</h2>
+            <span>{data.basis.points[0]?.date} 至 {data.basis.points.at(-1)?.date}</span>
+          </div>
+          <div className="a-share-chart-meta">中证1000股指期货 · 单位：%</div>
+          <Chart option={makeBasisOption(data.basis)} />
+        </article>
+        <article className="panel a-share-chart-panel" id="a-share-crowding">
+          <div className="a-share-chart-head">
+            <h2>A股拥挤度</h2>
+            <span>{data.crowding.points[0]?.date} 至 {data.crowding.points.at(-1)?.date}</span>
+          </div>
+          <div className="a-share-crowding-controls">
+            <div className="a-share-crowding-segments" role="group" aria-label="拥挤度范围">
+              {([ ["both", "全部"], ["top5", "前5%"], ["top10", "前10%"] ] as const).map(([mode, label]) => (
+                <button type="button" key={mode} aria-pressed={crowdingMode === mode} onClick={() => setCrowdingMode(mode)}>
+                  {mode !== "both" ? <span className={`a-share-series-swatch ${mode}`} aria-hidden="true" /> : null}{label}
+                </button>
+              ))}
+            </div>
+            <label className="a-share-rank-line-toggle">
+              <input type="checkbox" checked={showRankLines} onChange={(event) => setShowRankLines(event.target.checked)} />
+              分位折线
+            </label>
+          </div>
+          <Chart option={makeCrowdingOption(data.crowding, crowdingMode, showRankLines)} />
+        </article>
       </section>
     </>
   );

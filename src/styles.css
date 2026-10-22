@@ -934,9 +934,17 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.a-share-quotes-panel {
-  padding: 0;
-  overflow: hidden;
+.panel.a-share-quotes-panel {
+  width: 100%;
+  max-width: 1320px;
+  padding: 18px 20px 12px;
+}
+
+.a-share-quote-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3.35fr) minmax(220px, 1fr);
+  gap: 26px;
+  align-items: start;
 }
 
 .a-share-table-scroll {
@@ -946,22 +954,23 @@ h2 {
 
 .a-share-quote-table {
   width: 100%;
-  min-width: 820px;
+  min-width: 720px;
   border-collapse: collapse;
   table-layout: fixed;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .a-share-quote-table th,
 .a-share-quote-table td {
-  padding: 10px 12px;
+  padding: 9px 10px;
   border-bottom: 1px solid var(--line);
   text-align: right;
   white-space: nowrap;
+  font-size: 15px;
 }
 
 .a-share-quote-table th:first-child {
-  width: 146px;
+  width: 130px;
   position: sticky;
   left: 0;
   z-index: 1;
@@ -970,7 +979,7 @@ h2 {
 }
 
 .a-share-quote-table thead th {
-  height: 64px;
+  height: 56px;
   background: var(--panel-soft);
   color: var(--text);
   vertical-align: middle;
@@ -981,14 +990,6 @@ h2 {
 .a-share-quote-table thead th:first-child {
   z-index: 2;
   background: var(--panel-soft);
-}
-
-.a-share-quote-table thead small {
-  display: block;
-  margin-top: 4px;
-  color: #9a6112;
-  font-size: 11px;
-  font-weight: 600;
 }
 
 .a-share-quote-table tbody th {
@@ -1011,17 +1012,183 @@ h2 {
   font-weight: 600;
 }
 
+.a-share-roll-rules {
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+}
+
+.a-share-roll-rules h3 {
+  margin: 4px 0 12px;
+  font-size: 15px;
+}
+
+.a-share-roll-rules dl {
+  margin: 0;
+}
+
+.a-share-roll-rules dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.a-share-roll-rules dt {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.a-share-roll-rules dd {
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .a-share-source-note {
   margin: 0;
-  padding: 10px 14px;
+  padding-top: 10px;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 12px;
   line-height: 1.5;
 }
 
-.a-share-basis-panel .chart {
+.a-share-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.a-share-chart-panel {
+  min-width: 0;
+}
+
+.a-share-chart-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 12px;
+  min-height: 44px;
+}
+
+.a-share-chart-head h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.a-share-chart-head span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.a-share-chart-meta,
+.a-share-crowding-controls {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  margin-bottom: 4px;
+}
+
+.a-share-chart-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.a-share-crowding-controls {
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.a-share-crowding-segments {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.a-share-crowding-segments button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  border-radius: 4px;
+  padding: 5px 9px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.a-share-crowding-segments button[aria-pressed="true"] {
+  background: var(--teal);
+  color: white;
+}
+
+.a-share-series-swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #147d75;
+}
+
+.a-share-series-swatch.top10 {
+  background: #d69332;
+}
+
+.a-share-rank-line-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.a-share-rank-line-toggle input {
+  accent-color: var(--teal);
+}
+
+.a-share-chart-panel .chart {
   height: 360px;
+}
+
+@media (max-width: 1180px) {
+  .a-share-chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .a-share-quote-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .a-share-roll-rules {
+    padding: 14px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .a-share-roll-rules dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .panel.a-share-quotes-panel {
+    padding: 14px;
+  }
+
+  .a-share-roll-rules dl {
+    grid-template-columns: 1fr;
+  }
 }
 
 .panel {

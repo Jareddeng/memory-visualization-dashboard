@@ -110,3 +110,30 @@ export function loadAShareData(workbookPath) {
     basis: { name: "中证1000股指期货年化基差", unit: "%", points: basis },
   };
 }
+
+export function loadCrowdingData(workbookPath) {
+  const workbook = XLSX.readFile(workbookPath, { cellDates: true });
+  const sheet = workbook.Sheets["a_stock_crowding_real_6y_202010"];
+  if (!sheet?.["!ref"]) throw new Error("A股拥挤度工作簿缺少数据工作表");
+
+  const range = XLSX.utils.decode_range(sheet["!ref"]);
+  const points = [];
+  for (let row = range.s.r + 2; row <= range.e.r + 1; row += 1) {
+    const date = displayDate(sheet[`A${row}`]);
+    const top5 = numberCell(sheet[`H${row}`]);
+    const top10 = numberCell(sheet[`I${row}`]);
+    const top5Rank = numberCell(sheet[`J${row}`]);
+    const top10Rank = numberCell(sheet[`K${row}`]);
+    if (!date || [top5, top10, top5Rank, top10Rank].some((value) => value === null)) continue;
+    if (top5Rank < 0 || top5Rank > 1 || top10Rank < 0 || top10Rank > 1) continue;
+    points.push({
+      date,
+      top5,
+      top10,
+      top5Rank: Math.round(top5Rank * 10000) / 100,
+      top10Rank: Math.round(top10Rank * 10000) / 100,
+    });
+  }
+  if (!points.length) throw new Error("A股拥挤度工作簿缺少有效的近三年分位数据");
+  return { source: "A股拥挤度工作簿", points: points.sort((a, b) => a.date.localeCompare(b.date)) };
+}
