@@ -1481,29 +1481,44 @@ function makeBasisOption(data: ASharePayload["basis"]): echarts.EChartsCoreOptio
   };
 }
 
-function makeCrowdingOption(
-  data: ASharePayload["crowding"],
-  mode: "both" | "top5" | "top10",
-  showRankLines: boolean,
-): echarts.EChartsCoreOption {
-  const selected = mode === "both" ? ["top5", "top10"] as const : [mode] as const;
+const crowdingLegend = [
+  { key: "top5", label: "前5%拥挤度", tone: "top5", kind: "line" },
+  { key: "top10", label: "前10%拥挤度", tone: "top10", kind: "line" },
+  { key: "top5RankBar", label: "前5%分位柱", tone: "top5", kind: "bar" },
+  { key: "top10RankBar", label: "前10%分位柱", tone: "top10", kind: "bar" },
+  { key: "top5RankLine", label: "前5%分位线", tone: "top5", kind: "dashed" },
+  { key: "top10RankLine", label: "前10%分位线", tone: "top10", kind: "dashed" },
+] as const;
+
+type CrowdingSeriesKey = (typeof crowdingLegend)[number]["key"];
+
+const defaultCrowdingVisibility: Record<CrowdingSeriesKey, boolean> = {
+  top5: true,
+  top10: true,
+  top5RankBar: true,
+  top10RankBar: true,
+  top5RankLine: false,
+  top10RankLine: false,
+};
+
+function makeCrowdingOption(data: ASharePayload["crowding"], visible: Record<CrowdingSeriesKey, boolean>): echarts.EChartsCoreOption {
   const series: any[] = [];
-  for (const key of selected) {
+  for (const key of ["top5", "top10"] as const) {
     const isTop5 = key === "top5";
     const label = isTop5 ? "前5%" : "前10%";
     const color = isTop5 ? "#147d75" : "#d69332";
     const rankKey = isTop5 ? "top5Rank" : "top10Rank";
-    series.push({
+    if (visible[`${key}RankBar`]) series.push({
       name: `${label}三年分位·柱`, type: "bar", yAxisIndex: 1, barMaxWidth: 5,
       itemStyle: { color, opacity: 0.16 }, z: 1,
       data: data.points.map((point) => [point.date, point[rankKey]]),
     });
-    series.push({
+    if (visible[key]) series.push({
       name: `${label}拥挤度`, type: "line", yAxisIndex: 0, showSymbol: false,
       lineStyle: { width: 2, color }, itemStyle: { color }, z: 3,
       data: data.points.map((point) => [point.date, point[key]]),
     });
-    if (showRankLines) series.push({
+    if (visible[`${key}RankLine`]) series.push({
       name: `${label}三年分位·线`, type: "line", yAxisIndex: 1, showSymbol: false,
       lineStyle: { width: 1.5, type: "dashed", color }, itemStyle: { color }, z: 4,
       data: data.points.map((point) => [point.date, point[rankKey]]),
@@ -1540,8 +1555,7 @@ function makeCrowdingOption(
 }
 
 function AShareMarketsPage({ data }: { data: ASharePayload }) {
-  const [crowdingMode, setCrowdingMode] = React.useState<"both" | "top5" | "top10">("both");
-  const [showRankLines, setShowRankLines] = React.useState(false);
+  const [crowdingVisibility, setCrowdingVisibility] = React.useState(defaultCrowdingVisibility);
   const quotes = data.quotes;
   const value = (amount: number | null, digits = 2) => amount === null
     ? null
@@ -1618,20 +1632,20 @@ function AShareMarketsPage({ data }: { data: ASharePayload }) {
             <h2>A股拥挤度</h2>
             <span>{data.crowding.points[0]?.date} 至 {data.crowding.points.at(-1)?.date}</span>
           </div>
-          <div className="a-share-crowding-controls">
-            <div className="a-share-crowding-segments" role="group" aria-label="拥挤度范围">
-              {([ ["both", "全部"], ["top5", "前5%"], ["top10", "前10%"] ] as const).map(([mode, label]) => (
-                <button type="button" key={mode} aria-pressed={crowdingMode === mode} onClick={() => setCrowdingMode(mode)}>
-                  {mode !== "both" ? <span className={`a-share-series-swatch ${mode}`} aria-hidden="true" /> : null}{label}
-                </button>
-              ))}
-            </div>
-            <label className="a-share-rank-line-toggle">
-              <input type="checkbox" checked={showRankLines} onChange={(event) => setShowRankLines(event.target.checked)} />
-              分位折线
-            </label>
+          <div className="a-share-crowding-legend" role="group" aria-label="拥挤度图例">
+            {crowdingLegend.map((item) => (
+              <button
+                type="button"
+                key={item.key}
+                aria-pressed={crowdingVisibility[item.key]}
+                onClick={() => setCrowdingVisibility((current) => ({ ...current, [item.key]: !current[item.key] }))}
+              >
+                <span className={`a-share-legend-key ${item.tone} ${item.kind}`} aria-hidden="true" />
+                {item.label}
+              </button>
+            ))}
           </div>
-          <Chart option={makeCrowdingOption(data.crowding, crowdingMode, showRankLines)} />
+          <Chart option={makeCrowdingOption(data.crowding, crowdingVisibility)} />
         </article>
       </section>
     </>
