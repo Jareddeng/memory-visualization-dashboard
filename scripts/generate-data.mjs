@@ -25,6 +25,12 @@ const stockSymbols = [
   { ticker: "MU", name: "美光科技", exchange: "NASDAQ", currency: "USD" },
   { ticker: "DRAM", name: "Roundhill Memory ETF", exchange: "NYSE Arca", currency: "USD" },
 ];
+const aShareIndexSymbols = [
+  { ticker: "000001.SS", name: "上证指数", exchange: "SSE", currency: "点" },
+  { ticker: "000300.SS", name: "沪深300", exchange: "CSI", currency: "点" },
+  { ticker: "000688.SS", name: "科创50", exchange: "SSE", currency: "点" },
+  { ticker: "000852.SS", name: "中证1000", exchange: "CSI", currency: "点" },
+];
 
 await fs.mkdir(processedDir, { recursive: true });
 await fs.mkdir(publicProcessedDir, { recursive: true });
@@ -37,6 +43,7 @@ const reports = await loadReports();
 const trackers = await loadTrackers();
 const intel = await loadIntel();
 const stocks = await loadStocks();
+const aShareIndices = await loadStockGroup(aShareIndexSymbols, "a-share-indices.json", "A股指数", fetchAShareIndexHistory, "Eastmoney daily index closes (1y)");
 const metadata = {
   generated_at: new Date().toISOString(),
   price_points: prices.length,
@@ -53,6 +60,7 @@ if (!validateOnly) {
   await writeJson("a-share.json", aShare);
   await writeJson("macro.json", macro);
   await writeJson("stocks.json", stocks);
+  await writeJson("a-share-indices.json", aShareIndices);
   await writeJson("reports.json", { reports });
   await writeJson("trackers.json", trackers);
   await writeJson("intel.json", { records: intel });
@@ -314,13 +322,17 @@ function groupPrices(rows) {
 }
 
 async function loadStocks() {
-  const fallback = await readExistingJson("stocks.json");
+  return loadStockGroup(stockSymbols, "stocks.json", "股票");
+}
+
+async function loadStockGroup(symbols, fallbackFile, label, fetchHistory = fetchStockHistory, source = "Yahoo Finance chart API range=1y (completed daily close)") {
+  const fallback = await readExistingJson(fallbackFile);
   const histories = [];
   const failures = [];
 
-  for (const stock of stockSymbols) {
+  for (const stock of symbols) {
     try {
-      histories.push(await fetchStockHistory(stock));
+      histories.push(await fetchHistory(stock));
     } catch (error) {
       const fallbackRows = fallback?.history?.filter((row) => row.ticker === stock.ticker) ?? [];
       if (fallbackRows.length) {
@@ -333,25 +345,65 @@ async function loadStocks() {
   }
 
   const history = histories.flat().sort((a, b) => `${a.ticker}|${a.date}`.localeCompare(`${b.ticker}|${b.date}`));
-  const latest = stockSymbols.map((stock) => {
+  const latest = symbols.map((stock) => {
     const rows = history.filter((row) => row.ticker === stock.ticker);
     return rows[rows.length - 1];
   }).filter(Boolean);
 
   if (!history.length && fallback) {
-    return { ...fallback, warning: `股票在线更新失败，使用既有数据: ${failures.join("; ")}` };
+    return { ...fallback, warning: `${label}在线更新失败，使用既有数据: ${failures.join("; ")}` };
   }
   if (!history.length) {
-    return { latest: [], history: [], source: "unavailable", warning: `股票在线更新失败: ${failures.join("; ")}` };
+    return { latest: [], history: [], source: "unavailable", warning: `${label}在线更新失败: ${failures.join("; ")}` };
   }
 
   return {
     latest,
     history,
-    source: "Yahoo Finance chart API range=1y (completed daily close)",
+    source,
     generated_at: new Date().toISOString(),
-    ...(failures.length ? { warning: `部分股票在线更新失败，已使用既有数据: ${failures.join("; ")}` } : {}),
+    ...(failures.length ? { warning: `部分${label}在线更新失败，已使用既有数据: ${failures.join("; ")}` } : {}),
   };
+}
+
+async function fetchAShareIndexHistory(stock) {
+  try {
+    const oneYearAgo = new Date();
+    oneYearAgo.setUTCFullYear(oneYearAgo.getUTCFullYear() - 1);
+    const begin = oneYearAgo.toISOString().slice(0, 10).replaceAll("-", "");
+    const code = stock.ticker.split(".")[0];
+    const url = `https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.${code}&klt=101&fqt=0&beg=${begin}&end=20500101&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56`;
+    const json = await getJson(url);
+    const klines = json.data?.klines;
+    if (!Array.isArray(klines) || klines.length < 100) throw new Error(`日线不足: ${stock.ticker}`);
+    const today = formatInTimeZone(new Date(), "Asia/Shanghai");
+    const chinaHour = Number(new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Shanghai", hour: "2-digit", hourCycle: "h23" }).format(new Date()));
+    const rows = [];
+    for (const kline of klines) {
+      const [date, , closeText] = kline.split(",");
+      const close = Number(closeText);
+      if (!Number.isFinite(close) || (date === today && chinaHour < 15)) continue;
+      const previousRow = rows.at(-1);
+      const change = previousRow ? close - previousRow.close : 0;
+      rows.push({
+        date,
+        previous_date: previousRow?.date ?? null,
+        ticker: stock.ticker,
+        name: stock.name,
+        exchange: stock.exchange,
+        currency: stock.currency,
+        price_basis: "completed_daily_close",
+        close: round(close, 2),
+        change: round(change, 2),
+        change_pct: previousRow?.close ? round((change / previousRow.close) * 100, 2) : 0,
+      });
+    }
+    return rows;
+  } catch (primaryError) {
+    const yahooRows = await fetchStockHistory(stock);
+    if (yahooRows.length < 100) throw new Error(`东方财富: ${primaryError.message}; Yahoo 日线不足`);
+    return yahooRows;
+  }
 }
 
 async function fetchStockHistory(stock) {

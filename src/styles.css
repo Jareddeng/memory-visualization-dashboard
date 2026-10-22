@@ -805,6 +805,45 @@ h2 {
   height: 100%;
 }
 
+.a-share-overview {
+  display: grid;
+  gap: 16px;
+}
+
+.a-share-overview-kpis,
+.a-share-index-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.a-share-crowding-kpi {
+  min-width: 0;
+}
+
+.a-share-index-grid .overview-stock-card {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.a-share-index-empty {
+  min-height: 248px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.a-share-index-empty span {
+  color: var(--subtle);
+}
+
+@media (max-width: 760px) {
+  .a-share-overview-kpis,
+  .a-share-index-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .major-event-timeline {
   display: grid;
   gap: 10px;

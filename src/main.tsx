@@ -331,6 +331,7 @@ type Metadata = {
 type AppData = {
   prices: PricePayload;
   aShare: ASharePayload;
+  aShareIndices: StockPayload;
   macro: MacroPayload;
   stocks: StockPayload;
   reports: Report[];
@@ -471,6 +472,7 @@ function useJson<T>(url: string) {
 function useDashboardData() {
   const prices = useJson<PricePayload>("./data/processed/prices.json");
   const aShare = useJson<ASharePayload>("./data/processed/a-share.json");
+  const aShareIndices = useJson<StockPayload>("./data/processed/a-share-indices.json");
   const macro = useJson<MacroPayload>("./data/processed/macro.json");
   const stocks = useJson<StockPayload>("./data/processed/stocks.json");
   const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json");
@@ -478,15 +480,16 @@ function useDashboardData() {
   const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json");
   const metadata = useJson<Metadata>("./data/processed/metadata.json");
 
-  const error = prices.error || aShare.error || macro.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
-  const loading = !prices.data || !aShare.data || !macro.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
+  const error = prices.error || aShare.error || aShareIndices.error || macro.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
+  const loading = !prices.data || !aShare.data || !aShareIndices.data || !macro.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
 
   return {
     data:
-      prices.data && aShare.data && macro.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
+      prices.data && aShare.data && aShareIndices.data && macro.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
         ? {
             prices: prices.data,
             aShare: aShare.data,
+            aShareIndices: aShareIndices.data,
             macro: macro.data,
             stocks: stocks.data,
             reports: reports.data.reports,
@@ -1036,7 +1039,9 @@ function App() {
             onExport={() => exportIntelligence(data, allIntelRecords)}
           />
         ) : null}
-        </> : activeSector === "a-share" && activePage === "markets"
+        </> : activeSector === "a-share" && activePage === "overview"
+          ? <AShareOverviewPage crowding={data.aShare.crowding} indices={data.aShareIndices} />
+          : activeSector === "a-share" && activePage === "markets"
           ? <AShareMarketsPage data={data.aShare} />
           : activeSector === "macro" && activePage === "markets"
             ? <MacroMarketsPage data={data.macro} />
@@ -1152,7 +1157,7 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     { key: "reports", label: "报告库", detail: "日报 / 专题 / 归档" },
   ];
   const aSharePages: PageNavItem[] = [
-    placeholderPages[0],
+    { key: "overview", label: "概览", detail: "拥挤度 / 指数" },
     {
       key: "markets",
       label: "市场图表",
@@ -1295,6 +1300,44 @@ function OverviewPage({
         </div>
         <IndustryThemeWatch records={intelRecords} />
       </section>
+    </section>
+  );
+}
+
+function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["crowding"]; indices: StockPayload }) {
+  const latestCrowding = [...crowding.points]
+    .filter((point) => Number.isFinite(point.top5) && Number.isFinite(point.top10))
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .at(-1);
+  const indexOrder = ["000001.SS", "000300.SS", "000688.SS", "000852.SS"];
+  return (
+    <section className="a-share-overview">
+      <div className="section-heading">
+        <h1>A股可视化看板</h1>
+        <p>拥挤度最新观测与主要指数近一年走势</p>
+      </div>
+      <div className="a-share-overview-kpis">
+        {(["top5", "top10"] as const).map((key) => (
+          <article className="kpi-card a-share-crowding-kpi" key={key}>
+            <span>A股前{key === "top5" ? "5%" : "10%"}拥挤度</span>
+            <strong>{latestCrowding ? `${latestCrowding[key].toFixed(1)}%` : "暂无数据"}</strong>
+            <p>{latestCrowding ? `${latestCrowding.date} · 滚动三年分位 ${latestCrowding[key === "top5" ? "top5Rank" : "top10Rank"].toFixed(1)}%` : "等待拥挤度数据更新"}</p>
+          </article>
+        ))}
+      </div>
+      <div className="a-share-index-grid" aria-label="A股指数近一年趋势">
+        {indexOrder.map((ticker) => {
+          const stock = indices.latest.find((item) => item.ticker === ticker);
+          return stock ? <OverviewStockCard stock={stock} history={indices.history} key={ticker} /> : (
+            <article className="panel a-share-index-empty" key={ticker}>
+              <strong>{({ "000001.SS": "上证指数", "000300.SS": "沪深300", "000688.SS": "科创50", "000852.SS": "中证1000" } as Record<string, string>)[ticker]}</strong>
+              <span>行情暂未获取</span>
+            </article>
+          );
+        })}
+      </div>
+      {indices.warning ? <p className="a-share-source-note">{indices.warning}</p> : null}
+      <p className="a-share-source-note">指数收盘价由定时 Action 更新 · {indices.source === "unavailable" ? "数据源暂不可用" : indices.source.startsWith("Eastmoney") ? "东方财富日线" : "Yahoo Finance 日线"}</p>
     </section>
   );
 }
