@@ -868,7 +868,7 @@ function App() {
       <main className="shell">
         <section className="state-panel">
           <RefreshCw className="spin" />
-          <h1>正在加载存储行业看板</h1>
+          <h1>正在加载多资产研究中枢</h1>
         </section>
       </main>
     );
