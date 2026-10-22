@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-22-micron-taoyuan-strike",
+      "type": "重大事件",
+      "impact": "neutral",
+      "date": "2026-10-22",
+      "title": "美光台湾桃园工会10月22日发起一日警告式罢工，与台中工会调解同日",
+      "product": "DRAM,HBM",
+      "source": "Nikkei Asia（援引路透社）",
+      "url": "https://asia.nikkei.com/business/tech/semiconductors/micron-union-in-taiwan-to-launch-one-day-strike-as-bonus-dispute-escalates",
+      "summary": "美光（Micron）台湾桃园厂工会宣布于10月22日举行一日罢工，声援同日在台中厂与公司进行第二次劳资调解的台中工会。争议核心为2026年一次性奖金金额及未来常态化的利润分享制度（工会主张按营业利润15%季度分红）；工会称此次为警告式罢工而非中断谈判，若美光提出可接受方案可随时签署协议。美光在台湾雇员约1.5万人、累计投资超1.6万亿新台币，台湾贡献了其2026财年大部分DRAM产出，桃园Fab以DRAM为主、台中厂为HBM重要基地。目前停产影响尚不明确，若罢工延长或蔓延至台中，可能加剧本已紧张的DRAM/HBM供应。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "桃园一日罢工→Fab设备维护与工艺监控人员缺勤→良率与产出存在波动风险→DRAM/HBM供应边际收紧→存储合约价上行风险加大、Micron股价事件驱动波动；若台中调解达成协议→罢工风险收敛→供应担忧消退、股价修复。",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-10-29"
+    },
+    {
       "id": "2026-10-21-samsung-sk-hynix-china-nand-upgrade",
       "type": "产业链跟踪",
       "impact": "bearish",
@@ -37,6 +56,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-28"
+    },
+    {
+      "id": "2026-10-21-trendforce-q4-dram-forecast",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-10-21",
+      "title": "集邦咨询预估2026年Q4 DRAM合约价环比上涨约20%，涨幅较Q2、Q3放缓",
+      "product": "DRAM,HBM,服务器DRAM,企业级SSD",
+      "source": "财联社《科创板日报》",
+      "url": "https://www.cls.cn/detail/2510491",
+      "summary": "集邦咨询（TrendForce）10月21日发布预估，2026年第四季度DRAM合约价格环比上涨约20%，较第二季度约80%、第三季度约40%的涨幅明显放缓，但市场仍处于供应紧张、需求强劲的价格高位周期。上涨动力来自AI推理需求扩张：更大模型、更长上下文窗口及KV缓存需求拉动服务器DRAM与企业级SSD的容量与带宽需求，同时三星、SK Hynix、美光等原厂将产能优先投向HBM等高端产品，传统DRAM供给更趋紧张。涨幅放缓原因包括前期价格基数已高、终端购买力减弱，以及部分长期采购协议（LTA）中的价格上限逐步生效。另有消息称英伟达考虑将Rubin Ultra的HBM堆叠从12层降至8层以缓解HBM供应紧张。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "Q4 DRAM合约价环比再涨约20%→原厂ASP与营收维持高位→三星、SK Hynix、美光利润率继续获支撑；同时涨幅收敛叠加LTA价格上限生效→后续涨价弹性受限→下游模组厂与终端厂商成本压力边际缓解；HBM若降层数→同量DRAM晶圆可支撑更多GPU出货→服务器DRAM供需结构再平衡。",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-20"
     },
     {
       "id": "2026-10-20-us-memory-stocks-premarket-drop",
