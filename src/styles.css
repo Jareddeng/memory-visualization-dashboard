@@ -1252,7 +1252,6 @@ h2 {
 
 .macro-chart-panel {
   min-width: 0;
-  scroll-margin-top: 18px;
 }
 
 .macro-chart-head {
