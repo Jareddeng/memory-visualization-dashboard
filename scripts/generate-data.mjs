@@ -44,7 +44,7 @@ const reports = await loadReports();
 const trackers = await loadTrackers();
 const intel = await loadIntel();
 const stocks = await loadStocks();
-const aShareIndices = await loadStockGroup(aShareIndexSymbols, "a-share-indices.json", "A股指数", fetchAShareIndexHistory, "Eastmoney daily index closes (1y)");
+const aShareIndices = await loadStockGroup(aShareIndexSymbols, "a-share-indices.json", "A股指数", fetchAShareIndexHistory, "Tencent/Eastmoney daily index closes (1y)");
 const metadata = {
   generated_at: new Date().toISOString(),
   price_points: prices.length,
@@ -336,10 +336,16 @@ async function loadStockGroup(symbols, fallbackFile, label, fetchHistory = fetch
   const failures = [];
 
   for (const stock of symbols) {
+    const fallbackRows = fallback?.history?.filter((row) => row.ticker === stock.ticker) ?? [];
     try {
-      histories.push(await fetchHistory(stock));
+      const fetchedRows = await fetchHistory(stock);
+      if (fallbackRows.length && fetchedRows.at(-1)?.date < fallbackRows.at(-1)?.date) {
+        histories.push(fallbackRows);
+        failures.push(`${stock.ticker}: 行情源晚于缓存，保留 ${fallbackRows.at(-1).date} 收盘价`);
+      } else {
+        histories.push(fetchedRows);
+      }
     } catch (error) {
-      const fallbackRows = fallback?.history?.filter((row) => row.ticker === stock.ticker) ?? [];
       if (fallbackRows.length) {
         histories.push(fallbackRows);
         failures.push(`${stock.ticker}: ${error.message}`);
@@ -372,43 +378,66 @@ async function loadStockGroup(symbols, fallbackFile, label, fetchHistory = fetch
 }
 
 async function fetchAShareIndexHistory(stock) {
+  const code = stock.ticker.split(".")[0];
+  const errors = [];
+  try {
+    const symbol = `sh${code}`;
+    const json = await getJson(`https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=${symbol},day,,,260,qfq`);
+    const klines = json.data?.[symbol]?.day ?? json.data?.[symbol]?.qfqday;
+    if (!Array.isArray(klines) || klines.length < 100) throw new Error(`日线不足: ${stock.ticker}`);
+    return parseAShareIndexRows(stock, klines.map(([date, , close]) => [date, close]));
+  } catch (error) {
+    errors.push(`腾讯财经: ${error.message || String(error)}`);
+  }
   try {
     const oneYearAgo = new Date();
     oneYearAgo.setUTCFullYear(oneYearAgo.getUTCFullYear() - 1);
     const begin = oneYearAgo.toISOString().slice(0, 10).replaceAll("-", "");
-    const code = stock.ticker.split(".")[0];
     const url = `https://push2his.eastmoney.com/api/qt/stock/kline/get?secid=1.${code}&klt=101&fqt=0&beg=${begin}&end=20500101&fields1=f1,f2,f3,f4,f5,f6&fields2=f51,f52,f53,f54,f55,f56`;
     const json = await getJson(url);
     const klines = json.data?.klines;
     if (!Array.isArray(klines) || klines.length < 100) throw new Error(`日线不足: ${stock.ticker}`);
-    const today = formatInTimeZone(new Date(), "Asia/Shanghai");
-    const chinaHour = Number(new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Shanghai", hour: "2-digit", hourCycle: "h23" }).format(new Date()));
-    const rows = [];
-    for (const kline of klines) {
-      const [date, , closeText] = kline.split(",");
-      const close = Number(closeText);
-      if (!Number.isFinite(close) || (date === today && chinaHour < 15)) continue;
-      const previousRow = rows.at(-1);
-      const change = previousRow ? close - previousRow.close : 0;
-      rows.push({
-        date,
-        previous_date: previousRow?.date ?? null,
-        ticker: stock.ticker,
-        name: stock.name,
-        exchange: stock.exchange,
-        currency: stock.currency,
-        price_basis: "completed_daily_close",
-        close: round(close, 2),
-        change: round(change, 2),
-        change_pct: previousRow?.close ? round((change / previousRow.close) * 100, 2) : 0,
-      });
-    }
-    return rows;
-  } catch (primaryError) {
-    const yahooRows = await fetchStockHistory(stock);
-    if (yahooRows.length < 100) throw new Error(`东方财富: ${primaryError.message}; Yahoo 日线不足`);
-    return yahooRows;
+    return parseAShareIndexRows(stock, klines.map((kline) => {
+      const [date, , close] = kline.split(",");
+      return [date, close];
+    }));
+  } catch (error) {
+    errors.push(`东方财富: ${error.message || String(error)}`);
   }
+  try {
+    const yahooRows = await fetchStockHistory(stock);
+    if (yahooRows.length < 100) throw new Error("日线不足");
+    return yahooRows;
+  } catch (error) {
+    throw new Error(`${errors.join("; ")}; Yahoo: ${error.message || String(error)}`);
+  }
+}
+
+function parseAShareIndexRows(stock, klines) {
+  const now = new Date();
+  const today = formatInTimeZone(now, "Asia/Shanghai");
+  const chinaHour = Number(new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Shanghai", hour: "2-digit", hourCycle: "h23" }).format(now));
+  const rows = [];
+  for (const [date, closeText] of klines) {
+    const close = Number(closeText);
+    if (!Number.isFinite(close) || (date === today && chinaHour < 15)) continue;
+    const previousRow = rows.at(-1);
+    const change = previousRow ? close - previousRow.close : 0;
+    rows.push({
+      date,
+      previous_date: previousRow?.date ?? null,
+      ticker: stock.ticker,
+      name: stock.name,
+      exchange: stock.exchange,
+      currency: stock.currency,
+      price_basis: "completed_daily_close",
+      close: round(close, 2),
+      change: round(change, 2),
+      change_pct: previousRow?.close ? round((change / previousRow.close) * 100, 2) : 0,
+    });
+  }
+  if (rows.length < 100) throw new Error(`有效日线不足: ${stock.ticker}`);
+  return rows;
 }
 
 async function fetchStockHistory(stock) {

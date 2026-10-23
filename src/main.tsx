@@ -1358,7 +1358,7 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
         })}
       </div>
       {indices.warning ? <p className="a-share-source-note">{indices.warning}</p> : null}
-      <p className="a-share-source-note">指数收盘价来源：{indices.source === "unavailable" ? "数据暂不可用" : indices.source.startsWith("Eastmoney") ? "东方财富日线" : "Yahoo Finance 日线"}</p>
+      <p className="a-share-source-note">指数收盘价来源：{indices.source === "unavailable" ? "数据暂不可用" : indices.source.startsWith("Tencent/") ? "腾讯财经 / 东方财富日线" : indices.source.startsWith("Eastmoney") ? "东方财富日线" : "Yahoo Finance 日线"}</p>
     </section>
   );
 }
