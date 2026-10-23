@@ -1759,7 +1759,7 @@ function makeMacroOption(chart: MacroChartPayload): echarts.EChartsCoreOption {
       itemHeight: 8,
       textStyle: { color: "#607086", fontSize: 11 },
     },
-    grid: { left: 58, right: dualAxis ? 58 : 20, top: 24, bottom: seasonal ? 52 : 88 },
+    grid: { left: 58, right: dualAxis ? 58 : 20, top: 46, bottom: seasonal ? 52 : 88 },
     xAxis: seasonal
       ? { type: "category", boundaryGap: false, data: months, axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } }
       : { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },

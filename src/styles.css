@@ -1262,6 +1262,7 @@ h2 {
   align-items: baseline;
   gap: 4px 12px;
   min-height: 40px;
+  margin-bottom: 8px;
 }
 
 .macro-chart-head h2 {
