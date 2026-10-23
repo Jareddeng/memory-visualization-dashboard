@@ -13975,6 +13975,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-29"
+    },
+    {
+      "id": "2026-10-21-memory-stocks-premarket-rally",
+      "date": "2026-10-21",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "C",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "intraday",
+      "title": "美股存储芯片股盘前上扬：SK海力士涨超4%，美光、闪迪涨近3%",
+      "product": "DRAM,NAND,存储芯片",
+      "source": "财联社",
+      "url": "https://m.cls.cn/detail/2511028",
+      "summary": "10月21日（北京时间16:13，对应美东时间当日早盘前），美股存储芯片股盘前集体上扬，SK海力士（SK Hynix）涨超4%，美光科技（Micron）、闪迪（SanDisk）均涨近3%。",
+      "transmission_path": "存储股盘前走强→反映市场对存储涨价周期与AI存储需求的乐观定价→可能带动A股存储概念板块情绪联动",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-28"
     }
   ]
 }
