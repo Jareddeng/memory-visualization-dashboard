@@ -56,7 +56,7 @@ type ASharePayload = {
 type MacroChartPayload = {
   id: string;
   title: string;
-  kind: "seasonal-line" | "line" | "stacked-bar";
+  kind: "seasonal-line" | "line" | "line-dual-axis" | "stacked-bar";
   unit: string;
   sourceFile: string;
   latestDate: string | null;
@@ -1180,13 +1180,17 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     {
       key: "markets",
       label: "市场图表",
-      detail: "社融 / 通胀 / 非农",
+      detail: "就业 / 通胀 / 利率 / 社融",
       subItems: [
-        { label: "社融当月值", anchorId: "macro-social-financing" },
-        { label: "社融与 M2", anchorId: "macro-credit-growth" },
-        { label: "美国通胀", anchorId: "macro-us-inflation" },
         { label: "非农就业", anchorId: "macro-us-payroll" },
+        { label: "失业率", anchorId: "macro-us-unemployment" },
         { label: "非农分项", anchorId: "macro-us-payroll-sectors" },
+        { label: "通胀同比", anchorId: "macro-us-inflation-yoy" },
+        { label: "通胀环比", anchorId: "macro-us-inflation-mom" },
+        { label: "美债与政策利率", anchorId: "macro-us-bond-yields" },
+        { label: "社融与 M2", anchorId: "macro-credit-growth" },
+        { label: "新增人民币贷款", anchorId: "macro-new-loans" },
+        { label: "社融当月值", anchorId: "macro-social-financing" },
       ],
     },
     placeholderPages[2],
@@ -1719,15 +1723,17 @@ function AShareMarketsPage({ data }: { data: ASharePayload }) {
 function makeMacroOption(chart: MacroChartPayload): echarts.EChartsCoreOption {
   const seasonal = chart.kind === "seasonal-line";
   const stacked = chart.kind === "stacked-bar";
+  const dualAxis = chart.kind === "line-dual-axis";
   const months = Array.from({ length: 12 }, (_, index) => `${index + 1}月`);
   const palette = ["#2388a6", "#e99534", "#62bdba", "#e46e6b", "#52679a", "#d5b64c", "#75aa80", "#97877d"];
   const series = chart.series.map((item, index) => ({
     name: item.name,
     type: stacked ? "bar" : "line",
+    yAxisIndex: dualAxis && index === 1 ? 1 : 0,
     stack: stacked ? "employment" : undefined,
     barMaxWidth: stacked ? 13 : undefined,
     showSymbol: false,
-    connectNulls: false,
+    connectNulls: chart.id.startsWith("us-inflation"),
     lineStyle: stacked ? undefined : { width: seasonal && index === chart.series.length - 1 ? 2.8 : 1.8 },
     emphasis: { focus: "series" },
     data: seasonal
@@ -1753,18 +1759,22 @@ function makeMacroOption(chart: MacroChartPayload): echarts.EChartsCoreOption {
       itemHeight: 8,
       textStyle: { color: "#607086", fontSize: 11 },
     },
-    grid: { left: 58, right: 20, top: 24, bottom: seasonal ? 52 : 88 },
+    grid: { left: 58, right: dualAxis ? 58 : 20, top: 24, bottom: seasonal ? 52 : 88 },
     xAxis: seasonal
       ? { type: "category", boundaryGap: false, data: months, axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } }
       : { type: "time", axisLabel: { color: "#607086" }, axisLine: { lineStyle: { color: "#d8e0ea" } } },
-    yAxis: {
+    yAxis: [{
       type: "value",
       name: chart.unit,
       scale: !stacked,
       nameTextStyle: { color: "#607086" },
       axisLabel: { color: "#607086" },
       splitLine: { lineStyle: { color: "#edf1f6" } },
-    },
+    }, ...(dualAxis ? [{
+      type: "value", name: chart.unit, scale: true,
+      nameTextStyle: { color: "#607086" }, axisLabel: { color: "#607086" },
+      splitLine: { show: false },
+    }] : [])],
     dataZoom: seasonal ? undefined : [
       {
         type: "slider", xAxisIndex: 0, start: 0,
