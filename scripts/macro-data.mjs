@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import XLSX from "xlsx";
 
@@ -7,6 +8,7 @@ const monthlyCharts = [
     title: "社融及 M2 同比增速",
     file: "宏观-社融及M2同比增速.xlsx",
     sheet: "中国_社会融资规模存量_同比",
+    totalSheet: "宏观-社融及M2同比增速",
     unit: "%",
     kind: "line",
     columns: [
@@ -19,6 +21,7 @@ const monthlyCharts = [
     title: "美国通胀数据",
     file: "宏观-美国通胀数据.xlsx",
     sheet: "美国_PCE_同比",
+    totalSheet: "宏观-美国通胀数据",
     unit: "%",
     kind: "line",
     columns: [
@@ -37,6 +40,7 @@ const monthlyCharts = [
     title: "新增非农就业人数及修正差值",
     file: "宏观-修正后非农12月移动平均减非农初值12月移动平均.xlsx",
     sheet: "美国_新增非农就业人数_季调",
+    totalSheet: "宏观-修正后非农12月移动平均减非农初值12月移动平均",
     unit: "千人",
     kind: "line",
     columns: [
@@ -49,16 +53,25 @@ const monthlyCharts = [
     title: "非农就业细分项",
     file: "宏观-非农就业数据-细项.xlsx",
     sheet: "服务业",
+    totalSheet: "宏观-非农就业数据-细项",
     unit: "千人",
     kind: "stacked-bar",
     columns: ["服务业", "采矿业", "建筑业", "制造业", "联邦政府", "州政府"].map((name) => ({ header: name, name })),
   },
 ];
 
-function workbookSheet(directory, file, sheetName) {
-  const workbook = XLSX.readFile(path.join(directory, file), { cellDates: true });
-  const sheet = workbook.Sheets[sheetName];
-  if (!sheet?.["!ref"]) throw new Error(`${file} 缺少工作表 ${sheetName}`);
+const totalFile = "宏观-总表.xlsx";
+
+function sourceFile(directory, legacyFile) {
+  return fs.existsSync(path.join(directory, totalFile)) ? totalFile : legacyFile;
+}
+
+function workbookSheet(directory, file, sheetName, totalSheetName = sheetName) {
+  const source = sourceFile(directory, file);
+  const targetSheet = source === totalFile ? totalSheetName : sheetName;
+  const workbook = XLSX.readFile(path.join(directory, source), { cellDates: true });
+  const sheet = workbook.Sheets[targetSheet];
+  if (!sheet?.["!ref"]) throw new Error(`${source} 缺少工作表 ${targetSheet}`);
   return sheet;
 }
 
@@ -78,7 +91,7 @@ function month(cell) {
 }
 
 function readMonthlyChart(directory, config) {
-  const sheet = workbookSheet(directory, config.file, config.sheet);
+  const sheet = workbookSheet(directory, config.file, config.sheet, config.totalSheet);
   const range = XLSX.utils.decode_range(sheet["!ref"]);
   const columns = config.columns.map((column) => {
     for (let col = 1; col <= range.e.c; col += 1) {
@@ -106,7 +119,7 @@ function readMonthlyChart(directory, config) {
   }
   return {
     id: config.id, title: config.title, kind: config.kind, unit: config.unit,
-    sourceFile: config.file,
+    sourceFile: sourceFile(directory, config.file),
     series: columns.map((column) => ({
       name: column.name,
       points: rows.map((row) => ({ date: row.date, value: row.values[column.name] })),
@@ -117,7 +130,7 @@ function readMonthlyChart(directory, config) {
 
 function readSocialFinancing(directory) {
   const file = "宏观-新增人民币贷款和社融-当月值.xlsx";
-  const sheet = workbookSheet(directory, file, "季节图_中国_社会融资规模_当月值");
+  const sheet = workbookSheet(directory, file, "季节图_中国_社会融资规模_当月值", "宏观-新增社融_季节图_中国_社会融资规模_当月值");
   const range = XLSX.utils.decode_range(sheet["!ref"]);
   const series = [];
   for (let col = 1; col <= range.e.c; col += 1) {
@@ -140,7 +153,7 @@ function readSocialFinancing(directory) {
   const lastMonth = latest.points.filter((point) => point.value !== null).at(-1)?.date;
   return {
     id: "social-financing", title: "中国社会融资规模：当月值", kind: "seasonal-line", unit: "亿元",
-    sourceFile: file, latestDate: lastMonth ? `${latest.name}-${lastMonth}` : null, series,
+    sourceFile: sourceFile(directory, file), latestDate: lastMonth ? `${latest.name}-${lastMonth}` : null, series,
   };
 }
 

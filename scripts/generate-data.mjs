@@ -36,8 +36,9 @@ await fs.mkdir(processedDir, { recursive: true });
 await fs.mkdir(publicProcessedDir, { recursive: true });
 
 const prices = await loadPrices();
-const aShare = loadAShareData(path.join(root, "edb_data", "A股.xlsx"));
-aShare.crowding = loadCrowdingData(path.join(root, "edb_data", "A股-拥挤度指标.xlsx"));
+const aShareWorkbook = path.join(root, "edb_data", "A股-总表.xlsx");
+const aShare = loadAShareData(aShareWorkbook);
+aShare.crowding = loadCrowdingData(aShareWorkbook);
 const macro = loadMacroData(path.join(root, "edb_data"));
 const reports = await loadReports();
 const trackers = await loadTrackers();
@@ -200,7 +201,11 @@ async function findWorkbookFiles() {
     } catch {
       continue;
     }
-    for (const name of names.filter((file) => file.toLowerCase().endsWith(".xlsx") && !file.startsWith("~$"))) {
+    const workbooks = names.filter((file) => file.toLowerCase().endsWith(".xlsx") && !file.startsWith("~$"));
+    const selected = location.rank === 2 && workbooks.includes("科技-总表.xlsx")
+      ? ["科技-总表.xlsx"]
+      : workbooks;
+    for (const name of selected) {
       files.push({
         name,
         path: path.join(location.dir, name),
