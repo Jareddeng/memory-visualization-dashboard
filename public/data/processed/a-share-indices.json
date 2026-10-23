@@ -11716,6 +11716,6 @@
     }
   ],
   "source": "Eastmoney daily index closes (1y)",
-  "generated_at": "2026-10-23T00:16:46.239Z",
+  "generated_at": "2026-10-23T04:18:03.053Z",
   "warning": "部分A股指数在线更新失败，已使用既有数据: 000001.SS: HTTP 429; 000300.SS: HTTP 429; 000688.SS: HTTP 429; 000852.SS: HTTP 429"
 }

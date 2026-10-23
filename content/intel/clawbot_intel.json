@@ -13994,6 +13994,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-10-28"
+    },
+    {
+      "id": "2026-10-22-samsung-hynix-china-nand-upgrade",
+      "date": "2026-10-22",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "三星、SK海力士确认升级在华NAND产线以生产更先进存储芯片",
+      "product": "NAND,DRAM",
+      "source": "同花顺财经",
+      "url": "https://m.10jqka.com.cn/20261022/c680970645.shtml",
+      "summary": "10月22日午后存储芯片概念回暖，云汉芯城、华天科技涨停。消息面上，三星电子及SK海力士确认正在升级其位于中国的工厂，以生产更先进的存储芯片，应对竞争对手带来的竞争并满足庞大的AI需求。两家公司在华安装光刻机等美国制造设备，均须每年申请美国许可证，目前升级工作正与华盛顿密切协商下进行。",
+      "transmission_path": "三星/SK海力士在华产线升级获批并推进 → 中国先进NAND/DRAM产能增加、国内存储供应链受益 → 云汉芯城、华天科技、德明利等相关A股当日涨停或冲高 → 改变市场对国内存储供给格局与国产替代节奏的预期。",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-10-29"
     }
   ]
 }
