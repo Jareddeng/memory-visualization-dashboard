@@ -12532,6 +12532,5 @@
     }
   ],
   "source": "Tencent/Eastmoney daily index closes (1y)",
-  "generated_at": "2026-10-24T00:19:38.044Z",
-  "warning": "部分A股指数在线更新失败，已使用既有数据: 000001.SS: 腾讯财经: HTTP 501; 东方财富: HTTP 403; Yahoo: HTTP 429; 000300.SS: 腾讯财经: HTTP 501; 东方财富: HTTP 403; Yahoo: HTTP 429; 000688.SS: 腾讯财经: HTTP 501; 东方财富: HTTP 403; Yahoo: HTTP 429; 000852.SS: 腾讯财经: HTTP 501; 东方财富: HTTP 403; Yahoo: HTTP 429"
+  "generated_at": "2026-10-24T04:20:04.307Z"
 }
