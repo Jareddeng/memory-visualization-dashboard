@@ -1,0 +1,40 @@
+[
+  {
+    "id": "2026-10-23-sk-hynix-solidigm-ipo",
+    "date": "2026-10-23",
+    "type": "重大事件",
+    "impact": "neutral",
+    "importance": "A",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1m",
+    "title": "SK海力士暂停Solidigm赴美IPO计划",
+    "product": "NAND,SSD,企业级SSD",
+    "source": "Bloomberg",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/sk-hynix-scraps-solidigm-us-225235060.html",
+    "summary": "SK海力士于10月23日（首尔时间）宣布暂停旗下美国NAND子公司Solidigm的Pre-IPO融资评估及赴美IPO计划，该IPO原定由Goldman Sachs、Morgan Stanley牵头，拟募资最高约150-200亿美元，用于美国新晶圆厂建设以满足AI存储需求。公司称受资本市场环境及半导体板块股价回调影响；韩国金融监管机构（FSS主席Lee Chan-jin）亦认为该交易触发本国\"重复上市\"限制条款。公司强调Solidigm美国建厂计划与增长前景不变，将寻求替代融资方式。消息公布后SK海力士股价盘中一度下跌约3%，随后反弹收涨3.2%至137.02。",
+    "transmission_path": "Solidigm赴美IPO暂停→美国NAND新厂融资路径生变→短期或通过集团内部资金或债券融资替代→若资本开支延后或影响2027年后企业级SSD产能扩张节奏→NAND供给紧张格局存在延长风险",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-10-30"
+  },
+  {
+    "id": "2026-10-22-wdc-q1fy27-earnings",
+    "date": "2026-10-22",
+    "type": "财报业绩",
+    "impact": "bullish",
+    "importance": "A",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1w",
+    "title": "西部数据FQ1营收同比增55%创新高 下季指引远超预期",
+    "product": "HDD,近线存储,数据存储",
+    "source": "Business Wire",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/wd-reports-fiscal-first-quarter-200100096.html",
+    "summary": "Western Digital于10月22日美股盘后公布FY2027 Q1财报（截至10月2日）：营收43.81亿美元，同比+55%、环比+17%，超市场预期约41.4亿美元；non-GAAP毛利率58.1%，non-GAAP摊薄EPS 4.64美元（同比+161%），高于预期的约4.08-4.11美元；经营现金流16.0亿美元。公司指引FQ2营收约51亿美元（同比+66-72%）、non-GAAP毛利率60.5%、non-GAAP EPS约5.80美元，均大幅超出华尔街预期，并将季度现金股息上调17%至0.175美元。管理层称强劲出货增长与定价改善共同驱动业绩，AI数据中心对高容量近线HDD需求持续旺盛。因市场预期已高，股价次日盘中走弱（前收354.19美元，日内区间339.55-360.66美元）；分析师目标价分歧加大：JPMorgan上调至650美元、Citi下调至660美元、UBS下调至435美元。",
+    "transmission_path": "云厂商AI数据存储需求拉动高容量近线HDD出货与涨价→WDC营收、毛利率与EPS创纪录并大幅上调指引→验证AI存储周期持续性→HDD双寡头（WDC、Seagate）及存储产业链估值获支撑→但利好兑现后需警惕高预期下的获利回吐",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-10-29"
+  }
+]
