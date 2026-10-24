@@ -77,6 +77,25 @@
       "review_date": "2026-10-30"
     },
     {
+      "id": "2026-10-23-memory-capex-cycle-peak",
+      "type": "行业分析",
+      "impact": "neutral",
+      "date": "2026-10-23",
+      "title": "存储资本开支豪赌：景气延续至2027还是2029年过剩？",
+      "product": "DRAM,HBM,NAND",
+      "source": "VLSI Korea",
+      "url": "https://www.vlsi.kr/en/memory-cycle-2029-oversupply-bet-en/",
+      "summary": "韩国财政部长李炯日10月18日对CNBC表示芯片景气至少持续到2027年；但当周存储股暴跌，三星七个交易日跌23.9%，SK海力士跌31.5%，KOSPI跌约21%，KB证券研究主管称之为过度反应。Maeil Business专栏警告2029年新产能集中释放后存储市场可能供过于求。尽管如此，三星2026年产能仍扩张约50%（平泽P5目标2028年），SK海力士基础设施投资扩大四倍（M15X目标2027年中投产）。2025年10月三星、SK海力士与OpenAI签署的Stargate项目意向书（月产90万片DRAM晶圆）构成需求底部。SK海力士10月28日、三星10月29日Q3财报将成为阶段性裁决点。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "存储股七个交易日暴跌（三星-23.9%，SK海力士-31.5%）反映市场对2029年产能过剩的担忧情绪→若10月28/29日Q3财报确认HBM需求强劲与LTA覆盖率，股价可能修复；反之若管理层暗示产能过度扩张，抛售或延续→直接影响DRAM/NAND合约价谈判预期与整个存储板块估值中枢。",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-11-22"
+    },
+    {
       "id": "2026-10-22-micron-taoyuan-strike",
       "type": "重大事件",
       "impact": "neutral",
