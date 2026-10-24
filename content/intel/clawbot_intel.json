@@ -14279,6 +14279,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-11-22"
+    },
+    {
+      "id": "2026-10-23-us-memory-stocks-rebound",
+      "date": "2026-10-23",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1d",
+      "title": "美股存储板块盘前反弹：SK海力士涨超6%，闪迪涨超4%，美光涨超3%",
+      "product": "DRAM,NAND,存储芯片",
+      "source": "财联社",
+      "url": "https://m.cls.cn/detail/2513552",
+      "summary": "财联社10月23日报道，美股存储板块盘前反弹，SK海力士涨超6%，闪迪（SanDisk）涨超4%，美光科技涨超3%。此前一周受长鑫存储（CXMT）4F² DRAM设计公布影响，存储股经历大幅回调，本次反弹显示市场情绪修复。",
+      "transmission_path": "存储板块盘前反弹→市场情绪从CXMT冲击中修复→原厂与模组厂股价联动上涨→反映机构对Q4合约涨价与AI存储需求的基本面判断未变",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-10-30"
     }
   ]
 }
