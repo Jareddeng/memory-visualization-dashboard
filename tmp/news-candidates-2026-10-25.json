@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "2026-10-23-memory-costs-pc-shipments-drop",
+    "date": "2026-10-23",
+    "type": "产业链跟踪",
+    "impact": "bearish",
+    "importance": "A",
+    "reaction_type": "sentiment",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "title": "存储涨价压制终端需求：Q3全球PC出货量同比下降21%",
+    "product": "DRAM,NAND,SSD,内存",
+    "source": "The Verge",
+    "url": "https://www.theverge.com/gadgets/1017144/global-pc-shipments-dropped-q3-2026-ram",
+    "summary": "Counterpoint Research初步数据显示，2026年第三季度全球PC出货量同比下降21%至5700万台，环比下降13.8%，主要因RAM、SSD等存储及其他零部件成本持续高企推高整机售价、抑制需求；消费级需求疲软，商用换机需求相对稳健但不足以对冲收缩。厂商分化明显：联想出货1500万台（-23%，份额26.3%）、惠普1030万台（-31%，跌幅为前六大厂商最大）、戴尔760万台（-25%）、苹果560万台（-11%，MacBook Neo缓冲下滑，份额升至9.8%）、华硕520万台（-7%，环比增19.4%）。Counterpoint预计Q4全球PC出货量同比降幅扩大至27%，2027年全年与2026年基本持平，强调企稳不等于复苏；部分厂商调整配置结构以吸收元件涨价，个别厂商重新采用DDR4等旧规格缓解成本压力。",
+    "transmission_path": "存储合约价持续上涨→PC整机物料成本中存储占比大幅上升→整机涨价、厂商削减低价配置→消费者换机周期延长、PC出货量同比暴跌→消费端存储需求走弱，与AI服务器存储需求强劲形成结构性分化；若涨价持续反噬终端需求，中期或制约存储位元出货增量，但短期仍强化存储厂商对PC厂商的议价能力与AI优先的产能分配格局。",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "review_date": "2026-11-22"
+  }
+]
