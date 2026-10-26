@@ -14431,6 +14431,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-11-01"
+    },
+    {
+      "id": "2026-10-26-sk-hynix-special-dividend-kioxia",
+      "date": "2026-10-26",
+      "type": "重大事件",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "SK Hynix考虑派发16万亿韩元特别股息，资金来自Kioxia投资收益",
+      "product": "DRAM,NAND,HBM,SSD",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/sk-hynix-stock-rises-korean-025235875.html",
+      "summary": "据韩国《东亚日报》报道，SK Hynix正考虑派发约16万亿韩元（120亿美元）特别股息，资金来源于减持Kioxia股份获得的约20万亿韩元投资收益。该派息额约为上半年Kioxia投资收益的80%。公司可能在10月28日Q3财报时公布具体方案。SK Hynix回应称正在研究多种股东回报措施，尚未确认具体金额。此外，SK Hynix已于10月23日终止Solidigm美国IPO计划。消息发布后，SK Hynix首尔上市股价微涨，美股SKHY盘前涨逾1%。",
+      "transmission_path": "SK Hynix特别股息计划 → 股东回报预期大幅升温 → 短期股价获支撑、市场情绪改善 → 同时印证Kioxia投资收益可观，反映存储行业高景气度下的盈利能力",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-11-02"
+    },
+    {
+      "id": "2026-10-26-sk-hynix-q3-earnings-preview",
+      "date": "2026-10-26",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "SK Hynix Q3财报前瞻：HBM4量产进展与特别股息成焦点，营收预期同比增316%",
+      "product": "DRAM,HBM,NAND,SSD",
+      "source": "TradingKey",
+      "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262238750-sk-hynix-q3-earnings-preview-hbm4-special-dividend-skhy-tradingkey",
+      "summary": "SK Hynix将于10月28日发布2026年Q3财报。据FactSet数据，市场预计Q3营收达710.5亿美元，同比增长约316%；调整后EPS为6.15美元，同比增长约392%。市场关注焦点包括HBM4量产爬坡进展、DRAM和NAND价格上涨对盈利能力的推动，以及此前报道的16万亿韩元特别股息计划。华尔街最高目标价为320美元。尽管AI内存需求持续增长，近期SK Hynix股价明显回调，投资者开始担忧存储行业景气能否持续，本次财报将成为验证关键。",
+      "transmission_path": "SK Hynix Q3财报预期强劲 → 若HBM4进展和特别股息落地将验证景气持续性 → 影响整个存储板块估值和情绪 → 关注10月28日财报电话会",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-11-02"
     }
   ]
 }
