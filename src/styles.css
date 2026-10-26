@@ -1369,10 +1369,46 @@ h2 {
   font-weight: 700;
 }
 
+.macro-institutional-chart-panel .institutional-chart-panel-head {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.macro-institutional-sources {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.macro-institutional-sources a {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.macro-institutional-sources a:hover {
+  background: var(--panel-soft);
+}
+
 .institutional-chart-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
+}
+
+.macro-institutional-chart-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.macro-institutional-chart-grid .institutional-chart-media img {
+  max-height: 420px;
+  object-fit: contain;
 }
 
 .institutional-chart-card {
@@ -1454,6 +1490,16 @@ h2 {
 .institutional-chart-meta {
   color: var(--subtle);
   font-size: 12px;
+}
+
+.institutional-chart-foot a {
+  color: var(--teal);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.institutional-chart-foot a:hover {
+  text-decoration: underline;
 }
 
 .chart-preview-modal {
@@ -3952,6 +3998,10 @@ button.mindmap-label {
 }
 
 @media (max-width: 1180px) {
+  .macro-institutional-sources {
+    grid-template-columns: 1fr;
+  }
+
   .kpi-grid {
     grid-template-columns: repeat(2, minmax(150px, 1fr));
   }

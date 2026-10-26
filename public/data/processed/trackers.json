@@ -1265,5 +1265,58 @@
         "note": "用于跟踪韩国市场盈利预期是否与存储周期共振。"
       }
     ]
+  },
+  "macro_institutional_charts": {
+    "updated_at": "2026-10-23",
+    "source": "华泰证券宏观报告 · 2026年10月",
+    "note": "9月非农、美国核心通胀与中国社融",
+    "sources": [
+      {
+        "title": "华泰 | 宏观：9月非农走弱边际降低加息压力",
+        "url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ"
+      },
+      {
+        "title": "华泰 | 宏观：住房升温推动美国9月核心CPI超预期",
+        "url": "https://mp.weixin.qq.com/s/iUVK-fYulUyS0c28S-3-iQ"
+      },
+      {
+        "title": "华泰 | 宏观：政府债发力托举社融——9月金融数据点评",
+        "url": "https://mp.weixin.qq.com/s/JQb382lVARmnFWb0Yc-1bA"
+      }
+    ],
+    "items": [
+      {
+        "chart_no": "图表1",
+        "title": "9月非农数据一览",
+        "topic": "华泰 | 宏观：9月非农走弱边际降低加息压力",
+        "status": "已上传截图",
+        "source_url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ",
+        "image_url": "./assets/macro-institutional-charts/huatai-us-payroll-summary-sep-2026.png"
+      },
+      {
+        "chart_no": "图表2",
+        "title": "9月非农就业细项",
+        "topic": "华泰 | 宏观：9月非农走弱边际降低加息压力",
+        "status": "已上传截图",
+        "source_url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ",
+        "image_url": "./assets/macro-institutional-charts/huatai-us-payroll-sectors-sep-2026.png"
+      },
+      {
+        "chart_no": "图表1",
+        "title": "美国9月CPI一览",
+        "topic": "华泰 | 宏观：住房升温推动美国9月核心CPI超预期",
+        "status": "已上传截图",
+        "source_url": "https://mp.weixin.qq.com/s/iUVK-fYulUyS0c28S-3-iQ",
+        "image_url": "./assets/macro-institutional-charts/huatai-us-cpi-sep-2026.png"
+      },
+      {
+        "chart_no": "图表1",
+        "title": "9月新增社融分项变动",
+        "topic": "华泰 | 宏观：政府债发力托举社融——9月金融数据点评",
+        "status": "已上传截图",
+        "source_url": "https://mp.weixin.qq.com/s/JQb382lVARmnFWb0Yc-1bA",
+        "image_url": "./assets/macro-institutional-charts/huatai-china-credit-sep-2026.png"
+      }
+    ]
   }
 }

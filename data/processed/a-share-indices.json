@@ -1,52 +1,52 @@
 {
   "latest": [
     {
-      "date": "2026-10-23",
-      "previous_date": "2026-10-22",
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
       "ticker": "000001.SS",
       "name": "上证指数",
       "exchange": "SSE",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 3690.48,
-      "change": 32.45,
-      "change_pct": 0.89
+      "close": 3697.52,
+      "change": 7.04,
+      "change_pct": 0.19
     },
     {
-      "date": "2026-10-23",
-      "previous_date": "2026-10-22",
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
       "ticker": "000300.SS",
       "name": "沪深300",
       "exchange": "CSI",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 4105.33,
-      "change": 69.03,
-      "change_pct": 1.71
+      "close": 4103.54,
+      "change": -1.79,
+      "change_pct": -0.04
     },
     {
-      "date": "2026-10-23",
-      "previous_date": "2026-10-22",
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
       "ticker": "000688.SS",
       "name": "科创50",
       "exchange": "SSE",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 1345.51,
-      "change": 39.64,
-      "change_pct": 3.04
+      "close": 1315.5,
+      "change": -30.01,
+      "change_pct": -2.23
     },
     {
-      "date": "2026-10-23",
-      "previous_date": "2026-10-22",
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
       "ticker": "000852.SS",
       "name": "中证1000",
       "exchange": "CSI",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 6734.55,
-      "change": 156.28,
-      "change_pct": 2.38
+      "close": 6630.78,
+      "change": -103.77,
+      "change_pct": -1.54
     }
   ],
   "history": [
@@ -3171,6 +3171,18 @@
       "change_pct": 0.89
     },
     {
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
+      "ticker": "000001.SS",
+      "name": "上证指数",
+      "exchange": "SSE",
+      "currency": "点",
+      "price_basis": "completed_daily_close",
+      "close": 3697.52,
+      "change": 7.04,
+      "change_pct": 0.19
+    },
+    {
       "date": "2025-09-22",
       "previous_date": null,
       "ticker": "000300.SS",
@@ -6289,6 +6301,18 @@
       "close": 4105.33,
       "change": 69.03,
       "change_pct": 1.71
+    },
+    {
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
+      "ticker": "000300.SS",
+      "name": "沪深300",
+      "exchange": "CSI",
+      "currency": "点",
+      "price_basis": "completed_daily_close",
+      "close": 4103.54,
+      "change": -1.79,
+      "change_pct": -0.04
     },
     {
       "date": "2025-09-22",
@@ -9411,6 +9435,18 @@
       "change_pct": 3.04
     },
     {
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
+      "ticker": "000688.SS",
+      "name": "科创50",
+      "exchange": "SSE",
+      "currency": "点",
+      "price_basis": "completed_daily_close",
+      "close": 1315.5,
+      "change": -30.01,
+      "change_pct": -2.23
+    },
+    {
       "date": "2025-09-22",
       "previous_date": null,
       "ticker": "000852.SS",
@@ -12529,9 +12565,20 @@
       "close": 6734.55,
       "change": 156.28,
       "change_pct": 2.38
+    },
+    {
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
+      "ticker": "000852.SS",
+      "name": "中证1000",
+      "exchange": "CSI",
+      "currency": "点",
+      "price_basis": "completed_daily_close",
+      "close": 6630.78,
+      "change": -103.77,
+      "change_pct": -1.54
     }
   ],
   "source": "Tencent/Eastmoney daily index closes (1y)",
-  "generated_at": "2026-10-26T07:15:38.083Z",
-  "warning": "部分A股指数在线更新失败，已使用既有数据: 000001.SS: 腾讯财经: HTTP 501; 东方财富: socket hang up; Yahoo: HTTP 429; 000300.SS: 腾讯财经: HTTP 501; 东方财富: socket hang up; Yahoo: HTTP 429; 000688.SS: 腾讯财经: HTTP 501; 东方财富: socket hang up; Yahoo: HTTP 429; 000852.SS: 腾讯财经: HTTP 501; 东方财富: socket hang up; Yahoo: HTTP 429"
+  "generated_at": "2026-10-26T07:50:24.252Z"
 }

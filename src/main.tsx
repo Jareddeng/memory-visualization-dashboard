@@ -130,6 +130,23 @@ type MindmapPayload = {
   tree: MindmapNode;
 };
 
+type InstitutionalChartTrackerPayload = {
+  updated_at?: string;
+  source?: string;
+  source_url?: string;
+  note?: string;
+  sources?: Array<{ title: string; url: string }>;
+  items?: Array<{
+    chart_no: string;
+    title: string;
+    topic: string;
+    status: string;
+    source_url?: string;
+    image_url?: string | null;
+    note?: string;
+  }>;
+};
+
 type TrackerPayload = {
   hbm_contracts?: {
     updated_at?: string;
@@ -263,21 +280,8 @@ type TrackerPayload = {
       }>;
     }>;
   };
-  institutional_charts?: {
-    updated_at?: string;
-    source?: string;
-    source_url?: string;
-    note?: string;
-    items?: Array<{
-      chart_no: string;
-      title: string;
-      topic: string;
-      status: string;
-      source_url?: string;
-      image_url?: string | null;
-      note?: string;
-    }>;
-  };
+  institutional_charts?: InstitutionalChartTrackerPayload;
+  macro_institutional_charts?: InstitutionalChartTrackerPayload;
   industry_map?: {
     updated_at?: string | null;
     source?: string;
@@ -1049,7 +1053,7 @@ function App() {
           : activeSector === "a-share" && activePage === "markets"
           ? <AShareMarketsPage data={data.aShare} />
           : activeSector === "macro" && activePage === "markets"
-            ? <MacroMarketsPage data={data.macro} />
+            ? <MacroMarketsPage data={data.macro} tracker={data.trackers.macro_institutional_charts} />
           : <EmptySectorPage sector={activeSector} page={activePage} />}
 
         {activeSector === "tech" ? <footer className="disclaimer">
@@ -1182,6 +1186,7 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
       label: "市场图表",
       detail: "就业 / 通胀 / 利率 / 社融",
       subItems: [
+        { label: "机构图表", anchorId: "macro-institutional-charts" },
         { label: "非农就业", anchorId: "macro-us-payroll" },
         { label: "失业率", anchorId: "macro-us-unemployment" },
         { label: "非农分项", anchorId: "macro-us-payroll-sectors" },
@@ -1789,19 +1794,22 @@ function makeMacroOption(chart: MacroChartPayload): echarts.EChartsCoreOption {
   };
 }
 
-function MacroMarketsPage({ data }: { data: MacroPayload }) {
+function MacroMarketsPage({ data, tracker }: { data: MacroPayload; tracker?: InstitutionalChartTrackerPayload }) {
   return (
-    <section className="macro-chart-grid" aria-label="宏观市场图表">
-      {data.charts.map((chart) => (
-        <article className="panel macro-chart-panel" id={`macro-${chart.id}`} key={chart.id}>
-          <div className="macro-chart-head">
-            <h2>{chart.title}</h2>
-            <span>截至 {chart.latestDate}</span>
-          </div>
-          <Chart option={makeMacroOption(chart)} />
-        </article>
-      ))}
-    </section>
+    <>
+      <InstitutionalChartTracker tracker={tracker} sector="macro" />
+      <section className="macro-chart-grid" aria-label="宏观市场图表">
+        {data.charts.map((chart) => (
+          <article className="panel macro-chart-panel" id={`macro-${chart.id}`} key={chart.id}>
+            <div className="macro-chart-head">
+              <h2>{chart.title}</h2>
+              <span>截至 {chart.latestDate}</span>
+            </div>
+            <Chart option={makeMacroOption(chart)} />
+          </article>
+        ))}
+      </section>
+    </>
   );
 }
 
@@ -1844,7 +1852,8 @@ function MarketsPage({ data }: { data: AppData }) {
   );
 }
 
-function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["institutional_charts"] }) {
+function InstitutionalChartTracker({ tracker, sector = "tech" }: { tracker?: InstitutionalChartTrackerPayload; sector?: "tech" | "macro" }) {
+  const isMacro = sector === "macro";
   const items = tracker?.items ?? [];
   const [preview, setPreview] = React.useState<(typeof items)[number] | null>(null);
   React.useEffect(() => {
@@ -1862,21 +1871,24 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
   if (!items.length) return null;
   return (
     <>
-      <section className="section-heading section-subheading" id="markets-institutional-charts">
+      <section className="section-heading section-subheading" id={isMacro ? "macro-institutional-charts" : "markets-institutional-charts"}>
         <div>
           <p className="section-kicker">Institutional Chart Watch</p>
           <h2>机构图表跟踪</h2>
-          <p>跟踪研报、公众号和机构材料中的关键图表。</p>
+          <p>{isMacro ? tracker?.source : "跟踪研报、公众号和机构材料中的关键图表。"}</p>
         </div>
       </section>
-      <section className="panel institutional-chart-panel">
+      <section className={`panel institutional-chart-panel${isMacro ? " macro-institutional-chart-panel" : ""}`}>
         <div className="institutional-chart-panel-head">
           <p>{tracker?.note ?? tracker?.source ?? "机构图表资料"}</p>
           {tracker?.source_url ? (
             <a className="institutional-source-link" href={tracker.source_url} rel="noreferrer" target="_blank">打开原文</a>
           ) : null}
         </div>
-        <div className="institutional-chart-grid">
+        {tracker?.sources?.length ? <div className="macro-institutional-sources">
+          {tracker.sources.map((source) => <a href={source.url} key={source.url} rel="noreferrer" target="_blank">{source.title}</a>)}
+        </div> : null}
+        <div className={`institutional-chart-grid${isMacro ? " macro-institutional-chart-grid" : ""}`}>
           {items.map((item) => (
             <article className="institutional-chart-card" key={`${item.chart_no}-${item.title}`}>
               <div className="institutional-chart-title">
@@ -1896,7 +1908,9 @@ function InstitutionalChartTracker({ tracker }: { tracker?: TrackerPayload["inst
                 )}
               </div>
               <div className="institutional-chart-foot">
-                <span>{item.topic}</span>
+                {isMacro && item.source_url
+                  ? <a href={item.source_url} rel="noreferrer" target="_blank">{item.topic}</a>
+                  : <span>{item.topic}</span>}
               </div>
             </article>
           ))}
@@ -4000,6 +4014,7 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug, anchorId: "reports-top" } }));
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets", anchorId: `stock-${slugifyId(stock.ticker)}` } }));
   (data.trackers.institutional_charts?.items ?? []).forEach((item) => items.push({ type: "图表", title: `${item.chart_no} ${item.title}`, date: data.trackers.institutional_charts?.updated_at ?? data.metadata.generated_at, detail: `${item.topic} · ${item.status}`, haystack: `${item.chart_no} ${item.title} ${item.topic} ${item.note ?? ""}`, target: { page: "markets", anchorId: "markets-institutional-charts" } }));
+  (data.trackers.macro_institutional_charts?.items ?? []).forEach((item) => items.push({ type: "宏观图表", title: `${item.chart_no} ${item.title}`, date: data.trackers.macro_institutional_charts?.updated_at ?? data.metadata.generated_at, detail: item.topic, haystack: `宏观 ${item.chart_no} ${item.title} ${item.topic}`, target: { sector: "macro", page: "markets", anchorId: "macro-institutional-charts" } }));
   (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry", anchorId: `hbm-${slugifyId(`${item.date}-${item.title}`)}` } }));
   (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry", anchorId: `expansion-${slugifyId(`${item.company}-${item.region}-${item.plan}`)}` } }));
   records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url, recordId: record.id } : { page: "intel", anchorId: `intel-${record.id}`, recordId: record.id } } ));
