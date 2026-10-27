@@ -1,0 +1,21 @@
+[
+  {
+    "id": "2026-10-26-micron-taoyuan-strike-dram-price",
+    "date": "2026-10-26",
+    "type": "市场消息",
+    "impact": "bullish",
+    "importance": "A",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1w",
+    "title": "Micron桃园厂罢工扰动叠加四季度DRAM合约价预计再涨约20%",
+    "product": "DRAM,HBM",
+    "source": "搜狐科技专栏",
+    "url": "https://www.sohu.com/a/1091332342_122917594",
+    "summary": "10月22日，Micron中国台湾桃园厂工会因利润分享方案未获具体回应，启动24小时警告性罢工，产线未直接停摆；台中工会已于10月21日与公司签署劳资协议并撤回调解。桃园与台中厂合计贡献Micron六成以上DRAM与HBM产能。集邦咨询数据显示，2026年第四季度DRAM合约价预计环比上涨约20%，此前二季度涨幅一度达80%、三季度约40%，价格仍在历史高位爬升；若罢工升级，供不应求的全球内存供给将直接受冲击。",
+    "transmission_path": "罢工及劳资争议持续→DRAM/HBM产能扰动风险上升→本已紧张的供给进一步承压→四季度合约价继续上行→下游模组厂与PC/服务器终端成本压力加大",
+    "confidence": "high",
+    "action": "watch",
+    "review_date": "2026-11-02"
+  }
+]
