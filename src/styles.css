@@ -1411,13 +1411,12 @@ h2 {
 }
 
 .macro-institutional-chart-panel .institutional-chart-panel-head {
-  padding-bottom: 0;
-  border-bottom: 0;
+  padding-bottom: 12px;
 }
 
 .macro-institutional-chart-panel {
-  padding: 0;
-  gap: 12px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .macro-institutional-review {
@@ -1429,7 +1428,6 @@ h2 {
 
 .macro-review-card {
   min-width: 0;
-  padding: 14px 16px;
 }
 
 .macro-review-title {
@@ -1514,6 +1512,16 @@ h2 {
 
 .macro-institutional-chart-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.macro-institutional-chart-grid .institutional-chart-card {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
 }
 
 .macro-institutional-chart-grid .institutional-chart-media img {

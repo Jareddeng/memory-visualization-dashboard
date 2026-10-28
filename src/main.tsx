@@ -1191,7 +1191,9 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     placeholderPages[2],
   ];
   const macroPages: PageNavItem[] = [
-    { key: "overview", label: "概览", detail: "通胀 / 就业 / 美债" },
+    { key: "overview", label: "概览", detail: "通胀 / 就业 / 美债", subItems: [
+      { label: "美债与政策利率", anchorId: "macro-us-bond-yields" },
+    ] },
     {
       key: "markets",
       label: "市场图表",
@@ -1203,7 +1205,6 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
         { label: "非农分项", anchorId: "macro-us-payroll-sectors" },
         { label: "通胀同比", anchorId: "macro-us-inflation-yoy" },
         { label: "通胀环比", anchorId: "macro-us-inflation-mom" },
-        { label: "美债与政策利率", anchorId: "macro-us-bond-yields" },
         { label: "社融与 M2", anchorId: "macro-credit-growth" },
         { label: "新增人民币贷款", anchorId: "macro-new-loans" },
         { label: "社融当月值", anchorId: "macro-social-financing" },
@@ -1410,6 +1411,7 @@ function MacroOverviewPage({ macro, etf }: { macro: MacroPayload; etf: StockPayl
     { id: "us-bond-yields", series: "2年期美债收益率", label: "2年期美债收益率", unit: "%", digits: 2, icon: <Activity /> },
   ];
   const tmf = etf.latest.find((item) => item.ticker === "TMF");
+  const bondChart = macro.charts.find((chart) => chart.id === "us-bond-yields");
   return (
     <section className="macro-overview">
       <div className="macro-overview-kpis">
@@ -1427,6 +1429,13 @@ function MacroOverviewPage({ macro, etf }: { macro: MacroPayload; etf: StockPayl
       </div>
       <div className="macro-overview-market">
         {tmf ? <OverviewStockCard stock={tmf} history={etf.history} /> : <article className="panel a-share-index-empty"><strong>TMF 美债 3 倍 ETF</strong><span>行情暂未获取</span></article>}
+        {bondChart ? <article className="panel macro-chart-panel" id="macro-us-bond-yields">
+          <div className="macro-chart-head">
+            <h2>{bondChart.title}</h2>
+            <span>截至 {bondChart.latestDate}</span>
+          </div>
+          <Chart option={makeMacroOption(bondChart)} />
+        </article> : null}
       </div>
       {etf.warning ? <p className="a-share-source-note">{etf.warning}</p> : null}
       <p className="a-share-source-note">TMF 为 20 年以上美债每日 3 倍杠杆 ETF。收盘价来源：{etf.source === "unavailable" ? "数据暂不可用" : "Yahoo Finance 日线"}；仅显示已完成交易日。</p>
@@ -1861,7 +1870,7 @@ function MacroMarketsPage({ data, tracker }: { data: MacroPayload; tracker?: Ins
     <>
       <InstitutionalChartTracker tracker={tracker} sector="macro" />
       <section className="macro-chart-grid" aria-label="宏观市场图表">
-        {data.charts.map((chart) => (
+        {data.charts.filter((chart) => chart.id !== "us-bond-yields").map((chart) => (
           <article className="panel macro-chart-panel" id={`macro-${chart.id}`} key={chart.id}>
             <div className="macro-chart-head">
               <h2>{chart.title}</h2>
@@ -1940,7 +1949,7 @@ function InstitutionalChartTracker({ tracker, sector = "tech" }: { tracker?: Ins
           <p>{isMacro ? tracker?.source : "跟踪研报、公众号和机构材料中的关键图表。"}</p>
         </div>
       </section>
-      <section className={`institutional-chart-panel${isMacro ? " macro-institutional-chart-panel" : " panel"}`}>
+      <section className={`panel institutional-chart-panel${isMacro ? " macro-institutional-chart-panel" : ""}`}>
         <div className="institutional-chart-panel-head">
           <p>{tracker?.note ?? tracker?.source ?? "机构图表资料"}</p>
           {tracker?.source_url ? (
@@ -1948,7 +1957,7 @@ function InstitutionalChartTracker({ tracker, sector = "tech" }: { tracker?: Ins
           ) : null}
         </div>
         {isMacro && (tracker?.commentary || tracker?.sources?.length) ? <div className="macro-institutional-review">
-          {tracker.commentary ? <article className="panel macro-review-card">
+          {tracker.commentary ? <article className="macro-review-card">
             <div className="macro-review-title">
               <h3>本月机构点评</h3>
               <span>{tracker.commentary.month}</span>
@@ -4086,7 +4095,7 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   );
   data.macro.charts.forEach((chart) => items.push({ type: "宏观图表", title: chart.title, date: chart.latestDate ?? undefined,
     detail: `${chart.unit} · ${chart.sourceFile}`, haystack: `宏观 ${chart.title} ${chart.series.map((series) => series.name).join(" ")}`,
-    target: { sector: "macro", page: "markets", anchorId: `macro-${chart.id}` },
+    target: { sector: "macro", page: chart.id === "us-bond-yields" ? "overview" : "markets", anchorId: `macro-${chart.id}` },
   }));
   data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug, anchorId: "reports-top" } }));
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets", anchorId: `stock-${slugifyId(stock.ticker)}` } }));
