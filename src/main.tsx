@@ -1015,7 +1015,7 @@ function App() {
         </header>
 
         {activeSector === "a-share" ? <AShareHero latestIndex={data.aShareIndices.latest.find((item) => item.ticker === "000001.SS")} /> : null}
-        {activeSector === "macro" ? <MacroHero latestYield={data.macro.charts.find((chart) => chart.id === "us-bond-yields")?.series.find((series) => series.name === "2年期美债收益率")?.points.filter((point) => point.value !== null && point.value > 0).at(-1)} /> : null}
+        {activeSector === "macro" ? <MacroHero tmf={data.macroEtf.latest.find((item) => item.ticker === "TMF")} /> : null}
 
         {activeSector === "tech" ? <>
         <Hero data={data} latestReport={latestReport} />
@@ -1305,7 +1305,7 @@ function AShareHero({ latestIndex }: { latestIndex?: StockPoint }) {
   );
 }
 
-function MacroHero({ latestYield }: { latestYield?: { date: string; value: number | null } }) {
+function MacroHero({ tmf }: { tmf?: StockPoint }) {
   return (
     <section className="intel-hero">
       <img src="./assets/storage-supply-chain.png" alt="市场研究背景" />
@@ -1315,10 +1315,10 @@ function MacroHero({ latestYield }: { latestYield?: { date: string; value: numbe
           <h1>宏观可视化看板</h1>
           <p>跟踪通胀、就业、美债收益率与 TMF 市场表现。</p>
         </div>
-        <div className="hero-signal">
-          <span>2年期美债收益率</span>
-          <strong>{latestYield?.value != null ? `${latestYield.value.toFixed(2)}%` : "待更新"}</strong>
-          <small>{latestYield?.date ?? "数据暂未获取"}</small>
+        <div className={`hero-signal macro-hero-signal${tmf && tmf.change_pct < 0 ? " down" : ""}`}>
+          <span>TMF 当日表现</span>
+          <strong>{tmf ? `${tmf.change_pct > 0 ? "+" : ""}${tmf.change_pct.toFixed(2)}%` : "待更新"}</strong>
+          <small>{tmf ? `${tmf.date} · 收盘 ${tmf.close.toFixed(2)} USD` : "行情暂未获取"}</small>
         </div>
       </div>
     </section>
@@ -1406,7 +1406,7 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
 function MacroOverviewPage({ macro, etf }: { macro: MacroPayload; etf: StockPayload }) {
   const indicators = [
     { id: "us-inflation-yoy", series: "CPI 同比", label: "美国 CPI 同比", unit: "%", digits: 1, icon: <Activity /> },
-    { id: "us-payroll", series: "新增非农就业", label: "新增非农就业", unit: "千人", digits: 0, icon: <Database /> },
+    { id: "us-payroll", series: "新增非农就业", label: "新增非农就业", unit: "万人", digits: 1, scale: 0.1, icon: <Database /> },
     { id: "us-bond-yields", series: "2年期美债收益率", label: "2年期美债收益率", unit: "%", digits: 2, icon: <Activity /> },
   ];
   const tmf = etf.latest.find((item) => item.ticker === "TMF");
@@ -1419,7 +1419,7 @@ function MacroOverviewPage({ macro, etf }: { macro: MacroPayload; etf: StockPayl
           return (
             <article className="kpi-card macro-indicator-kpi" key={indicator.id}>
               <div className="a-share-kpi-heading"><div className="icon-box">{indicator.icon}</div><span>{indicator.label}</span></div>
-              <strong>{latest?.value != null ? `${latest.value.toFixed(indicator.digits)}${indicator.unit === "%" ? "" : " "}${indicator.unit}` : "暂无数据"}</strong>
+              <strong>{latest?.value != null ? `${(latest.value * (indicator.scale ?? 1)).toFixed(indicator.digits)}${indicator.unit === "%" ? "" : " "}${indicator.unit}` : "暂无数据"}</strong>
               <p>{latest ? `截至 ${latest.date} · 来源：EDB 总表` : "等待数据更新"}</p>
             </article>
           );

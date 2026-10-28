@@ -532,6 +532,10 @@ h2 {
   font-size: 22px;
 }
 
+.macro-hero-signal.down strong {
+  color: #c53d3d;
+}
+
 .hero-signal em {
   margin-top: 2px;
   color: var(--ink);
