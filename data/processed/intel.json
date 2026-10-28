@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-28-sk-hynix-q3-record-earnings",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "date": "2026-10-28",
+      "title": "SK海力士Q3营收首破100万亿韩元，HBM4正式出货、长协锁定2027-2028超半数产能",
+      "product": "DRAM,HBM4,NAND,DDR5,eSSD",
+      "source": "PRNewswire",
+      "url": "https://www.prnewswire.com/news-releases/sk-hynix-announces-3q26-financial-results-302921407.html",
+      "summary": "SK海力士公布3Q26财报：营收104.6155万亿韩元（环比+32%，同比+328%），营业利润83.3338万亿韩元（营业利润率80%，环比+38%，同比+632%），净利润39.7756万亿韩元，季度营收首次突破100万亿韩元。DRAM增长由服务器DDR5销量大增和HBM4正式开始出货驱动；NAND方面321层TLC eSSD销量扩大，数据中心高附加值产品全面增长。公司表示HBM4预计自第四季度起成为主流产品；2027-2028年产能的长期协议（LTA）锁定比例已超过50%；今年将执行约100万亿韩元股东回报，大部分铠侠投资收益将分配给股东。期末净现金增至98.7万亿韩元。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "Q3业绩大超市场预期（营业利润83.3万亿 vs 共识约77.5万亿）→ 确认存储超级周期持续，HBM4放量与2027-2028年长协锁定超50%显著提升盈利可见度 → 直接利好SK海力士股价及HBM供应链（先进封装、设备、材料），强化DRAM/HBM/NAND价格强势预期 → 下游云厂商与AI服务器客户成本压力延续，加速其产能预留与议价锁定行为",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-11-04"
+    },
+    {
       "id": "2026-10-27-tsmc-cowos-price-hike-20",
       "type": "产业链跟踪",
       "impact": "bullish",
