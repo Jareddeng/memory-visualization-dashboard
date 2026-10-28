@@ -31,6 +31,9 @@ const aShareIndexSymbols = [
   { ticker: "000688.SS", name: "科创50", exchange: "SSE", currency: "点" },
   { ticker: "000852.SS", name: "中证1000", exchange: "CSI", currency: "点" },
 ];
+const macroEtfSymbols = [
+  { ticker: "TMF", name: "TMF 美债 3 倍 ETF", exchange: "NYSE Arca", currency: "USD" },
+];
 
 await fs.mkdir(processedDir, { recursive: true });
 await fs.mkdir(publicProcessedDir, { recursive: true });
@@ -45,6 +48,7 @@ const trackers = await loadTrackers();
 const intel = await loadIntel();
 const stocks = await loadStocks();
 const aShareIndices = await loadStockGroup(aShareIndexSymbols, "a-share-indices.json", "A股指数", fetchAShareIndexHistory, "Tencent/Eastmoney daily index closes (1y)");
+const macroEtf = await loadStockGroup(macroEtfSymbols, "macro-etf.json", "TMF", fetchStockHistory, "Yahoo Finance chart API range=1y (completed daily close)");
 const metadata = {
   generated_at: new Date().toISOString(),
   price_points: prices.length,
@@ -62,6 +66,7 @@ if (!validateOnly) {
   await writeJson("macro.json", macro);
   await writeJson("stocks.json", stocks);
   await writeJson("a-share-indices.json", aShareIndices);
+  await writeJson("macro-etf.json", macroEtf);
   await writeJson("reports.json", { reports });
   await writeJson("trackers.json", trackers);
   await writeJson("intel.json", { records: intel });

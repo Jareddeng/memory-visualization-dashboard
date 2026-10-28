@@ -337,6 +337,7 @@ type AppData = {
   aShare: ASharePayload;
   aShareIndices: StockPayload;
   macro: MacroPayload;
+  macroEtf: StockPayload;
   stocks: StockPayload;
   reports: Report[];
   trackers: TrackerPayload;
@@ -479,23 +480,25 @@ function useDashboardData() {
   const aShare = useJson<ASharePayload>("./data/processed/a-share.json");
   const aShareIndices = useJson<StockPayload>("./data/processed/a-share-indices.json");
   const macro = useJson<MacroPayload>("./data/processed/macro.json");
+  const macroEtf = useJson<StockPayload>("./data/processed/macro-etf.json");
   const stocks = useJson<StockPayload>("./data/processed/stocks.json");
   const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json");
   const trackers = useJson<TrackerPayload>("./data/processed/trackers.json");
   const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json");
   const metadata = useJson<Metadata>("./data/processed/metadata.json");
 
-  const error = prices.error || aShare.error || aShareIndices.error || macro.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
-  const loading = !prices.data || !aShare.data || !aShareIndices.data || !macro.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
+  const error = prices.error || aShare.error || aShareIndices.error || macro.error || macroEtf.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
+  const loading = !prices.data || !aShare.data || !aShareIndices.data || !macro.data || !macroEtf.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
 
   return {
     data:
-      prices.data && aShare.data && aShareIndices.data && macro.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
+      prices.data && aShare.data && aShareIndices.data && macro.data && macroEtf.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
         ? {
             prices: prices.data,
             aShare: aShare.data,
             aShareIndices: aShareIndices.data,
             macro: macro.data,
+            macroEtf: macroEtf.data,
             stocks: stocks.data,
             reports: reports.data.reports,
             trackers: trackers.data,
@@ -1007,6 +1010,7 @@ function App() {
         </header>
 
         {activeSector === "a-share" ? <AShareHero latestIndex={data.aShareIndices.latest.find((item) => item.ticker === "000001.SS")} /> : null}
+        {activeSector === "macro" ? <MacroHero latestYield={data.macro.charts.find((chart) => chart.id === "us-bond-yields")?.series.find((series) => series.name === "2年期美债收益率")?.points.filter((point) => point.value !== null && point.value > 0).at(-1)} /> : null}
 
         {activeSector === "tech" ? <>
         <Hero data={data} latestReport={latestReport} />
@@ -1052,6 +1056,8 @@ function App() {
           ? <AShareOverviewPage crowding={data.aShare.crowding} indices={data.aShareIndices} />
           : activeSector === "a-share" && activePage === "markets"
           ? <AShareMarketsPage data={data.aShare} />
+          : activeSector === "macro" && activePage === "overview"
+            ? <MacroOverviewPage macro={data.macro} etf={data.macroEtf} />
           : activeSector === "macro" && activePage === "markets"
             ? <MacroMarketsPage data={data.macro} tracker={data.trackers.macro_institutional_charts} />
           : <EmptySectorPage sector={activeSector} page={activePage} />}
@@ -1180,7 +1186,7 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     placeholderPages[2],
   ];
   const macroPages: PageNavItem[] = [
-    placeholderPages[0],
+    { key: "overview", label: "概览", detail: "通胀 / 就业 / 美债" },
     {
       key: "markets",
       label: "市场图表",
@@ -1294,6 +1300,26 @@ function AShareHero({ latestIndex }: { latestIndex?: StockPoint }) {
   );
 }
 
+function MacroHero({ latestYield }: { latestYield?: { date: string; value: number | null } }) {
+  return (
+    <section className="intel-hero">
+      <img src="./assets/storage-supply-chain.png" alt="市场研究背景" />
+      <div className="hero-overlay">
+        <div>
+          <p className="eyebrow">MACRO / INFLATION / EMPLOYMENT / RATES</p>
+          <h1>宏观可视化看板</h1>
+          <p>跟踪通胀、就业、美债收益率与 TMF 市场表现。</p>
+        </div>
+        <div className="hero-signal">
+          <span>2年期美债收益率</span>
+          <strong>{latestYield?.value != null ? `${latestYield.value.toFixed(2)}%` : "待更新"}</strong>
+          <small>{latestYield?.date ?? "数据暂未获取"}</small>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function OverviewPage({
   data,
   intelRecords,
@@ -1368,6 +1394,37 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
       </div>
       {indices.warning ? <p className="a-share-source-note">{indices.warning}</p> : null}
       <p className="a-share-source-note">指数收盘价来源：{indices.source === "unavailable" ? "数据暂不可用" : indices.source.startsWith("Tencent/") ? "腾讯财经 / 东方财富日线" : indices.source.startsWith("Eastmoney") ? "东方财富日线" : "Yahoo Finance 日线"}</p>
+    </section>
+  );
+}
+
+function MacroOverviewPage({ macro, etf }: { macro: MacroPayload; etf: StockPayload }) {
+  const indicators = [
+    { id: "us-inflation-yoy", series: "CPI 同比", label: "美国 CPI 同比", unit: "%", digits: 1, icon: <Activity /> },
+    { id: "us-payroll", series: "新增非农就业", label: "新增非农就业", unit: "千人", digits: 0, icon: <Database /> },
+    { id: "us-bond-yields", series: "2年期美债收益率", label: "2年期美债收益率", unit: "%", digits: 2, icon: <Activity /> },
+  ];
+  const tmf = etf.latest.find((item) => item.ticker === "TMF");
+  return (
+    <section className="macro-overview">
+      <div className="macro-overview-kpis">
+        {indicators.map((indicator) => {
+          const series = macro.charts.find((chart) => chart.id === indicator.id)?.series.find((item) => item.name === indicator.series);
+          const latest = series?.points.filter((point) => point.value !== null && point.value !== 0).at(-1);
+          return (
+            <article className="kpi-card macro-indicator-kpi" key={indicator.id}>
+              <div className="a-share-kpi-heading"><div className="icon-box">{indicator.icon}</div><span>{indicator.label}</span></div>
+              <strong>{latest?.value != null ? `${latest.value.toFixed(indicator.digits)}${indicator.unit === "%" ? "" : " "}${indicator.unit}` : "暂无数据"}</strong>
+              <p>{latest ? `截至 ${latest.date} · 来源：EDB 总表` : "等待数据更新"}</p>
+            </article>
+          );
+        })}
+      </div>
+      <div className="macro-overview-market">
+        {tmf ? <OverviewStockCard stock={tmf} history={etf.history} /> : <article className="panel a-share-index-empty"><strong>TMF 美债 3 倍 ETF</strong><span>行情暂未获取</span></article>}
+      </div>
+      {etf.warning ? <p className="a-share-source-note">{etf.warning}</p> : null}
+      <p className="a-share-source-note">TMF 为 20 年以上美债每日 3 倍杠杆 ETF。收盘价来源：{etf.source === "unavailable" ? "数据暂不可用" : "Yahoo Finance 日线"}；仅显示已完成交易日。</p>
     </section>
   );
 }
