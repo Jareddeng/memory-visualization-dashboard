@@ -136,6 +136,11 @@ type InstitutionalChartTrackerPayload = {
   source_url?: string;
   note?: string;
   sources?: Array<{ title: string; url: string }>;
+  commentary?: {
+    month: string;
+    scope: string;
+    topics: Array<{ name: string; view: string; comparison: string }>;
+  };
   items?: Array<{
     chart_no: string;
     title: string;
@@ -1935,15 +1940,30 @@ function InstitutionalChartTracker({ tracker, sector = "tech" }: { tracker?: Ins
           <p>{isMacro ? tracker?.source : "跟踪研报、公众号和机构材料中的关键图表。"}</p>
         </div>
       </section>
-      <section className={`panel institutional-chart-panel${isMacro ? " macro-institutional-chart-panel" : ""}`}>
+      <section className={`institutional-chart-panel${isMacro ? " macro-institutional-chart-panel" : " panel"}`}>
         <div className="institutional-chart-panel-head">
           <p>{tracker?.note ?? tracker?.source ?? "机构图表资料"}</p>
           {tracker?.source_url ? (
             <a className="institutional-source-link" href={tracker.source_url} rel="noreferrer" target="_blank">打开原文</a>
           ) : null}
         </div>
-        {tracker?.sources?.length ? <div className="macro-institutional-sources">
-          {tracker.sources.map((source) => <a href={source.url} key={source.url} rel="noreferrer" target="_blank">{source.title}</a>)}
+        {isMacro && (tracker?.commentary || tracker?.sources?.length) ? <div className="macro-institutional-review">
+          {tracker.commentary ? <article className="panel macro-review-card">
+            <div className="macro-review-title">
+              <h3>本月机构点评</h3>
+              <span>{tracker.commentary.month}</span>
+            </div>
+            <p className="macro-review-scope">{tracker.commentary.scope}</p>
+            <div className="macro-review-topics">
+              {tracker.commentary.topics.map((topic) => <div className="macro-review-topic" key={topic.name}>
+                <strong>{topic.name}</strong>
+                <div><p>{topic.view}</p><p className="macro-review-comparison">对照：{topic.comparison}</p></div>
+              </div>)}
+            </div>
+          </article> : null}
+          {tracker.sources?.length ? <nav className="macro-institutional-sources" aria-label="机构研报原文">
+            {tracker.sources.map((source) => <a href={source.url} key={source.url} rel="noreferrer" target="_blank">{source.title}</a>)}
+          </nav> : null}
         </div> : null}
         <div className={`institutional-chart-grid${isMacro ? " macro-institutional-chart-grid" : ""}`}>
           {items.map((item) => (

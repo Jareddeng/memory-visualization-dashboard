@@ -1411,9 +1411,78 @@ h2 {
   border-bottom: 0;
 }
 
+.macro-institutional-chart-panel {
+  padding: 0;
+  gap: 12px;
+}
+
+.macro-institutional-review {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.9fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.macro-review-card {
+  min-width: 0;
+  padding: 14px 16px;
+}
+
+.macro-review-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.macro-review-title h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.macro-review-title span,
+.macro-review-scope {
+  color: var(--subtle);
+  font-size: 12px;
+}
+
+.macro-review-scope {
+  margin: 5px 0 12px;
+}
+
+.macro-review-topics {
+  display: grid;
+  gap: 0;
+}
+
+.macro-review-topic {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.macro-review-topic strong {
+  color: var(--teal);
+  font-size: 13px;
+}
+
+.macro-review-topic p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.macro-review-topic .macro-review-comparison {
+  margin-top: 4px;
+  color: var(--subtle);
+}
+
 .macro-institutional-sources {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 8px;
 }
 
@@ -4035,8 +4104,8 @@ button.mindmap-label {
 }
 
 @media (max-width: 1180px) {
-  .macro-institutional-sources {
-    grid-template-columns: 1fr;
+  .macro-institutional-review {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .kpi-grid {
