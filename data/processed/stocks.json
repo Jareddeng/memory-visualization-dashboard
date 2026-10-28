@@ -1,78 +1,66 @@
 {
   "latest": [
     {
-      "date": "2026-10-26",
-      "previous_date": "2026-10-23",
+      "date": "2026-10-28",
+      "previous_date": "2026-10-27",
       "ticker": "000660.KS",
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
       "price_basis": "completed_daily_close",
-      "close": 1275000,
-      "change": -2000,
-      "change_pct": -0.16
+      "close": 1487000,
+      "change": 146000,
+      "change_pct": 10.89
     },
     {
-      "date": "2026-10-26",
-      "previous_date": "2026-10-23",
+      "date": "2026-10-28",
+      "previous_date": "2026-10-27",
       "ticker": "005930.KS",
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
       "price_basis": "completed_daily_close",
-      "close": 213000,
-      "change": -2500,
-      "change_pct": -1.16
+      "close": 242000,
+      "change": 20000,
+      "change_pct": 9.01
     },
     {
-      "date": "2026-10-23",
-      "previous_date": "2026-10-22",
+      "date": "2026-10-27",
+      "previous_date": "2026-10-26",
       "ticker": "MU",
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
       "price_basis": "completed_daily_close",
-      "close": 877.55,
-      "change": 21.06,
-      "change_pct": 2.46
+      "close": 928.76,
+      "change": 25.06,
+      "change_pct": 2.77
     },
     {
-      "date": "2026-10-23",
-      "previous_date": "2026-10-22",
+      "date": "2026-10-27",
+      "previous_date": "2026-10-26",
       "ticker": "DRAM",
       "name": "Roundhill Memory ETF",
       "exchange": "NYSE Arca",
       "currency": "USD",
       "price_basis": "completed_daily_close",
-      "close": 47.06,
-      "change": 1.38,
-      "change_pct": 3.02
+      "close": 50.52,
+      "change": 2.19,
+      "change_pct": 4.53
     }
   ],
   "history": [
     {
-      "date": "2025-10-27",
+      "date": "2025-10-28",
       "previous_date": null,
       "ticker": "000660.KS",
       "name": "SK海力士",
       "exchange": "KRX",
       "currency": "KRW",
       "price_basis": "completed_daily_close",
-      "close": 535000,
+      "close": 521000,
       "change": 0,
       "change_pct": 0
-    },
-    {
-      "date": "2025-10-28",
-      "previous_date": "2025-10-27",
-      "ticker": "000660.KS",
-      "name": "SK海力士",
-      "exchange": "KRX",
-      "currency": "KRW",
-      "price_basis": "completed_daily_close",
-      "close": 521000,
-      "change": -14000,
-      "change_pct": -2.62
     },
     {
       "date": "2025-10-29",
@@ -2979,28 +2967,40 @@
       "change_pct": -0.16
     },
     {
-      "date": "2025-10-27",
+      "date": "2026-10-27",
+      "previous_date": "2026-10-26",
+      "ticker": "000660.KS",
+      "name": "SK海力士",
+      "exchange": "KRX",
+      "currency": "KRW",
+      "price_basis": "completed_daily_close",
+      "close": 1341000,
+      "change": 66000,
+      "change_pct": 5.18
+    },
+    {
+      "date": "2026-10-28",
+      "previous_date": "2026-10-27",
+      "ticker": "000660.KS",
+      "name": "SK海力士",
+      "exchange": "KRX",
+      "currency": "KRW",
+      "price_basis": "completed_daily_close",
+      "close": 1487000,
+      "change": 146000,
+      "change_pct": 10.89
+    },
+    {
+      "date": "2025-10-28",
       "previous_date": null,
       "ticker": "005930.KS",
       "name": "三星电子",
       "exchange": "KRX",
       "currency": "KRW",
       "price_basis": "completed_daily_close",
-      "close": 102000,
+      "close": 99500,
       "change": 0,
       "change_pct": 0
-    },
-    {
-      "date": "2025-10-28",
-      "previous_date": "2025-10-27",
-      "ticker": "005930.KS",
-      "name": "三星电子",
-      "exchange": "KRX",
-      "currency": "KRW",
-      "price_basis": "completed_daily_close",
-      "close": 99500,
-      "change": -2500,
-      "change_pct": -2.45
     },
     {
       "date": "2025-10-29",
@@ -5907,6 +5907,30 @@
       "change_pct": -1.16
     },
     {
+      "date": "2026-10-27",
+      "previous_date": "2026-10-26",
+      "ticker": "005930.KS",
+      "name": "三星电子",
+      "exchange": "KRX",
+      "currency": "KRW",
+      "price_basis": "completed_daily_close",
+      "close": 222000,
+      "change": 9000,
+      "change_pct": 4.23
+    },
+    {
+      "date": "2026-10-28",
+      "previous_date": "2026-10-27",
+      "ticker": "005930.KS",
+      "name": "三星电子",
+      "exchange": "KRX",
+      "currency": "KRW",
+      "price_basis": "completed_daily_close",
+      "close": 242000,
+      "change": 20000,
+      "change_pct": 9.01
+    },
+    {
       "date": "2026-04-02",
       "previous_date": null,
       "ticker": "DRAM",
@@ -7611,40 +7635,40 @@
       "change_pct": 3.02
     },
     {
-      "date": "2025-10-24",
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
+      "ticker": "DRAM",
+      "name": "Roundhill Memory ETF",
+      "exchange": "NYSE Arca",
+      "currency": "USD",
+      "price_basis": "completed_daily_close",
+      "close": 48.33,
+      "change": 1.27,
+      "change_pct": 2.7
+    },
+    {
+      "date": "2026-10-27",
+      "previous_date": "2026-10-26",
+      "ticker": "DRAM",
+      "name": "Roundhill Memory ETF",
+      "exchange": "NYSE Arca",
+      "currency": "USD",
+      "price_basis": "completed_daily_close",
+      "close": 50.52,
+      "change": 2.19,
+      "change_pct": 4.53
+    },
+    {
+      "date": "2025-10-28",
       "previous_date": null,
       "ticker": "MU",
       "name": "美光科技",
       "exchange": "NASDAQ",
       "currency": "USD",
       "price_basis": "completed_daily_close",
-      "close": 219.02,
+      "close": 221.91,
       "change": 0,
       "change_pct": 0
-    },
-    {
-      "date": "2025-10-27",
-      "previous_date": "2025-10-24",
-      "ticker": "MU",
-      "name": "美光科技",
-      "exchange": "NASDAQ",
-      "currency": "USD",
-      "price_basis": "completed_daily_close",
-      "close": 220.1,
-      "change": 1.08,
-      "change_pct": 0.49
-    },
-    {
-      "date": "2025-10-28",
-      "previous_date": "2025-10-27",
-      "ticker": "MU",
-      "name": "美光科技",
-      "exchange": "NASDAQ",
-      "currency": "USD",
-      "price_basis": "completed_daily_close",
-      "close": 221.91,
-      "change": 1.81,
-      "change_pct": 0.82
     },
     {
       "date": "2025-10-29",
@@ -10621,9 +10645,32 @@
       "close": 877.55,
       "change": 21.06,
       "change_pct": 2.46
+    },
+    {
+      "date": "2026-10-26",
+      "previous_date": "2026-10-23",
+      "ticker": "MU",
+      "name": "美光科技",
+      "exchange": "NASDAQ",
+      "currency": "USD",
+      "price_basis": "completed_daily_close",
+      "close": 903.7,
+      "change": 26.15,
+      "change_pct": 2.98
+    },
+    {
+      "date": "2026-10-27",
+      "previous_date": "2026-10-26",
+      "ticker": "MU",
+      "name": "美光科技",
+      "exchange": "NASDAQ",
+      "currency": "USD",
+      "price_basis": "completed_daily_close",
+      "close": 928.76,
+      "change": 25.06,
+      "change_pct": 2.77
     }
   ],
   "source": "Yahoo Finance chart API range=1y (completed daily close)",
-  "generated_at": "2026-10-28T07:19:23.696Z",
-  "warning": "部分股票在线更新失败，已使用既有数据: 000660.KS: HTTP 429; 005930.KS: HTTP 429; MU: HTTP 429; DRAM: HTTP 429"
+  "generated_at": "2026-10-28T07:28:24.231Z"
 }
