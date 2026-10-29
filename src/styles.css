@@ -1565,11 +1565,23 @@ h2 {
   gap: 12px;
 }
 
-.macro-institutional-chart-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.macro-institutional-chart-panel .macro-institutional-chart-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px 16px;
   border-top: 1px solid var(--line);
   padding-top: 16px;
+}
+
+@media (max-width: 1440px) {
+  .macro-institutional-chart-panel .macro-institutional-chart-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .macro-institutional-chart-panel .macro-institutional-chart-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .macro-institutional-chart-grid .institutional-chart-card {
