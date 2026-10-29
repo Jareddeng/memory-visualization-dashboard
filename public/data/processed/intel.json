@@ -20,6 +20,25 @@
       "review_date": "2026-11-28"
     },
     {
+      "id": "2026-10-29-samsung-ai-memory-sold-out",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-10-29",
+      "title": "三星宣布AI内存产能售罄，与SK海力士、美光口径一致",
+      "product": "DRAM,HBM,NAND",
+      "source": "Startup Fortune",
+      "url": "https://startupfortune.com/samsung-joins-sk-hynix-and-micron-declaring-ai-memory-sold-out-for-years/",
+      "summary": "三星确认其AI内存供应已售罄，与SK海力士、美光此前的声明一致。SK海力士2026年DRAM、NAND及HBM产能已全部售罄，大部分已承诺给英伟达用于AI加速器；其下一波洁净室产能要到2028-2029年才能上线。美光HBM 2026年已售罄，2027年约75%产能已被预订，公司表示整体存储短缺可能持续到2028年。KB证券预计HBM平均售价将同比上涨100%-150%，超大规模数据中心仍在争夺2027年剩余未签约产能。短缺推动DRAM价格单年上涨约95%。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "三巨头产能全部售罄且新产能2028年前无法释放→供应缺口持续扩大→合约价继续上行→三星、SK海力士、美光营收和利润率进一步走高→下游云厂商和终端设备成本承压",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-11-28"
+    },
+    {
       "id": "2026-10-28-sk-hynix-q3-record-earnings",
       "type": "财报业绩",
       "impact": "bullish",
@@ -153,6 +172,25 @@
       "review_date": "2026-11-04"
     },
     {
+      "id": "2026-10-28-sk-hynix-shortage-2030",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "date": "2026-10-28",
+      "title": "SK海力士：存储供应短缺或持续至2030年，LTA已锁定超50%产能",
+      "product": "DRAM,HBM,NAND,DDR5",
+      "source": "WccfTech",
+      "url": "https://wccftech.com/sk-hynix-memory-shortages-to-persist-through-2030-despite-expansion/",
+      "summary": "SK海力士发布2026年第三季度财报，营收104.6万亿韩元，环比增长32%，同比增长328%；营业利润83.3万亿韩元，营业利润率80%。公司表示，受AI市场增长远超供应能力、先进制程技术难度高及新产能建设周期长影响，存储供应短缺预计将持续至2030年。SK海力士已与14家大客户（包括全球CSP）签订长期协议（LTA），锁定2027-2028年超过50%的总产能，并引入随市场波动的价格区间机制。HBM4产量将在2026年底大幅增加，预计Q4出货量与收入将双双超越HBM3E。NAND方面，321层工艺产量将在2026年Q4超过本土产能一半。龙仁一期将于明年全面投产。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "transmission_path": "SK海力士三季度业绩超预期→确认短缺持续至2030年+LTA锁定超50%产能→强化长期卖方市场定价权→HBM4放量推动ASP继续走高→利好SK海力士及存储产业链上游设备材料商",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-11-27"
+    },
+    {
       "id": "2026-10-27-tsmc-cowos-price-hike-20",
       "type": "产业链跟踪",
       "impact": "bullish",
@@ -284,6 +322,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-11-26"
+    },
+    {
+      "id": "2026-10-27-ai-ssd-industry-analysis",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-10-27",
+      "title": "AI SSD产业格局分析：铠侠、长江存储等竞逐企业级存储",
+      "product": "NAND,SSD,HBM",
+      "source": "与非网",
+      "url": "https://www.eefocus.com/article/2108450.html",
+      "summary": "文章系统梳理AI SSD产业竞争格局。国际方面，铠侠GP系列超高IOPS SSD搭载XL-FLASH存储级内存，面向NVIDIA Storage-Next架构，使GPU可直接存取高速闪存作为HBM扩展；CM9系列PCIe 5.0 E3.S SSD提供25.6TB TLC容量，2026年10月铠侠在圣何塞OCP全球峰会上展示了CM9系列新增直接液冷型号，面向SSD上下文缓存场景。国内方面，长江存储基于晶栈Xtacking 4.0技术已推出PE522、PE511、PE501等多款企业级PCIe 5.0固态硬盘，企业级SSD正成为其核心增长方向。AI推理对高容量、低延迟存储的需求正在重构企业级SSD市场格局。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "AI推理需求爆发→企业级SSD成为AI基础设施核心存储层→铠侠等国际大厂与长江存储等国产厂商加速产品迭代→NAND需求向数据中心倾斜→企业级SSD合约价维持上涨趋势",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-11-03"
     },
     {
       "id": "2026-10-26-sk-hynix-special-dividend-kioxia",
