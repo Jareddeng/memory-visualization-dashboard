@@ -130,26 +130,44 @@ type MindmapPayload = {
   tree: MindmapNode;
 };
 
+type InstitutionalChartItem = {
+  chart_no: string;
+  title: string;
+  topic: string;
+  status: string;
+  source_url?: string;
+  image_url?: string | null;
+  note?: string;
+};
+
+type InstitutionalChartCommentary = {
+  month: string;
+  scope: string;
+  sections?: Array<{ name: string; lead: string; detail: string }>;
+  topics?: Array<{ name: string; view: string; comparison: string }>;
+};
+
+type InstitutionalChartPeriod = {
+  id: string;
+  label: string;
+  updated_at?: string;
+  source?: string;
+  source_url?: string;
+  note?: string;
+  sources?: Array<{ title: string; url: string }>;
+  commentary?: InstitutionalChartCommentary;
+  items?: InstitutionalChartItem[];
+};
+
 type InstitutionalChartTrackerPayload = {
   updated_at?: string;
   source?: string;
   source_url?: string;
   note?: string;
   sources?: Array<{ title: string; url: string }>;
-  commentary?: {
-    month: string;
-    scope: string;
-    topics: Array<{ name: string; view: string; comparison: string }>;
-  };
-  items?: Array<{
-    chart_no: string;
-    title: string;
-    topic: string;
-    status: string;
-    source_url?: string;
-    image_url?: string | null;
-    note?: string;
-  }>;
+  commentary?: InstitutionalChartCommentary;
+  items?: InstitutionalChartItem[];
+  periods?: InstitutionalChartPeriod[];
 };
 
 type TrackerPayload = {
@@ -390,6 +408,7 @@ type SearchItem = {
     url?: string;
     recordId?: string;
     anchorId?: string;
+    periodId?: string;
   };
 };
 
@@ -854,6 +873,7 @@ function App() {
   const [pendingAnchor, setPendingAnchor] = React.useState<string | null>(null);
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
   const [activeReportTab, setActiveReportTab] = React.useState<ReportTab>("body");
+  const [activeMacroPeriodId, setActiveMacroPeriodId] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
@@ -947,6 +967,7 @@ function App() {
       setPinnedIntelId(item.target.recordId);
     }
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
+    if (item.target.periodId) setActiveMacroPeriodId(item.target.periodId);
     setActiveSector(item.target.sector ?? "tech");
     setActivePage(item.target.page);
     setQuery("");
@@ -1064,7 +1085,7 @@ function App() {
           : activeSector === "macro" && activePage === "overview"
             ? <MacroOverviewPage macro={data.macro} etf={data.macroEtf} />
           : activeSector === "macro" && activePage === "markets"
-            ? <MacroMarketsPage data={data.macro} tracker={data.trackers.macro_institutional_charts} />
+            ? <MacroMarketsPage data={data.macro} tracker={data.trackers.macro_institutional_charts} activePeriodId={activeMacroPeriodId} onPeriodChange={setActiveMacroPeriodId} />
           : <EmptySectorPage sector={activeSector} page={activePage} />}
 
         {activeSector === "tech" ? <footer className="disclaimer">
@@ -1865,10 +1886,10 @@ function makeMacroOption(chart: MacroChartPayload): echarts.EChartsCoreOption {
   };
 }
 
-function MacroMarketsPage({ data, tracker }: { data: MacroPayload; tracker?: InstitutionalChartTrackerPayload }) {
+function MacroMarketsPage({ data, tracker, activePeriodId, onPeriodChange }: { data: MacroPayload; tracker?: InstitutionalChartTrackerPayload; activePeriodId: string | null; onPeriodChange: (id: string) => void }) {
   return (
     <>
-      <InstitutionalChartTracker tracker={tracker} sector="macro" />
+      <InstitutionalChartTracker tracker={tracker} sector="macro" activePeriodId={activePeriodId} onPeriodChange={onPeriodChange} />
       <section className="macro-chart-grid" aria-label="宏观市场图表">
         {data.charts.filter((chart) => chart.id !== "us-bond-yields").map((chart) => (
           <article className="panel macro-chart-panel" id={`macro-${chart.id}`} key={chart.id}>
@@ -1923,10 +1944,13 @@ function MarketsPage({ data }: { data: AppData }) {
   );
 }
 
-function InstitutionalChartTracker({ tracker, sector = "tech" }: { tracker?: InstitutionalChartTrackerPayload; sector?: "tech" | "macro" }) {
+function InstitutionalChartTracker({ tracker, sector = "tech", activePeriodId, onPeriodChange }: { tracker?: InstitutionalChartTrackerPayload; sector?: "tech" | "macro"; activePeriodId?: string | null; onPeriodChange?: (id: string) => void }) {
   const isMacro = sector === "macro";
-  const items = tracker?.items ?? [];
-  const [preview, setPreview] = React.useState<(typeof items)[number] | null>(null);
+  const periods = isMacro ? [...(tracker?.periods ?? [])].sort((a, b) => b.id.localeCompare(a.id)) : [];
+  const activePeriod = periods.find((period) => period.id === activePeriodId) ?? periods[0];
+  const current = activePeriod ?? tracker;
+  const items = current?.items ?? [];
+  const [preview, setPreview] = React.useState<InstitutionalChartItem | null>(null);
   React.useEffect(() => {
     if (!preview) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -1939,39 +1963,53 @@ function InstitutionalChartTracker({ tracker, sector = "tech" }: { tracker?: Ins
       document.body.style.overflow = "";
     };
   }, [preview]);
-  if (!items.length) return null;
+  if (!items.length && !periods.length) return null;
   return (
     <>
       <section className="section-heading section-subheading" id={isMacro ? "macro-institutional-charts" : "markets-institutional-charts"}>
         <div>
           <p className="section-kicker">Institutional Chart Watch</p>
           <h2>机构图表跟踪</h2>
-          <p>{isMacro ? tracker?.source : "跟踪研报、公众号和机构材料中的关键图表。"}</p>
+          <p>{isMacro ? "按研报月份查看机构观点与图表。" : "跟踪研报、公众号和机构材料中的关键图表。"}</p>
         </div>
       </section>
       <section className={`panel institutional-chart-panel${isMacro ? " macro-institutional-chart-panel" : ""}`}>
+        {isMacro && periods.length ? <div className="macro-institutional-periods" role="tablist" aria-label="机构图表月份">
+          {periods.map((period) => <button
+            aria-selected={period.id === activePeriod?.id}
+            className={period.id === activePeriod?.id ? "active" : ""}
+            key={period.id}
+            onClick={() => { onPeriodChange?.(period.id); setPreview(null); }}
+            role="tab"
+            type="button"
+          >{period.label}</button>)}
+        </div> : null}
         <div className="institutional-chart-panel-head">
-          <p>{tracker?.note ?? tracker?.source ?? "机构图表资料"}</p>
-          {tracker?.source_url ? (
-            <a className="institutional-source-link" href={tracker.source_url} rel="noreferrer" target="_blank">打开原文</a>
+          <p>{current?.note ?? current?.source ?? "机构图表资料"}</p>
+          {current?.source_url ? (
+            <a className="institutional-source-link" href={current.source_url} rel="noreferrer" target="_blank">打开原文</a>
           ) : null}
         </div>
-        {isMacro && (tracker?.commentary || tracker?.sources?.length) ? <div className="macro-institutional-review">
-          {tracker.commentary ? <article className="macro-review-card">
+        {isMacro && (current?.commentary || current?.sources?.length) ? <div className="macro-institutional-review">
+          {current.commentary ? <article className="macro-review-card">
             <div className="macro-review-title">
               <h3>本月机构点评</h3>
-              <span>{tracker.commentary.month}</span>
+              <span>{current.commentary.month}</span>
             </div>
-            <p className="macro-review-scope">{tracker.commentary.scope}</p>
+            <p className="macro-review-scope">{current.commentary.scope}</p>
             <div className="macro-review-topics">
-              {tracker.commentary.topics.map((topic) => <div className="macro-review-topic" key={topic.name}>
+              {current.commentary.sections?.map((section) => <div className="macro-review-section" key={section.name}>
+                <h4>{section.name}</h4>
+                <p><strong>{section.lead}</strong> {section.detail}</p>
+              </div>)}
+              {current.commentary.topics?.map((topic) => <div className="macro-review-topic" key={topic.name}>
                 <strong>{topic.name}</strong>
                 <div><p>{topic.view}</p><p className="macro-review-comparison">对照：{topic.comparison}</p></div>
               </div>)}
             </div>
           </article> : null}
-          {tracker.sources?.length ? <nav className="macro-institutional-sources" aria-label="机构研报原文">
-            {tracker.sources.map((source) => <a href={source.url} key={source.url} rel="noreferrer" target="_blank">{source.title}</a>)}
+          {current.sources?.length ? <nav className="macro-institutional-sources" aria-label="机构研报原文">
+            {current.sources.map((source) => <a href={source.url} key={source.url} rel="noreferrer" target="_blank">{source.title}</a>)}
           </nav> : null}
         </div> : null}
         <div className={`institutional-chart-grid${isMacro ? " macro-institutional-chart-grid" : ""}`}>
@@ -4100,7 +4138,9 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   data.reports.forEach((report) => items.push({ type: "报告", title: report.title, date: report.date, detail: `${report.date} · ${report.summary}`, haystack: `${report.title} ${report.summary} ${report.body}`, target: { page: "reports", reportSlug: report.slug, anchorId: "reports-top" } }));
   data.stocks.latest.forEach((stock) => items.push({ type: "股票", title: stock.name, date: stock.date, detail: `${stock.ticker} ${stock.date} ${stock.close} ${stock.currency} ${stock.change_pct}%`, haystack: `${stock.name} ${stock.ticker} ${stock.exchange}`, target: { page: "markets", anchorId: `stock-${slugifyId(stock.ticker)}` } }));
   (data.trackers.institutional_charts?.items ?? []).forEach((item) => items.push({ type: "图表", title: `${item.chart_no} ${item.title}`, date: data.trackers.institutional_charts?.updated_at ?? data.metadata.generated_at, detail: `${item.topic} · ${item.status}`, haystack: `${item.chart_no} ${item.title} ${item.topic} ${item.note ?? ""}`, target: { page: "markets", anchorId: "markets-institutional-charts" } }));
-  (data.trackers.macro_institutional_charts?.items ?? []).forEach((item) => items.push({ type: "宏观图表", title: `${item.chart_no} ${item.title}`, date: data.trackers.macro_institutional_charts?.updated_at ?? data.metadata.generated_at, detail: item.topic, haystack: `宏观 ${item.chart_no} ${item.title} ${item.topic}`, target: { sector: "macro", page: "markets", anchorId: "macro-institutional-charts" } }));
+  const macroTracker = data.trackers.macro_institutional_charts;
+  const macroPeriods = macroTracker?.periods?.length ? macroTracker.periods : [{ id: "", label: "", updated_at: macroTracker?.updated_at, items: macroTracker?.items }];
+  macroPeriods.forEach((period) => (period.items ?? []).forEach((item) => items.push({ type: "宏观图表", title: `${item.chart_no} ${item.title}`, date: period.updated_at ?? data.metadata.generated_at, detail: `${period.label} · ${item.topic}`, haystack: `宏观 ${period.label} ${item.chart_no} ${item.title} ${item.topic}`, target: { sector: "macro", page: "markets", anchorId: "macro-institutional-charts", periodId: period.id || undefined } })));
   (data.trackers.hbm4_negotiations ?? []).forEach((item) => items.push({ type: "长协", title: item.title, date: item.date, detail: `${item.date} · ${item.detail}`, haystack: `${item.title} ${item.detail} ${item.status}`, target: { page: "industry", anchorId: `hbm-${slugifyId(`${item.date}-${item.title}`)}` } }));
   (data.trackers.expansion_plans ?? []).forEach((item) => items.push({ type: "扩产", title: item.company, date: dateFromText(item.timeline), detail: `${item.region} · ${item.plan} · ${item.timeline}`, haystack: `${item.company} ${item.region} ${item.plan} ${item.status}`, target: { page: "industry", anchorId: `expansion-${slugifyId(`${item.company}-${item.region}-${item.plan}`)}` } }));
   records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url, recordId: record.id } : { page: "intel", anchorId: `intel-${record.id}`, recordId: record.id } } ));

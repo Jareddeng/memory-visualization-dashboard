@@ -1419,6 +1419,41 @@ h2 {
   margin-bottom: 16px;
 }
 
+.macro-institutional-periods {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line);
+  margin: -4px -4px 0;
+  padding: 0 4px;
+}
+
+.macro-institutional-periods button {
+  flex: 0 0 auto;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 14px 9px;
+  cursor: pointer;
+}
+
+.macro-institutional-periods button:hover,
+.macro-institutional-periods button.active {
+  color: var(--teal);
+}
+
+.macro-institutional-periods button.active {
+  border-bottom-color: var(--teal);
+}
+
+.macro-institutional-periods button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: -3px;
+}
+
 .macro-institutional-review {
   display: grid;
   grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.9fr);
@@ -1456,6 +1491,23 @@ h2 {
 .macro-review-topics {
   display: grid;
   gap: 0;
+}
+
+.macro-review-section {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+
+.macro-review-section h4 {
+  margin: 0 0 6px;
+  color: var(--teal);
+  font-size: 14px;
+}
+
+.macro-review-section p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .macro-review-topic {
