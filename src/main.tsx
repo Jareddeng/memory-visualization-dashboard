@@ -170,7 +170,17 @@ type InstitutionalChartTrackerPayload = {
   periods?: InstitutionalChartPeriod[];
 };
 
+type ResearchStance = "bullish" | "lean_bullish" | "neutral" | "lean_bearish" | "bearish" | "unrated";
+type AShareResearchIssue = {
+  id: string;
+  date: string;
+  title: string;
+  stance?: ResearchStance;
+  topics: Array<{ title: string; points: string[]; sources: Array<{ title: string; authors?: string; date: string; url?: string }> }>;
+};
+
 type TrackerPayload = {
+  a_share_research_views?: { issues: AShareResearchIssue[] };
   hbm_contracts?: {
     updated_at?: string;
     source?: string;
@@ -409,6 +419,7 @@ type SearchItem = {
     recordId?: string;
     anchorId?: string;
     periodId?: string;
+    researchId?: string;
   };
 };
 
@@ -874,6 +885,7 @@ function App() {
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
   const [activeReportTab, setActiveReportTab] = React.useState<ReportTab>("body");
   const [activeMacroPeriodId, setActiveMacroPeriodId] = React.useState<string | null>(null);
+  const [activeResearchId, setActiveResearchId] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
@@ -968,6 +980,7 @@ function App() {
     }
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
     if (item.target.periodId) setActiveMacroPeriodId(item.target.periodId);
+    if (item.target.researchId) setActiveResearchId(item.target.researchId);
     setActiveSector(item.target.sector ?? "tech");
     setActivePage(item.target.page);
     setQuery("");
@@ -1082,6 +1095,8 @@ function App() {
           ? <AShareOverviewPage crowding={data.aShare.crowding} indices={data.aShareIndices} />
           : activeSector === "a-share" && activePage === "markets"
           ? <AShareMarketsPage data={data.aShare} />
+          : activeSector === "a-share" && activePage === "reports"
+          ? <AShareResearchPage issues={data.trackers.a_share_research_views?.issues ?? []} selectedId={activeResearchId} onSelect={setActiveResearchId} />
           : activeSector === "macro" && activePage === "overview"
             ? <MacroOverviewPage macro={data.macro} etf={data.macroEtf} />
           : activeSector === "macro" && activePage === "markets"
@@ -1209,7 +1224,10 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
         { label: "A股拥挤度", anchorId: "a-share-crowding" },
       ],
     },
-    placeholderPages[2],
+    { key: "reports", label: "研报观点", detail: "最新观点 / 历史倾向", subItems: [
+      { label: "观点归档", anchorId: "a-share-research" },
+      { label: "历史观点倾向", anchorId: "a-share-research-history" },
+    ] },
   ];
   const macroPages: PageNavItem[] = [
     { key: "overview", label: "概览", detail: "通胀 / 就业 / 美债", subItems: [
@@ -1423,6 +1441,73 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
       <p className="a-share-source-note">指数收盘价来源：{indices.source === "unavailable" ? "数据暂不可用" : indices.source.startsWith("Tencent/") ? "腾讯财经 / 东方财富日线" : indices.source.startsWith("Eastmoney") ? "东方财富日线" : "Yahoo Finance 日线"}</p>
     </section>
   );
+}
+
+const researchStances: Array<{ key: ResearchStance; label: string; value: number | null }> = [
+  { key: "bullish", label: "看多", value: 2 },
+  { key: "lean_bullish", label: "偏多", value: 1 },
+  { key: "neutral", label: "中性", value: 0 },
+  { key: "lean_bearish", label: "偏空", value: -1 },
+  { key: "bearish", label: "看空", value: -2 },
+  { key: "unrated", label: "未评级", value: null },
+];
+
+function researchStance(issue: AShareResearchIssue) {
+  return researchStances.find((stance) => stance.key === issue.stance) ?? researchStances[5];
+}
+
+function AShareResearchPage({ issues, selectedId, onSelect }: { issues: AShareResearchIssue[]; selectedId: string | null; onSelect: (id: string) => void }) {
+  const [month, setMonth] = React.useState("");
+  const sorted = [...issues].sort((a, b) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id));
+  const visible = sorted.filter((issue) => !month || issue.date.startsWith(month));
+  const selected = sorted.find((issue) => issue.id === selectedId) ?? visible[0];
+  React.useEffect(() => {
+    const issue = issues.find((item) => item.id === selectedId);
+    if (month && issue && !issue.date.startsWith(month)) setMonth("");
+  }, [issues, selectedId, month]);
+  const months = [...new Set(sorted.map((issue) => issue.date.slice(0, 7)))];
+  const history = [...sorted].reverse();
+  const rated = history.filter((issue) => researchStance(issue).value !== null);
+  const trend: echarts.EChartsCoreOption = {
+    grid: { left: 44, right: 20, top: 18, bottom: 32, containLabel: true },
+    tooltip: { trigger: "axis", formatter: (params: unknown) => {
+      const point = (params as Array<{ dataIndex: number }>)[0];
+      const issue = history[point?.dataIndex];
+      return issue ? `${issue.date}<br/>${researchStance(issue).label}` : "";
+    } },
+    xAxis: { type: "category", data: history.map((issue) => issue.date), boundaryGap: true },
+    yAxis: { type: "value", min: -2, max: 2, interval: 1, axisLabel: { formatter: (value: number) => researchStances.find((stance) => stance.value === value)?.label ?? "" } },
+    series: [{ type: "line", data: history.map((issue) => researchStance(issue).value), connectNulls: false, showSymbol: true, symbolSize: 8, lineStyle: { color: "#128779" }, itemStyle: { color: "#128779" } }],
+  };
+  return <section className="a-share-research" id="a-share-research">
+    <div className="section-heading"><div><h2>研报观点</h2><p>{sorted[0] ? `最近更新 ${sorted[0].date}` : "暂无更新"}</p></div></div>
+    <div className="research-layout">
+      <aside className="research-archive panel" aria-label="观点更新归档">
+        <div className="research-archive-head"><h3>更新归档</h3><button type="button" onClick={() => { setMonth(""); if (sorted[0]) onSelect(sorted[0].id); }}>最新一期</button></div>
+        <select aria-label="归档月份" value={month} onChange={(event) => { const value = event.target.value; setMonth(value); const first = sorted.find((issue) => !value || issue.date.startsWith(value)); if (first) onSelect(first.id); }}><option value="">全部月份</option>{months.map((value) => <option key={value} value={value}>{value}</option>)}</select>
+        <div className="research-archive-list">
+          {visible.map((issue) => <button type="button" className={issue.id === selected?.id ? "active" : ""} aria-pressed={issue.id === selected?.id} key={issue.id} onClick={() => onSelect(issue.id)}>
+            <span>{issue.date}<small className={`research-stance ${researchStance(issue).key}`}>{researchStance(issue).label}</small></span><strong>{issue.title}</strong>
+          </button>)}
+          {!visible.length ? <p>该月份暂无更新</p> : null}
+        </div>
+      </aside>
+      <div className="research-current">
+        {selected ? <>
+          <header className="research-issue-head"><div><p>{selected.date}</p><h3>{selected.title}</h3></div><span className={`research-stance ${researchStance(selected).key}`}>{researchStance(selected).label}</span></header>
+          <div className="research-topic-grid">{selected.topics.map((topic, index) => <article className="panel research-topic" key={`${selected.id}-${index}`}>
+            <h3>{topic.title}</h3><ul>{topic.points.map((point, pointIndex) => <li key={pointIndex}>{renderInlineMarkdown(point)}</li>)}</ul>
+            <footer>{topic.sources.map((source, sourceIndex) => <p key={sourceIndex}>{source.url ? <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a> : source.title}{source.authors ? ` · ${source.authors}` : ""} · {source.date}</p>)}</footer>
+          </article>)}</div>
+        </> : <p>暂无研报观点</p>}
+      </div>
+    </div>
+    <section className="panel research-history" id="a-share-research-history" aria-label="历史观点倾向">
+      <div className="research-history-head"><h3>历史观点倾向</h3><span>{sorted.length} 期更新 · {rated.length} 期已评级</span></div>
+      <div className="research-stance-counts">{researchStances.map((stance) => <div key={stance.key}><span className={`research-stance ${stance.key}`}>{stance.label}</span><strong>{sorted.filter((issue) => researchStance(issue).key === stance.key).length}</strong></div>)}</div>
+      {rated.length ? <Chart option={trend} /> : <p className="research-unrated-note">暂无明确总评级，未评级期次不计入方向趋势。</p>}
+    </section>
+  </section>;
 }
 
 function MacroOverviewPage({ macro, etf }: { macro: MacroPayload; etf: StockPayload }) {
@@ -4112,6 +4197,7 @@ function useDeletedRemoteIntelIds(): [string[], React.Dispatch<React.SetStateAct
 function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
   const items: SearchItem[] = [];
+  (data.trackers.a_share_research_views?.issues ?? []).forEach((issue) => items.push({ type: "A股观点", title: issue.title, date: issue.date, detail: `${issue.date} · ${researchStance(issue).label}`, haystack: `A股 研报 观点 ${issue.title} ${issue.topics.map((topic) => `${topic.title} ${topic.points.join(" ")}`).join(" ")}`, target: { sector: "a-share", page: "reports", researchId: issue.id, anchorId: "a-share-research" } }));
   data.aShareIndices.latest.forEach((index) => items.push({
     type: "A股指数", title: index.name, date: index.date,
     detail: `${index.ticker} · ${index.date} · ${index.close.toLocaleString()} 点`,
