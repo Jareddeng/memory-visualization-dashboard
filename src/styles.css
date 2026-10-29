@@ -841,6 +841,14 @@ h2 {
 .research-topic footer { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line); }
 .research-topic footer p { margin: 4px 0; font-size: 11px; line-height: 1.6; color: var(--muted); overflow-wrap: anywhere; }
 .research-topic footer a { color: var(--teal); }
+.research-rating-origin { margin: 0 0 8px; font-size: 12px; color: var(--muted); }
+.research-assessment-summary { margin: 0 0 16px; font-size: 14px; font-weight: 700; line-height: 1.75; }
+.research-balance { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.research-balance section { min-width: 0; border-top: 1px solid var(--line); padding-top: 12px; }
+.research-balance h4 { margin: 0 0 10px; font-size: 14px; color: #187a50; }
+.research-balance section:last-child h4 { color: #b93737; }
+.research-data-note { margin: 8px 0 0; font-size: 12px; color: #8c680e; line-height: 1.6; }
+.research-disclaimer { margin: 0; border-top: 1px solid var(--line); padding-top: 12px; font-size: 12px; line-height: 1.7; color: var(--muted); }
 .research-stance { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; border-radius: 999px; padding: 4px 10px; background: #edf0f0; color: #667570; font-size: 12px; font-weight: 700; white-space: nowrap; }
 .research-stance.bullish, .research-stance.lean_bullish { background: #e1f1e8; color: #187a50; }
 .research-stance.neutral { background: #fff3cc; color: #8c680e; }
@@ -853,6 +861,7 @@ h2 {
 .research-unrated-note { margin: 0; color: var(--muted); font-size: 12px; }
 @media (max-width: 1440px) {
   .research-topic-grid { grid-template-columns: minmax(0, 1fr); }
+  .research-balance { grid-template-columns: minmax(0, 1fr); gap: 12px; }
 }
 @media (max-width: 1180px) {
   .research-layout { grid-template-columns: 280px minmax(0, 1fr); }

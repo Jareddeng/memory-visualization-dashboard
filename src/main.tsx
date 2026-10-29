@@ -176,6 +176,8 @@ type AShareResearchIssue = {
   date: string;
   title: string;
   stance?: ResearchStance;
+  assessment?: { origin: string; summary: string; support: string[]; pressure: string[]; notes?: string[] };
+  disclaimer?: string;
   topics: Array<{ title: string; points: string[]; sources: Array<{ title: string; authors?: string; date: string; url?: string }> }>;
 };
 
@@ -1500,10 +1502,20 @@ function AShareResearchPage({ issues, selectedId, onSelect }: { issues: AShareRe
       <div className="research-current">
         {selected ? <>
           <header className="research-issue-head"><div><p>{selected.date}</p><h3>{selected.title}</h3></div><span className={`research-stance ${researchStance(selected).key}`}>{researchStance(selected).label}</span></header>
+          {selected.assessment ? <article className="panel research-topic research-assessment">
+            <p className="research-rating-origin">{selected.assessment.origin}</p>
+            <p className="research-assessment-summary">{selected.assessment.summary}</p>
+            <div className="research-balance">
+              <section><h4>支撑面</h4><ul>{selected.assessment.support.map((point, index) => <li key={index}>{renderInlineMarkdown(point)}</li>)}</ul></section>
+              <section><h4>压制面</h4><ul>{selected.assessment.pressure.map((point, index) => <li key={index}>{renderInlineMarkdown(point)}</li>)}</ul></section>
+            </div>
+            {selected.assessment.notes?.map((note, index) => <p className="research-data-note" key={index}>{note}</p>)}
+          </article> : null}
           <div className="research-topic-grid">{selected.topics.map((topic, index) => <article className="panel research-topic" key={`${selected.id}-${index}`}>
             <h3>{topic.title}</h3><ul>{topic.points.map((point, pointIndex) => <li key={pointIndex}>{renderInlineMarkdown(point)}</li>)}</ul>
             <footer>{topic.sources.map((source, sourceIndex) => <p key={sourceIndex}>{source.url ? <a href={source.url} target="_blank" rel="noreferrer">{source.title}</a> : source.title}{source.authors ? ` · ${source.authors}` : ""} · {source.date}</p>)}</footer>
           </article>)}</div>
+          {selected.disclaimer ? <p className="research-disclaimer">{selected.disclaimer}</p> : null}
         </> : <p>暂无研报观点</p>}
       </div>
     </div>
@@ -4197,7 +4209,7 @@ function useDeletedRemoteIntelIds(): [string[], React.Dispatch<React.SetStateAct
 function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
   const items: SearchItem[] = [];
-  (data.trackers.a_share_research_views?.issues ?? []).forEach((issue) => items.push({ type: "A股观点", title: issue.title, date: issue.date, detail: `${issue.date} · ${researchStance(issue).label}`, haystack: `A股 研报 观点 ${issue.title} ${issue.topics.map((topic) => `${topic.title} ${topic.points.join(" ")}`).join(" ")}`, target: { sector: "a-share", page: "reports", researchId: issue.id, anchorId: "a-share-research" } }));
+  (data.trackers.a_share_research_views?.issues ?? []).forEach((issue) => items.push({ type: "A股观点", title: issue.title, date: issue.date, detail: `${issue.date} · ${researchStance(issue).label}`, haystack: `A股 研报 观点 ${issue.title} ${issue.assessment ? [issue.assessment.summary, ...issue.assessment.support, ...issue.assessment.pressure].join(" ") : ""} ${issue.topics.map((topic) => `${topic.title} ${topic.points.join(" ")}`).join(" ")}`, target: { sector: "a-share", page: "reports", researchId: issue.id, anchorId: "a-share-research" } }));
   data.aShareIndices.latest.forEach((index) => items.push({
     type: "A股指数", title: index.name, date: index.date,
     detail: `${index.ticker} · ${index.date} · ${index.close.toLocaleString()} 点`,
