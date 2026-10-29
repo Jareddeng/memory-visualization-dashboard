@@ -1469,7 +1469,7 @@ function AShareResearchPage({ issues, selectedId, onSelect }: { issues: AShareRe
   const history = [...sorted].reverse();
   const rated = history.filter((issue) => researchStance(issue).value !== null);
   const trend: echarts.EChartsCoreOption = {
-    grid: { left: 44, right: 20, top: 18, bottom: 32, containLabel: true },
+    grid: { left: 8, right: 12, top: 16, bottom: 24, containLabel: true },
     tooltip: { trigger: "axis", formatter: (params: unknown) => {
       const point = (params as Array<{ dataIndex: number }>)[0];
       const issue = history[point?.dataIndex];
@@ -1484,6 +1484,11 @@ function AShareResearchPage({ issues, selectedId, onSelect }: { issues: AShareRe
     <div className="research-layout">
       <aside className="research-archive panel" aria-label="观点更新归档">
         <div className="research-archive-head"><h3>更新归档</h3><button type="button" onClick={() => { setMonth(""); if (sorted[0]) onSelect(sorted[0].id); }}>最新一期</button></div>
+        <div className="research-history" id="a-share-research-history" aria-label="历史观点倾向">
+          <div className="research-history-head"><h4>观点趋势</h4><span>{sorted.length} 期更新 · {rated.length} 期已评级</span></div>
+          <Chart option={trend} />
+          {!rated.length ? <p className="research-unrated-note">暂无明确总评级，未评级期次不计入方向趋势。</p> : null}
+        </div>
         <select aria-label="归档月份" value={month} onChange={(event) => { const value = event.target.value; setMonth(value); const first = sorted.find((issue) => !value || issue.date.startsWith(value)); if (first) onSelect(first.id); }}><option value="">全部月份</option>{months.map((value) => <option key={value} value={value}>{value}</option>)}</select>
         <div className="research-archive-list">
           {visible.map((issue) => <button type="button" className={issue.id === selected?.id ? "active" : ""} aria-pressed={issue.id === selected?.id} key={issue.id} onClick={() => onSelect(issue.id)}>
@@ -1502,11 +1507,6 @@ function AShareResearchPage({ issues, selectedId, onSelect }: { issues: AShareRe
         </> : <p>暂无研报观点</p>}
       </div>
     </div>
-    <section className="panel research-history" id="a-share-research-history" aria-label="历史观点倾向">
-      <div className="research-history-head"><h3>历史观点倾向</h3><span>{sorted.length} 期更新 · {rated.length} 期已评级</span></div>
-      <div className="research-stance-counts">{researchStances.map((stance) => <div key={stance.key}><span className={`research-stance ${stance.key}`}>{stance.label}</span><strong>{sorted.filter((issue) => researchStance(issue).key === stance.key).length}</strong></div>)}</div>
-      {rated.length ? <Chart option={trend} /> : <p className="research-unrated-note">暂无明确总评级，未评级期次不计入方向趋势。</p>}
-    </section>
   </section>;
 }
 

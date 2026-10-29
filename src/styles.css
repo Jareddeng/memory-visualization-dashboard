@@ -819,7 +819,7 @@ h2 {
 }
 
 .a-share-research { display: grid; gap: 20px; }
-.research-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); align-items: start; gap: 20px; }
+.research-layout { display: grid; grid-template-columns: 340px minmax(0, 1fr); align-items: start; gap: 20px; }
 .research-archive { display: grid; gap: 12px; }
 .research-archive-head, .research-history-head, .research-issue-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .research-archive-head h3, .research-history-head h3, .research-issue-head h3 { margin: 0; font-size: 16px; }
@@ -845,24 +845,22 @@ h2 {
 .research-stance.bullish, .research-stance.lean_bullish { background: #e1f1e8; color: #187a50; }
 .research-stance.neutral { background: #fff3cc; color: #8c680e; }
 .research-stance.bearish, .research-stance.lean_bearish { background: #f9e4e4; color: #b93737; }
-.research-history { display: grid; gap: 16px; }
+.research-history { display: grid; gap: 8px; }
 .research-history-head { flex-wrap: wrap; }
+.research-history-head h4 { margin: 0; font-size: 13px; }
 .research-history-head > span { font-size: 12px; color: var(--muted); }
-.research-stance-counts { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
-.research-stance-counts > div { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
-.research-stance-counts strong { font-size: 20px; }
-.research-history .chart { height: 240px; }
+.research-history .chart { height: 210px; }
 .research-unrated-note { margin: 0; color: var(--muted); font-size: 12px; }
-@media (max-width: 1180px) {
-  .research-layout { grid-template-columns: 220px minmax(0, 1fr); }
+@media (max-width: 1440px) {
   .research-topic-grid { grid-template-columns: minmax(0, 1fr); }
-  .research-stance-counts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 1180px) {
+  .research-layout { grid-template-columns: 280px minmax(0, 1fr); }
 }
 @media (max-width: 760px) {
   .research-layout { grid-template-columns: minmax(0, 1fr); }
   .research-archive-list { max-height: 216px; }
   .research-issue-head h3 { font-size: 16px; }
-  .research-stance-counts { gap: 6px; }
 }
 
 .macro-overview {
