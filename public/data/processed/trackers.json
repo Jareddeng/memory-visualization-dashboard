@@ -1,4 +1,96 @@
 {
+  "a_share_research_views": {
+    "issues": [
+      {
+        "id": "a-share-2026-10-27",
+        "date": "2026-10-27",
+        "title": "ETF承接增强，配置关注盈利与回款能见度",
+        "stance": "unrated",
+        "topics": [
+          {
+            "title": "资金面：ETF承接增强，但资金尚未形成合力",
+            "points": [
+              "**股票型ETF上周净流入接近1500亿元**，创2026年以来次高（仅低于7月末），其中沪深300指数ETF净流入632亿元为主方向；ETF累计净流入规模回升至接近4月末水平，但距1月末仍有约2000亿元差距。",
+              "交易端有所解压但不一致：融资净流出从前周704亿元收窄至570亿元，活跃度回升至8.07%；散户由净流出539亿元转为净流入196亿元（偏电力设备、电子方向）；龙虎榜净流入71.57亿元但偏公用事业等防御方向。**资金侧趋势回暖仍需等待共识形成**。",
+              "供给侧压力收窄：重要股东净减持降至15.29亿元（7月以来周均50亿+），近1个月净减持69.63亿元——历史统计该指标转正或是市场底部构筑较完善的信号；回购保持活跃（182.31亿元，家电为主动回购增量方向）。"
+            ],
+            "sources": [
+              {
+                "title": "华泰策略《资金透视：ETF承接增强》",
+                "authors": "王伟光/闫萌/孙瀚文",
+                "date": "2026-10-27"
+              }
+            ]
+          },
+          {
+            "title": "海外AI融资压力传导：配置转向能见度环节",
+            "points": [
+              "10月12-23日全球AI资产普遍调整（纳指-5.2%、费半-14.3%、科创50-7.7%），海外AI融资约束加重：Meta三季度自由现金流转负至-21亿美元，CoreWeave债券收益率从9.68%升至约15%，**AI基建竞争从获得算力推向融资与回款能力的比较**。",
+              "对A股的含义：海外云厂商Capex二阶导放缓，硬件端β或转向供需缺口环节α。**建议关注三季报订单、交付与回款能见度较高的PCB、光连接、服务器、液冷、电源及高端存储等环节，继续规避依赖远期叙事的高估值品种**。",
+              "存储景气仍有AI需求支撑（DRAM交付周期维持20周，远高于均衡水平8周），但企业受益程度取决于服务器及高端产品占比；模组和终端厂商要看成本上涨能否向下游传导。",
+              "事件关注：10-28 SK海力士三季报（HBM订单、存储价格、利润率）、微软/亚马逊财报，A股三季报披露进入尾声。"
+            ],
+            "sources": [
+              {
+                "title": "华泰策略《海外AI融资压力传导》",
+                "authors": "方正韬/金荣/夏路路/王伟光",
+                "date": "2026-10-27"
+              }
+            ]
+          },
+          {
+            "title": "厄尔尼诺主题：先交易预期，再验证供需",
+            "points": [
+              "本轮厄尔尼诺仍在增强（2026年7-9月ONI达+2.2℃，历史高位），产业影响或延续至2027年。**但历史样本不支持稳定的宽基或风格择时规律**（1997年以来9轮中上证4涨5跌），机会在行业层面。",
+              "行业轮动框架：预期定价→初期重估→持续期分化→后期再定价。2026年5月底以来15个相关行业中11个跑赢沪深300，仅6个超额超10pct，且其中仅种植业、农产品加工的2027年盈利一致预测上修超10%——**预期交易已较充分，后续重估空间取决于减产能否推动去库、涨价能否转化为利润**。",
+              "配置思路：当前优先关注来水与电量兑现的流域水电，谨慎追涨农业主题；年末至2027年初若油脂减产、出口收紧与去库同步，可择机增加资源敞口；2027年关注我国南方汛期异常降水机会。"
+            ],
+            "sources": [
+              {
+                "title": "华泰策略《厄尔尼诺投资指南》",
+                "authors": "方正韬/王伟光/孙瀚文",
+                "date": "2026-10-27"
+              }
+            ]
+          },
+          {
+            "title": "红利投资：从择时轮动到红利贵族",
+            "points": [
+              "红利投资分两种范式：**风格轮动型**（赚资本利得，需结合β/动量选股+PCR/GEX择时+AH溢价轮动）与**长线股息增长型**（红利贵族，考核绝对分红金额的长期稳定增长）。",
+              "标普红利贵族指数要求连续25年增派股息；华泰放宽AH股条件为**连续5年提高分红**后构建组合：港股组合集中在金融地产和消费，2020年以来跑赢恒指、恒生高股息及港股通红利低波，且波动更低；A股组合分布分散（消费、TMT、公用事业为主），回报优于沪深300、中证红利，但波动率不占优。",
+              "随着供给侧分红能力/意愿改善、需求侧长线资金占比上升，红利贵族策略或进入新发展阶段。"
+            ],
+            "sources": [
+              {
+                "title": "华泰策略《红利投资是否需要着眼于红利》",
+                "authors": "李雨婕/栾迪/杨仲炜",
+                "date": "2026-10-27"
+              }
+            ]
+          },
+          {
+            "title": "宏观背景：盈利改善广度有限，高利率压制估值",
+            "points": [
+              "**国内**：9月工企利润同比表观回升至14.4%，但主因茶酒行业利润确认节奏错位（剔除后从13.5%回落至8.1%）+能源涨价；剔除上游、电子和茶酒后其余行业盈利同比降幅扩大至约10.1%——**盈利改善的广度仍有限**。应收账款增速升至10.0%、产成品库存增速升至11.6%，回款与资金周转压力需关注；M1同比回落至3.2%，资金活化动能走弱。",
+              "**海外**：预计10月FOMC按兵不动，或有2位鹰派票委投反对票；基准情形年内12月再加息1次、明年加息2次。高利率环境或仍持续，分母端对A股估值仍有压制。"
+            ],
+            "sources": [
+              {
+                "title": "华泰宏观《9月工企利润：剔除茶酒业后下游盈利承压》",
+                "authors": "吴宛忆/易峘/翟乐陶",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "华泰宏观《10月FOMC前瞻：鹰派暂停加息》",
+                "authors": "易峘/胡李鹏/赵文瑄/丁煦洲",
+                "date": "2026-10-26"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "expansion_capacity": {
     "updated_at": "2026-09-24",
     "source": "User capacity estimates and disclosed expansion targets; CXMT updated from the intelligence library",
@@ -1268,75 +1360,77 @@
   },
   "macro_institutional_charts": {
     "updated_at": "2026-10-23",
-    "source": "华泰证券宏观报告 · 2026年10月",
-    "note": "9月非农、美国核心通胀与中国社融",
-    "commentary": {
-      "month": "2026年9月数据 · 10月研报",
-      "scope": "目前收录华泰证券3篇研报；以下为同一机构的跨数据对照，并非多机构共识。",
-      "topics": [
-        {
-          "name": "美国非农",
-          "view": "新增就业仅2.9万人，低于9万人预期，前两月合计下修6万人；工资增速也放缓。华泰认为连续加息的紧迫性下降。",
-          "comparison": "与通胀报告的偏鹰价格信号相反，但两篇报告都维持10月暂缓、12月再加息一次的基准判断。"
+    "periods": [
+      {
+        "id": "2026-10",
+        "label": "2026年10月",
+        "updated_at": "2026-10-23",
+        "source": "华泰证券宏观报告 · 2026年10月",
+        "note": "9月非农、美国核心通胀与中国社融",
+        "commentary": {
+          "month": "2026年9月数据 · 10月研报",
+          "scope": "目前收录华泰证券3篇研报；以下为同一机构的跨数据对照，并非多机构共识。",
+          "sections": [
+            {
+              "name": "美国宏观",
+              "lead": "华泰证券认为，美国就业边际降温但通胀韧性仍强，美联储短期倾向观望。",
+              "detail": "9月非农就业及薪资增速放缓，降低连续加息的紧迫性，但就业市场整体仍相对稳健；与此同时，核心CPI超预期，住房及部分商品、服务价格普遍升温，显示通胀压力仍具有持续性。考虑到美债收益率上行已推动金融条件收紧，华泰维持10月暂停加息、12月加息一次的判断。"
+            },
+            {
+              "name": "中国宏观",
+              "lead": "华泰证券认为，社融改善主要依赖政府融资托举，私人部门融资需求尚未趋势性修复。",
+              "detail": "9月新增社融超预期，但主要由政府债发行支撑，居民信贷持续偏弱，企业贷款改善亦受到票据融资低基数影响；叠加社融存量及M1、M2增速回落，反映实体融资需求和资金活化程度仍然不足。展望四季度，政府债及政策性金融工具有望继续支撑信用扩张，但政策资金能否有效传导至企业投资及居民需求仍待观察。"
+            }
+          ]
         },
-        {
-          "name": "美国通胀",
-          "view": "9月CPI同比3.7%、核心CPI同比2.6%；住房和核心商品升温，核心通胀环比超预期。华泰提示通胀压力更广泛。",
-          "comparison": "市场因此重新交易10月加息；华泰与非农报告的政策结论仍一致，认为金融条件收紧给10月观望留下空间。"
-        },
-        {
-          "name": "中国社融",
-          "view": "9月新增社融3.55万亿元，政府债融资1.53万亿元是主要支撑；社融存量同比仍回落至7.1%。",
-          "comparison": "总量略有改善与结构偏弱并存：私人部门融资尚未趋势修复。后续重点看政策资金能否带动配套贷款和实际项目。"
-        }
-      ]
-    },
-    "sources": [
-      {
-        "title": "华泰 | 宏观：9月非农走弱边际降低加息压力",
-        "url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ"
-      },
-      {
-        "title": "华泰 | 宏观：住房升温推动美国9月核心CPI超预期",
-        "url": "https://mp.weixin.qq.com/s/iUVK-fYulUyS0c28S-3-iQ"
-      },
-      {
-        "title": "华泰 | 宏观：政府债发力托举社融——9月金融数据点评",
-        "url": "https://mp.weixin.qq.com/s/JQb382lVARmnFWb0Yc-1bA"
-      }
-    ],
-    "items": [
-      {
-        "chart_no": "图表1",
-        "title": "9月非农数据一览",
-        "topic": "华泰 | 宏观：9月非农走弱边际降低加息压力",
-        "status": "已上传截图",
-        "source_url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ",
-        "image_url": "./assets/macro-institutional-charts/huatai-us-payroll-summary-sep-2026.png"
-      },
-      {
-        "chart_no": "图表2",
-        "title": "9月非农就业细项",
-        "topic": "华泰 | 宏观：9月非农走弱边际降低加息压力",
-        "status": "已上传截图",
-        "source_url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ",
-        "image_url": "./assets/macro-institutional-charts/huatai-us-payroll-sectors-sep-2026.png"
-      },
-      {
-        "chart_no": "图表1",
-        "title": "美国9月CPI一览",
-        "topic": "华泰 | 宏观：住房升温推动美国9月核心CPI超预期",
-        "status": "已上传截图",
-        "source_url": "https://mp.weixin.qq.com/s/iUVK-fYulUyS0c28S-3-iQ",
-        "image_url": "./assets/macro-institutional-charts/huatai-us-cpi-sep-2026.png"
-      },
-      {
-        "chart_no": "图表1",
-        "title": "9月新增社融分项变动",
-        "topic": "华泰 | 宏观：政府债发力托举社融——9月金融数据点评",
-        "status": "已上传截图",
-        "source_url": "https://mp.weixin.qq.com/s/JQb382lVARmnFWb0Yc-1bA",
-        "image_url": "./assets/macro-institutional-charts/huatai-china-credit-sep-2026.png"
+        "sources": [
+          {
+            "title": "华泰 | 宏观：9月非农走弱边际降低加息压力",
+            "url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ"
+          },
+          {
+            "title": "华泰 | 宏观：住房升温推动美国9月核心CPI超预期",
+            "url": "https://mp.weixin.qq.com/s/iUVK-fYulUyS0c28S-3-iQ"
+          },
+          {
+            "title": "华泰 | 宏观：政府债发力托举社融——9月金融数据点评",
+            "url": "https://mp.weixin.qq.com/s/JQb382lVARmnFWb0Yc-1bA"
+          }
+        ],
+        "items": [
+          {
+            "chart_no": "图表1",
+            "title": "9月非农数据一览",
+            "topic": "华泰 | 宏观：9月非农走弱边际降低加息压力",
+            "status": "已上传截图",
+            "source_url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ",
+            "image_url": "./assets/macro-institutional-charts/huatai-us-payroll-summary-sep-2026.png"
+          },
+          {
+            "chart_no": "图表2",
+            "title": "9月非农就业细项",
+            "topic": "华泰 | 宏观：9月非农走弱边际降低加息压力",
+            "status": "已上传截图",
+            "source_url": "https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ",
+            "image_url": "./assets/macro-institutional-charts/huatai-us-payroll-sectors-sep-2026.png"
+          },
+          {
+            "chart_no": "图表1",
+            "title": "美国9月CPI一览",
+            "topic": "华泰 | 宏观：住房升温推动美国9月核心CPI超预期",
+            "status": "已上传截图",
+            "source_url": "https://mp.weixin.qq.com/s/iUVK-fYulUyS0c28S-3-iQ",
+            "image_url": "./assets/macro-institutional-charts/huatai-us-cpi-sep-2026.png"
+          },
+          {
+            "chart_no": "图表1",
+            "title": "9月新增社融分项变动",
+            "topic": "华泰 | 宏观：政府债发力托举社融——9月金融数据点评",
+            "status": "已上传截图",
+            "source_url": "https://mp.weixin.qq.com/s/JQb382lVARmnFWb0Yc-1bA",
+            "image_url": "./assets/macro-institutional-charts/huatai-china-credit-sep-2026.png"
+          }
+        ]
       }
     ]
   }
