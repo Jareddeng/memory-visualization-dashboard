@@ -1417,6 +1417,8 @@ h2 {
 .macro-institutional-chart-panel {
   gap: 16px;
   margin-bottom: 16px;
+  width: 100%;
+  max-width: 1280px;
 }
 
 .macro-institutional-periods {
@@ -1456,9 +1458,10 @@ h2 {
 
 .macro-institutional-review {
   display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.9fr);
+  grid-template-columns: minmax(0, 2.2fr) minmax(220px, 1fr);
   align-items: start;
-  gap: 12px;
+  gap: 20px;
+  max-width: 1080px;
 }
 
 .macro-review-card {
@@ -1542,6 +1545,8 @@ h2 {
 
 .macro-institutional-sources a {
   min-width: 0;
+  width: fit-content;
+  max-width: 100%;
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 8px 10px;
