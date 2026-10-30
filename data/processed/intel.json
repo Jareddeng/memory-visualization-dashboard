@@ -39,6 +39,25 @@
       "review_date": "2026-11-28"
     },
     {
+      "id": "2026-10-29-samsung-hbm-sold-out-lta",
+      "type": "公司公告",
+      "impact": "bullish",
+      "date": "2026-10-29",
+      "title": "三星2027年HBM产能全部售罄，长协锁定60%-70%中长期产能",
+      "product": "HBM,DRAM",
+      "source": "凤凰网科技",
+      "url": "https://original.ifeng.com/c/8xcLZcSGzle",
+      "summary": "三星电子在Q3财报电话会披露，2027年HBM产能已按既定目标价格全部售罄，2028年DRAM供应预计维持紧张。存储业务已与10家客户签署长期供货协议（LTA），另有10家正在洽谈，计划通过多年期合同锁定60%-70%中长期产能。HBM4Q3销售额环比增超3倍、占HBM总营收60%。公司预计存储供给紧张持续至2028年。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "transmission_path": "三星HBM产能2027年售罄+LTA锁定60%-70%产能→存储供给紧张持续至2028年预期强化→DRAM/HBM合约价维持高位→存储厂商盈利能见度和确定性提升",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-11-28"
+    },
+    {
       "id": "2026-10-28-sk-hynix-q3-record-earnings",
       "type": "财报业绩",
       "impact": "bullish",

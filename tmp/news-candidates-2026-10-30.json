@@ -1,1 +1,40 @@
-[]
+[
+  {
+    "id": "2026-10-29-samsung-q3-record-profit",
+    "date": "2026-10-29",
+    "type": "财报业绩",
+    "impact": "bullish",
+    "importance": "S",
+    "reaction_type": "instant",
+    "pricing_status": "priced",
+    "horizon": "1q",
+    "title": "三星Q3营业利润107.4万亿韩元创纪录，HBM4销量环比增3倍",
+    "product": "DRAM,HBM,NAND,SSD",
+    "source": "财联社",
+    "url": "https://www.cls.cn/detail/2518995",
+    "summary": "三星电子2026年Q3营收195.3万亿韩元（环比+14%），营业利润107.4万亿韩元（环比+20%），利润率55%，成为全球首家单季营业利润破100万亿韩元的科技企业。存储业务HBM4销售额环比增超3倍、占HBM营收60%；DRAM ASP环比+20%，NAND ASP环比涨近10%。Q3资本开支29万亿韩元，全年指引84.4万亿韩元，重点投向DS半导体（76.8万亿韩元）。Q4指引DRAM出货容量环比增15%-20%，NAND增约15%。",
+    "transmission_path": "三星业绩大超预期→验证AI驱动存储行业高景气→同业SK海力士、美光估值获提振→存储芯片板块情绪走强",
+    "confidence": "high",
+    "action": "alert",
+    "review_date": "2026-11-28"
+  },
+  {
+    "id": "2026-10-29-samsung-hbm-sold-out-lta",
+    "date": "2026-10-29",
+    "type": "公司公告",
+    "impact": "bullish",
+    "importance": "S",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "longer",
+    "title": "三星2027年HBM产能全部售罄，长协锁定60%-70%中长期产能",
+    "product": "HBM,DRAM",
+    "source": "凤凰网科技",
+    "url": "https://original.ifeng.com/c/8xcLZcSGzle",
+    "summary": "三星电子在Q3财报电话会披露，2027年HBM产能已按既定目标价格全部售罄，2028年DRAM供应预计维持紧张。存储业务已与10家客户签署长期供货协议（LTA），另有10家正在洽谈，计划通过多年期合同锁定60%-70%中长期产能。HBM4Q3销售额环比增超3倍、占HBM总营收60%。公司预计存储供给紧张持续至2028年。",
+    "transmission_path": "三星HBM产能2027年售罄+LTA锁定60%-70%产能→存储供给紧张持续至2028年预期强化→DRAM/HBM合约价维持高位→存储厂商盈利能见度和确定性提升",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "review_date": "2026-11-28"
+  }
+]
