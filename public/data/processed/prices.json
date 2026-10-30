@@ -5537,6 +5537,12 @@
               "price": 46.86,
               "source": "WIND",
               "note": "Imported from local workbook. Confirm unit/source before production use."
+            },
+            {
+              "date": "2026-10-30",
+              "price": 46.86,
+              "source": "WIND",
+              "note": "Imported from local workbook. Confirm unit/source before production use."
             }
           ]
         },
@@ -16613,6 +16619,12 @@
               "price": 82.92,
               "source": "WIND",
               "note": "Imported from local workbook. Confirm unit/source before production use."
+            },
+            {
+              "date": "2026-10-30",
+              "price": 82.8,
+              "source": "WIND",
+              "note": "Imported from local workbook. Confirm unit/source before production use."
             }
           ]
         },
@@ -27680,7 +27692,13 @@
             },
             {
               "date": "2026-10-29",
-              "price": 61.83,
+              "price": 61.33,
+              "source": "WIND",
+              "note": "Imported from local workbook. Confirm unit/source before production use."
+            },
+            {
+              "date": "2026-10-30",
+              "price": 61.33,
               "source": "WIND",
               "note": "Imported from local workbook. Confirm unit/source before production use."
             }
@@ -35821,6 +35839,12 @@
               "price": 18.13,
               "source": "WIND",
               "note": "Imported from local workbook. Confirm unit/source before production use."
+            },
+            {
+              "date": "2026-09-30",
+              "price": 18.21,
+              "source": "WIND",
+              "note": "Imported from local workbook. Confirm unit/source before production use."
             }
           ]
         },
@@ -36059,6 +36083,12 @@
             {
               "date": "2026-08-31",
               "price": 23.43,
+              "source": "WIND",
+              "note": "Imported from local workbook. Confirm unit/source before production use."
+            },
+            {
+              "date": "2026-09-30",
+              "price": 23.53,
               "source": "WIND",
               "note": "Imported from local workbook. Confirm unit/source before production use."
             }
