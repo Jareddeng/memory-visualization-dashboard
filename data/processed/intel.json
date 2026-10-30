@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-30-memory-price-rise-analysis",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-10-30",
+      "title": "手机PC需求疲软下存储芯片为何继续涨价：AI吸走高端产能，DDR4现现货价格倒挂",
+      "product": "DRAM,NAND,DDR4,DDR5,HBM,eSSD",
+      "source": "中国战略新兴产业网",
+      "url": "http://www.chinasei.com.cn/ad/ad9/202610/t20261030_90257.html",
+      "summary": "10月30日中国战略新兴产业网发文分析存储涨价逻辑：TrendForce预计Q4一般型DRAM合约价环比上涨10%-15%、NAND上涨15%-20%，企业级SSD涨幅继续扩大；美光2026财年DRAM均价同比上涨约180%、NAND上涨约200%；2026年HBM+服务器RDIMM合计占全球DRAM位元供给的51%，服务器DRAM合约价2026年全年累计涨幅预计约270%。三大原厂退出DDR4产能导致成熟产品缺货，市场出现DDR4现货价高于DDR5的倒挂。SK海力士8月宣布的54万亿韩元新产能（清州M17洁净室2028年12月、龙仁Y2 2029年6月）难解近渴，原厂扩产最快2028年才明显放量，DRAM涨价可能延续至2027年。高价已开始压制需求：Q2智能手机存储价格环比上涨超80%，DRAM超过主处理器成为部分旗舰机成本最高单一元器件，云厂商存储支出占capex比例将从2026年47%升至2027年68%。模组厂分化：江波龙H1毛利率59.08%但Q3净利环比预降35%-49%，市场关注点从“能不能赚”转向“能赚多久”。",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "AI数据中心吸走HBM/服务器DDR5/企业级SSD高端产能→消费级供给收缩支撑涨价外溢至DDR4并出现价格倒挂→模组厂库存红利见顶、盈利分化→涨价持续性取决于2028年前新增产能空窗，利多原厂、挤压下游消费电子利润",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-11-06"
+    },
+    {
       "id": "2026-10-29-samsung-q3-record-profit",
       "type": "财报业绩",
       "impact": "bullish",
@@ -56,6 +75,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-11-28"
+    },
+    {
+      "id": "2026-10-29-intel-q3-beat-weak-guidance",
+      "type": "财报业绩",
+      "impact": "bearish",
+      "date": "2026-10-29",
+      "title": "Intel Q3超预期但Q4指引大幅低于预期，盘后暴跌超16%",
+      "product": "CPU,Xeon,服务器芯片,半导体",
+      "source": "Benzinga",
+      "url": "https://www.benzinga.com/markets/earnings/26/10/62718733/intel-stock-crashes-after-q3-earnings-what-you-need-to-know",
+      "summary": "Intel于10月29日美股盘后公布2026财年第三季度业绩：调整后EPS $0.52，超预期约30%（预期$0.39-0.40）；营收$16.51B，略超预期（预期$16.47B）。但Q4指引大幅低于预期：调整后EPS指引$0.25（预期$0.43），营收指引$15-16B（预期$17.05B）。CEO陈立武表示PC行业存在短期逆风，但CPU需求依然强劲，公司当前首要任务是解锁额外产能以满足Xeon服务器芯片的“非同寻常的需求”。财报后盘后股价一度下跌16.5%至$76.85（收盘$92.07）。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "Intel指引miss+PC行业逆风表态→短期压制PC/客户端半导体链情绪与风险偏好；但其Xeon供应紧张、数据中心CPU需求超预期的表述→与存储原厂财报相互印证数据中心算力硬件紧缺逻辑未变，利空集中于Intel自身及PC链",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-06"
     },
     {
       "id": "2026-10-28-sk-hynix-q3-record-earnings",
