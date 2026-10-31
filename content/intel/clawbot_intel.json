@@ -15172,6 +15172,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-11-06"
+    },
+    {
+      "id": "2026-10-29-intel-guidance-memory-shortage",
+      "date": "2026-10-29",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "title": "英特尔季度营收指引逊于预期，PC需求疲软叠加存储芯片短缺",
+      "product": "DRAM,NAND,存储芯片,内存",
+      "source": "Bloomberg（财新转引）",
+      "url": "https://database.caixin.com/2026-10-30/102498750.html",
+      "summary": "英特尔发布季度财报，营收展望逊于市场预期，管理层归因于PC终端需求疲软及存储芯片等零部件供应受限。报道指出，AI数据中心基础设施建设在拉动处理器需求的同时，由Samsung、SK Hynix、Micron主导的存储芯片供不应求，正持续挤压PC等下游终端的零部件供给。",
+      "transmission_path": "AI数据中心建设挤占存储产能 → DRAM/NAND供应短缺加剧 → PC厂商零部件成本上升、出货受限；同时存储原厂定价权增强，利好Samsung、SK Hynix、Micron价格预期与业绩弹性。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-11-05"
     }
   ]
 }
