@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-10-31-kioxia-nand-slowdown-memory",
+      "type": "行业分析",
+      "impact": "bearish",
+      "date": "2026-10-31",
+      "title": "铠侠NAND涨价放缓引发存储板块担忧，Sandisk大跌14.6%",
+      "product": "NAND,SSD,memory",
+      "source": "Investing.com",
+      "url": "https://ph.investing.com/news/stock-market-news/kioxias-nand-price-slowdown-and-what-it-means-for-memory-stocks-93CH-2664438",
+      "summary": "Investing.com分析文章指出，铠侠FY26Q2财报显示NAND均价环比涨幅从约70%大幅收窄至约25%，Q3营业利润指引低于市场预期15%，引发对NAND超级周期减速的担忧。截至2026年10月30日，Sandisk（SNDK）报1,136.25美元，下跌14.57%。文章讨论了铠侠财报对存储类股的广泛影响。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1w",
+      "transmission_path": "铠侠NAND ASP涨幅收窄→分析师质疑涨价持续性→Sandisk等NAND概念股遭抛售→存储板块短期情绪波动加大",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-11-07"
+    },
+    {
       "id": "2026-10-30-memory-price-rise-analysis",
       "type": "行业分析",
       "impact": "bullish",
@@ -37,6 +56,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-11-06"
+    },
+    {
+      "id": "2026-10-30-kioxia-q2-earnings-nand-slowdown",
+      "type": "财报业绩",
+      "impact": "neutral",
+      "date": "2026-10-30",
+      "title": "铠侠FY26Q2：营收2.48万亿日元创纪录，NAND涨价明显放缓",
+      "product": "NAND,SSD,BiCS FLASH",
+      "source": "Quartz",
+      "url": "https://qz.com/kioxia-profit-ai-data-storage-first-dividend-103026",
+      "summary": "铠侠公布FY2026 Q2（7-9月）财报：营收2.48万亿日元，同比+453.2%，环比+40.3%；调整后营业利润1.9883万亿日元，同比+2181.1%，营业利润率80.2%。NAND平均售价环比涨幅从Q1的约70%收窄至约25%。公司宣布首次派息每股90日元，2027年产能全部售罄，LTA已覆盖2028年出货量50%以上。Q3指引营业利润约2万亿日元，低于市场共识约2.35万亿日元约15%。资本开支计划上调，下半年约3300亿日元。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "铠侠NAND ASP涨幅收窄→市场对NAND超级周期持续性产生分歧→NAND/SSD相关股票短期承压→但2027年产能售罄和2028年LTA锁定显示长期需求仍然强劲",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-11-29"
     },
     {
       "id": "2026-10-29-samsung-q3-record-profit",
