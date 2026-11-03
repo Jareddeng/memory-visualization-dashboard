@@ -15286,6 +15286,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-11-07"
+    },
+    {
+      "id": "2026-11-02-cxmt-4f2-dram-validation",
+      "date": "2026-11-02",
+      "type": "重大事件",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "长鑫存储宣布4F² DRAM工程样品验证成功，计划年底向服务器客户送样DDR5 RDIMM",
+      "product": "DRAM,DDR5,4F²",
+      "source": "SammyFans",
+      "url": "https://www.sammyfans.com/2026/11/02/cxmt-4f2-dram-architecture-validation/",
+      "summary": "长鑫存储（CXMT）宣布其基于4F²结构的第六代DRAM工艺工程样品验证成功，公司称此为全球首创。CXMT计划年底前向服务器客户送样DDR5 RDIMM，瞄准高密度数据中心应用后再扩展至更广泛产品线。公司同时披露第三季度营收1187亿元人民币（约178.4亿美元），同比增长613%，实现扭亏为盈。Micron此前因物理缩放难题放弃4F²路线，三星和SK海力士则有意延续成熟6F²平台以保持利润率稳定。",
+      "transmission_path": "CXMT 4F²技术验证成功 → 市场对其商业化进度预期升温 → 国产DRAM供给增加预期压制三星/SK海力士/美光长期定价权和市场份额 → 短期对韩美原厂股价形成情绪面压力",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-12-02"
+    },
+    {
+      "id": "2026-11-02-hbm4-price-spike-amd",
+      "date": "2026-11-02",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "HBM4供应短缺加剧，合约价预计2027年同比上涨121%，AMD与三星达成供应协议",
+      "product": "HBM4,DRAM,NAND",
+      "source": "Tech Insider",
+      "url": "https://tech-insider.org/hbm4-memory-shortage-amd-samsung-sk-hynix-price-spike-2026/",
+      "summary": "HBM4供应短缺持续，据韩国经济日报预测，2027年HBM4合约价将同比上涨121%。12层36GB堆栈价格估计2026年约600美元，2027年预计升至约1300美元。SK海力士、三星、Micron均已通过NVIDIA Vera Rubin平台认证，SK海力士占据最大 reported 份额。AMD为Instinct MI455加速器积极争抢HBM4供应，与三星达成协议。HBM4于2026年刚开始量产爬坡，NVIDIA Vera Rubin和AMD MI455同时放量加剧对同一供应商基础的争夺。",
+      "transmission_path": "HBM4供不应求 → 合约价预计翻倍以上 → SK海力士/三星/美光HBM收入和利润率超预期 → 原厂将更多产能转向HBM → 挤压常规DRAM产能 → 加剧存储整体供应紧张",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-12-02"
     }
   ]
 }
