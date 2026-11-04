@@ -1,68 +1,68 @@
 {
   "source": "Wind 工作簿缓存",
-  "quoteDate": "2026-11-03",
+  "quoteDate": "2026-11-04",
   "quotes": [
     {
       "label": "-8%至-5%虚值期权",
       "kind": "put",
-      "date": "2026-11-03",
-      "underlying": 6221.23,
-      "strike": 5800,
-      "contract": "MO2703-P-5800",
-      "moneynessPct": -6.77,
+      "date": "2026-11-04",
+      "underlying": 6511.81,
+      "strike": 6000,
+      "contract": "MO2703-P-6000",
+      "moneynessPct": -7.86,
       "expiry": "2027-03-19",
-      "daysToExpiry": 136,
-      "settlement": 352,
-      "periodCostPct": 5.66,
-      "annualCostPct": 15.19,
-      "delta": -0.3776,
+      "daysToExpiry": 135,
+      "settlement": 307.4,
+      "periodCostPct": 4.72,
+      "annualCostPct": 12.76,
+      "delta": -0.3431,
       "status": "available"
     },
     {
       "label": "-11%至-8%虚值期权",
       "kind": "put",
-      "date": "2026-11-03",
-      "underlying": 6221.23,
-      "strike": 5600,
-      "contract": "MO2703-P-5600",
-      "moneynessPct": -9.99,
+      "date": "2026-11-04",
+      "underlying": 6511.81,
+      "strike": 5800,
+      "contract": "MO2703-P-5800",
+      "moneynessPct": -10.93,
       "expiry": "2027-03-19",
-      "daysToExpiry": 136,
-      "settlement": 279.8,
-      "periodCostPct": 4.5,
-      "annualCostPct": 12.07,
-      "delta": -0.3161,
+      "daysToExpiry": 135,
+      "settlement": 244.8,
+      "periodCostPct": 3.76,
+      "annualCostPct": 10.16,
+      "delta": -0.2843,
       "status": "available"
     },
     {
       "label": "-13%至-11%虚值期权",
       "kind": "put",
-      "date": "2026-11-03",
-      "underlying": 6221.23,
-      "strike": 5400,
-      "contract": "MO2703-P-5400",
-      "moneynessPct": -13.2,
+      "date": "2026-11-04",
+      "underlying": 6511.81,
+      "strike": 5800,
+      "contract": "MO2703-P-5800",
+      "moneynessPct": -10.93,
       "expiry": "2027-03-19",
-      "daysToExpiry": 136,
-      "settlement": 215.2,
-      "periodCostPct": 3.46,
-      "annualCostPct": 9.28,
-      "delta": -0.2571,
+      "daysToExpiry": 135,
+      "settlement": 244.8,
+      "periodCostPct": 3.76,
+      "annualCostPct": 10.16,
+      "delta": -0.2843,
       "status": "available"
     },
     {
       "label": "中证1000股指期货",
       "kind": "future",
-      "date": "2026-11-03",
-      "underlying": 6221.23,
+      "date": "2026-11-04",
+      "underlying": 6511.81,
       "strike": null,
       "contract": "IM2703.CFE",
       "moneynessPct": null,
       "expiry": "2027-03-19",
-      "daysToExpiry": 136,
-      "settlement": 6029.4,
-      "periodCostPct": 3.08,
-      "annualCostPct": 8.28,
+      "daysToExpiry": 135,
+      "settlement": 6326.2,
+      "periodCostPct": 2.85,
+      "annualCostPct": 7.71,
       "delta": null,
       "status": "available"
     }
@@ -4194,6 +4194,10 @@
       {
         "date": "2026-11-03",
         "value": 5.6061
+      },
+      {
+        "date": "2026-11-04",
+        "value": 4.9568
       }
     ]
   },
@@ -9211,6 +9215,13 @@
         "top10": 53.7961890525694,
         "top5Rank": 45,
         "top10Rank": 40.5
+      },
+      {
+        "date": "2026-11-04",
+        "top5": 40.4258403823328,
+        "top10": 54.1236629379101,
+        "top5Rank": 45.2,
+        "top10Rank": 43.3
       }
     ]
   }
