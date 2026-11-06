@@ -39,6 +39,34 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 Add whatever helps you do your job. This is your cheat sheet.
 
+## 项目配置：金十数据 MCP（2026-11-06 接入）
+
+- 服务：金十数据智能开放平台（jin10-mcp v1.0.0）
+- 接入方式：OpenClaw 内置 MCP client registry（`mcp.servers`）
+- 传输：`streamable-http`，协议版本 `2025-11-25`
+- 配置位置：`~/.openclaw/openclaw.json` → `mcp.servers.jin10`
+- 工具前缀：`jin10__*`（8 个工具 + `quote://codes` 资源）
+- 限流：每工具每用户每天 1500 次（北京时间自然日）
+- 验证：2026-11-06 `get_quote(XAUUSD)` + `list_calendar` 实测通过
+- 品种代码先查 `quote://codes` 资源；分页用 `cursor`/`next_cursor`
+
+### 可用工具
+| 工具 | 用途 |
+|------|------|
+| `jin10__get_quote({code})` | 实时行情 |
+| `jin10__get_kline({code,time?,count?})` | 分钟级K线（24h内） |
+| `jin10__list_flash({cursor?})` | 快讯列表 |
+| `jin10__search_flash({keyword})` | 快讯搜索 |
+| `jin10__list_news({cursor?})` | 资讯列表 |
+| `jin10__search_news({keyword,cursor?})` | 资讯搜索 |
+| `jin10__get_news({id})` | 文章详情 |
+| `jin10__list_calendar({})` | 财经日历 |
+
+### 常用品种代码
+XAUUSD 现货黄金 / XAGUSD 现货白银 / USOIL WTI原油 / UKOIL 布伦特 / COPPER 现货铜 / USDJPY / EURUSD / USDCNH
+
+---
+
 ## 项目配置：存储行业新闻收集
 
 ### GitHub

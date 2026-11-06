@@ -48,6 +48,7 @@ export GITHUB_TOKEN=$(cat /root/.github_token) && git remote set-url origin http
 8. **写入后**：运行 `node scripts/generate-data.mjs` 验证
 9. **推送后**：运行 `git log origin/main --oneline -3` + `git status` 验证
 9. **翻译检查（硬性要求）**：所有非中文来源的新闻，title/summary/transmission_path 必须翻译为中文后再写入 JSON。如果来源是英文（Reuters, Bloomberg, TechPowerUp, TrendForce 英文站, DIGITIMES 英文站, Odaily 英文站等），**严禁把英文原文直接 copy-paste 进 JSON**。写入前用中文重新组织标题和摘要。
+10. **金十补充源（jin10 MCP, 2026-11-06 接入）**：4 轮 kimi_search 用尽后追加 1 轮 `jin10__search_flash({keyword})`，中文关键词（存储/内存/芯片/半导体/DRAM/美光/三星/海力士轮换）；金十数据在白名单内，合格快讯可用 source="金十数据"+jin10 自有 URL 收录；DATE LOCK 与 SCOPE 过滤照常适用；纯宏观条目须能写清半导体传导路径否则不收；每轮任务 jin10 工具最多 3 次；可选 `jin10__list_calendar` 1 次用于摘要提示当日宏观大事，不入库。详见 task-guide.md「金十数据补充源」节。
 
 ## 搜索策略（轻量模式，防止上下文溢出）
 
