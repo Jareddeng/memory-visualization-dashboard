@@ -1,21 +1,21 @@
 [
   {
-    "id": "2026-11-06-us-chip-memory-rebound",
+    "id": "2026-11-06-tsmc-3d-dram-plans",
     "date": "2026-11-06",
-    "type": "市场消息",
-    "impact": "bullish",
-    "importance": "B",
-    "reaction_type": "instant",
-    "pricing_status": "priced",
-    "horizon": "1d",
-    "title": "美股收盘：芯片股强劲反弹，美光涨5.12%，SK海力士ADR涨2.78%",
-    "product": "存储芯片,DRAM,HBM",
+    "type": "重大事件",
+    "impact": "bearish",
+    "importance": "S",
+    "reaction_type": "undervalued",
+    "pricing_status": "unpriced",
+    "horizon": "longer",
+    "title": "台积电应英伟达要求筹划进军3D DRAM制造",
+    "product": "3D DRAM,DRAM,HBM,存储芯片",
     "source": "金十数据",
-    "url": "https://flash.jin10.com/detail/20261107050528758800",
-    "summary": "11月6日美股收盘，芯片股从前一日历史级抛售中反弹，费城半导体指数收涨5.4%，AMD涨11%，Intel涨7.71%；存储股美光收涨5.12%，SK海力士ADR收涨2.78%，闪迪、西部数据同步反弹。",
-    "transmission_path": "前一日恐慌抛售超调→资金逢低回补芯片股→存储龙头跟随反弹→短期情绪修复；但AI资本开支监管担忧未消，反弹持续性有待观察",
-    "confidence": "high",
-    "action": "watch",
-    "review_date": "2026-11-13"
+    "url": "https://flash.jin10.com/detail/20261106220411551800",
+    "summary": "据The Information报道，台积电(TSM.N)正考虑进入先进存储芯片制造领域，并已应其最大客户英伟达(NVDA.O)的要求开始制定3D DRAM生产计划，由负责先进封装的副总裁牵头。台积电正在评估两条路径：新建晶圆厂，或收购现有厂房改造为DRAM产线。目前内存芯片制造由三星电子、SK海力士和美光科技主导，三家亦在开发3D DRAM技术。AI硬件热潮引发的内存严重短缺与价格飙升，已促使英伟达、苹果等芯片设计公司寻找额外供应来源。",
+    "transmission_path": "台积电若进入3D DRAM领域，长期将新增先进DRAM供给来源，削弱三星/SK海力士/美光的产能垄断与议价权，压低存储超级周期的长期价格中枢；短期冲击原厂估值叙事，并可能分流先进封装与晶圆产能，推高AI供应链成本。",
+    "confidence": "medium",
+    "action": "deep_tracking",
+    "review_date": "2026-12-06"
   }
 ]
