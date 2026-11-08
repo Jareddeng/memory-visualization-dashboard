@@ -16217,6 +16217,25 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-12-07"
+    },
+    {
+      "id": "2026-11-06-us-chip-memory-rebound",
+      "date": "2026-11-06",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "title": "美股收盘：芯片股强劲反弹，美光涨5.12%，SK海力士ADR涨2.78%",
+      "product": "存储芯片,DRAM,HBM",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261107050528758800",
+      "summary": "11月6日美股收盘，芯片股从前一日历史级抛售中反弹，费城半导体指数收涨5.4%，AMD涨11%，Intel涨7.71%；存储股美光收涨5.12%，SK海力士ADR收涨2.78%，闪迪、西部数据同步反弹。",
+      "transmission_path": "前一日恐慌抛售超调→资金逢低回补芯片股→存储龙头跟随反弹→短期情绪修复；但AI资本开支监管担忧未消，反弹持续性有待观察",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-13"
     }
   ]
 }
