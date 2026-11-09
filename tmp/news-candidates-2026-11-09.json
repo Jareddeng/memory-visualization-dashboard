@@ -1,0 +1,40 @@
+[
+  {
+    "id": "2026-11-07-apple-memory-purchase-commitments",
+    "date": "2026-11-07",
+    "type": "产业链跟踪",
+    "impact": "bullish",
+    "importance": "A",
+    "reaction_type": "instant",
+    "pricing_status": "partial",
+    "horizon": "1q",
+    "title": "苹果制造采购承诺环比激增330亿美元以锁定存储供应",
+    "product": "DRAM,NAND,存储芯片",
+    "source": "Supply Chain Dive",
+    "url": "https://www.supplychaindive.com/news/apple-boosts-purchase-commitments-by-33b-amid-memory-crunch/873936/",
+    "summary": "苹果在11月2日财报电话会上表示，iPhone、iPad和Mac制造在2026财年Q4遭遇存储供应受限与涨价。CEO Ternus称当前存储定价\"前所未有\"，公司制造采购义务环比增加330亿美元至897亿美元；通过产品提价、非存储元件降本及上季度结转库存部分对冲存储成本，CFO预计12月季度毛利率45%-46%，环比下降主要因存储成本。IDC分析师称苹果很可能正与存储供应商签订长期协议(LTA)以保障供应。",
+    "transmission_path": "下游最大买方转向长协锁量与提前承诺 → 存储可流通现货收缩、供给能见度拉长 → 合约价与原厂(Samsung/SK Hynix/Micron/铠侠)议价能力获支撑，消费级短缺延续",
+    "confidence": "high",
+    "action": "deep_tracking",
+    "review_date": "2026-12-07"
+  },
+  {
+    "id": "2026-11-08-memory-makers-lta-analysis",
+    "date": "2026-11-08",
+    "type": "行业分析",
+    "impact": "neutral",
+    "importance": "B",
+    "reaction_type": "sentiment",
+    "pricing_status": "partial",
+    "horizon": "1m",
+    "title": "存储巨头Q4出货指引积极，长协锁定密集但消费端需求疲弱",
+    "product": "DRAM,HBM,NAND,存储芯片",
+    "source": "ZAKER",
+    "url": "https://app.myzaker.com/news/article.php?pk=6af003b58e9f0944fa13115b",
+    "summary": "机构预测Q4存储出货指引积极：三星比特出货环比增15%-19%，SK海力士预计增25%，全年行业比特出货同比约增27%。长协锁单方面：三星目标2030年前60%-70%产能纳入长期供货协议；SK海力士2027、2028年超50%产能已被长协锁定，DRAM/HBM订单能见度延伸至2029年；美光长协从16份增至26份，其中2份订单能见度延伸至2031年。隐忧：PC、手机端DRAM+HBM需求疲弱，苹果称存储涨价\"前所未有\"并压制毛利率；英特尔预计PC市场疲软至少持续至2027年上半年。",
+    "transmission_path": "长协锁定比例抬升 → 可交易现货供给收缩 → 服务器/企业级价格韧性强于消费级 → 原厂盈利与股价对AI资本开支波动敏感度上升",
+    "confidence": "medium",
+    "action": "watch",
+    "review_date": "2026-11-15"
+  }
+]
