@@ -16274,6 +16274,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-11-15"
+    },
+    {
+      "id": "2026-11-07-phison-dram-lta-2029",
+      "date": "2026-11-07",
+      "type": "公司公告",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "群联董事会批准DRAM长期供应协议至2029年底，锁定产能优先获配权",
+      "product": "DRAM",
+      "source": "ABMedia",
+      "url": "https://abmedia.io/phison-dram-long-term-supply-deal",
+      "summary": "群联(8299.TW)11月6日董事会决议与某非关联供应商签订DRAM长期供应协议，期间自2026年11月7日至2029年12月31日，签约目的是\"取得产能优先获配权\"，价格、数量等条款依合约未公开。公司董事长潘健成此前公开表示DRAM与NAND Flash供应严重不足，缺货可能延续至2028甚至2029年以后。同期公告前三季EPS 325.49元新台币，10月营收315亿新台币、年增346.3%。",
+      "transmission_path": "模组厂以三年长协锁定DRAM货源 → 原厂产能优先分配给长约客户，现货与短单可分配量进一步减少 → DRAM供应紧张被长约化固化 → 利好Samsung、SK Hynix、Micron等原厂议价与定价能力，现货价与合约价维持高位。",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-11-14"
+    },
+    {
+      "id": "2026-11-09-netlist-337-dram-nand",
+      "date": "2026-11-09",
+      "type": "政策事件",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "unpriced",
+      "horizon": "1m",
+      "title": "Netlist就DRAM与NAND设备及其下游产品向美ITC提起337调查申请",
+      "product": "DRAM,NAND",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261109105324560800",
+      "summary": "2026年11月6日，美国Netlist, Inc.依据《美国1930年关税法》第337节向美国国际贸易委员会(ITC)提出申请，主张对美出口、在美进口及在美销售的特定动态随机存取存储器(DRAM)设备、NAND闪存设备及其下游产品和组件违反337条款。快讯未点名被调查企业，后续需关注ITC是否立案及涉及的具体产品范围。",
+      "transmission_path": "337调查若立案并发布排除令，相关DRAM/NAND设备及其下游产品对美出口将受限 → 涉美存储供应链(设备、模组、下游组件)面临贸易壁垒不确定性 → 加速供应链区域化布局，长期或推升美国本土存储产能与设备溢价，短期以情绪冲击为主。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-11-16"
     }
   ]
 }
