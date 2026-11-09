@@ -381,7 +381,7 @@ type AppData = {
 };
 
 type PageKey = "overview" | "markets" | "industry" | "reports" | "intel";
-type SectorKey = "tech" | "a-share" | "macro";
+type SectorKey = "tech" | "a-share" | "macro" | "us";
 
 type IntelRecord = {
   id: string;
@@ -1103,6 +1103,8 @@ function App() {
             ? <MacroOverviewPage macro={data.macro} etf={data.macroEtf} />
           : activeSector === "macro" && activePage === "markets"
             ? <MacroMarketsPage data={data.macro} tracker={data.trackers.macro_institutional_charts} activePeriodId={activeMacroPeriodId} onPeriodChange={setActiveMacroPeriodId} />
+          : activeSector === "us"
+            ? <UsMarketPage page={activePage} />
           : <EmptySectorPage sector={activeSector} page={activePage} />}
 
         {activeSector === "tech" ? <footer className="disclaimer">
@@ -1152,6 +1154,7 @@ type PageNavItem = {
 const sectorOptions: Array<{ key: SectorKey; label: string; eyebrow: string }> = [
   { key: "tech", label: "科技", eyebrow: "TECH" },
   { key: "a-share", label: "A股", eyebrow: "A-SHARE" },
+  { key: "us", label: "美股", eyebrow: "US" },
   { key: "macro", label: "宏观", eyebrow: "MACRO" },
 ];
 
@@ -1253,7 +1256,11 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     },
     placeholderPages[2],
   ];
-  const pages = activeSector === "tech" ? techPages : activeSector === "a-share" ? aSharePages : activeSector === "macro" ? macroPages : placeholderPages;
+  const usPages: PageNavItem[] = [
+    { key: "overview", label: "概览", detail: "纳指 / 标普500 / 道指" },
+    { key: "markets", label: "市场图表", detail: "股债波动率 / 股债表现", subItems: usMarketCharts.map(({ id, title }) => ({ label: title, anchorId: `us-market-${id}` })) },
+  ];
+  const pages = activeSector === "tech" ? techPages : activeSector === "a-share" ? aSharePages : activeSector === "macro" ? macroPages : usPages;
   return (
     <nav className="nav-list" aria-label="\u770b\u677f\u5206\u533a\u5bfc\u822a">
       {pages.map((page) => {
@@ -1345,6 +1352,81 @@ function AShareHero({ latestIndex }: { latestIndex?: StockPoint }) {
       </div>
     </section>
   );
+}
+
+const usMarketCharts = [
+  { id: "volatility", title: "美国股债波动率", left: "MOVE", right: "VIX", leftUnit: "点", rightUnit: "点", inverse: false },
+  { id: "performance", title: "美国股债表现", left: "10年期美债收益率", right: "标普500", leftUnit: "%", rightUnit: "点", inverse: true },
+] as const;
+type UsMarketPoint = { date: string; left: number; right: number };
+
+function UsMarketPage({ page }: { page: PageKey }) {
+  return <>
+    <section className="intel-hero">
+      <img src="./assets/storage-supply-chain.png" alt="市场研究背景" />
+      <div className="hero-overlay"><div>
+        <p className="eyebrow">US EQUITY / TREASURIES</p>
+        <h1>美股可视化看板</h1>
+      </div></div>
+    </section>
+    {page === "markets" ? <UsMarketCharts /> : <UsIndexOverview />}
+  </>;
+}
+
+function UsIndexOverview() {
+  const { data, error } = useJson<StockPayload>("./data/processed/us-indices.json");
+  const symbols = [["^IXIC", "纳斯达克综合指数"], ["^GSPC", "标普500指数"], ["^DJI", "道琼斯工业平均指数"]];
+  return <section className="a-share-overview">
+    <div className="a-share-index-grid us-index-grid" aria-label="美股指数近一年趋势">
+      {symbols.map(([ticker, name]) => {
+        const stock = data?.latest.find((item) => item.ticker === ticker);
+        return stock && data ? <OverviewStockCard key={ticker} stock={stock} history={data.history} />
+          : <article className="panel a-share-index-empty" key={ticker}><strong>{name}</strong><span>{data || error ? "行情暂未获取" : "正在加载"}</span></article>;
+      })}
+    </div>
+    {data?.warning ? <p className="a-share-source-note">{data.warning}</p> : null}
+    <p className="a-share-source-note">来源：Yahoo Finance 日线 · 近一年已完成交易日收盘价</p>
+  </section>;
+}
+
+function makeUsMarketOption(chart: typeof usMarketCharts[number], points: UsMarketPoint[]): echarts.EChartsCoreOption {
+  const cutoff = new Date(points[points.length - 1].date + "T00:00:00Z");
+  cutoff.setUTCFullYear(cutoff.getUTCFullYear() - 1);
+  const startValue = points.find((point) => point.date >= cutoff.toISOString().slice(0, 10))?.date;
+  const colors = ["#247aaf", "#c75a38"];
+  return {
+    color: colors,
+    grid: { left: 60, right: 62, top: 18, bottom: 74 },
+    tooltip: { trigger: "axis", confine: true },
+    legend: { bottom: 0, left: 4, right: 4, type: "scroll" },
+    xAxis: { type: "category", boundaryGap: false, data: points.map((point) => point.date), axisLabel: { hideOverlap: true } },
+    yAxis: [
+      { type: "value", position: "left", inverse: chart.inverse, scale: true, axisLabel: { color: colors[0], formatter: `{value}${chart.leftUnit === "%" ? "%" : ""}` } },
+      { type: "value", position: "right", scale: true, axisLabel: { color: colors[1] }, splitLine: { show: false } },
+    ],
+    dataZoom: [{ type: "slider", startValue, bottom: 28, height: 18 }, { type: "inside", startValue }],
+    series: [
+      { type: "line", name: `${chart.left}（左轴）`, yAxisIndex: 0, showSymbol: false, data: points.map((point) => point.left), tooltip: { valueFormatter: (value: unknown) => `${value}${chart.leftUnit}` } },
+      { type: "line", name: `${chart.right}（右轴）`, yAxisIndex: 1, showSymbol: false, data: points.map((point) => point.right), tooltip: { valueFormatter: (value: unknown) => `${value}${chart.rightUnit}` } },
+    ],
+  };
+}
+
+function UsMarketCharts() {
+  const { data, error } = useJson<Record<typeof usMarketCharts[number]["id"], UsMarketPoint[]>>("./data/processed/us-market.json");
+  return <section className="macro-chart-grid" aria-label="美国股债市场图表">
+    {usMarketCharts.map((chart) => {
+      const points = data?.[chart.id];
+      return <article className="panel macro-chart-panel" id={`us-market-${chart.id}`} key={chart.id}>
+        <div className="macro-chart-head"><h2>{chart.title}</h2><span>{points?.length ? `截至 ${points[points.length - 1].date} · EDB` : ""}</span></div>
+        <div className="us-chart-axes">
+          <span>左轴：{chart.left}（{chart.leftUnit}{chart.inverse ? "，反向" : ""}）</span>
+          <span>右轴：{chart.right}（{chart.rightUnit}）</span>
+        </div>
+        {points?.length ? <Chart option={makeUsMarketOption(chart, points)} /> : <p className="a-share-source-note">{error || data ? "暂无有效的共同交易日数据" : "正在加载"}</p>}
+      </article>;
+    })}
+  </section>;
 }
 
 function MacroHero({ tmf }: { tmf?: StockPoint }) {
@@ -4209,6 +4291,7 @@ function useDeletedRemoteIntelIds(): [string[], React.Dispatch<React.SetStateAct
 function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
   const needle = query.toLowerCase();
   const items: SearchItem[] = [];
+  usMarketCharts.forEach(({ id, title, left, right }) => items.push({ type: "美股图表", title, detail: `${left} / ${right}`, haystack: `美股 ${title} ${left} ${right}`, target: { sector: "us", page: "markets", anchorId: `us-market-${id}` } }));
   (data.trackers.a_share_research_views?.issues ?? []).forEach((issue) => items.push({ type: "A股观点", title: issue.title, date: issue.date, detail: `${issue.date} · ${researchStance(issue).label}`, haystack: `A股 研报 观点 ${issue.title} ${issue.assessment ? [issue.assessment.summary, ...issue.assessment.support, ...issue.assessment.pressure].join(" ") : ""} ${issue.topics.map((topic) => `${topic.title} ${topic.points.join(" ")}`).join(" ")}`, target: { sector: "a-share", page: "reports", researchId: issue.id, anchorId: "a-share-research" } }));
   data.aShareIndices.latest.forEach((index) => items.push({
     type: "A股指数", title: index.name, date: index.date,

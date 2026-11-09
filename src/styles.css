@@ -116,7 +116,7 @@ select {
 
 .sector-tabs {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 5px;
   margin-top: 22px;
   padding: 4px;
@@ -907,6 +907,22 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
+
+@media (min-width: 1441px) {
+  .us-index-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.us-chart-axes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #247aaf;
+}
+
+.us-chart-axes span:last-child { color: #a6462b; }
 
 .a-share-overview-kpis {
   grid-template-columns: repeat(2, minmax(0, 240px));

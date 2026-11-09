@@ -5,6 +5,7 @@ import https from "node:https";
 import XLSX from "xlsx";
 import { loadAShareData, loadCrowdingData } from "./a-share-data.mjs";
 import { loadMacroData } from "./macro-data.mjs";
+import { loadUsMarketData } from "./us-market-data.mjs";
 import { dedupeIntel, assertUniqueIntelUrls } from "../src/intel-quality.mjs";
 
 const root = process.cwd();
@@ -34,6 +35,11 @@ const aShareIndexSymbols = [
 const macroEtfSymbols = [
   { ticker: "TMF", name: "TMF 美债 3 倍 ETF", exchange: "NYSE Arca", currency: "USD" },
 ];
+const usIndexSymbols = [
+  { ticker: "^IXIC", name: "纳斯达克综合指数", exchange: "NASDAQ", currency: "点" },
+  { ticker: "^GSPC", name: "标普500指数", exchange: "S&P", currency: "点" },
+  { ticker: "^DJI", name: "道琼斯工业平均指数", exchange: "DJI", currency: "点" },
+];
 
 await fs.mkdir(processedDir, { recursive: true });
 await fs.mkdir(publicProcessedDir, { recursive: true });
@@ -43,12 +49,14 @@ const aShareWorkbook = path.join(root, "edb_data", "A股-总表.xlsx");
 const aShare = loadAShareData(aShareWorkbook);
 aShare.crowding = loadCrowdingData(aShareWorkbook);
 const macro = loadMacroData(path.join(root, "edb_data"));
+const usMarket = loadUsMarketData(path.join(root, "edb_data", "美股-总表.xlsx"));
 const reports = await loadReports();
 const trackers = await loadTrackers();
 const intel = await loadIntel();
 const stocks = await loadStocks();
 const aShareIndices = await loadStockGroup(aShareIndexSymbols, "a-share-indices.json", "A股指数", fetchAShareIndexHistory, "Tencent/Eastmoney daily index closes (1y)");
 const macroEtf = await loadStockGroup(macroEtfSymbols, "macro-etf.json", "TMF", fetchStockHistory, "Yahoo Finance chart API range=1y (completed daily close)");
+const usIndices = await loadStockGroup(usIndexSymbols, "us-indices.json", "美股指数");
 const metadata = {
   generated_at: new Date().toISOString(),
   price_points: prices.length,
@@ -67,6 +75,8 @@ if (!validateOnly) {
   await writeJson("stocks.json", stocks);
   await writeJson("a-share-indices.json", aShareIndices);
   await writeJson("macro-etf.json", macroEtf);
+  await writeJson("us-market.json", usMarket);
+  await writeJson("us-indices.json", usIndices);
   await writeJson("reports.json", { reports });
   await writeJson("trackers.json", trackers);
   await writeJson("intel.json", { records: intel });
