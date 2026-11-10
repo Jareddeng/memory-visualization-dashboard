@@ -34,13 +34,17 @@ export function pairedRows(rows, leftId, rightId, date1904 = false) {
   return [...points.values()].sort((a, b) => a.date.localeCompare(b.date));
 }
 
-export function loadUsMarketData(file) {
+export function loadUsMarketData(file, previous = {}) {
   const workbook = XLSX.readFile(file);
   return Object.fromEntries(charts.map(({ id, sheet, left, right }) => {
     const source = workbook.Sheets[sheet];
     if (!source) throw new Error(`Missing worksheet: ${sheet}`);
     const points = pairedRows(XLSX.utils.sheet_to_json(source, { header: 1, defval: null }), left, right, workbook.Workbook?.WBProps?.date1904);
     if (!points.length) throw new Error(`No paired observations: ${sheet}`);
-    return [id, points];
+    const merged = new Map((previous[id] ?? [])
+      .filter((point) => positive(point.left) !== null && positive(point.right) !== null)
+      .map((point) => [point.date, point]));
+    for (const point of points) merged.set(point.date, point);
+    return [id, [...merged.values()].sort((a, b) => a.date.localeCompare(b.date))];
   }));
 }
