@@ -16388,6 +16388,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-12-09"
+    },
+    {
+      "id": "2026-11-09-pc-64gb-ram-share-falls",
+      "date": "2026-11-09",
+      "type": "产品数据",
+      "impact": "bearish",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "内存价格上涨导致64GB内存PC占比下降18%",
+      "product": "DRAM,DDR4,DDR5",
+      "source": "mlq.ai",
+      "url": "https://mlq.ai/news/share-of-pcs-with-64gb-of-ram-falls-18-in-cpu-z-data-as-memory-prices-climb/",
+      "summary": "CPU-Z验证数据显示，配备64GB内存的PC占比同比下降18%。DDR4占验证总量54.5%（同比上升6个百分点），DDR5份额下降2.9个百分点至32.9%。AMD AM4平台（搭配DDR4）占比上升17.5%至23.5%，Ryzen 5 5500等入门级芯片份额增加。Tom's Hardware指出，这一转变源于AI需求推动的DRAM价格上涨，PC厂商缩减内存配置以控制终端价格。",
+      "transmission_path": "DRAM价格上涨 -> PC厂商缩减内存配置控制成本 -> 消费者转向DDR4旧平台延缓升级 -> 高性能PC需求受抑制 -> PC出货量和平均配置承压，同时DDR4生命周期意外延长",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-11-16"
     }
   ]
 }
