@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-10T07:14:32.217Z",
+  "entries": {
+    "memory:memory/2026-09-09.md:36:48": {
+      "key": "memory:memory/2026-09-09.md:36:48",
+      "path": "memory/2026-09-09.md",
+      "startLine": 36,
+      "endLine": 48,
+      "source": "memory",
+      "snippet": "- jobs.json 搜索范围增加下游客户动态关键词 - 已推送 `3acde1d` 到 main ## 推送记录 - `a1b2c3d` - fix: repair jobs.json illegal newlines, restore cron scheduling - `e4f5g6h` - fix: dedup-and-merge.mjs fault tolerance (skip bad records) - `3acde1d` - feat: add Apple-Kioxia NAND LTA intel + update search keywords ## 教训 - jobs.json 的 message 字段必须用 `\\n` 转义，不能用原始换行符。任何编辑此文件的操作都必须验证 JSON 有效性。 - 搜索关键词需要覆盖产业链上下游（客户动态、设备、材料），不能只聚焦原厂。 - 冷启动时 AI 不会主动扩展关键词，必须显式写入 prompt。",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3516057193279266,
+      "maxScore": 0.3516057193279266,
+      "firstRecalledAt": "2026-11-10T07:14:32.217Z",
+      "lastRecalledAt": "2026-11-10T07:14:32.217Z",
+      "queryHashes": [
+        "ab39bf9e49dc"
+      ],
+      "recallDays": [
+        "2026-11-10"
+      ],
+      "conceptTags": [
+        "jobs.json",
+        "dedup-and-merge.mjs",
+        "apple-kioxia",
+        "搜索",
+        "范围",
+        "增加",
+        "下游",
+        "客户"
+      ]
+    }
+  }
+}

@@ -9076,6 +9076,6 @@
     }
   ],
   "source": "Yahoo Finance chart API range=1y (completed daily close)",
-  "generated_at": "2026-11-10T04:21:23.058Z",
+  "generated_at": "2026-11-10T07:29:08.223Z",
   "warning": "部分美股指数在线更新失败，已使用既有数据: ^IXIC: HTTP 429; ^GSPC: HTTP 429; ^DJI: HTTP 429"
 }

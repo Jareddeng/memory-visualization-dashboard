@@ -16464,6 +16464,44 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-11-17"
+    },
+    {
+      "id": "2026-11-09-morgan-stanley-memory-profit-cliff",
+      "date": "2026-11-09",
+      "type": "行业分析",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "大摩\"内存死神\"警告\"2028盈利悬崖\"，下调SK海力士与Samsung目标价",
+      "product": "DRAM,NAND,HBM",
+      "source": "华尔街见闻",
+      "url": "https://wallstreetcn.com/articles/3785625",
+      "summary": "摩根士丹利分析师Shawn Kim在11月9日发布的研报中全面下调内存股目标价，警告行业面临\"2028年盈利悬崖\"：SK海力士目标价由260万韩元下调38%至160万韩元，Samsung电子普通股由38.1万韩元下调19%至30.9万韩元（优先股由30.48万下调至24.72万韩元），均维持增持评级，并将Samsung升为新首选股取代SK海力士。核心驱动是将长期DRAM运营利润率假设向历史均值压缩：SK海力士2029-2035年均值下调至约32%（接近2010-2025年历史均值31%），Samsung下调至约39%；HBM相对普通DRAM的溢价假设自2029年的20个百分点逐步收窄至2033年归零。四重压力包括：2027年底新产能陆续投放（含中国供应商进入消费市场）、大摩将约5GW美国数据中心项目自2028年推迟至2029年、内存已占AI服务器BOM约60%迫使买家将96/128GB降规至64GB RDIMM（NAND现货两周内下跌约20%，512Gb TLC晶圆跌至约15美元、较3月高点回落27-29%）、HBM运营利润率预测下调。报告同时上调两家公司2026-2028年EPS预测（回购减少股本），并指出SOX指数远期市盈率自6月高点26.3倍压缩至13.4倍、估值调整已基本完成，后续关键在于盈利是否下修。",
+      "transmission_path": "大行下调目标价叠加\"2028盈利悬崖\"叙事 → 存储股估值与情绪阶段性承压、偏好转向Samsung等资本充裕龙头 → 若NAND现货继续下跌将验证盈利下修路径 → 反之若现货止跌，低估值或吸引资金回流；关注NAND现货价与DRAM合约价走势是否证伪该叙事",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-09"
+    },
+    {
+      "id": "2026-11-10-rapidus-2nm-mass-production-delay",
+      "date": "2026-11-10",
+      "type": "产业链跟踪",
+      "impact": "neutral",
+      "importance": "C",
+      "reaction_type": "archive",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "title": "日本Rapidus据悉难以按期实现2nm芯片大规模量产",
+      "product": "SRAM,2nm,晶圆",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261110123744172800",
+      "summary": "据知情人士透露，日本政府支持的芯片初创企业Rapidus在\"2028年3月前大规模量产2nm芯片\"的关键承诺上进度滞后：至今尚未成功生产出可正常运作的SRAM单元，而该步骤原计划于今年夏季完成，进度至少落后数月。",
+      "transmission_path": "Rapidus先进制程量产延期 → 2nm先进代工产能竞争格局不变（TSMC、Samsung主导） → 对存储市场无直接影响；间接强化先进制程产能集中于头部厂商的预期",
+      "confidence": "medium",
+      "action": "archive",
+      "review_date": "2026-12-10"
     }
   ]
 }
