@@ -908,8 +908,8 @@ h2 {
   gap: 16px;
 }
 
-@media (min-width: 1441px) {
-  .us-index-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.us-index-grid .overview-stock-card {
+  grid-template-rows: minmax(min-content, 1fr) 144px;
 }
 
 .us-chart-axes {
