@@ -1,7 +1,7 @@
 import React from "react";
 import { mergeIntel, intelUrlKey, isArticleUrl } from "./intel-quality.mjs";
 import { createRoot } from "react-dom/client";
-import { Activity, AlertTriangle, Database, RefreshCw, Trash2 } from "lucide-react";
+import { Activity, AlertTriangle, Database, Trash2 } from "lucide-react";
 import * as echarts from "echarts/core";
 import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { BarChart, LineChart } from "echarts/charts";
@@ -494,58 +494,82 @@ const IntelTableContext = React.createContext<{
   pinnedIntelId?: string | null;
 }>({});
 
-function useJson<T>(url: string) {
+function useJson<T>(url: string, enabled = true) {
   const [data, setData] = React.useState<T | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    const separator = url.includes("?") ? "&" : "?";
-    fetch(`${url}${separator}v=${Date.now()}`, { cache: "no-store" })
+    if (!enabled || data || error) return;
+    const controller = new AbortController();
+    fetch(url, { cache: "no-cache", signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
         return response.json() as Promise<T>;
       })
-      .then(setData)
-      .catch((err: Error) => setError(err.message));
-  }, [url]);
+      .then((result) => { if (!controller.signal.aborted) setData(result); })
+      .catch((err: Error) => { if (!controller.signal.aborted) setError(err.message); });
+    return () => controller.abort();
+  }, [url, enabled, data, error]);
 
   return { data, error };
 }
 
-function useDashboardData() {
-  const prices = useJson<PricePayload>("./data/processed/prices.json");
-  const aShare = useJson<ASharePayload>("./data/processed/a-share.json");
-  const aShareIndices = useJson<StockPayload>("./data/processed/a-share-indices.json");
-  const macro = useJson<MacroPayload>("./data/processed/macro.json");
-  const macroEtf = useJson<StockPayload>("./data/processed/macro-etf.json");
-  const stocks = useJson<StockPayload>("./data/processed/stocks.json");
-  const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json");
-  const trackers = useJson<TrackerPayload>("./data/processed/trackers.json");
-  const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json");
-  const metadata = useJson<Metadata>("./data/processed/metadata.json");
+const emptyPriceProduct = { spot: { series: [] }, contract_avg: { series: [] } };
+const emptyStocks: StockPayload = { latest: [], history: [], source: "" };
+const emptyAShare: ASharePayload = {
+  source: "", quoteDate: "", quotes: [],
+  basis: { name: "", unit: "", points: [] },
+  crowding: { source: "", points: [] },
+};
 
-  const error = prices.error || aShare.error || aShareIndices.error || macro.error || macroEtf.error || stocks.error || reports.error || trackers.error || intel.error || metadata.error;
-  const loading = !prices.data || !aShare.data || !aShareIndices.data || !macro.data || !macroEtf.data || !stocks.data || !reports.data || !trackers.data || !intel.data || !metadata.data;
+function useDashboardData(sector: SectorKey, page: PageKey, searching: boolean) {
+  const tech = sector === "tech";
+  const aShareActive = sector === "a-share" && page !== "reports";
+  const macroActive = sector === "macro";
+  const prices = useJson<PricePayload>("./data/processed/prices.json", tech);
+  const stocks = useJson<StockPayload>("./data/processed/stocks.json", tech && (page === "overview" || page === "markets") || searching);
+  const trackers = useJson<TrackerPayload>("./data/processed/trackers.json", tech || sector === "macro" && page === "markets" || sector === "a-share" && page === "reports" || searching);
+  const metadata = useJson<Metadata>("./data/processed/metadata.json", tech || searching);
+  const overviewReady = Boolean(prices.data || prices.error);
+  const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json", tech && (page !== "overview" || overviewReady) || searching);
+  const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json", tech && (page === "intel" || page === "overview" && overviewReady) || searching);
+  const aShare = useJson<ASharePayload>("./data/processed/a-share.json", aShareActive || searching);
+  const aShareIndices = useJson<StockPayload>("./data/processed/a-share-indices.json", aShareActive || searching);
+  const macro = useJson<MacroPayload>("./data/processed/macro.json", macroActive || searching);
+  const macroEtf = useJson<StockPayload>("./data/processed/macro-etf.json", macroActive);
 
-  return {
-    data:
-      prices.data && aShare.data && aShareIndices.data && macro.data && macroEtf.data && stocks.data && reports.data && trackers.data && intel.data && metadata.data
-        ? {
-            prices: prices.data,
-            aShare: aShare.data,
-            aShareIndices: aShareIndices.data,
-            macro: macro.data,
-            macroEtf: macroEtf.data,
-            stocks: stocks.data,
-            reports: reports.data.reports,
-            trackers: trackers.data,
-            intel: intel.data.records,
-            metadata: metadata.data,
-          }
-        : null,
-    loading,
-    error,
+  const data: AppData = {
+    prices: prices.data ?? { DRAM: emptyPriceProduct, NAND: emptyPriceProduct },
+    aShare: aShare.data ?? emptyAShare,
+    aShareIndices: aShareIndices.data ?? emptyStocks,
+    macro: macro.data ?? { charts: [] },
+    macroEtf: macroEtf.data ?? emptyStocks,
+    stocks: stocks.data ?? emptyStocks,
+    reports: reports.data?.reports ?? [],
+    trackers: trackers.data ?? {},
+    intel: intel.data?.records ?? [],
+    metadata: metadata.data ?? { generated_at: new Date().toISOString(), price_points: 0, stock_points: 0, latest_report_date: null, notes: [] },
   };
+  const sources: Array<[string, { data: unknown; error: string | null }]> = [];
+  if (tech) {
+    sources.push(["存储价格", prices], ["产业跟踪", trackers], ["更新时间", metadata], ["深度报告", reports]);
+    if (page === "overview" || page === "markets") sources.push(["股票行情", stocks]);
+    if (page === "overview" || page === "intel") sources.push(["情报", intel]);
+  } else if (aShareActive) {
+    sources.push(["A股图表", aShare], ["A股指数", aShareIndices]);
+  } else if (sector === "a-share") {
+    sources.push(["研报观点", trackers]);
+  } else if (macroActive) {
+    sources.push(["宏观数据", macro], ["TMF行情", macroEtf]);
+    if (page === "markets") sources.push(["机构图表", trackers]);
+  }
+  const errors: string[] = [];
+  const pending: string[] = [];
+  for (const [label, source] of sources) {
+    if (source.error) errors.push(label);
+    else if (!source.data) pending.push(label);
+  }
+  return { data, errors, pending, generatedAt: metadata.data?.generated_at };
 }
 
 const Chart = React.memo(function Chart({ option }: { option: echarts.EChartsCoreOption }) {
@@ -880,7 +904,6 @@ function makeReportTrendOption(reports: Report[]): echarts.EChartsCoreOption {
 }
 
 function App() {
-  const { data, loading, error } = useDashboardData();
   const [activeSector, setActiveSector] = React.useState<SectorKey>("tech");
   const [activePage, setActivePage] = React.useState<PageKey>("overview");
   const [pendingAnchor, setPendingAnchor] = React.useState<string | null>(null);
@@ -889,6 +912,7 @@ function App() {
   const [activeMacroPeriodId, setActiveMacroPeriodId] = React.useState<string | null>(null);
   const [activeResearchId, setActiveResearchId] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
+  const { data, errors, pending, generatedAt } = useDashboardData(activeSector, activePage, Boolean(query.trim()));
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
   const [intelRecords, setIntelRecords] = useLocalIntelRecords();
@@ -910,34 +934,12 @@ function App() {
   React.useEffect(() => {
     if (!pendingAnchor) return;
     const timer = window.setTimeout(() => {
-      document.getElementById(pendingAnchor)?.scrollIntoView({ behavior: "smooth", block: "start" });
-      setPendingAnchor(null);
+      const target = document.getElementById(pendingAnchor);
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (target || !pending.length) setPendingAnchor(null);
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [activePage, pendingAnchor]);
-
-  if (error) {
-    return (
-      <main className="shell">
-        <section className="state-panel">
-          <AlertTriangle />
-          <h1>数据加载失败</h1>
-          <p>{error}</p>
-        </section>
-      </main>
-    );
-  }
-
-  if (loading || !data) {
-    return (
-      <main className="shell">
-        <section className="state-panel">
-          <RefreshCw className="spin" />
-          <h1>正在加载多资产研究中枢</h1>
-        </section>
-      </main>
-    );
-  }
+  }, [activeSector, activePage, pendingAnchor, pending.length]);
 
   const latestReport = data.reports[0];
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
@@ -987,15 +989,10 @@ function App() {
     setActivePage(item.target.page);
     setQuery("");
     setSearchOpen(false);
-    window.setTimeout(() => {
-      const targetId = item.target.anchorId ?? (item.target.recordId ? `intel-${item.target.recordId}` : "");
-      if (targetId) {
-        window.history.replaceState(null, "", `#${targetId}`);
-        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth", block: "center" });
-        return;
-      }
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 0);
+    const targetId = item.target.anchorId ?? (item.target.recordId ? `intel-${item.target.recordId}` : "");
+    setPendingAnchor(targetId || null);
+    if (targetId) window.history.replaceState(null, "", `#${targetId}`);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -1014,7 +1011,7 @@ function App() {
           <span className="status-dot"></span>
           <div>
             <strong>Action 生成</strong>
-            <span>{formatDateTime(data.metadata.generated_at)}</span>
+            <span>{generatedAt ? formatDateTime(generatedAt) : "暂无更新时间"}</span>
           </div>
         </div> : null}
       </aside>
@@ -1049,6 +1046,9 @@ function App() {
           </div> : null}
           {query.trim() && searchOpen ? <SearchResults results={searchResults} timeRange={timeRange} onOpen={openSearchResult} onClear={() => { setQuery(""); setSearchOpen(false); }} /> : null}
         </header>
+
+        {errors.length ? <p className="a-share-source-note" role="status">暂时无法加载：{errors.join("、")}</p> : null}
+        {pending.length ? <p className="a-share-source-note" role="status">正在加载：{pending.join("、")}</p> : null}
 
         {activeSector === "a-share" ? <AShareHero latestIndex={data.aShareIndices.latest.find((item) => item.ticker === "000001.SS")} /> : null}
         {activeSector === "macro" ? <MacroHero tmf={data.macroEtf.latest.find((item) => item.ticker === "TMF")} /> : null}

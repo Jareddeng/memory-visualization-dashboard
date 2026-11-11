@@ -40,7 +40,10 @@ test('published library has unique IDs/URLs and cleaning is idempotent', () => {
 test('every original record is accounted for by publication, pending, or merged archive', () => {
   const base = 'data/archive/intel/repair-2026-09-07/';
   const before = JSON.parse(fs.readFileSync(base + 'before.json')).records;
-  const all = ['content/intel/clawbot_intel.json', base + 'pending.json', base + 'merged.json'].flatMap(f => JSON.parse(fs.readFileSync(f)).records);
+  const originalIds = new Set(before.map(r => r.id));
+  const published = JSON.parse(fs.readFileSync('content/intel/clawbot_intel.json')).records;
+  const archived = ['pending.json', 'merged.json'].flatMap(f => JSON.parse(fs.readFileSync(base + f)).records);
+  const all = [...published.filter(r => originalIds.has(r.id)), ...archived];
   assert.equal(all.length, before.length);
   assert.deepEqual(all.map(r => r.id).sort(), before.map(r => r.id).sort());
 });
