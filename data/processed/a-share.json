@@ -1,68 +1,68 @@
 {
   "source": "Wind 工作簿缓存",
-  "quoteDate": "2026-11-11",
+  "quoteDate": "2026-11-12",
   "quotes": [
     {
       "label": "-8%至-5%虚值期权",
       "kind": "put",
-      "date": "2026-11-11",
-      "underlying": 6669.55,
+      "date": "2026-11-12",
+      "underlying": 6537.84,
       "strike": 6200,
       "contract": "MO2703-P-6200",
-      "moneynessPct": -7.04,
+      "moneynessPct": -5.17,
       "expiry": "2027-03-19",
-      "daysToExpiry": 128,
-      "settlement": 267,
-      "periodCostPct": 4,
-      "annualCostPct": 11.42,
-      "delta": -0.353,
+      "daysToExpiry": 127,
+      "settlement": 312.4,
+      "periodCostPct": 4.78,
+      "annualCostPct": 13.73,
+      "delta": -0.4037,
       "status": "available"
     },
     {
       "label": "-11%至-8%虚值期权",
       "kind": "put",
-      "date": "2026-11-11",
-      "underlying": 6669.55,
+      "date": "2026-11-12",
+      "underlying": 6537.84,
       "strike": 6000,
       "contract": "MO2703-P-6000",
-      "moneynessPct": -10.04,
+      "moneynessPct": -8.23,
       "expiry": "2027-03-19",
-      "daysToExpiry": 128,
-      "settlement": 200.8,
-      "periodCostPct": 3.01,
-      "annualCostPct": 8.59,
-      "delta": -0.2828,
+      "daysToExpiry": 127,
+      "settlement": 237.8,
+      "periodCostPct": 3.64,
+      "annualCostPct": 10.45,
+      "delta": -0.3263,
       "status": "available"
     },
     {
       "label": "-13%至-11%虚值期权",
       "kind": "put",
-      "date": "2026-11-11",
-      "underlying": 6669.55,
+      "date": "2026-11-12",
+      "underlying": 6537.84,
       "strike": 5800,
       "contract": "MO2703-P-5800",
-      "moneynessPct": -13.04,
+      "moneynessPct": -11.29,
       "expiry": "2027-03-19",
-      "daysToExpiry": 128,
-      "settlement": 147.4,
-      "periodCostPct": 2.21,
-      "annualCostPct": 6.3,
-      "delta": -0.2198,
+      "daysToExpiry": 127,
+      "settlement": 175,
+      "periodCostPct": 2.68,
+      "annualCostPct": 7.69,
+      "delta": -0.2572,
       "status": "available"
     },
     {
       "label": "中证1000股指期货",
       "kind": "future",
-      "date": "2026-11-11",
-      "underlying": 6669.55,
+      "date": "2026-11-12",
+      "underlying": 6537.84,
       "strike": null,
       "contract": "IM2703.CFE",
       "moneynessPct": null,
       "expiry": "2027-03-19",
-      "daysToExpiry": 128,
-      "settlement": 6478.2,
-      "periodCostPct": 2.87,
-      "annualCostPct": 8.18,
+      "daysToExpiry": 127,
+      "settlement": 6333,
+      "periodCostPct": 3.13,
+      "annualCostPct": 9,
       "delta": null,
       "status": "available"
     }
@@ -4218,6 +4218,10 @@
       {
         "date": "2026-11-11",
         "value": 6.2315
+      },
+      {
+        "date": "2026-11-12",
+        "value": 8.1349
       }
     ]
   },
@@ -9168,115 +9172,122 @@
       },
       {
         "date": "2026-10-21",
-        "top5": 44.6232969660699,
-        "top10": 59.0753186121614,
-        "top5Rank": 80.8,
-        "top10Rank": 82.5
+        "top5": 44.89,
+        "top10": 59.35,
+        "top5Rank": 82.9,
+        "top10Rank": 83.4
       },
       {
         "date": "2026-10-22",
-        "top5": 44.6431108141349,
-        "top10": 58.9291298596294,
-        "top5Rank": 80.9,
-        "top10Rank": 81.3
+        "top5": 44.7,
+        "top10": 58.94,
+        "top5Rank": 81.1,
+        "top10Rank": 81.5
       },
       {
         "date": "2026-10-23",
-        "top5": 42.0275697559427,
-        "top10": 55.7804693973789,
-        "top5Rank": 57.8,
-        "top10Rank": 54.9
+        "top5": 43.28,
+        "top10": 57.11,
+        "top5Rank": 70.7,
+        "top10Rank": 67
       },
       {
         "date": "2026-10-26",
-        "top5": 40.6504531372946,
-        "top10": 54.8253094590209,
-        "top5Rank": 46.1,
-        "top10Rank": 48.5
+        "top5": 43.51,
+        "top10": 58.03,
+        "top5Rank": 72.8,
+        "top10Rank": 74.8
       },
       {
         "date": "2026-10-27",
-        "top5": 38.703242919937,
-        "top10": 52.7792966772258,
-        "top5Rank": 32.4,
-        "top10Rank": 33.6
+        "top5": 41.59,
+        "top10": 56.17,
+        "top5Rank": 54.3,
+        "top10Rank": 58.3
       },
       {
         "date": "2026-10-28",
-        "top5": 39.9712790556493,
-        "top10": 53.787577974034,
-        "top5Rank": 40.8,
-        "top10Rank": 40.2
+        "top5": 43.4,
+        "top10": 57.85,
+        "top5Rank": 71.4,
+        "top10Rank": 73.1
       },
       {
         "date": "2026-10-29",
-        "top5": 39.1536628496001,
-        "top10": 53.3205119212353,
-        "top5Rank": 36.1,
-        "top10Rank": 36.3
+        "top5": 43.19,
+        "top10": 57.76,
+        "top5Rank": 69.9,
+        "top10Rank": 72.2
       },
       {
         "date": "2026-10-30",
-        "top5": 37.5113132439701,
-        "top10": 51.314727852582,
-        "top5Rank": 23,
-        "top10Rank": 22
+        "top5": 41.31,
+        "top10": 55.71,
+        "top5Rank": 50.6,
+        "top10Rank": 53.8
       },
       {
         "date": "2026-11-02",
-        "top5": 37.4852106882445,
-        "top10": 51.2021637757076,
-        "top5Rank": 22.8,
-        "top10Rank": 20.8
+        "top5": 41.2,
+        "top10": 55.71,
+        "top5Rank": 49.7,
+        "top10Rank": 53.7
       },
       {
         "date": "2026-11-03",
-        "top5": 40.4055167512981,
-        "top10": 53.7961890525694,
-        "top5Rank": 45,
-        "top10Rank": 40.5
+        "top5": 44.28,
+        "top10": 58.81,
+        "top5Rank": 78.5,
+        "top10Rank": 80.7
       },
       {
         "date": "2026-11-04",
-        "top5": 40.4258403823328,
-        "top10": 54.1236629379101,
-        "top5Rank": 45.2,
-        "top10Rank": 43.3
+        "top5": 43.66,
+        "top10": 58.15,
+        "top5Rank": 74,
+        "top10Rank": 75.9
       },
       {
         "date": "2026-11-05",
-        "top5": 41.2273754783384,
-        "top10": 55.2920553619605,
-        "top5Rank": 50.3,
-        "top10Rank": 51.7
+        "top5": 45.16,
+        "top10": 59.82,
+        "top5Rank": 84.7,
+        "top10Rank": 85.1
       },
       {
         "date": "2026-11-06",
-        "top5": 40.2685650107931,
-        "top10": 54.2262967705469,
-        "top5Rank": 42.8,
-        "top10Rank": 43.7
+        "top5": 44.45,
+        "top10": 59.2,
+        "top5Rank": 79.3,
+        "top10Rank": 82.8
       },
       {
         "date": "2026-11-09",
-        "top5": 38.7794154897513,
-        "top10": 52.2358016159632,
-        "top5Rank": 33.1,
-        "top10Rank": 29.3
+        "top5": 43.24,
+        "top10": 58.38,
+        "top5Rank": 69.6,
+        "top10Rank": 77.7
       },
       {
         "date": "2026-11-10",
-        "top5": 37.8967376756824,
-        "top10": 51.9018986375683,
-        "top5Rank": 25.5,
-        "top10Rank": 26.8
+        "top5": 42.73,
+        "top10": 58.08,
+        "top5Rank": 65,
+        "top10Rank": 74.8
       },
       {
         "date": "2026-11-11",
-        "top5": 37.8967376756824,
-        "top10": 51.9018986375683,
-        "top5Rank": 25.5,
-        "top10Rank": 26.9
+        "top5": 45.73,
+        "top10": 60.36,
+        "top5Rank": 87.1,
+        "top10Rank": 86.9
+      },
+      {
+        "date": "2026-11-12",
+        "top5": 47.34,
+        "top10": 61.86,
+        "top5Rank": 90.5,
+        "top10Rank": 90.6
       }
     ]
   }
