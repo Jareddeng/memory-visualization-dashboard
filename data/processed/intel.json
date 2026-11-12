@@ -153,6 +153,25 @@
       "review_date": "2026-11-18"
     },
     {
+      "id": "2026-11-11-memory-market-mismatch-capacity-2029",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-11-11",
+      "title": "存储市场罕见错位：产能排到2029，消费级却涨不动",
+      "product": "DRAM,HBM,企业级SSD,NAND",
+      "source": "科创板日报",
+      "url": "https://www.chinastarmarket.cn/detail/2531968",
+      "summary": "科创板日报报道，本轮存储涨价高度在上移、宽度在收窄，涨价集中在算力相关品类而非全产业链通胀。SK海力士CEO郭鲁正透露已与14家核心客户签署五年期长期供货协议，锁定2027-2028两年总产能的50%以上，客户申报采购需求达现有供给能力两倍以上，判断内存供需紧张或延续至2030年；三星已与10家主要客户签长协、10家在谈，2027年HBM量价谈判已完成且产能售罄，预计HBM占行业DRAM产能比重将从约20%升至2027年近30%；美光2027年HBM绝大部分位元供应已完成签约且价格同比上涨。HBM与服务器产品抢占晶圆产能，通用DRAM供给被挤压，企业级与消费级供需明显分化。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "HBM/服务器DRAM抢占先进晶圆产能→通用DRAM晶圆份额被挤压→长协锁定2027-2029产能→原厂对云厂商议价权增强→企业级DRAM与HBM合约价持续上行，消费级存储价格疲软",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-11"
+    },
+    {
       "id": "2026-11-10-kioxia-leverage-etp-hk-listing",
       "type": "市场消息",
       "impact": "neutral",

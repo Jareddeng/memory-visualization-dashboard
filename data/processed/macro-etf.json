@@ -3028,6 +3028,6 @@
     }
   ],
   "source": "Yahoo Finance chart API range=1y (completed daily close)",
-  "generated_at": "2026-11-11T14:19:32.328Z",
+  "generated_at": "2026-11-12T00:18:43.826Z",
   "warning": "部分TMF在线更新失败，已使用既有数据: TMF: HTTP 429"
 }
