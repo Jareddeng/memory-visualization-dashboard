@@ -1,7 +1,7 @@
 import React from "react";
 import { mergeIntel, intelUrlKey, isArticleUrl } from "./intel-quality.mjs";
 import { createRoot } from "react-dom/client";
-import { Activity, AlertTriangle, Database, Trash2 } from "lucide-react";
+import { Activity, AlertTriangle, Database, RefreshCw, Trash2 } from "lucide-react";
 import * as echarts from "echarts/core";
 import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent } from "echarts/components";
 import { BarChart, LineChart } from "echarts/charts";
@@ -958,7 +958,7 @@ function App() {
   }, [activeSector, activePage, pendingAnchor, pending.length]);
 
   if (loading) {
-    return <main className="shell"><section className="state-panel" role="status" aria-busy="true"><h1>正在加载多资产研究中枢</h1></section></main>;
+    return <main className="shell"><section className="state-panel" role="status" aria-busy="true"><RefreshCw className="spin" aria-hidden="true" /><h1>正在加载多资产研究中枢</h1></section></main>;
   }
 
   const latestReport = data.reports[0];
