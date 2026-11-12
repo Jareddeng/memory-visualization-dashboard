@@ -7,6 +7,7 @@ import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, Tool
 import { BarChart, LineChart } from "echarts/charts";
 import { CanvasRenderer } from "echarts/renderers";
 import "./styles.css";
+import { MacroCalendar, type MacroCalendarData } from "./MacroCalendar";
 
 echarts.use([DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent, BarChart, LineChart, CanvasRenderer]);
 
@@ -380,7 +381,7 @@ type AppData = {
   metadata: Metadata;
 };
 
-type PageKey = "overview" | "markets" | "industry" | "reports" | "intel";
+type PageKey = "overview" | "markets" | "industry" | "reports" | "intel" | "macro-calendar";
 type SectorKey = "tech" | "a-share" | "macro" | "us";
 
 type IntelRecord = {
@@ -494,22 +495,33 @@ const IntelTableContext = React.createContext<{
   pinnedIntelId?: string | null;
 }>({});
 
-function useJson<T>(url: string, enabled = true) {
+const DATA_LOAD_TIMEOUT_MS = 8_000;
+type JsonResult<T> = { data: T | null; error: string | null };
+type UsMarketPayload = Record<typeof usMarketCharts[number]["id"], UsMarketPoint[]>;
+
+function useJson<T>(url: string): JsonResult<T> {
   const [data, setData] = React.useState<T | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    if (!enabled || data || error) return;
     const controller = new AbortController();
+    const timer = window.setTimeout(() => {
+      setError("请求超时");
+      controller.abort();
+    }, DATA_LOAD_TIMEOUT_MS);
     fetch(url, { cache: "no-cache", signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
         return response.json() as Promise<T>;
       })
       .then((result) => { if (!controller.signal.aborted) setData(result); })
-      .catch((err: Error) => { if (!controller.signal.aborted) setError(err.message); });
-    return () => controller.abort();
-  }, [url, enabled, data, error]);
+      .catch((err: Error) => { if (!controller.signal.aborted) setError(err.message); })
+      .finally(() => window.clearTimeout(timer));
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, [url]);
 
   return { data, error };
 }
@@ -522,21 +534,25 @@ const emptyAShare: ASharePayload = {
   crowding: { source: "", points: [] },
 };
 
-function useDashboardData(sector: SectorKey, page: PageKey, searching: boolean) {
+function useDashboardData(sector: SectorKey, page: PageKey) {
   const tech = sector === "tech";
   const aShareActive = sector === "a-share" && page !== "reports";
-  const macroActive = sector === "macro";
-  const prices = useJson<PricePayload>("./data/processed/prices.json", tech);
-  const stocks = useJson<StockPayload>("./data/processed/stocks.json", tech && (page === "overview" || page === "markets") || searching);
-  const trackers = useJson<TrackerPayload>("./data/processed/trackers.json", tech || sector === "macro" && page === "markets" || sector === "a-share" && page === "reports" || searching);
-  const metadata = useJson<Metadata>("./data/processed/metadata.json", tech || searching);
-  const overviewReady = Boolean(prices.data || prices.error);
-  const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json", tech && (page !== "overview" || overviewReady) || searching);
-  const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json", tech && (page === "intel" || page === "overview" && overviewReady) || searching);
-  const aShare = useJson<ASharePayload>("./data/processed/a-share.json", aShareActive || searching);
-  const aShareIndices = useJson<StockPayload>("./data/processed/a-share-indices.json", aShareActive || searching);
-  const macro = useJson<MacroPayload>("./data/processed/macro.json", macroActive || searching);
-  const macroEtf = useJson<StockPayload>("./data/processed/macro-etf.json", macroActive);
+  const macroActive = sector === "macro" && page !== "macro-calendar";
+  const prices = useJson<PricePayload>("./data/processed/prices.json");
+  const stocks = useJson<StockPayload>("./data/processed/stocks.json");
+  const trackers = useJson<TrackerPayload>("./data/processed/trackers.json");
+  const metadata = useJson<Metadata>("./data/processed/metadata.json");
+  const reports = useJson<{ reports: Report[] }>("./data/processed/reports.json");
+  const intel = useJson<{ records: IntelRecord[] }>("./data/processed/intel.json");
+  const aShare = useJson<ASharePayload>("./data/processed/a-share.json");
+  const aShareIndices = useJson<StockPayload>("./data/processed/a-share-indices.json");
+  const macro = useJson<MacroPayload>("./data/processed/macro.json");
+  const macroEtf = useJson<StockPayload>("./data/processed/macro-etf.json");
+  const usIndices = useJson<StockPayload>("./data/processed/us-indices.json");
+  const usMarket = useJson<UsMarketPayload>("./data/processed/us-market.json");
+  const macroCalendar = useJson<MacroCalendarData>("./data/macro-calendar.json");
+  const loading = [prices, stocks, trackers, metadata, reports, intel, aShare, aShareIndices, macro, macroEtf, usIndices, usMarket, macroCalendar]
+    .some((source) => source.data === null && source.error === null);
 
   const data: AppData = {
     prices: prices.data ?? { DRAM: emptyPriceProduct, NAND: emptyPriceProduct },
@@ -569,7 +585,7 @@ function useDashboardData(sector: SectorKey, page: PageKey, searching: boolean) 
     if (source.error) errors.push(label);
     else if (!source.data) pending.push(label);
   }
-  return { data, errors, pending, generatedAt: metadata.data?.generated_at };
+  return { data, errors, pending, loading, usIndices, usMarket, macroCalendar, generatedAt: metadata.data?.generated_at };
 }
 
 const Chart = React.memo(function Chart({ option }: { option: echarts.EChartsCoreOption }) {
@@ -912,7 +928,7 @@ function App() {
   const [activeMacroPeriodId, setActiveMacroPeriodId] = React.useState<string | null>(null);
   const [activeResearchId, setActiveResearchId] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
-  const { data, errors, pending, generatedAt } = useDashboardData(activeSector, activePage, Boolean(query.trim()));
+  const { data, errors, pending, loading, usIndices, usMarket, macroCalendar, generatedAt } = useDashboardData(activeSector, activePage);
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [timeRange, setTimeRange] = React.useState<TimeRange>("all");
   const [intelRecords, setIntelRecords] = useLocalIntelRecords();
@@ -940,6 +956,10 @@ function App() {
     }, 0);
     return () => window.clearTimeout(timer);
   }, [activeSector, activePage, pendingAnchor, pending.length]);
+
+  if (loading) {
+    return <main className="shell"><section className="state-panel" role="status" aria-busy="true"><h1>正在加载多资产研究中枢</h1></section></main>;
+  }
 
   const latestReport = data.reports[0];
   const selectedReport = data.reports.find((report) => report.slug === selectedReportSlug) ?? latestReport;
@@ -1051,7 +1071,7 @@ function App() {
         {pending.length ? <p className="a-share-source-note" role="status">正在加载：{pending.join("、")}</p> : null}
 
         {activeSector === "a-share" ? <AShareHero latestIndex={data.aShareIndices.latest.find((item) => item.ticker === "000001.SS")} /> : null}
-        {activeSector === "macro" ? <MacroHero tmf={data.macroEtf.latest.find((item) => item.ticker === "TMF")} /> : null}
+        {activeSector === "macro" && activePage !== "macro-calendar" ? <MacroHero tmf={data.macroEtf.latest.find((item) => item.ticker === "TMF")} /> : null}
 
         {activeSector === "tech" ? <>
         <Hero data={data} latestReport={latestReport} />
@@ -1103,8 +1123,10 @@ function App() {
             ? <MacroOverviewPage macro={data.macro} etf={data.macroEtf} />
           : activeSector === "macro" && activePage === "markets"
             ? <MacroMarketsPage data={data.macro} tracker={data.trackers.macro_institutional_charts} activePeriodId={activeMacroPeriodId} onPeriodChange={setActiveMacroPeriodId} />
+          : activeSector === "macro" && activePage === "macro-calendar"
+            ? macroCalendar.data?.series.length ? <MacroCalendar data={macroCalendar.data} /> : <section className="panel"><h2>宏观数据点评</h2><p role="status">{macroCalendar.error ? "宏观日历暂时无法加载" : macroCalendar.data ? "暂无已收录日程" : "正在加载宏观日历"}</p></section>
           : activeSector === "us"
-            ? <UsMarketPage page={activePage} />
+              ? <UsMarketPage page={activePage} indices={usIndices} market={usMarket} />
           : <EmptySectorPage sector={activeSector} page={activePage} />}
 
         {activeSector === "tech" ? <footer className="disclaimer">
@@ -1238,6 +1260,7 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     { key: "overview", label: "概览", detail: "通胀 / 就业 / 美债", subItems: [
       { label: "美债与政策利率", anchorId: "macro-us-bond-yields" },
     ] },
+    { key: "macro-calendar", label: "宏观数据点评", detail: "发布日历 / 券商观点" },
     {
       key: "markets",
       label: "市场图表",
@@ -1254,7 +1277,6 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
         { label: "社融当月值", anchorId: "macro-social-financing" },
       ],
     },
-    placeholderPages[2],
   ];
   const usPages: PageNavItem[] = [
     { key: "overview", label: "概览", detail: "纳指 / 标普500 / 道指" },
@@ -1360,7 +1382,7 @@ const usMarketCharts = [
 ] as const;
 type UsMarketPoint = { date: string; left: number; right: number };
 
-function UsMarketPage({ page }: { page: PageKey }) {
+function UsMarketPage({ page, indices, market }: { page: PageKey; indices: JsonResult<StockPayload>; market: JsonResult<UsMarketPayload> }) {
   return <>
     <section className="intel-hero">
       <img src="./assets/storage-supply-chain.png" alt="市场研究背景" />
@@ -1369,12 +1391,11 @@ function UsMarketPage({ page }: { page: PageKey }) {
         <h1>美股可视化看板</h1>
       </div></div>
     </section>
-    {page === "markets" ? <UsMarketCharts /> : <UsIndexOverview />}
+    {page === "markets" ? <UsMarketCharts {...market} /> : <UsIndexOverview {...indices} />}
   </>;
 }
 
-function UsIndexOverview() {
-  const { data, error } = useJson<StockPayload>("./data/processed/us-indices.json");
+function UsIndexOverview({ data, error }: JsonResult<StockPayload>) {
   const symbols = [["^IXIC", "纳斯达克综合指数"], ["^GSPC", "标普500指数"], ["^DJI", "道琼斯工业平均指数"]];
   return <section className="a-share-overview">
     <div className="a-share-index-grid us-index-grid" aria-label="美股指数近一年趋势">
@@ -1412,8 +1433,7 @@ function makeUsMarketOption(chart: typeof usMarketCharts[number], points: UsMark
   };
 }
 
-function UsMarketCharts() {
-  const { data, error } = useJson<Record<typeof usMarketCharts[number]["id"], UsMarketPoint[]>>("./data/processed/us-market.json");
+function UsMarketCharts({ data, error }: JsonResult<UsMarketPayload>) {
   return <section className="macro-chart-grid" aria-label="美国股债市场图表">
     {usMarketCharts.map((chart) => {
       const points = data?.[chart.id];

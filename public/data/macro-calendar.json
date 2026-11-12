@@ -1,0 +1,30 @@
+{
+  "series": [
+    {"year":2026,"key":"us-jobs","region":"US","label":"非农就业","source":"https://www.bls.gov/schedule/2026/home.htm","days":["01-09","02-11","03-06","04-03","05-08","06-05","07-02","08-07","09-04","10-02","11-06","12-04"],"periodRule":"previous-month"},
+    {"year":2026,"key":"us-cpi","region":"US","label":"美国 CPI","source":"https://www.bls.gov/schedule/2026/home.htm","days":["01-13","02-13","03-11","04-10","05-12","06-10","07-14","08-12","09-11","10-14","11-10","12-10"],"periodRule":"previous-month"},
+    {"year":2026,"key":"us-pce","region":"US","label":"美国 PCE","source":"https://www.bea.gov/news/2026/personal-income-and-outlays-december-2025","days":["02-20","03-13","04-09","04-30","05-28","06-25","07-30","08-26","09-30","10-29","11-25","12-23"],"periodRule":"previous-month","periods":{"02-20":"2025 年 12 月","03-13":"2026 年 1 月","04-09":"2026 年 2 月"}},
+    {"year":2026,"key":"us-fed","region":"US","label":"美联储议息","source":"https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm","note":"按北京时间标记，较美联储当地决议日顺延一天。","days":["01-29","03-19","04-30","06-18","07-30","09-17","10-29","12-10"]},
+    {"year":2026,"key":"cn-prices","region":"CN","label":"中国 CPI / PPI","source":"https://www.stats.gov.cn/xw/tjxw/tzgg/202512/t20251224_1962137.html","days":["01-09","02-11","03-09","04-10","05-11","06-10","07-09","08-09","09-09","10-14","11-09","12-09"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-pmi","region":"CN","label":"中国官方 PMI","source":"https://www.stats.gov.cn/xw/tjxw/tzgg/202512/t20251224_1962137.html","days":["01-31","03-04","03-31","04-30","05-31","06-30","07-31","08-31","09-30","10-31","11-30","12-31"],"periodRule":"same-month","periods":{"03-04":"2026 年 2 月"}},
+    {"year":2026,"key":"cn-activity","region":"CN","label":"中国经济数据","source":"https://www.stats.gov.cn/xw/tjxw/tzgg/202512/t20251224_1962137.html","note":"含工业、消费、投资；季度发布含 GDP。","days":["01-19","03-16","04-16","05-18","06-16","07-15","08-17","09-15","10-19","11-16","12-15"],"periodRule":"previous-month","periods":{"01-19":"2025 年全年（GDP）／2025 年 12 月（月度指标）","03-16":"2026 年 1–2 月","04-16":"2026 年第一季度（GDP）／2026 年 3 月（月度指标）","07-15":"2026 年第二季度（GDP）／2026 年 6 月（月度指标）","10-19":"2026 年第三季度（GDP）／2026 年 9 月（月度指标）"}},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://finance.sina.com.cn/money/bank/2026-01-15/doc-inhhkmpz4890324.shtml","days":["01-15"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.xinhuanet.com/fortune/20260213/b35a9ddb06fb4b1e86aacec83629830d/c.html","days":["02-13"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.xinhuanet.com/20260313/10cd7ab6edb04587a4edac976f0a4b35/c.html","days":["03-13"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www3.xinhuanet.com/money/20260414/a2c0298d89564bc796951fa3a8484bdb/c.html","days":["04-14"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www3.xinhuanet.com/fortune/20260514/47a41f1904504c27b22593b26aef5de0/c.html","days":["05-14"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.xinhuanet.com/20260612/8d1eee88e6af47318265467da509927e/c.html","days":["06-12"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://jrb.qingdao.gov.cn/jrdt/202607/t20260715_10677449.shtml","days":["07-15"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.cfn.cn/index/tushuo/eyesCfnNewsDetail/id/65373.shtml","days":["08-14"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.xinhuanet.com/20260914/565ef79342c34afb97123b135498061b/c.html","days":["09-14"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.cfn.cn/index/tushuo/eyesCfnNewsDetail/id/66243.shtml","days":["10-14"],"periodRule":"previous-month"}
+  ],
+  "undated": [
+    {"month":"2026-11","region":"CN","label":"中国社融 / 信贷（10月数据）"},
+    {"month":"2026-12","region":"CN","label":"中国社融 / 信贷（11月数据）"}
+  ],
+  "commentary": [
+    {"eventId":"us-jobs:2026-10-02","summary":"华泰证券认为，就业与薪资增速放缓，降低了继续加息的紧迫性，但劳动力市场整体仍有韧性。","sources":[{"institution":"华泰证券","title":"9月非农走弱边际降低加息压力","date":"2026-10-03","url":"https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ"}]},
+    {"eventId":"us-cpi:2026-10-14","summary":"华泰证券认为，住房和部分商品、服务价格升温，推动9月核心 CPI 超预期，通胀韧性仍需关注。","sources":[{"institution":"华泰证券","title":"住房升温推动美国9月核心CPI超预期","date":"2026-10-14","url":"https://mp.weixin.qq.com/s/iUVK-fYulUyS0c28S-3-iQ"}]},
+    {"eventId":"cn-credit:2026-10-14","summary":"华泰证券认为，新增社融改善主要由政府债支撑，居民信贷偏弱，企业贷款改善也受到票据融资低基数影响；私人部门融资需求尚未趋势性修复。","sources":[{"institution":"华泰证券","title":"政府债发力托举社融：9月金融数据点评","date":"2026-10-14","url":"https://mp.weixin.qq.com/s/JQb382lVARmnFWb0Yc-1bA"}]}
+  ]
+}
