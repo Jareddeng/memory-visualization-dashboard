@@ -16,11 +16,27 @@
     {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://jrb.qingdao.gov.cn/jrdt/202607/t20260715_10677449.shtml","days":["07-15"],"periodRule":"previous-month"},
     {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.cfn.cn/index/tushuo/eyesCfnNewsDetail/id/65373.shtml","days":["08-14"],"periodRule":"previous-month"},
     {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.xinhuanet.com/20260914/565ef79342c34afb97123b135498061b/c.html","days":["09-14"],"periodRule":"previous-month"},
-    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.cfn.cn/index/tushuo/eyesCfnNewsDetail/id/66243.shtml","days":["10-14"],"periodRule":"previous-month"}
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.cfn.cn/index/tushuo/eyesCfnNewsDetail/id/66243.shtml","days":["10-14"],"periodRule":"previous-month"},
+    {"year":2027,"key":"us-jobs","region":"US","label":"非农就业","source":"https://www.bls.gov/schedule/news_release/empsit.htm","days":["01-08","02-05","03-05","04-02","05-07","06-04","07-02","08-06","09-03","10-08","11-05","12-03"],"periodRule":"previous-month"},
+    {"year":2027,"key":"us-cpi","region":"US","label":"美国 CPI","source":"https://www.bls.gov/schedule/news_release/cpi.htm","days":["01-13","02-11","03-10","04-13","05-12","06-10","07-14","08-11","09-14","10-14","11-10","12-10"],"periodRule":"previous-month"},
+    {"year":2027,"key":"us-pce","region":"US","label":"美国 PCE","source":"https://www.bea.gov/news/schedule/next-year","days":["01-28","02-25","03-31","04-29","05-27","06-25","07-29","08-25","09-30","10-28","11-24","12-22"],"periodRule":"previous-month"},
+    {"year":2027,"key":"us-fed","region":"US","label":"美联储议息","source":"https://www.federalreserve.gov/newsevents/pressreleases/monetary20250905a.htm","note":"美联储暂定日程。按北京时间标记，较美国当地决议日顺延一天。","days":["01-28","03-18","04-29","06-10","07-29","09-16","10-28","12-09"]}
   ],
   "undated": [
     {"month":"2026-11","region":"CN","label":"中国社融 / 信贷（10月数据）"},
-    {"month":"2026-12","region":"CN","label":"中国社融 / 信贷（11月数据）"}
+    {"month":"2026-12","region":"CN","label":"中国社融 / 信贷（11月数据）"},
+    {"month":"2027-01","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-02","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-03","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-04","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-05","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-06","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-07","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-08","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-09","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-10","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-11","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"},
+    {"month":"2027-12","region":"CN","label":"中国 CPI/PPI、PMI、经济运行数据、社融 / 信贷（待官方排期或公告）"}
   ],
   "commentary": [
     {"eventId":"us-jobs:2026-10-02","summary":"华泰证券认为，就业与薪资增速放缓，降低了继续加息的紧迫性，但劳动力市场整体仍有韧性。","sources":[{"institution":"华泰证券","title":"9月非农走弱边际降低加息压力","date":"2026-10-03","url":"https://mp.weixin.qq.com/s/Y2aONj4ENEX6mkGG-3mYpQ"}]},

@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 
 type Region = "CN" | "US";
 type Series = {
@@ -48,6 +48,11 @@ export function MacroCalendar({ data }: { data: MacroCalendarData }) {
   const [month, setMonth] = React.useState(() => years.includes(Number(today.slice(0, 4))) ? today.slice(0, 7) : `${years.at(-1)}-12`);
   const [region, setRegion] = React.useState<Region | "all">("all");
   const [selected, setSelected] = React.useState("");
+  const [pickerYear, setPickerYear] = React.useState<number | null>(null);
+  const [choosingYear, setChoosingYear] = React.useState(false);
+  const pickerYearIndex = pickerYear === null ? -1 : years.indexOf(pickerYear);
+  const pickerButton = React.useRef<HTMLButtonElement>(null);
+  const pickerLevel = React.useRef<HTMLButtonElement>(null);
   const details = React.useRef<HTMLElement>(null);
   const [year, monthNumber] = month.split("-").map(Number);
   const previous = new Date(Date.UTC(year, monthNumber - 2, 1)).toISOString().slice(0, 7);
@@ -75,7 +80,11 @@ export function MacroCalendar({ data }: { data: MacroCalendarData }) {
     setSelected(date);
     if (window.matchMedia("(max-width: 1100px)").matches) details.current?.scrollIntoView({ block: "start" });
   };
-  const changeMonth = (value: string) => { setMonth(value); setSelected(""); };
+  const changeMonth = (value: string) => { setMonth(value); setSelected(""); setPickerYear(null); };
+  const stepPickerYear = (direction: -1 | 1) => {
+    pickerLevel.current?.focus();
+    setPickerYear(years[pickerYearIndex + direction]);
+  };
   return (
     <section className="macro-calendar" aria-labelledby="macro-calendar-title">
       <header className="macro-calendar-head">
@@ -85,9 +94,52 @@ export function MacroCalendar({ data }: { data: MacroCalendarData }) {
         <div className="panel macro-calendar-board">
           <div className="macro-calendar-nav">
             <button type="button" aria-label="上个月" title="上个月" disabled={!inRange(previous)} onClick={() => changeMonth(previous)}><ChevronLeft size={18} /></button>
-            <select aria-label="选择月份" value={month} onChange={(event) => changeMonth(event.target.value)}>
-              {years.flatMap((value) => Array.from({ length: 12 }, (_, i) => <option key={`${value}-${pad(i + 1)}`} value={`${value}-${pad(i + 1)}`}>{value}年{i + 1}月</option>))}
-            </select>
+            <div className="macro-month-picker" onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setPickerYear(null);
+            }} onKeyDown={(event) => {
+              if (event.key === "Escape" && pickerYear !== null) {
+                event.stopPropagation();
+                if (choosingYear) {
+                  pickerLevel.current?.focus();
+                  setChoosingYear(false);
+                  return;
+                }
+                setPickerYear(null);
+                pickerButton.current?.focus();
+              }
+            }}>
+              <button type="button" className="macro-month-trigger" ref={pickerButton} aria-label={`选择月份：${year}年${monthNumber}月`} aria-expanded={pickerYear !== null} onClick={() => {
+                setChoosingYear(false);
+                setPickerYear(pickerYear === null ? year : null);
+              }}>
+                {year}年{monthNumber}月 <ChevronDown size={14} aria-hidden="true" />
+              </button>
+              {pickerYear !== null && <div className="macro-month-popover" role="group" aria-label={choosingYear ? "选择年份" : "选择年月"}>
+                <div className={`macro-month-level-nav${choosingYear ? " is-year-grid" : ""}`}>
+                  {!choosingYear && <button type="button" aria-label="上一年" title="上一年" disabled={pickerYearIndex <= 0} onClick={() => stepPickerYear(-1)}><ChevronLeft size={14} aria-hidden="true" /></button>}
+                  <button type="button" ref={pickerLevel} className="macro-month-level" aria-label={choosingYear ? "返回月份" : "切换年份"} onClick={() => setChoosingYear(!choosingYear)}>
+                    {choosingYear ? <><ChevronLeft size={14} aria-hidden="true" /> 返回月份</> : `${pickerYear}年`}
+                  </button>
+                  {!choosingYear && <button type="button" aria-label="下一年" title="下一年" disabled={pickerYearIndex >= years.length - 1} onClick={() => stepPickerYear(1)}><ChevronRight size={14} aria-hidden="true" /></button>}
+                </div>
+                {choosingYear ? <div className="macro-month-options macro-year-options">
+                  {years.map((value) => <button type="button" key={value} aria-pressed={pickerYear === value} onClick={() => {
+                    pickerLevel.current?.focus();
+                    setPickerYear(value);
+                    setChoosingYear(false);
+                  }}>{value}年</button>)}
+                </div> :
+                <div className="macro-month-options">
+                  {Array.from({ length: 12 }, (_, i) => {
+                    const value = `${pickerYear}-${pad(i + 1)}`;
+                    return <button type="button" key={value} aria-pressed={value === month} onClick={() => {
+                      pickerButton.current?.focus();
+                      changeMonth(value);
+                    }}>{i + 1}月</button>;
+                  })}
+                </div>}
+              </div>}
+            </div>
             <button type="button" aria-label="下个月" title="下个月" disabled={!inRange(next)} onClick={() => changeMonth(next)}><ChevronRight size={18} /></button>
           </div>
           {nextDay && <button type="button" className="macro-calendar-next" onClick={() => chooseDay(nextDay)}>
