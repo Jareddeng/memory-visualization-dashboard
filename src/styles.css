@@ -1431,6 +1431,43 @@ h2 {
   gap: 16px;
 }
 
+.a-share-institutional .macro-chart-panel {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+}
+
+.a-share-institutional .macro-chart-head {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+}
+
+.a-share-institutional .a-share-source-note { margin: 0; }
+
+.institutional-cap-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.institutional-cap-switch button {
+  min-height: 30px;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.institutional-cap-switch button[aria-pressed="true"] {
+  color: #11685f;
+  background: #e4f3ef;
+  border-color: #5a9d92;
+}
+
 .macro-chart-panel {
   min-width: 0;
 }

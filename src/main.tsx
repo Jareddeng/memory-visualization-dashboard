@@ -44,6 +44,10 @@ type AShareQuote = {
 };
 
 type ASharePayload = {
+  institutional?: {
+    comparison: Array<{ date: string; equity: number; bond: number }>;
+    etf: Array<{ date: string; close: number; assets: number; caps: Record<"float" | "free" | "total", number | null> }>;
+  };
   source: string;
   quoteDate: string;
   quotes: AShareQuote[];
@@ -1249,6 +1253,8 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
         { label: "期权报价", anchorId: "a-share-option-quotes" },
         { label: "年化基差趋势", anchorId: "a-share-basis" },
         { label: "A股拥挤度", anchorId: "a-share-crowding" },
+        { label: "沪深300全收益 vs 二级债基", anchorId: "a-share-equity-bond" },
+        { label: "四只沪深300 ETF 占流通市值比例", anchorId: "a-share-etf-share" },
       ],
     },
     { key: "reports", label: "研报观点", detail: "最新观点 / 历史倾向", subItems: [
@@ -1918,6 +1924,57 @@ function makeCrowdingOption(data: ASharePayload["crowding"], visible: Record<Cro
   };
 }
 
+function AShareInstitutionalCharts({ data }: { data: NonNullable<ASharePayload["institutional"]> }) {
+  const [capMode, setCapMode] = React.useState<"float" | "free" | "total">("float");
+  const capLabels = { float: "流通市值", free: "自由流通市值", total: "总市值" };
+  const option = (dates: string[], lines: Array<{ name: string; values: number[] }>, dual = false): echarts.EChartsCoreOption => ({
+    color: ["#157f75", "#b97726"],
+    animation: false,
+    grid: { left: 56, right: 62, top: 38, bottom: 68 },
+    tooltip: { trigger: "axis", confine: true },
+    legend: { bottom: 0 },
+    xAxis: { type: "category", data: dates, boundaryGap: false, axisLine: { onZero: false }, axisLabel: { hideOverlap: true } },
+    yAxis: [{ type: "value", name: "%", scale: true }, ...(dual ? [{ type: "value", name: "点", scale: true, splitLine: { show: false } }] : [])],
+    dataZoom: [{ type: "inside" }, { type: "slider", bottom: 28, height: 18 }],
+    series: lines.map(({ name, values }, i) => ({
+      name, type: "line", yAxisIndex: dual ? i : 0, showSymbol: false, sampling: dual ? "none" : "lttb",
+      data: values.map(value => Number(value.toFixed(4))),
+    })),
+  });
+  const { comparison } = data;
+  const etf = data.etf.flatMap(row => {
+    const cap = row.caps?.[capMode];
+    return cap ? [{ ...row, ratio: row.assets / cap * 100 }] : [];
+  });
+  const crossings = comparison.filter((row, index) => index > 0 &&
+    comparison[index - 1].equity >= comparison[index - 1].bond && row.equity < row.bond);
+  return <section id="a-share-institutional" className="a-share-institutional" aria-label="机构图表">
+    <div className="macro-chart-grid">
+      {comparison.length > 0 && <article className="panel macro-chart-panel" id="a-share-equity-bond">
+        <div className="macro-chart-head"><h2>沪深300全收益 vs 二级债基</h2></div>
+        <p className="a-share-source-note">万得日频 · 基期 {comparison[0].date} · 截至 {comparison.at(-1)?.date} · 跌破债基 {crossings.length} 次{crossings.length ? `（最近 ${crossings.at(-1)?.date}）` : ""}</p>
+        <Chart option={option(comparison.map(row => row.date), [
+          { name: "沪深300全收益", values: comparison.map(row => row.equity) },
+          { name: "二级债基", values: comparison.map(row => row.bond) },
+        ])} />
+      </article>}
+      {data.etf.length > 0 && <article className="panel macro-chart-panel" id="a-share-etf-share">
+        <div className="macro-chart-head"><h2>四只沪深300 ETF 占{capLabels[capMode]}比例</h2>
+        <div className="institutional-cap-switch" role="group" aria-label="市值口径">
+          {(["float", "free", "total"] as const).map(key => <button type="button" key={key} aria-pressed={capMode === key} onClick={() => setCapMode(key)}>{capLabels[key]}</button>)}
+        </div>
+        </div>
+        <p className="a-share-source-note">万得日频 · ETF 规模合计 ÷ 沪深300{capLabels[capMode]}{capMode === "float" ? "（不含限售股）" : ""}{etf.length ? ` · 截至 ${etf.at(-1)?.date}` : ""}</p>
+        {etf.length ? <Chart option={option(etf.map(row => row.date), [
+          { name: "ETF 占比（左轴）", values: etf.map(row => row.ratio) },
+          { name: "沪深300收盘（右轴）", values: etf.map(row => row.close) },
+        ], true)} /> : <p className="a-share-source-note">该口径暂无有效的共同交易日数据</p>}
+      </article>}
+      {!comparison.length && !data.etf.length && <p className="a-share-source-note">暂无有效的共同交易日数据</p>}
+    </div>
+  </section>;
+}
+
 function AShareMarketsPage({ data }: { data: ASharePayload }) {
   const [crowdingVisibility, setCrowdingVisibility] = React.useState(defaultCrowdingVisibility);
   const quotes = data.quotes;
@@ -2012,6 +2069,7 @@ function AShareMarketsPage({ data }: { data: ASharePayload }) {
           <Chart option={makeCrowdingOption(data.crowding, crowdingVisibility)} />
         </article>
       </section>
+      <AShareInstitutionalCharts data={data.institutional ?? { comparison: [], etf: [] }} />
     </>
   );
 }

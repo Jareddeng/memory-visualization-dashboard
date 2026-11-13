@@ -108,7 +108,49 @@ export function loadAShareData(workbookPath) {
     quoteDate: quotes[0].date,
     quotes,
     basis: { name: "中证1000股指期货年化基差", unit: "%", points: basis },
+    institutional: loadInstitutionalCharts(workbook),
   };
+}
+
+function dailyRows(sheet, headers) {
+  if (!sheet?.["!ref"]) return new Map();
+  const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: true, blankrows: true });
+  const index = rows.findIndex(row => headers.every(header => row.includes(header)));
+  if (index < 0) throw new Error(`Missing Wind columns: ${headers.join(", ")}`);
+  const columns = headers.map(header => rows[index].indexOf(header));
+  const range = XLSX.utils.decode_range(sheet["!ref"]);
+  const result = new Map();
+  for (let i = index + 1; i < rows.length; i++) {
+    const cell = sheet[XLSX.utils.encode_cell({ r: range.s.r + i, c: range.s.c + columns[0] })];
+    const serial = cell?.v;
+    const parsed = typeof serial === "number" ? XLSX.SSF.parse_date_code(serial) : null;
+    const date = parsed ? `${parsed.y}-${String(parsed.m).padStart(2, "0")}-${String(parsed.d).padStart(2, "0")}` : displayDate(cell);
+    const values = columns.slice(1).map(c => numberCell(sheet[XLSX.utils.encode_cell({ r: range.s.r + i, c: range.s.c + c })], { positive: true }));
+    if (date && values.every(value => value !== null)) result.set(date, values);
+  }
+  return new Map([...result].sort(([a], [b]) => a.localeCompare(b)));
+}
+
+function loadInstitutionalCharts(workbook) {
+  const returns = dailyRows(workbook.Sheets["沪深300收益vs二级债基"], ["Date", "H00300.CSI", "992617.SSI"]);
+  const first = returns.values().next().value;
+  const comparison = [...returns].map(([date, [equity, bond]]) => ({
+    date, equity: (equity / first[0] - 1) * 100, bond: (bond / first[1] - 1) * 100,
+  }));
+  const sheet = workbook.Sheets["沪深300ETF占比"];
+  const funds = dailyRows(sheet, ["Date", "510300.SH", "510310.SH", "159919.SZ", "510330.SH"]);
+  const index = dailyRows(sheet, ["Date", "close"]);
+  const caps = ["mkt_cap_ashare", "mkt_freeshares", "mkt_cap_ard"].map(field =>
+    dailyRows(sheet, ["Date", "close", field]));
+  const etf = [...funds].flatMap(([date, values]) => {
+    const market = index.get(date);
+    if (!market) return [];
+    const [close] = market;
+    const assets = values.reduce((sum, value) => sum + value, 0);
+    const [float, free, total] = caps.map(rows => rows.get(date)?.[1] ?? null);
+    return [{ date, close, assets, caps: { float, free, total } }];
+  });
+  return { comparison, etf };
 }
 
 export function loadCrowdingData(workbookPath) {
