@@ -17110,6 +17110,25 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-11-19"
+    },
+    {
+      "id": "2026-11-13-ashare-memory-chip-gap-up",
+      "date": "2026-11-13",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "C",
+      "reaction_type": "instant",
+      "pricing_status": "priced",
+      "horizon": "intraday",
+      "title": "A股存储芯片板块高开，东方中科涨近10%",
+      "product": "存储芯片,DRAM,NAND",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261113093112938800",
+      "summary": "11月13日A股开盘，存储芯片板块高开，东方中科涨近10%，伟测科技、东芯股份、华虹宏力、长川科技等纷纷上涨。前一交易日（11月12日）存储芯片板块已随科创50指数走强，显示资金对存储涨价与供需紧张预期的交易热情延续。",
+      "transmission_path": "板块高开反映市场持续定价存储涨价与供需紧张逻辑，资金流入存储芯片标的；若企业级颗粒涨价意向落地为正式提价函，板块情绪有望延续，反之存在获利回吐风险。",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-20"
     }
   ]
 }

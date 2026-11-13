@@ -9076,6 +9076,6 @@
     }
   ],
   "source": "Yahoo Finance chart API range=1y (completed daily close)",
-  "generated_at": "2026-11-13T00:20:03.850Z",
-  "warning": "部分美股指数在线更新失败，已使用既有数据: ^IXIC: HTTP 429; ^GSPC: HTTP 429; ^DJI: HTTP 429"
+  "generated_at": "2026-11-13T04:16:37.722Z",
+  "warning": "部分美股指数在线更新失败，已使用既有数据: ^IXIC: Client network socket disconnected before secure TLS connection was established; ^GSPC: HTTP 429; ^DJI: HTTP 429"
 }
