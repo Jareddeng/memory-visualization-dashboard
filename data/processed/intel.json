@@ -172,6 +172,25 @@
       "review_date": "2026-11-20"
     },
     {
+      "id": "2026-11-13-sk-hynix-hbm4-yield-70",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-11-13",
+      "title": "消息称SK海力士HBM4良率突破70%，与三星、美光竞争下一代内存市场",
+      "product": "HBM",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261113111618616800",
+      "summary": "金十数据每日存储市场要闻：消息称SK海力士HBM4良率已突破70%，与三星、美光竞争下一代内存市场；长鑫DDR5颗粒升至32Gb，服务器MRDIMM最高速率达12800Mbps；集邦预计2027年AI算力供给逾翻倍，提示2028年后供需失衡风险；集邦预测PC内存、存储价格2026Q4分别再涨13~18%、0~5%。",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "HBM4良率突破70%→量产爬坡加速、成本下降→SK海力士巩固下一代HBM领先地位→HBM4供给保障增强→原厂盈利持续性提升→PC DRAM Q4再涨13~18%验证涨价周期",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "review_date": "2026-11-20"
+    },
+    {
       "id": "2026-11-12-samsung-asan-hbm-packaging-plant",
       "type": "重大事件",
       "impact": "neutral",
