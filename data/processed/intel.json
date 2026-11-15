@@ -191,6 +191,25 @@
       "review_date": "2026-11-20"
     },
     {
+      "id": "2026-11-13-hk-storage-stocks-fall",
+      "type": "市场消息",
+      "impact": "bearish",
+      "date": "2026-11-13",
+      "title": "11月13日港股存储概念下挫，澜起科技跌逾6%",
+      "product": "存储芯片,DRAM",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261113161828146800",
+      "summary": "11月13日港股低开低走延续震荡调整，恒指收跌1.55%，恒生科技指数收跌3.02%，大市成交额1958.57亿港元。盘面上存储概念全天震荡下挫：澜起科技跌6.03%、兆易创新跌6.01%、江波龙跌4.12%；PCB与光通信概念领跌，猪肉概念股逆市走高。",
+      "importance": "C",
+      "reaction_type": "sentiment",
+      "pricing_status": "priced",
+      "horizon": "1d",
+      "transmission_path": "港股大盘调整→算力硬件链（存储、PCB、光通信）同步回调→存储板块短期情绪承压，需区分情绪面波动与产业基本面",
+      "confidence": "high",
+      "action": "archive",
+      "review_date": "2026-11-20"
+    },
+    {
       "id": "2026-11-12-samsung-asan-hbm-packaging-plant",
       "type": "重大事件",
       "impact": "neutral",
