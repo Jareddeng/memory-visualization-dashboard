@@ -592,7 +592,7 @@ function useDashboardData(sector: SectorKey, page: PageKey) {
   return { data, errors, pending, loading, usIndices, usMarket, macroCalendar, generatedAt: metadata.data?.generated_at };
 }
 
-const Chart = React.memo(function Chart({ option }: { option: echarts.EChartsCoreOption }) {
+const Chart = React.memo(function Chart({ option, observeSize = false }: { option: echarts.EChartsCoreOption; observeSize?: boolean }) {
   const ref = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
@@ -600,15 +600,18 @@ const Chart = React.memo(function Chart({ option }: { option: echarts.EChartsCor
     const chart = echarts.init(ref.current, undefined, { renderer: "canvas" });
     chart.setOption(option);
     const resize = () => chart.resize();
-    window.addEventListener("resize", resize);
+    const observer = observeSize ? new ResizeObserver(resize) : null;
+    if (observer) observer.observe(ref.current);
+    else window.addEventListener("resize", resize);
     return () => {
-      window.removeEventListener("resize", resize);
+      if (observer) observer.disconnect();
+      else window.removeEventListener("resize", resize);
       chart.dispose();
     };
-  }, [option]);
+  }, [option, observeSize]);
 
   return <div className="chart" ref={ref} />;
-}, areChartOptionsEqual);
+}, (previous, next) => previous.observeSize === next.observeSize && areChartOptionsEqual(previous, next));
 
 function areChartOptionsEqual(prev: { option: echarts.EChartsCoreOption }, next: { option: echarts.EChartsCoreOption }) {
   return chartOptionSignature(prev.option) === chartOptionSignature(next.option);
@@ -1443,13 +1446,13 @@ function UsMarketCharts({ data, error }: JsonResult<UsMarketPayload>) {
   return <section className="macro-chart-grid" aria-label="美国股债市场图表">
     {usMarketCharts.map((chart) => {
       const points = data?.[chart.id];
-      return <article className="panel macro-chart-panel" id={`us-market-${chart.id}`} key={chart.id}>
+      return <article className="panel macro-chart-panel us-market-chart-panel" id={`us-market-${chart.id}`} key={chart.id}>
         <div className="macro-chart-head"><h2>{chart.title}</h2><span>{points?.length ? `截至 ${points[points.length - 1].date} · EDB` : ""}</span></div>
         <div className="us-chart-axes">
           <span>左轴：{chart.left}（{chart.leftUnit}{chart.inverse ? "，反向" : ""}）</span>
           <span>右轴：{chart.right}（{chart.rightUnit}）</span>
         </div>
-        {points?.length ? <Chart option={makeUsMarketOption(chart, points)} /> : <p className="a-share-source-note">{error || data ? "暂无有效的共同交易日数据" : "正在加载"}</p>}
+        {points?.length ? <Chart option={makeUsMarketOption(chart, points)} observeSize /> : <p className="a-share-source-note">{error || data ? "暂无有效的共同交易日数据" : "正在加载"}</p>}
       </article>;
     })}
   </section>;

@@ -1496,6 +1496,17 @@ h2 {
   height: 390px;
 }
 
+.us-market-chart-panel {
+  container-type: inline-size;
+  display: grid;
+  align-content: start;
+}
+
+.us-market-chart-panel .chart {
+  height: 390px;
+  height: clamp(320px, 58cqw, 540px);
+}
+
 @media (max-width: 1180px) {
   .macro-chart-grid {
     grid-template-columns: 1fr;
