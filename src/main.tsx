@@ -1937,7 +1937,7 @@ function AShareInstitutionalCharts({ data }: { data: NonNullable<ASharePayload["
     yAxis: [{ type: "value", name: "%", scale: true }, ...(dual ? [{ type: "value", name: "点", scale: true, splitLine: { show: false } }] : [])],
     dataZoom: [{ type: "inside" }, { type: "slider", bottom: 28, height: 18 }],
     series: lines.map(({ name, values }, i) => ({
-      name, type: "line", yAxisIndex: dual ? i : 0, showSymbol: false, sampling: dual ? "none" : "lttb",
+      name, type: "line", yAxisIndex: dual ? i : 0, showSymbol: false, sampling: "none",
       data: values.map(value => Number(value.toFixed(4))),
     })),
   });
