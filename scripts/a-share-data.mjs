@@ -137,20 +137,7 @@ function loadInstitutionalCharts(workbook) {
   const comparison = [...returns].map(([date, [equity, bond]]) => ({
     date, equity: (equity / first[0] - 1) * 100, bond: (bond / first[1] - 1) * 100,
   }));
-  const sheet = workbook.Sheets["沪深300ETF占比"];
-  const funds = dailyRows(sheet, ["Date", "510300.SH", "510310.SH", "159919.SZ", "510330.SH"]);
-  const index = dailyRows(sheet, ["Date", "close"]);
-  const caps = ["mkt_cap_ashare", "mkt_freeshares", "mkt_cap_ard"].map(field =>
-    dailyRows(sheet, ["Date", "close", field]));
-  const etf = [...funds].flatMap(([date, values]) => {
-    const market = index.get(date);
-    if (!market) return [];
-    const [close] = market;
-    const assets = values.reduce((sum, value) => sum + value, 0);
-    const [float, free, total] = caps.map(rows => rows.get(date)?.[1] ?? null);
-    return [{ date, close, assets, caps: { float, free, total } }];
-  });
-  return { comparison, etf };
+  return { comparison };
 }
 
 export function loadCrowdingData(workbookPath) {

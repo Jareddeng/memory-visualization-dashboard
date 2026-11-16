@@ -7,7 +7,7 @@ import { DataZoomComponent, GridComponent, LegendComponent, TitleComponent, Tool
 import { BarChart, LineChart } from "echarts/charts";
 import { CanvasRenderer } from "echarts/renderers";
 import "./styles.css";
-import { MacroCalendar, type MacroCalendarData } from "./MacroCalendar";
+import { MacroCalendar, macroCommentarySearchEntries, type MacroCalendarData } from "./MacroCalendar";
 
 echarts.use([DataZoomComponent, GridComponent, LegendComponent, TitleComponent, TooltipComponent, BarChart, LineChart, CanvasRenderer]);
 
@@ -46,7 +46,6 @@ type AShareQuote = {
 type ASharePayload = {
   institutional?: {
     comparison: Array<{ date: string; equity: number; bond: number }>;
-    etf: Array<{ date: string; close: number; assets: number; caps: Record<"float" | "free" | "total", number | null> }>;
   };
   source: string;
   quoteDate: string;
@@ -426,6 +425,7 @@ type SearchItem = {
     recordId?: string;
     anchorId?: string;
     periodId?: string;
+    macroReleaseDate?: string;
     researchId?: string;
   };
 };
@@ -933,6 +933,7 @@ function App() {
   const [selectedReportSlug, setSelectedReportSlug] = React.useState<string | null>(null);
   const [activeReportTab, setActiveReportTab] = React.useState<ReportTab>("body");
   const [activeMacroPeriodId, setActiveMacroPeriodId] = React.useState<string | null>(null);
+  const [macroSearchJump, setMacroSearchJump] = React.useState<{ date: string; revision: number }>();
   const [activeResearchId, setActiveResearchId] = React.useState<string | null>(null);
   const [query, setQuery] = React.useState("");
   const { data, errors, pending, loading, usIndices, usMarket, macroCalendar, generatedAt } = useDashboardData(activeSector, activePage);
@@ -981,7 +982,7 @@ function App() {
       setDeletedRemoteIntelIds((current) => current.includes(id) ? current : [...current, id]);
     }
   };
-  const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange) : [];
+  const searchResults = query.trim() ? searchDashboard(data, allIntelRecords, query, timeRange, macroCalendar.data) : [];
   const hbmPressure = getHbmPressure(data);
   const priceSnapshots = getPriceSnapshots(data.prices);
   const navigatePage = (page: PageKey, anchorId?: string, reportTab?: ReportTab) => {
@@ -1011,6 +1012,8 @@ function App() {
     }
     if (item.target.reportSlug) setSelectedReportSlug(item.target.reportSlug);
     if (item.target.periodId) setActiveMacroPeriodId(item.target.periodId);
+    const releaseDate = item.target.macroReleaseDate;
+    if (releaseDate) setMacroSearchJump(current => ({ date: releaseDate, revision: (current?.revision ?? 0) + 1 }));
     if (item.target.researchId) setActiveResearchId(item.target.researchId);
     setActiveSector(item.target.sector ?? "tech");
     setActivePage(item.target.page);
@@ -1121,7 +1124,7 @@ function App() {
           />
         ) : null}
         </> : activeSector === "a-share" && activePage === "overview"
-          ? <AShareOverviewPage crowding={data.aShare.crowding} indices={data.aShareIndices} />
+          ? <AShareOverviewPage crowding={data.aShare.crowding} indices={data.aShareIndices} comparison={data.aShare.institutional?.comparison ?? []} />
           : activeSector === "a-share" && activePage === "markets"
           ? <AShareMarketsPage data={data.aShare} />
           : activeSector === "a-share" && activePage === "reports"
@@ -1131,7 +1134,7 @@ function App() {
           : activeSector === "macro" && activePage === "markets"
             ? <MacroMarketsPage data={data.macro} tracker={data.trackers.macro_institutional_charts} activePeriodId={activeMacroPeriodId} onPeriodChange={setActiveMacroPeriodId} />
           : activeSector === "macro" && activePage === "macro-calendar"
-            ? macroCalendar.data?.series.length ? <MacroCalendar data={macroCalendar.data} /> : <section className="panel"><h2>宏观数据点评</h2><p role="status">{macroCalendar.error ? "宏观日历暂时无法加载" : macroCalendar.data ? "暂无已收录日程" : "正在加载宏观日历"}</p></section>
+            ? macroCalendar.data?.series.length ? <MacroCalendar key={macroSearchJump?.revision} initialDate={macroSearchJump?.date} data={macroCalendar.data} /> : <section className="panel"><h2>宏观数据点评</h2><p role="status">{macroCalendar.error ? "宏观日历暂时无法加载" : macroCalendar.data ? "暂无已收录日程" : "正在加载宏观日历"}</p></section>
           : activeSector === "us"
               ? <UsMarketPage page={activePage} indices={usIndices} market={usMarket} />
           : <EmptySectorPage sector={activeSector} page={activePage} />}
@@ -1247,7 +1250,9 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
     { key: "reports", label: "报告库", detail: "日报 / 专题 / 归档" },
   ];
   const aSharePages: PageNavItem[] = [
-    { key: "overview", label: "概览", detail: "拥挤度 / 指数" },
+    { key: "overview", label: "概览", detail: "拥挤度 / 指数 / 股债", subItems: [
+      { label: "沪深300全收益 vs 二级债基", anchorId: "a-share-equity-bond" },
+    ] },
     {
       key: "markets",
       label: "市场图表",
@@ -1256,8 +1261,6 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
         { label: "期权报价", anchorId: "a-share-option-quotes" },
         { label: "年化基差趋势", anchorId: "a-share-basis" },
         { label: "A股拥挤度", anchorId: "a-share-crowding" },
-        { label: "沪深300全收益 vs 二级债基", anchorId: "a-share-equity-bond" },
-        { label: "四只沪深300 ETF 占流通市值比例", anchorId: "a-share-etf-share" },
       ],
     },
     { key: "reports", label: "研报观点", detail: "最新观点 / 历史倾向", subItems: [
@@ -1522,7 +1525,7 @@ function OverviewPage({
   );
 }
 
-function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["crowding"]; indices: StockPayload }) {
+function AShareOverviewPage({ crowding, indices, comparison }: { crowding: ASharePayload["crowding"]; indices: StockPayload; comparison: NonNullable<ASharePayload["institutional"]>["comparison"] }) {
   const latestCrowding = [...crowding.points]
     .filter((point) => Number.isFinite(point.top5) && point.top5 > 0 && Number.isFinite(point.top10) && point.top10 > 0)
     .sort((a, b) => a.date.localeCompare(b.date))
@@ -1539,7 +1542,7 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
           </article>
         ))}
       </div>
-      <div className="a-share-index-grid" aria-label="A股指数近一年趋势">
+      <div className="a-share-index-grid a-share-benchmark-grid" aria-label="A股指数近一年趋势">
         {indexOrder.map((ticker) => {
           const stock = indices.latest.find((item) => item.ticker === ticker);
           return stock ? <div id={`a-share-index-${ticker.split(".")[0]}`} key={ticker}><OverviewStockCard stock={stock} history={indices.history} /></div> : (
@@ -1552,6 +1555,9 @@ function AShareOverviewPage({ crowding, indices }: { crowding: ASharePayload["cr
       </div>
       {indices.warning ? <p className="a-share-source-note">{indices.warning}</p> : null}
       <p className="a-share-source-note">指数收盘价来源：{indices.source === "unavailable" ? "数据暂不可用" : indices.source.startsWith("Tencent/") ? "腾讯财经 / 东方财富日线" : indices.source.startsWith("Eastmoney") ? "东方财富日线" : "Yahoo Finance 日线"}</p>
+      {comparison.length > 0 && <div className="a-share-index-grid">
+        <AShareEquityBondChart comparison={comparison} />
+      </div>}
     </section>
   );
 }
@@ -1927,55 +1933,32 @@ function makeCrowdingOption(data: ASharePayload["crowding"], visible: Record<Cro
   };
 }
 
-function AShareInstitutionalCharts({ data }: { data: NonNullable<ASharePayload["institutional"]> }) {
-  const [capMode, setCapMode] = React.useState<"float" | "free" | "total">("float");
-  const capLabels = { float: "流通市值", free: "自由流通市值", total: "总市值" };
-  const option = (dates: string[], lines: Array<{ name: string; values: number[] }>, dual = false): echarts.EChartsCoreOption => ({
+function AShareEquityBondChart({ comparison }: { comparison: NonNullable<ASharePayload["institutional"]>["comparison"] }) {
+  if (!comparison.length) return null;
+  const option = (dates: string[], lines: Array<{ name: string; values: number[] }>): echarts.EChartsCoreOption => ({
     color: ["#157f75", "#b97726"],
     animation: false,
     grid: { left: 56, right: 62, top: 38, bottom: 68 },
     tooltip: { trigger: "axis", confine: true },
     legend: { bottom: 0 },
     xAxis: { type: "category", data: dates, boundaryGap: false, axisLine: { onZero: false }, axisLabel: { hideOverlap: true } },
-    yAxis: [{ type: "value", name: "%", scale: true }, ...(dual ? [{ type: "value", name: "点", scale: true, splitLine: { show: false } }] : [])],
+    yAxis: { type: "value", name: "%", scale: true },
     dataZoom: [{ type: "inside" }, { type: "slider", bottom: 28, height: 18 }],
-    series: lines.map(({ name, values }, i) => ({
-      name, type: "line", yAxisIndex: dual ? i : 0, showSymbol: false, sampling: "none",
+    series: lines.map(({ name, values }) => ({
+      name, type: "line", showSymbol: false, sampling: "none",
       data: values.map(value => Number(value.toFixed(4))),
     })),
   });
-  const { comparison } = data;
-  const etf = data.etf.flatMap(row => {
-    const cap = row.caps?.[capMode];
-    return cap ? [{ ...row, ratio: row.assets / cap * 100 }] : [];
-  });
   const crossings = comparison.filter((row, index) => index > 0 &&
     comparison[index - 1].equity >= comparison[index - 1].bond && row.equity < row.bond);
-  return <section id="a-share-institutional" className="a-share-institutional" aria-label="机构图表">
-    <div className="macro-chart-grid">
-      {comparison.length > 0 && <article className="panel macro-chart-panel" id="a-share-equity-bond">
+  return <article className="panel macro-chart-panel" id="a-share-equity-bond">
         <div className="macro-chart-head"><h2>沪深300全收益 vs 二级债基</h2></div>
         <p className="a-share-source-note">万得日频 · 基期 {comparison[0].date} · 截至 {comparison.at(-1)?.date} · 跌破债基 {crossings.length} 次{crossings.length ? `（最近 ${crossings.at(-1)?.date}）` : ""}</p>
         <Chart option={option(comparison.map(row => row.date), [
           { name: "沪深300全收益", values: comparison.map(row => row.equity) },
           { name: "二级债基", values: comparison.map(row => row.bond) },
         ])} />
-      </article>}
-      {data.etf.length > 0 && <article className="panel macro-chart-panel" id="a-share-etf-share">
-        <div className="macro-chart-head"><h2>四只沪深300 ETF 占{capLabels[capMode]}比例</h2>
-        <div className="institutional-cap-switch" role="group" aria-label="市值口径">
-          {(["float", "free", "total"] as const).map(key => <button type="button" key={key} aria-pressed={capMode === key} onClick={() => setCapMode(key)}>{capLabels[key]}</button>)}
-        </div>
-        </div>
-        <p className="a-share-source-note">万得日频 · ETF 规模合计 ÷ 沪深300{capLabels[capMode]}{capMode === "float" ? "（不含限售股）" : ""}{etf.length ? ` · 截至 ${etf.at(-1)?.date}` : ""}</p>
-        {etf.length ? <Chart option={option(etf.map(row => row.date), [
-          { name: "ETF 占比（左轴）", values: etf.map(row => row.ratio) },
-          { name: "沪深300收盘（右轴）", values: etf.map(row => row.close) },
-        ], true)} /> : <p className="a-share-source-note">该口径暂无有效的共同交易日数据</p>}
-      </article>}
-      {!comparison.length && !data.etf.length && <p className="a-share-source-note">暂无有效的共同交易日数据</p>}
-    </div>
-  </section>;
+      </article>;
 }
 
 function AShareMarketsPage({ data }: { data: ASharePayload }) {
@@ -2072,7 +2055,6 @@ function AShareMarketsPage({ data }: { data: ASharePayload }) {
           <Chart option={makeCrowdingOption(data.crowding, crowdingVisibility)} />
         </article>
       </section>
-      <AShareInstitutionalCharts data={data.institutional ?? { comparison: [], etf: [] }} />
     </>
   );
 }
@@ -4369,9 +4351,21 @@ function useDeletedRemoteIntelIds(): [string[], React.Dispatch<React.SetStateAct
   return [ids, setIds];
 }
 
-function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange) {
-  const needle = query.toLowerCase();
+function searchDashboard(data: AppData, records: IntelRecord[], query: string, timeRange: TimeRange, calendar: MacroCalendarData | null) {
+  const needle = query.trim().toLowerCase();
   const items: SearchItem[] = [];
+  if (data.aShare.institutional?.comparison.length) {
+    items.push({ type: "A股图表", title: "沪深300全收益 vs 二级债基",
+      date: data.aShare.institutional.comparison.at(-1)?.date, detail: "累计收益率对比 · 万得日频",
+      haystack: "A股 股债 沪深300全收益 二级债基",
+      target: { sector: "a-share", page: "overview", anchorId: "a-share-equity-bond" } });
+  }
+  if (calendar) {
+    for (const { date, eventId, title, haystack } of macroCommentarySearchEntries(calendar)) {
+      items.push({ type: "宏观数据点评", title, date, detail: `数据发布：${date}`, haystack,
+        target: { sector: "macro", page: "macro-calendar", macroReleaseDate: date, anchorId: `macro-commentary-${eventId}` } });
+    }
+  }
   usMarketCharts.forEach(({ id, title, left, right }) => items.push({ type: "美股图表", title, detail: `${left} / ${right}`, haystack: `美股 ${title} ${left} ${right}`, target: { sector: "us", page: "markets", anchorId: `us-market-${id}` } }));
   (data.trackers.a_share_research_views?.issues ?? []).forEach((issue) => items.push({ type: "A股观点", title: issue.title, date: issue.date, detail: `${issue.date} · ${researchStance(issue).label}`, haystack: `A股 研报 观点 ${issue.title} ${issue.assessment ? [issue.assessment.summary, ...issue.assessment.support, ...issue.assessment.pressure].join(" ") : ""} ${issue.topics.map((topic) => `${topic.title} ${topic.points.join(" ")}`).join(" ")}`, target: { sector: "a-share", page: "reports", researchId: issue.id, anchorId: "a-share-research" } }));
   data.aShareIndices.latest.forEach((index) => items.push({
@@ -4408,7 +4402,9 @@ function searchDashboard(data: AppData, records: IntelRecord[], query: string, t
   records.forEach((record) => items.push({ type: "情报", title: record.title, date: record.date, detail: `${record.date} · ${record.summary}`, haystack: `${record.title} ${record.product} ${record.source} ${record.url ?? ""} ${record.summary} ${importanceLabel(record.importance)} ${reactionTypeLabel(record.reaction_type)} ${pricingStatusLabel(record.pricing_status)} ${record.transmission_path ?? ""}`, target: record.url ? { page: "intel", url: record.url, recordId: record.id } : { page: "intel", anchorId: `intel-${record.id}`, recordId: record.id } } ));
   return items
     .filter((item) => isWithinTimeRange(item.date, timeRange, data.metadata.generated_at))
-    .filter((item) => item.haystack.toLowerCase().includes(needle));
+    .filter((item) => item.target.macroReleaseDate
+      ? item.haystack.toLowerCase().replace(/\s+/g, "").includes(needle.replace(/\s+/g, ""))
+      : item.haystack.toLowerCase().includes(needle));
 }
 
 function isWithinTimeRange(date: string | undefined, range: TimeRange, anchor: string) {

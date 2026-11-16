@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import React from "react";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -13,6 +14,18 @@ type Commentary = {
   differences?: Array<{ institution: string; view: string }>;
   sources: Array<{ institution: string; title: string; date?: string; url?: string }>;
 };
+type DetailedCommentary = {
+  eventId: string;
+  updatedAt: string;
+  officialUrl?: string;
+  overview: string[];
+  consensus?: string;
+  topics: Array<{ title: string; views: Array<{ source: number; text: string }> }>;
+  sources: Array<{ institution: string; title: string; date: string; kind: string; url?: string }>;
+};
+const detailedCommentary = Object.values(import.meta.glob<DetailedCommentary>(
+  "../content/macro-commentary/*.json", { eager: true, import: "default" },
+));
 export type MacroCalendarData = {
   series: Series[];
   undated: Array<{ month: string; region: Region; label: string }>;
@@ -23,6 +36,37 @@ const regionLabel = { CN: "中国", US: "美国" };
 const beijingDate = () => new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Shanghai" }).format(new Date());
 const pad = (number: number) => String(number).padStart(2, "0");
 const https = (url?: string) => url?.startsWith("https://") ? url : undefined;
+
+const topicNumber = new Intl.NumberFormat("zh-CN-u-nu-hanidec", { useGrouping: false });
+
+function CommentaryCard({ entry }: { entry: DetailedCommentary }) {
+  return <div className="macro-commentary-body">
+    <section><h4>数据速览</h4>
+      <ul>{entry.overview.map((line, index) => <li key={index}>{line}</li>)}</ul>
+    </section>
+    <section><h4>核心观点</h4>
+      {entry.consensus && <p><strong className="macro-consensus-label">共识：</strong>{entry.consensus}</p>}
+      <p className={entry.consensus ? "macro-disagreement-divider" : undefined}><strong className="macro-disagreement-label">分歧</strong></p>
+      {entry.topics.map((topic, index) => <div className="macro-commentary-topic" key={topic.title}>
+        <h5>{topicNumber.format(index + 1)}、{topic.title}</h5>
+        <ul>{topic.views.map(({source, text}) => {
+          const ref = entry.sources[source - 1];
+          const sentenceEnd = text.search(/[。！？!?]|\.(?=\s|$)/);
+          const leadLength = sentenceEnd < 0 ? text.length : sentenceEnd + 1;
+          return <li key={source}><strong>{ref.institution}</strong><sup className="macro-citation-marker" aria-label={`引用 ${source}`}>{source}</sup>：<strong>{text.slice(0, leadLength)}</strong>{text.slice(leadLength)}</li>;
+        })}</ul>
+      </div>)}
+    </section>
+    <section><h4>引用</h4>
+      <ol className="macro-release-sources">{entry.sources.map((source) => {
+        const label = `${source.institution}｜${source.title}`;
+        return <li key={label}>{https(source.url) ? <a href={source.url} target="_blank" rel="noreferrer">{label}</a> : <span>{label}</span>}
+          <small>{source.date}{!https(source.url) && " · 原文链接待核实"}</small>
+        </li>;
+      })}</ol>
+    </section>
+  </div>;
+}
 const daysUntil = (date: string, today: string) => (Date.parse(date) - Date.parse(today)) / 86_400_000;
 function releasePeriod(series: Series, day: string) {
   if (series.periods?.[day]) return series.periods[day];
@@ -42,12 +86,35 @@ const shortLabel: Record<string, string> = {
   "cn-prices": "CPI/PPI", "cn-pmi": "PMI", "cn-activity": "经济", "cn-credit": "社融",
 };
 
-export function MacroCalendar({ data }: { data: MacroCalendarData }) {
+function commentaryByEvent(data: MacroCalendarData) {
+  return new Map<string, Commentary | DetailedCommentary>(
+    [...data.commentary, ...detailedCommentary].map(item => [item.eventId, item]),
+  );
+}
+
+export function macroCommentarySearchEntries(data: MacroCalendarData) {
+  const commentary = commentaryByEvent(data);
+  return data.series.flatMap(series => series.days.flatMap(day => {
+    const date = `${series.year}-${day}`;
+    const eventId = `${series.key}:${date}`;
+    const entry = commentary.get(eventId);
+    if (!entry) return [];
+    const period = releasePeriod(series, day);
+    const title = releaseTitle(series, period);
+    const body = "overview" in entry
+      ? [...entry.overview, ...entry.topics.flatMap(topic => [topic.title, ...topic.views.map(view => view.text)])]
+      : [entry.summary, ...entry.differences?.flatMap(view => [view.institution, view.view]) ?? []];
+    return [{ date, eventId, title, haystack: ["宏观数据点评", title, period, date, entry.consensus, ...body,
+      ...entry.sources.flatMap(source => [source.institution, source.title])].join(" ") }];
+  })).sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function MacroCalendar({ data, initialDate }: { data: MacroCalendarData; initialDate?: string }) {
   const today = beijingDate();
   const years = [...new Set(data.series.map(({ year }) => year))].sort((a, b) => a - b);
-  const [month, setMonth] = React.useState(() => years.includes(Number(today.slice(0, 4))) ? today.slice(0, 7) : `${years.at(-1)}-12`);
+  const [month, setMonth] = React.useState(() => initialDate?.slice(0, 7) ?? (years.includes(Number(today.slice(0, 4))) ? today.slice(0, 7) : `${years.at(-1)}-12`));
   const [region, setRegion] = React.useState<Region | "all">("all");
-  const [selected, setSelected] = React.useState("");
+  const [selected, setSelected] = React.useState(initialDate ?? "");
   const [pickerYear, setPickerYear] = React.useState<number | null>(null);
   const [choosingYear, setChoosingYear] = React.useState(false);
   const pickerYearIndex = pickerYear === null ? -1 : years.indexOf(pickerYear);
@@ -60,7 +127,7 @@ export function MacroCalendar({ data }: { data: MacroCalendarData }) {
   const inRange = (value: string) => years.includes(Number(value.slice(0, 4)));
   const offset = (new Date(Date.UTC(year, monthNumber - 1, 1)).getUTCDay() + 6) % 7;
   const count = new Date(Date.UTC(year, monthNumber, 0)).getUTCDate();
-  const commentary = new Map(data.commentary.map((item) => [item.eventId, item]));
+  const commentary = commentaryByEvent(data);
   const events = data.series
     .filter((item) => item.year === year && (region === "all" || item.region === region))
     .flatMap((item) => item.days.filter((day) => day.startsWith(`${pad(monthNumber)}-`)).map((day) => {
@@ -174,13 +241,14 @@ export function MacroCalendar({ data }: { data: MacroCalendarData }) {
         <section className="panel macro-calendar-details" ref={details} aria-label="当日数据与点评">
           <h2>当日数据点评</h2>
           <p className="macro-calendar-meta">{selectedDay ?? month} · {releases.length ? `${releases.length} 项数据发布` : "暂无重点发布记录"}</p>
-          {releases.map((event) => <article className="macro-release" key={event.id}>
+          {releases.map((event) => <article className="macro-release" id={`macro-commentary-${event.id}`} key={event.id}>
             <div className="macro-release-head"><h3>{event.title}</h3><span>{event.commentary ? "已有点评" : event.date > today ? "计划发布" : "暂无点评"}</span></div>
             {event.period && <p className="macro-release-period">数据所属期：{event.period}</p>}
-            <p className="macro-calendar-meta">数据发布日期：{event.date} · {regionLabel[event.region]}{https(event.source) && <> · <a href={event.source} target="_blank" rel="noreferrer">发布来源</a></>}</p>
+            <p className="macro-calendar-meta">数据发布日期：{event.date} · {regionLabel[event.region]}</p>
+            {event.commentary && "updatedAt" in event.commentary && <p className="macro-calendar-meta">点评整理：{event.commentary.updatedAt}</p>}
             {event.note && <p className="macro-calendar-meta">{event.note}</p>}
             {!event.commentary && <p className="macro-release-empty">{event.date > today ? "数据尚未发布。" : "暂未收录券商点评。"}</p>}
-            {event.commentary && <>
+            {event.commentary && ("overview" in event.commentary ? <CommentaryCard entry={event.commentary} /> : <>
               <p>{event.commentary.summary}</p>
               {event.commentary.consensus && <p><strong>机构共识：</strong>{event.commentary.consensus}</p>}
               {event.commentary.differences?.length ? <div><strong>机构分歧</strong><ul>{event.commentary.differences.map(({ institution, view }) => <li key={institution}><strong>{institution}：</strong>{view}</li>)}</ul></div> : null}
@@ -188,7 +256,7 @@ export function MacroCalendar({ data }: { data: MacroCalendarData }) {
                 {https(source.url) ? <a href={source.url} target="_blank" rel="noreferrer">{source.institution} · {source.title}</a> : <span>{source.institution} · {source.title}</span>}
                 <small>{source.date ? `研报日期：${source.date}` : "研报日期未核实"}</small>
               </li>)}</ul>
-            </>}
+            </>)}
           </article>)}
         </section>
       </div>
