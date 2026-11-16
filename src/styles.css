@@ -943,17 +943,18 @@ h2 {
 .macro-release { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; overflow-wrap: anywhere; }
 .macro-release[id] { scroll-margin-top: 140px; }
 .macro-release-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
-.macro-release-head h3 { margin: 0 0 4px; font-size: 16px; }
-.macro-release-head span, .macro-release-sources small { color: var(--subtle); font-size: 12px; }
-.macro-release-period { margin: 2px 0 4px; font-size: 14px; font-weight: 650; }
+.macro-release-head h3 { margin: 0 0 4px; font-size: 20px; }
+.macro-release-head span, .macro-release-sources small { color: var(--subtle); font-size: 14px; }
+.macro-release > .macro-calendar-meta { font-size: 14px; }
+.macro-release-period { margin: 2px 0 4px; font-size: 16px; font-weight: 650; }
 .macro-release-sources { padding-left: 18px; }
 .macro-release-sources small { display: block; }
 .macro-release-empty { color: var(--subtle); }
-.macro-commentary-body { display: grid; gap: 14px; margin-top: 10px; font-size: 15px; line-height: 1.65; }
+.macro-commentary-body { display: grid; gap: 16px; margin-top: 12px; font-size: 17px; line-height: 1.7; }
 .macro-commentary-body section + section { border-top: 1px solid var(--line); padding-top: 12px; }
 .macro-commentary-body h4, .macro-commentary-body h5 { margin: 0 0 6px; }
-.macro-commentary-body h4 { font-size: 18px; line-height: 1.4; }
-.macro-commentary-body h5 { font-size: 16px; font-weight: 700; line-height: 1.45; }
+.macro-commentary-body h4 { font-size: 20px; line-height: 1.4; }
+.macro-commentary-body h5 { font-size: 18px; font-weight: 700; line-height: 1.45; }
 .macro-commentary-body ul, .macro-commentary-body ol { margin: 4px 0; padding-inline-start: 20px; }
 .macro-commentary-body li + li { margin-top: 6px; }
 .macro-commentary-topic + .macro-commentary-topic { margin-top: 16px; }
