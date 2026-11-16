@@ -3354,7 +3354,7 @@
       "kind": "line",
       "unit": "%",
       "sourceFile": "宏观-总表.xlsx",
-      "latestDate": "2026-11-12",
+      "latestDate": "2026-11-13",
       "series": [
         {
           "name": "2年期美债收益率",
@@ -14222,6 +14222,10 @@
             {
               "date": "2026-11-12",
               "value": 4.86
+            },
+            {
+              "date": "2026-11-13",
+              "value": 4.88
             }
           ]
         },
@@ -25091,6 +25095,10 @@
             {
               "date": "2026-11-12",
               "value": 4
+            },
+            {
+              "date": "2026-11-13",
+              "value": 4
             }
           ]
         }
@@ -25429,6 +25437,10 @@
             {
               "date": "2026-09",
               "value": 7.1
+            },
+            {
+              "date": "2026-10",
+              "value": 7.2
             }
           ]
         },
@@ -25758,11 +25770,15 @@
             {
               "date": "2026-09",
               "value": 7.2
+            },
+            {
+              "date": "2026-10",
+              "value": 7.1
             }
           ]
         }
       ],
-      "latestDate": "2026-09"
+      "latestDate": "2026-10"
     },
     {
       "id": "new-loans",
@@ -25770,7 +25786,7 @@
       "kind": "seasonal-line",
       "unit": "亿元",
       "sourceFile": "宏观-总表.xlsx",
-      "latestDate": "2026-09",
+      "latestDate": "2026-10",
       "series": [
         {
           "name": "2022",
@@ -26025,7 +26041,7 @@
             },
             {
               "date": "10",
-              "value": null
+              "value": -5846
             },
             {
               "date": "11",
@@ -26045,7 +26061,7 @@
       "kind": "seasonal-line",
       "unit": "亿元",
       "sourceFile": "宏观-总表.xlsx",
-      "latestDate": "2026-09",
+      "latestDate": "2026-10",
       "series": [
         {
           "name": "2022",
@@ -26296,11 +26312,11 @@
             },
             {
               "date": "09",
-              "value": 35476
+              "value": 35547
             },
             {
               "date": "10",
-              "value": null
+              "value": 11429
             },
             {
               "date": "11",

@@ -1,68 +1,68 @@
 {
   "source": "Wind 工作簿缓存",
-  "quoteDate": "2026-11-13",
+  "quoteDate": "2026-11-16",
   "quotes": [
     {
       "label": "-8%至-5%虚值期权",
       "kind": "put",
-      "date": "2026-11-13",
-      "underlying": 6357.26,
-      "strike": 6000,
-      "contract": "MO2703-P-6000",
-      "moneynessPct": -5.62,
+      "date": "2026-11-16",
+      "underlying": 6164.62,
+      "strike": 5800,
+      "contract": "MO2703-P-5800",
+      "moneynessPct": -5.91,
       "expiry": "2027-03-19",
-      "daysToExpiry": 126,
-      "settlement": 314.2,
-      "periodCostPct": 4.94,
-      "annualCostPct": 14.32,
-      "delta": -0.4094,
+      "daysToExpiry": 123,
+      "settlement": 317,
+      "periodCostPct": 5.14,
+      "annualCostPct": 15.26,
+      "delta": -0.397,
       "status": "available"
     },
     {
       "label": "-11%至-8%虚值期权",
       "kind": "put",
-      "date": "2026-11-13",
-      "underlying": 6357.26,
-      "strike": 5800,
-      "contract": "MO2703-P-5800",
-      "moneynessPct": -8.77,
+      "date": "2026-11-16",
+      "underlying": 6164.62,
+      "strike": 5600,
+      "contract": "MO2703-P-5600",
+      "moneynessPct": -9.16,
       "expiry": "2027-03-19",
-      "daysToExpiry": 126,
-      "settlement": 235.6,
-      "periodCostPct": 3.71,
-      "annualCostPct": 10.74,
-      "delta": -0.3308,
+      "daysToExpiry": 123,
+      "settlement": 245.8,
+      "periodCostPct": 3.99,
+      "annualCostPct": 11.83,
+      "delta": -0.3226,
       "status": "available"
     },
     {
       "label": "-13%至-11%虚值期权",
       "kind": "put",
-      "date": "2026-11-13",
-      "underlying": 6357.26,
-      "strike": 5600,
-      "contract": "MO2703-P-5600",
-      "moneynessPct": -11.91,
+      "date": "2026-11-16",
+      "underlying": 6164.62,
+      "strike": 5400,
+      "contract": "MO2703-P-5400",
+      "moneynessPct": -12.4,
       "expiry": "2027-03-19",
-      "daysToExpiry": 126,
-      "settlement": 174.8,
-      "periodCostPct": 2.75,
-      "annualCostPct": 7.97,
-      "delta": -0.2605,
+      "daysToExpiry": 123,
+      "settlement": 183.6,
+      "periodCostPct": 2.98,
+      "annualCostPct": 8.84,
+      "delta": -0.2573,
       "status": "available"
     },
     {
       "label": "中证1000股指期货",
       "kind": "future",
-      "date": "2026-11-13",
-      "underlying": 6357.26,
+      "date": "2026-11-16",
+      "underlying": 6164.62,
       "strike": null,
       "contract": "IM2703.CFE",
       "moneynessPct": null,
       "expiry": "2027-03-19",
-      "daysToExpiry": 126,
-      "settlement": 6125.8,
-      "periodCostPct": 3.64,
-      "annualCostPct": 10.55,
+      "daysToExpiry": 123,
+      "settlement": 5953.4,
+      "periodCostPct": 3.43,
+      "annualCostPct": 10.17,
       "delta": null,
       "status": "available"
     }
@@ -4226,6 +4226,10 @@
       {
         "date": "2026-11-13",
         "value": 12.1693
+      },
+      {
+        "date": "2026-11-16",
+        "value": 9.6718
       }
     ]
   },
@@ -30778,8 +30782,13 @@
       },
       {
         "date": "2026-11-13",
-        "equity": 508.9937,
-        "bond": 398.43471
+        "equity": 504.83190999999994,
+        "bond": 396.36674000000005
+      },
+      {
+        "date": "2026-11-16",
+        "equity": 504.83190999999994,
+        "bond": 396.36674000000005
       }
     ],
     "etf": [
@@ -64046,11 +64055,21 @@
       {
         "date": "2026-11-13",
         "close": 4016.2897,
-        "assets": 417797616012.4524,
+        "assets": 413170437659.6828,
         "caps": {
-          "float": 48180090603562,
-          "free": 21006316254542.1,
-          "total": 64187237452433
+          "float": 48180091388992,
+          "free": 21006325606114.8,
+          "total": 64187238237864
+        }
+      },
+      {
+        "date": "2026-11-16",
+        "close": 3979.8035,
+        "assets": 413170437659.6828,
+        "caps": {
+          "float": 48180099955134,
+          "free": 20826328202866.1,
+          "total": 64187246804006
         }
       }
     ]
@@ -69125,6 +69144,13 @@
         "top10": 60.3329013509764,
         "top5Rank": 85.7,
         "top10Rank": 86.5
+      },
+      {
+        "date": "2026-11-16",
+        "top5": 43.939465814009,
+        "top10": 58.8485627614468,
+        "top5Rank": 76,
+        "top10Rank": 80.3
       }
     ]
   }
