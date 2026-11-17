@@ -17,7 +17,7 @@
     {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.cfn.cn/index/tushuo/eyesCfnNewsDetail/id/65373.shtml","days":["08-14"],"periodRule":"previous-month"},
     {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.xinhuanet.com/20260914/565ef79342c34afb97123b135498061b/c.html","days":["09-14"],"periodRule":"previous-month"},
     {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://www.cfn.cn/index/tushuo/eyesCfnNewsDetail/id/66243.shtml","days":["10-14"],"periodRule":"previous-month"},
-{"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://tv.cctv.com/2026/11/13/VIDEzYWWIlfrjFMrhJX1bJu2261113.shtml","days":["11-13"],"periodRule":"previous-month"},
+    {"year":2026,"key":"cn-credit","region":"CN","label":"中国社融 / 信贷","source":"https://tv.cctv.com/2026/11/13/VIDEzYWWIlfrjFMrhJX1bJu2261113.shtml","days":["11-13"],"periodRule":"previous-month"},
     {"year":2027,"key":"us-jobs","region":"US","label":"非农就业","source":"https://www.bls.gov/schedule/news_release/empsit.htm","days":["01-08","02-05","03-05","04-02","05-07","06-04","07-02","08-06","09-03","10-08","11-05","12-03"],"periodRule":"previous-month"},
     {"year":2027,"key":"us-cpi","region":"US","label":"美国 CPI","source":"https://www.bls.gov/schedule/news_release/cpi.htm","days":["01-13","02-11","03-10","04-13","05-12","06-10","07-14","08-11","09-14","10-14","11-10","12-10"],"periodRule":"previous-month"},
     {"year":2027,"key":"us-pce","region":"US","label":"美国 PCE","source":"https://www.bea.gov/news/schedule/next-year","days":["01-28","02-25","03-31","04-29","05-27","06-25","07-29","08-25","09-30","10-28","11-24","12-22"],"periodRule":"previous-month"},
