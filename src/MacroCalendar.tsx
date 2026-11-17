@@ -45,19 +45,13 @@ function boldLeadSentence(text: string) {
   return <><strong>{text.slice(0, leadLength)}</strong>{text.slice(leadLength)}</>;
 }
 
-function boldConsensusLead(text: string) {
-  const end = text.search(/[，：。！？!?]|[,:](?!\d)|\.(?=\s|$)/);
-  const length = end < 0 ? text.length : end;
-  return <><strong>{text.slice(0, length)}</strong>{text.slice(length)}</>;
-}
-
 function CommentaryCard({ entry }: { entry: DetailedCommentary }) {
   return <div className="macro-commentary-body">
     <section><h4>数据速览</h4>
       <ul>{entry.overview.map((line, index) => <li key={index}>{line}</li>)}</ul>
     </section>
     <section><h4>核心观点</h4>
-      {entry.consensus && <p><strong className="macro-consensus-label">共识：</strong>{boldConsensusLead(entry.consensus)}</p>}
+      {entry.consensus && <p><strong className="macro-consensus-label">共识：</strong>{boldLeadSentence(entry.consensus)}</p>}
       <p className={entry.consensus ? "macro-disagreement-divider" : undefined}><strong className="macro-disagreement-label">分歧</strong></p>
       {entry.topics.map((topic, index) => <div className="macro-commentary-topic" key={topic.title}>
         <h5>{topicNumber.format(index + 1)}、{topic.title}</h5>
@@ -260,7 +254,7 @@ export function MacroCalendar({ data, initialDate }: { data: MacroCalendarData; 
             {!event.commentary && <p className="macro-release-empty">{event.date > today ? "数据尚未发布。" : "暂未收录券商点评。"}</p>}
             {event.commentary && ("overview" in event.commentary ? <CommentaryCard entry={event.commentary} /> : <>
               <p>{event.commentary.summary}</p>
-              {event.commentary.consensus && <p><strong>机构共识：</strong>{boldConsensusLead(event.commentary.consensus)}</p>}
+              {event.commentary.consensus && <p><strong>机构共识：</strong>{boldLeadSentence(event.commentary.consensus)}</p>}
               {event.commentary.differences?.length ? <div><strong>机构分歧</strong><ul>{event.commentary.differences.map(({ institution, view }) => <li key={institution}><strong>{institution}：</strong>{view}</li>)}</ul></div> : null}
               <ul className="macro-release-sources">{event.commentary.sources.map((source) => <li key={`${source.institution}:${source.title}`}>
                 {https(source.url) ? <a href={source.url} target="_blank" rel="noreferrer">{source.institution} · {source.title}</a> : <span>{source.institution} · {source.title}</span>}
