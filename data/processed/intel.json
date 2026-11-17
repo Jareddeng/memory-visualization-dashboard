@@ -210,6 +210,25 @@
       "review_date": "2026-12-16"
     },
     {
+      "id": "2026-11-16-memory-antitrust-suit-dismissal",
+      "type": "重大事件",
+      "impact": "bearish",
+      "date": "2026-11-16",
+      "title": "美法院驳回DRAM反垄断案撤诉动议，三大原厂股价暴跌",
+      "product": "DRAM",
+      "source": "财新网",
+      "url": "https://www.caixin.com/2026-11-17/102505563.html",
+      "summary": "美国加州北区联邦法院于当地时间11月14日驳回Samsung、SK Hynix和Micron要求撤销DRAM反垄断集体诉讼的动议，案件正式进入证据开示（discovery）阶段。11月16日存储股集体重挫：Micron收跌7.62%报719.02美元，SK Hynix跌7.89%报112万韩元，Samsung电子跌4.47%报196800韩元，SK海力士ADR跌7.29%报122.18美元。美国存储板块盘初全线下跌，闪迪跌6.7%、西部数据跌4.5%、希捷跌4.4%。该诉讼由17名个人及小企业于2026年8月提起，指控三家厂商协同削减DRAM供应并压产能，导致DRAM价格一年内最高上涨500%。三家原厂须在12月7日前提交正式答辩。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "transmission_path": "法院驳回撤诉动议→案件进入discovery阶段→三家原厂须在12月7日前答辩并被迫披露内部生产决策文件→若协同行为被证实可能面临巨额赔偿及监管处罚→短期引发存储板块恐慌性抛售→中长期或约束原厂联合减产策略→影响DRAM定价机制及产能投放决策",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-11-23"
+    },
+    {
       "id": "2026-11-15-bessent-chip-export-control",
       "type": "政策事件",
       "impact": "neutral",
