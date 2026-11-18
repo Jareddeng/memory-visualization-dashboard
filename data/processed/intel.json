@@ -39,6 +39,25 @@
       "review_date": "2026-11-25"
     },
     {
+      "id": "2026-11-18-trendforce-dram-price-forecast",
+      "type": "行业分析",
+      "impact": "bullish",
+      "date": "2026-11-18",
+      "title": "TrendForce预测Q4 DRAM均价环比上涨10%至15%，明年HBM4每Gb价格或翻番",
+      "product": "DRAM,HBM",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261118135023014800",
+      "summary": "TrendForce于11月18日在首尔举办'2026韩国路演'活动，预测今年第四季度通用DRAM平均售价将环比上涨10%至15%。明年各季度预计分别上涨5%至10%（Q1）、3%至8%（Q2）、0%至5%（Q3）、0%至5%（Q4）。HBM价格同步上涨，预计明年HBM4每Gb价格将同比增长超过100%，从今年的2.05美元以上涨至3至5.5美元。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "研究机构上调价格预测 → 市场强化存储涨价预期 → 原厂盈利预测上修 → 存储板块股价与估值获得基本面支撑",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-18"
+    },
+    {
       "id": "2026-11-17-samsung-meta-custom-hbm",
       "type": "重大事件",
       "impact": "bullish",
