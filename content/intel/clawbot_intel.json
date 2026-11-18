@@ -18022,6 +18022,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-11-22"
+    },
+    {
+      "id": "2026-11-17-cxmt-q4-dram-tight",
+      "date": "2026-11-17",
+      "type": "公司公告",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "长鑫科技：四季度DRAM供给紧缺格局将继续延续",
+      "product": "DRAM,DDR5,LPDDR6",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261117173940456800",
+      "summary": "长鑫科技三季度业绩会上，公司财务负责人黄丹阳表示，2026年四季度DRAM产品供给紧缺格局将继续延续，毛利率保持稳定的主要驱动力来自供需紧缺下的营收与成本管理双向赋能，以及高附加值新产品占比提升。",
+      "transmission_path": "国产DRAM原厂确认Q4持续紧缺 → 国内DRAM价格与产能利用率维持高位 → 国产替代与客户长协推进 → 利好长鑫供应链及国产存储板块情绪",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-17"
+    },
+    {
+      "id": "2026-11-18-citic-semiconductor-equipment-earnings",
+      "date": "2026-11-18",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "中信建投：半导体设备、材料、零部件板块业绩有望加速，公募三季度加仓存储板块",
+      "product": "半导体设备,存储芯片",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261118074814776800",
+      "summary": "中信建投研报指出，2026年以来公募对半导体设备板块配置显著加大，三季报显示国产设备龙头合同负债创新高、在手订单充裕；受益于存储大厂招标持续落地与国产化深化，半导体设备、材料、零部件板块业绩有望加速，基金三季度对存储板块也有所加仓。",
+      "transmission_path": "存储厂扩产招标落地 → 国产设备与材料订单饱满 → 板块业绩加速兑现 → 半导体设备链估值与盈利双升",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-12-18"
     }
   ]
 }
