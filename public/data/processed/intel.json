@@ -20,6 +20,25 @@
       "review_date": "2026-12-18"
     },
     {
+      "id": "2026-11-18-tsmc-wafer-price-hike",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "date": "2026-11-18",
+      "title": "芯片设计业者接获台积电等晶圆厂调价通知，涨幅从10%至逾20%不等",
+      "product": "晶圆,代工",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261118073717471800",
+      "summary": "据台媒报道，已有芯片设计业者确认收到台积电等晶圆代工厂的调价通知，涨幅从10%到超过20%不等，具体涨幅依制程、投片量与合作关系而异。此次涨价反映先进制程与成熟制程产能持续紧张，代工成本上升趋势确立。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "台积电等代工厂上调晶圆价格 → 芯片设计成本上升、IDM与fabless成本端承压 → 半导体全链条成本推动型通胀 → 存储与逻辑芯片终端提价压力传导，可能间接支撑存储ASP",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-11-25"
+    },
+    {
       "id": "2026-11-17-samsung-meta-custom-hbm",
       "type": "重大事件",
       "impact": "bullish",
@@ -169,6 +188,25 @@
       "transmission_path": "国产DRAM原厂确认Q4持续紧缺 → 国内DRAM价格与产能利用率维持高位 → 国产替代与客户长协推进 → 利好长鑫供应链及国产存储板块情绪",
       "confidence": "high",
       "action": "deep_tracking",
+      "review_date": "2026-12-17"
+    },
+    {
+      "id": "2026-11-17-nvidia-supply-commitments-memory",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "date": "2026-11-17",
+      "title": "英伟达供应承诺总额升至3900亿美元，增量主要来自多年期内存采购",
+      "product": "HBM,DRAM",
+      "source": "华尔街见闻",
+      "url": "https://wallstreetcn.com/articles/3786135",
+      "summary": "英伟达FY2027 Q3财报披露，截至2026年10月25日，公司供应及产能承诺从上一财季的2790亿美元大幅增加至3900亿美元，CFO评论文件明确表示增量主要与多年期内存采购有关。加上云服务协议和数据中心租赁承诺1020亿美元（上季度740亿美元），未来各项承诺合计达5180亿美元。云服务行业订单积压三个月内从2万亿美元升至2.5万亿美元。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "英伟达大幅加码多年期内存采购承诺 → HBM与DRAM产能进一步被长协锁定、可分配产能减少 → 存储原厂（Micron、Samsung、SK Hynix）订单可见度与定价权增强 → AI内存供需缺口延续，价格维持上行通道",
+      "confidence": "high",
+      "action": "alert",
       "review_date": "2026-12-17"
     },
     {
@@ -436,6 +474,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-12-16"
+    },
+    {
+      "id": "2026-11-16-dram-antitrust-case-trial",
+      "type": "重大事件",
+      "impact": "bearish",
+      "date": "2026-11-16",
+      "title": "美国法院驳回三星、SK海力士、美光撤诉动议，DRAM反垄断集体诉讼进入实体审理",
+      "product": "DRAM",
+      "source": "新浪财经",
+      "url": "https://t.cj.sina.cn/articles/view/1887344341/707e96d504001y3lq",
+      "summary": "美国加州奥克兰联邦法院法官Noel Wise于11月14日裁定，驳回Samsung、SK Hynix和Micron关于DRAM价格操纵集体诉讼的撤诉动议，案件将进入实体审理阶段。该诉讼指控三大存储原厂自2024年以来人为收紧供应以抬升DRAM价格。此外，法院还允许原告追加疫情期间串通提高产量的指控，并要求被告在12月5日前回应修订后的起诉书。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "反垄断诉讼进入实体审理 → 若法院认定价格操纵成立，三大原厂可能面临巨额赔偿及行为禁令 → 原厂定价与产能策略或受司法约束 → 长期影响DRAM供给格局与价格形成机制，短期增加法律风险折价",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-11-23"
     },
     {
       "id": "2026-11-15-bessent-chip-export-control",
