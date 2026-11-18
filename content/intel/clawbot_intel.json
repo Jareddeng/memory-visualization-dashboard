@@ -18136,6 +18136,44 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-12-18"
+    },
+    {
+      "id": "2026-11-17-nvidia-memory-supply-commitments",
+      "date": "2026-11-17",
+      "type": "财报业绩",
+      "impact": "bullish",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "title": "英伟达供应承诺增至3900亿美元，主要用于多年期内存采购",
+      "product": "DRAM,HBM,NAND",
+      "source": "界面新闻",
+      "url": "https://www.jiemian.com/article/15343821.html",
+      "summary": "英伟达当地时间11月17日公布的财报显示，截至10月25日，公司供应承诺从上一财季的2790亿美元增至3900亿美元，单季增加1110亿美元，主要与多年期内存供应采购有关。云服务协议及数据中心租赁承诺合计1020亿美元，高于上季度的740亿美元。临时CEO克雷斯表示公司已锁定内存和先进封装供应，存储芯片价格涨幅已超出前期预期，供应紧张格局或延续至2028财年。",
+      "transmission_path": "英伟达以3900亿美元承诺锁定多年期HBM/DRAM/NAND产能 → 存储原厂订单能见度延伸至2030年 → 产能分配进一步向AI客户倾斜 → 通用DRAM/NAND供给持续紧张 → 存储产业链盈利周期确定性增强",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-17"
+    },
+    {
+      "id": "2026-11-17-sk-hynix-yongin-y1-acceleration",
+      "date": "2026-11-17",
+      "type": "公司公告",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "title": "SK海力士加速龙仁Y1洁净室建设，应对AI内存需求激增",
+      "product": "DRAM,HBM",
+      "source": "DIGITIMES",
+      "url": "https://www.digitimes.com/news/a20261117PD231/sk-hynix-cleanroom-memory-equipment-demand.html",
+      "summary": "据DIGITIMES 11月17日报道，SK海力士正加速建设位于韩国龙仁的新半导体工厂，因AI内存需求快速增长，龙仁Y1第一座洁净室开放时间将提前至2027年2月（较原计划提前约3个月）。此前SK海力士已批准向龙仁二期及清州M17工厂投资约54.3万亿韩元，并正准备在清州P&T6增订后段设备以扩充HBM4产能。",
+      "transmission_path": "龙仁Y1洁净室提前启用 → 2027年HBM与DDR5新增产能提前释放 → 部分缓解AI内存供给紧张 → 但新产能主要面向已签长协的AI客户，通用DRAM紧缺格局或延续",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-12-17"
     }
   ]
 }
