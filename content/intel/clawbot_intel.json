@@ -18233,25 +18233,6 @@
       "review_date": "2026-11-26"
     },
     {
-      "id": "2026-11-19-trendforce-cuts-nand-outlook",
-      "date": "2026-11-19",
-      "type": "行业分析",
-      "impact": "bearish",
-      "importance": "A",
-      "reaction_type": "instant",
-      "pricing_status": "partial",
-      "horizon": "1q",
-      "title": "集邦下调NAND价格展望，预计2027年二季度合约价转跌",
-      "product": "NAND,SSD",
-      "source": "金十数据",
-      "url": "https://flash.jin10.com/detail/20261119110941313800",
-      "summary": "据金十数据整理的每日存储市场要闻，TrendForce下调NAND价格展望，预计2027年二季度合约价转跌；手机DRAM合约议价陷入僵局，预计明年涨幅逐季收窄。DRAM方面维持四季度合约价环比增长10%-15%的预测，明年HBM4每Gb价格或翻番。",
-      "transmission_path": "NAND合约价拐点预期提前→模组厂与渠道去库存压力加大→NAND资本开支与晶圆投产节奏面临重估；手机DRAM议价僵局或致消费级涨价传导受阻",
-      "confidence": "medium",
-      "action": "watch",
-      "review_date": "2026-12-19"
-    },
-    {
       "id": "2026-11-19-samsung-downplays-ai-bubble",
       "date": "2026-11-19",
       "type": "公司公告",
@@ -18288,6 +18269,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-12-19"
+    },
+    {
+      "id": "2026-11-19-trendforce-nand-2027-price-downturn",
+      "date": "2026-11-19",
+      "type": "行业分析",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "TrendForce：2027年Q1起NAND Flash合约价将转向下跌",
+      "product": "NAND Flash,企业级SSD",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261119150623838800",
+      "summary": "TrendForce最新存储器产业研究预计，2027年全球NAND Flash产业供需反转：供给量高速成长，同时部分云端服务供应商（CSP）大幅下修企业级SSD订单，消费电子需求进一步放缓，供过于求加剧；预估2027年Q1起整体NAND Flash合约价转向下跌，跌幅可能逐季扩大。此前其已下修中国云厂商企业级SSD需求展望。",
+      "transmission_path": "CSP下修企业级SSD订单+NAND供给集中释放→2027年NAND价格转跌预期形成→NAND原厂（Kioxia、Samsung、闪迪、SK Hynix）2027年盈利承压→DRAM/HBM与NAND景气分化，关注NAND链库存与资本开支风险。",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-12-19"
+    },
+    {
+      "id": "2026-11-19-korea-exports-surpass-trillion",
+      "date": "2026-11-19",
+      "type": "行业分析",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "archive",
+      "pricing_status": "priced",
+      "horizon": "1m",
+      "title": "韩国出口额首次突破1万亿美元，半导体与存储涨价为主驱动",
+      "product": "存储芯片,DRAM,半导体",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261119143743663800",
+      "summary": "韩国产业通商资源部11月19日宣布，受全球半导体产品强劲需求推动，韩国2026年累计出口总额首次突破1万亿美元，成为全球第四个达成该里程碑的国家。该部门指出，AI基础设施投资加大使半导体和计算机成为出口增长主要驱动力，存储芯片价格上涨也推高了出口总值。",
+      "transmission_path": "韩国出口破万亿印证存储超级周期对实体贸易的拉动→Samsung、SK Hynix量价齐升→韩国半导体贸易顺差扩大→从宏观层面验证本轮存储涨价的强度与持续性。",
+      "confidence": "high",
+      "action": "archive",
+      "review_date": "2026-11-26"
     }
   ]
 }
