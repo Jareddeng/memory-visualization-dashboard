@@ -5621,6 +5621,12 @@
               "price": 44.03,
               "source": "WIND",
               "note": "Imported from local workbook. Confirm unit/source before production use."
+            },
+            {
+              "date": "2026-11-19",
+              "price": 43.92,
+              "source": "WIND",
+              "note": "Imported from local workbook. Confirm unit/source before production use."
             }
           ]
         },
@@ -16865,6 +16871,12 @@
               "price": 78.95,
               "source": "WIND",
               "note": "Imported from local workbook. Confirm unit/source before production use."
+            },
+            {
+              "date": "2026-11-19",
+              "price": 78.75,
+              "source": "WIND",
+              "note": "Imported from local workbook. Confirm unit/source before production use."
             }
           ]
         },
@@ -28101,6 +28113,12 @@
             {
               "date": "2026-11-18",
               "price": 60.5,
+              "source": "WIND",
+              "note": "Imported from local workbook. Confirm unit/source before production use."
+            },
+            {
+              "date": "2026-11-19",
+              "price": 60.67,
               "source": "WIND",
               "note": "Imported from local workbook. Confirm unit/source before production use."
             }
