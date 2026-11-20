@@ -77,6 +77,25 @@
       "review_date": "2026-11-26"
     },
     {
+      "id": "2026-11-19-trendforce-nand-outlook-downgrade",
+      "type": "行业分析",
+      "impact": "bearish",
+      "date": "2026-11-19",
+      "title": "TrendForce下调NAND价格展望，预计2027年Q2合约价转跌",
+      "product": "NAND,SSD",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261119110941313800",
+      "summary": "据金十数据每日存储市场要闻速递（11月19日），TrendForce下调NAND价格展望，预计2027年二季度合约价转跌。同时，手机DRAM合约议价陷入僵局，集邦预计明年涨幅逐季收窄。Samsung回应称长期合同提高芯片需求可见度。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "NAND价格预期转跌将影响Samsung、Kioxia、Micron的NAND业务利润率；企业级SSD与消费级SSD价格分化加剧；存储原厂可能加速将NAND产能转向HBM和服务器DRAM；手机DRAM议价僵局反映终端厂商对持续涨价的抵制。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-12-19"
+    },
+    {
       "id": "2026-11-18-citic-semiconductor-equipment-earnings",
       "type": "行业分析",
       "impact": "bullish",
