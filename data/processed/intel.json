@@ -1,6 +1,25 @@
 {
   "records": [
     {
+      "id": "2026-11-21-softbank-sk-hynix-takeover",
+      "type": "重大事件",
+      "impact": "bullish",
+      "date": "2026-11-21",
+      "title": "孙正义被曝曾考虑1万亿美元收购SK海力士",
+      "product": "DRAM,HBM,NAND",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261121103304437800",
+      "summary": "据The Information报道，软银CEO孙正义近期曾与华尔街机构接洽，探讨为可能以1万亿美元收购SK海力士融资。软银发言人表示，孙正义已不再积极考虑该交易。若推进将成为软银迄今最大胆的布局，使其进入具有战略价值的存储芯片市场。鉴于软银对OpenAI的投资已令其资产负债表承压，融资方式尚不明确。",
+      "importance": "S",
+      "reaction_type": "instant",
+      "pricing_status": "unpriced",
+      "horizon": "1w",
+      "transmission_path": "收购传闻直接推高SK海力士估值预期→韩国股市存储板块周一开盘或联动上涨→若行业整合预期升温，DRAM/NAND供给格局或重塑→影响全球存储芯片定价权与竞争格局",
+      "confidence": "medium",
+      "action": "alert",
+      "review_date": "2026-11-28"
+    },
+    {
       "id": "2026-11-20-samsung-new-memory-chief",
       "type": "公司公告",
       "impact": "neutral",
@@ -74,6 +93,25 @@
       "transmission_path": "回购注销→减少注册资本→管理层传递对公司长期发展的信心→对股价形成一定支撑",
       "confidence": "high",
       "action": "archive",
+      "review_date": "2026-11-27"
+    },
+    {
+      "id": "2026-11-20-sk-hynix-kioxia-stake",
+      "type": "重大事件",
+      "impact": "bullish",
+      "date": "2026-11-20",
+      "title": "SK海力士债转股成为铠侠第一大股东",
+      "product": "NAND,DRAM",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2540024",
+      "summary": "SK海力士11月20日公告，将把特殊目的公司SPC2发行的1290亿日元可转债转换为12.9万股普通股，并以1亿日元收购贝恩资本持有的1001股SPC2普通股。转换完成后，SK海力士将通过SPC2间接持有铠侠14.1%股份，成为第一大股东。SK海力士表示此次债转股是基金清算后优化投资结构的程序，不意味着扩大经营参与，目前无增减持计划。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "transmission_path": "SK海力士成为铠侠第一大股东→日韩NAND厂商股权纽带加深→市场预期双方或在NAND生产与研发层面深化合作→全球NAND竞争格局或生变→影响NAND定价权与产能协调",
+      "confidence": "high",
+      "action": "deep_tracking",
       "review_date": "2026-11-27"
     },
     {
