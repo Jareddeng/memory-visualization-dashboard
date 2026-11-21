@@ -18478,6 +18478,44 @@
       "confidence": "high",
       "action": "deep_tracking",
       "review_date": "2026-11-27"
+    },
+    {
+      "id": "2026-11-20-sk-hynix-kioxia-largest-shareholder",
+      "date": "2026-11-20",
+      "type": "公司公告",
+      "impact": "neutral",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "SK海力士转股成为铠侠第一大股东",
+      "product": "NAND,存储",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2540485",
+      "summary": "SK海力士11月20日公告，将行使特殊目的公司SPC2（BCPE Pangea Cayman2）发行的1290亿日元可转换债券转股权，转换为12.9万股普通股，并以1亿日元额外收购贝恩资本持有的1001股SPC2普通股。交易完成后，SK海力士将全资持有SPC2，间接持有铠侠约14.1%股份，成为铠侠第一大股东（东芝持股约10.46%居第二）。海力士表示债转股是基金清算后优化投资结构的后续程序，不意味着扩大经营参与，目前无增持或减持计划；此前其已于今年6月清仓SPC1股权基金，相关收益以特别股息回馈股东（三季度铠侠相关特别股息约7万亿韩元）。",
+      "transmission_path": "SK海力士卡位全球NAND第四大原厂约14.1%股权→获得行业整合制衡筹码（若美光或闪迪试图收购铠侠，该股权为有分量的谈判筹码）→NAND五强格局中期稳定性增强→NAND供给纪律与价格预期获得结构性支撑",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-20"
+    },
+    {
+      "id": "2026-11-19-micron-singapore-hbm-packaging",
+      "date": "2026-11-19",
+      "type": "公司公告",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "美光新加坡HBM先进封装厂首台设备进驻",
+      "product": "HBM",
+      "source": "IT之家",
+      "url": "https://www.ithome.com/1/030/130.htm",
+      "summary": "美光当地时间11月19日在新加坡举行HBM先进封装厂首台设备搬入仪式，第一台制程设备进入无尘室，预计2027年初实现首批产出。该厂2025年1月动工，总投资约70亿美元，投资持续至2030年后，初期创造约1400个就业岗位。美光同步推进新加坡先进晶圆制造厂（承担NAND卓越中心角色，2026年1月动工，预计2028年下半年晶圆产出），两厂合计新增约3000个岗位，美光新加坡团队将扩至逾10000人。",
+      "transmission_path": "美光HBM封装产能按计划推进→2027年HBM供给增量落地→缓解HBM供需紧张→支撑AI服务器出货；供给增加亦对HBM价格涨幅形成温和压制，中期影响双面",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-19"
     }
   ]
 }
