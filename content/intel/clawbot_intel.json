@@ -18649,6 +18649,25 @@
       "confidence": "high",
       "action": "watch",
       "review_date": "2026-11-27"
+    },
+    {
+      "id": "2026-11-20-micron-2027-supply-tighter",
+      "date": "2026-11-20",
+      "type": "公司公告",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "美光高管：2027年存储供需将比2026年更紧张，2027年产能75%已预售",
+      "product": "DRAM,HBM,NAND",
+      "source": "财联社",
+      "url": "https://www.cls.cn/detail/2539632",
+      "summary": "美光科技总裁兼首席技术与产品官Scott DeBoer在接受采访时称，存储芯片供需在很长一段时间内无法回到平衡，可预见的未来找不到明确平衡点，预计2027年供需形势会比2026年更加紧张。美光CEO Sanjay Mehrotra在TomorrowX投资者峰会上重申，与2026年相比，2027和2028年内存供需将进一步收紧，美光2027年库存中已有75%售罄，正与客户磋商延续至2028年的供货承诺。公司已签订26份战略客户协议（SCA），由320亿美元前期现金与财务承诺支撑，多数协议期限五年以上。",
+      "transmission_path": "原厂高管集体确认2027年供给持续紧张且产能大部分被预售→强化市场对存储涨价的长期预期→支撑原厂长约议价能力与预付款条款→下游云厂商与OEM存储成本压力延续→终端涨价压力持续传导",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-20"
     }
   ]
 }
