@@ -20,6 +20,25 @@
       "review_date": "2026-11-28"
     },
     {
+      "id": "2026-11-21-samsung-capacity-locked-2031",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "date": "2026-11-21",
+      "title": "曝三星未来三年大部分存储芯片产能已被锁定，客户寻求供货保障至2031年",
+      "product": "DRAM,HBM,NAND",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261122090230383800",
+      "summary": "媒体曝料称，三星未来三年大部分存储芯片产能已被客户锁定，部分客户希望获得至2031年的供货保障。这反映AI驱动的存储需求长期可见度极高，供给紧张格局可能延续至本十年末。",
+      "importance": "S",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "原厂产能长期锁定→现货与未签约客户供给缺口扩大→存储合约价长期上行获得支撑→原厂扩产与半导体设备订单增长",
+      "confidence": "medium",
+      "action": "deep_tracking",
+      "review_date": "2026-12-21"
+    },
+    {
       "id": "2026-11-20-samsung-new-memory-chief",
       "type": "公司公告",
       "impact": "neutral",
