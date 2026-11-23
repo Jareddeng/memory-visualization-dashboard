@@ -18744,6 +18744,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-11-30"
+    },
+    {
+      "id": "2026-11-23-google-direct-hbm-procurement",
+      "date": "2026-11-23",
+      "type": "产业链跟踪",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "谷歌将绕过博通直接采购HBM，降本需求或将压制内存厂商利润",
+      "product": "HBM",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261123111247874800",
+      "summary": "据金十数据每日存储市场要闻（11月23日），谷歌将绕过博通直接采购HBM。谷歌此举旨在降低AI芯片成本，通过直接与原厂对接减少中间环节费用，该降本需求可能对内存厂商HBM产品利润形成压制。",
+      "transmission_path": "谷歌绕过博通直接采购HBM→HBM采购模式从捆绑/中介销售转向直采→中间环节利润被压缩→内存厂商HBM议价能力和毛利率短期承压→但也反映谷歌对HBM需求持续增长、采购规模扩大→短期压制利润率预期，长期需求逻辑不变，关注原厂与大客户直采协议的定价条款变化。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-12-23"
+    },
+    {
+      "id": "2026-11-23-ai-server-price-hike-45pct",
+      "date": "2026-11-23",
+      "type": "市场消息",
+      "impact": "bullish",
+      "importance": "B",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1m",
+      "title": "AI服务器厂商涨价幅度最高达45%，部分订单签约数月后遭重新报价",
+      "product": "DRAM,HBM,服务器",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261123120105832800",
+      "summary": "金十数据11月23日讯，报道指出AI服务器厂商涨价幅度最高达45%，部分订单签约数月后遭重新报价。存储芯片（DRAM/HBM）成本持续攀升是服务器整机涨价的主要驱动因素之一，反映存储紧缺已向AI基础设施整机环节全面传导。",
+      "transmission_path": "AI服务器厂商大幅涨价（最高45%）→存储等核心零部件成本上升传导至整机→下游云服务采购成本增加→云服务商加速向上游锁定产能和签订长期协议→强化存储需求持续高企预期→可能引发终端用户对AI投资回报率的重新评估，但短期进一步巩固存储涨价周期叙事。",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-11-30"
     }
   ]
 }
