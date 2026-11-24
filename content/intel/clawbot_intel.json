@@ -16460,6 +16460,44 @@
       "confidence": "medium",
       "action": "watch",
       "review_date": "2026-12-21"
+    },
+    {
+      "id": "2026-11-24-samsung-xian-nand-v9-expansion",
+      "date": "2026-11-24",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "三星拟将西安工厂V9 NAND产能提升至月产5万片，供应AI数据中心",
+      "product": "NAND,V9,eSSD",
+      "source": "财联社",
+      "url": "https://m.cls.cn/detail/2542409",
+      "summary": "Samsung电子计划升级西安半导体工厂，将X2工厂第九代V-NAND（V9）月产能从约1万片300毫米晶圆提升至约5万片，同时将现有V6产线20%-30%转为V9生产。设备预计2027年2月引进，同年11月完成改造。西安园区将成为AI数据中心企业级SSD生产基地。V9采用286层堆叠，容量较上代提升50%，芯片最高数据输入输出速度达3.2Gbps。TrendForce预计eSSD所用NAND需求今年增长84%、明年增长55%，eSSD在NAND总需求中占比将从45%升至57%。",
+      "transmission_path": "三星大幅扩产V9 NAND → 企业级SSD供给能力提升 → 满足AI数据中心高容量存储需求 → 强化三星在AI存储领域竞争地位，同时利好上游设备与材料供应商",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-24"
+    },
+    {
+      "id": "2026-11-24-goldman-samsung-sk-hynix-downgrade",
+      "date": "2026-11-24",
+      "type": "行业分析",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "sentiment",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "title": "高盛下调三星电子和SK海力士目标价，预计2028年存储芯片价格或跌两成",
+      "product": "DRAM,NAND,HBM",
+      "source": "CryptoBriefing",
+      "url": "https://cryptobriefing.com/goldman-sachs-samsung-sk-hynix-memory-forecasts/",
+      "summary": "高盛将Samsung Electronics目标价从50万韩元下调至35万韩元，将SK Hynix目标价从350万韩元下调至200万韩元。高盛预计2028年存储芯片价格可能下跌约20%，但认为当前股价或已反映部分风险。此前Morgan Stanley曾将SK Hynix目标价下调38%至160万韩元、Samsung下调19%至30.9万韩元，而Nomura维持看多，预计存储短缺持续至2028年，华尔街对存储行业前景分歧显著。",
+      "transmission_path": "高盛下调两大存储巨头目标价 → 市场对存储行业盈利可持续性担忧升温 → Samsung/SK Hynix及存储板块估值承压 → 机构重新评估2028年后存储周期风险",
+      "confidence": "high",
+      "action": "watch",
+      "review_date": "2026-12-24"
     }
   ]
 }
