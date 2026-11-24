@@ -39,6 +39,25 @@
       "review_date": "2026-12-24"
     },
     {
+      "id": "2026-11-24-jensen-return-memory-rally",
+      "type": "市场消息",
+      "impact": "bullish",
+      "date": "2026-11-24",
+      "title": "黄仁勋回归预期提振日韩股市：KOSPI收涨6.3%，三星电子涨6.7%、SK海力士涨6.7%",
+      "product": "DRAM,HBM,NAND,存储芯片",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261124143206701800",
+      "summary": "金十数据11月24日讯，黄仁勋回归英伟达CEO的消息提振日韩股市，科技股大幅反弹。韩国KOSPI指数收复5000点关口，收涨6.32%；存储芯片龙头涨幅居前，三星电子收涨6.7%，SK海力士收涨6.72%。日经225指数涨3.91%，创7月31日以来最大涨幅，收报58644.63点。此前11月20日美股半导体及存储板块遭重挫（英伟达单日暴跌14%，美光、闪迪、希捷等跌超10%），此次大涨为情绪修复驱动，机构提示买盘回流主要由市场情绪回暖推动而非基本面改善。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "1d",
+      "transmission_path": "黄仁勋回归英伟达→AI产业链信心修复→资金回流半导体/存储板块→三星电子、SK海力士股价单日反弹超6%→短期情绪改善，但HBM订单、长约执行等基本面未变，需观察反弹持续性。",
+      "confidence": "high",
+      "action": "alert",
+      "review_date": "2026-12-01"
+    },
+    {
       "id": "2026-11-23-korea-ai-chip-supply-meeting",
       "type": "政策事件",
       "impact": "bullish",
@@ -150,6 +169,25 @@
       "transmission_path": "国有资本运营公司加大DRAM产业基金投入→长鑫科技扩产与技术升级获资金支持→国产DRAM产能长期提升→全球DRAM供给格局远期或生变→短期对现货价格影响有限，关注国产存储扩产节奏与设备材料订单动向。",
       "confidence": "high",
       "action": "watch",
+      "review_date": "2026-12-23"
+    },
+    {
+      "id": "2026-11-23-samsung-xian-nand-expansion",
+      "type": "产业链跟踪",
+      "impact": "bullish",
+      "date": "2026-11-23",
+      "title": "三星拟将西安X2工厂V9 NAND月产能从约1万片扩至5万片以上，定位AI数据中心存储基地",
+      "product": "NAND,企业级SSD,存储芯片",
+      "source": "搜狐",
+      "url": "https://m.sohu.com/a/1105324091_128075",
+      "summary": "据11月23日报道，三星电子计划扩建位于中国西安的半导体工厂，将第二厂区（X2）的第九代垂直堆叠NAND闪存（V9）月产能按300毫米晶圆口径从约1万片提升至5万片以上。扩产后西安园区将成为其面向AI数据中心的存储芯片生产基地。业内信息同时显示，三星NAND良率已从80%出头提升至V9产品的90%出头。西安工厂目前承担三星全球约40%的NAND产量，此前已计划将部分产线升级为286层V9 NAND。",
+      "importance": "B",
+      "reaction_type": "undervalued",
+      "pricing_status": "partial",
+      "horizon": "1q",
+      "transmission_path": "AI数据中心企业级SSD需求强劲→三星提升西安V9高端NAND产能→企业级SSD供给弹性增加→高端NAND供应紧张缓解→对2027年后NAND价格形成上行抑制，同时验证AI存储需求韧性。",
+      "confidence": "medium",
+      "action": "deep_tracking",
       "review_date": "2026-12-23"
     },
     {
