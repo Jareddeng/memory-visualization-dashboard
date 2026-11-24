@@ -1174,6 +1174,7 @@ type NavSubItem = {
   label: string;
   anchorId: string;
   reportTab?: ReportTab;
+  children?: NavSubItem[];
 };
 
 type PageNavItem = {
@@ -1279,14 +1280,18 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
       detail: "就业 / 通胀 / 利率 / 社融",
       subItems: [
         { label: "机构图表", anchorId: "macro-institutional-charts" },
-        { label: "非农就业", anchorId: "macro-us-payroll" },
-        { label: "失业率", anchorId: "macro-us-unemployment" },
-        { label: "非农分项", anchorId: "macro-us-payroll-sectors" },
-        { label: "通胀同比", anchorId: "macro-us-inflation-yoy" },
-        { label: "通胀环比", anchorId: "macro-us-inflation-mom" },
-        { label: "社融与 M2", anchorId: "macro-credit-growth" },
-        { label: "新增人民币贷款", anchorId: "macro-new-loans" },
-        { label: "社融当月值", anchorId: "macro-social-financing" },
+        { label: "美国宏观", anchorId: "macro-us-charts", children: [
+          { label: "新增非农就业人数及修正差值", anchorId: "macro-us-payroll" },
+          { label: "美国失业率及劳动参与率", anchorId: "macro-us-unemployment" },
+          { label: "非农就业细分项", anchorId: "macro-us-payroll-sectors" },
+          { label: "美国通胀同比", anchorId: "macro-us-inflation-yoy" },
+          { label: "美国通胀环比", anchorId: "macro-us-inflation-mom" },
+        ] },
+        { label: "中国宏观", anchorId: "macro-china-charts", children: [
+          { label: "社融及 M2 同比增速", anchorId: "macro-credit-growth" },
+          { label: "中国新增人民币贷款：当月值", anchorId: "macro-new-loans" },
+          { label: "中国社会融资规模：当月值", anchorId: "macro-social-financing" },
+        ] },
       ],
     },
   ];
@@ -1312,9 +1317,14 @@ function PageNav({ activeSector, activePage, onNavigate }: { activeSector: Secto
             {expanded ? (
               <div className="nav-sub-list" aria-label={page.label}>
                 {page.subItems?.map((item) => (
-                  <button className="nav-sub-item" key={`${item.anchorId}-${item.reportTab ?? item.label}`} onClick={() => onNavigate(page.key, item.anchorId, item.reportTab)} type="button">
-                    {item.label}
-                  </button>
+                  <div className={item.children ? "nav-sub-group" : undefined} key={`${item.anchorId}-${item.reportTab ?? item.label}`}>
+                    <button className="nav-sub-item" onClick={() => onNavigate(page.key, item.anchorId, item.reportTab)} type="button">
+                      {item.label}
+                    </button>
+                    {item.children ? <div className="nav-third-list" aria-label={item.label}>
+                      {item.children.map((child) => <button className="nav-sub-item" key={child.anchorId} onClick={() => onNavigate(page.key, child.anchorId, child.reportTab)} type="button">{child.label}</button>)}
+                    </div> : null}
+                  </div>
                 ))}
               </div>
             ) : null}
@@ -2129,20 +2139,27 @@ function makeMacroOption(chart: MacroChartPayload): echarts.EChartsCoreOption {
 }
 
 function MacroMarketsPage({ data, tracker, activePeriodId, onPeriodChange }: { data: MacroPayload; tracker?: InstitutionalChartTrackerPayload; activePeriodId: string | null; onPeriodChange: (id: string) => void }) {
+  const groups = [
+    { id: "macro-us-charts", title: "美国宏观", charts: data.charts.filter((chart) => chart.id.startsWith("us-") && chart.id !== "us-bond-yields") },
+    { id: "macro-china-charts", title: "中国宏观", charts: data.charts.filter((chart) => !chart.id.startsWith("us-")) },
+  ];
   return (
     <>
       <InstitutionalChartTracker tracker={tracker} sector="macro" activePeriodId={activePeriodId} onPeriodChange={onPeriodChange} />
-      <section className="macro-chart-grid" aria-label="宏观市场图表">
-        {data.charts.filter((chart) => chart.id !== "us-bond-yields").map((chart) => (
-          <article className="panel macro-chart-panel" id={`macro-${chart.id}`} key={chart.id}>
-            <div className="macro-chart-head">
-              <h2>{chart.title}</h2>
-              <span>截至 {chart.latestDate}</span>
-            </div>
-            <Chart option={makeMacroOption(chart)} />
-          </article>
-        ))}
-      </section>
+      {groups.filter((group) => group.charts.length).map((group) => <section className="macro-country-section" aria-labelledby={group.id} key={group.id}>
+        <h2 className="macro-country-heading" id={group.id}>{group.title}</h2>
+        <div className="macro-chart-grid">
+          {group.charts.map((chart) => (
+            <article className="panel macro-chart-panel" id={`macro-${chart.id}`} key={chart.id}>
+              <div className="macro-chart-head">
+                <h3>{chart.title}</h3>
+                <span>截至 {chart.latestDate}</span>
+              </div>
+              <Chart option={makeMacroOption(chart)} />
+            </article>
+          ))}
+        </div>
+      </section>)}
     </>
   );
 }

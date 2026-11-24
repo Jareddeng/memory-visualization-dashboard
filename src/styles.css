@@ -275,6 +275,23 @@ select {
   outline: none;
 }
 
+.nav-sub-list > div > .nav-sub-item {
+  width: 100%;
+}
+
+.nav-sub-group > .nav-sub-item {
+  color: #d4dfd9;
+  font-weight: 600;
+}
+
+.nav-third-list {
+  display: grid;
+  gap: 3px;
+  margin-left: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 6px;
+}
+
 .source-status {
   display: grid;
   grid-template-columns: 10px 1fr;
@@ -1466,6 +1483,17 @@ h2 {
   gap: 16px;
 }
 
+.macro-country-section {
+  min-width: 0;
+}
+
+.macro-country-heading {
+  margin: 8px 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 21px;
+}
+
 
 .macro-chart-panel {
   min-width: 0;
@@ -1481,7 +1509,8 @@ h2 {
   margin-bottom: 8px;
 }
 
-.macro-chart-head h2 {
+.macro-chart-head h2,
+.macro-chart-head h3 {
   margin: 0;
   font-size: 17px;
 }
