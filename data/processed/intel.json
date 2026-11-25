@@ -58,6 +58,25 @@
       "review_date": "2026-12-02"
     },
     {
+      "id": "2026-11-25-trendforce-2027-memory-output-cut",
+      "type": "行业分析",
+      "impact": "bearish",
+      "date": "2026-11-25",
+      "title": "TrendForce下修2027年存储器产值预估：NAND进入价格下行循环，DRAM涨幅逐季收敛",
+      "product": "DRAM,NAND",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261125142317977800",
+      "summary": "金十数据11月25日讯，TrendForce集邦咨询最新存储器产业研究显示，由于部分云端服务供应商（CSP）下修2027年存储器订单，NAND Flash产业在供给续增的情况下将进入价格下行循环，2027年全年产值较先前预估下调至约4,193亿美元。DRAM市场虽延续供不应求态势，但价格涨幅将逐季收敛，2027年产值预估下修至1.15万亿美元。",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "transmission_path": "CSP下修2027年存储订单→NAND供需反转、合约价进入下行循环→Samsung、Kioxia、Micron的NAND业务2027年营收与利润率承压；DRAM维持涨价但涨幅逐季收敛→原厂营收增速放缓；叠加近期存储股大幅回调，行业盈利预期与估值或继续下修。",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-25"
+    },
+    {
       "id": "2026-11-24-samsung-xian-nand-v9-expansion",
       "type": "产业链跟踪",
       "impact": "bullish",
