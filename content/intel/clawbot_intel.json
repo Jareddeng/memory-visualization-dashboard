@@ -16745,6 +16745,44 @@
       "confidence": "high",
       "action": "archive",
       "review_date": "2026-12-26"
+    },
+    {
+      "id": "2026-11-24-samsung-xian-nand-expansion",
+      "date": "2026-11-24",
+      "type": "产业链跟踪",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "undervalued",
+      "pricing_status": "unpriced",
+      "horizon": "1q",
+      "title": "三星西安NAND产能拟扩四倍 重心转向eSSD",
+      "product": "NAND,3D NAND,eSSD",
+      "source": "C114通信网",
+      "url": "https://www.c114.net.cn/chip/151412.html",
+      "summary": "业内人士11月24日透露，三星电子计划在一年内将西安第二工厂（X2）第九代V-NAND（V9）产能从每月约1万片晶圆提升至5万片，增幅达四倍，并将部分V6产线转换为V9工艺。扩产后三星在华NAND总产能将达每月约10万片，约占其全球NAND总产能的三分之一。V9采用286层架构，良率已提升至90%以上，I/O速度最高3.2Gbps。三星还在平泽P5洁净室增设V9产线，并将西安基地重新定位为eSSD生产中心（全球eSSD份额Q2为35.1%，居首）。",
+      "transmission_path": "三星西安V9产能四倍扩张→NAND总供给大幅增加→通用NAND价格下行压力加大；产能向eSSD集中→数据中心eSSD竞争加剧，SK海力士、美光份额承压；与TrendForce的NAND下行周期预测形成供给端印证",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-24"
+    },
+    {
+      "id": "2026-11-26-semianalysis-ai-capex-cut",
+      "date": "2026-11-26",
+      "type": "行业分析",
+      "impact": "bearish",
+      "importance": "A",
+      "reaction_type": "instant",
+      "pricing_status": "partial",
+      "horizon": "longer",
+      "title": "SemiAnalysis大幅下调AI资本支出预期 2030年芯片支出降40%",
+      "product": "HBM,AI芯片,DRAM",
+      "source": "金十数据",
+      "url": "https://flash.jin10.com/detail/20261126142828268800",
+      "summary": "SemiAnalysis最新报告11月26日大幅下调AI计算与资本支出预测：2028年全球AI加速器资本支出预期从1.04万亿美元下调至7580亿美元（降幅28%）；2030年芯片支出规模从1.53万亿美元降至9230亿美元（降幅40%）。2026-2030年间芯片出货量将下降17%，其中高带宽存储（HBM）出货量下降30%，预计电力需求最终下降34%。",
+      "transmission_path": "AI资本支出预期下调28%→AI加速器与服务器出货增速回落→HBM需求预测下修（出货-30%）→存储原厂HBM扩产回报存疑→存储板块远期估值承压，供需再平衡时点前移",
+      "confidence": "high",
+      "action": "deep_tracking",
+      "review_date": "2026-12-26"
     }
   ]
 }
