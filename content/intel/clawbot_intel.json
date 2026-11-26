@@ -16669,6 +16669,25 @@
       "confidence": "high",
       "action": "alert",
       "review_date": "2026-11-30"
+    },
+    {
+      "id": "2026-11-25-kioxia-xl-flash-gen3",
+      "date": "2026-11-25",
+      "type": "产品数据",
+      "impact": "neutral",
+      "importance": "B",
+      "reaction_type": "archive",
+      "pricing_status": "unpriced",
+      "horizon": "longer",
+      "title": "铠侠将展示XL-FLASH第三代 瞄准AI服务器分层存储",
+      "product": "NAND,XL-FLASH,存储级内存",
+      "source": "TechEdge AI",
+      "url": "https://techedgeai.com/kioxia-advances-ai-memory-with-next-gen-xl-flash-technology/",
+      "summary": "铠侠（Kioxia）宣布将在东京KIOXIA Forum上展示XL-FLASH第三代产品。XL-FLASH定位为介于DRAM与NAND之间的存储级内存（SCM），面向AI服务器内存分层架构，与DRAM、HBM、CXL内存扩展及企业级SSD形成互补又竞争的关系。其商业化前景取决于能否在延迟敏感的AI负载中带来可衡量的系统级收益和基础设施总成本优势。",
+      "transmission_path": "铠侠XL-FLASH Gen3落地AI服务器→SCM在DRAM与NAND之间新增中间存储层→AI内存分层方案竞争格局变化→与Samsung/SK Hynix/Micron在AI内存层级中争夺附加值",
+      "confidence": "medium",
+      "action": "watch",
+      "review_date": "2026-12-25"
     }
   ]
 }
