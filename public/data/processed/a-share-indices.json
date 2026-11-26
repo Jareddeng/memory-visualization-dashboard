@@ -1,78 +1,66 @@
 {
   "latest": [
     {
-      "date": "2026-11-25",
-      "previous_date": "2026-11-24",
+      "date": "2026-11-26",
+      "previous_date": "2026-11-25",
       "ticker": "000001.SS",
       "name": "上证指数",
       "exchange": "SSE",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 3476.47,
-      "change": -71.9,
-      "change_pct": -2.03
+      "close": 3476.88,
+      "change": 0.41,
+      "change_pct": 0.01
     },
     {
-      "date": "2026-11-25",
-      "previous_date": "2026-11-24",
+      "date": "2026-11-26",
+      "previous_date": "2026-11-25",
       "ticker": "000300.SS",
       "name": "沪深300",
       "exchange": "CSI",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 3898.24,
-      "change": -65.58,
-      "change_pct": -1.65
+      "close": 3900.55,
+      "change": 2.31,
+      "change_pct": 0.06
     },
     {
-      "date": "2026-11-25",
-      "previous_date": "2026-11-24",
+      "date": "2026-11-26",
+      "previous_date": "2026-11-25",
       "ticker": "000688.SS",
       "name": "科创50",
       "exchange": "SSE",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 1186.14,
-      "change": -63.95,
-      "change_pct": -5.12
+      "close": 1169.99,
+      "change": -16.15,
+      "change_pct": -1.36
     },
     {
-      "date": "2026-11-25",
-      "previous_date": "2026-11-24",
+      "date": "2026-11-26",
+      "previous_date": "2026-11-25",
       "ticker": "000852.SS",
       "name": "中证1000",
       "exchange": "CSI",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 5541.55,
-      "change": -257.46,
-      "change_pct": -4.44
+      "close": 5531.84,
+      "change": -9.71,
+      "change_pct": -0.18
     }
   ],
   "history": [
     {
-      "date": "2025-10-31",
+      "date": "2025-11-03",
       "previous_date": null,
       "ticker": "000001.SS",
       "name": "上证指数",
       "exchange": "SSE",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 3954.79,
+      "close": 3976.52,
       "change": 0,
       "change_pct": 0
-    },
-    {
-      "date": "2025-11-03",
-      "previous_date": "2025-10-31",
-      "ticker": "000001.SS",
-      "name": "上证指数",
-      "exchange": "SSE",
-      "currency": "点",
-      "price_basis": "completed_daily_close",
-      "close": 3976.52,
-      "change": 21.73,
-      "change_pct": 0.55
     },
     {
       "date": "2025-11-04",
@@ -3171,28 +3159,28 @@
       "change_pct": -2.03
     },
     {
-      "date": "2025-10-31",
+      "date": "2026-11-26",
+      "previous_date": "2026-11-25",
+      "ticker": "000001.SS",
+      "name": "上证指数",
+      "exchange": "SSE",
+      "currency": "点",
+      "price_basis": "completed_daily_close",
+      "close": 3476.88,
+      "change": 0.41,
+      "change_pct": 0.01
+    },
+    {
+      "date": "2025-11-03",
       "previous_date": null,
       "ticker": "000300.SS",
       "name": "沪深300",
       "exchange": "CSI",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 4640.67,
+      "close": 4653.4,
       "change": 0,
       "change_pct": 0
-    },
-    {
-      "date": "2025-11-03",
-      "previous_date": "2025-10-31",
-      "ticker": "000300.SS",
-      "name": "沪深300",
-      "exchange": "CSI",
-      "currency": "点",
-      "price_basis": "completed_daily_close",
-      "close": 4653.4,
-      "change": 12.73,
-      "change_pct": 0.27
     },
     {
       "date": "2025-11-04",
@@ -6291,28 +6279,28 @@
       "change_pct": -1.65
     },
     {
-      "date": "2025-10-31",
+      "date": "2026-11-26",
+      "previous_date": "2026-11-25",
+      "ticker": "000300.SS",
+      "name": "沪深300",
+      "exchange": "CSI",
+      "currency": "点",
+      "price_basis": "completed_daily_close",
+      "close": 3900.55,
+      "change": 2.31,
+      "change_pct": 0.06
+    },
+    {
+      "date": "2025-11-03",
       "previous_date": null,
       "ticker": "000688.SS",
       "name": "科创50",
       "exchange": "SSE",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 1415.53,
+      "close": 1400.86,
       "change": 0,
       "change_pct": 0
-    },
-    {
-      "date": "2025-11-03",
-      "previous_date": "2025-10-31",
-      "ticker": "000688.SS",
-      "name": "科创50",
-      "exchange": "SSE",
-      "currency": "点",
-      "price_basis": "completed_daily_close",
-      "close": 1400.86,
-      "change": -14.67,
-      "change_pct": -1.04
     },
     {
       "date": "2025-11-04",
@@ -9411,28 +9399,28 @@
       "change_pct": -5.12
     },
     {
-      "date": "2025-10-31",
+      "date": "2026-11-26",
+      "previous_date": "2026-11-25",
+      "ticker": "000688.SS",
+      "name": "科创50",
+      "exchange": "SSE",
+      "currency": "点",
+      "price_basis": "completed_daily_close",
+      "close": 1169.99,
+      "change": -16.15,
+      "change_pct": -1.36
+    },
+    {
+      "date": "2025-11-03",
       "previous_date": null,
       "ticker": "000852.SS",
       "name": "中证1000",
       "exchange": "CSI",
       "currency": "点",
       "price_basis": "completed_daily_close",
-      "close": 7506.67,
+      "close": 7538.12,
       "change": 0,
       "change_pct": 0
-    },
-    {
-      "date": "2025-11-03",
-      "previous_date": "2025-10-31",
-      "ticker": "000852.SS",
-      "name": "中证1000",
-      "exchange": "CSI",
-      "currency": "点",
-      "price_basis": "completed_daily_close",
-      "close": 7538.12,
-      "change": 31.45,
-      "change_pct": 0.42
     },
     {
       "date": "2025-11-04",
@@ -12529,9 +12517,20 @@
       "close": 5541.55,
       "change": -257.46,
       "change_pct": -4.44
+    },
+    {
+      "date": "2026-11-26",
+      "previous_date": "2026-11-25",
+      "ticker": "000852.SS",
+      "name": "中证1000",
+      "exchange": "CSI",
+      "currency": "点",
+      "price_basis": "completed_daily_close",
+      "close": 5531.84,
+      "change": -9.71,
+      "change_pct": -0.18
     }
   ],
   "source": "Tencent/Eastmoney daily index closes (1y)",
-  "generated_at": "2026-11-26T07:20:19.259Z",
-  "warning": "部分A股指数在线更新失败，已使用既有数据: 000001.SS: 腾讯财经: HTTP 501; 东方财富: socket hang up; Yahoo: HTTP 429; 000300.SS: 腾讯财经: HTTP 501; 东方财富: socket hang up; Yahoo: HTTP 429; 000688.SS: 腾讯财经: HTTP 501; 东方财富: socket hang up; Yahoo: HTTP 429; 000852.SS: 腾讯财经: HTTP 501; 东方财富: socket hang up; Yahoo: HTTP 429"
+  "generated_at": "2026-11-26T14:20:04.939Z"
 }
